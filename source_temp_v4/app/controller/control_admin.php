@@ -9,27 +9,37 @@ class control_admin{
 		$this->_control	= $control;
 		$this->_action	= $action;
 		$this->_data	= $data;
-	}//construct
+	}
 
 	function index(){
-		echo "{$this->_control} <br /> {$this->_action} <br /> {$this->_data} <br />";
 		if(!isset($_SESSION['admin_id'])){
 			$this->frm_login();
 		}else{
-			$this->login();
+			$this->administrator();
 		}
-	}//index
+	}
 	
 	function frm_login(){
 		if(isset($_POST['btnLogin'])){
 			$result = $this->_model->xuly_dangnhap($_POST['username'],$_POST['password']);
-			if($result==TRUE) $error = 'Login thành công';
+			if($result==TRUE) header('location: '.CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CONTROLLER);
 			else $error = 'Tên đăng nhập hoặc mật khẩu sai';
 		}
 		include_once('view/view_admin_login.php');
 	}
 	
-	function login(){
-		echo 'đăng nhập';
+	function logout(){
+		session_unset('admin_id');
+		session_unset('admin_name');
+		session_unset('admin_user');
+		session_unset('admin_quyen_xem');
+		session_unset('admin_quyen_action');
+		header('location: '.CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CONTROLLER);
+	}
+	
+	function administrator(){
+		if($_GET['user']==CONS_ADMIN_LOGOUT){
+			$this->logout();
+		}
 	}
 }//class

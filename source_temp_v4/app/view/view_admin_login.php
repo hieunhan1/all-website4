@@ -3,7 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Quản trị website</title>
-<link rel="stylesheet" type="text/css" href="../css/admin_style.css" />
+<link rel="stylesheet" type="text/css" href="css/admin_style.css" />
+<script type="text/javascript" src="library/js/jquery.min.js"></script>
+<script type="text/javascript" src="library/js/checks_field.js"></script>
 </head>
 
 <body>
@@ -11,10 +13,24 @@
 	<div id="login">
 		<h2>Đăng nhập quản trị</h2>
 		<p style="color:#F00"><?php echo $error; ?></p>
-		<p>Tên đăng nhập:<br /><input type="text" name="username" id="username" /></p>
-		<p>Mật khẩu:<br /><input type="password" name="password" id="password" /></p>
-        <p style="width:auto; margin-top:10px"><input name="btnLogin" type="submit" id="btnLogin" value="&nbsp;" /></p>
+		<p>
+        	Tên đăng nhập:<br /><input type="text" name="username" id="username" /><br />
+            <span class="error" id="username_message"></span>
+        </p>
+        
+		<p>Mật khẩu:<br /><input type="password" name="password" id="password" /><span class="error" id="password_message"></span></p>
+        <p><input name="btnLogin" type="submit" id="btnLogin" value="&nbsp;" /></p>
 	</div>
 </form>
+<script type="text/javascript">
+$(document).ready(function(e) {
+	$("#btnLogin").click(function(){
+		var username = ValidateInput("#username","#username_message","mail chưa đúng");
+		if(username == false) return false;
+	});
+	
+	
+});
+</script>
 </body>
 </html>
