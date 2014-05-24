@@ -17,6 +17,7 @@ define('CONS_WEB_VIEW_CONTENT','view_content');
 /*ADMIN*/
 define('CONS_DEFAULT_ADMIN_CONTROLLER', 'cp_admin');
 define('CONS_DEFAULT_ADMIN_ACTION', 'index');
+define('CONS_ADMIN_LOGOUT', 'logout');
 
 /*
 define('CONS_DEFAULT_VIEW_INFO','view_info');

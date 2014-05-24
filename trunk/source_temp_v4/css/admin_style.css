@@ -6,11 +6,11 @@ a {color:#0000FF; text-decoration:none}
 a:hover {color:#F00; text-decoration:underline}
 hr{border: solid 2px #F3A972}
 
-#login{width:240px; height:260px; margin:30px auto 0; padding:10px; border:solid 1px #a9c1d4; background:url(admin_img/bg-dangnhap.gif) repeat-x}
+#login{width:240px; margin:30px auto 0; padding:10px; border:solid 1px #a9c1d4; background:url(admin_img/bg-dangnhap.gif)}
 #login h2{display:block; margin-bottom:10px; padding-bottom:10px; border-bottom:solid 1px #b4b8be}
-#login p{line-height:35px}
+#login p{line-height:25px; margin-bottom:10px}
 #login input{width:235px; line-height:22px; height:22px; border:solid 1px #999; background-color:#C6DDFF}
-#login #btnLogin{width:150px; height:25px; margin:10px 0 0 45px; border:none; background:url(admin_img/btn-dangnhap.gif); cursor:pointer}
+#login #btnLogin{width:150px; height:25px; margin:10px auto 20px 45px; border:none; background:url(admin_img/btn-dangnhap.gif); cursor:pointer}
 
 .datetimepick{background:url(admin_img/lich.jpg) no-repeat; background-position:188px 4px}
 
