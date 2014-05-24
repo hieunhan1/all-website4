@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /all/source_temp_v4/
+RewriteRule css - [L]
+RewriteRule (.*) app/index.php [L]
+AddDefaultCharset UTF-8
+
+# cache images và flash 30 ngày
+# <FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf)$">
+# Header set Cache-Control "max-age=2592000"
+# </FilesMatch>
+
+# cache text, css, và javascript, html files 1 tuần
+# <FilesMatch ".(js|css|pdf|txt|htm|html)$">
+# Header set Cache-Control "max-age=604800"
+# </FilesMatch>
+
+# không cache scripts files
+# <FilesMatch "\.(php)$">
+# Header unset Cache-Control
+# </FilesMatch>
