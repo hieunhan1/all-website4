@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2014 at 08:13 AM
+-- Generation Time: May 26, 2014 at 12:02 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -226,6 +226,8 @@ CREATE TABLE IF NOT EXISTS `web_menu_admin` (
   `url_hinh` varchar(150) DEFAULT NULL,
   `order` int(3) DEFAULT '0',
   `status` tinyint(1) DEFAULT '1',
+  `other` tinyint(1) DEFAULT '0',
+  `ajax` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
@@ -233,30 +235,30 @@ CREATE TABLE IF NOT EXISTS `web_menu_admin` (
 -- Dumping data for table `web_menu_admin`
 --
 
-INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_hinh`, `order`, `status`) VALUES
-(1, 'Trang chủ', 'home', 'icon-home.jpg', 1, 1),
-(2, 'Cấu hình website', 'web_config', 'icon-cau-hinh.jpg', 2, 1),
-(3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 1),
-(4, 'Thông tin, bài viết', 'web_info', 'icon-info.jpg', 4, 1),
-(5, 'Thư viện ảnh', 'web_photo_gallery', 'icon-thu-vien-anh.jpg', 5, 1),
-(6, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 6, 1),
-(7, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 7, 1),
-(8, 'Item 8', '', 'icon-lich-khai-giang.jpg', 8, 0),
-(9, 'Item 9', '', 'icon-product.jpg', 9, 0),
-(10, 'Item 10', '', 'icon-register.jpg', 10, 0),
-(11, 'Item 11', '', 'icon-hoc-vien.jpg', 11, 0),
-(12, 'Item 12', '', 'icon-lien-he.jpg', 12, 0),
-(13, 'Item 13', '', 'icon-tuyen-dung-thong-tin.jpg', 13, 0),
-(14, 'Item 14', '', 'icon-contact.jpg', 14, 0),
-(15, 'Item 15', '', 'icon-tuyendung-ho-so.jpg', 15, 0),
-(16, 'Item 16', '', '', 16, 0),
-(17, 'Item 17', '', '', 17, 0),
-(18, 'Item 18', '', '', 18, 0),
-(19, 'Item 19', '', '', 19, 0),
-(20, 'Item 20', '', '', 20, 0),
-(21, 'Item 21', '', '', 21, 0),
-(22, 'Liên hệ trực tuyến', 'web_contact', 'icon-lien-he.jpg', 22, 0),
-(23, 'Tài khoản', 'web_users', 'icon-account.jpg', 100, 1);
+INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_hinh`, `order`, `status`, `other`, `ajax`) VALUES
+(1, 'Trang chủ', 'home', 'icon-home.jpg', 1, 1, 0, NULL),
+(2, 'Cấu hình website', 'web_config', 'icon-cau-hinh.jpg', 2, 1, 1, NULL),
+(3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 1, 0, NULL),
+(4, 'Thông tin, bài viết', 'web_info', 'icon-info.jpg', 4, 1, 0, NULL),
+(5, 'Thư viện ảnh', 'web_photo_gallery', 'icon-thu-vien-anh.jpg', 5, 1, 0, NULL),
+(6, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 6, 1, 0, NULL),
+(7, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 7, 1, 1, NULL),
+(8, 'Item 8', '', 'icon-lich-khai-giang.jpg', 8, 0, 0, NULL),
+(9, 'Item 9', '', 'icon-product.jpg', 9, 0, 0, NULL),
+(10, 'Item 10', '', 'icon-register.jpg', 10, 0, 0, NULL),
+(11, 'Item 11', '', 'icon-hoc-vien.jpg', 11, 0, 0, NULL),
+(12, 'Item 12', '', 'icon-lien-he.jpg', 12, 0, 0, NULL),
+(13, 'Item 13', '', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, 0, NULL),
+(14, 'Item 14', '', 'icon-contact.jpg', 14, 0, 0, NULL),
+(15, 'Item 15', '', 'icon-tuyendung-ho-so.jpg', 15, 0, 0, NULL),
+(16, 'Item 16', '', '', 16, 0, 0, NULL),
+(17, 'Item 17', '', '', 17, 0, 0, NULL),
+(18, 'Item 18', '', '', 18, 0, 0, NULL),
+(19, 'Item 19', '', '', 19, 0, 0, NULL),
+(20, 'Item 20', '', '', 20, 0, 0, NULL),
+(21, 'Item 21', '', '', 21, 0, 0, NULL),
+(22, 'Liên hệ trực tuyến', 'web_contact', 'icon-lien-he.jpg', 22, 1, 0, '<span id="hocvien_lienhe" class="ajax_thongtin"></span>'),
+(23, 'Tài khoản', 'web_users', 'icon-account.jpg', 100, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -4042,7 +4044,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `diachi`, `phone`, `email`, `ngaysinh`, `gioitinh`, `url_hinh`, `ngaydangky`, `salt`, `username`, `password`, `quyen_xem`, `quyen_action`, `group_id`, `RandomKey`, `LoginNumber`, `DisableDate`, `Expiration`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(25, 'Admin', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,', 1, NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1, '2013-06-14 00:00:00', '2014-02-27 14:23:00', 'admin', 'admin', 0),
+(25, 'Admin', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', 1, NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1, '2013-06-14 00:00:00', '2014-02-27 14:23:00', 'admin', 'admin', 0),
 (27, 'Trần Nhân', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'nhan', '25f9e794323b453885f5181f1b624d0b', ',1,15,', ',1,15,', 0, NULL, 0, NULL, NULL, 'vi', 1, '2014-03-05 15:48:32', '2014-03-05 15:58:57', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------

@@ -37,9 +37,31 @@ class control_admin{
 		header('location: '.CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CONTROLLER);
 	}
 	
+	function menu_admin($link_cpadmin){
+		$quyen_xem = $_SESSION['admin_quyen_xem'];
+		$data = $this->_model->web_menu_admin();
+		foreach($data as $row){
+			if(preg_match("/,{$row['id']},/i", $quyen_xem)){
+				$str .= '<a href="'.$link_cpadmin.$row['url'].'/">'.$row['name'].$row['ajax'].'</a>';
+				if($row['other']==1) $str .= '<hr />';
+			}
+		}
+		return $str;
+	}
+	
 	function administrator(){
 		if($_GET['user']==CONS_ADMIN_LOGOUT){
 			$this->logout();
 		}
+		$name_admin = $_SESSION['admin_name'];
+		$user_admin = $_SESSION['admin_user'];
+		
+		$link_cpadmin = CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CONTROLLER.'/';
+		$link_logout  = $link_cpadmin.'?user=logout';
+		$link_account = $link_cpadmin.'?user=account';
+		
+		$menu_admin = $this->menu_admin($link_cpadmin);
+		
+		include_once('view/view_admin.php');
 	}
 }//class
