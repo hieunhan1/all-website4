@@ -17,5 +17,7 @@ class control_web{
 			if($this->_action == CONS_WEB_VIEW_CONTENT) echo 'Trang chi tiết';
 			elseif($this->_action == CONS_WEB_PHAN_TRANG) echo 'Trang danh muc';
 		}
+		
+		include_once('view/view_web.php');
 	}//index
 }//class

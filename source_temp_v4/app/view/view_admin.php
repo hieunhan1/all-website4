@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trang quản trị</title>
 <meta name="robots" content="nofollow" />
-<link rel="stylesheet" type="text/css" href="../css/admin_style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo CONS_BASE_URL;?>/css/admin_style.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="website.js"></script>
 
-<script type="text/javascript" src="../../library/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="../../library/ckeditor/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckfinder/ckfinder.js"></script>
 
-<link type="text/css" href="../../library/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
-<script type="text/javascript" src="../../library/datetimepick/jquery.simple-dtpicker.js"></script>
+<link type="text/css" href="<?php echo CONS_BASE_URL;?>/library/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/datetimepick/jquery.simple-dtpicker.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".datetimepick").appendDtpicker({
@@ -38,23 +38,28 @@ function SetFileField(fileUrl, data){
 
 </head>
 
-<body>
+<body style="background:url(<?php echo CONS_BASE_URL; ?>/css/admin_img/bg_header.gif) repeat-x top #B5D8EF">
 
 <div id="wrapper">
     <div id="header">
         <div id="logo">Trang quản trị website</div>
         <div id="thongtin">
-          User: <strong><?php echo $user; ?></strong> <a href="administrator.php?p=account">Thông tin tài khoản</a> | <a href="<?php echo "administrator.php?p=thoat"?>">Logout</a>
+            User: <strong><?php echo $name_admin; ?></strong> &nbsp; &nbsp; 
+            <a href="<?php echo $link_account;?>">Thông tin tài khoản</a> | 
+            <a href="<?php echo $link_logout;?>">Logout</a>
         </div>
     </div>
-
-	<div id="left">
-    	<div class="title">&nbsp;</div>
-        <div id="catalog">
-        	<?php
-			foreach($menu_admin as $row){
+	
+    <div id="left">
+    	<div class="title" style="text-align:center">Chức năng quản trị</div>
+        <div id="catalog"><?php echo $menu_admin; ?></div>
+        <div style="clear:both; height:50px"></div>
+    </div>
+    
+	<?php
+			/*foreach($menu_admin as $row){
 				echo '<a href="">'.$row['name'].'</a>';
-			}
+			}*/
 			
 			/*$i = 0;
             $qr = $qt->menu_admin();
@@ -75,9 +80,6 @@ function SetFileField(fileUrl, data){
 				}
 			}*/
 			?>
-        </div>
-        <div style="clear:both; height:50px"></div>
-    </div>
     
 	<div id="right">
     	<?php

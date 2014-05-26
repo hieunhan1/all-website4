@@ -4,8 +4,8 @@ class model_admin extends db{
 	public function xuly_dangnhap($u,$p){
 		$u = strip_tags($u);
 		$p = md5($p);
-		$str = "SELECT id,name,username,quyen_xem,quyen_action FROM web_users WHERE username='{$u}' AND password='{$p}' AND status=1 AND `delete`=0";
-		if(!$result = $this->db->query($str)) die($this->db->error);
+		$sql = "SELECT id,name,username,quyen_xem,quyen_action FROM web_users WHERE username='{$u}' AND password='{$p}' AND status=1 AND `delete`=0";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) {
 			$row = $result->fetch_assoc();
 			$_SESSION['admin_id']			= $row['id'];
@@ -19,17 +19,14 @@ class model_admin extends db{
 		}
 	}
 	
-	
-	public function menu_admin(){
-		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu_admin` WHERE `status`=1 ORDER BY `order`";
-		if( ($kq=$this->db->query($sql))==FALSE ) die($this->db->error);
+	public function web_menu_admin(){
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`other`,`ajax` FROM `web_menu_admin` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
 		$data = array();
-		foreach ($kq as $row) $data[] = $row;
-		
-		print_r($kq);
+		foreach ($result as $row) $data[] = $row;
 		return $data;
-	}//bainoibat
+	}
 
 	function pageslist($baseurl, $totalrows, $offset,$per_page, $currentpage){
 		$totalpages = ceil($totalrows/$per_page);

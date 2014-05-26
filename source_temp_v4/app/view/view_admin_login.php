@@ -25,11 +25,12 @@
 <script type="text/javascript">
 $(document).ready(function(e) {
 	$("#btnLogin").click(function(){
-		var username = ValidateInput("#username","#username_message","mail chưa đúng");
+		var username = checks_user("#username","#username_message","Tài khoản đăng nhập chưa đúng");
+		var password = check_text_length("#password","#password_message","Mật khẩu phải hơn 6 ký tự",6);
 		if(username == false) return false;
+		else if(password == false) return false;
+		else return true;
 	});
-	
-	
 });
 </script>
 </body>
