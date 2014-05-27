@@ -6,7 +6,7 @@
 <meta name="robots" content="nofollow" />
 <link rel="stylesheet" type="text/css" href="<?php echo CONS_BASE_URL;?>/css/admin_style.css">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="website.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/js_admin.js"></script>
 
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckfinder/ckfinder.js"></script>
@@ -38,7 +38,7 @@ function SetFileField(fileUrl, data){
 
 </head>
 
-<body style="background:url(<?php echo CONS_BASE_URL; ?>/css/admin_img/bg_header.gif) repeat-x top #B5D8EF">
+<body style="background:url(<?php echo CONS_ADMIN_CSS_IMG; ?>bg_header.gif) repeat-x top #B5D8EF">
 
 <div id="wrapper">
     <div id="header">
@@ -52,77 +52,20 @@ function SetFileField(fileUrl, data){
 	
     <div id="left">
     	<div class="title" style="text-align:center">Chức năng quản trị</div>
-        <div id="catalog"><?php echo $menu_admin; ?></div>
+        <div id="catalog"><?php echo $menu_admin_left; ?></div>
         <div style="clear:both; height:50px"></div>
     </div>
-    
-	<?php
-			/*foreach($menu_admin as $row){
-				echo '<a href="">'.$row['name'].'</a>';
-			}*/
-			
-			/*$i = 0;
-            $qr = $qt->menu_admin();
-			if($qr){
-				while($row = mysql_fetch_array($qr)){
-					$i++;
-					
-					if( preg_match("/,{$row['id']},/i", $quyen_xem) ){
-						if($i==11) $style = '<span id="hocvien_dangky" class="ajax_thongtin"></span>';
-						elseif($i==12) $style = '<span id="hocvien_lienhe" class="ajax_thongtin"></span>';
-						elseif($i==15) $style = '<span id="hoso_tuyendung" class="ajax_thongtin"></span>';
-						else $style = '';
-						
-						if($table != $row['url']) echo '<a href="administrator.php?p='.$row['url'].'">'.$row['name'].$style.'</a>';
-						else echo '<a href="administrator.php?p='.$row['url'].'" style="color:#00F">'.$row['name'].$style.'</a>';
-						if($i == 2) echo '<hr />'; else if($i == 7) echo '<hr />'; else if($i == 12) echo '<hr />';
-					}
-				}
-			}*/
-			?>
-    
+
 	<div id="right">
-    	<?php
-		/*$navigator = $qt->Navigator($table);
-		$row_navigator = mysql_fetch_array($navigator);
-		
-		// languages
-		if($p==$table && $p!='home'){
-			$phan_quyen = preg_match("/,{$row_navigator['id']},/i", $quyen_xem);
-			
-			$url_lang = 'administrator.php?p='.$table;
-			$qr = $qt->language();
-			if(mysql_num_rows($qr) > 1){
-				while($row = mysql_fetch_array($qr)){
-					if($_SESSION['language'] != $row['ma'])
-						$view_lang .= '<a href="'.$url_lang.'&language='.$row['ma'].'">'.$row['name'].'</a> &nbsp; | &nbsp; ';
-					else
-						$view_lang .= '<a href="'.$url_lang.'&language='.$row['ma'].'" style="background-color:#FF0; color:#333; border:solid 1px #999; padding:2px 5px">'.$row['name'].'</a> &nbsp; | &nbsp; ';
-				}
-			}
-		}else{
-			$phan_quyen = preg_match("/,{$row_navigator['id']},/i", $quyen_action);
-		}
-		
-		// action
-		if($phan_quyen==true || $p=='account'){
-			if($id=='' && $p!='home' && $p!='account') $btn_right = btn_add_create($table).btn_see_change();
-			elseif($p!='home' && $p!='account') $btn_right = btn_go_back($table);
-			
-			echo '<div class="title" style="width:auto; float:left">'.$row_navigator['name'].'</div>
-			<div class="title" style="width:auto; float:right">'.$btn_right.'</div>
-			
-			<div style="clear:both; height:1px"></div>
-			<div style="clear:both; margin-bottom:10px">'.$view_lang.'</div>';
-			
-			if(isset($p)){
-				if (file_exists('blocks/'.$p.'.php')) include_once('blocks/'.$p.'.php');
-				else echo "Danh mục này không tồn tại.";
-			}else include_once('blocks/home.php');
-		}else
-			echo '<div class="title">Thông báo</div> <div style="height:380px; clear:both; margin:20px 0; font-weight:bold; color:red">Bạn không có quyền vào thư mục này</div>'
-		*/
-		?>
+    	<div class="title" style="width:auto; float:left"><?php echo $navigator_name;?></div>
+    	<div class="title" style="width:auto; float:right">
+        	<a href="<?php echo $link_cearte;?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
+            <a href="javascript:;" id="update">See the change</a>
+            <a href="javascript:;" id="create">See the not change</a>
+        </div>
+        <div style="clear:both; height:1px"></div>
+        
+    	<?php echo $include;?>
     </div>
 </div>
 
