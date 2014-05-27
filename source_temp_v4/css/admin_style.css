@@ -38,8 +38,9 @@ hr{border: solid 2px #F3A972}
 #view_select td, #view_select th{height:25px; overflow:hidden; padding:0 5px; border-bottom:solid 1px #88C4FF}
 
 #phantrang{clear:both; margin-top:20px}
-#phantrang a{margin-right:3px; padding:5px 10px; text-align:center; background-color:#666; color:#FFF}
+#phantrang a{margin-right:3px; padding:5px 10px; text-align:center; color:#FFF; background-color:#666}
 #phantrang a:hover{background-color:#ED1E28}
+#phantrang span{margin-right:3px; padding:5px 10px; text-align:center; color:#FFF; font-weight:bold; background-color:#900}
 
 .label{width:150px; text-align:right; vertical-align:top; font-weight:bold; padding-top:3px}
 .radio{margin-top:5px}
