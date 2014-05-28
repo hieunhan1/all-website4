@@ -5,7 +5,7 @@
 <title>Trang quản trị</title>
 <meta name="robots" content="nofollow" />
 <link rel="stylesheet" type="text/css" href="<?php echo CONS_BASE_URL;?>/css/admin_style.css">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/js_admin.js"></script>
 
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckeditor.js"></script>

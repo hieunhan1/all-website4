@@ -64,6 +64,11 @@ class control_admin{
 		return $this->_model->select_field_table($select, $table, $where, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
 	}
 	
+	public function delete_one($id){
+		$this->_model->delete_one();
+		echo $id;
+	}
+	
 	public function administrator(){
 		if($_GET['user']==CONS_ADMIN_NAME_LOGOUT) $this->logout();/*logout*/
 		if(!isset($_GET['lang'])) $_SESSION['admin_language'] = 'vi';
@@ -82,6 +87,7 @@ class control_admin{
 		if($this->_action!='home' || isset($_GET['id'])) $link_cearte = CONS_DEFAULT_LINK_LOGIN_ADMIN.$this->_action.'/?id=0';
 		else $link_cearte = 'javascript:;';
 		
+		/*hiển thị các quyền trong trang admin*/
 		$menu_admin = $this->menu_admin($quyen_xem,$this->_action);
 		$menu_admin_left = $menu_admin[0];
 		$menu_admin_right = $menu_admin[1];
@@ -97,7 +103,7 @@ class control_admin{
 				$file_view = "view/view_admin_{$this->_action}.php";
 			}/*create OR edit*/
 			if(isset($_GET['delete_one'])){
-				echo 'xoa abc '.$_GET['delete_one'];
+				$this->delete_one($_GET['delete_one']);
 				return true;
 			}/*xoa item*/
 			if(isset($_GET['status_one'])){

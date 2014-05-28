@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Quản trị website</title>
-<link rel="stylesheet" type="text/css" href="../css/admin_style.css" />
-<script type="text/javascript" src="../library/js/jquery.min.js"></script>
-<script type="text/javascript" src="../library/js/js_checks_field.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo CONS_BASE_URL;?>/css/admin_style.css" />
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/jquery.min.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/js_checks_field.js"></script>
 </head>
 
 <body>
