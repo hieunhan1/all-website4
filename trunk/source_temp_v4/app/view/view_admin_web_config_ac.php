@@ -1,1 +1,118 @@
-web_config_ac
+<?php
+$id = $_GET['id'];
+if($id==0){
+	$lable_submit = 'Thêm mới';
+	$type = 1; /*create*/
+}else{
+	$lable_submit = 'Cập nhật';
+	$type = 2; /*up$this->*/
+	
+	$row_detail = $this->_model->_view_edit_detail($table,$id);
+}
+
+if(!empty($_POST)){
+	$fields = array_keys($_POST);
+	$values = array_values($_POST);
+	
+	$result = $this->_model->_get_sql($type,$table,$fields,$values,$user_admin,$id);
+
+	if($result==TRUE) header("location: ".$_SESSION['link_back']);
+	else echo "<p class='error'>{$lable_submit} không được. Vui lòng kiểm tra lại</p>";
+	
+}else $_SESSION['link_back'] = $_SERVER['HTTP_REFERER'];
+
+echo '<form name="form_action" method="post" action="">
+<table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
+	//status
+	$arr = array();
+	$arr[] = array('id'=>'1', 'name'=>'Hiện');
+	$arr[] = array('id'=>'0', 'name'=>'Ẩn');
+	if($row_detail['status']=='') $properties = 1; else $properties = $row_detail['status']; //default check
+	$views = array('Trạng thái','status','radio',' &nbsp; '); //label name class other
+    $this->getProperties('4',$arr,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//name
+	$values = $row_detail['name'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Mô tả','name','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//lang
+	$arr = array();
+	$arr[] = array('id'=>0, 'name'=>'----- select -----');
+	$languages = $this->_model->_web_languages();
+	foreach($languages as $row){
+		$arr[] = array('id'=>$row['ma'], 'name'=>$row['name']);
+	}
+	$properties = $row_detail['lang']; //default check
+	$views = array('Ngôn ngữ','lang','input_medium'); //label id&name class
+    $this->getProperties('5',$arr,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_1
+	$values = $row_detail['max_limit_1'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số tin tức','max_limit_1','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_2
+	$values = $row_detail['max_limit_2'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Tuyển dụng','max_limit_2','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_3
+	$values = $row_detail['max_limit_3'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số hình ảnh','max_limit_3','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_4
+	$values = $row_detail['max_limit_4'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số video','max_limit_4','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//copyright
+	$values = $row_detail['copyright'];
+	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Copyright','copyright','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//email
+	$values = $row_detail['email'];
+	$properties = array('100'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Email','email','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//contact_foo
+	$values = $row_detail['contact_foo'];
+	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Footer','contact_foo','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//id
+	$values = $row_detail['id'];
+	$views = 'id'; //name
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//btn_cancel
+	$other = '<input type="button" name="btn_cancel" id="btn_cancel" value="Hủy" class="submit" onClick="window.location.href=\''.$_SESSION['link_back'].'\'" />';
+	
+	//btn_submit
+	$properties = ''; //disabled, readonly
+	$views = array($lable_submit,'btn_action','submit btn_action'); //label id&name class style
+    $this->getProperties('9','',$properties,$views,$other);
+	echo $this->DisplayProperties();
+
+echo '</table></form>';

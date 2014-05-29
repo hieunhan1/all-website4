@@ -6,7 +6,7 @@ function CheckAuthentication()
 
 $config['LicenseName'] = '';
 $config['LicenseKey'] = '';
-$baseUrl = '/all/dayamthuc_v3/upload/';
+$baseUrl = '/all/source_temp_v4/public/';
 
 $baseDir = resolveUrl($baseUrl);
 

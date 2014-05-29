@@ -8,11 +8,11 @@
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/js_admin.js"></script>
 
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/ckeditor/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/ckeditor/ckfinder/ckfinder.js"></script>
 
-<link type="text/css" href="<?php echo CONS_BASE_URL;?>/library/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/datetimepick/jquery.simple-dtpicker.js"></script>
+<link type="text/css" href="<?php echo CONS_BASE_URL;?>/library/js/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
+<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/datetimepick/jquery.simple-dtpicker.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".datetimepick").appendDtpicker({
@@ -58,12 +58,17 @@ function SetFileField(fileUrl, data){
 
 	<div id="right">
     	<div class="title" style="width:auto; float:left"><?php echo $navigator_name;?></div>
+        
+    	<?php if($this->_action!='home' && !isset($_GET['id'])){ ?>
     	<div class="title" style="width:auto; float:right">
-        	<a href="<?php echo $link_cearte;?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
+        	<a href="<?php echo CONS_DEFAULT_LINK_LOGIN_ADMIN.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
             <a href="javascript:;" id="update">See the change</a>
             <a href="javascript:;" id="create">See the not change</a>
         </div>
+        <?php }?>
+        
         <div style="clear:both; height:1px"></div>
+        <div id="ajax_test"></div>
         
     	<?php echo $include;?>
     </div>

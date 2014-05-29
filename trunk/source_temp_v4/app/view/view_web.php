@@ -17,8 +17,17 @@ function ValidateInput(evt){
 <body>
 <form method="post" name="form">
 <label for="txtUsername"> Username </label>
-<input type="text" id="txtUsername" placeholder="Enter Username" onkeypress="return ValidateInput(event)"/>
+<input type="text" id="txtUsername" placeholder="Enter Username" onKeyPress="return ValidateInput(event)"/>
 
 </form>
+
+<?php
+$id = 'aaaa';
+if(is_numeric($id)) echo 'số'; else echo 'chữ';
+
+print_r($_SERVER);
+
+?>
+
 </body>
 </html>
