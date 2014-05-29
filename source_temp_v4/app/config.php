@@ -7,6 +7,14 @@ define('CONS_USER_DB',	'root');
 define('CONS_PASS_DB',	'root');
 define('CONS_DB_NAME',	'source_temp_v4');
 
+/*IMAGES UPLOAD*/
+define('CONS_IMAGES_ARTICLES',CONS_BASE_DIR.'public/images/articles/');
+define('CONS_IMAGES_ARTICLES_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/articles/');
+define('CONS_IMAGES_CATALOG',CONS_BASE_DIR.'public/images/catalog/');
+define('CONS_IMAGES_CATALOG_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/catalog/');
+define('CONS_IMAGES_SLIDER_BANNER',CONS_BASE_DIR.'public/images/slider-banner/');
+define('CONS_IMAGES_SLIDER_BANNER_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/slider-banner/');
+
 /*WEBSITE*/
 define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
