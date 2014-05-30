@@ -1,4 +1,37 @@
 // JavaScript Document
+/*bien doi alias*/
+function change_alias(alias,dau_thaythe){
+	var str = alias;
+	str= str.toLowerCase();
+	str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+	str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+	str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+	str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+	str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+	str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+	str= str.replace(/đ/g,"d");
+	str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_|-/g, dau_thaythe);
+	str= str.replace(/\\|\$|\||\{|\}|\`/g, dau_thaythe);
+	/* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
+	str= str.replace(/-+-/g, dau_thaythe); //thay thế 2 - thành 1- 
+	str= str.replace(/ + /g, dau_thaythe); //thay thế 2 - thành 1- 
+	str= str.replace(/^\-+|\-+$/g,""); //cắt bỏ ký tự - ở đầu và cuối chuỗi
+	str= str.replace(/^\ +|\ +$/g,""); //cắt bỏ ký tự - ở đầu và cuối chuỗi
+	return str;
+}
+function remove_ky_tu_dac_biet(alias,dau_thaythe){
+	var str = alias;
+	str= str.toLowerCase();
+	str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_|-/g, dau_thaythe);
+	str= str.replace(/\\|\$|\||\{|\}|\`/g, dau_thaythe);
+	/* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
+	str= str.replace(/-+-/g, dau_thaythe); //thay thế 2 - thành 1- 
+	str= str.replace(/ + /g, dau_thaythe); //thay thế 2 - thành 1- 
+	str= str.replace(/^\-+|\-+$/g,""); //cắt bỏ ký tự - ở đầu và cuối chuỗi
+	str= str.replace(/^\ +|\ +$/g,""); //cắt bỏ ký tự - ở đầu và cuối chuỗi
+	return str;
+}
+
 $(document).ready(function(e) {
 	$("#create").hide();
 	$(".update").hide();
@@ -57,6 +90,46 @@ $(document).ready(function(e) {
 		}
 	});
 	
+	/*biến đổi alias*/
+	function name_alias(dest,source){
+		$(dest).dblclick(function(){
+			var name = $.trim($(source).val());
+			$(this).val(change_alias(name,'-'));
+		});
+	}
+	name_alias('#name_alias','#name');
+	
+	/*link tự động trong menu*/
+	function url_auto(dest,source){
+		$(dest).dblclick(function(){
+			var name_rewrite = $.trim($(source).val());
+			$(this).val(name_rewrite + '/');
+		});
+	}
+	url_auto('.url_auto','#name_alias')
+	
+	/*lấy keyword tự động*/
+	function keyword_auto(dest,source){
+		$(dest).dblclick(function(){
+			var name = $.trim($(source).val());
+			$(this).val(remove_ky_tu_dac_biet(name,' ') + ',' + change_alias(name,' '));
+		});
+	}
+	keyword_auto('#metaKeyword','#name')
+	
+	/*checks box*/
+	function checks_box_item(list_check, list_view){
+		$(list_check).change(function(){
+			var str=",";
+			$(list_check + ':checked').each(function(i,val){
+				str += $(this).val() + ',';
+			});
+			$(list_view).attr('value',str);
+		});
+	};
+	checks_box_item('.checkbox_item', '.value_checks_box'); //class, id
+	checks_box_item('.checkbox_xem', '.value_quyen_xem');
+	checks_box_item('.checkbox_action', '.value_quyen_action');
 	
 	
 	

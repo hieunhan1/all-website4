@@ -90,7 +90,19 @@ class control_admin extends control_admin_form{
 	}
 	
 	public function administrator(){
-		if($_GET['user']==CONS_ADMIN_NAME_LOGOUT) $this->logout();/*logout*/
+		$user = $_GET['user'];
+		if($user==CONS_ADMIN_LOGOUT){
+			$this->logout();
+			return TRUE;
+		}elseif($user==CONS_ADMIN_ACCOUNT){
+			$str = 'ACCOUNT';
+			return TRUE;
+		}elseif($user==CONS_ADMIN_RESET){
+			$str = 'RESET';
+			return TRUE;
+		}
+		/*end thông tin tài khoản*/
+		
 		
 		if(!isset($_SESSION['admin_language'])){
 			$_SESSION['admin_language'] = 'vi';

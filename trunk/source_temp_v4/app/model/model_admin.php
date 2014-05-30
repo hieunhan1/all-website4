@@ -155,4 +155,29 @@ class model_admin extends db{
 		}
 		return $arr;
 	}
+	
+	public function _web_menu_position(){
+		$sql = "SELECT `id`,`name` FROM `web_menu_position` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
+	
+	public function _web_menu_type(){
+		$sql = "SELECT `id`,`name` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
+	
+	public function _web_slider_banner_position(){
+		$sql = "SELECT `id`,`name` FROM `web_slider_banner_position` WHERE `status`=1 ORDER BY `id`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		$data[] = array('id'=>0, 'name'=>'-- Chọn vị trí --');
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
 }//class

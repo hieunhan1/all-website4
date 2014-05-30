@@ -20,4 +20,16 @@ class control_web{
 		
 		include_once('view/view_web.php');
 	}//index
+	
+	function checks_video_youtube_vimeo($url_video,$domain=NULL){
+		if(is_numeric($url_video)){
+			$str = '<iframe src="//player.vimeo.com/video/'.$url_video.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+		}else{
+			$str = '<iframe src="http://www.youtube.com/embed/'.$url_video.'?origin=http://'.$domain.'&amp;rel=0" frameborder="0"></iframe>';
+		}
+		return $str;
+	}
+	
+	
+	
 }//class

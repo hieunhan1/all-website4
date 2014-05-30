@@ -45,9 +45,9 @@ class control_admin_form{
 	/* 2. input_hidden */
 	public function input_hidden(){
 		$values = $this->_values;
-		$views = $this->_views; /*name*/
+		$views = $this->_views; /*name class*/
 
-		$str = '<input type="hidden" name="'.$views.'" id="'.$views.'" value="'.$values.'" />';
+		$str = '<input type="hidden" name="'.$views[0].'" id="'.$views[0].'" class="'.$views[1].'" value="'.$values.'" />';
 		return $str;
 	}
 	/* 3. textarea */

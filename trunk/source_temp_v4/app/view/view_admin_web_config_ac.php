@@ -16,8 +16,10 @@ if(!empty($_POST)){
 	
 	$result = $this->_model->_get_sql($type,$table,$fields,$values,$user_admin,$id);
 
-	if($result==TRUE) header("location: ".$_SESSION['link_back']);
-	else echo "<p class='error'>{$lable_submit} không được. Vui lòng kiểm tra lại</p>";
+	if($result==TRUE){
+		echo "<p class='message'>Cập nhật thành công</p>";
+		header("location: ".$_SESSION['link_back']);
+	}else echo "<p class='error'>{$lable_submit} không được. Vui lòng kiểm tra lại</p>";
 	
 }else $_SESSION['link_back'] = $_SERVER['HTTP_REFERER'];
 
@@ -102,7 +104,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	//id
 	$values = $row_detail['id'];
-	$views = 'id'; //name
+	$views = array('id'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	
