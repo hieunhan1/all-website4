@@ -25,7 +25,12 @@ function ValidateInput(evt){
 $id = 'aaaa';
 if(is_numeric($id)) echo 'số'; else echo 'chữ';
 
-print_r($_SERVER);
+//print_r($_SERVER);
+
+$aryToUnshift = array("array unshift");
+$ary_unshift = array_unshift($array1, $aryToUnshift);
+var_dump($array1);//output:array(4) { [0]=> array(1) { [0]=> string(13) "array unshift" } ["Frist_name"]=> string(7) "a Thang" ["Last_name"]=> string(9) "b Han Van" [1]=> string(16) "c This is number"}
+
 
 ?>
 
