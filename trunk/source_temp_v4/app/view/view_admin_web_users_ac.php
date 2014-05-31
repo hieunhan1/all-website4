@@ -1,34 +1,6 @@
 <?php
-$id = $_GET['id'];
-if($id==0){
-	$lable_submit = 'Thêm mới';
-	$type = 1; /*create*/
-	
-	$values = md5('00112233');
-	$views = array('password'); //name class
-    $this->getProperties('2',$values,'',$views);
-	$field_password = $this->DisplayProperties();
-}else{
-	$lable_submit = 'Cập nhật';
-	$type = 2; /*update*/
-	
-	$field_password = '';
-	
-	$row_detail = $this->_model->_view_edit_detail($table,$id);
-}
-
-if(!empty($_POST)){
-	$fields = array_keys($_POST);
-	$values = array_values($_POST);
-	
-	$result = $this->_model->_get_sql($type,$table,$fields,$values,$user_admin,$id);
-
-	if($result==TRUE){
-		echo "<p class='message'>Cập nhật thành công</p>";
-		header("location: ".$_SESSION['link_back']);
-	}else echo "<p class='error'>{$lable_submit} không được. Vui lòng kiểm tra lại</p>";
-	
-}else $_SESSION['link_back'] = $_SERVER['HTTP_REFERER'];
+/*action create, edit*/
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
 
 echo '<p style="color:#360; font-size:110%">Lưu ý: Khi tạo tài khoản password mặc định là "<b>00112233</b>"</p>';
 
@@ -101,4 +73,4 @@ echo '<form name="form_action" method="post" action="">
 
 echo '</table></form>';
 
-echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>00112233</b>")</a></p>';
+if($user_admin=='admin') echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>00112233</b>")</a></p>';

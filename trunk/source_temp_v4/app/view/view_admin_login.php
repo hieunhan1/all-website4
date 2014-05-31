@@ -14,11 +14,11 @@
 		<h2>Đăng nhập quản trị</h2>
 		<p style="color:#F00"><?php echo $error; ?></p>
 		<p>
-        	Tên đăng nhập:<br /><input type="text" name="username" id="username" /><br />
+        	Tên đăng nhập:<br /><input type="text" name="username" value="<?php echo $_POST['username'];?>" id="username" /><br />
             <span class="error" id="username_message"></span>
         </p>
         
-		<p>Mật khẩu:<br /><input type="password" name="password" id="password" /><span class="error" id="password_message"></span></p>
+		<p>Mật khẩu:<br /><input type="password" name="password" value="<?php echo $_POST['password'];?>" id="password" /><span class="error" id="password_message"></span></p>
         <p><input name="btnLogin" type="submit" id="btnLogin" value="&nbsp;" /></p>
 	</div>
 </form>

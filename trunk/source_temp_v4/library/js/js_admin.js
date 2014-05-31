@@ -89,6 +89,17 @@ $(document).ready(function(e) {
 			});
 		}
 	});
+	$("#reset_pass").click(function(){
+		var id = $("input[name=id]").val();
+		var name = $("input[name=name]").val();
+
+		if(confirm('Bạn có muốn đổi mật khẩu tài khoản "' + name + '" về mật khẩu mặc định?')){
+			$.post(url_link + "/?user=reset&id_u=" + id,function(data){
+				if(data != "0") alert("Thay đổi mật khẩu về mặc định thành công");
+				else alert("Bạn không có quyền");
+			});
+		}
+	});
 	
 	/*biến đổi alias*/
 	function name_alias(dest,source){

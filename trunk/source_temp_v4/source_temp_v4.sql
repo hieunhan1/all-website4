@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2014 at 12:02 PM
+-- Generation Time: May 31, 2014 at 09:56 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `web_config` (
 --
 
 INSERT INTO `web_config` (`id`, `name`, `lang`, `domain`, `max_limit_1`, `max_limit_2`, `max_limit_3`, `max_limit_4`, `copyright`, `contact_foo`, `contact_form`, `email`, `yahoo`, `tel`, `hotline`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Việt Nam', 'vi', 'localhost/all/source_temp_v4', 10, 10, 10, 10, 'Copyright © 2014 by NETSPACE', 'Trường dạy nấu ăn NETSPACE', '', 'hieunhan112@gmail.com', 'hieu_nhan1', '0988 388 388', '0988 388 388', 1, '2013-02-20 13:35:24', '2014-05-30 11:37:34', 'admin', 'nhan', 0),
+(1, 'Việt Nam', 'vi', 'localhost/all/source_temp_v4', 10, 10, 10, 10, 'Copyright © 2014 by NETSPACE', 'Trường dạy nấu ăn NETSPACE', '', 'hieunhan112@gmail.com', 'hieu_nhan1', '0988 388 388', '0988 388 388', 1, '2013-02-20 13:35:24', '2014-05-31 05:57:03', 'admin', '', 0),
 (2, 'English', 'en', 'localhost/all/source_temp_v4', 10, 10, 10, 10, 'Copyright © 2014 by NETSPACE', 'Culinary Arts School NetSpace', '', 'hieunhan112@gmail.com', 'hieu_nhan1', '0988 388 388', '0988 388 388', 1, '2013-08-10 10:09:29', '2014-05-29 11:37:06', 'admin', 'admin', 0),
 (4, '', '0', NULL, 0, 0, 0, 0, '', '', '', '', NULL, NULL, '', 1, '2014-05-29 09:18:55', NULL, 'admin', NULL, 0);
 
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
 --
 
 INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, `metaDescription`, `metaKeyword`, `parent_id`, `type_id`, `position_id`, `order`, `other`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Trang chủ', 'trang-chu', 'trang-chu/', 'Koala.jpg', 'Trang chủ', 'Trang chủ', 'Trang chủ', 0, 1, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 11:09:24', 'admin', 'admin', 0),
+(1, 'Trang chủ', 'trang-chu', 'trang-chu/', 'Koala.jpg', 'Trang chủ', 'Trang chủ', 'Trang chủ', 0, 1, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-31 05:57:12', 'admin', '', 0),
 (2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', '', 'Giới thiệu', 'Giới thiệu', 'Giới thiệu', 0, 2, ',2,', 2, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:18:50', 'admin', 'admin', 0),
 (3, 'Tầm nhìn', 'tam-nhin', 'tam-nhin/', '', 'Tầm nhìn', 'Tầm nhìn', 'Tầm nhìn', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:09:58', 'admin', 'admin', 0),
 (4, 'Sứ mệnh', 'su-menh', 'su-menh/', '', 'Sứ mệnh', 'Sứ mệnh', 'Sứ mệnh', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:10:03', 'admin', 'admin', 0),
@@ -382,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `web_photo_gallery` (
 --
 
 INSERT INTO `web_photo_gallery` (`id`, `name`, `url_hinh`, `menu_id`, `order`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Hoạt động', 'Chrysanthemum.jpg', ',1,', 1, 'vi', 1, '2014-05-30 11:05:49', NULL, 'admin', NULL, 0);
+(1, 'Hoạt động', '', ',1,', 1, 'vi', 1, '2014-05-30 11:05:49', '2014-05-31 04:12:11', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------
 
@@ -406,14 +406,15 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
   `user_update` varchar(30) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `web_slider_banner`
 --
 
 INSERT INTO `web_slider_banner` (`id`, `name`, `url_hinh`, `url`, `position_id`, `menu_id`, `order`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Trang chủ', 'Chrysanthemum.jpg', 'javascript:;', 0, ',1,', 1, 'vi', 1, '2014-05-30 10:55:30', '2014-05-30 11:21:19', 'admin', 'admin', 0);
+(1, 'Trang chủ', '', 'javascript:;', 1, ',1,', 1, 'vi', 1, '2014-05-30 10:55:30', '2014-05-31 05:45:48', 'admin', 'admin', 0),
+(2, 'Giới thiệu', '', 'javascript:;', 1, ',2,', 2, 'vi', 1, '2014-05-31 05:46:04', '2014-05-31 05:55:00', 'admin', '', 0);
 
 -- --------------------------------------------------------
 
@@ -479,8 +480,8 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `diachi`, `phone`, `email`, `ngaysinh`, `gioitinh`, `url_hinh`, `ngaydangky`, `salt`, `username`, `password`, `quyen_xem`, `quyen_action`, `group_id`, `RandomKey`, `LoginNumber`, `DisableDate`, `Expiration`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(25, 'Admin', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', 1, NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1, '2013-06-14 00:00:00', '2014-02-27 14:23:00', 'admin', 'admin', 0),
-(27, 'Trần Nhân', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'nhan', '25f9e794323b453885f5181f1b624d0b', ',1,2,3,', ',1,2,3,', 0, NULL, 0, NULL, NULL, 'vi', 1, '2014-03-05 15:48:32', '2014-05-30 11:37:05', 'admin', 'admin', 0);
+(25, 'Admin', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,', 1, NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1, '2013-06-14 00:00:00', '2014-05-31 09:49:36', 'admin', 'admin', 0),
+(27, 'Trần Nhân', '', '', '', '0000-00-00', 1, '', '0000-00-00 00:00:00', '', 'nhan', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,23,', ',3,23,', 0, NULL, 0, NULL, NULL, 'vi', 1, '2014-03-05 15:48:32', '2014-05-31 09:49:57', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------
 

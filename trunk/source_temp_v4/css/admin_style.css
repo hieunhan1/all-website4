@@ -52,7 +52,7 @@ hr{border: solid 2px #F3A972}
 
 .textarea{width:350px; height:80px; overflow:auto; resize:none; padding:2px 3px; border:solid 1px #999}
 .button{padding:3px 20px; margin:0px 5px}
-.submit{padding:8px 30px; margin:0px 5px; font-weight:bold; color:#333; font-size:110%}
+.submit{padding:8px 30px; margin-right:10px; font-weight:bold; color:#333; font-size:110%}
 
 .clock_button{background-color:#CCC; border:solid 1px #999}
 
@@ -68,7 +68,7 @@ hr{border: solid 2px #F3A972}
 #search .select{width:150px; padding:3px; border:solid 1px #999}
 #search .btn{padding:3px 20px;}
 
-#chucnang{height:770px; margin:auto; padding:20px}
+#chucnang{height:500px; margin:auto; padding:20px}
 #chucnang .item{width:120px; height:120px; float:left; text-align:center; margin:20px 10px; background-color:#FFF}
 #chucnang .item p{font-weight:bold; padding:5px 0}
 
