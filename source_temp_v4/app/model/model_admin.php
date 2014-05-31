@@ -4,7 +4,7 @@ class model_admin extends db{
 	public function _xuly_dangnhap($u,$p){
 		$u = strip_tags($u);
 		$p = md5($p);
-		$sql = "SELECT id,name,username,quyen_xem,quyen_action FROM web_users WHERE username='{$u}' AND password='{$p}' AND status=1 AND `delete`=0";
+		$sql = "SELECT `id`,`name`,`username`,`quyen_xem`,`quyen_action` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1 AND `delete`=0";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) {
 			$row = $result->fetch_assoc();
@@ -17,6 +17,27 @@ class model_admin extends db{
 		} else {
 			return FALSE;
 		}
+	}
+	
+	public function _kiem_tra_user($u,$p){
+		$p = md5($p);
+		$sql = "SELECT `id` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1 AND `delete`=0";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		if($result->num_rows==1) return TRUE; else return FALSE;
+	}
+	
+	public function _change_password($u,$p){
+		$p = md5($p);
+		$date = date('Y-m-d H:i:s');
+		$sql = "UPDATE `web_users` SET `password`='{$p}',`date_update`='{$date}' WHERE `username`='{$u}' ";
+		$this->db->query($sql);
+	}
+	
+	public function _reset_password($user,$id_user_reset,$pass_default){
+		$p = md5($pass_default);
+		$date = date('Y-m-d H:i:s');
+		$sql = "UPDATE `web_users` SET `password`='{$p}',`date_update`='{$date}',`user_update`='{$user}' WHERE `id`='{$id_user_reset}' ";
+		$this->db->query($sql);
 	}
 	
 	public function _web_menu_admin(){

@@ -1,27 +1,6 @@
 <?php
-$id = $_GET['id'];
-if($id==0){
-	$lable_submit = 'Thêm mới';
-	$type = 1; /*create*/
-}else{
-	$lable_submit = 'Cập nhật';
-	$type = 2; /*update*/
-	
-	$row_detail = $this->_model->_view_edit_detail($table,$id);
-}
-
-if(!empty($_POST)){
-	$fields = array_keys($_POST);
-	$values = array_values($_POST);
-	
-	$result = $this->_model->_get_sql($type,$table,$fields,$values,$user_admin,$id);
-
-	if($result==TRUE){
-		echo "<p class='message'>Cập nhật thành công</p>";
-		header("location: ".$_SESSION['link_back']);
-	}else echo "<p class='error'>{$lable_submit} không được. Vui lòng kiểm tra lại</p>";
-	
-}else $_SESSION['link_back'] = $_SERVER['HTTP_REFERER'];
+/*action create, edit*/
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	

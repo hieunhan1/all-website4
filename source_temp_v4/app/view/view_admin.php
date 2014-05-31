@@ -59,7 +59,7 @@ function SetFileField(fileUrl, data){
 	<div id="right">
     	<div class="title" style="width:auto; float:left"><?php echo $navigator_name;?></div>
         
-    	<?php if($this->_action!='home' && !isset($_GET['id'])){ ?>
+    	<?php if( $this->_action!='home' && !isset($_GET['id']) && !isset($_GET['user']) ){ ?>
     	<div class="title" style="width:auto; float:right">
         	<a href="<?php echo CONS_DEFAULT_LINK_LOGIN_ADMIN.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
             <a href="javascript:;" id="update">See the change</a>
