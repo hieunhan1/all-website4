@@ -39,4 +39,11 @@ class model_web extends db{
 		}
 	}
 	
+	public function _detail_article($alias){
+		$sql = "SELECT * FROM `web_articles` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	
 }//class

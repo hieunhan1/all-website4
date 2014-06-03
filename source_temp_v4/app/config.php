@@ -4,7 +4,7 @@ define('CONS_BASE_DIR', '/all/source_temp_v4/');/*upload host tắt CONS này*/
 
 define('CONS_HOST',		'localhost');
 define('CONS_USER_DB',	'root');
-define('CONS_PASS_DB',	'root');
+define('CONS_PASS_DB',	'');
 define('CONS_DB_NAME',	'source_temp_v4');
 
 /*IMAGES UPLOAD*/
@@ -36,8 +36,3 @@ define('CONS_ADMIN_ACCOUNT', 'account');
 define('CONS_ADMIN_RESET', 'reset');
 define('CONS_ADMIN_CSS_IMG', CONS_BASE_URL.'/css/admin_img/');
 define('CONS_ADMIN_PER_PAGE', 30);
-
-/*
-define('CONS_DEFAULT_VIEW_INFO','view_info');
-define('CONS_DEFAULT_PHAN_TRANG','pages');
-*/

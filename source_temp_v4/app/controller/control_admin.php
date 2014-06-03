@@ -114,6 +114,7 @@ class control_admin extends control_admin_form{
 	
 	public function create_edit_data($table, &$lable_submit, &$row_detail, &$disabled){
 		$id = $_GET['id'];
+		$user_admin = $_SESSION['admin_user'];
 		if($id==0){
 			$lable_submit = 'Thêm mới';
 			$disabled = '';
@@ -125,6 +126,7 @@ class control_admin extends control_admin_form{
 			
 			$row_detail = $this->_model->_view_edit_detail($table,$id);
 		}
+		
 		if(!empty($_POST)){
 			if(trim($_POST['name'])!=''){
 				$fields = array_keys($_POST);
