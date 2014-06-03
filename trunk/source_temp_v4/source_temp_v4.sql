@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.0.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2014 at 12:31 PM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Jun 03, 2014 at 04:13 PM
+-- Server version: 5.5.32
+-- PHP Version: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,14 +19,16 @@ SET time_zone = "+00:00";
 --
 -- Database: `source_temp_v4`
 --
+CREATE DATABASE IF NOT EXISTS `source_temp_v4` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `source_temp_v4`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `web_articles`
+-- Table structure for table `web_article`
 --
 
-CREATE TABLE IF NOT EXISTS `web_articles` (
+CREATE TABLE IF NOT EXISTS `web_article` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
@@ -45,22 +47,26 @@ CREATE TABLE IF NOT EXISTS `web_articles` (
   `user_update` varchar(30) DEFAULT NULL,
   `delete` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `web_articles`
+-- Dumping data for table `web_article`
 --
 
-INSERT INTO `web_articles` (`id`, `name`, `name_alias`, `url_hinh`, `metaDescription`, `metaKeyword`, `content`, `other`, `menu_id`, `lang`, `status`, `ngay_dang`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'gt về cty', 'trang-chu', 'Chrysanthemum.jpg', 'Des gt về cty', 'key gt về cty', '<p>noi dung&nbsp;gt về cty</p>\r\n', 0, ',2,', 'vi', 1, '2014-05-29 15:00:00', '2014-05-29 09:35:29', '2014-06-03 11:55:51', 'admin', '', 0);
+INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url_hinh`, `metaDescription`, `metaKeyword`, `content`, `other`, `menu_id`, `lang`, `status`, `ngay_dang`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
+(1, 'Giới thiệu về công ty', 'trang-chu', 'Chrysanthemum.jpg', 'Des gt về cty', 'key gt về cty', '<p>&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;&nbsp;noi dung&nbsp;gt về cty&nbsp;</p>\r\n', 0, ',2,', 'vi', 1, '2014-05-29 15:00:00', '2014-05-29 09:35:29', '2014-06-03 15:59:01', 'admin', 'admin', 0),
+(2, 'Tầm nhìn', 'tam-nhin', '', 'Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa', 'tầm nhìn,tam nhin', '<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.</p>\r\n\r\n<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.<br />\r\n&nbsp;</p>\r\n', 0, ',3,', 'vi', 1, '2014-06-03 20:49:00', '2014-06-03 15:50:29', '2014-06-03 15:56:55', '', 'admin', 0),
+(3, 'Sứ mệnh', 'su-menh', '', 'Theo tư liệu Viện nghiên cứu Hán Nôm công bố sáng 3/6, cuốn sách giáo khoa của Trung Quốc xuất bản năm 1912 thể hiện biên giới nước này chỉ tới đảo Hải Nam.', 'sứ mệnh,su menh', '<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.</p>\r\n\r\n<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.<br />\r\n&nbsp;</p>\r\n', 0, ',2,', 'vi', 1, '2014-06-03 20:49:00', '2014-06-03 15:50:52', '2014-06-03 15:57:22', '', 'admin', 0),
+(4, 'Đối tác', 'doi-tac', '', 'Ngôn ngữ trong giao tiếp với đồng nghiệp phải chuẩn mực, rõ ràng mạch lạc, không nói tục, nói tiếng lóng, quát nạt nhân dân.', 'đối tác,doi tac', '<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.</p>\r\n\r\n<p>Cho rằng tàu Trung Quốc cố ý đâm để hủy hoại tài sản và gây thương tích cho ngư dân Việt Nam, bà Huỳnh Thị Như Hoa.</p>\r\n\r\n<p>Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.<br />\r\n&nbsp;</p>\r\n', 0, ',2,', 'vi', 1, '2014-06-03 20:49:00', '2014-06-03 15:51:26', '2014-06-03 15:56:36', '', 'admin', 0),
+(5, 'Giới thiệu về công ty 2', 'gioi-thieu-ve-cong-ty-2', '', 'Giới thiệu về công ty 2', 'giới thiệu về công ty 2,gioi thieu ve cong ty 2', '<p>Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;Giới thiệu về công ty 2&nbsp;</p>\r\n', 0, ',2,', 'vi', 1, '2014-06-03 20:57:00', '2014-06-03 15:57:55', NULL, 'admin', NULL, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `web_articles_cm`
+-- Table structure for table `web_article_cm`
 --
 
-CREATE TABLE IF NOT EXISTS `web_articles_cm` (
+CREATE TABLE IF NOT EXISTS `web_article_cm` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `email` varchar(60) NOT NULL,
@@ -271,8 +277,8 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_hinh`, `order`, `status`
 (1, 'Trang chủ', 'home', 'icon-home.jpg', 1, 1, 0, NULL),
 (2, 'Cấu hình website', 'web_config', 'icon-cau-hinh.jpg', 2, 1, 1, NULL),
 (3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 1, 0, NULL),
-(4, 'Thông tin, bài viết', 'web_articles', 'icon-info.jpg', 4, 1, 0, NULL),
-(5, 'Thư viện ảnh', 'web_photo_gallery', 'icon-thu-vien-anh.jpg', 5, 1, 0, NULL),
+(4, 'Thông tin, bài viết', 'web_article', 'icon-info.jpg', 4, 1, 0, NULL),
+(5, 'Thư viện ảnh', 'web_photo', 'icon-thu-vien-anh.jpg', 5, 1, 0, NULL),
 (6, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 6, 1, 0, NULL),
 (7, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 7, 1, 1, NULL),
 (8, 'Item 8', '', 'icon-lich-khai-giang.jpg', 8, 0, 0, NULL),
@@ -358,10 +364,10 @@ INSERT INTO `web_menu_type` (`id`, `name`, `order`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `web_photo_gallery`
+-- Table structure for table `web_photo`
 --
 
-CREATE TABLE IF NOT EXISTS `web_photo_gallery` (
+CREATE TABLE IF NOT EXISTS `web_photo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
   `url_hinh` varchar(150) DEFAULT NULL,
@@ -378,10 +384,10 @@ CREATE TABLE IF NOT EXISTS `web_photo_gallery` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `web_photo_gallery`
+-- Dumping data for table `web_photo`
 --
 
-INSERT INTO `web_photo_gallery` (`id`, `name`, `url_hinh`, `menu_id`, `order`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
+INSERT INTO `web_photo` (`id`, `name`, `url_hinh`, `menu_id`, `order`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
 (1, 'Hoạt động', '', ',1,', 1, 'vi', 1, '2014-05-30 11:05:49', '2014-05-31 04:12:11', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------
