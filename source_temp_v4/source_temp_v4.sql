@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2014 at 09:56 AM
+-- Generation Time: Jun 03, 2014 at 12:31 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `web_articles` (
 --
 
 INSERT INTO `web_articles` (`id`, `name`, `name_alias`, `url_hinh`, `metaDescription`, `metaKeyword`, `content`, `other`, `menu_id`, `lang`, `status`, `ngay_dang`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Trang chủ', 'trang-chu', 'Chrysanthemum.jpg', 'Trang chủ', 'Trang chủ', '<p>test&nbsp;Trang chủ 111111111</p>\r\n', 0, ',1,', 'vi', 1, '2014-05-29 15:00:00', '2014-05-29 09:35:29', '2014-05-30 11:09:34', 'admin', 'admin', 0);
+(1, 'gt về cty', 'trang-chu', 'Chrysanthemum.jpg', 'Des gt về cty', 'key gt về cty', '<p>noi dung&nbsp;gt về cty</p>\r\n', 0, ',2,', 'vi', 1, '2014-05-29 15:00:00', '2014-05-29 09:35:29', '2014-06-03 11:55:51', 'admin', '', 0);
 
 -- --------------------------------------------------------
 
@@ -235,8 +235,8 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
 --
 
 INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, `metaDescription`, `metaKeyword`, `parent_id`, `type_id`, `position_id`, `order`, `other`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
-(1, 'Trang chủ', 'trang-chu', 'trang-chu/', 'Koala.jpg', 'Trang chủ', 'Trang chủ', 'Trang chủ', 0, 1, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-31 05:57:12', 'admin', '', 0),
-(2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', '', 'Giới thiệu', 'Giới thiệu', 'Giới thiệu', 0, 2, ',2,', 2, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:18:50', 'admin', 'admin', 0),
+(1, 'Trang chủ', 'trang-chu', 'trang-chu/', '', 'Title trang chủ', 'Des trang chủ', 'key trang chủ', 0, 1, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-06-03 11:46:37', 'admin', '', 0),
+(2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', 'Koala.jpg', 'Title giới thiệu', 'Des giới thiệu', 'key giới thiệu', 0, 2, ',2,', 2, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-06-03 11:55:02', 'admin', '', 0),
 (3, 'Tầm nhìn', 'tam-nhin', 'tam-nhin/', '', 'Tầm nhìn', 'Tầm nhìn', 'Tầm nhìn', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:09:58', 'admin', 'admin', 0),
 (4, 'Sứ mệnh', 'su-menh', 'su-menh/', '', 'Sứ mệnh', 'Sứ mệnh', 'Sứ mệnh', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:10:03', 'admin', 'admin', 0),
 (5, 'Đối tác', 'doi-tac', 'doi-tac/', '', 'Đối tác', 'Đối tác', 'đối tác,doi tac', 2, 2, ',2,', 3, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:09:47', 'admin', 'admin', 0),

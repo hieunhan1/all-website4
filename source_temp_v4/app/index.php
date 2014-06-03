@@ -13,10 +13,11 @@ function tach_url($url, &$control, &$action, &$data){
 		if($arr[0] != CONS_DEFAULT_ADMIN_CONTROLLER){
 			$control = $arr[0];
 			if(preg_match('/.html/',$arr[1])){
-				$action = CONS_WEB_VIEW_CONTENT;
+				$action = CONS_WEB_VIEW_DETAIL;
 				$data	= $arr[1];
+				$data	= str_replace('.html','',$data);
 			}else{
-				$action = CONS_WEB_PHAN_TRANG;
+				$action = CONS_WEB_VIEW_MENU;
 				if($arr[1]=='') $data = 1; else $data = $arr[1];
 			}
 		}else{
