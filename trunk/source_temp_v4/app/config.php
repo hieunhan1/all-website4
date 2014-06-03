@@ -8,22 +8,23 @@ define('CONS_PASS_DB',	'root');
 define('CONS_DB_NAME',	'source_temp_v4');
 
 /*IMAGES UPLOAD*/
-define('CONS_IMAGES_ARTICLES',CONS_BASE_DIR.'public/images/articles/');
-define('CONS_IMAGES_ARTICLES_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/articles/');
-define('CONS_IMAGES_CATALOG',CONS_BASE_DIR.'public/images/catalog/');
-define('CONS_IMAGES_CATALOG_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/catalog/');
-define('CONS_IMAGES_SLIDER_BANNER',CONS_BASE_DIR.'public/images/slider-banner/');
-define('CONS_IMAGES_SLIDER_BANNER_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/slider-banner/');
-define('CONS_IMAGES_VIDEOS',CONS_BASE_DIR.'public/images/videos/');
-define('CONS_IMAGES_VIDEOS_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/videos/');
-define('CONS_IMAGES_PHOTOS',CONS_BASE_DIR.'public/images/photos/');
-define('CONS_IMAGES_PHOTOS_THUMBS',CONS_BASE_DIR.'public/_thumbs/Images/photos/');
+define('CONS_IMAGES_ARTICLES',CONS_BASE_URL.'/public/images/articles/');
+define('CONS_IMAGES_ARTICLES_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/articles/');
+define('CONS_IMAGES_CATALOG',CONS_BASE_URL.'/public/images/catalog/');
+define('CONS_IMAGES_CATALOG_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/catalog/');
+define('CONS_IMAGES_SLIDER_BANNER',CONS_BASE_URL.'/public/images/slider-banner/');
+define('CONS_IMAGES_SLIDER_BANNER_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/slider-banner/');
+define('CONS_IMAGES_VIDEOS',CONS_BASE_URL.'/public/images/videos/');
+define('CONS_IMAGES_VIDEOS_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/videos/');
+define('CONS_IMAGES_PHOTOS',CONS_BASE_URL.'/public/images/photos/');
+define('CONS_IMAGES_PHOTOS_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/photos/');
 
 /*WEBSITE*/
+define('CONS_IMAGE_DEFAULT',CONS_BASE_URL.'/css/web_img/no-image.jpg');
 define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
-define('CONS_WEB_PHAN_TRANG','pages');
-define('CONS_WEB_VIEW_CONTENT','view_content');
+define('CONS_WEB_VIEW_MENU','view_menu');
+define('CONS_WEB_VIEW_DETAIL','view_detail');
 
 
 /*ADMIN*/

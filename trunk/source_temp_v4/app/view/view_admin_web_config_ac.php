@@ -16,7 +16,7 @@ echo '<form name="form_action" method="post" action="">
 	//name
 	$values = $row_detail['name'];
 	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Mô tả','name','input_medium'); //label id&name class style
+	$views = array('Site name','name','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
