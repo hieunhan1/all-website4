@@ -35,7 +35,8 @@ echo '<form name="form_action" method="post" action="">
 	//parent_id
 	$arr = array();
 	$arr[] = array('id'=>0, 'name'=>'-- Danh mục gốc --');
-	$arr = $this->_model->_web_menu(0, '', $arr);
+	if(isset($_GET['id'])) $where = " AND id<>'{$_GET['id']}' "; else $where='';
+	$arr = $this->_model->_web_menu(0, '', $arr, $where);
 	$properties = $row_detail['parent_id']; //default check
 	$views = array('Danh mục gốc','parent_id','input_medium'); //label id&name class
     $this->getProperties('5',$arr,$properties,$views);

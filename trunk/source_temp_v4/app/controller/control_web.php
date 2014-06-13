@@ -56,9 +56,23 @@ class control_web{
 		echo 'trang chủ - ';
 	}
 	
+	public function getSubmenu($lang, $parent, $position){
+		$data = $this->_model->_web_menu($lang, $parent, $position);
+		if($data){
+			$view = '<ul>';
+			foreach($data as $row){
+				$view .= '<li><a href="'.$row['url'].'">'.$row['name'].'</a>';
+				$view .= $this->getSubmenu($lang, $row['id'], $position);
+				$view .= '</li>';
+			}
+			$view .= '</ul>';
+		}
+		return $view;
+	}
+	
 	public function other_post_article($id,$idMenu){
 		
-		$str .= '<li><a href=""></a></li>';
+		$str .= '';
 		return $str;
 	}
 	

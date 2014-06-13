@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2014 at 04:13 PM
--- Server version: 5.5.32
--- PHP Version: 5.4.19
+-- Generation Time: Jun 13, 2014 at 12:31 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `source_temp_v4`
 --
-CREATE DATABASE IF NOT EXISTS `source_temp_v4` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `source_temp_v4`;
 
 -- --------------------------------------------------------
 
@@ -245,7 +243,7 @@ INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, 
 (2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', 'Koala.jpg', 'Title giới thiệu', 'Des giới thiệu', 'key giới thiệu', 0, 2, ',2,', 2, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-06-03 11:55:02', 'admin', '', 0),
 (3, 'Tầm nhìn', 'tam-nhin', 'tam-nhin/', '', 'Tầm nhìn', 'Tầm nhìn', 'Tầm nhìn', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:09:58', 'admin', 'admin', 0),
 (4, 'Sứ mệnh', 'su-menh', 'su-menh/', '', 'Sứ mệnh', 'Sứ mệnh', 'Sứ mệnh', 2, 2, ',2,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:10:03', 'admin', 'admin', 0),
-(5, 'Đối tác', 'doi-tac', 'doi-tac/', '', 'Đối tác', 'Đối tác', 'đối tác,doi tac', 2, 2, ',2,', 3, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-05-30 10:09:47', 'admin', 'admin', 0),
+(5, 'Đối tác', 'doi-tac', 'doi-tac/', '', 'Đối tác', 'Đối tác', 'đối tác,doi tac', 2, 2, ',2,', 3, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-06-13 12:25:33', 'admin', 'admin', 0),
 (6, 'Sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm', 'Sản phẩm', 'sản phẩm,san pham', 0, 3, ',2,', 3, 1, 'vi', 1, '2014-05-30 10:19:14', '2014-05-30 11:18:37', 'admin', 'admin', 0),
 (7, 'Hình ảnh', 'hinh-anh', 'hinh-anh/', '', 'Hình ảnh', 'Hình ảnh', 'hình ảnh,hinh anh', 0, 5, ',2,', 4, 0, 'vi', 1, '2014-05-30 11:06:51', NULL, 'admin', NULL, 0),
 (8, 'Video', 'video', 'video/', '', 'Video', 'Video', 'video,video', 0, 6, ',2,', 5, 0, 'vi', 1, '2014-05-30 11:07:21', NULL, 'admin', NULL, 0),
