@@ -7,6 +7,14 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	
+	public function _web_menu($lang, $parent, $position){
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `parent_id`='{$parent}' AND `position_id` LIKE '%,{$position},%' ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	
 	public function _web_menu_one($data){
 		if(!is_numeric($data)) $str_qr = "AND name_alias='{$data}'";
 		else $str_qr = "AND id='{$data}'";

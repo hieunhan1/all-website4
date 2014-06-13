@@ -110,16 +110,4 @@ function checks_user(name_check,name_message,message_error){
 		$(name_message).html('');
 		return str;
 	}
-} 
-
-function facebook_share(link_share){
-	if(link_share=='') link_share = location.href;
-	myWindow=window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(link_share),'','width=600,height=450');
-	myWindow.focus();
-	return false;
-}
-
-function sroll_top(){
-	$("html, body").animate({ scrollTop: 0 }, 500);
-	return false;
 }
