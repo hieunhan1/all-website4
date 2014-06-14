@@ -1,5 +1,5 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/source_temp_v4');
+define('CONS_BASE_URL', 'http://localhost/all/source_temp_v4');/*domain*/
 define('CONS_BASE_DIR', '/all/source_temp_v4/');/*upload host tắt CONS này*/
 
 define('CONS_HOST',		'localhost');
@@ -8,19 +8,21 @@ define('CONS_PASS_DB',	'root');
 define('CONS_DB_NAME',	'source_temp_v4');
 
 /*IMAGES UPLOAD*/
-define('CONS_IMAGES_ARTICLES',CONS_BASE_URL.'/public/images/articles/');
-define('CONS_IMAGES_ARTICLES_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/articles/');
-define('CONS_IMAGES_CATALOG',CONS_BASE_URL.'/public/images/catalog/');
-define('CONS_IMAGES_CATALOG_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/catalog/');
-define('CONS_IMAGES_SLIDER_BANNER',CONS_BASE_URL.'/public/images/slider-banner/');
-define('CONS_IMAGES_SLIDER_BANNER_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/slider-banner/');
-define('CONS_IMAGES_VIDEOS',CONS_BASE_URL.'/public/images/videos/');
-define('CONS_IMAGES_VIDEOS_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/videos/');
-define('CONS_IMAGES_PHOTOS',CONS_BASE_URL.'/public/images/photos/');
-define('CONS_IMAGES_PHOTOS_THUMBS',CONS_BASE_URL.'/public/_thumbs/Images/photos/');
+define('CONS_IMAGES_ARTICLES','public/images/articles/');
+define('CONS_IMAGES_ARTICLES_THUMBS','public/_thumbs/Images/articles/');
+define('CONS_IMAGES_CATALOG','public/images/catalog/');
+define('CONS_IMAGES_CATALOG_THUMBS','public/_thumbs/Images/catalog/');
+define('CONS_IMAGES_SLIDER_BANNER','public/images/slider-banner/');
+define('CONS_IMAGES_SLIDER_BANNER_THUMBS','public/_thumbs/Images/slider-banner/');
+define('CONS_IMAGES_PRODUCT','public/images/products/');
+define('CONS_IMAGES_PRODUCT_THUMBS','public/_thumbs/Images/products/');
+define('CONS_IMAGES_VIDEOS','public/images/videos/');
+define('CONS_IMAGES_VIDEOS_THUMBS','public/_thumbs/Images/videos/');
+define('CONS_IMAGES_PHOTOS','public/images/photos/');
+define('CONS_IMAGES_PHOTOS_THUMBS','public/_thumbs/Images/photos/');
 
 /*WEBSITE*/
-define('CONS_IMAGE_DEFAULT',CONS_BASE_URL.'/css/web_img/no-image.jpg');
+define('CONS_IMAGE_DEFAULT','css/web_img/no-image.jpg');
 define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
 define('CONS_WEB_VIEW_MENU','view_menu');
@@ -34,5 +36,5 @@ define('CONS_DEFAULT_LINK_LOGIN_ADMIN', CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CON
 define('CONS_ADMIN_LOGOUT', 'logout');
 define('CONS_ADMIN_ACCOUNT', 'account');
 define('CONS_ADMIN_RESET', 'reset');
-define('CONS_ADMIN_CSS_IMG', CONS_BASE_URL.'/css/admin_img/');
+define('CONS_ADMIN_CSS_IMG', 'css/admin_img/');
 define('CONS_ADMIN_PER_PAGE', 30);

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<?php echo CONS_BASE_URL; ?>/" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trang quản trị</title>
 <meta name="robots" content="nofollow" />
-<link rel="stylesheet" type="text/css" href="<?php echo CONS_BASE_URL;?>/css/admin_style.css">
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/js_admin.js"></script>
+<link rel="stylesheet" type="text/css" href="css/admin_style.css">
+<script type="text/javascript" src="library/js/jquery.min.js"></script>
+<script type="text/javascript" src="library/js/js_admin.js"></script>
 
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/ckeditor/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="library/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="library/js/ckeditor/ckfinder/ckfinder.js"></script>
 
-<link type="text/css" href="<?php echo CONS_BASE_URL;?>/library/js/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
-<script type="text/javascript" src="<?php echo CONS_BASE_URL;?>/library/js/datetimepick/jquery.simple-dtpicker.js"></script>
+<link type="text/css" href="library/js/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
+<script type="text/javascript" src="library/js/datetimepick/jquery.simple-dtpicker.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".datetimepick").appendDtpicker({
@@ -61,7 +62,7 @@ function SetFileField(fileUrl, data){
         
     	<?php if( $this->_action!='home' && !isset($_GET['id']) && !isset($_GET['user']) ){ ?>
     	<div class="title" style="width:auto; float:right">
-        	<a href="<?php echo CONS_DEFAULT_LINK_LOGIN_ADMIN.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
+        	<a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
             <a href="javascript:;" id="update">See the change</a>
             <a href="javascript:;" id="create">See the not change</a>
         </div>

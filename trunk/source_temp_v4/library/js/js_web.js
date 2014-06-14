@@ -72,7 +72,10 @@ $(document).ready(function($){
 	});
 	*/
 	if(browserVersion()!=7 && browserVersion()!=8){
-		$("#search").corner("5px");
+		$("#search, .product_item_order").corner("5px");
 	}
 	
+	$("#run_top").click(function(){
+		sroll_top();
+	});
 });

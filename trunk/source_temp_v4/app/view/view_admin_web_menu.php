@@ -30,7 +30,7 @@ include_once('view/view_admin_language.php');
             <td align="center" class="update" style="display: none;"><?php echo $row['user_update'];?></td>
             <td align="center">
                 <a href="javascript:;"><img src="<?php echo CONS_ADMIN_CSS_IMG."anhien_{$row['status']}.gif";?>" class="status status_<?php echo $row['id'];?>" status="<?php echo $row['status'];?>" url="<?php echo $table;?>" name="English"></a> &nbsp;
-                <a href="<?php echo CONS_DEFAULT_LINK_LOGIN_ADMIN.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;
+                <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;
                 <a href="javascript:;" class="delete_one delete_one_<?php echo $row['id'];?>" url="<?php echo $table;?>" name="English"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>delete.gif" alt=""></a>
             </td>
 		</tr>

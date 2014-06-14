@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -60,10 +60,10 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//copyright
-	$values = $row_detail['copyright'];
-	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Copyright','copyright','input_medium'); //label id&name class style
+	//tel
+	$values = $row_detail['tel'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Điện thoại','tel','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
@@ -74,11 +74,19 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//copyright
+	$values = $row_detail['copyright'];
+	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Copyright','copyright','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//contact_foo
 	$values = $row_detail['contact_foo'];
-	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Footer','contact_foo','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
+	$properties = ''; //disabled, readonly
+	$views = array('Thông tin footer','contact_foo','textarea'); //label id&name class colspan
+	$other = $this->ckeditor_custom('contact_foo');
+    $this->getProperties('3',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
 	//id
