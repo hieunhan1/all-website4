@@ -44,16 +44,16 @@ class control_web{
 		return $str;
 	}
 	
-	public function home_page(&$site_title, &$site_des, &$site_key, &$site_url, &$site_image, &$type_name){
+	public function home_page($lang, &$site_title, &$site_des, &$site_key, &$site_url, &$site_image, &$type_name){
 		$row = $this->_model->_web_menu_type(1);
-		
 		$site_title	= $row['title'];
 		$site_des	= $row['metaDescription'];
 		$site_key	= $row['metaKeyword'];
 		$site_url	= CONS_BASE_URL;
 		if($row['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT; else $site_image = CONS_IMAGES_CATALOG.$row['url_hinh'];
 		$type_name	= 'site';
-		echo 'trang chủ - ';
+		$idMenu = $row['id'];
+		include_once('view/view_web_home.php');
 	}
 	
 	public function getSubmenu($lang, $parent, $position){
@@ -71,7 +71,6 @@ class control_web{
 	}
 	
 	public function other_post_article($id,$idMenu){
-		
 		$str .= '';
 		return $str;
 	}
@@ -81,7 +80,7 @@ class control_web{
 		
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
-			$this->home_page($site_title,$site_des,$site_key,$site_url,$site_image,$type_name); /*trang chủ*/
+			$this->home_page($lang, $site_title, $site_des, $site_key, $site_url, $site_image, $type_name); /*trang chủ*/
 		}else{
 			$alias_menu = $this->_control;
 			if( !$row_menu_one=$this->_model->_web_menu_one($alias_menu) ) echo 'Không có danh mục bạn tìm';

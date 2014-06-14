@@ -54,8 +54,8 @@ $(document).ready(function(e) {
 	});
 	
 	/*status delete*/
-	var url_img_css = '/css/admin_img/';
-	var url_link = 'http://localhost/all/source_temp_v4/cp_admin/';
+	var url_img_css = 'css/admin_img/';
+	var url_link_ad = 'cp_admin/';
 	$(".status").click(function(){
 		var id 		= ($(this).attr('class')).split("status status_");
 		var status 	= $(this).attr('status');
@@ -64,14 +64,14 @@ $(document).ready(function(e) {
 		
 		if(status=='1'){
 			if(confirm('Bạn có muốn ẩn "' + name + '"?')){
-				$.post(url_link + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
+				$.post(url_link_ad + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
 					$(".status_" + id[1]).attr('status','0');
 					$(".status_" + id[1]).attr('src', url_img_css + 'anhien_0.gif');
 				});
 			}
 		}else{
 			if(confirm('Bạn có muốn hiện "' + name + '"?')){
-				$.post(url_link + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
+				$.post(url_link_ad + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
 					$(".status_" + id[1]).attr('status','1');
 					$(".status_" + id[1]).attr('src', url_img_css + 'anhien_1.gif');
 				});
@@ -84,7 +84,7 @@ $(document).ready(function(e) {
 		var name 	= $(this).attr('name');
 		
 		if(confirm('Bạn có muốn xóa "' + name + '"?')){
-			$.post(url_link + url + "/?delete_one=" + id[1],function(){
+			$.post(url_link_ad + url + "/?delete_one=" + id[1],function(){
 				$(".row_" + id[1]).hide();
 			});
 		}
@@ -94,11 +94,21 @@ $(document).ready(function(e) {
 		var name = $("input[name=name]").val();
 
 		if(confirm('Bạn có muốn đổi mật khẩu tài khoản "' + name + '" về mật khẩu mặc định?')){
-			$.post(url_link + "/?user=reset&id_u=" + id,function(data){
+			$.post(url_link_ad + "/?user=reset&id_u=" + id,function(data){
 				if(data != "0") alert("Thay đổi mật khẩu về mặc định thành công");
 				else alert("Bạn không có quyền");
 			});
 		}
+	});
+	
+	/*change_alias*/
+	$("#change_alias").click(function(){
+		$("#name_alias").attr("disabled",false);
+	});
+	
+	/*change_url*/
+	$("#change_url").click(function(){
+		$("#url").attr("disabled",false);
 	});
 	
 	/*biến đổi alias*/
@@ -141,7 +151,5 @@ $(document).ready(function(e) {
 	checks_box_item('.checkbox_item', '.value_checks_box'); //class, id
 	checks_box_item('.checkbox_xem', '.value_quyen_xem');
 	checks_box_item('.checkbox_action', '.value_quyen_action');
-	
-	
 	
 });

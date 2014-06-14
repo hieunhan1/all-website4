@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
 echo '<p style="color:#360; font-size:110%">Lưu ý: Khi tạo tài khoản password mặc định là "<b>00112233</b>"</p>';
 

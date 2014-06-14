@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -19,7 +19,8 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$arr = $this->_model->_web_menu(0, '', NULL);
+	$where = " AND lang='{$lang}' ";
+	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:270px;'); //label name class width
     $this->getProperties('7',$arr,$properties,$views);
@@ -78,6 +79,12 @@ echo '<form name="form_action" method="post" action="">
 	//id
 	$values = $row_detail['id'];
 	$views = array('id'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//lang
+	$values = $lang;
+	$views = array('lang'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	

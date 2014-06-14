@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -26,7 +26,7 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$where = ' AND (type_id=1 OR type_id=2) ';
+	$where = " AND (type_id=1 OR type_id=2) AND lang='{$lang}' ";
 	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:200px;'); //label name class width
@@ -44,7 +44,7 @@ echo '<form name="form_action" method="post" action="">
 	$values = $row_detail['name_alias'];
 	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
 	$views = array('Alias','name_alias','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
+    $this->getProperties('1',$values,$properties,$views,$change_alias.'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
 	echo $this->DisplayProperties();
 	
 	//url_hinh
@@ -65,7 +65,7 @@ echo '<form name="form_action" method="post" action="">
 	$values = $row_detail['metaDescription'];
 	$properties = ''; //disabled, readonly
 	$views = array('Tóm tắt','metaDescription','textarea'); //label id&name class colspan
-	//$other = ckeditor_custom('metaDescription');
+	//$other = $this->ckeditor_custom('metaDescription');
     $this->getProperties('3',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
@@ -105,6 +105,12 @@ echo '<form name="form_action" method="post" action="">
 	//id
 	$values = $row_detail['id'];
 	$views = array('id'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//lang
+	$values = $lang;
+	$views = array('lang'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	

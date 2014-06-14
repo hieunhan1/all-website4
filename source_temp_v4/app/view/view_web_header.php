@@ -1,8 +1,8 @@
 <div id="top">
 	<div class="content">
     	<div id="top_support">
-        	<span style="font-weight:bold; background-position:0px 2px">+84 988 388 003</span>
-            <span style="font-weight:bold; background-position:0px -28px">feedback@mungchongmuoi.vn</span>
+        	<span style="font-weight:bold; background-position:0px 2px"><?php echo $row_config['tel']; ?></span>
+            <span style="font-weight:bold; background-position:0px -28px"><?php echo $row_config['email']; ?></span>
         </div>
         
         <div id="top_user">

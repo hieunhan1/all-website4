@@ -1,5 +1,4 @@
 RewriteEngine On
-RewriteBase /all/source_temp_v4/
 RewriteRule css - [L]
 RewriteRule js - [L]
 RewriteRule public - [L]

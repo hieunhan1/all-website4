@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled);
+$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -35,7 +35,7 @@ echo '<form name="form_action" method="post" action="">
 	//parent_id
 	$arr = array();
 	$arr[] = array('id'=>0, 'name'=>'-- Danh mục gốc --');
-	if(isset($_GET['id'])) $where = " AND id<>'{$_GET['id']}' "; else $where='';
+	if(isset($_GET['id'])) $where = " AND id<>'{$_GET['id']}' AND lang='{$lang}' "; else $where='';
 	$arr = $this->_model->_web_menu(0, '', $arr, $where);
 	$properties = $row_detail['parent_id']; //default check
 	$views = array('Danh mục gốc','parent_id','input_medium'); //label id&name class
@@ -60,14 +60,15 @@ echo '<form name="form_action" method="post" action="">
 	$values = $row_detail['name_alias'];
 	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
 	$views = array('Alias','name_alias','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
+    $this->getProperties('1',$values,$properties,$views,$change_alias.'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
 	echo $this->DisplayProperties();
 	
+	if($row_detail['id'] != 0) $change_url = '<a href="javascript:;" id="change_url" style="padding:0 10px; font-weight:bold">Thay đổi</a>';
 	//url
 	$values = $row_detail['url'];
 	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
 	$views = array('Link','url','input_medium url_auto'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
+    $this->getProperties('1',$values,$properties,$views,$change_url.'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
 	echo $this->DisplayProperties();
 	
 	//metaDescription
@@ -118,6 +119,12 @@ echo '<form name="form_action" method="post" action="">
 	//id
 	$values = $row_detail['id'];
 	$views = array('id'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//lang
+	$values = $lang;
+	$views = array('lang'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	

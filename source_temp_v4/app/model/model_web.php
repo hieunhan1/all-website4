@@ -47,6 +47,37 @@ class model_web extends db{
 		}
 	}
 	
+	public function _web_slider_banner($position, $lang, $menu_id=NULL){
+		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
+		$sql = "SELECT `name`,`url_hinh`,`url` FROM `web_slider_banner` WHERE `delete`=0 AND `status`=1 AND `position_id`='{$position}' AND lang='{$lang}' {$menu_id} ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	
+	/*home*/
+	public function _home_about($id){
+		$sql = "SELECT `name`,`content` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _home_danhmuc_product($lang){
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _home_products($id){
+		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	/*end home*/
+	
 	public function _detail_article($alias){
 		$sql = "SELECT * FROM `web_articles` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;

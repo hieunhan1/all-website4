@@ -112,18 +112,20 @@ class control_admin extends control_admin_form{
 		$this->_model->_status_one($this->_action, $id, $status, $user_admin);
 	}
 	
-	public function create_edit_data($table, &$lable_submit, &$row_detail, &$disabled){
+	public function create_edit_data($table, &$lable_submit, &$row_detail, &$disabled, &$change_alias){
 		$id = $_GET['id'];
 		$user_admin = $_SESSION['admin_user'];
 		if($id==0){
 			$lable_submit = 'Thêm mới';
 			$disabled = '';
 			$type = 1; /*create*/
+			$change_alias = '';/*change_alias*/
 		}else{
 			$lable_submit = 'Cập nhật';
+			$change_alias = '<a href="javascript:;" id="change_alias" style="padding:0 10px; font-weight:bold">Thay đổi</a>';
 			$disabled = ' disabled="disabled" ';/*disable field*/
 			$type = 2; /*update*/
-			
+	
 			$row_detail = $this->_model->_view_edit_detail($table,$id);
 		}
 		
@@ -155,7 +157,7 @@ class control_admin extends control_admin_form{
 		$data = $this->_model->_web_menu_admin();
 		foreach($data as $row){
 			if(preg_match("/,{$row['id']},/i", $quyen_xem)){
-				$link = CONS_DEFAULT_LINK_LOGIN_ADMIN.$row['url'].'/';
+				$link = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$row['url'].'/';
 				if($active==$row['url']) $style = 'style="color:#00F"'; else $style = '';
 				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>';
 				if($row['other']==1) $str .= '<hr />';
@@ -176,9 +178,9 @@ class control_admin extends control_admin_form{
 		$quyen_action = $_SESSION['admin_quyen_action'];
 		$lang = $_SESSION['admin_language'];
 		
-		$link_logout  = CONS_DEFAULT_LINK_LOGIN_ADMIN.'?user=logout';
-		$link_account = CONS_DEFAULT_LINK_LOGIN_ADMIN.'?user=account';
-		$link_lang 	  = CONS_DEFAULT_LINK_LOGIN_ADMIN.$table.'/?lang=';
+		$link_logout  = CONS_DEFAULT_ADMIN_CONTROLLER.'/?user=logout';
+		$link_account = CONS_DEFAULT_ADMIN_CONTROLLER.'/?user=account';
+		$link_lang 	  = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?lang=';
 		
 		/*hiển thị các quyền trong trang admin*/
 		$menu_admin = $this->menu_admin($quyen_xem,$table);
@@ -233,7 +235,7 @@ class control_admin extends control_admin_form{
 	}
 	
 	public function ckeditor_full($name){
-		$dir_ckeditor = '../../library/';
+		$dir_ckeditor = 'library/js/';
 		$str = "<script>
 		CKEDITOR.replace( '{$name}', {
 			uiColor: '#b5d8ef',

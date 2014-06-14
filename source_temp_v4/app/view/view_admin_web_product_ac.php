@@ -13,13 +13,20 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//ngay_dang
+	$values = $row_detail['ngay_dang'];
+	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Ngày đăng','ngay_dang','input_large datetimepick'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//menu_id
 	$values = $row_detail['menu_id'];
 	$views = array('menu_id', 'value_checks_box'); //name class
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$where = " AND (type_id=1 OR type_id=6) AND lang='{$lang}' ";
+	$where = " AND (type_id=1 OR type_id=3) AND lang='{$lang}' ";
 	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:200px;'); //label name class width
@@ -45,8 +52,8 @@ echo '<form name="form_action" method="post" action="">
 	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
 	$this->getProperties('6',$values,'',$views);
 	$other = $this->DisplayProperties();
-	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>videos</strong>"</p>';
-	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_VIDEOS_THUMBS.$row_detail['url_hinh'].'" /></div>';
+	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>products</strong>"</p>';
+	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_PRODUCT_THUMBS.$row_detail['url_hinh'].'" /></div>';
 	
 	$values = $row_detail['url_hinh'];
 	$properties = array('150'); //maxlength OTHER (disabled, readonly) 
@@ -54,11 +61,18 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
-	//url_video
-	$values = $row_detail['url_video'];
-	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Youtube or Vimeo','url_video','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">Mã code Youtube hoặc Vimeo</span>');
+	//giaban
+	$values = $row_detail['giaban'];
+	$properties = array('7'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Giá bán','giaban','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//giagoc
+	$values = $row_detail['giagoc'];
+	$properties = array('7'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Giá gốc','giagoc','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//metaDescription
@@ -88,7 +102,7 @@ echo '<form name="form_action" method="post" action="">
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Hiện');
 	$arr[] = array('id'=>'0', 'name'=>'Ẩn');
-	if($row_detail['other']=='') $properties = 1; else $properties = $row_detail['other']; //default check
+	if($row_detail['other']=='') $properties = 0; else $properties = $row_detail['other']; //default check
 	$views = array('Hiện trang chủ','other','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
@@ -109,7 +123,7 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//lang
-	$values = 'vi';
+	$values = $lang;
 	$views = array('lang'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
