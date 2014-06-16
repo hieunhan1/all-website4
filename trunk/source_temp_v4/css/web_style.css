@@ -70,21 +70,22 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 #cart a{display:block; width:auto; float:left; line-height:32px; color:#FFF; font-weight:bold; }
 #cart a:hover{color:#FF0}
 
-.viewpost{line-height:22px}
+.viewpost{line-height:22px; margin-bottom:20px}
 .viewpost p, .viewpost div {line-height:22px; margin:10px 0}
 .viewpost li{line-height:20px; margin-left:35px}
 .viewpost h1{font-size:160%; line-height:30px; color:#ED1E28; margin-bottom:5px}
-.viewpost h2, .viewpost h3, .viewpost h4, .viewpost h5, .viewpost h6 {font-size:100%}
+.viewpost h2, .viewpost h3, .viewpost h4, .viewpost h5, .viewpost h6 {font-size:100%; margin:10px 0}
 .viewpost .date{color:#888; font-style:italic; text-align:right}
 
-#navigator{clear:both; padding:0 0 10px 10px}
+#navigator{clear:both; margin:20px 0}
 #navigator a{padding-right:15px; font-size:12px; color:#666}
-#navigator a:hover{color:#000}
+#navigator a:hover{color:#1A1A1A}
 #navigator span{font-size:9px; color:#999; padding-right:5px}
 
-#phantrang{clear:both; margin-top:10px}
+#phantrang{clear:both; padding:20px 0 30px 0}
 #phantrang a{margin-right:3px; padding:5px 10px; text-align:center; background-color:#666; color:#FFF}
 #phantrang a:hover{background-color:#ED1E28}
+#phantrang span{margin-right:3px; padding:5px 10px; text-align:center; background-color:#ED1E28; color:#FFF}
 
 /*menu*/
 #menu{height:32px; background-color:#3C9401}

@@ -53,7 +53,7 @@ echo '<form name="form_action" method="post" action="">
 	$this->getProperties('6',$values,'',$views);
 	$other = $this->DisplayProperties();
 	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>products</strong>"</p>';
-	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_PRODUCT_THUMBS.$row_detail['url_hinh'].'" /></div>';
+	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row_detail['url_hinh'].'" /></div>';
 	
 	$values = $row_detail['url_hinh'];
 	$properties = array('150'); //maxlength OTHER (disabled, readonly) 

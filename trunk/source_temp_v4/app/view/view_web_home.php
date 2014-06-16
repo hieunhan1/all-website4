@@ -43,7 +43,7 @@
 			$str_h_p .= '<div class="product_item">
 				<a href="'.$row_dm['url'].$row['name_alias'].'.html">
 					<div class="product_item_img_bg"></div>
-					<div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCT_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
+					<div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
 					<h3 class="product_item_name">'.$row['name'].'</h3>
 				</a>
 				<div class="product_item_order id_'.$row['id'].'">Đặt hàng</div>
@@ -54,4 +54,6 @@
 	}
 	echo $str_h_p;
 	?>
+    
+    <div style="clear:both; height:1px"></div>
 </div>
