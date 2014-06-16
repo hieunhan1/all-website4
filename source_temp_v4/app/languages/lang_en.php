@@ -1,10 +1,17 @@
-<?php define("SiteTitle","NEWS ONLINE");
-define("BaiXN","POPULAR NEWS");
-define("DangNhap","LOGIN");
-define("UserName","Username");
-define("Password","Password");
-define("Remember","Remember");
-define("Register","Register");
-define("ForgotPassword","Forgot password");
-define("ChangePassword","Change password");
-define("Logout","Logout");
+<?php
+define('CONS_LOGIN','Login');
+define('CONS_LOGOUT','Logout');
+define('CONS_USERNAME','Username');
+define('CONS_PASSWORD','Password');
+define('CONS_REMEMBER','Remember');
+define('CONS_REGISTER','Register');
+define('CONS_FORGOT_PASSWORD','Forgot password');
+define('CONS_CHANGE_PASSWORD','Change password');
+
+define('CONS_CONTACT_INFO', 'Contact Information');
+define('CONS_CONTACT_NAME', 'Name');
+define('CONS_CONTACT_PHONE', 'Phone');
+define('CONS_CONTACT_ADDRESS', 'Address');
+define('CONS_CONTACT_MESSAGE', 'Message');
+define('CONS_CONTACT_SEND', 'SEND CONTACT');
+?>

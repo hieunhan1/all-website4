@@ -70,6 +70,19 @@ class control_web{
 		return $view;
 	}
 	
+	public function navigator($parent,$lang,$arr=NULL){
+		if(!$arr) $arr=array();
+		if($parent==0){
+			if($lang=='vi') $arr[] = array('name'=>'Trang chủ', 'url'=>'');
+			else $arr[] = array('name'=>'Home', 'url'=>'?lang=en');
+			return array_reverse($arr);
+		}
+		$row = $this->_model->_web_menu_one($parent);
+		$arr[] = array('name'=>$row['name'], 'url'=>$row['url']);
+		$arr = $this->navigator($row['parent_id'], $lang, $arr);
+		return $arr;
+	}
+	
 	public function other_post_article($id,$idMenu){
 		$str .= '';
 		return $str;
@@ -80,12 +93,20 @@ class control_web{
 		
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
+			/*web config*/
+			$row_config = $this->_model->_web_config($lang);
+			$site_name = $row_config['name'];
+			include_once("languages/lang_{$lang}.php");
 			$this->home_page($lang, $site_title, $site_des, $site_key, $site_url, $site_image, $type_name); /*trang chủ*/
 		}else{
 			$alias_menu = $this->_control;
 			if( !$row_menu_one=$this->_model->_web_menu_one($alias_menu) ) echo 'Không có danh mục bạn tìm';
 			
 			$lang = $row_menu_one['lang'];
+			/*web config*/
+			$row_config = $this->_model->_web_config($lang);
+			$site_name = $row_config['name'];
+			include_once("languages/lang_{$lang}.php");
 			
 			/*kiểm tra loại danh mục*/
 			$type_id = $row_menu_one['type_id'];
@@ -102,9 +123,10 @@ class control_web{
 			/*danh mục hoặc chi tiết*/
 			if($this->_action == CONS_WEB_VIEW_MENU){
 				$currentpage = $this->_data;
+				if($currentpage!=1) $title_page=" - Page {$currentpage}";
 				
-				$site_title	= strip_tags($row_menu_one['title']);
-				$site_des	= strip_tags($row_menu_one['metaDescription']);
+				$site_title	= strip_tags($row_menu_one['title']).$title_page;
+				$site_des	= strip_tags($row_menu_one['metaDescription']).$title_page;
 				$site_key	= strip_tags($row_menu_one['metaKeyword']);
 				$site_url	= CONS_BASE_URL.'/'.$row_menu_one['url'];
 				if($row_menu_one['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT; else $site_image = CONS_IMAGES_CATALOG.$row_menu_one['url_hinh'];
@@ -126,10 +148,7 @@ class control_web{
 		}
 		$include = ob_get_clean();
 		
-		/*web config*/
-		$row_config = $this->_model->_web_config($lang);
-		$site_name = $row_config['name'];
-		/*end web config*/
+		
 		
 		/*tab head*/
 		$tab_head = $this->tab_head($site_name,$site_title,$site_des,$site_key,$site_url,$site_image,$type_name);
