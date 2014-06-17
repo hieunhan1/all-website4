@@ -58,14 +58,15 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 .product_list .product_item .product_item_giagoc{width:130px; float:right; text-align:right; margin-right:5px; color:#666; text-decoration:line-through}
 .product_list .product_item .product_item_giaban{width:130px; float:right; text-align:right; margin:5px 5px 0 0; font-weight:bold; color:#F00}
 
-.article_item{width:460px}
-.article_item h3{color:#666; font-size:130%; margin-bottom:5px}
-.article_item .article_item_date{color:#999; font-style:italic; margin-bottom:5px}
-.article_item .article_item_img{height:200px; overflow:hidden; margin-bottom:5px}
+.article_item_date{color:#999; font-style:italic; margin-bottom:8px}
+
+.article_item{width:460px; height:380px}
+.article_item h3{line-height:22px; font-size:130%; margin-bottom:5px}
+.article_item .article_item_img{height:200px; overflow:hidden; margin-bottom:5px;border:solid 1px #CCC}
 .article_item .article_item_img img{width:460px}
-.article_item p{line-height:20px; margin-bottom:5px}
+.article_item p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}
 .article_item .article_item_link{text-align:right}
-.article_item .article_item_link a{padding:0 20px}
+.article_item .article_item_link a{color:#F00; font-weight:bold; padding:0 20px}
 
 #menu_footer{height:32px; line-height:32px; border-top:solid 1px #CCC; border-bottom:solid 1px #CCC;}
 #menu_footer a{width:auto; float:left; font-weight:bold; color:#666; padding-right:30px;}

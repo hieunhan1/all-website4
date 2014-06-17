@@ -67,16 +67,18 @@ class model_web extends db{
 	
 	public function _pageslist($baseurl, $totalrows, $offset, $per_page, $currentpage){
 		$totalpages = ceil($totalrows/$per_page);
-		$from = $currentpage-$offset;
-		$to = $currentpage +$offset;
-		if($from<=0) $from=1; 
-		if($to>$totalpages) $to=$totalpages;
-		$links = '';
-		for($j=$from; $j<=$to; $j++){
-			if($j==$currentpage) $links = $links."<span>{$j}</span>"; 
-			else $links = $links."<a href='{$baseurl}{$j}/'>{$j}</a>"; 	
+		if($totalpages>1){
+			$from = $currentpage-$offset;
+			$to = $currentpage +$offset;
+			if($from<=0) $from=1; 
+			if($to>$totalpages) $to=$totalpages;
+			$links = '';
+			for($j=$from; $j<=$to; $j++){
+				if($j==$currentpage) $links = $links."<span>{$j}</span>"; 
+				else $links = $links."<a href='{$baseurl}{$j}/'>{$j}</a>"; 	
+			}
+			return $links;
 		}
-		return $links;
 	}
 	
 	/*home*/
@@ -115,11 +117,24 @@ class model_web extends db{
 		
 		return $data;
 	}
+	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
+		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`metaDescription`,`menu_id`,`ngay_dang` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		
+		$sql = "SELECT count(*) FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%'";
+		$result = $this->db->query($sql);
+		$row = $result->fetch_row();
+		$totalrows=$row[0];
+		
+		return $data;
+	}
 	/*end list*/
 	
 	/*detail*/
 	public function _detail_article($alias){
-		$sql = "SELECT * FROM `web_articles` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
+		$sql = "SELECT * FROM `web_article` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
@@ -131,5 +146,15 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	/*end detail*/
+	
+	/*other post*/
+	public function _other_post_article($id,$idMenu,$limit=5){
+		$sql = "SELECT `name`,`name_alias`,`url_hinh`,`menu_id` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	/*end other post*/
 	
 }//class

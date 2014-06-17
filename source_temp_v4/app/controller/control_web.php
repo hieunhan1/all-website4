@@ -134,7 +134,7 @@ class control_web{
 				include_once("view/{$name_view_list}.php");
 			}elseif($this->_action == CONS_WEB_VIEW_DETAIL){
 				$alias_detail = $this->_data;
-				if( !$row_detail=$this->_model->$name_model_detail($alias_detail) ) echo 'Không có bài viết này';
+				if( !$row_detail=$this->_model->$name_model_detail($alias_detail) ) $error_detail='Not Found';
 				
 				$site_title	= strip_tags($row_detail['name']);
 				$site_des	= strip_tags($row_detail['metaDescription']);
