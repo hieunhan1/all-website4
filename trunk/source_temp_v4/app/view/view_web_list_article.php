@@ -28,7 +28,7 @@ foreach($data as $row){
 			$link = $this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html';
 			echo '<div class="article_item" '.$style.'>
 				<a href="'.$link.'"><h3>'.$row['name'].'</h3></a>
-				<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i:s', strtotime($row['ngay_dang'])).'</div>
+				<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i', strtotime($row['ngay_dang'])).'</div>
 				<div class="article_item_img"><img src="'.CONS_IMAGES_ARTICLES.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
 				<p>'.$row['metaDescription'].'</p>
 				<div class="article_item_link">
