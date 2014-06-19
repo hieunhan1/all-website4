@@ -73,6 +73,7 @@ $(document).ready(function($){
 	*/
 	if(browserVersion()!=7 && browserVersion()!=8){
 		$("#search, .product_item_order").corner("5px");
+		$("#product_detail_order").corner("10px");
 	}
 	
 	$("#run_top").click(function(){
