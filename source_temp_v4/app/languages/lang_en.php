@@ -8,6 +8,8 @@ define('CONS_REGISTER','Register');
 define('CONS_FORGOT_PASSWORD','Forgot password');
 define('CONS_CHANGE_PASSWORD','Change password');
 
+define('CONS_OTHER_POST','Other post');
+
 define('CONS_CONTACT_INFO', 'Contact Information');
 define('CONS_CONTACT_NAME', 'Name');
 define('CONS_CONTACT_PHONE', 'Phone');
