@@ -8,6 +8,8 @@ define('CONS_REGISTER','Đăng ký');
 define('CONS_FORGOT_PASSWORD','Quên mật khẩu');
 define('CONS_CHANGE_PASSWORD','Đổi mật khẩu');
 
+define('CONS_OTHER_POST','Bài viết khác');
+
 define('CONS_CONTACT_INFO', 'Thông tin liên hệ');
 define('CONS_CONTACT_NAME', 'Họ &amp; tên');
 define('CONS_CONTACT_PHONE', 'Điện thoại');

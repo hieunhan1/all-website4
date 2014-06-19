@@ -20,9 +20,12 @@ foreach($data as $row){
     $per_page=$row_config['max_limit_2'];
     $startrow=($currentpage-1)*$per_page;
     $data = $this->_model->_list_web_product($idMenu, $per_page, $startrow, $totalrows);
+	$i=0;
     foreach($data as $row){
+		$i++;
+		if($i%4 != 1) $style='style="margin-left:15px"'; else $style='';
         if($row['giagoc'] != 0) $giagoc='<div class="product_item_giagoc">'.number_format($row['giagoc']).' VNĐ</div>'; else $giagoc='';
-        echo '<div class="product_item">
+        echo '<div class="product_item" '.$style.'>
             <a href="'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html">
                 <div class="product_item_img_bg"></div>
                 <div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
