@@ -52,6 +52,11 @@ function sroll_top(){
 	return false;
 }
 
+function isInt(num){
+	if(parseInt(num)==num) return true;
+	else return false;
+}
+
 $(document).ready(function($){
 	/*
 	$("#nav li").hover(function(){
@@ -78,5 +83,24 @@ $(document).ready(function($){
 	
 	$("#run_top").click(function(){
 		sroll_top();
+	});
+	
+	$("#product_detail_order").click(function(){
+		var id = $(this).attr("id_sp");
+		var name = $(this).attr("name_sp");
+		var link = $(this).attr("link_sp");
+		var soluong = parseInt($("#product_detail_soluong").val());
+		if(!isInt(soluong) || soluong<1){
+			alert("Số lượng phải là số và lớn hơn hoặc bằng 1");
+			return false;
+		}
+		$.post("",{order_id_sp:id,name:name,soluong:soluong,link:link},function(data){
+			alert(1);
+		});
+		
+		
+		$(this).html("ĐÃ ĐẶT HÀNG");
+		$(this).css("background-color","#4DBE01");
+		
 	});
 });
