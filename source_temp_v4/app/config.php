@@ -28,7 +28,6 @@ define('CONS_DEFAULT_WEB_ACTION', 'index');
 define('CONS_WEB_VIEW_MENU','view_menu');
 define('CONS_WEB_VIEW_DETAIL','view_detail');
 
-
 /*ADMIN*/
 define('CONS_DEFAULT_ADMIN_CONTROLLER', 'cp_admin');
 define('CONS_DEFAULT_ADMIN_ACTION', 'index');
@@ -38,3 +37,8 @@ define('CONS_ADMIN_ACCOUNT', 'account');
 define('CONS_ADMIN_RESET', 'reset');
 define('CONS_ADMIN_CSS_IMG', 'css/admin_img/');
 define('CONS_ADMIN_PER_PAGE', 30);
+
+/*ERROR*/
+define('CONS_400','/400');
+define('CONS_404','/404');
+define('CONS_500','/500');
