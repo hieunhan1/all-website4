@@ -59,23 +59,19 @@ function isInt(num){
 
 $(document).ready(function($){
 	/*
-	$("#nav li").hover(function(){
-		$(this).find('ul:first').css({visibility: 'visible', display: 'none'}).show(200);
-	}, function(){
-		$(this).find('ul:first').css({visibility: 'hidden'});
-	});
-	
 	$("#txtSearch").keydown(function(e){
 		if(e.keyCode==13) SearchGoogle("txtSearch");
 	});
 	$("input[name=btnSearch]").click(function(){
 		SearchGoogle("txtSearch");
 	});
-	
-	$('#run_top').click(function(){
-		sroll_top();
-	});
 	*/
+	$("#nav li").hover(function(){
+		$(this).find('ul:first').css({visibility: 'visible', display: 'none'}).show(200);
+	}, function(){
+		$(this).find('ul:first').css({visibility: 'hidden'});
+	});
+	
 	if(browserVersion()!=7 && browserVersion()!=8){
 		$("#search, .product_item_order").corner("5px");
 		$("#product_detail_order").corner("10px");

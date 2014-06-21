@@ -33,6 +33,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('7',$arr,$properties,$views);
 	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
 	
+	//masp
+	$values = $row_detail['masp'];
+	$properties = array('10'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Mã SP','masp','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//name
 	$values = $row_detail['name'];
 	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
@@ -88,6 +95,14 @@ echo '<form name="form_action" method="post" action="">
 	$properties = array('200'); //maxlength OTHER (disabled, readonly)
 	$views = array('Keyword','metaKeyword','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,'<span class="notes">Nhấp doubleclick để lấy keyword tự động</span>');
+	echo $this->DisplayProperties();
+	
+	//info_more
+	$values = $row_detail['info_more'];
+	$properties = ''; //disabled, readonly
+	$views = array('Thông tin thêm','info_more','textarea'); //label id&name class colspan
+	$other = $this->ckeditor_custom('info_more');
+    $this->getProperties('3',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
 	//content

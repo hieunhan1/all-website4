@@ -83,9 +83,10 @@ class control_web{
 		return $arr;
 	}
 	
-	public function other_post_article($id,$idMenu){
-		$str .= '';
-		return $str;
+	public function web_config($lang){
+		$file_lang = "languages/lang_{$lang}.php";
+		if (file_exists($file_lang)) include_once($file_lang);
+		return $this->_model->_web_config($lang);
 	}
 	
 	public function index(){
@@ -94,31 +95,33 @@ class control_web{
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
 			/*web config*/
-			$row_config = $this->_model->_web_config($lang);
+			$row_config = $this->web_config($lang);
 			$site_name = $row_config['name'];
-			include_once("languages/lang_{$lang}.php");
+			
 			$this->home_page($lang, $site_title, $site_des, $site_key, $site_url, $site_image, $type_name); /*trang chủ*/
 		}else{
 			$alias_menu = $this->_control;
-			if( !$row_menu_one=$this->_model->_web_menu_one($alias_menu) ) echo 'Không có danh mục bạn tìm';
-			
-			$lang = $row_menu_one['lang'];
-			/*web config*/
-			$row_config = $this->_model->_web_config($lang);
-			$site_name = $row_config['name'];
-			include_once("languages/lang_{$lang}.php");
-			
-			/*kiểm tra loại danh mục*/
-			$type_id = $row_menu_one['type_id'];
-			$type_name = $this->type_menu($type_id, $base_img_detail);
-			$name_model_list = '_list_'.$type_name;
-			$name_model_detail = '_detail_'.$type_name;
-			$name_view_list = 'view_web_list_'.$type_name;
-			$name_view_detail = 'view_web_detail_'.$type_name;
-			/*end kiểm tra loại danh mục*/
-			
-			$idMenu = $row_menu_one['id'];
-			$menu_root_id = $this->_model->_web_menu_root($row_menu_one['parent_id'], $idMenu, $menu_root_name, $menu_root_url);
+			if($row_menu_one=$this->_model->_web_menu_one($alias_menu)){
+				$lang = $row_menu_one['lang'];
+				$idMenu = $row_menu_one['id'];
+				$menu_root_id = $this->_model->_web_menu_root($row_menu_one['parent_id'], $idMenu, $menu_root_name, $menu_root_url);
+				
+				/*kiểm tra loại danh mục*/
+				$type_id = $row_menu_one['type_id'];
+				$type_name = $this->type_menu($type_id, $base_img_detail);
+				$name_model_list = '_list_'.$type_name;
+				$name_model_detail = '_detail_'.$type_name;
+				$name_view_list = 'view_web_list_'.$type_name;
+				$name_view_detail = 'view_web_detail_'.$type_name;
+				/*end kiểm tra loại danh mục*/
+				
+				/*web config*/
+				$row_config = $this->web_config($lang);
+				$site_name = $row_config['name'];
+			}else{
+				header('location: '.CONS_BASE_URL.CONS_400);
+				return false;
+			}
 			
 			/*danh mục hoặc chi tiết*/
 			if($this->_action == CONS_WEB_VIEW_MENU){
@@ -131,24 +134,30 @@ class control_web{
 				$site_url	= CONS_BASE_URL.'/'.$row_menu_one['url'];
 				if($row_menu_one['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT; else $site_image = CONS_IMAGES_CATALOG.$row_menu_one['url_hinh'];
 				
-				include_once("view/{$name_view_list}.php");
+				$file_view_list = "view/{$name_view_list}.php";
+				if(file_exists($file_view_list)) include_once($file_view_list);
+				else{
+					include_once("view/view_web_ajax.php");
+					return true;
+				}
 			}elseif($this->_action == CONS_WEB_VIEW_DETAIL){
 				$alias_detail = $this->_data;
-				if( !$row_detail=$this->_model->$name_model_detail($alias_detail) ) $error_detail='Not Found';
-				
-				$site_title	= strip_tags($row_detail['name']);
-				$site_des	= strip_tags($row_detail['metaDescription']);
-				$site_key	= strip_tags($row_detail['metaKeyword']);
-				$site_url	= CONS_BASE_URL.'/'.$row_menu_one['url'].$row_detail['name_alias'].'.html';
-				if($row_detail['url_hinh']!='') $site_image = $base_img_detail.$row_detail['url_hinh'];
-				else $site_image = CONS_IMAGE_DEFAULT;
-				
-				include_once("view/{$name_view_detail}.php");
+				if($row_detail=$this->_model->$name_model_detail($alias_detail)){
+					$site_title	= strip_tags($row_detail['name']);
+					$site_des	= strip_tags($row_detail['metaDescription']);
+					$site_key	= strip_tags($row_detail['metaKeyword']);
+					$site_url	= CONS_BASE_URL.'/'.$row_menu_one['url'].$row_detail['name_alias'].'.html';
+					if($row_detail['url_hinh']!='') $site_image = $base_img_detail.$row_detail['url_hinh'];
+					else $site_image = CONS_IMAGE_DEFAULT;
+					
+					include_once("view/{$name_view_detail}.php");
+				}else{
+					header('location: '.CONS_BASE_URL.CONS_400);
+					return false;
+				}
 			}/*end danh mục hoặc chi tiết*/
 		}
 		$include = ob_get_clean();
-		
-		
 		
 		/*tab head*/
 		$tab_head = $this->tab_head($site_name,$site_title,$site_des,$site_key,$site_url,$site_image,$type_name);
