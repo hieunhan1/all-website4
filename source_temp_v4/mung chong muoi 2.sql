@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2014 at 09:35 AM
+-- Generation Time: Jun 23, 2014 at 12:53 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
   `user_update` varchar(30) DEFAULT NULL,
   `delete` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `web_menu`
@@ -254,7 +254,9 @@ INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, 
 (13, 'Mùng chống muỗi', 'mung-chong-muoi', 'mung-chong-muoi/', 'icon-mung-chong-muoi.gif', 'Mùng chống muỗi', 'Mùng chống muỗi', 'mùng chống muỗi,mung chong muoi', 6, 3, ',2,', 1, 1, 'vi', 1, '2014-06-14 07:58:44', NULL, 'admin', NULL, 0),
 (14, 'Rèn chống muỗi', 'ren-chong-muoi', 'ren-chong-muoi/', 'icon-ren-chong-muoi.gif', 'Rèn chống muỗi', 'Rèn chống muỗi', 'rèn chống muỗi,ren chong muoi', 6, 3, ',2,', 2, 1, 'vi', 1, '2014-06-14 08:00:30', NULL, 'admin', NULL, 0),
 (15, 'Võng chống muỗi', 'vong-chong-muoi', 'vong-chong-muoi/', 'icon-vong-chong-muoi.gif', 'Võng chống muỗi', 'Võng chống muỗi', 'võng chống muỗi,vong chong muoi', 6, 3, ',2,', 3, 1, 'vi', 1, '2014-06-14 08:00:56', NULL, 'admin', NULL, 0),
-(16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 7, ',9,', 100, 0, 'vi', 1, '2014-06-21 09:21:42', NULL, 'admin', NULL, 0);
+(16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 7, ',9,', 100, 0, 'vi', 1, '2014-06-21 09:21:42', NULL, 'admin', NULL, 0),
+(17, 'Giỏ hàng', 'gio-hang', 'gio-hang/', '', 'Giỏ hàng', 'Giỏ hàng', 'giỏ hàng,gio hang', 16, 8, ',9,', 1, 0, 'vi', 1, '2014-06-23 06:41:50', '2014-06-23 06:42:22', 'admin', 'admin', 0),
+(18, 'Thanh toán', 'thanh-toan', 'thanh-toan/', '', 'Thanh toán', 'Thanh toán', 'thanh toán,thanh toan', 16, 8, ',9,', 2, 0, 'vi', 1, '2014-06-23 06:43:12', NULL, 'admin', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -358,7 +360,7 @@ INSERT INTO `web_menu_type` (`id`, `name`, `order`, `status`) VALUES
 (5, 'Hình ảnh', 5, 1),
 (6, 'Video', 6, 1),
 (7, 'Đặt hàng', 7, 1),
-(8, 'Item 8', 8, 0),
+(8, 'Thanh toán', 8, 1),
 (9, 'Item 9', 9, 0),
 (10, 'Item 10', 10, 0),
 (11, 'Item 11', 11, 0),
