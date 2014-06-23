@@ -1,5 +1,5 @@
 <?php
-include_once('class/db.php');
+include_once('model_db.php');
 class model_web extends db{
 	public function _web_config($lang){
 		$sql = "SELECT * FROM `web_config` WHERE `delete`=0 AND status=1 AND lang='{$lang}' LIMIT 1";
@@ -150,6 +150,13 @@ class model_web extends db{
 	/*other post*/
 	public function _other_post_article($id,$idMenu,$limit=5){
 		$sql = "SELECT `name`,`name_alias`,`url_hinh`,`menu_id` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _other_post_product($id,$idMenu,$limit=5){
+		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`giaban`,`giagoc`,`menu_id` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;

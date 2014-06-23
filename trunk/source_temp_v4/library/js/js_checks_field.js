@@ -57,7 +57,7 @@ function check_email(name_check,name_message,message_error){
 		return false;
 	}else{
 		$(name_message).html('');
-		return str;
+		return email;
 	}
 }
 

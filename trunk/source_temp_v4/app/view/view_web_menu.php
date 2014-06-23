@@ -19,8 +19,8 @@
 		?>
     </ul>
     <div id="cart">
-    	<div id="cart_icon">10</div>
-        <a href="">Giỏ hàng</a>
+    	<div id="cart_icon"><?php echo count($_SESSION['list_order_sp_name']);?></div>
+        <a href="gio-hang/">Giỏ hàng</a>
     </div>
 </div></div>
 

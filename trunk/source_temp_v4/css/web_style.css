@@ -66,8 +66,10 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 #product_detail #product_detail_giagoc{color:#888; font-size:110%; font-weight:bold; text-decoration:line-through}
 #product_detail #product_detail_giaban{color:#3C9401; font-size:150%; font-weight:bold}
 #product_detail #product_detail_soluong{width:100px; height:25px; line-height:25px; margin:5px 0; padding:0 3px; background-color:#FFC; border:solid 1px #999}
-#product_detail #product_detail_order{width:auto; float:left; font-size:140%; font-weight:bold; color:#FFF; margin-bottom:20px; padding:10px 30px; background-color:#EA9E4A; cursor:pointer}
-#product_detail #product_detail_order:hover{background-color:#EA8005}
+#product_detail .product_detail_btn{width:auto; float:left; font-size:140%; font-weight:bold; color:#FFF; margin:0 10px 15px 0; padding:10px 30px; cursor:pointer}
+#product_detail .product_detail_btn a{color:#FFF}
+#product_detail .product_detail_btn a:hover{text-decoration:none}
+#product_detail .product_detail_btn:hover{background-color:#EA8005 !important}
 #product_detail #product_detail_info{clear:both}
 #product_detail #product_detail_info p, #product_detail #product_detail_info div {margin-left:10px; padding-left:25px; background:url(web_img/icon_about_home.jpg) no-repeat left; background-position:0px 3px}
 #product_detail_left{width:650px; float:left}
@@ -75,7 +77,6 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 #product_detail_right #product_detail_right_title{}
 
 .article_item_date{color:#999; font-style:italic; margin-bottom:8px}
-
 .article_item{width:460px; height:380px}
 .article_item h3{line-height:22px; font-size:130%; margin-bottom:5px}
 .article_item .article_item_img{height:200px; overflow:hidden; margin-bottom:5px;border:solid 1px #CCC}
@@ -91,10 +92,25 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 #footer{line-height:25px; padding:20px 0}
 #footer h3{color:#337F00; text-transform:uppercase}
 
+/*order*/
 #cart{width:auto; float:right}
 #cart #cart_icon{width:17px; height:29px; float:left; color:#337E01; font-weight:bold; font-size:11px; text-align:center; margin-right:10px; padding:4px 5px 0 11px; background:url(web_img/icon-all.png) no-repeat; background-position:0 -28px}
 #cart a{display:block; width:auto; float:left; line-height:32px; color:#FFF; font-weight:bold; }
 #cart a:hover{color:#FF0}
+
+.order_sp{overflow:hidden; border:solid 1px #CCC}
+.order_sp th, .order_sp td {padding:10px; border-bottom:solid 1px #CCC}
+.order_sp .order_sp_trash{color:#FFF; font-size:130%; line-height:100%; margin:0; padding:0px 6px 1px; background-color:#999; cursor:pointer}
+
+#order_sp_cancel{font-weight:bold; line-height:40px; margin-left:40px}
+
+.order_sp_btn{width:auto; float:left; font-size:120%; font-weight:bold; color:#FFF; padding:8px 20px; cursor:pointer}
+.order_sp_btn a{display:block !important; color:#FFF}
+.order_sp_btn a:hover{text-decoration:none}
+.order_sp_btn:hover{background-color:#EA8005 !important}
+
+.txt_order{width:200px; padding:4px 5px}
+/*end order*/
 
 .viewpost{clear:both; line-height:22px; margin-bottom:20px}
 .viewpost p, .viewpost div {line-height:22px; margin:10px 0}

@@ -1,5 +1,5 @@
 <?php
-include_once('class/db.php');
+include_once('model_db.php');
 class model_admin extends db{
 	public function _xuly_dangnhap($u,$p){
 		$u = strip_tags($u);

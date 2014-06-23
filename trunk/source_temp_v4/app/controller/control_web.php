@@ -20,6 +20,7 @@ class control_web{
 			case 4 : $type_name = 'service';	$base_img_detail = CONS_IMAGES_SERVICES; break;
 			case 5 : $type_name = 'photo';		$base_img_detail = CONS_IMAGES_PHOTOS; break;
 			case 6 : $type_name = 'video';		$base_img_detail = CONS_IMAGES_VIDEOS; break;
+			case 8 : $type_name = 'payment';	break;
 			case 12 : $type_name = 'register';	break;
 			case 13 : $type_name = 'contact';	break;
 			default : $type_name = 'site';
@@ -163,6 +164,76 @@ class control_web{
 		$tab_head = $this->tab_head($site_name,$site_title,$site_des,$site_key,$site_url,$site_image,$type_name);
 		include_once('view/view_web.php');
 	}//index
+	
+	
+	/*order*/
+	public function order_sp(){
+		$alias = trim($_POST['order_sp']);
+		$name = trim($_POST['name']);
+		$soluong = trim($_POST['soluong']);
+		$link_sp = $_POST['link_sp'];
+		if($alias=='' || !is_numeric($soluong)) return false;
+		$row = $this->_model->_detail_product($alias);
+		if(count($row) > 1){
+			$id = $row['id'];
+			$_SESSION['list_order_sp_name'][$id] = $name;
+			$_SESSION['list_order_sp_giagoc'][$id] = $row['giagoc'];
+			$_SESSION['list_order_sp_giaban'][$id] = $row['giaban'];
+			$_SESSION['list_order_sp_soluong'][$id] += $soluong;
+			$_SESSION['list_order_sp_link'][$id] = $link_sp;
+			echo $this->order_sp_thanhtoan_link();
+			return true;
+		}else echo '0';
+	}
+	public function order_sp_view(){
+		$data = array();
+		$all_sp = count($_SESSION['list_order_sp_name']);
+		if ($all_sp>0){
+			reset($_SESSION['list_order_sp_name']);
+			reset($_SESSION['list_order_sp_giagoc']);
+			reset($_SESSION['list_order_sp_giaban']);
+			reset($_SESSION['list_order_sp_soluong']);
+			reset($_SESSION['list_order_sp_link']);
+			$tongtien=0; $tongsoluong=0;
+			for ($i=0; $i<$all_sp; $i++) {
+				$idSP = key($_SESSION['list_order_sp_name']);
+				$name = current($_SESSION['list_order_sp_name']);
+				$giagoc = current($_SESSION['list_order_sp_giagoc']);
+				$giaban = current($_SESSION['list_order_sp_giaban']);
+				$soluong = current($_SESSION['list_order_sp_soluong']);
+				$link = current($_SESSION['list_order_sp_link']);
+				$thanhtien = $giaban*$soluong;
+				$tongtien += $thanhtien;
+				$tongsoluong += $soluong;
+				$data[] = array('id'=>$idSP,'name'=>$name,'giaban'=>$giaban,'giagoc'=>$giagoc,'soluong'=>$soluong,'link'=>$link,'thanhtien'=>$thanhtien);
+				next($_SESSION['list_order_sp_name']);
+				next($_SESSION['list_order_sp_giagoc']);
+				next($_SESSION['list_order_sp_giaban']);
+				next($_SESSION['list_order_sp_soluong']);
+				next($_SESSION['list_order_sp_link']);
+			}
+		}else $data[] = array('name'=>'Bạn chưa đặt mua sản phẩm.');
+		return $data;
+	}
+	public function order_sp_trash(){
+		$id = $_POST["id"];
+		unset($_SESSION['list_order_sp_name'][$id]);
+		unset($_SESSION['list_order_sp_giagoc'][$id]);
+		unset($_SESSION['list_order_sp_giaban'][$id]);
+		unset($_SESSION['list_order_sp_soluong'][$id]);
+	}
+	public function order_sp_edit_sl(){
+		$id = $_POST["id"];
+		$soluong = $_POST["soluong"];
+		$_SESSION['list_order_sp_soluong'][$id] = $soluong;
+	}
+	public function order_sp_cancel(){
+		session_destroy();
+	}
+	public function order_sp_thanhtoan_link(){
+		return '<div class="product_detail_btn" style="background-color:#999"><a href="gio-hang/">Tiến hành đặt hàng</a></div>';
+	}
+	/*end order*/
 	
 	public function checks_video_youtube_vimeo($url_video,$domain=NULL){
 		if(is_numeric($url_video)){
