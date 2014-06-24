@@ -164,4 +164,18 @@ class model_web extends db{
 	}
 	/*end other post*/
 	
+	public function _web_product_order_insert($name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia=0){
+		$date = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $this->db->insert_id;
+	}
+	
+	public function _web_ds_tinhthanh(){
+		$sql = "SELECT `id`,`name` FROM `web_ds_tinhthanh` WHERE `status`=1 ORDER BY `order` DESC, `name`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
 }//class

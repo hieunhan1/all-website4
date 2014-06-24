@@ -7,10 +7,10 @@
         <div style="width:auto; float:right">Thông tin thanh toán</div>
     </div>
 
-    <div style="clear:both; height:2px; margin-bottom:30px; background-color:#EA9E4A"></div>
+    <div style="clear:both; height:2px; margin-bottom:10px; background-color:#EA9E4A"></div>
     
     <div style="width:600px; float:left">
-    	<table width="100%" border="0" cellspacing="10">
+    	<table width="100%" border="0" cellspacing="10" style="margin:50px 0 0 30px">
         	<tr>
             	<td width="150" align="right">Nhập vào địa chỉ email:</td>
                 <td><input type="text" name="email" placeholder="email@mail.com" class="txt_order" /> <span class="error"></span></td>
@@ -32,7 +32,7 @@
 		</script>
     </div>
     
-    <div style="width:340px; float:right; background-color:#CCC">1</div>
+    <div style="width:340px; float:right"><?php include_once('view_web_list_payment_info.php');?></div>
     
     <div style="clear:both; height:1px"> </div>
 </div>
