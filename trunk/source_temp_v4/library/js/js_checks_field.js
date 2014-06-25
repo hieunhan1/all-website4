@@ -76,7 +76,7 @@ function check_email_nl(name_check,name_message,message_error,condition){
 
 function check_phone(name_check,name_message,message_error){
 	var str = $.trim($(name_check).val());
-	var re=/^[0][1-9][0-9]{8,9}$/;
+	var re=/^[{0,(,+}][0-9-+()\.\s]{8,18}$/;
 	if(!re.test(str)){
 		$(name_message).html(message_error);
 		$(name_check).focus();

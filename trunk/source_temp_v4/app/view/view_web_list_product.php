@@ -26,12 +26,12 @@ foreach($data as $row){
 		if($i%4 != 1) $style='style="margin-left:15px"'; else $style='';
         if($row['giagoc'] != 0) $giagoc='<div class="product_item_giagoc">'.number_format($row['giagoc']).' VNĐ</div>'; else $giagoc='';
         echo '<div class="product_item" '.$style.'>
-            <a href="'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html">
+            <a href="'.$row['url'].'">
                 <div class="product_item_img_bg"></div>
                 <div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
                 <h3 class="product_item_name">'.$row['name'].'</h3>
             </a>
-            <div class="product_item_order id_'.$row['id'].'">Đặt hàng</div>
+            <div class="product_item_order" alias="'.$row['name_alias'].'">Đặt hàng</div>
             '.$giagoc.'<div class="product_item_giaban">Giá: '.number_format($row['giaban']).' VNĐ</div>
         </div>';
     }

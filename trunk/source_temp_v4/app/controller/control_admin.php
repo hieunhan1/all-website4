@@ -83,7 +83,7 @@ class control_admin extends control_admin_form{
 		
 		if(isset($_GET['search'])){
 			$str_search .= " AND name LIKE '%{$_GET['search']}%' ";
-			$url_search = '&search='.$_GET['search'];
+			$url_search .= '&search='.$_GET['search'];
 		}
 		
 		$select = '`id`,`name`,`status`,`date_create`,`date_update`,`user_create`,`user_update`';
@@ -110,6 +110,11 @@ class control_admin extends control_admin_form{
 		$id = $_GET['id_ac'];
 		if($_GET['status_one']==1) $status=0; else $status=1;
 		$this->_model->_status_one($this->_action, $id, $status, $user_admin);
+	}
+	
+	public function menu_id(){
+		$menu_id = $_GET['menu_id'];
+		echo $this->_model->_menu_id($menu_id);
 	}
 	
 	public function create_edit_data($table, &$lable_submit, &$row_detail, &$disabled, &$change_alias){
@@ -207,6 +212,10 @@ class control_admin extends control_admin_form{
 			}/*delete item*/
 			if(isset($_GET['status_one'])){
 				$this->status_one($user_admin);
+				return true;
+			}/*status item*/
+			if(isset($_GET['menu_id'])){
+				$this->menu_id();
 				return true;
 			}/*status item*/
 			

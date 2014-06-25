@@ -30,7 +30,7 @@ foreach($data as $row){
 				else $btn_order = array('Đã đặt hàng','#4DBE01');
 				$btn_thanhtoan = $this->order_sp_thanhtoan_link();
 			}
-			echo '<div id="product_detail_order" class="product_detail_btn" alias="'.$row_detail['name_alias'].'" name_sp="'.$row_detail['name'].'" link_sp="'.$row_menu_one['url'].$row_detail['name_alias'].'.html" style="background-color:'.$btn_order[1].'">'.$btn_order[0].'</div>';
+			echo '<div id="product_detail_order" class="product_detail_btn" alias="'.$row_detail['name_alias'].'" style="background-color:'.$btn_order[1].'">'.$btn_order[0].'</div>';
 			echo '<div id="btn_thanhtoan">'.$btn_thanhtoan.'</div>';
 			?>
             <div id="product_detail_info"><?php echo $row_detail['info_more'];?></div>
@@ -63,7 +63,7 @@ foreach($data as $row){
 		if($i%4 != 1) $style='style="margin-left:15px"'; else $style='';
 		if($row['giagoc'] != 0) $giagoc='<div class="product_item_giagoc">'.number_format($row['giagoc']).' VNĐ</div>'; else $giagoc='';
 		echo '<div class="product_item" '.$style.'>
-            <a href="'.$row_menu_one['url'].$row['name_alias'].'.html">
+            <a href="'.$row['url'].'">
                 <div class="product_item_img_bg"></div>
                 <div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
                 <h3 class="product_item_name">'.$row['name'].'</h3>
