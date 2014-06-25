@@ -155,6 +155,7 @@ class model_admin extends db{
 		$this->db->query($sql);
 	}
 	
+	/*web_menu*/
 	public function _web_menu($parent_id, $style, $arr, $where=''){
 		if(!$arr) $arr = array();
 		$sql = "SELECT `id`,`name`,`status`,`order`,`date_create`,`date_update`,`user_create`,`user_update` FROM `web_menu`
@@ -201,4 +202,40 @@ class model_admin extends db{
 		foreach($result as $row) $data[] = $row;
 		return $data;
 	}
+	
+	public function _menu_id($menu_id){
+		$str = explode(',',$menu_id);
+		$i = count($str)-2;
+		$sql = "SELECT `url` FROM `web_menu` WHERE `id`='".$str[$i]."'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$row = $result->fetch_assoc();
+		return $row['url'];
+	}
+	/*end web_menu*/
+	
+	/*order*/
+	public function _web_ds_tinhthanh(){
+		$sql = "SELECT `id`,`name` FROM `web_ds_tinhthanh` WHERE `status`=1 ORDER BY `order` DESC, `name`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		$data[] = array('id'=>0, 'name'=>'-- Chọn tỉnh/thành --');
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _web_ds_quanhuyen($tinhthanh){
+		$sql = "SELECT `id`,`name` FROM `web_ds_quanhuyen` WHERE `status`=1 AND tinhthanh_id='{$tinhthanh}' ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		$data[] = array('id'=>0, 'name'=>'-- Chọn quận/huyện --');
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _web_product_order_detail($id){
+		$sql = "SELECT * FROM `web_product_order_detail` WHERE `delete`=0 AND `status`=1 AND order_id='{$id}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach($result as $row) $data[] = $row;
+		return $data;
+	}
+	/*end order*/
 }//class

@@ -25,20 +25,19 @@ foreach($data as $row){
 		foreach($data as $row){
 			$i++;
 			if($i%2==1) $style='style="float:left"'; else $style='style="float:right"';
-			$link = $this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html';
 			echo '<div class="article_item" '.$style.'>
-				<a href="'.$link.'"><h3>'.$row['name'].'</h3></a>
+				<a href="'.$row['url'].'"><h3>'.$row['name'].'</h3></a>
 				<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i', strtotime($row['ngay_dang'])).'</div>
 				<div class="article_item_img"><img src="'.CONS_IMAGES_ARTICLES.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
 				<p>'.$row['metaDescription'].'</p>
 				<div class="article_item_link">
-					<a href="javascript:;" onclick="facebook_share(\''.CONS_BASE_URL.'/'.$link.'\')" style="color:#666">Share facebook</a>
-					<a href="'.$link.'">Xem chi tiết</a>
+					<a href="javascript:;" onclick="facebook_share(\''.CONS_BASE_URL.'/'.$row['url'].'\')" style="color:#666">Share facebook</a>
+					<a href="'.$row['url'].'">Xem chi tiết</a>
 				</div>
 			</div>';
 		}
 		echo '<div id="phantrang">'.$this->_model->_pageslist($row_menu_one['url'], $totalrows, 5, $per_page, $currentpage).'</div>';
-	}else if(count($data)==1) header('location: '.CONS_BASE_URL.'/'.$this->_model->_link_detail($data[0]['menu_id']).$data[0]['name_alias'].'.html');
+	}else if(count($data)==1) header('location: '.CONS_BASE_URL.'/'.$data[0]['url']);
 	else echo '<p style="padding:30px 50px 100px">Update...</p>';
     ?>
 </div>

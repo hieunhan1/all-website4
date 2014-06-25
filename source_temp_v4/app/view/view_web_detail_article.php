@@ -23,7 +23,7 @@ $data = $this->_model->_other_post_article($row_detail['id'],$idMenu);
 if(count($data) > 0){
 	echo '<div id="other_post"><hr /><div id="other_post_title">'.CONS_OTHER_POST.'</div>';
 	foreach($data as $row){
-		echo '<li><a href="'.$row_menu_one['url'].$row['name_alias'].'.html">'.$row['name'].'</a></li>';
+		echo '<li><a href="'.$row['url'].'">'.$row['name'].'</a></li>';
 	}
 	echo '</div>';
 }

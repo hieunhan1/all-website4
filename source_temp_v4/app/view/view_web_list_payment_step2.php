@@ -1,6 +1,5 @@
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
-	
     <div style="font-size:120%; color:#888">
         <div style="width:400px; float:left">Nhập email</div>
         <div style="width:auto; float:left; font-weight:bold; color:#EA8005">Thông tin giao hàng</div>
@@ -46,29 +45,63 @@
                 <td><div class="order_sp_btn" style="background-color:#EA9E4A; text-align:center"><a href="javascript:;" style="display:block; padding:0 45px">ĐẶT HÀNG</a></div></td>
             </tr>
         </table>
-        <script>
-		$(document).ready(function(e) {
-            $(".order_sp_btn a").click(function(){
-				var hoten = check_text_length("input[name=hoten]","#hoten","Họ tên >= 2 ký tự",2);
-				var dienthoai = check_phone("input[name=dienthoai]","#dienthoai","Số điện thoại chưa đúng");
-				var tinh_thanh = check_number("input[name=tinh_thanh]","#tinh_thanh","Chọn tỉnh thành");
-				var quan_huyen = check_number("input[name=quan_huyen]","#quan_huyen","Chọn quận huyện");
-				var diachi = check_text_length("input[name=diachi]","#diachi","Địa chỉ >= 6 ký tự",6);
-				
-				if(hoten==false || dienthoai==false || tinh_thanh==false || quan_huyen==false || diachi==false) return false;
-				
-				$("#ajax").html("");
-				$.post("dat-hang/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
-					if(data=='1') window.location = "<?php echo $link_step3;?>";
-					else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
-				});
-				//$(this).attr("href",link_step2 + "&email=" + email);
-			});
-        });
-		</script>
     </div>
     
-    <div style="width:340px; float:right"><?php include_once('view_web_list_payment_info.php');?></div>
+    <div style="width:340px; float:right" id="ajax_order_sp_info"><?php include_once('view_web_list_payment_info.php');?></div>
     
     <div style="clear:both; height:1px"> </div>
 </div>
+<script>
+$(document).ready(function(e) {
+	/*kiem tra phi gh*/
+	var code = $("select[name=tinh_thanh]").val();
+	$.post("dat-hang/",{data_quanhuyen:code},function(data){
+		$("select[name=quan_huyen]").html(data);
+	});
+	$("select[name=tinh_thanh]").change(function(){
+		var code = $(this).val();
+		$.post("dat-hang/",{data_quanhuyen:code},function(data){
+			$("select[name=quan_huyen]").html(data);
+		});
+	});
+	$("select[name=quan_huyen]").change(function(){
+		var code = $(this).val();
+		$("#order_sp_info_loading").show();
+		$.ajax({
+			url:"dat-hang/",
+			type:"POST", /* dataType:"json", //xml, html, json, text */
+			data:{phi_quanhuyen:code},
+			cache:false,
+			success:function(data){
+				data = data.split("-|-");
+				var obj = { "phigiaohang": data[0],"thanhtien": data[1] };
+				var phigiaohang = obj.phigiaohang;
+				var thanhtien = obj.thanhtien;
+				setTimeout(function(){
+					$("#order_sp_info_loading").hide();
+					$("#quan_huyen").html("<span style='color:#00F'>Phí giao hàng: " + phigiaohang + " VNĐ</span>");
+					$("#phigiaohang").html(phigiaohang);
+					$("#thanhtien").html(thanhtien);
+				},500);
+			}
+		});
+	});
+	/*end kiem tra phi gh*/
+	
+	$(".order_sp_btn a").click(function(){
+		var hoten = check_text_length("input[name=hoten]","#hoten","Họ tên >= 2 ký tự",2);
+		var dienthoai = check_phone("input[name=dienthoai]","#dienthoai","Số điện thoại chưa đúng");
+		var tinh_thanh = check_number("select[name=tinh_thanh]","#tinh_thanh","Chọn tỉnh thành");
+		var quan_huyen = check_number("select[name=quan_huyen]","#quan_huyen","Chọn quận huyện");
+		var diachi = check_text_length("input[name=diachi]","#diachi","Địa chỉ >= 6 ký tự",6);
+		
+		if(hoten==false || dienthoai==false || tinh_thanh==false || quan_huyen==false || diachi==false) return false;
+		
+		$("#ajax").html("");
+		$.post("dat-hang/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
+			if(data=='1') window.location = "<?php echo $link_step3;?>";
+			else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
+		});
+	});
+});
+</script>

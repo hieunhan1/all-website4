@@ -20,7 +20,7 @@ function checks_number($str){
 
 function checks_phone($str){
 	$str = trim($str);
-	$pattern = '/^[0][1-9][0-9]{8,9}$/';
+	$pattern = '/^[{0,(,+}][0-9-+()\.\s]{8,18}$/';
 	if(preg_match($pattern, $str)) return $str;
 	else return false;
 }

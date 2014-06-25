@@ -170,18 +170,16 @@ class control_web{
 	/*order*/
 	public function order_sp(){
 		$alias = trim($_POST['order_sp']);
-		$name = trim($_POST['name']);
 		$soluong = trim($_POST['soluong']);
-		$link_sp = $_POST['link_sp'];
 		if($alias=='' || !is_numeric($soluong)) return false;
 		$row = $this->_model->_detail_product($alias);
 		if(count($row) > 1){
 			$id = $row['id'];
-			$_SESSION['list_order_sp_name'][$id] = $name;
+			$_SESSION['list_order_sp_name'][$id] = $row['name'];
 			$_SESSION['list_order_sp_giagoc'][$id] = $row['giagoc'];
 			$_SESSION['list_order_sp_giaban'][$id] = $row['giaban'];
 			$_SESSION['list_order_sp_soluong'][$id] += $soluong;
-			$_SESSION['list_order_sp_link'][$id] = $link_sp;
+			$_SESSION['list_order_sp_link'][$id] = $row['url'];
 			echo $this->order_sp_thanhtoan_link();
 			return true;
 		}else echo '0';

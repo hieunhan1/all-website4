@@ -95,7 +95,7 @@ class model_web extends db{
 		return $data;
 	}
 	public function _home_products($id){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -105,7 +105,7 @@ class model_web extends db{
 	
 	/*list*/
 	public function _list_web_product($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`giaban`,`giagoc`,`menu_id` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -118,7 +118,7 @@ class model_web extends db{
 		return $data;
 	}
 	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`metaDescription`,`menu_id`,`ngay_dang` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`metaDescription`,`ngay_dang` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -149,14 +149,14 @@ class model_web extends db{
 	
 	/*other post*/
 	public function _other_post_article($id,$idMenu,$limit=5){
-		$sql = "SELECT `name`,`name_alias`,`url_hinh`,`menu_id` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		$sql = "SELECT `name`,`url`,`url_hinh` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
 		return $data;
 	}
 	public function _other_post_product($id,$idMenu,$limit=5){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_hinh`,`giaban`,`giagoc`,`menu_id` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -164,18 +164,38 @@ class model_web extends db{
 	}
 	/*end other post*/
 	
-	public function _web_product_order_insert($name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia=0){
-		$date = date('Y-m-d H:i:s');
-		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		return $this->db->insert_id;
-	}
-	
-	public function _web_ds_tinhthanh(){
-		$sql = "SELECT `id`,`name` FROM `web_ds_tinhthanh` WHERE `status`=1 ORDER BY `order` DESC, `name`";
+	/*order*/
+	public function _web_ds_tinhthanh($id=0){
+		if($id!=0) $str=" AND id='{$id}' ";
+		$sql = "SELECT `id`,`name`,`phigiaohang` FROM `web_ds_tinhthanh` WHERE `status`=1 {$str} ORDER BY `order` DESC, `name`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
 		return $data;
 	}
+	public function _web_ds_quanhuyen($tinhthanh=0,$id=0){
+		$str='';
+		if($tinhthanh!=0) $str.=" AND tinhthanh_id='{$tinhthanh}' ";
+		if($id!=0) $str.=" AND id='{$id}' ";
+		if($tinhthanh==0 && $id==0) $str.=" AND id='0' ";
+		$sql = "SELECT `id`,`name`,`phigiaohang` FROM `web_ds_quanhuyen` WHERE `status`=1 {$str} ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	
+	public function _web_product_order_insert($name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
+		$date = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $this->db->insert_id;
+	}
+	public function _web_product_order_detail_insert($name,$product_id,$order_id,$soluong,$dongia,$giamgia,$thanhtien){
+		$date = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$product_id}', '{$order_id}', '{$soluong}', '{$dongia}', '{$giamgia}', '{$thanhtien}', 'vi', '1', '{$date}', NULL, 'khachhang', NULL, '0')";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+	}
+	/*end order*/
+	
 }//class

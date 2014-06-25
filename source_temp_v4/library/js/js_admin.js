@@ -127,7 +127,19 @@ $(document).ready(function(e) {
 			$(this).val(name_rewrite + '/');
 		});
 	}
-	url_auto('.url_auto','#name_alias')
+	url_auto('.url_auto','#name_alias');
+	
+	/*lấy link tu dong detail*/
+	$(".auto_link_detail").dblclick(function(){
+		var name_alias = $.trim($("#name_alias").val());
+		var menu_id = $.trim($("#menu_id").val());
+		var url = $(location).attr('href') + "&menu_id=" + menu_id;
+		$.post(url,function(data){
+			$(".auto_link_detail").val(data + name_alias + ".html");
+		});
+	});
+	
+	/*end lấy link tu dong detail*/
 	
 	/*lấy keyword tự động*/
 	function keyword_auto(dest,source){
@@ -136,7 +148,7 @@ $(document).ready(function(e) {
 			$(this).val(remove_ky_tu_dac_biet(name,' ') + ',' + change_alias(name,' '));
 		});
 	}
-	keyword_auto('#metaKeyword','#name')
+	keyword_auto('#metaKeyword','#name');
 	
 	/*checks box*/
 	function checks_box_item(list_check, list_view){
