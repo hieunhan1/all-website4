@@ -59,15 +59,15 @@ if(isset($_POST['insert_order_sp'])){
 	if($quan_huyen==false) return false;
 	if($diachi==false) return false;
 	
-	$order_id = $this->_model->_web_product_order_insert($name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien);
-	if(!is_numeric($order_id)) return false;
+	$order_id = rand(0,9).date('dmis');
+	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien);
 	
 	$giamgia = 0;
 	$data = $this->order_sp_view();
 	foreach($data as $row){
 		$this->_model->_web_product_order_detail_insert($row['name'],$row['id'],$order_id,$row['soluong'],$row['giaban'],$giamgia,$row['thanhtien']);
 	}
-	echo '1';
+	echo $order_id;
 }
 /*end dat hang & check phi giao hang*/
 

@@ -185,9 +185,9 @@ class model_web extends db{
 		return $data;
 	}
 	
-	public function _web_product_order_insert($name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
+	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
 		$date = date('Y-m-d H:i:s');
-		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
@@ -195,6 +195,19 @@ class model_web extends db{
 		$date = date('Y-m-d H:i:s');
 		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$product_id}', '{$order_id}', '{$soluong}', '{$dongia}', '{$giamgia}', '{$thanhtien}', 'vi', '1', '{$date}', NULL, 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
+	}
+	public function _view_product_order($id){
+		$sql = "SELECT * FROM `web_product_order` WHERE `delete`=0 AND id='{$id}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	public function _view_product_order_detail($order_id){
+		$sql = "SELECT * FROM `web_product_order_detail` WHERE `delete`=0 AND order_id='{$order_id}' ";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
 	}
 	/*end order*/
 	

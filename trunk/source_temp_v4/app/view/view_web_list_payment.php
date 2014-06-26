@@ -11,9 +11,9 @@ elseif($_GET['step']=='step1' && $all_sp>0){
 }elseif($_GET['step']=='step2' && $all_sp>0){
 	if(!isset($_GET['email'])) header('location: '.$link_step1);
 	include_once('view_web_list_payment_step2.php');
-}elseif($_GET['step']=='step3' && $all_sp>0){
-	include_once('view_web_list_payment_step3.php');
+}elseif($_GET['step']=='step3'){
 	$this->order_sp_cancel();
+	include_once('view_web_list_payment_step3.php');
 }elseif($_GET['step']=='clear'){
 	$this->order_sp_cancel();
 	header('location: /');
