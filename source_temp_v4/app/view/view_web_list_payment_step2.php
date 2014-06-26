@@ -42,7 +42,7 @@
             </tr>
             <tr>
             	<td align="right" id="ajax">&nbsp;</td>
-                <td><div class="order_sp_btn" style="background-color:#EA9E4A; text-align:center"><a href="javascript:;" style="display:block; padding:0 45px">ĐẶT HÀNG</a></div></td>
+                <td><div class="order_sp_btn"><a href="javascript:;" style="display:block; padding:0 45px">ĐẶT HÀNG</a></div></td>
             </tr>
         </table>
     </div>

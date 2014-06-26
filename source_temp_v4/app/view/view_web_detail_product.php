@@ -68,7 +68,7 @@ foreach($data as $row){
                 <div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
                 <h3 class="product_item_name">'.$row['name'].'</h3>
             </a>
-            <div class="product_item_order id_'.$row['id'].'">Đặt hàng</div>
+            <div class="product_item_order" alias="'.$row['name_alias'].'">Đặt hàng</div>
             '.$giagoc.'<div class="product_item_giaban">Giá: '.number_format($row['giaban']).' VNĐ</div>
         </div>';
 	}

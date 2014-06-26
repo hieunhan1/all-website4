@@ -56,7 +56,7 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 .product_list .product_item .product_item_name{font-size:100%; text-align:center; margin-bottom:10px; line-height:20px; height:40px; overflow:hidden}
 .product_list .product_item .product_item_order{width:auto; float:left; font-weight:bold; color:#FFF; margin-left:5px; padding:4px 10px; background-color:#EA9E4A; cursor:pointer}
 .product_list .product_item .product_item_order:hover{background-color:#EA8005}
-.product_list .product_item .product_item_giagoc{width:auto; float:right; text-align:right; margin-right:5px; color:#666; text-decoration:line-through}
+.product_list .product_item .product_item_giagoc{width:90px; float:right; text-align:right; margin-right:5px; color:#666; text-decoration:line-through}
 .product_list .product_item .product_item_giaban{width:auto; float:right; text-align:right; margin:5px 5px 0 0; font-weight:bold; color:#F00}
 
 #product_detail{clear:both}
@@ -111,8 +111,8 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 
 #order_sp_cancel{font-weight:bold; line-height:40px; margin-left:40px}
 
-.order_sp_btn{width:auto; float:left; font-size:120%; font-weight:bold; color:#FFF; padding:8px 20px; cursor:pointer}
-.order_sp_btn a{display:block !important; color:#FFF}
+.order_sp_btn{display:block; width:auto; height:35px; float:left; font-size:120%; font-weight:bold; color:#FFF; background-color:#EA9E4A; cursor:pointer}
+.order_sp_btn a{display:block; color:#FFF; line-height:35px; padding:0 20px}
 .order_sp_btn a:hover{text-decoration:none}
 .order_sp_btn:hover{background-color:#EA8005 !important}
 
