@@ -99,7 +99,7 @@ $(document).ready(function(e) {
 		
 		$("#ajax").html("");
 		$.post("dat-hang/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
-			if(data=='1') window.location = "<?php echo $link_step3;?>";
+			if(data!='') window.location = "<?php echo $link_step3;?>&order_id=" + data;
 			else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
 		});
 	});
