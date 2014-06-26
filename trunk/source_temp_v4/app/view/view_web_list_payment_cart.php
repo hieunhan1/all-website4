@@ -3,6 +3,7 @@
 <div class="viewpost">
 	<h1><?php echo $row_menu_one['title'];?></h1>
     <h2 style="color:#666">Bạn có <?php echo $all_sp;?> sản phẩm trong giỏ hàng</h2>
+    <div id="ajax" class="error"></div>
     <table width="100%" border="0" cellpadding="0" cellspacing="0" class="order_sp">
     	<tr bgcolor="#FFFFCC">
         	<th width="50px">&nbsp;</th>
@@ -22,7 +23,7 @@
 					<td align="center"><span class="order_sp_trash">x</span></td>
 					<td><a href="'.$row['link'].'" title="Xem lại sản phẩm">'.$row['name'].'</a></td>
 					<td align="right">'.$price_sp.'</td>
-					<td align="center"><input type="text" name="soluong" value="'.$row['soluong'].'" style="width:30px; padding:2px" /></td>
+					<td align="center" class="soluong"><input type="text" name="soluong" value="'.$row['soluong'].'" style="width:30px; padding:2px" /><input type="hidden" name="idSP" value="'.$row['id'].'" /></td>
 					<td align="right">'.number_format($row['thanhtien'],0,',','.').' VNĐ</td>
 				</tr>';
 			}
@@ -39,10 +40,28 @@
     </table>
     <?php if($tongtien!=0){?>
     <table width="38%" border="0" cellpadding="0" cellspacing="0" class="order_sp" style="float:right">
-    	<tr><td><span class="order_sp_btn" style="background-color:#EA9E4A">Cập nhật</span> <a href="gio-hang/?step=clear" id="order_sp_cancel">Xóa giỏ hàng</a></td></tr>
+    	<tr><td><span class="order_sp_btn"><a href="javascript:;" id="order_sp_update">Cập nhật</a></span> <a href="gio-hang/?step=clear" id="order_sp_cancel">Xóa giỏ hàng</a></td></tr>
         <tr><td style="font-weight:bold; font-size:150%; color:#F60">Tổng cộng: <?php echo number_format($tongtien,0,',','.').' VNĐ';?></td></tr>
         <tr><td><div class="order_sp_btn" style="background-color:#4DBE01; float:right"><a href="<?php echo $link_step1;?>">Bước kế tiếp &gt;&gt;</a></div></td></tr>
     </table>
     <?php }?>
     <div style="clear:both; height:1px"></div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#order_sp_update").click(function(){
+		var dayid = $("input[name=idSP]").serialize();
+		var daysoluong = $("input[name=soluong]").serialize();
+		$.ajax({ 	
+			url:"dat-hang/",
+			type:'post',
+			data:{dayid:dayid,daysoluong:daysoluong},
+			cache:false,
+			success: function(data) { 
+				if(data=='1') window.location.reload();
+				else $("#ajax").html('Không cập nhật giỏ hàng được. Vui lòng kiểm tra lại.');
+			}
+		});	
+	});
+});
+</script>

@@ -17,7 +17,7 @@
             </tr>
             <tr>
             	<td align="right">&nbsp;</td>
-                <td><div class="order_sp_btn" style="background-color:#EA9E4A; text-align:center"><a href="<?php echo $link_step2;?>" style="display:block; padding:0 50px">Tiếp tục</a></div></td>
+                <td><div class="order_sp_btn" style="background-color:#EA9E4A; text-align:center"><a href="<?php echo $link_step2;?>" style="padding:0 50px">Tiếp tục</a></div></td>
             </tr>
         </table>
         <script>

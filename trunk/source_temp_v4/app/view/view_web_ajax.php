@@ -39,6 +39,20 @@ if(isset($_POST['phi_quanhuyen'])){
 	}
 	echo number_format($_SESSION['order_sp_phigiao'],0,',','.').'-|-'.number_format($_SESSION['order_sp_thanhtien'],0,',','.');
 }
+if(isset($_POST['dayid']) && isset($_POST['daysoluong'])){
+	$dayid = str_replace('&','',$_POST['dayid']);
+	$dayid = explode('idSP=',$dayid);
+	
+	$daysoluong = str_replace('&','',$_POST['daysoluong']);
+	$daysoluong = explode('soluong=',$daysoluong);
+	
+	for($i=0; $i<count($dayid); $i++){
+		$id = $dayid[$i];
+		$soluong = $daysoluong[$i];
+		$_SESSION['list_order_sp_soluong'][$id] = $soluong; 
+	}
+	echo 1;
+}
 if(isset($_POST['insert_order_sp'])){
 	$email = check_email($_POST['insert_order_sp']);
 	$name = checks_text($_POST['name'],2);
