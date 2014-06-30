@@ -6,8 +6,8 @@
         </div>
         
         <div id="top_user">
-        	<span style="background-position:0px -88px"><a href="">Đăng ký</a></span>
-            <span style="background-position:0px -118px"><a href="">Đăng nhập</a></span>
+        	<span style="background-position:0px -88px"><a href="javascript:;">Đăng ký</a></span>
+            <span style="background-position:0px -118px"><a href="javascript:;">Đăng nhập</a></span>
         </div>
     </div>
 </div>
