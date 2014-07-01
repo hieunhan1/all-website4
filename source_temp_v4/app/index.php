@@ -5,31 +5,31 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 function tach_url($url, &$control, &$action, &$data){
 	$arr = explode("/", $url);
-	if($arr[0]==''){
+	if($arr[1]==''){
 		$control= CONS_DEFAULT_WEB_CONTROLLER;
 		$action	= CONS_DEFAULT_WEB_ACTION;
 		$data	= '';
 	}else{
-		if($arr[0] != CONS_DEFAULT_ADMIN_CONTROLLER){
-			$control = $arr[0];
-			if(preg_match('/.html/',$arr[1])){
+		if($arr[1] != CONS_DEFAULT_ADMIN_CONTROLLER){
+			$control = $arr[1];
+			if(preg_match('/.html/',$arr[2])){
 				$action = CONS_WEB_VIEW_DETAIL;
-				$data	= $arr[1];
+				$data	= $arr[2];
 				$data	= str_replace('.html','',$data);
 			}else{
 				$action = CONS_WEB_VIEW_MENU;
-				if($arr[1]=='') $data = 1; else $data = $arr[1];
+				if($arr[2]=='') $data = 1; else $data = $arr[2];
 			}
 		}else{
-			$control= $arr[0];
-			$action	= $arr[1];
-			$data	= $arr[2];
+			$control= $arr[1];
+			$action	= $arr[2];
+			$data	= $arr[3];
 		}
 	}
 }/*end tach_url*/
 
 $url = $_SERVER['REQUEST_URI'];
-$url = str_replace(CONS_BASE_DIR,'',$url);
+$url = str_replace(CONS_BASE_DIR,'',$url); /*upload host tắt str_replace này*/
 tach_url($url,$control,$action,$data);
 
 if($control != CONS_DEFAULT_ADMIN_CONTROLLER){
