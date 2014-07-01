@@ -76,7 +76,7 @@ class control_admin extends control_admin_form{
 		else return FALSE;
 	}
 	
-	public function select_from_all(&$currentpage, &$startrow, &$totalrows, &$url_search, $lang, $str_search=''){
+	public function select_from_all(&$currentpage, &$startrow, &$totalrows, &$url_search, $lang, $str_search='', $select_field=''){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");
 		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
@@ -86,7 +86,7 @@ class control_admin extends control_admin_form{
 			$url_search .= '&search='.$_GET['search'];
 		}
 		
-		$select = '`id`,`name`,`status`,`date_create`,`date_update`,`user_create`,`user_update`';
+		$select = '`id`,`name`,`status`,`date_create`,`date_update`,`user_create`,`user_update`'.$select_field;
 		$table  = $this->_action;
 		$where  = "`delete`=0 AND lang='{$lang}' ".$str_search;
 		$order_by = ' `id` DESC ';

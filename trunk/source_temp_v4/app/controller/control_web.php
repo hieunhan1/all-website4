@@ -178,8 +178,9 @@ class control_web{
 			$_SESSION['list_order_sp_name'][$id] = $row['name'];
 			$_SESSION['list_order_sp_giagoc'][$id] = $row['giagoc'];
 			$_SESSION['list_order_sp_giaban'][$id] = $row['giaban'];
-			$_SESSION['list_order_sp_soluong'][$id] += $soluong;
 			$_SESSION['list_order_sp_link'][$id] = $row['url'];
+			$_SESSION['list_order_sp_soluong'][$id] = $soluong;
+			
 			echo $this->order_sp_thanhtoan_link();
 			return true;
 		}else echo '0';
@@ -187,6 +188,7 @@ class control_web{
 	public function order_sp_view(){
 		$data = array();
 		$all_sp = count($_SESSION['list_order_sp_name']);
+		if(isset($_SESSION['list_order_sp_soluong'])) $_SESSION['list_order_sp_soluong'] = array_filter($_SESSION['list_order_sp_soluong'], 'strlen');
 		if ($all_sp>0){
 			reset($_SESSION['list_order_sp_name']);
 			reset($_SESSION['list_order_sp_giagoc']);
@@ -214,12 +216,12 @@ class control_web{
 		}else $data[] = array('name'=>'Bạn chưa đặt mua sản phẩm.');
 		return $data;
 	}
-	public function order_sp_trash(){
-		$id = $_POST["id"];
+	public function order_sp_trash($id){
 		unset($_SESSION['list_order_sp_name'][$id]);
 		unset($_SESSION['list_order_sp_giagoc'][$id]);
 		unset($_SESSION['list_order_sp_giaban'][$id]);
 		unset($_SESSION['list_order_sp_soluong'][$id]);
+		unset($_SESSION['list_order_sp_link'][$id]);
 	}
 	public function order_sp_edit_sl(){
 		$id = $_POST["id"];

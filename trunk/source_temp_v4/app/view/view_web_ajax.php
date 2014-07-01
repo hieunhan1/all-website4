@@ -51,7 +51,13 @@ if(isset($_POST['dayid']) && isset($_POST['daysoluong'])){
 		$soluong = $daysoluong[$i];
 		$_SESSION['list_order_sp_soluong'][$id] = $soluong; 
 	}
-	echo 1;
+	include_once('view_web_list_payment_cart.php');
+}
+if(isset($_POST['order_sp_trash'])){
+	$id = trim($_POST['order_sp_trash']);
+	if($id=='' || !is_numeric($id)) return false;
+	$this->order_sp_trash($id);
+	include_once('view_web_list_payment_cart.php');
 }
 if(isset($_POST['insert_order_sp'])){
 	$email = check_email($_POST['insert_order_sp']);
