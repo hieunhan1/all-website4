@@ -89,27 +89,42 @@ $(document).ready(function($){
 			alert("Số lượng phải là số và lớn hơn hoặc bằng 1");
 			return false;
 		}
-		$.post("dat-hang/",{order_sp:alias,soluong:soluong},function(data){
-			if(data!='0'){
-				$("#btn_thanhtoan").html(data);
-			}else{
-				alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
-				return false;
+		
+		$.ajax({ 	
+			url:"dat-hang/",
+			type:'post',
+			data:{order_sp:alias,soluong:soluong},
+			cache:false,
+			success: function(data) {
+				if(data!='0'){
+					$("#btn_thanhtoan").html(data);
+				}else{
+					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
+					return false;
+				}
 			}
 		});
+		
 		$(this).html("Đã đặt hàng");
 		$(this).css("background-color","#4DBE01");
 	});
 	
 	$(".product_item_order").click(function(){
+		var id = $(this).attr("idsp");
 		var alias = $(this).attr("alias");
 		var soluong = 1;
-		$.post("dat-hang/",{order_sp:alias,soluong:soluong},function(data){
-			if(data!='0'){
-				$("#btn_thanhtoan").html(data);
-			}else{
-				alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
-				return false;
+		$.ajax({ 	
+			url:"dat-hang/",
+			type:'post',
+			data:{order_sp:alias,soluong:soluong},
+			cache:false,
+			success: function(data) {
+				if(data!='0'){
+					$("#ajax_order_" + id).html(data);
+				}else{
+					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
+					return false;
+				}
 			}
 		});
 		$(this).html("Đã đặt hàng");
