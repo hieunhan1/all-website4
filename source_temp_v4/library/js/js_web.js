@@ -58,14 +58,14 @@ function isInt(num){
 }/*ham kiem tra so int*/
 
 $(document).ready(function($){
-	/*
+	
 	$("#txtSearch").keydown(function(e){
 		if(e.keyCode==13) SearchGoogle("txtSearch");
 	});
 	$("input[name=btnSearch]").click(function(){
 		SearchGoogle("txtSearch");
 	});
-	*/
+	
 	$("#nav li").hover(function(){
 		$(this).find('ul:first').css({visibility: 'visible', display: 'none'}).show(200);
 	}, function(){
