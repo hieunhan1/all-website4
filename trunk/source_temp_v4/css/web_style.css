@@ -29,6 +29,8 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 
 #header{height:75px}
 
+#logo{width:auto; float:left; margin-top:12px}
+
 #search{width:330px; height:29px; float:right; margin-top:20px; overflow:hidden; border:solid 1px #CCC}
 #search_txt{width:auto; float:left}
 #search_txt input{width:250px; height:29px; line-height:29px; color:#666; padding:0 15px; border:none; background:none}
