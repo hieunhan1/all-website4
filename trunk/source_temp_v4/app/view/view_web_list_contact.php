@@ -13,11 +13,11 @@ foreach($data as $row){
 <div class="viewpost">
 	<?php
     echo "<h1>{$row_config['name']}</h1>";
-	echo $row_config['contact_foo'];
-	?>
+	echo $row_config['contact_foo'].'<div style="clear:both; height:1px"></div><hr /><div style="clear:both; height:1px"></div>';
+	
+	echo '<h2 style="color:#00F">'.$row_menu_one['metaDescription'].'</h2>';
+    ?>
 </div>
-
-<hr />
 
 <div id="contact">
     <table width="88%" border="0" cellspacing="20" cellpadding="0" style="margin:auto">

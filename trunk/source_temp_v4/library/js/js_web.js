@@ -98,6 +98,7 @@ $(document).ready(function($){
 			success: function(data) {
 				if(data!='0'){
 					$("#btn_thanhtoan").html(data);
+					window.location = "gio-hang/";
 				}else{
 					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
 					return false;
@@ -121,6 +122,7 @@ $(document).ready(function($){
 			success: function(data) {
 				if(data!='0'){
 					$("#ajax_order_" + id).html(data);
+					window.location = "gio-hang/";
 				}else{
 					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
 					return false;
