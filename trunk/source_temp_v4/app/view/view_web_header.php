@@ -16,7 +16,7 @@
 	<div class="content">
 		<a href="/" title="ChamCham Mùng Chống Muỗi"><img id="logo" src="css/web_img/logo.png" alt="ChamCham Mùng Chống Muỗi" /></a>
     	<div id="search">
-        	<div id="search_txt"><input type="text" name="txtSearch" placeholder="Vui lòng nhập từ khóa."  /></div>
+        	<div id="search_txt"><input type="text" name="txtSearch" id="txtSearch" placeholder="Vui lòng nhập từ khóa."  /></div>
         	<div id="search_btn"><input type="button" name="btnSearch" value="Tìm"  /></div>
         </div>
     </div>
