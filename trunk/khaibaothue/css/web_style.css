@@ -44,8 +44,8 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 
 #home_service{clear:both}
 #home_service .item_home_service{width:285px; height:375px; float:left}
-#home_service .item_home_service_img{position:absolute; z-index:1}
-#home_service .item_home_service_img img{width:285px}
+#home_service .item_home_service_img{width:200px; margin:6px 40px 0 35px; overflow:hidden; position:absolute; z-index:1}
+#home_service .item_home_service_img img{height:175px}
 #home_service .item_home_service_info{width:255px; height:375px; line-height:20px; padding:0 15px; position:relative; z-index:2; background:url(web_img/bg-home-service.png)}
 #home_service h3{color:#FFF; text-transform:uppercase; padding:198px 0 10px 0}
 #home_service p{height:80px; overflow:hidden; color:#FFF; text-align:justify}
