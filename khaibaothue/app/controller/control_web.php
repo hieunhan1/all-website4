@@ -16,12 +16,12 @@ class control_web{
 		switch($type_id){
 			case 1 : $type_name = 'site';		break;
 			case 2 : $type_name = 'article';	$base_img_detail = CONS_IMAGES_ARTICLES; break;
-			case 3 : $type_name = 'product';	$base_img_detail = CONS_IMAGES_PRODUCTS; break;
+			//case 3 : $type_name = 'product';	$base_img_detail = CONS_IMAGES_PRODUCTS; break;
 			case 4 : $type_name = 'service';	$base_img_detail = CONS_IMAGES_SERVICES; break;
-			case 5 : $type_name = 'photo';		$base_img_detail = CONS_IMAGES_PHOTOS; break;
-			case 6 : $type_name = 'video';		$base_img_detail = CONS_IMAGES_VIDEOS; break;
-			case 8 : $type_name = 'payment';	break;
-			case 12 : $type_name = 'register';	break;
+			//case 5 : $type_name = 'photo';		$base_img_detail = CONS_IMAGES_PHOTOS; break;
+			//case 6 : $type_name = 'video';		$base_img_detail = CONS_IMAGES_VIDEOS; break;
+			//case 8 : $type_name = 'payment';	break;
+			//case 12 : $type_name = 'register';	break;
 			case 13 : $type_name = 'contact';	break;
 			default : $type_name = 'site';
 		}
@@ -46,7 +46,7 @@ class control_web{
 	}
 	
 	public function home_page($lang, &$site_title, &$site_des, &$site_key, &$site_url, &$site_image, &$type_name){
-		$row = $this->_model->_web_menu_type(1);
+		$row = $this->_model->_web_menu_type(1); /*type_home*/
 		$site_title	= $row['title'];
 		$site_des	= $row['metaDescription'];
 		$site_key	= $row['metaKeyword'];
@@ -54,6 +54,13 @@ class control_web{
 		if($row['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT; else $site_image = CONS_IMAGES_CATALOG.$row['url_hinh'];
 		$type_name	= 'site';
 		$idMenu = $row['id'];
+		
+		$row = $this->_model->_web_menu_type(4); /*type_service*/
+		$id_menu_service = $row['id'];
+		
+		$row = $this->_model->_web_menu_type(2,1); /*info_home*/
+		$id_menu_info = $row['id'];
+		
 		include_once('view/view_web_home.php');
 	}
 	
