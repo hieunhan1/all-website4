@@ -2,7 +2,7 @@
 	<div class="content">
 		<a href="/" title="Dịch vụ kế toán - Khai báo thuế An Phát"><img id="logo" src="css/web_img/logo.gif" alt="Dịch vụ kế toán - Khai báo thuế An Phát" /></a>
         
-        <h2 id="slogan">Dịch vụ kế toán - Khai báo thuế An Phát</h2>
+        <h2 id="slogan">Dịch vụ kế toán - Khai báo thuế <span>An Phát</span></h2>
         
         <div id="support">
         	<span style="font-weight:bold; background-position:0px 2px"><?php echo $row_config['tel']; ?></span>
