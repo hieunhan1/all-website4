@@ -38,6 +38,13 @@ define('CONS_ADMIN_RESET', 'reset');
 define('CONS_ADMIN_CSS_IMG', 'css/admin_img/');
 define('CONS_ADMIN_PER_PAGE', 30);
 
+/*OTHER*/
+define('CONS_AJAX_NAME', 'ajax');
+define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@khaibaothue.net');
+define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
+define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');
+define('CONS_RECEIVE_MAIL_NAME', 'Admin');
+
 /*ERROR*/
 define('CONS_400','/400');
 define('CONS_404','/404');

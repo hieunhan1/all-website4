@@ -147,6 +147,49 @@ class model_web extends db{
 	}
 	/*end detail*/
 	
+	/*contact*/
+	public function _web_contact_insert($name,$email,$phone,$diachi,$message,$lang='vi'){
+		$date = $this->_date_time_vietnam();
+		$sql = "INSERT INTO `web_contact` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$diachi}', '{$message}', '{$lang}', '0', '{$date}', NULL, 'khachhang', NULL, '0');";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $this->db->insert_id;
+	}
+	public function _web_contact_detail($id){
+		$sql = "SELECT * FROM `web_contact` WHERE `delete`=0 AND id='{$id}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	public function _web_contact_update($id){
+		$date = $this->_date_time_vietnam();
+		$sql = "UPDATE `web_contact` SET status=1, date_update='{$date}' WHERE `delete`=0 AND id='{$id}'";
+		if(!$result = $this->db->query($sql)) return FALSE;
+	}
+	public function _sendmail($title,$subject,$body,$add_address,$add_cc='',$add_bcc=''){
+		include_once('class.phpmailer.php');
+		$mail = new PHPMailer();
+		$mail->IsSMTP(); // Gọi đến class xử lý SMTP
+		$mail->Host       = "localhost"; // tên SMTP server
+		$mail->SMTPDebug  = 2; // enables SMTP debug information (for testing): 1 = errors and messages, 2 = messages only
+		$mail->SMTPAuth   = true; // Sử dụng đăng nhập vào account
+		$mail->Host       = "localhost"; // Thiết lập thông tin của SMPT
+		$mail->Port       = 25; // Thiết lập cổng gửi email của máy
+		$mail->Username   = CONS_SEND_MAIL_ACCOUNT; // SMTP account username
+		$mail->Password   = CONS_SEND_MAIL_PASSWORD; // SMTP account password
+		$mail->IsHTML(true);
+		$mail->SetFrom(CONS_SEND_MAIL_ACCOUNT,$title); //Thiet lap thong tin nguoi gui va email nguoi gui
+		foreach($add_address as $row) $mail->AddAddress($row['email'],$row['name']); //Thiết lập thông tin người nhận
+		if($add_cc!='') foreach($add_cc as $row) $mail->AddCC($row['email'],$row['name']);
+		if($add_bcc!='') foreach($add_bcc as $row) $mail->AddBCC($row['email'],$row['name']);
+		//$mail->AddReplyTo("contact@domain.com","Name"); //Thiết lập email nhận email hồi đáp, nếu người nhận nhấn nút Reply
+		$mail->CharSet = "utf-8";
+		$mail->Subject = $subject; //Thiết lập tiêu đề
+		$mail->Body = $body; //Thiết lập nội dung chính của email
+		
+		if($mail->Send()) return true;
+	}
+	/*end contact*/
+	
 	/*other post*/
 	public function _other_post_article($id,$idMenu,$limit=5){
 		$sql = "SELECT `name`,`url`,`url_hinh` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
@@ -210,5 +253,12 @@ class model_web extends db{
 		return $data;
 	}
 	/*end order*/
+	
+	/*function*/
+	public function _date_time_vietnam(){
+		$timezone = +7; //(GMT +7:00)  
+        return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
+	}
+	/*end function*/
 	
 }//class

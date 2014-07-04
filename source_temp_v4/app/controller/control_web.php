@@ -119,6 +119,12 @@ class control_web{
 				/*web config*/
 				$row_config = $this->web_config($lang);
 				$site_name = $row_config['name'];
+			}else if($alias_menu==CONS_AJAX_NAME){
+				/*web config*/
+				$row_config = $this->web_config($lang);
+				
+				include_once('view/view_web_ajax.php');
+				return true;
 			}else{
 				header('location: '.CONS_BASE_URL.CONS_400);
 				return false;
