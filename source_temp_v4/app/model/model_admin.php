@@ -28,14 +28,14 @@ class model_admin extends db{
 	
 	public function _change_password($u,$p){
 		$p = md5($p);
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `web_users` SET `password`='{$p}',`date_update`='{$date}' WHERE `username`='{$u}' ";
 		$this->db->query($sql);
 	}
 	
 	public function _reset_password($user,$id_user_reset,$pass_default){
 		$p = md5($pass_default);
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `web_users` SET `password`='{$p}',`date_update`='{$date}',`user_update`='{$user}' WHERE `id`='{$id_user_reset}' ";
 		$this->db->query($sql);
 	}
@@ -113,7 +113,7 @@ class model_admin extends db{
 	}
 	
 	public function _create($table, $fields, $values, $user){
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$toal_field = count($fields);
 		
 		for($i=0; $i < $toal_field-1; $i++){
@@ -131,7 +131,7 @@ class model_admin extends db{
 	}
 	
 	public function _update($table, $fields, $values, $user, $id){
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$toal_field = count($fields);
 		
 		for($i=0; $i < $toal_field-1; $i++){
@@ -144,13 +144,13 @@ class model_admin extends db{
 	}
 	
 	public function _delete_one($table, $id, $user){
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `{$table}` SET `delete`=1, user_update='{$user}', date_update='{$date}' WHERE `id`='{$id}' ";
 		$this->db->query($sql);
 	}
 	
 	public function _status_one($table, $id, $status, $user){
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `{$table}` SET `status`='{$status}', user_update='{$user}', date_update='{$date}' WHERE `id`='{$id}' ";
 		$this->db->query($sql);
 	}
@@ -238,4 +238,11 @@ class model_admin extends db{
 		return $data;
 	}
 	/*end order*/
+	
+	/*function*/
+	public function _date_time_vietnam(){
+		$timezone = +7; //(GMT +7:00)  
+        return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
+	}
+	/*end function*/
 }//class

@@ -57,7 +57,7 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 .product_list .product_item .product_item_img_bg .product_detail_btn a{color:#255C01; font-weight:bold; font-size:140%}
 .product_list .product_item .product_item_img{height:215px; overflow:hidden; padding:5px 0; text-align:center; position:relative; z-index:1}
 .product_list .product_item .product_item_img img{height:215px}
-.product_list .product_item .product_item_name{font-size:100%; text-align:center; margin-bottom:10px; line-height:20px; height:40px; overflow:hidden}
+.product_list .product_item .product_item_name{font-size:100%; text-align:center; margin-bottom:10px; padding:0 5px; line-height:20px; height:40px; overflow:hidden}
 .product_list .product_item .product_item_order{width:auto; float:left; font-weight:bold; color:#FFF; margin-left:5px; padding:4px 10px; background-color:#EA9E4A; cursor:pointer}
 .product_list .product_item .product_item_order:hover{background-color:#EA8005}
 .product_list .product_item .product_item_giagoc{width:90px; float:right; text-align:right; margin-right:5px; color:#666; text-decoration:line-through}

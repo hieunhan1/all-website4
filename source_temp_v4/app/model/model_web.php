@@ -229,13 +229,13 @@ class model_web extends db{
 	}
 	
 	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
-		$date = date('Y-m-d H:i:s');
-		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '0', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		$date = $this->_date_time_vietnam();
+		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
 	public function _web_product_order_detail_insert($name,$product_id,$order_id,$soluong,$dongia,$giamgia,$thanhtien){
-		$date = date('Y-m-d H:i:s');
+		$date = $this->_date_time_vietnam();
 		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$product_id}', '{$order_id}', '{$soluong}', '{$dongia}', '{$giamgia}', '{$thanhtien}', 'vi', '1', '{$date}', NULL, 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 	}
@@ -251,6 +251,10 @@ class model_web extends db{
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
 		return $data;
+	}
+	public function _web_product_order_update_status($id){
+		$sql = "UPDATE `web_product_order` SET status=0 WHERE id='{$id}' ";
+		if(!$result = $this->db->query($sql)) return FALSE;
 	}
 	/*end order*/
 	
