@@ -31,6 +31,7 @@ echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
 	//status
 	$arr = array();
+	$arr[] = array('id'=>'3', 'name'=>'Chưa gửi mail');
 	$arr[] = array('id'=>'0', 'name'=>'Chưa giao');
 	$arr[] = array('id'=>'2', 'name'=>'Đã xem');
 	$arr[] = array('id'=>'1', 'name'=>'Đã giao');
