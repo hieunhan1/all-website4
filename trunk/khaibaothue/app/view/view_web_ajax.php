@@ -38,3 +38,37 @@ if(isset($_GET['id_contact'])){
 	}
 }
 /*end contact*/
+
+/*sale page*/
+if(isset($_GET['form_register'])){
+	include_once('view/view_web_sale_page_register.php');
+}
+
+if(isset($_GET['register'])){
+	$name = trim($_GET['register']);
+	$email = trim($_GET['email']);
+	$phone = trim($_GET['phone']);
+	$address = trim($_GET['address']);
+	$service_id = trim($_GET['service_id']);
+	$service_name = trim($_GET['service_name']);
+	
+	if($name!='' && $email!='' && $phone!='' && $address!='' && $service_id!=''){
+		$this->_model->_web_register_insert($name,$email,$phone,$address,$service_id,$service_name);
+		
+		$title = "Dịch vụ AN PHÁT";
+		$subject = strtolower("Đăng ký {$service_name}");
+		$body = '<div style="line-height:18px; color:#333; font-size:12pt">
+			Thông báo bạn đăng ký thành công
+		</div>';
+		$add_address = array();
+		$add_address[] = array('email'=>$email,'name'=>$name);
+		$add_bcc = array();
+		$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Admin');
+		ob_start();
+		$this->_model->_sendmail($title,$subject,$body,$add_address,'',$add_bcc);
+		ob_get_clean();
+		
+		echo 1;
+	}
+}
+/*end sale page*/

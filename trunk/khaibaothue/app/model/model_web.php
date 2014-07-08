@@ -179,6 +179,12 @@ class model_web extends db{
 	}
 	/*end other post*/
 	
+	public function _web_register_insert($name,$email,$phone,$address,$service_id,$service_name){
+		$date = $this->_date_time_vietnam();
+		$sql = "INSERT INTO `web_register` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$service_id}', '{$service_name}', 'vi', '0', '{$date}', NULL, 'khachhang', NULL, '0');";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+	}
+	
 	/*function*/
 	public function _date_time_vietnam(){
 		$timezone = +7; //(GMT +7:00)  
