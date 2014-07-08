@@ -165,6 +165,13 @@ class control_web{
 					if($row_detail['url_hinh']!='') $site_image = $base_img_detail.$row_detail['url_hinh'];
 					else $site_image = CONS_IMAGE_DEFAULT;
 					
+					//type_id=4  sale page
+					if($type_id==4){
+						$tab_head = $this->tab_head($site_name,$site_title,$site_des,$site_key,$site_url,$site_image,$type_name);
+						include_once('view/view_web_sale_page.php');
+						return true;
+					}
+					
 					include_once("view/{$name_view_detail}.php");
 				}else{
 					header('location: '.CONS_BASE_URL.CONS_400);
