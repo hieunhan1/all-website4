@@ -112,8 +112,8 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 
 /*menu*/
 #menu{height:30px; background-color:#00A2DF}
-#icon_home{width:16px; height:15px; padding:3px 18px 4px 0; background:url(web_img/icon-all.png) no-repeat top left; background-position:0px 8px}
-#icon_home a{width:16px; height:15px; display:block}
+#icon_home{width:16px; height:30px; background:url(web_img/icon-all.png) no-repeat top left; background-position:0px 8px}
+#icon_home a{width:16px; height:30px; display:block}
 
 #nav, #nav ul {list-style:none; position:relative; z-index:1000}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none}
