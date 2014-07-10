@@ -142,7 +142,7 @@ $row = $this->_model->_view_product_order($order_id);
 						</table>
 						<table width="100%" border="1" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; border-collapse:collapse">
 							<tr bgcolor="#CCCCCC">
-								<th width="145" align="left">Tên sản phẩm</th>
+								<th align="left">Tên sản phẩm</th>
 								<th align="right">Giá</th>
 								<th>Số lượng</th>
 								<th align="right">Thành tiền</th>
