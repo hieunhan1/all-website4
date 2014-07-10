@@ -49,19 +49,16 @@ $row = $this->_model->_view_product_order($order_id);
                 <?php
 				$data = $this->_model->_view_product_order_detail($row['id']);
                 foreach($data as $row_dt){
-					
-                    echo '<tr>
+                    $view_str .= '<tr>
                         <td>'.$row_dt['name'].'</td>
                         <td align="right" valign="top">'.number_format($row_dt['dongia'],0,',','.').'</td>
                         <td align="center" valign="top">'.$row_dt['soluong'].'</td>
                         <td align="right" valign="top">'.number_format($row_dt['tien'],0,',','.').'</td>
                     </tr>';
                 }
-                
-			
-                echo '<tr>
+                $view_str .= '<tr>
                     <th colspan="2" align="right">Tổng số lượng</th>
-                    <th>'.$row['tongsoluong'].'</th><th>&nbsp;</th>
+                    <th colspan="2">'.$row['tongsoluong'].'</th>
                 </tr>
                 <tr>
                     <th colspan="2" align="right">Tổng cộng</th>
@@ -75,6 +72,7 @@ $row = $this->_model->_view_product_order($order_id);
                     <th colspan="2" align="right">Thành tiền</th>
                     <th colspan="2" align="right"><span id="thanhtien">'.number_format($row['thanhtien'],0,',','.').'</span> VNĐ</th>
                 </tr>';
+				echo $view_str;
                 ?>
             </table>
             <?php
@@ -83,21 +81,81 @@ $row = $this->_model->_view_product_order($order_id);
 
 			if($row['status']==3){
 				$title = 'Mùng chống muỗi ChamCham';
-				$subject = 'No-reply | Thông tin đặt hàng mùng chống muỗi ID: '.$row['id'];
-				$body = '<div style="line-height:150%; font-size:13px; color:#5C5C5C">
-					<h2 style="font-size:150%; color:#666; margin-bottom:30px">Thông tin đặt hàng ID: '.$row['id'].'</h2>
-					<p><b>GIAO HÀNG ĐẾN</b></p>
-					<p style="margin-left:35px; margin-bottom:30px">
-						Người nhận: '.$row['name'].'<br />
-						Địa chỉ: '.$row['diachi'].'<br />
-						Điện thoại: '.$row['phone'].'<br />
-						Email: '.$row['email'].'<br />
-						Ngày đặt: '.date('H:i d/m/Y',strtotime($row['date_create'])).'
-					</p>
-					<p><b>CHI TIẾT ĐẶT HÀNG</b></p>
-					<div style="width:340px; line-height:200%; font-size:10px">'.$ct_donhang.'</div>
-					<p><em>Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$row_config['tel'].'</b> hoặc email: <b>'.$row_config['email'].'</b></em> </p>
-					<p>Trân trọng,</p>
+				$subject = 'No-reply | Mã số đơn hàng mùng chống muỗi: '.$row['id'];
+				$body = '<div style="width:770px; line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; margin:20px auto">
+					<p style="color:#F00; text-align:center">Neu khong doc duoc tieng Viet, vui long chon menu View / Encoding -&gt; Chon charset la UTF-8.</p>
+					
+					<div style="width:770px; padding:5px; border:solid 5px #3C9401">
+						<h3>Kính chào Quý khách!</h3>
+						<p>Cám ơn Quý khách đã đặt hàng tại Mungchongmuoi.com.vn</p>
+						<p>Đơn hàng của Quý khách có mã số <b style="color:#00F">'.$row['id'].'</b>, các thông tin chi tiết về đơn hàng được liệt kê dưới đây:</p>
+						
+						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#3C9401">Thông tin đơn hàng</div>
+						<p style="padding-left:5px; font-weight:bold">Địa chỉ email: '.$row['email'].'</p>
+						<table width="100%" border="0" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif">
+							<tr>
+							  <th colspan="2" align="left">Thông tin người thanh toán</th>
+							  <th colspan="2" align="left">Thông tin người nhận hàng</th>
+							</tr>
+							<tr>
+							  <td width="70">Họ tên:</td>
+								<td>'.$row['name'].'</td>
+							  <td width="70">Họ tên:</td>
+								<td>'.$row['name'].'</td>
+							</tr>
+							<tr>
+							  <td valign="top">Địa chỉ:</td>
+							  <td>'.$row['diachi'].'</td>
+							  <td valign="top">Địa chỉ:</td>
+							  <td>'.$row['diachi'].'</td>
+							</tr>
+							<tr>
+								<td>Điện thoại:</td>
+								<td>'.$row['phone'].'</td>
+								<td>Điện thoại:</td>
+								<td>'.$row['phone'].'</td>
+							</tr>
+						</table>
+						
+						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#3C9401">Chi tiết đơn hàng</div>
+						<table width="100%" border="0" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif">
+							<tr>
+								<td><b>Mã số đơn hàng</b></td>
+								<td><b style="color:#00F">'.$row['id'].'</b></td>
+							</tr>
+							<tr>
+								<td>Ngày đặt hàng</td>
+								<td>'.date('H:i d/m/Y',strtotime($row['date_create'])).'</td>
+							</tr>
+							<tr>
+								<td>Phương thức thanh toán</td>
+								<td>Thanh toán bằng tiền mặt</td>
+							</tr>
+							<tr>
+								<td>Phương thức giao hàng</td>
+								<td>Giao hàng tận nơi trong nội thành</td>
+							</tr>
+							<tr>
+								<td>Ghi chú phương thức thanh toán</td>
+								<td>Nhân viên giao hàng và thu tiền</td>
+							</tr>	
+						</table>
+						<table width="100%" border="1" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; border-collapse:collapse">
+							<tr bgcolor="#CCCCCC">
+								<th width="145" align="left">Tên sản phẩm</th>
+								<th align="right">Giá</th>
+								<th>Số lượng</th>
+								<th align="right">Thành tiền</th>
+							</tr>
+							'.$view_str.'
+						</table>
+						
+						<p style="font-weight:bold">Phương thức thanh toán "Bằng tiền mặt".</p>
+						<p><b>Nhân viên giao nhận</b> sẽ liên hệ với quí khách để hẹn lịch giao hàng. Trong trường hợp quí khách đi vắng, vui lòng uỷ thác cho người khác nhận hàng và thanh toán tiền thay.</p>
+						<p>Cảm ơn qúy khách và kính chúc mọi sự tốt lành!<br />
+						<span style="font-weight:bold; color:#307601">Mungchongmuoi.com.vn - ChamCham mùng chống muỗi</span></p>
+						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$row_config['tel'].'</b> hoặc email: <b>'.$row_config['email'].'</b></p>
+					</div>
 				</div>';
 				
 				$add_address = array();
