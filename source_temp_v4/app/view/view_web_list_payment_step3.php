@@ -102,13 +102,15 @@ $row = $this->_model->_view_product_order($order_id);
 				
 				$add_address = array();
 				$add_address[] = array('email'=>$row['email'],'name'=>$row['name']);
-				
+				$add_bcc = array();
+				$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
+				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				/*cap nhat trang thai*/
 				$this->_model->_web_product_order_update_status($row['id']);
 				
 				/*gui mail*/
 				ob_start();
-				$this->_model->_sendmail($title,$subject,$body,$add_address);
+				$this->_model->_sendmail($title,$subject,$body,$add_address,'',$add_bcc);
 				ob_get_clean();
 			}
 			?>

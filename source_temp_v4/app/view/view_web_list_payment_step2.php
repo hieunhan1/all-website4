@@ -55,12 +55,12 @@
 $(document).ready(function(e) {
 	/*kiem tra phi gh*/
 	var code = $("select[name=tinh_thanh]").val();
-	$.post("dat-hang/",{data_quanhuyen:code},function(data){
+	$.post("ajax/",{data_quanhuyen:code},function(data){
 		$("select[name=quan_huyen]").html(data);
 	});
 	$("select[name=tinh_thanh]").change(function(){
 		var code = $(this).val();
-		$.post("dat-hang/",{data_quanhuyen:code},function(data){
+		$.post("ajax/",{data_quanhuyen:code},function(data){
 			$("select[name=quan_huyen]").html(data);
 		});
 	});
@@ -68,7 +68,7 @@ $(document).ready(function(e) {
 		var code = $(this).val();
 		$("#order_sp_info_loading").show();
 		$.ajax({
-			url:"dat-hang/",
+			url:"ajax/",
 			type:"POST", /* dataType:"json", //xml, html, json, text */
 			data:{phi_quanhuyen:code},
 			cache:false,
@@ -98,7 +98,7 @@ $(document).ready(function(e) {
 		if(hoten==false || dienthoai==false || tinh_thanh==false || quan_huyen==false || diachi==false) return false;
 		
 		$("#ajax").html("");
-		$.post("dat-hang/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
+		$.post("ajax/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
 			if(data!='') window.location = "<?php echo $link_step3;?>&order_id=" + data;
 			else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
 		});

@@ -91,7 +91,7 @@ $(document).ready(function($){
 		}
 		
 		$.ajax({ 	
-			url:"dat-hang/",
+			url:"ajax/",
 			type:'post',
 			data:{order_sp:alias,soluong:soluong},
 			cache:false,
@@ -115,7 +115,7 @@ $(document).ready(function($){
 		var alias = $(this).attr("alias");
 		var soluong = 1;
 		$.ajax({ 	
-			url:"dat-hang/",
+			url:"ajax/",
 			type:'post',
 			data:{order_sp:alias,soluong:soluong},
 			cache:false,

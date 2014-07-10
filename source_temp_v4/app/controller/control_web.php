@@ -123,6 +123,7 @@ class control_web{
 				/*web config*/
 				$row_config = $this->web_config($lang);
 				
+				include_once("control_checks_data.php");
 				include_once('view/view_web_ajax.php');
 				return true;
 			}else{
@@ -143,11 +144,6 @@ class control_web{
 				
 				$file_view_list = "view/{$name_view_list}.php";
 				if(file_exists($file_view_list)) include_once($file_view_list);
-				else{
-					include_once("control_checks_data.php"); /*cac ham kiem tra du lieu*/
-					include_once("view/view_web_ajax.php");
-					return true;
-				}
 			}elseif($this->_action == CONS_WEB_VIEW_DETAIL){
 				$alias_detail = $this->_data;
 				if($row_detail=$this->_model->$name_model_detail($alias_detail)){
