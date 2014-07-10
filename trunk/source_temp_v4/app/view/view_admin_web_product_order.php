@@ -17,7 +17,7 @@ include_once('view/view_admin_search.php');
         <?php
 		$i = 0;
 		$startrow = 0;
-		$data = $this->select_from_all($currentpage,$startrow,$totalrows,$url_search,$lang,$str_search);
+		$data = $this->select_from_all($currentpage,$startrow,$totalrows,$url_search,$lang,$str_search,'','`date_create` DESC,');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>

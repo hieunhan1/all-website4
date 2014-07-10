@@ -29,7 +29,7 @@ function tach_url($url, &$control, &$action, &$data){
 }/*end tach_url*/
 
 $url = $_SERVER['REQUEST_URI'];
-//$url = str_replace(CONS_BASE_DIR,'',$url); /*upload host tắt str_replace này*/
+$url = str_replace(CONS_BASE_DIR,'',$url); /*upload host tắt str_replace này*/
 tach_url($url,$control,$action,$data);
 
 if($control != CONS_DEFAULT_ADMIN_CONTROLLER){

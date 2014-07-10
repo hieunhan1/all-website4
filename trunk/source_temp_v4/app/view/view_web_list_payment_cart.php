@@ -59,7 +59,7 @@ $(document).ready(function(e) {
 		var daysoluong = $("input[name=soluong]").serialize();
 		$("#loading").show();
 		$.ajax({ 	
-			url:"dat-hang/",
+			url:"ajax/",
 			type:'post',
 			data:{dayid:dayid,daysoluong:daysoluong},
 			cache:false,
@@ -83,7 +83,7 @@ $(document).ready(function(e) {
 		var id = $(this).attr("idsp");
 		$("#loading").show();
 		$.ajax({ 	
-			url:"dat-hang/",
+			url:"ajax/",
 			type:'post',
 			data:{order_sp_trash:id},
 			cache:false,
