@@ -240,6 +240,11 @@ class control_admin extends control_admin_form{
 		}
 		/*end thông tin tài khoản*/
 		
+		if(isset($_GET['ajax'])){
+			include_once('view/view_admin_ajax.php');
+			return TRUE;
+		}
+		
 		include_once('view/view_admin.php'); /*view*/
 	}
 	
