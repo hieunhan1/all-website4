@@ -9,7 +9,7 @@
 <div id="home_service">
 	<?php
 	$i=0;
-    $data = $this->_model->_home_service($id_menu_service);
+    $data = $this->_model->_home_service();
 	foreach($data as $row){
 		$i++;
 		if($i==1){

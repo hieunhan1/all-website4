@@ -55,8 +55,8 @@ class control_web{
 		$type_name	= 'site';
 		$idMenu = $row['id'];
 		
-		$row = $this->_model->_web_menu_type(4); /*type_service*/
-		$id_menu_service = $row['id'];
+		//$row = $this->_model->_web_menu_type(4); /*type_service*/
+		//$id_menu_service = $row['id'];
 		
 		$row = $this->_model->_web_menu_type(2,1); /*info_home*/
 		$id_menu_info = $row['id'];

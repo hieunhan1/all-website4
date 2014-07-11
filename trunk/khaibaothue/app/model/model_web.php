@@ -86,8 +86,8 @@ class model_web extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
-	public function _home_service($idMenu,$limit=3){
-		$sql = "SELECT `name`,`url`,`url_hinh`,`metaDescription` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+	public function _home_service($limit=3){
+		$sql = "SELECT `name`,`url`,`url_hinh`,`metaDescription` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `other`=1 ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
