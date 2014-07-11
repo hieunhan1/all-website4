@@ -75,5 +75,28 @@ function SetFileField(fileUrl, data){
     </div>
 </div>
 
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $.ajax({ 	
+		url:"cp_admin/",
+		type:'get',
+		data:{ajax:"ajax_number_khachhang",t:"web_product_order"},
+		cache:false,
+		success: function(data) {
+			$("#web_product_order").html(" (" + data + ")");
+		}
+	});
+	$.ajax({ 	
+		url:"cp_admin/",
+		type:'get',
+		data:{ajax:"ajax_number_khachhang",t:"web_contact"},
+		cache:false,
+		success: function(data) {
+			$("#web_contact").html(" (" + data + ")");
+		}
+	});
+});
+</script>
+
 </body>
 </html>

@@ -239,6 +239,15 @@ class model_admin extends db{
 	}
 	/*end order*/
 	
+	/*ajax*/
+	public function _ajax_number_khachhang($table){
+		$sql = "SELECT count(*) FROM {$table} WHERE `delete`=0 AND status=0";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$row = $result->fetch_row();
+		return $row[0];
+	}
+	/*end ajax*/
+	
 	/*function*/
 	public function _date_time_vietnam(){
 		$timezone = +7; //(GMT +7:00)  
