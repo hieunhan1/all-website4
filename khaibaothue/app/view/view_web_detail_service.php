@@ -13,7 +13,7 @@ foreach($data as $row){
 <div class="viewpost">
 	<?php
     echo "<h1>{$row_detail['name']}</h1>";
-	echo '<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i', strtotime($row_detail['ngay_dang'])).'</div>';
+	//echo '<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i', strtotime($row_detail['ngay_dang'])).'</div>';
 	echo $row_detail['content'];
 	?>
 </div>
