@@ -227,7 +227,12 @@ class model_web extends db{
 		foreach ($result as $row) $data[] = $row;
 		return $data;
 	}
-	
+	public function _web_product_order_email($email){
+		$sql = "SELECT `name`,`phone`,`tinh_thanh`,`quan_huyen`,`diachi` FROM `web_product_order` WHERE `delete`=0 AND email='{$email}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
 	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
 		$date = $this->_date_time_vietnam();
 		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
