@@ -4,7 +4,7 @@
 <base href="<?php echo CONS_BASE_URL; ?>/" />
 <?php echo $tab_head;?>
 <meta name="google-site-verification" content="cm0f4CDT-oKWl5mL6O8ehGzsKSmFCf2tWmN81cbXzps" />
-<link rel="stylesheet" type="text/css" href="css/web_style.css"/>
+<link rel="stylesheet" type="text/css" href="css/web_style.css" media="screen" />
 <script type="text/javascript" src="library/js/jquery.min.js"></script>
 </head>
 

@@ -158,7 +158,7 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 .contact_btn:hover{background-color:#EA8005}
 
 /*menu*/
-#menu{height:32px; background-color:#3C9401}
+#menu{clear:both; display:block; width:100%; height:32px; background-color:#3C9401}
 #icon_home{width:16px; height:15px; padding:8px 20px 8px 0; background:url(web_img/icon-all.png) no-repeat top left; background-position:0px 8px}
 #icon_home a{width:16px; height:15px; display:block}
 
