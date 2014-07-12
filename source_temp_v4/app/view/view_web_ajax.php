@@ -12,6 +12,7 @@ if(isset($_POST['order_sp'])){
 /*dat hang & check phi giao hang*/
 if(isset($_POST['data_quanhuyen'])){
 	$id = $_POST['data_quanhuyen'];
+	$ma_quan_huyen = $_POST['ma_quan_huyen'];
 	$str = '<option value="">Chọn Quận - Huyện</option>';
 	
 	if($id!=''){
@@ -20,7 +21,10 @@ if(isset($_POST['data_quanhuyen'])){
 		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
 		
 		$data = $this->_model->_web_ds_quanhuyen($id);
-		foreach($data as $row) $str .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+		foreach($data as $row){
+			if($row['id']!=$ma_quan_huyen) $str .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+			else $str .= '<option value="'.$row['id'].'" selected="selected">'.$row['name'].'</option>';
+		}
 	}else{
 		$_SESSION['order_sp_phigiao'] = $_SESSION['phigiaohang_tinhthanh'] = 0;
 		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
