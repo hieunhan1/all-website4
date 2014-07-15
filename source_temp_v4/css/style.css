@@ -1,0 +1,18 @@
+/* CSS Document */
+*{margin:0; padding:0}
+body{font-size:13px; font-family:Arial, Helvetica, sans-serif; color:#4A4A4A}
+input, textarea {font-family:Arial, Helvetica, sans-serif}
+img{border:0}
+a:link,a:visited,a:active{color:#0470E6; text-decoration:none}
+a:hover{color:#0359B8; text-decoration:underline}
+hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
+
+/*
+@font-face {
+    font-family: 'UVNBayBuom';
+    src: url('fonts/UVNBayBuomHep_R.eot?');
+    src: url('fonts/UVNBayBuomHep_R.woff') format('woff'),
+     url('fonts/UVNBayBuomHep_R.ttf') format('truetype'),
+     url('fonts/UVNBayBuomHep_R.svg') format('svg');
+}
+*/
