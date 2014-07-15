@@ -127,7 +127,7 @@ class control_web{
 				include_once('view/view_web_ajax.php');
 				return true;
 			}else{
-				header('location: '.CONS_BASE_URL.CONS_400);
+				//header('location: '.CONS_BASE_URL.CONS_400);
 				return false;
 			}
 			

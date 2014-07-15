@@ -4,7 +4,16 @@
 <base href="<?php echo CONS_BASE_URL; ?>/" />
 <?php echo $tab_head;?>
 <meta name="google-site-verification" content="cm0f4CDT-oKWl5mL6O8ehGzsKSmFCf2tWmN81cbXzps" />
-<link rel="stylesheet" type="text/css" href="css/web_style.css" media="screen" />
+<!--Insert CSS-->
+<link rel="stylesheet" type="text/css" href="css/style_default.css" media="screen,handheld">
+<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (min-width: 18.750em) and (max-width: 34.375em)">
+<link rel="stylesheet" type="text/css" href="css/tablet.css" media="screen and (min-width: 34.375em) and (max-width: 48em)">
+<link rel="stylesheet" type="text/css" href="css/desktop.css" media="screen and (min-width: 48em)">
+<!--IE9 không hỗ trợ query media, do vậy ta sẽ dùng respond.js để bật Responsive cho IE9-->
+<!--[if lt IE 9]> 
+  <script src="css/html5-3.6-respond-1.1.0.min.js"></script> 
+<![endif]-->
+
 <script type="text/javascript" src="library/js/jquery.min.js"></script>
 </head>
 
