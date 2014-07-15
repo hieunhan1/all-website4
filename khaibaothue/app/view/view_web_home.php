@@ -51,7 +51,7 @@
     <?php
     $data = $this->_model->_web_slider_banner(3,$lang);
 	foreach($data as $row){
-		echo '<li><a href="'.$row['url'].'" target="" title="'.$row['name'].'"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['url_hinh'].'" alt="'.$row['name'].'" /></a></li>';
+		echo '<li><a href="'.$row['url'].'" target="_blank" title="'.$row['name'].'"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['url_hinh'].'" alt="'.$row['name'].'" /></a></li>';
 	}
 	?>
     
