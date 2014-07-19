@@ -39,7 +39,7 @@
 <div id="home_info">
 	<div class="title_home_page">Thông tin kế toán - Thuế</div>
     <?php
-    $data = $this->_model->_home_service($id_menu_info,5);
+    $data = $this->_model->_home_thongtin_ketoan();
 	foreach($data as $row){
 		echo '<li><a href="'.$row['url'].'">'.$row['name'].'</a></li>';
 	}
