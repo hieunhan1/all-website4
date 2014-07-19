@@ -93,6 +93,13 @@ class model_web extends db{
 		foreach ($result as $row) $data[] = $row;
 		return $data;
 	}
+	public function _home_thongtin_ketoan($limit=5){
+		$sql = "SELECT `name`,`url`,`url_hinh`,`metaDescription` FROM `web_article` WHERE `delete`=0 AND `status`=1 ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
 	/*end home*/
 	
 	/*list*/
