@@ -26,6 +26,16 @@
 		$_SESSION['order_sp_tongsoluong'] = $tongsoluong;
 		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
 		if(!isset($_SESSION['order_sp_phigiao'])) $_SESSION['order_sp_phigiao'] = 0;
+		
+		if($tongsoluong>=200) $giamgia='16';
+		else if($tongsoluong>=100) $giamgia='13';
+		else if($tongsoluong>=50) $giamgia='11';
+		else if($tongsoluong>=20) $giamgia='8.5';
+		else if($tongsoluong>=10) $giamgia='5';
+		else $giamgia='0';
+		
+		$thanhtien = $_SESSION['order_sp_thanhtien'] - $_SESSION['order_sp_thanhtien']*$giamgia/100;
+		
 		echo '<tr>
 			<th colspan="2" align="right">Tổng số lượng</th>
 			<th>'.$_SESSION['order_sp_tongsoluong'].'</th><th>&nbsp;</th>
@@ -38,9 +48,13 @@
 			<th colspan="2" align="right">Phí giao hàng</th>
 			<th colspan="2" align="right" style="color:#F00"><span id="phigiaohang">'.number_format($_SESSION['order_sp_phigiao'],0,',','.').'</span> VNĐ</th>
 		</tr>
-		<tr style="color:#00F">
-			<th colspan="2" align="right">Thành tiền</th>
-			<th colspan="2" align="right"><span id="thanhtien">'.number_format($_SESSION['order_sp_thanhtien'],0,',','.').'</span> VNĐ</th>
+		<tr>
+			<th colspan="2" align="right" style="color:#368701">Giảm</th>
+			<th colspan="2" align="right" style="color:#368701">'.$giamgia.'%</th>
+		</tr>
+		<tr>
+			<th colspan="2" align="right" valign="top" style="color:#00F">Thành tiền</th>
+			<th colspan="2" align="right"><span id="thanhtien" style="color:#00F">'.number_format($thanhtien,0,',','.').' VNĐ</span><br /><em>(chưa bao gồm VAT)</em></th>
 		</tr>';
 		?>
     </table>

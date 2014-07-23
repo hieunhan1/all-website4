@@ -3,6 +3,7 @@
     	<div id="top_support">
         	<span style="font-weight:bold; background-position:0px 2px"><?php echo $row_config['tel']; ?></span>
             <span style="font-weight:bold; background-position:0px -28px"><?php echo $row_config['email']; ?></span>
+            <?php if($row_config['yahoo']!='') echo '<span style="background:none; padding:6px 0 0 0"><a href="ymsgr:sendIM?'.$row_config['yahoo'].'"><img src="http://opi.yahoo.com/online?u='.$row_config['yahoo'].'&amp;m=g&amp;t=1"></a></span>';?>
         </div>
         
         <div id="top_user">
