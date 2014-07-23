@@ -38,10 +38,12 @@ $all_sp = count($data);/*view gio hang*/
     <div style="clear:both; height:1px"></div>
     
     <table width="60%" border="0" cellpadding="0" cellspacing="0" class="order_sp" style="float:left">
-    	<tr><td>Giao hàng toàn quốc</td></tr>
-        <tr>
-          <td><b>Giảm 5%</b> nếu tổng số lượng đặt hàng &gt;=10</td></tr>
-        <tr><td>Gọi <b><?php echo $row_config['tel'];?></b> để được hỗ trợ thêm.</td></tr>
+        <tr><td><b>Giảm 5%</b> nếu tổng số lượng đặt hàng &gt;=10</td></tr>
+        <tr><td><b>Giảm 8.5%</b> nếu tổng số lượng đặt hàng &gt;=20</td></tr>
+        <tr><td><b>Giảm 11%</b> nếu tổng số lượng đặt hàng &gt;=50</td></tr>
+        <tr><td><b>Giảm 13%</b> nếu tổng số lượng đặt hàng &gt;=100</td></tr>
+        <tr><td><b>Giảm 16%</b> nếu tổng số lượng đặt hàng &gt;=200</td></tr>
+        <tr><td style="color:#0470E6">Giao hàng toàn quốc. Gọi <b><?php echo $row_config['tel'];?></b> để được hỗ trợ thêm.</td></tr>
     </table>
     <?php if($tongtien!=0){?>
     <table width="38%" border="0" cellpadding="0" cellspacing="0" class="order_sp" style="float:right">

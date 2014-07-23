@@ -74,6 +74,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//yahoo
+	$values = $row_detail['yahoo'];
+	$properties = array('100'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Yahoo','yahoo','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//copyright
 	$values = $row_detail['copyright'];
 	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
