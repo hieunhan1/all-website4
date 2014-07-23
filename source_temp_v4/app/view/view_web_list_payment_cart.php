@@ -49,7 +49,11 @@ $all_sp = count($data);/*view gio hang*/
     <table width="38%" border="0" cellpadding="0" cellspacing="0" class="order_sp" style="float:right">
     	<tr><td><span class="order_sp_btn"><a href="javascript:;" id="order_sp_update">Cập nhật</a></span> <a href="gio-hang/?step=clear" id="order_sp_cancel">Xóa giỏ hàng</a></td></tr>
         <tr><td style="font-weight:bold; font-size:150%; color:#F60">Tổng cộng: <?php echo number_format($tongtien,0,',','.').' VNĐ';?></td></tr>
-        <tr><td><div class="order_sp_btn" style="background-color:#4DBE01; float:right"><a href="gio-hang/?step=step1">Bước kế tiếp &gt;&gt;</a></div></td></tr>
+        <tr>
+          <td>
+        	<a href="san-pham/" style="display:block; width:auto; float:left; margin-top:20px">&lt;&lt; Trở lại mua hàng</a>
+            <div class="order_sp_btn" style="background-color:#4DBE01; float:right"><a href="gio-hang/?step=step1">Bước kế tiếp &gt;&gt;</a></div>
+        </td></tr>
     </table>
     <?php }?>
     <div style="clear:both; height:1px"></div>
