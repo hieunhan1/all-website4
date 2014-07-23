@@ -139,7 +139,7 @@ class model_admin extends db{
 		}
 		$str .= "`date_update`='{$date}',`user_update`='{$user}'";
 		
-		$str = "UPDATE `{$table}` SET {$str} WHERE `delete`=0 AND `id`='{$id}' ";
+		echo $str = "UPDATE `{$table}` SET {$str} WHERE `delete`=0 AND `id`='{$id}' ";
 		return $str;
 	}
 	
