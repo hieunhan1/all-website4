@@ -1,6 +1,12 @@
 <?php
 $order_id = $_GET['order_id'];
 $row = $this->_model->_view_product_order($order_id);
+
+$row_tinh = $this->_model->_web_ds_tinhthanh($row['tinh_thanh']);
+$tinh_thanh = ', '.$row_tinh[0]['name'];
+
+$row_quan = $this->_model->_web_ds_quanhuyen(0,$row['quan_huyen']);
+$quan_huyen = ', '.$row_quan[0]['name'];
 ?>
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
@@ -24,7 +30,7 @@ $row = $this->_model->_view_product_order($order_id);
         	<b>Giao hàng đến</b><br />
             <span style="margin-left:35px; display:block"><?php
 				echo "Người nhận: {$row['name']}<br />
-				Địa chỉ: {$row['diachi']}<br />
+				Địa chỉ: {$row['diachi']}{$quan_huyen}{$tinh_thanh}<br />
 				Điện thoại: {$row['phone']}<br />
 				Email: {$row['email']}<br />
 				Ngày đặt: ".date('H:i d/m/Y',strtotime($row['date_create']))."<br />";
@@ -105,9 +111,9 @@ $row = $this->_model->_view_product_order($order_id);
 							</tr>
 							<tr>
 							  <td valign="top">Địa chỉ:</td>
-							  <td>'.$row['diachi'].'</td>
+							  <td>'.$row['diachi'].$quan_huyen.$tinh_thanh.'</td>
 							  <td valign="top">Địa chỉ:</td>
-							  <td>'.$row['diachi'].'</td>
+							  <td>'.$row['diachi'].$quan_huyen.$tinh_thanh.'</td>
 							</tr>
 							<tr>
 								<td>Điện thoại:</td>
@@ -163,6 +169,7 @@ $row = $this->_model->_view_product_order($order_id);
 				$add_bcc = array();
 				$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
 				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
+				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
 				/*cap nhat trang thai*/
 				$this->_model->_web_product_order_update_status($row['id']);
 				
