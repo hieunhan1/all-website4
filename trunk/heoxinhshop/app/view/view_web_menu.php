@@ -1,7 +1,6 @@
 <div id="menu">
     <ul id="nav">
     	<?php
-		echo $idMenu;
 		$position = 2;
 		$data = $this->_model->_web_menu($lang, 0, $position);
 		foreach($data as $row){
