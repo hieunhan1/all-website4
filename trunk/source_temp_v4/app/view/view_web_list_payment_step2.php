@@ -17,7 +17,7 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
     	<table width="100%" border="0" cellspacing="10">
         	<tr>
             	<td width="150" align="right">Họ tên:</td>
-                <td><input type="text" name="hoten" placeholder="Nhập họ tên" class="txt_order" value="<?php echo $row_email['name'];?>" /> <span class="error" id="hoten"></span></td>
+                <td><input type="text" name="hoten" placeholder="Nhập họ tên" class="txt_order" value="<?php echo $row_email['name'];?>" maxlength="32" /> <span class="error" id="hoten"></span></td>
             </tr>
             <tr>
             	<td align="right">Điện thoại:</td>
@@ -45,7 +45,7 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
             </tr>
             <tr>
             	<td width="150" align="right">Địa chỉ:</td>
-                <td><input type="text" name="diachi" placeholder="Nhập địa chỉ" class="txt_order" value="<?php echo $row_email['diachi'];?>" /> <span class="error" id="diachi"></span></td>
+                <td><input type="text" name="diachi" placeholder="Nhập địa chỉ" class="txt_order" value="<?php echo $row_email['diachi'];?>" maxlength="100" /> <span class="error" id="diachi"></span></td>
             </tr>
             <tr>
             	<td align="right" id="ajax">&nbsp;</td>
