@@ -47,7 +47,7 @@
 </div>
 
 <div id="home_partner">
-	<div class="title_home_page">Đối tác liên kết</div>
+	<div class="title_home_page">Thông tin liên kết</div>
     <?php
     $data = $this->_model->_web_slider_banner(3,$lang);
 	foreach($data as $row){
