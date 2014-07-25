@@ -40,7 +40,14 @@ flush();
                 	<h3><?php echo $row_config['name']; ?></h3>
                     <?php echo $row_config['contact_foo']; ?>
                 </td>
-            	<td>Kết nối với chúng tôi</td>
+            	<td>Kết nối với chúng tôi<br />
+                	<?php
+                    $data = $this->_model->_web_menu($lang, 0, 6);
+					foreach($data as $row){
+						echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_hinh'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
+					}
+					?>
+                </td>
             </tr>
         </table>
     </div>
