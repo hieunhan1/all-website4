@@ -40,6 +40,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//date_create
+	$values = $row_detail['date_create'];
+	$properties = array('30', $disabled); //maxlength OTHER (disabled, readonly) 
+	$views = array('Ngày đặt hàng','date_create','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//name
 	$values = $row_detail['name'];
 	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
