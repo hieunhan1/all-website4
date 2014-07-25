@@ -1,6 +1,6 @@
 <?php
 $position = 1;
-$data = $this->_model->_web_slider_banner($position, $lang, $menu_root_id);
+$data = $this->_model->_web_slider_banner($position, $lang, $idMenu);
 if($data){
 ?>
 <div id="slider">

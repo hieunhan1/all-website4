@@ -71,14 +71,14 @@ class control_web{
 		if($row['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT;
 		else $site_image = CONS_IMAGES_CATALOG.$row['url_hinh'];
 		$arr = array(
-			'id'		=> $row['id'],
-			'name'		=> strip_tags($row['name']),
-			'title'	=> strip_tags($row['title']),
-			'description'		=> strip_tags($row['metaDescription']),
-			'keyword'		=> strip_tags($row['metaKeyword']),
-			'url'		=> CONS_BASE_URL.'/'.$row['url'],
-			'image'	=> CONS_BASE_URL.'/'.$site_image,
-			'type_name'		=> 'site',
+			'id'=>$row['id'],
+			'name'=>strip_tags($row['name']),
+			'title'=>strip_tags($row['title']),
+			'description'=>strip_tags($row['metaDescription']),
+			'keyword'=>strip_tags($row['metaKeyword']),
+			'url'=>CONS_BASE_URL.'/'.$row['url'],
+			'image'=>CONS_BASE_URL.'/'.$site_image,
+			'type_name'=>'site',
 		);
 		$idMenu = $menu_root_id = $row['id'];
 		include_once('view/view_web_home.php');
@@ -111,14 +111,14 @@ class control_web{
 			$type_id= $row['type_id'];
 			$type_menu = $this->menu_type($type_id);
 			$arr = array(
-				'id'	=> $row['id'],
-				'name'	=> strip_tags($row['name']),
-				'title'	=> strip_tags($row['title']),
-				'description'=> strip_tags($row['metaDescription']),
-				'keyword'=> strip_tags($row['metaKeyword']),
-				'url'	=> CONS_BASE_URL.'/'.$row['url'],
-				'image'	=> CONS_BASE_URL.'/'.$site_image,
-				'type_name'=> $type_menu['name'],
+				'id'=>$row['id'],
+				'name'=>strip_tags($row['name']),
+				'title'=>strip_tags($row['title']),
+				'description'=>strip_tags($row['metaDescription']),
+				'keyword'=>strip_tags($row['metaKeyword']),
+				'url'=>CONS_BASE_URL.'/'.$row['url'],
+				'image'=>CONS_BASE_URL.'/'.$site_image,
+				'type_name'=>$type_menu['name'],
 			);
 			$parent = $row['parent_id'];
 			$menu_root_id = $this->_model->_web_menu_root($parent, $idMenu, $name, $url);
@@ -130,7 +130,7 @@ class control_web{
 			return $arr;
 		}
 	}
-	public function menu_page($type_name){
+	public function menu_page($lang, $idMenu, $type_name, $menu_info){
 		$currentpage = $this->_data;
 		if($currentpage!=1) $title_page=" - Page {$currentpage}";
 		$name_list_model = '_list_'.$type_name;
@@ -138,7 +138,7 @@ class control_web{
 		$file_view = "view/{$name_list_view}.php";
 		if(file_exists($file_view)) include_once($file_view);
 	}
-	public function detail($type_name){
+	public function detail($lang, $idMenu, $type_name){
 		$alias_detail = $this->_data;
 		$name_detail_model = '_detail_'.$type_name;
 		$name_detail_view = 'view_web_detail_'.$type_name;
@@ -146,14 +146,14 @@ class control_web{
 			if($row_detail['url_hinh']!='') $site_image = $type_menu['url_img'].$row_detail['url_hinh'];
 			else $site_image = CONS_IMAGE_DEFAULT;
 			$arr = array(
-				'id'	=> $row_detail['id'],
-				'name'	=> strip_tags($row_detail['name']),
-				'title'	=> strip_tags($row_detail['name']),
-				'description'=> strip_tags($row_detail['metaDescription']),
-				'keyword'=> strip_tags($row_detail['metaKeyword']),
-				'url'	=> CONS_BASE_URL.'/'.$this->_control.'/'.$row_detail['name_alias'].'.html',
-				'image'	=> CONS_BASE_URL.'/'.$site_image,
-				'type_name'=> $type_name,
+				'id'=>$row_detail['id'],
+				'name'=>strip_tags($row_detail['name']),
+				'title'=>strip_tags($row_detail['name']),
+				'description'=>strip_tags($row_detail['metaDescription']),
+				'keyword'=>strip_tags($row_detail['metaKeyword']),
+				'url'=>CONS_BASE_URL.'/'.$this->_control.'/'.$row_detail['name_alias'].'.html',
+				'image'=>CONS_BASE_URL.'/'.$site_image,
+				'type_name'=>$type_name,
 			);
 			include_once("view/{$name_detail_view}.php");
 			return $arr;
@@ -161,7 +161,6 @@ class control_web{
 	}
 	
 	public function ajax(){
-		echo 'ajax';
 		include_once('control_checks_data.php');
 		include_once('view/view_web_ajax.php');
 	}
@@ -184,9 +183,9 @@ class control_web{
 			if($menu_info==true){
 				if($this->_action == CONS_WEB_VIEW_MENU){
 					$site_info = $menu_info;
-					$this->menu_page($menu_info['type_name']);
+					$this->menu_page($lang, $idMenu, $menu_info['type_name'], $menu_info);
 				}elseif($this->_action == CONS_WEB_VIEW_DETAIL){
-					$site_info = $this->detail($menu_info['type_name']);
+					$site_info = $this->detail($lang, $idMenu, $menu_info['type_name']);
 				}//end danh muc hoac chi tiet
 			}else if($this->_control==CONS_AJAX_NAME){
 				$this->ajax();
@@ -215,7 +214,7 @@ class control_web{
 			$_SESSION['list_order_sp_link'][$id] = $row['url'];
 			$_SESSION['list_order_sp_soluong'][$id] = $soluong;
 			
-			echo $this->order_sp_thanhtoan_link();
+			//echo $this->order_sp_thanhtoan_link();
 			return true;
 		}else echo '0';
 	}
@@ -266,7 +265,7 @@ class control_web{
 		session_destroy();
 	}
 	public function order_sp_thanhtoan_link(){
-		return '<div class="product_detail_btn" style="background-color:#999"><a href="gio-hang/">Tiến hành đặt hàng</a></div>';
+		return '<div class="product_detail_btn bogoc_10px" style="background-color:#999"><a href="gio-hang/">Tiến hành đặt hàng</a></div>';
 	}
 	/*end order*/
 	
