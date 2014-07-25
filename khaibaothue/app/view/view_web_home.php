@@ -1,7 +1,8 @@
 <div id="about_home">
     <?php
     $data = $this->_model->_home_about($idMenu);
-    echo "<h1 class='title_home_page'>{$data['name']}</h1>{$data['content']}";
+    echo "<h1 class='title_home_page'>{$data['name']}</h1>
+	<div class='viewpost'>{$data['content']}</div>";
     ?>
 </div>
 <div style="clear:both; height:30px"></div>
