@@ -25,7 +25,7 @@ class control_web{
 		<meta property="og:site_name" content="'.$site_name.'" />
 		<meta property="og:type" content="'.$type_name.'" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link type="icon/x-icon" href="css/web_img/logo_icon.ico" rel="shortcut icon" />';
+		<link type="icon/x-icon" href="css/web_img/favicon.ico" rel="shortcut icon" />';
 		return $str;
 	}
 	
