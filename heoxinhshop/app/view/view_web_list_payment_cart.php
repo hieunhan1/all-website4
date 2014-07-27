@@ -41,7 +41,7 @@ $all_sp = count($data);/*view gio hang*/
     	<tr><td>Giao hàng toàn quốc</td></tr>
         <tr>
           <td><b>Giảm 5%</b> nếu tổng số lượng đặt hàng &gt;=10</td></tr>
-        <tr><td>Gọi <b><?php echo $row_config['tel'];?></b> để được hỗ trợ thêm.</td></tr>
+        <tr><td>Gọi <b><?php echo $this->_config['tel'];?></b> để được hỗ trợ thêm.</td></tr>
     </table>
     <?php if($tongtien!=0){?>
     <table width="38%" border="0" cellpadding="0" cellspacing="0" class="order_sp bogoc_10px" style="float:right">
