@@ -233,9 +233,9 @@ class model_web extends db{
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
 	}
-	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
+	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien,$other=NULL){
 		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', '{$other}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}

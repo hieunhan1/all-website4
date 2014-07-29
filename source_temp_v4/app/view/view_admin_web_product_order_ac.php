@@ -89,6 +89,13 @@ echo '<form name="form_action" method="post" action="">
 	
 	echo '<tr><td colspan=2><div style="height:2px; background-color:#CCC; margin:5px 300px 5px 30px"></div></td></tr>';
 	
+	//other
+	$values = $row_detail['other'];
+	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly) 
+	$views = array('Yêu cầu','other','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//tongsoluong
 	$values = $row_detail['tongsoluong'];
 	$properties = array('4',$disabled); //maxlength OTHER (disabled, readonly) 
