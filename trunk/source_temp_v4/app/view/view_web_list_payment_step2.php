@@ -48,6 +48,11 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
                 <td><input type="text" name="diachi" placeholder="Nhập địa chỉ" class="txt_order" value="<?php echo $row_email['diachi'];?>" maxlength="100" /> <span class="error" id="diachi"></span></td>
             </tr>
             <tr>
+           	  <td width="150" align="right" valign="top">Yêu cầu:</td>
+                <td><textarea name="other" rows="3" class="txt_order" placeholder="Màu mùng?" style="overflow:auto; resize:none; float:left; margin-right:5px"></textarea>
+                <span style="color:#666; font-style:italic; font-size:90%">Mùng có 4 màu:<br />Xanh dương, hồng, trắng, vàng</span></td>
+            </tr>
+            <tr>
             	<td align="right" id="ajax">&nbsp;</td>
                 <td><div class="order_sp_btn"><a href="javascript:;" style="display:block; padding:0 45px">ĐẶT HÀNG</a></div></td>
             </tr>
@@ -103,13 +108,20 @@ $(document).ready(function(e) {
 		var tinh_thanh = check_number("select[name=tinh_thanh]","#tinh_thanh","Chọn tỉnh thành");
 		var quan_huyen = check_number("select[name=quan_huyen]","#quan_huyen","Chọn quận huyện");
 		var diachi = check_text_length("input[name=diachi]","#diachi","Địa chỉ >= 6 ký tự",6);
-		
+		var other = $.trim($("textarea[name=other]").val());
+				
 		if(hoten==false || dienthoai==false || tinh_thanh==false || quan_huyen==false || diachi==false) return false;
 		
 		$("#ajax").html("");
-		$.post("ajax/",{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi},function(data){
-			if(data!='') window.location = "<?php echo $link_step3;?>&order_id=" + data;
-			else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
+		$.ajax({
+			url:"ajax/",
+			type:"POST",
+			data:{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi,other:other},
+			cache:false,
+			success:function(data){
+				if(data!='') window.location = "<?php echo $link_step3;?>&order_id=" + data;
+				else $("#ajax").html("Vui lòng kiểm tra lại thông tin đặt hàng. Hoặc ấn F5 để thử lại");
+			}
 		});
 	});
 });

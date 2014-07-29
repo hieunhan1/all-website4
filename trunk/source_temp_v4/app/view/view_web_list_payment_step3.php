@@ -19,7 +19,10 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 
     <div style="clear:both; height:2px; margin-bottom:30px; background-color:#EA9E4A"></div>
     
-    <?php if(count($row) > 1){?>
+    <?php
+    if(count($row) > 1){
+		if($row['other']!='') $other = "<em>Yêu cầu: {$row['other']}</em><br />";
+	?>
     <div style="width:600px; float:left">
     	<p style="font-weight:bold; font-size:110%; color:#00F">Đặt hàng thành công. Chúng tôi đã gửi thông tin đặt hàng của bạn đến địa chỉ mail <?php echo $row['email'];?> mà bạn đã khai báo.</p>
         <p>Mã đơn hàng: <b><?php echo $row['id'];?></b></p>
@@ -33,7 +36,7 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 				Địa chỉ: {$row['diachi']}{$quan_huyen}{$tinh_thanh}<br />
 				Điện thoại: {$row['phone']}<br />
 				Email: {$row['email']}<br />
-				Ngày đặt: ".date('H:i d/m/Y',strtotime($row['date_create']))."<br />";
+				Ngày đặt: ".date('H:i d/m/Y',strtotime($row['date_create']))."<br />".$other;
             ?></span>
         </div>
         
@@ -156,6 +159,7 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 							'.$view_str.'
 						</table>
 						
+						<p style="font-style:italic">'.$other.'</p>
 						<p style="font-weight:bold">Phương thức thanh toán "Bằng tiền mặt".</p>
 						<p><b>Nhân viên giao nhận</b> sẽ liên hệ với quí khách để hẹn lịch giao hàng. Trong trường hợp quí khách đi vắng, vui lòng uỷ thác cho người khác nhận hàng và thanh toán tiền thay.</p>
 						<p>Cảm ơn qúy khách và kính chúc mọi sự tốt lành!<br />
@@ -167,7 +171,7 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 				$add_address = array();
 				$add_address[] = array('email'=>$row['email'],'name'=>$row['name']);
 				$add_bcc = array();
-				//$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
+				$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
 				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
 				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');

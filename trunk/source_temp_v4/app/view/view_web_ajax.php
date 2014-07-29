@@ -70,6 +70,7 @@ if(isset($_POST['insert_order_sp'])){
 	$tinh_thanh = checks_number($_POST['tinh_thanh']);
 	$quan_huyen = checks_number($_POST['quan_huyen']);
 	$diachi = checks_text($_POST['diachi'],2);
+	$other = $_POST['other'];
 	$tongtien = $_SESSION['order_sp_tongtien'];
 	$tongsoluong = $_SESSION['order_sp_tongsoluong'];
 	$phigiaohang = $_SESSION['order_sp_phigiao'];
@@ -84,7 +85,7 @@ if(isset($_POST['insert_order_sp'])){
 	if($diachi==false) return false;
 	
 	$order_id = rand(0,9).date('dmis');
-	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien);
+	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien,$other);
 	
 	$giamgia = 0;
 	$data = $this->order_sp_view();
