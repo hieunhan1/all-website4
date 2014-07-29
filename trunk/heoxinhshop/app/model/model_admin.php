@@ -45,7 +45,7 @@ class model_admin extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -60,7 +60,7 @@ class model_admin extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -68,7 +68,7 @@ class model_admin extends db{
 		$sql = "SELECT {$select} FROM {$table} WHERE {$where} ORDER BY {$order_by} LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		
 		$sql = "SELECT count(*) FROM {$table} WHERE {$where}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
@@ -162,7 +162,7 @@ class model_admin extends db{
 		WHERE `delete`=0 AND parent_id='{$parent_id}' {$where} ORDER BY `order` ";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
-		foreach ($result as $row){
+		while($row = $result->fetch_assoc()){
 			$arr[] = array(
 				'id'=>$row['id'],
 				'name'=>$style.$row['name'],
@@ -182,7 +182,7 @@ class model_admin extends db{
 		$sql = "SELECT `id`,`name` FROM `web_menu_position` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -190,7 +190,7 @@ class model_admin extends db{
 		$sql = "SELECT `id`,`name` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -199,7 +199,7 @@ class model_admin extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn vị trí --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -219,7 +219,7 @@ class model_admin extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn tỉnh/thành --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_ds_quanhuyen($tinhthanh){
@@ -227,14 +227,14 @@ class model_admin extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn quận/huyện --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_product_order_detail($id){
 		$sql = "SELECT * FROM `web_product_order_detail` WHERE `delete`=0 AND `status`=1 AND order_id='{$id}'";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	/*end order*/
