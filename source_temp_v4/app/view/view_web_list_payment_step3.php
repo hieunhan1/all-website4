@@ -7,6 +7,25 @@ $tinh_thanh = ', '.$row_tinh[0]['name'];
 
 $row_quan = $this->_model->_web_ds_quanhuyen(0,$row['quan_huyen']);
 $quan_huyen = ', '.$row_quan[0]['name'];
+
+if($row['tinh_thanh']==3){
+	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
+}else{
+	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> thông tin chuyển khoản:<br />
+
+	<span style="margin-left:35px; font-style:italic; display:block">- Ngân hàng Sacombank</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Chủ tài khoản: Trần Hiếu Nhân</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Số tài khoản:  0600 7333 2942</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Chi nhánh:  PGD Lý Thường Kiệt - Tp.HCM</span>
+	
+	<span style="margin-left:35px; font-style:italic; display:block">- Ngân hàng ACB</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Chủ tài khoản: Trần Hiếu Nhân</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Số tài khoản:  1324 23 019</span>
+	<span style="margin-left:50px; font-style:italic; display:block">+ Chi nhánh:  CN SAI GON</span>
+	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$row['id'].'</b></span>
+	<span style="margin-left:220px; font-style:italic; display:block">hoặc <b>'.$row['name'].' + '.$row['phone'].'</b></span>
+	</p>';
+}
 ?>
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
@@ -24,9 +43,10 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 		if($row['other']!='') $other = "<em>Yêu cầu: {$row['other']}</em><br />";
 	?>
     <div style="width:600px; float:left">
-    	<p style="font-weight:bold; font-size:110%; color:#00F">Đặt hàng thành công. Chúng tôi đã gửi thông tin đặt hàng của bạn đến địa chỉ mail <?php echo $row['email'];?> mà bạn đã khai báo.</p>
+    	<p style="font-size:110%; color:#00F"><b>Đặt hàng thành công.</b></p>
+        <p style="color:#00F">Chúng tôi đã gửi thông tin đặt hàng của bạn đến địa chỉ mail <b><?php echo $row['email'];?></b> mà bạn đã khai báo.</p>
         <p>Mã đơn hàng: <b><?php echo $row['id'];?></b></p>
-        <p>Bạn sẽ thanh toán <b><?php echo number_format($row['thanhtien'],0,',','.');?>đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>
+        <?php echo $phuongthuc_giaohang;?>
         <p style="font-weight:bold">Chúng tôi sẽ liên hệ với bạn trước khi giao hàng.</p>
     	<!--<p style="color:#F00">Phí giao hàng: <b><?php if($row['phigiaohang']!=0) echo number_format($row['phigiaohang'],0,',','.').'đ'; else echo 'Miễn phí';?></b></p>-->
         <div style="color:#666; margin:10px 0 30px 0">
@@ -137,16 +157,12 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 								<td>'.date('H:i d/m/Y',strtotime($row['date_create'])).'</td>
 							</tr>
 							<tr>
-								<td>Phương thức thanh toán</td>
-								<td>Thanh toán bằng tiền mặt</td>
+								<td valign="top">Phương thức thanh toán</td>
+								<td>'.$phuongthuc_giaohang.'</td>
 							</tr>
 							<tr>
 								<td>Phương thức giao hàng</td>
 								<td>Giao hàng tận nơi trong nội thành</td>
-							</tr>
-							<tr>
-								<td>Ghi chú phương thức thanh toán</td>
-								<td>Nhân viên giao hàng và thu tiền</td>
 							</tr>	
 						</table>
 						<table width="100%" border="1" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; border-collapse:collapse">
@@ -160,9 +176,8 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 						</table>
 						
 						<p style="font-style:italic">'.$other.'</p>
-						<p style="font-weight:bold">Phương thức thanh toán "Bằng tiền mặt".</p>
 						<p><b>Nhân viên giao nhận</b> sẽ liên hệ với quí khách để hẹn lịch giao hàng. Trong trường hợp quí khách đi vắng, vui lòng uỷ thác cho người khác nhận hàng và thanh toán tiền thay.</p>
-						<p>Cảm ơn qúy khách và kính chúc mọi sự tốt lành!<br />
+						<p>Cảm ơn quý khách và kính chúc mọi sự tốt lành!<br />
 						<span style="font-weight:bold; color:#307601">Mungchongmuoi.com.vn - ChamCham mùng chống muỗi</span></p>
 						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$row_config['tel'].'</b> hoặc email: <b>'.$row_config['email'].'</b></p>
 					</div>
