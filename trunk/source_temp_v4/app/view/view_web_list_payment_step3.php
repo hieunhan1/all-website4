@@ -172,7 +172,7 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 				$add_address[] = array('email'=>$row['email'],'name'=>$row['name']);
 				$add_bcc = array();
 				$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
-				//$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
+				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
 				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
 				/*cap nhat trang thai*/
