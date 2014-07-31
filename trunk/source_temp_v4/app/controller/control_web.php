@@ -134,6 +134,7 @@ class control_web{
 			/*danh mục hoặc chi tiết*/
 			if($this->_action == CONS_WEB_VIEW_MENU){
 				$currentpage = $this->_data;
+				settype($currentpage,'int');
 				if($currentpage!=1) $title_page=" - Page {$currentpage}";
 				
 				$site_title	= strip_tags($row_menu_one['title']).$title_page;
