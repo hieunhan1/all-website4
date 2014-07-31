@@ -1,4 +1,3 @@
-<?php include_once('view_web_list_product_left.php');?>
 <div id="right">
     <div id="navigator">
     <?php
@@ -64,4 +63,5 @@
     }
     ?>
 </div>
+<?php include_once('view_web_list_product_left.php');?>
 <div style="clear:both; height:30px"></div>
