@@ -19,7 +19,7 @@ foreach($data as $row){
         <div id="product_detail_tt">
 			<div style="color:#666">Mã SP: <b><?php echo $row_detail['masp'];?></b></div>
         	<?php if($row_detail['giagoc']!='0') echo '<div id="product_detail_giagoc">Giá gốc: '.number_format($row_detail['giagoc'],0,',','.').' VNĐ</div>';?>
-        	<div id="product_detail_giaban" price_sp="<?php echo $row_detail['giaban'];?>">Giá bán: <?php echo number_format($row_detail['giaban'],0,',','.');?> VNĐ</div>
+        	<div id="product_detail_giaban" price_sp="<?php echo $row_detail['giaban'];?>">Giá bán: <?php echo number_format($row_detail['giaban'],0,',','.');?> VNĐ <span style="font-style:italic; font-weight:100; font-size:70%; color:#666">(chưa tính phí vận chuyển)</sapn></div>
         	<div>Số lượng: <input type="text" name="soluong" maxlength="5" id="product_detail_soluong" value="1" /></div>
             <?php
             if(!isset($_SESSION['list_order_sp_name'])){

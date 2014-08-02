@@ -8,7 +8,7 @@ $tinh_thanh = ', '.$row_tinh[0]['name'];
 $row_quan = $this->_model->_web_ds_quanhuyen(0,$row['quan_huyen']);
 $quan_huyen = ', '.$row_quan[0]['name'];
 
-if($row['tinh_thanh']==3){
+if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
 	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> thông tin chuyển khoản:<br />
