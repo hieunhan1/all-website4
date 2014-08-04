@@ -11,17 +11,8 @@ $quan_huyen = ', '.$row_quan[0]['name'];
 if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
-	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> thông tin chuyển khoản:<br />
-
-	<span style="margin-left:35px; font-style:italic; display:block">- Ngân hàng Sacombank</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Chủ tài khoản: Trần Hiếu Nhân</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Số tài khoản:  0600 7333 2942</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Chi nhánh:  PGD Lý Thường Kiệt - Tp.HCM</span>
-	
-	<span style="margin-left:35px; font-style:italic; display:block">- Ngân hàng ACB</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Chủ tài khoản: Trần Hiếu Nhân</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Số tài khoản:  1324 23 019</span>
-	<span style="margin-left:50px; font-style:italic; display:block">+ Chi nhánh:  CN SAI GON</span>
+	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> <br />
+	<span style="margin-left:35px; display:block">Thông tin chuyển khoản vui lòng <a href="http://mungchongmuoi.com.vn/huong-dan-mua-hang-thanh-toan/thong-tin-thanh-toan-chuyen-khoan.html">ấn vào đây</a>.</span>
 	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$row['id'].'</b></span>
 	<span style="margin-left:220px; font-style:italic; display:block">hoặc <b>'.$row['name'].' + '.$row['phone'].'</b></span>
 	</p>';
