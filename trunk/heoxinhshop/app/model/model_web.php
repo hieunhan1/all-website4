@@ -88,7 +88,7 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	public function _home_baiviet_moi($lang, $limit=5){
-		$sql = "SELECT `name`,`url` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `ngay_dang` LIMIT {$limit}";
+		$sql = "SELECT `name`,`url` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
