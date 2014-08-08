@@ -54,7 +54,13 @@ echo '<form name="form_action" method="post" action="">
 	
 	echo '<tr><td class="label">Phân quyền</td> <td>'.$xem.$quyen.'</td></tr>';
 	
-	echo $field_password;
+	//password
+	if(!isset($row_detail['id'])){
+		$values = md5('00112233');
+		$views = array('password'); //name class
+		$this->getProperties('2',$values,'',$views);
+		echo $this->DisplayProperties();
+	}
 	
 	//id
 	$values = $row_detail['id'];
