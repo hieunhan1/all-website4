@@ -4,7 +4,7 @@
 <base href="<?php echo CONS_BASE_URL; ?>/" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Quản trị website</title>
-<link rel="stylesheet" type="text/css" href="themes/admin/admin_default.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo CONS_ADMIN_CSS_STYLE; ?>">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/js_checks_field.js"></script>
 </head>
@@ -19,15 +19,15 @@
             <span class="error" id="username_message"></span>
         </p>
         
-		<p>Mật khẩu:<br /><input type="password" name="password" value="<?php echo $_POST['password'];?>" id="password" /><span class="error" id="password_message"></span></p>
+		<p>Mật khẩu:<br /><input type="password" name="password" value="<?php echo '';?>" id="password" /><span class="error" id="password_message"></span></p>
         <p><input name="btnLogin" type="submit" id="btnLogin" value="&nbsp;" /></p>
 	</div>
 </form>
 <script type="text/javascript">
 $(document).ready(function(e) {
 	$("#btnLogin").click(function(){
-		var password = check_text_length("#password","#password_message","Mật khẩu phải hơn 6 ký tự",6);
 		var username = checks_user("#username","#username_message","Tài khoản đăng nhập chưa đúng");
+		var password = check_text_length("#password","#password_message","Mật khẩu phải hơn 6 ký tự",6);
 		if(username == false) return false;
 		else if(password == false) return false;
 		else return true;

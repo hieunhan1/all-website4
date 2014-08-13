@@ -8,90 +8,111 @@ echo '<form name="form_action" method="post" action="">
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Hiện');
 	$arr[] = array('id'=>'0', 'name'=>'Ẩn');
-	if($row_detail['config_status']=='') $properties = 1; else $properties = $row_detail['config_status']; //default check
-	$views = array('Trạng thái','config_status','radio',' &nbsp; '); //label name class other
+	if($row_detail['status']=='') $properties = 1; else $properties = $row_detail['status']; //default check
+	$views = array('Trạng thái','status','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//config_name
-	$values = $row_detail['config_name'];
-	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Site name','config_name','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//config_lang
+	//lang
 	$arr = array();
 	$arr[] = array('id'=>0, 'name'=>'----- select -----');
 	$languages = $this->_model->_web_languages();
 	foreach($languages as $row){
-		$arr[] = array('id'=>$row['language_code'], 'name'=>$row['language_name']);
+		$arr[] = array('id'=>$row['ma'], 'name'=>$row['name']);
 	}
-	$properties = $row_detail['config_lang']; //default check
-	$views = array('Ngôn ngữ','config_lang','input_medium'); //label id&name class
+	$properties = $row_detail['lang']; //default check
+	$views = array('Ngôn ngữ','lang','input_medium'); //label id&name class
     $this->getProperties('5',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//config_limit_1
-	$values = $row_detail['config_limit_1'];
-	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Số tin tức','config_limit_1','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//config_limit_2
-	$values = $row_detail['config_limit_2'];
-	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Tuyển dụng','config_limit_2','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//config_limit_3
-	$values = $row_detail['config_limit_3'];
-	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Số hình ảnh','config_limit_3','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//config_limit_4
-	$values = $row_detail['config_limit_4'];
-	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Số video','config_limit_4','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//config_tel
-	$values = $row_detail['config_tel'];
+	//name
+	$values = $row_detail['name'];
 	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Điện thoại','config_tel','input_medium'); //label id&name class style
+	$views = array('Site name','name','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//config_email
-	$values = $row_detail['config_email'];
+	//slogan
+	$values = $row_detail['slogan'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Slogan','slogan','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_1
+	$values = $row_detail['max_limit_1'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số tin tức / trang','max_limit_1','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_2
+	$values = $row_detail['max_limit_2'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số sản phẩm / trang','max_limit_2','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_3
+	$values = $row_detail['max_limit_3'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số SP / page home','max_limit_3','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//max_limit_4
+	/*$values = $row_detail['max_limit_4'];
+	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Số video','max_limit_4','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();*/
+	
+	//tel
+	$values = $row_detail['tel'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Điện thoại','tel','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//email
+	$values = $row_detail['email'];
 	$properties = array('100'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Email','config_email','input_medium'); //label id&name class style
+	$views = array('Email','email','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//config_copyright
-	$values = $row_detail['config_copyright'];
+	//yahoo
+	$values = $row_detail['yahoo'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Yahoo','yahoo','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//skype
+	$values = $row_detail['skype'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Skype','skype','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//copyright
+	$values = $row_detail['copyright'];
 	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Copyright','config_copyright','input_medium'); //label id&name class style
+	$views = array('Copyright','copyright','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//config_footer
-	$values = $row_detail['config_footer'];
+	//contact_foo
+	$values = $row_detail['contact_foo'];
 	$properties = ''; //disabled, readonly
-	$views = array('Thông tin footer','config_footer','textarea'); //label id&name class colspan
-	$other = $this->ckeditor_custom('config_footer');
+	$views = array('Thông tin footer','contact_foo','textarea'); //label id&name class colspan
+	$other = $this->ckeditor_custom('contact_foo');
     $this->getProperties('3',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
 	//id
-	$values = $row_detail['config_id'];
-	$views = array('config_id'); //name class
+	$values = $row_detail['id'];
+	$views = array('id'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	

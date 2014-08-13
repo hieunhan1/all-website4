@@ -1,9 +1,11 @@
 <?php
 $position = 1;
-$data = $this->_model->_web_slider_banner($position, $lang, $menu_root_id);
+$data = $this->_model->_web_slider_banner($position, $lang, $idMenu);
 if($data){
 ?>
-<div id="slider">
+<link rel="stylesheet" href="library/js/nivo-slider/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="library/js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+<div id="slider" class="bogoc_5px">
 	<div class="slider-wrapper theme-default"><div id="slider_run" class="nivoSlider">
 		<?php
         foreach($data as $row){
@@ -12,8 +14,6 @@ if($data){
         ?>
     </div></div>
 </div>
-<link rel="stylesheet" href="library/js/nivo-slider/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="library/js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 <script type="text/javascript" src="library/js/nivo-slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {

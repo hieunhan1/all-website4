@@ -7,43 +7,69 @@ class db{
 		$this->db->set_charset("utf8");
 	}
 	
-	//$arr = array('from'=>'', 'field'=>'', 'values'=>'');
-	public function _sql_create($arr){
-		$from	= $arr['from'];
-		$field	= $arr['field'];
-		$values	= $arr['values'];
-		$sql = "INSERT INTO {$from} ({$field}) VALUES ({$values})";
-		return $sql;
+	public function _check_email($str){
+		$str = trim($str);
+		$pattern = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)+$/';
+		if(preg_match($pattern, $str)) return $str;
+		else return false;
 	}
 	
-	//$arr = array('select'=>'', 'from'=>'', 'where'=>'', 'order'=>'', 'limit'=>'');
-	public function _sql_select($arr){
-		$select	= $arr['select'];
-		$from	= $arr['from'];
-		if($arr['where']!='') $where = 'WHERE '.$arr['where'];
-		if($arr['order']!='') $order = 'ORDER BY '.$arr['order'];
-		if($arr['limit']!='') $limit = 'LIMIT '.$arr['limit'];
-		$sql = "SELECT {$select} FROM {$from} {$where} {$order} {$limit}";
-		return $sql;
+	public function _checks_text($str,$lengh=0){
+		$str = trim($str);
+		if($str!='' && strlen($str)>=$lengh) return $str;
+		else return false;
 	}
 	
-	//$arr = array('from'=>'', 'set'=>'', 'where'=>'');
-	public function _sql_update($arr){
-		$from	= $arr['from'];
-		$set	= $arr['set'];
-		if($arr['where']!='') $where = 'WHERE '.$arr['where'];
-		$sql = "UPDATE {$from} SET {$set} {$where} ";
-		return $sql;
+	public function _checks_number($str){
+		$str = trim($str);
+		if(is_numeric($str)) return $str;
+		else return false;
 	}
 	
-	/*function*/
-	public function _date_time_vietnam(){
-		$timezone = +7; //(GMT +7:00)  
-        return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
+	public function _checks_phone($str){
+		$str = trim($str);
+		$pattern = '/^[{0,(,+}][0-9-+()\.\s]{8,18}$/';
+		if(preg_match($pattern, $str)) return $str;
+		else return false;
 	}
-	public function _table_field($table){
-		$name = str_replace('web_','',$table);
-		return $name;
+	
+	public function _remove_tag($str){
+		$str = strip_tags($str,""); 
+		return $str;
 	}
-	/*end function*/
+	
+	public function _change_dau_nhay($str){
+		$str = str_replace("'",'&#39;',$str);
+		return $str;
+	}
+	
+	public function _change_alias($alias){
+		if(!$alias) return false;
+		$str = $alias;
+		$unicode = array(
+			'a'=>'á|à|ả|ã|ạ|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ',
+			'A'=>'Á|À|Ả|Ã|Ạ|Ă|Ắ|Ằ|Ẳ|Ẵ|Ặ|Â|Ấ|Ầ|Ẩ|Ẫ|Ậ',
+			'd'=>'đ',
+			'D'=>'Đ',
+			'e'=>'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+			'E'=>'É|È|Ẻ|Ẽ|Ẹ|Ê|Ế|Ề|Ể|Ễ|Ệ',
+			'i'=>'í|ì|ỉ|ĩ|ị',	  
+			'I'=>'Í|Ì|Ỉ|Ĩ|Ị',
+			'o'=>'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+			'O'=>'Ó|Ò|Ỏ|Õ|Ọ|Ô|Ố|Ồ|Ổ|Ỗ|Ộ|Ơ|Ớ|Ờ|Ở|Ỡ|Ợ',
+			'u'=>'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+			'U'=>'Ú|Ù|Ủ|Ũ|Ụ|Ư|Ứ|Ừ|Ử|Ữ|Ự',
+			'y'=>'ý|ỳ|ỷ|ỹ|ỵ',
+			'Y'=>'Ý|Ỳ|Ỷ|Ỹ|Ỵ',
+			'' =>"`|~|!|@|#|$|%|^|&|*|(|)|-|_|+|=|\|[|]|{|}|:|;|\"|'|,|.|/|<|>|?|“|”|  ",
+			'-'=>"| "
+		);
+		foreach($unicode as $khongdau=>$codau) {
+			$arr=explode("|",$codau);
+			$str = str_replace($arr,$khongdau,$str);
+			$str = str_replace('|','',$str);
+			$str = trim($str,'-');
+		}
+		return strtolower($str);
+	}
 }

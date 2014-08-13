@@ -12,35 +12,34 @@ foreach($data as $row){
 
 <div class="viewpost">
 	<?php
-    echo "<h1>{$row_config['name']}</h1>";
-	echo $row_config['contact_foo'].'<div style="clear:both; height:1px"></div><hr /><div style="clear:both; height:1px"></div>';
-	
-	echo '<h2 style="color:#00F">'.$row_menu_one['metaDescription'].'</h2>';
+    echo "<h1>{$this->_config['name']}</h1>";
+	echo $this->_config['contact_foo'].'<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
+	//echo '<h2 style="color:#00F">'.$menu_info['description'].'</h2>';
     ?>
 </div>
 
 <div id="loading_contact"><img src="css/web_img/loader.gif" /></div>
 <div id="contact">
 	<div id="error_contact" class="error"></div>
-    <table width="88%" border="0" cellspacing="20" cellpadding="0" style="margin:auto">
+    <table width="88%" border="0" cellspacing="20" cellpadding="0" style="margin:0 auto 30px auto">
       <tr>
         <td colspan="4"><p style="font-size:160%"><?php echo CONS_CONTACT_INFO;?></p></td>
       </tr>
       <tr>
         <td width="100" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_NAME;?>:</td>
-        <td><input type="text" name="name_contact" class="contact_txt" maxlength="50" /><span class="error" id="name_contact"></span></td>
+        <td valign="top"><input type="text" name="name_contact" class="contact_txt" maxlength="50" /><p class="error" id="name_contact"></p></td>
         <td width="100" align="right" valign="top" style="padding-top:3px">Email:</td>
-        <td><input type="text" name="email_contact" class="contact_txt" maxlength="60" /><span class="error" id="email_contact"></span></td>
+        <td valign="top"><input type="text" name="email_contact" class="contact_txt" maxlength="60" /><p class="error" id="email_contact"></p></td>
       </tr>
       <tr>
         <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_PHONE;?>:</td>
-        <td><input type="text" name="phone_contact" class="contact_txt" maxlength="20" /><span class="error" id="phone_contact"></span></td>
+        <td valign="top"><input type="text" name="phone_contact" class="contact_txt" maxlength="20" /><p class="error" id="phone_contact"></p></td>
         <td align="right" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_ADDRESS;?>:</td>
-        <td><input type="text" name="diachi_contact" class="contact_txt" maxlength="250" /></td>
+        <td valign="top"><input type="text" name="diachi_contact" class="contact_txt" maxlength="250" /></td>
       </tr>
       <tr>
         <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_MESSAGE;?>:</td>
-        <td colspan="3"><textarea name="message_contact" class="contact_textarea"></textarea><span class="error" id="message_contact"></span></td>
+        <td colspan="3"><textarea name="message_contact" class="contact_textarea"></textarea><p class="error" id="message_contact"></p></td>
       </tr>
       <tr>
         <td>&nbsp;</td>
@@ -72,7 +71,7 @@ $(document).ready(function(e) {
 					if(data=='1'){
 						$("#contact").html('<div id="error_contact">' +
 											'<h3>Liên hệ thành công</h3>' +
-											'<p>Xin thông báo bạn đã liên hệ đến website <b>Mùng Chống Muỗi</b> thành công. Chúng tôi sẽ trả lời cho bạn sớm nhất.</p>' +
+											'<p>Xin thông báo bạn đã liên hệ đến website <b><?php echo $this->_config['name'];?></b> thành công. Chúng tôi sẽ trả lời cho bạn sớm nhất.</p>' +
 											'<p>Trân trọng,</p>' +
 										'</div>');
 						$("#error_contact").show();

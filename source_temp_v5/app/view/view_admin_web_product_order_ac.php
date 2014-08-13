@@ -2,13 +2,16 @@
 /*action create, edit*/
 $this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
 
+if($user_admin!='admin') $disabled = ' disabled="disabled" ';
+else $disabled = '';
+
 /*view_order_detail*/
 echo '<table width="65%" border="0" cellpadding="10" cellspacing="0" style="margin-bottom:20px; border-collapse:collapse">
 	<tr bgcolor="#FFFF99">
-		<th width="280" align="left">Tên sản phẩm</th>
-		<th align="right">Đơn giá</th>
-		<th>Số lượng</th>
-		<th align="right">Thành tiền</th>
+		<th align="left">Tên sản phẩm</th>
+		<th align="right" width="80">Đơn giá</th>
+		<th width="70">Số lượng</th>
+		<th align="right" width="90">Thành tiền</th>
 	</tr>';
 $data = $this->_model->_web_product_order_detail($row_detail['id']);
 foreach($data as $row){
@@ -40,23 +43,30 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//date_create
+	$values = $row_detail['date_create'];
+	$properties = array('20',$disabled); //maxlength OTHER (disabled, readonly) 
+	$views = array('Ngày đặt','date_create','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//name
 	$values = $row_detail['name'];
-	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Mô tả','name','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//phone
 	$values = $row_detail['phone'];
-	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('20',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Điện thoại','phone','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//email
 	$values = $row_detail['email'];
-	$properties = array('60'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('60',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Email','email','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
@@ -79,44 +89,51 @@ echo '<form name="form_action" method="post" action="">
 	
 	//diachi
 	$values = $row_detail['diachi'];
-	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Địa chỉ','diachi','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	echo '<tr><td colspan=2><div style="height:2px; background-color:#CCC; margin:5px 300px 5px 30px"></div></td></tr>';
 	
+	//other
+	$values = $row_detail['other'];
+	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly) 
+	$views = array('Yêu cầu','other','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//tongsoluong
 	$values = $row_detail['tongsoluong'];
-	$properties = array('4'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('4',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Tổng số lượng','tongsoluong','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//tongtien
 	$values = $row_detail['tongtien'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('8',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Tổng tiền','tongtien','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//phigiaohang
 	$values = $row_detail['phigiaohang'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('8',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Phí giao hàng','phigiaohang','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//giamgia
 	$values = $row_detail['giamgia'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('8',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Giảm giá','giamgia','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//thanhtien
 	$values = $row_detail['thanhtien'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('8',$disabled); //maxlength OTHER (disabled, readonly) 
 	$views = array('Thành tiền','thanhtien','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();

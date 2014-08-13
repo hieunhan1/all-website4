@@ -1,7 +1,13 @@
 <?php
 include_once('view/view_admin_language.php');
-include_once('view/view_admin_search.php');
 ?>
+<div id="search">
+	<form action="" method="get" name="search">
+    	<input type="text" name="code" value="<?php if(isset($_GET['code'])) echo $_GET['code']; ?>" class="txt"  placeholder="Mã đơn hàng" />
+        <input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
+    	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
+	</form>
+</div>
 
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
@@ -15,6 +21,11 @@ include_once('view/view_admin_search.php');
             <th width="90">Thao tác</th>
         </tr>
         <?php
+		if(isset($_GET['code'])){
+			$str_search .= " AND id LIKE '%{$_GET['code']}%' ";
+			$url_search .= '&code='.$_GET['code'];
+		}
+		
 		$i = 0;
 		$startrow = 0;
 		$data = $this->select_from_all($currentpage,$startrow,$totalrows,$url_search,$lang,$str_search,'','`date_create` DESC,');

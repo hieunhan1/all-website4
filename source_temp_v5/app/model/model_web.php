@@ -11,7 +11,7 @@ class model_web extends db{
 		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `parent_id`='{$parent}' AND `position_id` LIKE '%,{$position},%' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -61,7 +61,7 @@ class model_web extends db{
 		$sql = "SELECT `name`,`url_hinh`,`url` FROM `web_slider_banner` WHERE `delete`=0 AND `status`=1 AND `position_id`='{$position}' AND lang='{$lang}' {$menu_id} ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
@@ -83,22 +83,30 @@ class model_web extends db{
 	
 	/*home*/
 	public function _home_about($id){
-		$sql = "SELECT `name`,`content` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' LIMIT 1";
+		$sql = "SELECT `name`,`url_hinh`,`content` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
-	public function _home_danhmuc_product($lang){
-		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+	public function _home_baiviet_moi($lang, $limit=5){
+		$sql = "SELECT `name`,`url` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `ngay_dang` LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _home_products($id){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
+	public function _home_danhmuc_product($lang){
+		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _home_web_product($lang, $limit=5, $idMenu=NULL){
+		if($idMenu!=NULL) $idMenu = " AND menu_id LIKE '%,{$idMenu},%' ";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 {$idMenu} ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	/*end home*/
@@ -108,7 +116,7 @@ class model_web extends db{
 		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		
 		$sql = "SELECT count(*) FROM `web_product` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%'";
 		$result = $this->db->query($sql);
@@ -121,7 +129,7 @@ class model_web extends db{
 		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`metaDescription`,`ngay_dang` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		
 		$sql = "SELECT count(*) FROM `web_article` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%'";
 		$result = $this->db->query($sql);
@@ -169,10 +177,10 @@ class model_web extends db{
 		include_once('class.phpmailer.php');
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // Gọi đến class xử lý SMTP
-		$mail->Host       = "localhost"; // tên SMTP server
+		$mail->Host       = "mail.heoxinhshop.com"; // tên SMTP server
 		$mail->SMTPDebug  = 2; // enables SMTP debug information (for testing): 1 = errors and messages, 2 = messages only
 		$mail->SMTPAuth   = true; // Sử dụng đăng nhập vào account
-		$mail->Host       = "localhost"; // Thiết lập thông tin của SMPT
+		//$mail->Host       = "localhost"; // Thiết lập thông tin của SMPT
 		$mail->Port       = 25; // Thiết lập cổng gửi email của máy
 		$mail->Username   = CONS_SEND_MAIL_ACCOUNT; // SMTP account username
 		$mail->Password   = CONS_SEND_MAIL_PASSWORD; // SMTP account password
@@ -195,14 +203,14 @@ class model_web extends db{
 		$sql = "SELECT `name`,`url`,`url_hinh` FROM `web_article` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _other_post_product($id,$idMenu,$limit=5){
 		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	/*end other post*/
@@ -213,7 +221,7 @@ class model_web extends db{
 		$sql = "SELECT `id`,`name`,`phigiaohang` FROM `web_ds_tinhthanh` WHERE `status`=1 {$str} ORDER BY `order` DESC, `name`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_ds_quanhuyen($tinhthanh=0,$id=0){
@@ -224,7 +232,7 @@ class model_web extends db{
 		$sql = "SELECT `id`,`name`,`phigiaohang` FROM `web_ds_quanhuyen` WHERE `status`=1 {$str} ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_product_order_email($email){
@@ -233,9 +241,9 @@ class model_web extends db{
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
 	}
-	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien){
+	public function _web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien,$other=NULL){
 		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$tinh_thanh}', '{$quan_huyen}', '{$diachi}', '{$tongtien}', '{$tongsoluong}', '{$phigiaohang}', '{$giamgia}', '{$thanhtien}', '{$other}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
@@ -254,7 +262,7 @@ class model_web extends db{
 		$sql = "SELECT * FROM `web_product_order_detail` WHERE `delete`=0 AND order_id='{$order_id}' ";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_product_order_update_status($id){

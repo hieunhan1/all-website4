@@ -27,7 +27,11 @@ function checks_phone($str){
 
 function remove_tag($str){
 	$str = strip_tags($str,""); 
-	$str = str_replace('"','&quot',$str);
+	return $str;
+}
+
+function change_dau_nhay($str){
+	$str = str_replace("'",'&#39;',$str);
 	return $str;
 }
 
@@ -59,9 +63,4 @@ function change_alias($alias){
 		$str = trim($str,'-');
 	}
 	return strtolower($str);
-}
-
-function remove_dau_nhay_don($str){
-	$str = str_replace("'","&#39;",$str);
-	return $str;
 }
