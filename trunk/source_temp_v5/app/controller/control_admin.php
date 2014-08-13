@@ -8,9 +8,10 @@ class control_admin extends control_admin_form{
 	public function __construct($control,$action,$data){
 		$this->_model	= new model_admin;
 		$this->_control	= $control;
-		if($action!='') $this->_action	= $action; else $this->_action	= 'home';
+		if($action!='') $this->_action=$action; else $this->_action='home';
 		$this->_data	= $data;
 	}
+
 	public function index(){
 		if(!isset($_SESSION['admin_id'])){
 			$this->frm_login();
@@ -18,14 +19,18 @@ class control_admin extends control_admin_form{
 			$this->administrator();
 		}
 	}
+	
 	public function frm_login(){
 		if(isset($_POST['btnLogin'])){
-			$result = $this->_model->_xuly_dangnhap($_POST['username'],$_POST['password']);
+			$user = $this->_model->_change_dau_nhay($_POST['username']);
+			$pass = $this->_model->_change_dau_nhay($_POST['password']);
+			$result = $this->_model->_xuly_dangnhap($user,$pass);
 			if($result==TRUE) header('location: '.CONS_DEFAULT_LINK_LOGIN_ADMIN);
 			else $error = 'Tên đăng nhập hoặc mật khẩu sai';
 		}
 		include_once('view/view_admin_login.php');
 	}
+	
 	public function logout(){
 		session_unset('admin_id');
 		session_unset('admin_name');
@@ -35,6 +40,7 @@ class control_admin extends control_admin_form{
 		header('location: '.CONS_DEFAULT_LINK_LOGIN_ADMIN);
 		return TRUE;
 	}
+	
 	public function change_password($user){
 		$password = $_POST['password'];
 		$password_new = $_POST['password_new'];
@@ -63,6 +69,7 @@ class control_admin extends control_admin_form{
 			}
 		}
 	}
+	
 	public function reset_password($user){
 		$id_user_reset = $_GET['id_u'];
 		settype($id_user_reset,"int");
@@ -71,21 +78,22 @@ class control_admin extends control_admin_form{
 		else return FALSE;
 	}
 	
-	public function select_from_all($lang, &$currentpage, &$totalrows, &$url_search, $str_select='', $str_where='', $str_order=''){
+	public function select_from_all(&$currentpage, &$startrow, &$totalrows, &$url_search, $lang, $str_search='', $select_field='', $order_by=''){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");
 		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
-		$table = $this->_action;
-		$table_field = $this->_model->_table_field($table);
+		
 		if(isset($_GET['search'])){
-			$txt_search = $_GET['search'];
-			$str_search .= " AND {$table_field}_name LIKE '%{$txt_search}%' ";
-			$url_search .= "&search={$txt_search}";
+			$str_search .= " AND name LIKE '%{$_GET['search']}%' ";
+			$url_search .= '&search='.$_GET['search'];
 		}
-		$select = "{$table_field}_id, {$table_field}_name, {$table_field}_status ".$str_select;
-		$where  = "{$table_field}_lang='{$lang}' ".$str_where;
-		if($str_order=='') $str_order = " {$table_field}_id DESC ";
-		return $this->_model->_select_field_table($select, $table, $where, $str_order, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		
+		$select = '`id`,`name`,`status`'.$select_field;
+		$table  = $this->_action;
+		$where  = "`delete`=0 AND lang='{$lang}' ".$str_search;
+		$order_by = $order_by.' `id` DESC ';
+		
+		return $this->_model->_select_field_table($select, $table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
 	}
 	
 	public function select_from_menu($lang){
@@ -155,13 +163,13 @@ class control_admin extends control_admin_form{
 	public function menu_admin($rule_view,$active){
 		$data = $this->_model->_web_menu_admin();
 		foreach($data as $row){
-			if(preg_match("/,{$row['menu_admin_id']},/i", $rule_view)){
-				$link = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$row['menu_admin_url'].'/';
-				if($active==$row['menu_admin_url']) $style = 'style="color:#00F"'; else $style = '';
-				$str .= '<a href="'.$link.'" '.$style.'>'.$row['menu_admin_name'].$row['menu_admin_ajax'].'</a>';
-				if($row['menu_admin_other']==1) $str .= '<hr />';
+			if(preg_match("/,{$row['id']},/i", $rule_view)){
+				$link = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$row['url'].'/';
+				if($active==$row['url']) $style = 'style="color:#00F"'; else $style = '';
+				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>';
+				if($row['other']==1) $str .= '<hr />';
 				
-				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['menu_admin_url_img'].'" alt="" /><p>'.$row['menu_admin_name'].'</p></a></div>';
+				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['url_hinh'].'" alt="" /><p>'.$row['name'].'</p></a></div>';
 			}
 		}
 		return array($str,'<div id="chucnang">'.$str2.'</div>');
@@ -171,8 +179,6 @@ class control_admin extends control_admin_form{
 		$this->checks_language(); /*checks language*/
 		
 		$table = $this->_action;
-		$table_field = $this->_model->_table_field($table);
-		
 		$name_admin = $_SESSION['admin_name'];
 		$user_admin = $_SESSION['admin_user'];
 		$rule_view  = $_SESSION['admin_rule_view'];
@@ -198,8 +204,8 @@ class control_admin extends control_admin_form{
 		}
 		
 		$navigator = $this->_model->_navigator($table);
-		if(preg_match("/,{$navigator['menu_admin_id']},/i", $set_authorities)){
-			$navigator_name = $navigator['menu_admin_name'];/*name navigator*/
+		if(preg_match("/,{$navigator['id']},/i", $set_authorities)){
+			$navigator_name = $navigator['name'];/*name navigator*/
 			$languages = $this->_model->_web_languages();/*list language*/
 			
 			if(isset($_GET['delete_one'])){
@@ -213,7 +219,11 @@ class control_admin extends control_admin_form{
 			if(isset($_GET['menu_id'])){
 				$this->menu_id();
 				return true;
-			}/*status item*/
+			}/*menu_id*/
+			if(isset($_GET['ajax'])){
+				include_once('view/view_admin_ajax.php');
+				return TRUE;
+			}/*ajax*/
 			
 			if(file_exists($file_view)){
 				$include = ob_start();
@@ -235,11 +245,6 @@ class control_admin extends control_admin_form{
 			return TRUE;
 		}
 		/*end thông tin tài khoản*/
-		
-		if(isset($_GET['ajax'])){
-			include_once('view/view_admin_ajax.php');
-			return TRUE;
-		}
 		
 		include_once('view/view_admin.php'); /*view*/
 	}
@@ -274,6 +279,7 @@ class control_admin extends control_admin_form{
 		</script>";
 		return $str;
 	}
+
 	public function ckeditor_custom($name){
 		$str = "<script>
 		CKEDITOR.replace( '{$name}', {

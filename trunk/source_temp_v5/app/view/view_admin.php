@@ -5,12 +5,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trang quản trị</title>
 <meta name="robots" content="nofollow" />
-<link rel="stylesheet" type="text/css" href="themes/admin/admin_default.css">
+<link rel="stylesheet" type="text/css" href="<?php echo CONS_ADMIN_CSS_STYLE; ?>">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/js_admin.js"></script>
 
-<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-<script type="text/javascript" src="ckeditor/ckfinder/ckfinder.js"></script>
+<script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="js/ckeditor/ckfinder/ckfinder.js"></script>
 
 <link type="text/css" href="js/datetimepick/jquery.simple-dtpicker.css" rel="stylesheet" />
 <script type="text/javascript" src="js/datetimepick/jquery.simple-dtpicker.js"></script>
@@ -62,7 +62,9 @@ function SetFileField(fileUrl, data){
         
     	<?php if( $this->_action!='home' && !isset($_GET['id']) && !isset($_GET['user']) ){ ?>
     	<div class="title" style="width:auto; float:right">
-        	<a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>
+        	<a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
+            <a href="javascript:;" id="update">See the change</a>
+            <a href="javascript:;" id="create">See the not change</a>
         </div>
         <?php }?>
         

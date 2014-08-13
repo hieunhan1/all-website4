@@ -4,15 +4,15 @@ class model_admin extends db{
 	public function _xuly_dangnhap($u,$p){
 		$u = strip_tags($u);
 		$p = md5($p);
-		$sql = "SELECT users_id,users_name,users_username,users_rule_view,users_rule_action FROM web_users WHERE users_username='{$u}' AND users_password='{$p}' AND users_status=1";
+		$sql = "SELECT `id`,`name`,`username`,`rule_view`,`rule_action` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) {
 			$row = $result->fetch_assoc();
-			$_SESSION['admin_id']			= $row['users_id'];
-			$_SESSION['admin_name']			= $row['users_name'];
-			$_SESSION['admin_user']			= $row['users_username'];
-			$_SESSION['admin_rule_view']	= $row['users_rule_view'];
-			$_SESSION['admin_rule_action']	= $row['users_rule_action'];
+			$_SESSION['admin_id']			= $row['id'];
+			$_SESSION['admin_name']			= $row['name'];
+			$_SESSION['admin_user']			= $row['username'];
+			$_SESSION['admin_rule_view']	= $row['rule_view'];
+			$_SESSION['admin_rule_action']	= $row['rule_action'];
 			return TRUE;
 		} else {
 			return FALSE;
@@ -21,50 +21,55 @@ class model_admin extends db{
 	
 	public function _kiem_tra_user($u,$p){
 		$p = md5($p);
-		$sql = "SELECT users_id FROM web_users WHERE users_username='{$u}' AND users_password='{$p}' AND users_status=1";
+		$sql = "SELECT `id` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) return TRUE; else return FALSE;
 	}
 	
 	public function _change_password($u,$p){
 		$p = md5($p);
-		$sql = "UPDATE web_users SET users_password='{$p}' WHERE users_username='{$u}' ";
+		$date = $this->_date_time_vietnam();
+		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `username`='{$u}' ";
 		$this->db->query($sql);
 	}
 	
 	public function _reset_password($user,$id_user_reset,$pass_default){
 		$p = md5($pass_default);
-		$sql = "UPDATE web_users SET users_password='{$p}' WHERE users_id='{$id_user_reset}' ";
+		$date = $this->_date_time_vietnam();
+		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `id`='{$id_user_reset}' ";
 		$this->db->query($sql);
-	}
-
-	public function _web_languages(){
-		$sql = "SELECT language_id,language_name,language_code FROM web_language WHERE language_status=1 ORDER BY language_order ";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		foreach ($result as $row) $data[] = $row;
-		return $data;
 	}
 	
 	public function _web_menu_admin(){
-		$sql = "SELECT menu_admin_id,menu_admin_name,menu_admin_url,menu_admin_url_img,menu_admin_other,menu_admin_ajax FROM web_menu_admin WHERE menu_admin_status=1 ORDER BY menu_admin_order";
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`other`,`ajax` FROM `web_menu_admin` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
+		
 		$data = array();
-		foreach ($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
 	public function _navigator($url_action){
-		$sql = "SELECT menu_admin_id,menu_admin_name FROM web_menu_admin WHERE menu_admin_status=1 AND menu_admin_url='{$url_action}' LIMIT 1";
+		$sql = "SELECT `id`,`name` FROM `web_menu_admin` WHERE `status`=1 AND url='{$url_action}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
+
+	public function _web_languages(){
+		$sql = "SELECT `id`,`name`,`code` FROM `web_language` WHERE `status`=1 ORDER BY `order` ";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 	
 	public function _select_field_table($select, $table, $where, $order_by, $per_page=30, $startrow=0, &$totalrows){	
-		$sql = "SELECT {$select} FROM {$table} WHERE {$where} ORDER BY {$order_by} LIMIT {$startrow}, {$per_page}";
+		$sql = "SELECT {$select} FROM {$table} WHERE {$where} ORDER BY {$order_by} LIMIT $startrow, $per_page";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		
 		$sql = "SELECT count(*) FROM {$table} WHERE {$where}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$row = $result->fetch_row();
@@ -88,8 +93,7 @@ class model_admin extends db{
 	}
 	
 	public function _view_edit_detail($table,$id){
-		$table_field = $this->_table_field($table);
-		$sql = "SELECT * FROM {$table} WHERE {$table_field}_id='{$id}' ";
+		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}' ";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
@@ -108,69 +112,59 @@ class model_admin extends db{
 		return TRUE;
 	}
 	
-	public function _create($table, $fields, $values){
+	public function _create($table, $fields, $values, $user){
+		$date = $this->_date_time_vietnam();
 		$toal_field = count($fields);
+		
 		for($i=0; $i < $toal_field-1; $i++){
-			$str_field .= "{$fields[$i]},";
+			$str_field .= "`{$fields[$i]}`,";
 		}
-		$str_field = trim($str_field,',');
+		
 		for($i=0; $i < $toal_field-1; $i++){
 			$str_value .= "'{$values[$i]}',";
 		}
-		$str_value = trim($str_value,',');
-		$str = "INSERT INTO {$table} ( {$str_field} ) VALUES ( {$str_value} )";
+		
+		$str = "INSERT INTO `{$table}` ( {$str_field} ) VALUES ( {$str_value} )";
 		return $str;
 	}
 	
-	public function _update($table, $fields, $values, $id){
+	public function _update($table, $fields, $values, $user, $id){
+		$date = $this->_date_time_vietnam();
 		$toal_field = count($fields);
+		
 		for($i=0; $i < $toal_field-1; $i++){
-			$str .= "{$fields[$i]}='{$values[$i]}',";
+			$str .= "`{$fields[$i]}`='{$values[$i]}',";
 		}
-		$str = trim($str,',');
-		$table_field = $this->_table_field($table);
-		$str = "UPDATE {$table} SET {$str} WHERE {$table_field}_id='{$id}' ";
+		
+		$str = "UPDATE `{$table}` SET {$str} WHERE `id`='{$id}' ";
 		return $str;
 	}
 	
 	public function _delete_one($table, $id, $user){
-		$table_field = $this->_table_field($table);
-		$sql = "DELETE FROM {$table} WHERE {$table_field}_id='{$id}' ";
-		$this->db->query($sql);
+		$date = $this->_date_time_vietnam();
+		//$sql = "UPDATE `{$table}` SET  WHERE `id`='{$id}' ";
+		//$this->db->query($sql);
 	}
 	
 	public function _status_one($table, $id, $status, $user){
-		$table_field = $this->_table_field($table);
-		$sql = "UPDATE {$table} SET {$table_field}_status='{$status}' WHERE {$table_field}_id='{$id}' ";
+		$date = $this->_date_time_vietnam();
+		$sql = "UPDATE `{$table}` SET `status`='{$status}' WHERE `id`='{$id}' ";
 		$this->db->query($sql);
 	}
-	
-	/*log data*/
-	public function _web_logs($name, $type, $action){
-		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_logs` (`logs_id`, `logs_name`, `logs_type`, `logs_action`, `logs_datetime`) VALUES (NULL, '{$name}', '{$type}', '{$action}', '{$date}')";
-		if(!$this->db->query($sql)) die($this->db->error);
-		return $this->db->insert_id;
-	}
-	public function _web_logs_recovery($data, $id_logs){
-		$sql = "INSERT INTO `web_logs_recovery` (`logs_recovery_id`, `logs_recovery_data`, `id_logs`) VALUES (NULL, '{$data}', '{$id_logs}')";
-		if(!$this->db->query($sql)) die($this->db->error);
-	}
-	/*end log data*/
 	
 	/*web_menu*/
 	public function _web_menu($parent_id, $style, $arr, $where=''){
 		if(!$arr) $arr = array();
-		$sql = "SELECT menu_id,menu_name,menu_status,menu_order FROM web_menu
-		WHERE menu_parent='{$parent_id}' {$where} ORDER BY menu_order ";
+		$sql = "SELECT `id`,`name`,`status`,`order` FROM `web_menu`
+		WHERE parent_id='{$parent_id}' {$where} ORDER BY `order` ";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
-		foreach ($result as $row){
+		while($row = $result->fetch_assoc()){
 			$arr[] = array(
-				'id'=>$row['menu_id'],
-				'name'=>$style.$row['menu_name'],
-				'order'=>$style.$row['menu_order'],
-				'status'=>$row['menu_status']
+				'id'=>$row['id'],
+				'name'=>$style.$row['name'],
+				'order'=>$style.$row['order'],
+				'status'=>$row['status']
 			);
 			$arr = $this->_web_menu($row['id'], $style.'-- ', $arr, $where);
 		}
@@ -178,74 +172,79 @@ class model_admin extends db{
 	}
 	
 	public function _web_menu_position(){
-		$sql = "SELECT menu_position_id,menu_position_name FROM web_menu_position WHERE menu_position_status=1 ORDER BY menu_position_order";
+		$sql = "SELECT `id`,`name` FROM `web_menu_position` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
 	public function _web_menu_type(){
-		$sql = "SELECT menu_type_id,menu_type_name FROM web_menu_type WHERE menu_type_status=1 ORDER BY menu_type_order";
+		$sql = "SELECT `id`,`name` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
 	public function _web_slider_banner_position(){
-		$sql = "SELECT slider_banner_position_id,slider_banner_position_name FROM web_slider_banner_position WHERE slider_banner_position_status=1 ORDER BY slider_banner_position_id";
+		$sql = "SELECT `id`,`name` FROM `web_slider_banner_position` WHERE `status`=1 ORDER BY `id`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn vị trí --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
 	public function _menu_id($menu_id){
 		$str = explode(',',$menu_id);
 		$i = count($str)-2;
-		$sql = "SELECT menu_url FROM web_menu WHERE menu_id='".$str[$i]."'";
+		$sql = "SELECT `url` FROM `web_menu` WHERE `id`='".$str[$i]."'";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$row = $result->fetch_assoc();
-		return $row['menu_url'];
+		return $row['url'];
 	}
 	/*end web_menu*/
 	
 	/*order*/
 	public function _web_ds_tinhthanh(){
-		$sql = "SELECT listcity_id,listcity_name FROM web_listcity WHERE listcity_status=1 ORDER BY listcity_order DESC, listcity_name";
+		$sql = "SELECT `id`,`name` FROM `web_ds_tinhthanh` WHERE `status`=1 ORDER BY `order` DESC, `name`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn tỉnh/thành --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_ds_quanhuyen($id_listcity){
-		$sql = "SELECT listdistricts_id,listdistricts_name FROM web_listdistricts WHERE listdistricts_status=1 AND id_listcity='{$id_listcity}' ORDER BY listdistricts_order";
+	public function _web_ds_quanhuyen($tinhthanh){
+		$sql = "SELECT `id`,`name` FROM `web_ds_quanhuyen` WHERE `status`=1 AND tinhthanh_id='{$tinhthanh}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn quận/huyện --');
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _web_product_order_detail($id){
-		$sql = "SELECT * FROM web_product_order_detail WHERE product_order_detail_status=1 AND id_order='{$id}'";
+		$sql = "SELECT * FROM `web_product_order_detail` WHERE `status`=1 AND order_id='{$id}'";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		foreach($result as $row) $data[] = $row;
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	/*end order*/
 	
 	/*ajax*/
 	public function _ajax_number_khachhang($table){
-		$table_field = $this->_table_field($table);
-		$sql = "SELECT count(*) FROM {$table} WHERE {$table_field}_status=0";
+		$sql = "SELECT count(*) FROM {$table} WHERE status=0";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$row = $result->fetch_row();
 		return $row[0];
 	}
 	/*end ajax*/
 	
+	/*function*/
+	public function _date_time_vietnam(){
+		$timezone = +7; //(GMT +7:00)  
+        return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
+	}
+	/*end function*/
 }//class

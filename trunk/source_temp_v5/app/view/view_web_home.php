@@ -1,62 +1,30 @@
-<div id="home_page">
-	<h1>Công nghệ mùng chống muỗi</h1>
-    <p><img src="css/web_img/cong-nghe-chong-muoi.png" alt="Công nghệ mùng chống muỗi" /></p>
-    <div class="home_chongmuoi" style="margin-left:20px">
-    	<p class="title_chongmuoi">Đến gần</p>
-        <p>Muỗi bay đến gần mùng.</p>
-    </div>
-    <div class="home_chongmuoi" style="margin-left:30px">
-    	<p class="title_chongmuoi">Hoảng sợ</p>
-        <p>Chúng bị Perthmerine làm hoảng sợ.</p>
-    </div>
-    <div class="home_chongmuoi" style="margin-left:30px">
-    	<p class="title_chongmuoi">Bỏ chạy</p>
-        <p>Công nghệ đẩy lùi sự tấn công.</p>
-    </div>
-    <div class="home_chongmuoi" style="margin-left:25px">
-    	<p class="title_chongmuoi">Bám lâu</p>
-        <p>Nếu cứng đầu bám lâu vào mùng.</p>
-    </div>
-    <div class="home_chongmuoi" style="margin-left:30px">
-    	<p class="title_chongmuoi">Hạ gục</p>
-        <p>Kết quả là bị hạ gục hoặc tiêu diệt.</p>
-    </div>
-    <div style="clear:both; height:30px"></div>
-    <!--end cong nghe chong muoi-->
-    
-    <div id="about_home">
-    	<?php
-        $data = $this->_model->_home_about($idMenu);
-		echo $data['content'];
-		?>
-        <div style="clear:both; height:30px"></div>
-    </div>
-    
-    <?php
-	/*danh mục, sản phẩm --- HOME*/
-    $data_dm = $this->_model->_home_danhmuc_product($lang);
-	foreach($data_dm as $row_dm){
-		$str_h_p .= '<div class="product_list"><h3 class="product_title" style="background:url(\''.CONS_IMAGES_CATALOG.$row_dm['url_hinh'].'\') no-repeat top left">'.$row_dm['name'].'</h3>';
-		$data = $this->_model->_home_products($row_dm['id']);
-		$i=0;
+<div id="right">
+	<?php
+    include_once('view_web_slider.php');
+	
+	$data_dm_home = $this->_model->_home_danhmuc_product($lang);
+	foreach($data_dm_home as $row_dm_home){
+		echo '<div class="product_list">
+		<div class="product_title">
+        	<div class="product_title_name bogoc_right_15px">'.$row_dm_home['name'].'</div>
+            <div class="product_title_more"><a href="'.$row_dm_home['url'].'">Xem tất cả</a></div>
+        </div>';
+		$i = 0;
+		$data = $this->_model->_home_web_product($lang, $this->_config['max_limit_3'], $row_dm_home['id']);
 		foreach($data as $row){
 			$i++;
-			if($i%4 != 1) $style='style="margin-left:15px"'; else $style='';
-			if($row['giagoc'] != 0) $giagoc='<div class="product_item_giagoc">'.number_format($row['giagoc']).' VNĐ</div>'; else $giagoc='';
-			$str_h_p .= '<div class="product_item" '.$style.'>
-				<a href="'.$row['url'].'">
-					<div class="product_item_img_bg"><span id="ajax_order_'.$row['id'].'"></span></div>
-					<div class="product_item_img"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
-					<h3 class="product_item_name">'.$row['name'].'</h3>
-				</a>
-				<div class="product_item_order" alias="'.$row['name_alias'].'" idsp="'.$row['id'].'">Đặt hàng</div>
-				'.$giagoc.'<div class="product_item_giaban">Giá: '.number_format($row['giaban']).' VNĐ</div>
+			if($i%4 != 1) $style='style="margin-left:10px"'; else $style='';
+			if($row['giagoc']!=0) $giagoc = number_format($row['giagoc'],0,'.',','); else $giagoc='';
+			echo '<div class="product_box" '.$style.'>
+				<div class="product_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></a></div>
+				<div class="product_price"><span>'.$giagoc.'</span> '.number_format($row['giaban'],0,'.',',').'đ</div>
+				<a href="'.$row['url'].'"><h3 class="product_name">'.$row['name'].'</h3></a>
+				<div class="product_buy" idsp="'.$row['id'].'" alias="'.$row['name_alias'].'">mua hàng</div>
 			</div>';
 		}
-    	$str_h_p .= '</div>';
+		echo '</div><div style="clear:both; height:30px"></div>';
 	}
-	echo $str_h_p;
 	?>
-    
-    <div style="clear:both; height:1px"></div>
 </div>
+<?php include_once('view_web_list_product_left.php');?>
+<div style="clear:both; height:1px"></div>

@@ -32,23 +32,23 @@ echo '<form name="form_action" method="post" action="">
 	//phan quyen
 	$arr = $this->_model->_web_menu_admin();
 	
-	$properties = $row_detail['users_rule_view']; //default check
+	$properties = $row_detail['quyen_xem']; //default check
 	$views = array('Xem','','checkbox checkbox_xem','width:167px; height:270px;'); //label name class width
 	$this->getProperties('7',$arr,$properties,$views);
 	$xem = $this->DisplayProperties();
 	
-	$properties = $row_detail['users_rule_action']; //default check
+	$properties = $row_detail['quyen_action']; //default check
 	$views = array('Quyền','','checkbox checkbox_action','width:167px; height:270px;'); //label name class width
 	$this->getProperties('7',$arr,$properties,$views);
 	$quyen = $this->DisplayProperties();
 	
-	$values = $row_detail['users_rule_view'];
-	$views = array('users_rule_view', 'value_rule_view'); //name class
+	$values = $row_detail['quyen_xem'];
+	$views = array('quyen_xem', 'value_quyen_xem'); //name class
     $this->getProperties('2',$values,'',$views);
 	$xem .= $this->DisplayProperties();
 	
-	$values = $row_detail['users_rule_action'];
-	$views = array('users_rule_action', 'value_rule_action'); //name class
+	$values = $row_detail['quyen_action'];
+	$views = array('quyen_action', 'value_quyen_action'); //name class
     $this->getProperties('2',$values,'',$views);
 	$quyen .= $this->DisplayProperties();
 	
