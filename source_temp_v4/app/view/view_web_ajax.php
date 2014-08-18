@@ -116,11 +116,12 @@ if(isset($_POST['contact_name'])){
 			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?id_contact='.$id_contact.'">Click vào đây để xem thông tin</a></p>
 		</div>';
 		$add_address = array();
-		$add_address[] = array('email'=>'hieunhan112@gmail.com','name'=>'Tran Nhan');
-		$add_cc = '';
-		$add_bcc = array();
+		$add_address[] = array('email'=>$this->_config['email'],'name'=>'Mùng chống muỗi');
+		$add_cc = array();
+		$add_cc[] = array('email'=>'mungchongmuoi.com.vn@gmail.com','name'=>'Thành');
+		$add_cc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
 		//$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Tran Nhan');
-		$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Hao Le');
+		//$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Hao Le');
 		ob_start();
 		$this->_model->_sendmail($title,$subject,$body,$add_address,$add_cc,$add_bcc);
 		ob_get_clean();
