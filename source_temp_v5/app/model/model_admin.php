@@ -28,22 +28,27 @@ class model_admin extends db{
 	
 	public function _change_password($u,$p){
 		$p = md5($p);
-		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `username`='{$u}' ";
 		$this->db->query($sql);
 	}
 	
-	public function _reset_password($user,$id_user_reset,$pass_default){
+	public function _reset_password($id_user_reset,$pass_default){
 		$p = md5($pass_default);
-		$date = $this->_date_time_vietnam();
 		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `id`='{$id_user_reset}' ";
 		$this->db->query($sql);
 	}
 	
-	public function _web_menu_admin(){
-		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`other`,`ajax` FROM `web_menu_admin` WHERE `status`=1 ORDER BY `order`";
+	public function _list_username(){
+		$sql = "SELECT `username` FROM `web_users` WHERE `status`=1 ORDER BY `username`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
-		
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
+	public function _web_menu_admin(){
+		$sql = "SELECT `id`,`name`,`url`,`url_img`,`other`,`ajax` FROM `web_menu_admin` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
@@ -58,20 +63,19 @@ class model_admin extends db{
 	public function _web_languages(){
 		$sql = "SELECT `id`,`name`,`code` FROM `web_language` WHERE `status`=1 ORDER BY `order` ";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
-		
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	
 	public function _select_field_table($select, $table, $where, $order_by, $per_page=30, $startrow=0, &$totalrows){	
-		$sql = "SELECT {$select} FROM {$table} WHERE {$where} ORDER BY {$order_by} LIMIT $startrow, $per_page";
+		$sql = "SELECT {$select} FROM {$table} WHERE {$where} ORDER BY {$order_by} LIMIT {$startrow},{$per_page}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		
 		$sql = "SELECT count(*) FROM {$table} WHERE {$where}";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$result = $this->db->query($sql);
 		$row = $result->fetch_row();
 		$totalrows = $row[0];
 		return $data;
@@ -98,59 +102,123 @@ class model_admin extends db{
 		return $result->fetch_assoc();
 	}
 	
-	public function _get_sql($type, $table, $fields, $values, $user, $id){
+	public function _get_sql($type, $table, $fields, $values, $id=NULL){
 		if($type==1){
-			$sql = $this->_create($table, $fields, $values, $user);
+			$type_name = 'create';
+			$sql = $this->_create($table, $fields, $values);
 		}elseif( $type==2 && is_numeric($id) ){
-			$sql = $this->_update($table, $fields, $values, $user, $id);
+			$type_name = 'update';
+			$content = $this->_backup_data($id, $name, $table);
+			$sql = $this->_update($table, $fields, $values, $id);
 		}else return FALSE;
 		
 		if(!$this->db->query($sql)){
 			echo $this->db->error;
 			return FALSE;
+		}else{
+			if($type==1){
+				$id = $this->db->insert_id;
+				$this->_backup_data($id, $name, $table);
+			}
+			$this->_web_log($name,$type_name,$table,$_SESSION['admin_user'],$content,$_SESSION['admin_language']);
+			return TRUE;
 		}
-		return TRUE;
 	}
 	
-	public function _create($table, $fields, $values, $user){
-		$date = $this->_date_time_vietnam();
-		$toal_field = count($fields);
-		
-		for($i=0; $i < $toal_field-1; $i++){
+	public function _create($table, $fields, $values){
+		$total_field = count($fields);
+		for($i=0; $i < $total_field-1; $i++){
 			$str_field .= "`{$fields[$i]}`,";
+			$str_value .= "'".$this->_change_dau_nhay($values[$i])."',";
 		}
-		
-		for($i=0; $i < $toal_field-1; $i++){
-			$str_value .= "'{$values[$i]}',";
-		}
-		
+		$str_field = trim($str_field,',');
+		$str_value = trim($str_value,',');
 		$str = "INSERT INTO `{$table}` ( {$str_field} ) VALUES ( {$str_value} )";
 		return $str;
 	}
 	
-	public function _update($table, $fields, $values, $user, $id){
-		$date = $this->_date_time_vietnam();
-		$toal_field = count($fields);
-		
-		for($i=0; $i < $toal_field-1; $i++){
-			$str .= "`{$fields[$i]}`='{$values[$i]}',";
+	public function _update($table, $fields, $values, $id){
+		$total_field = count($fields);
+		for($i=0; $i < $total_field-1; $i++){
+			$str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
 		}
-		
+		$str = trim($str,',');
 		$str = "UPDATE `{$table}` SET {$str} WHERE `id`='{$id}' ";
 		return $str;
 	}
 	
-	public function _delete_one($table, $id, $user){
-		$date = $this->_date_time_vietnam();
-		//$sql = "UPDATE `{$table}` SET  WHERE `id`='{$id}' ";
-		//$this->db->query($sql);
+	public function _delete_one($table, $id, $user, $lang){
+		$content = $this->_backup_data($id, $name, $table);
+		$sql = "DELETE FROM `{$table}` WHERE `id`='{$id}' ";
+		$this->db->query($sql);
+		$this->_web_log($name,'delete',$table,$user,$content,$lang);
 	}
 	
-	public function _status_one($table, $id, $status, $user){
-		$date = $this->_date_time_vietnam();
+	public function _status_one($name, $table, $id, $status, $user, $lang){
 		$sql = "UPDATE `{$table}` SET `status`='{$status}' WHERE `id`='{$id}' ";
 		$this->db->query($sql);
+		$this->_web_log($name,'status',$table,$user,$status,$lang);
 	}
+	
+	/*web_log
+	Fields & values:	fields%%%values
+	Giá trị field:		,
+	Giá trị nội dung:	%%%
+	*/
+	public function _backup_data($id, &$name, $table){
+		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}'";
+		$result = $this->db->query($sql);
+		$row = $result->fetch_assoc();
+		$name = $row['name'];
+		$row_keys = array_keys($row);
+		$row_values = array_values($row);
+		for($i=0; $i<count($row_keys); $i++){
+			$str_keys .= "`{$row_keys[$i]}`,";
+			$str_values .= "{$row_values[$i]}%%%";
+		}
+		$str_keys = trim($str_keys,',');
+		$str_values = trim($str_values,'%%%');
+		return $str_keys.'fields%%%values'.$str_values;
+	}
+	public function _restore_data($id){
+		$sql = "SELECT `action`,`table`,`content` FROM `web_logs` WHERE `id`='{$id}'";
+		$result = $this->db->query($sql);
+		$row = $result->fetch_assoc();
+		if($row['action']=='delete'){
+			$data = explode('fields%%%values', $row['content']);
+			$data_keys = explode(',', $data[0]);
+			$data_values = explode('%%%', $data[1]);
+			for($i=0; $i<count($data_keys); $i++){
+				$str_keys .= "{$data_keys[$i]},";
+				$str_values .= "'{$data_values[$i]}',";
+			}
+			$str_keys = trim($str_keys, ',');
+			$str_values = trim($str_values, ',');
+			$str_sql = "INSERT INTO `{$row['table']}` ({$str_keys}) VALUES ({$str_values})";
+		}elseif($row['action']=='update'){
+			$data = explode('fields%%%values', $row['content']);
+			$data_keys = explode(',', $data[0]);
+			$data_values = explode('%%%', $data[1]);
+			for($i=0; $i<count($data_keys); $i++){
+				if($data_keys[$i]!='`id`') $str_set .= "{$data_keys[$i]}='{$data_values[$i]}',";
+				else $id_restore = $data_values[$i];
+			}
+			$str_set = trim($str_set, ',');
+			$str_sql = "UPDATE `{$row['table']}` SET {$str_set} WHERE id='{$id_restore}'";
+		}else return false;
+		
+		if(!$this->db->query($str_sql)) die($this->db->error);
+		else{
+			$this->db->query("DELETE FROM `web_logs` WHERE id='{$id}' ");
+			return true;
+		}
+	}
+	public function _web_log($name, $action, $table, $user, $content, $lang){
+		$time = time();
+		$sql = "INSERT INTO `web_logs` VALUES (NULL, '{$name}', '{$action}', '{$table}', '{$time}', '{$user}', '{$content}', '{$lang}', '0')";
+		$this->db->query($sql);
+	}
+	/*end web_log*/
 	
 	/*web_menu*/
 	public function _web_menu($parent_id, $style, $arr, $where=''){
@@ -207,16 +275,16 @@ class model_admin extends db{
 	/*end web_menu*/
 	
 	/*order*/
-	public function _web_ds_tinhthanh(){
-		$sql = "SELECT `id`,`name` FROM `web_ds_tinhthanh` WHERE `status`=1 ORDER BY `order` DESC, `name`";
+	public function _web_listcity(){
+		$sql = "SELECT `id`,`name` FROM `web_listcity` WHERE `status`=1 ORDER BY `order` DESC, `name`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn tỉnh/thành --');
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_ds_quanhuyen($tinhthanh){
-		$sql = "SELECT `id`,`name` FROM `web_ds_quanhuyen` WHERE `status`=1 AND tinhthanh_id='{$tinhthanh}' ORDER BY `order`";
+	public function _web_listdistricts($city_id){
+		$sql = "SELECT `id`,`name` FROM `web_listdistricts` WHERE `status`=1 AND listcity_id='{$city_id}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn quận/huyện --');
@@ -233,7 +301,7 @@ class model_admin extends db{
 	/*end order*/
 	
 	/*ajax*/
-	public function _ajax_number_khachhang($table){
+	public function _ajax_number_item($table){
 		$sql = "SELECT count(*) FROM {$table} WHERE status=0";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$row = $result->fetch_row();
@@ -242,9 +310,6 @@ class model_admin extends db{
 	/*end ajax*/
 	
 	/*function*/
-	public function _date_time_vietnam(){
-		$timezone = +7; //(GMT +7:00)  
-        return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
-	}
+	
 	/*end function*/
 }//class

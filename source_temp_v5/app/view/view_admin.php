@@ -77,7 +77,7 @@ function SetFileField(fileUrl, data){
 
 <script type="text/javascript">
 $(document).ready(function(e) {
-    $.ajax({ 	
+    /*$.ajax({ 	
 		url:"cp_admin/",
 		type:'get',
 		data:{ajax:"ajax_number_khachhang",t:"web_product_order"},
@@ -94,7 +94,7 @@ $(document).ready(function(e) {
 		success: function(data) {
 			$("#web_contact").html(" (" + data + ")");
 		}
-	});
+	});*/
 });
 </script>
 

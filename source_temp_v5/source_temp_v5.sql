@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2014 at 05:51 AM
+-- Generation Time: Aug 18, 2014 at 12:31 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -81,31 +81,42 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
 CREATE TABLE IF NOT EXISTS `web_config` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  `slogan` varchar(150) DEFAULT NULL,
-  `limit_1` int(2) DEFAULT NULL,
-  `limit_2` int(2) DEFAULT NULL,
-  `limit_3` int(2) DEFAULT NULL,
-  `limit_4` int(2) DEFAULT NULL,
-  `copyright` varchar(250) DEFAULT NULL,
-  `footer` varchar(200) DEFAULT NULL,
-  `contact` text NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `yahoo` varchar(100) DEFAULT NULL,
-  `tel` varchar(50) DEFAULT NULL,
-  `hotline` varchar(50) NOT NULL,
-  `lang` varchar(2) NOT NULL,
+  `name_var` varchar(30) NOT NULL,
+  `value` varchar(250) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `web_config`
 --
 
-INSERT INTO `web_config` (`id`, `name`, `slogan`, `limit_1`, `limit_2`, `limit_3`, `limit_4`, `copyright`, `footer`, `contact`, `email`, `yahoo`, `tel`, `hotline`, `lang`, `status`) VALUES
-(1, 'Mùng chống muỗi', 'localhost/all/source_temp_v4', 2, 10, 10, 10, 'Copyright © 2014 by NETSPACE', '<p>Địa chỉ: Lô 32C/I, Đường 2G, KCN Vĩnh Lộc, Huyện Bình Chánh, TP. Hồ Chí Minh</p>\r\n\r\n<p>Điện thoại: (84 -8) 38550213 - 37652056 Fax: (84 -8) 38570352 - 37652055</p>\r\n\r\n<p>Email: info@mungchongmuoi.c', '', 'feedback@mungchongmuoi.com.vn', 'hieu_nhan1', '+84 988 388 388', '0988 388 388', '', 1),
-(2, 'English', 'localhost/all/source_temp_v4', 10, 10, 10, 10, 'Copyright © 2014 by NETSPACE', 'Culinary Arts School NetSpace', '', 'hieunhan112@gmail.com', 'hieu_nhan1', '0988 388 388', '0988 388 388', '', 1),
-(4, '', NULL, 0, 0, 0, 0, '', '', '', '', NULL, NULL, '', '', 1);
+INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) VALUES
+(1, 'Slogan', 'slogan', 'Thương hiệu vững chắc', 'vi', 1),
+(2, 'Slogan', 'slogan', 'Thương hiệu vững chắc', 'en', 1),
+(5, 'Số tin / trang', 'limit_1', '10', 'vi', 1),
+(6, 'Số SP / trang', 'limit_2', '10', 'vi', 1),
+(7, 'Số photo / trang', 'limit_3', '10', 'vi', 1),
+(8, 'Số video / trang', 'limit_4', '10', 'vi', 1),
+(9, 'Copyright', 'copyright', 'Copyright © 2014', 'vi', 1),
+(10, 'Email', 'email', 'hieunhan112@gmail.com', 'vi', 1),
+(11, 'Điện thoại', 'tel', '0988 388 003', 'vi', 1),
+(12, 'Hotline', 'hotline', '0988 388 003', 'vi', 1),
+(13, 'Yahoo', 'yahoo', 'hieu_nhan1', 'vi', 1),
+(14, 'Skype', 'skype', 'hieu_nhan1', 'vi', 1),
+(15, 'Địa chỉ', 'address', '123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM', 'vi', 1),
+(16, 'News number / page', 'limit_1', '10', 'en', 1),
+(17, 'Product number / page', 'limit_2', '10', 'en', 1),
+(18, 'Photos number / page', 'limit_3', '10', 'en', 1),
+(19, 'Videos number / page', 'limit_4', '10', 'en', 1),
+(20, 'Copyright', 'copyright', 'Copyright © 2014', 'en', 1),
+(21, 'Email', 'email', 'hieunhan112@gmail.com', 'en', 1),
+(22, 'Telephone', 'tel', '0988 388 003', 'en', 1),
+(23, 'Hotline', 'hotline', '0988 388 003', 'en', 1),
+(24, 'Yahoo', 'yahoo', 'hieu_nhan1', 'en', 1),
+(25, 'Skype', 'skype', 'hieu_nhan1', 'en', 1),
+(26, 'Address', 'address', '123 CMT 8', 'en', 1);
 
 -- --------------------------------------------------------
 
@@ -951,17 +962,19 @@ INSERT INTO `web_listsendmail` (`id`, `name`, `email`, `lang`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `web_log`
+-- Table structure for table `web_logs`
 --
 
-CREATE TABLE IF NOT EXISTS `web_log` (
+CREATE TABLE IF NOT EXISTS `web_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
-  `action` int(1) NOT NULL,
+  `action` varchar(30) NOT NULL,
   `table` varchar(30) NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `username` varchar(20) NOT NULL,
   `content` text,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -1057,8 +1070,8 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (18, 'Item 18', '', '', 18, 0, NULL, 0),
 (19, 'Item 19', '', '', 19, 0, NULL, 0),
 (20, 'Item 20', '', '', 20, 0, NULL, 0),
-(21, 'Item 21', '', '', 21, 0, NULL, 0),
-(22, 'Liên hệ trực tuyến', 'web_contact', 'icon-lien-he.jpg', 22, 0, '<span id="web_contact" class="ajax_thongtin"></span>', 1),
+(21, 'Liên hệ trực tuyến', 'web_contact', 'icon-lien-he.jpg', 21, 0, '<span id="web_contact" class="ajax_thongtin"></span>', 1),
+(22, 'Event logs', 'web_logs', 'icon-lien-he.jpg', 22, 0, '', 1),
 (23, 'Tài khoản', 'web_users', 'icon-account.jpg', 100, 0, NULL, 1);
 
 -- --------------------------------------------------------
