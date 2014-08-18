@@ -179,7 +179,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 				$add_bcc = array();
 				//$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
 				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
-				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
+				$add_bcc[] = array('email'=>'mungchongmuoi.com.vn@gmail.com','name'=>'Thành');
 				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
 				/*cap nhat trang thai*/
 				$this->_model->_web_product_order_update_status($row['id']);
