@@ -33,62 +33,66 @@ function remove_ky_tu_dac_biet(alias,dau_thaythe){
 }
 
 $(document).ready(function(e) {
-	$("#create").hide();
-	$(".update").hide();
-	$("#update").click(function(){
-		$(this).hide();
-		$("#create").show();
-		$(".create").hide();
-		$(".update").show();
-	});
-	$("#create").click(function(){
-		$(this).hide();
-		$("#update").show();
-		$(".update").hide();
-		$(".create").show();
-	});
-	
-    $(".row").click(function(){
+	$(".row").click(function(){
 		$(".row").css("background-color","#FFF");
 		$(this).css("background-color","#FF9");
 	});
 	
-	/*status delete*/
-	var url_img_css = 'css/admin_img/';
+	var url_img_css = 'themes/admin/img/';
 	var url_link_ad = 'cp_admin/';
+	
+	/*status*/
 	$(".status").click(function(){
-		var id 		= ($(this).attr('class')).split("status status_");
+		var id 		= $(this).attr('status_id');
+		var name 	= $(this).attr('status_name');
+		var url 	= $(this).attr('url');
 		var status 	= $(this).attr('status');
-		var url 	= $(this).attr('url');
-		var name 	= $(this).attr('name');
-		
+		var message	= '';
+		var status_current = '';
+		var url_current = '';
 		if(status=='1'){
-			if(confirm('Bạn có muốn ẩn "' + name + '"?')){
-				$.post(url_link_ad + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
-					$(".status_" + id[1]).attr('status','0');
-					$(".status_" + id[1]).attr('src', url_img_css + 'anhien_0.gif');
-				});
-			}
+			message = 'Bạn có muốn ẩn `' + name + '`?';
+			status_current = 0;
+			url_current = url_img_css + 'anhien_0.gif';
 		}else{
-			if(confirm('Bạn có muốn hiện "' + name + '"?')){
-				$.post(url_link_ad + url + "/?status_one=" + status + "&id_ac=" + id[1],function(){
-					$(".status_" + id[1]).attr('status','1');
-					$(".status_" + id[1]).attr('src', url_img_css + 'anhien_1.gif');
-				});
-			}
+			message = 'Bạn có muốn hiện `' + name + '`?';
+			status_current = 1;
+			url_current = url_img_css + 'anhien_1.gif';
 		}
-	});
-	$(".delete_one").click(function(){
-		var id 		= ($(this).attr('class')).split("delete_one delete_one_");
-		var url 	= $(this).attr('url');
-		var name 	= $(this).attr('name');
-		
-		if(confirm('Bạn có muốn xóa "' + name + '"?')){
-			$.post(url_link_ad + url + "/?delete_one=" + id[1],function(){
-				$(".row_" + id[1]).hide();
+		if(confirm(message)){
+			$.ajax({
+				url: url_link_ad + url + '/',
+				type:'GET',
+				data:{status_one:status, id_ac:id, name:name},
+				cache:false,
+				success: function() {
+					$('#status_' + id).attr('status', status_current);
+					$('#status_' + id).attr('src', url_current);
+				}
 			});
 		}
 	});
+	
+	/*delete*/
+	$(".delete_one").click(function(){
+		var id 		= $(this).attr('delete_id');
+		var name 	= $(this).attr('delete_name');
+		var url 	= $(this).attr('url');
+		var message	= 'Bạn có muốn xóa `' + name + '`?';
+		if(confirm(message)){
+			$.ajax({
+				url: url_link_ad + url + '/',
+				type:'GET',
+				data:{delete_one:id},
+				cache:false,
+				success: function() {
+					$('.row_' + id).hide();
+				}
+			});
+		}
+	});
+	
+	/*reset_pass*/
 	$("#reset_pass").click(function(){
 		var id = $("input[name=id]").val();
 		var name = $("input[name=name]").val();
@@ -138,7 +142,6 @@ $(document).ready(function(e) {
 			$(".auto_link_detail").val(data + name_alias + ".html");
 		});
 	});
-	
 	/*end lấy link tu dong detail*/
 	
 	/*lấy keyword tự động*/

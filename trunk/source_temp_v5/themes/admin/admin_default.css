@@ -35,7 +35,8 @@ hr{border: solid 2px #F3A972}
 #action a {padding:0 10px}
 
 #view_select{}
-#view_select td, #view_select th{height:25px; overflow:hidden; padding:0 5px; border-bottom:solid 1px #88C4FF}
+#view_select td, #view_select th{height:25px; overflow:hidden; border-bottom:solid 1px #88C4FF}
+.height_25px_hidden{height:25px; line-height:25px; overflow:hidden}
 
 #phantrang{clear:both; margin-top:20px}
 #phantrang a{margin-right:3px; padding:5px 10px; text-align:center; color:#FFF; background-color:#666}

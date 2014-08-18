@@ -35,7 +35,7 @@ define('CONS_DEFAULT_LINK_LOGIN_ADMIN', CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CON
 define('CONS_ADMIN_LOGOUT', 'logout');
 define('CONS_ADMIN_ACCOUNT', 'account');
 define('CONS_ADMIN_RESET', 'reset');
-define('CONS_ADMIN_CSS_IMG', 'themes/admin/img');
+define('CONS_ADMIN_CSS_IMG', 'themes/admin/img/');
 define('CONS_ADMIN_CSS_STYLE', 'themes/admin/admin_default.css');
 define('CONS_ADMIN_PER_PAGE', 30);
 
