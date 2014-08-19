@@ -151,7 +151,7 @@ $(document).ready(function(e) {
 			$(this).val(remove_ky_tu_dac_biet(name,' ') + ',' + change_alias(name,' '));
 		});
 	}
-	keyword_auto('#metaKeyword','#name');
+	keyword_auto('#tags','#name');
 	
 	/*checks box*/
 	function checks_box_item(list_check, list_view){

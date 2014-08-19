@@ -28,8 +28,8 @@ foreach($data as $row){
 			echo '<div class="article_item" '.$style.'>
 				<a href="'.$row['url'].'"><h3>'.$row['name'].'</h3></a>
 				<div class="article_item_date">Cập nhật ngày '.date('d-m-Y H:i', strtotime($row['ngay_dang'])).'</div>
-				<div class="article_item_img"><img src="'.CONS_IMAGES_ARTICLES.$row['url_hinh'].'" alt="'.$row['name'].'" /></div>
-				<p>'.$row['metaDescription'].'</p>
+				<div class="article_item_img"><img src="'.CONS_IMAGES_ARTICLES.$row['url_img'].'" alt="'.$row['name'].'" /></div>
+				<p>'.$row['description'].'</p>
 				<div class="article_item_link">
 					<a href="javascript:;" onclick="facebook_share(\''.CONS_BASE_URL.'/'.$row['url'].'\')" style="color:#666">Share facebook</a>
 					<a href="'.$row['url'].'">Xem chi tiết</a>

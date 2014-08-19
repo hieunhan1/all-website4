@@ -1,41 +1,32 @@
-<?php
-include_once('view/view_admin_language.php');
-?>
+<?php include_once('view/view_admin_language.php');?>
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="80">Thứ tự</th>
-            <th width="110" class="create">Ngày tạo</th>
-            <th width="90" class="create">Người tạo</th>
-            <th width="110" class="update" style="display: none;">Date update</th>
-            <th width="90" class="update" style="display: none;">User update</th>
+            <th width="250" align="left">Link</th>
+            <th width="100" align="left">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$startrow = 0;
 		$data = $this->select_from_menu($lang);
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
-            <td align="center"><?php echo $startrow+$i; ?></td>
+            <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><?php echo $row['name'];?></td>
-            <td align="center"><?php echo $row['order'];?></td>
-            <td align="center" class="create"><?php echo date('d/m/Y H:i',strtotime($row['date_create']));?></td>
-            <td align="center" class="create"><?php echo $row['user_create'];?></td>
-            <td align="center" class="update" style="display: none;"><?php if($row['date_update']!='') echo date('d/m/Y H:i',strtotime($row['date_update']));?></td>
-            <td align="center" class="update" style="display: none;"><?php echo $row['user_update'];?></td>
+            <td><?php echo $row['url'];?></td>
+            <td><?php echo $row['order'];?></td>
             <td align="center">
-                <a href="javascript:;"><img src="<?php echo CONS_ADMIN_CSS_IMG."anhien_{$row['status']}.gif";?>" class="status status_<?php echo $row['id'];?>" status="<?php echo $row['status'];?>" url="<?php echo $table;?>" name="English"></a> &nbsp;
+                <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;
-                <a href="javascript:;" class="delete_one delete_one_<?php echo $row['id'];?>" url="<?php echo $table;?>" name="English"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>delete.gif" alt=""></a>
+                <a href="javascript:;" class="delete_one" id="delete_<?php echo $row['id'];?>" delete_id="<?php echo $row['id'];?>" delete_name="<?php echo $row['name'];?>" url="<?php echo $table;?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>delete.gif" alt="" /></a>
             </td>
 		</tr>
         <?php }
 		}?>
-    </table> 
+    </table>   
     <div style="clear:both; height:50px"></div>
 </div>

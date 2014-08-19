@@ -14,7 +14,7 @@ include_once('view/view_admin_search.php');
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,'',',`name_var`,`value`');
+		$data = $this->select_from_all($lang,$arr,',`name_var`,`value`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>

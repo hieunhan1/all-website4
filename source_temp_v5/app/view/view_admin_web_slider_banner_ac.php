@@ -40,17 +40,17 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//url_hinh
-	$values = 'url_hinh'; //field name
+	//url_img
+	$values = 'url_img'; //field name
 	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
 	$this->getProperties('6',$values,'',$views);
 	$other = $this->DisplayProperties();
 	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>slider-banner</strong>"</p>';
-	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_SLIDER_BANNER_THUMBS.$row_detail['url_hinh'].'" /></div>';
+	if($row_detail['url_img'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_SLIDER_BANNER_THUMBS.$row_detail['url_img'].'" /></div>';
 	
-	$values = $row_detail['url_hinh'];
+	$values = $row_detail['url_img'];
 	$properties = array('150'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Hình ảnh','url_hinh','input_medium'); //label id&name class
+	$views = array('Hình ảnh','url_img','input_medium'); //label id&name class
     $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
@@ -72,7 +72,7 @@ echo '<form name="form_action" method="post" action="">
 	/*$values = $row_detail['content'];
 	$properties = ''; //disabled, readonly
 	$views = array('Thông tin','content','textarea'); //label id&name class colspan
-	$other = ckeditor_custom('metaDescription');
+	$other = ckeditor_custom('description');
     $this->getProperties('3',$values,$properties,$views);
 	echo $this->DisplayProperties();*/
 	

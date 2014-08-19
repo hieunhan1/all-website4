@@ -9,7 +9,7 @@ if($data){
 	<div class="slider-wrapper theme-default"><div id="slider_run" class="nivoSlider">
 		<?php
         foreach($data as $row){
-            echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['url_hinh'].'" data-thumb="'.CONS_IMAGES_SLIDER_BANNER_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" title="" data-transition="slideInLeft" /></a>';
+            echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['url_img'].'" data-thumb="'.CONS_IMAGES_SLIDER_BANNER_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" title="" data-transition="slideInLeft" /></a>';
         }
         ?>
     </div></div>

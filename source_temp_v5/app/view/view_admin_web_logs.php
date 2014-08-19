@@ -1,7 +1,4 @@
-<?php
-include_once('view/view_admin_language.php');
-$this->_model->_restore_data(49);
-?>
+<?php include_once('view/view_admin_language.php');?>
 <div id="search">
 	<form action="" method="get" name="search" onsubmit="if(search.value=='' && action.value=='' && table.value=='' && username.value=='') return false;">
     	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
@@ -51,7 +48,7 @@ $this->_model->_restore_data(49);
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,'',',`action`,`table`,`datetime`,`username`');
+		$data = $this->select_from_all($lang,$arr,',`action`,`table`,`datetime`,`username`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
@@ -63,7 +60,7 @@ $this->_model->_restore_data(49);
             <td><?php echo $this->datetime_current_vn($row['datetime']);?></td>
             <td><?php echo $row['username'];?></td>
             <td align="center">
-                <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
+                <?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" />';?> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a>
             </td>
 		</tr>
