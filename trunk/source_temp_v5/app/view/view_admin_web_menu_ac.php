@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
+$this->create_edit_data($table, $arr_action, $row_detail);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -32,13 +32,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//parent_id
+	//parent
 	$arr = array();
 	$arr[] = array('id'=>0, 'name'=>'-- Danh mục gốc --');
 	if(isset($_GET['id'])) $where = " AND id<>'{$_GET['id']}' AND lang='{$lang}' "; else $where='';
 	$arr = $this->_model->_web_menu(0, '', $arr, $where);
-	$properties = $row_detail['parent_id']; //default check
-	$views = array('Danh mục gốc','parent_id','input_medium'); //label id&name class
+	$properties = $row_detail['parent']; //default check
+	$views = array('Danh mục gốc','parent','input_medium'); //label id&name class
     $this->getProperties('5',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
@@ -58,45 +58,45 @@ echo '<form name="form_action" method="post" action="">
 	
 	//name_alias
 	$values = $row_detail['name_alias'];
-	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
+	$properties = array('200',$arr_action['disabled']); //maxlength OTHER (disabled, readonly)
 	$views = array('Alias','name_alias','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,$change_alias.'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
+    $this->getProperties('1',$values,$properties,$views,$arr_action['change_alias'].'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
 	echo $this->DisplayProperties();
 	
 	if($row_detail['id'] != 0) $change_url = '<a href="javascript:;" id="change_url" style="padding:0 10px; font-weight:bold">Thay đổi</a>';
 	//url
 	$values = $row_detail['url'];
-	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
+	$properties = array('200',$arr_action['disabled']); //maxlength OTHER (disabled, readonly)
 	$views = array('Link','url','input_medium url_auto'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,$change_url.'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
 	echo $this->DisplayProperties();
 	
-	//metaDescription
-	$values = $row_detail['metaDescription'];
+	//description
+	$values = $row_detail['description'];
 	$properties = ''; //disabled, readonly
-	$views = array('Mô tả ngắn','metaDescription','textarea'); //label id&name class colspan
-	//$other = ckeditor_custom('metaDescription');
+	$views = array('Mô tả ngắn','description','textarea'); //label id&name class colspan
+	//$other = ckeditor_custom('description');
     $this->getProperties('3',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//metaKeyword
-	$values = $row_detail['metaKeyword'];
+	//tags
+	$values = $row_detail['tags'];
 	$properties = array('200'); //maxlength OTHER (disabled, readonly)
-	$views = array('Tags (keyword)','metaKeyword','input_medium'); //label id&name class style
+	$views = array('Tags (keyword)','tags','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,'<span class="notes">Nhấp doubleclick để lấy keyword tự động</span>');
 	echo $this->DisplayProperties();
 	
-	//url_hinh
-	$values = 'url_hinh'; //field name
+	//url_img
+	$values = 'url_img'; //field name
 	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
 	$this->getProperties('6',$values,'',$views);
 	$other = $this->DisplayProperties();
 	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>catalog</strong>"</p>';
-	if($row_detail['url_hinh'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_CATALOG_THUMBS.$row_detail['url_hinh'].'" /></div>';
+	if($row_detail['url_img'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_CATALOG_THUMBS.$row_detail['url_img'].'" /></div>';
 	
-	$values = $row_detail['url_hinh'];
+	$values = $row_detail['url_img'];
 	$properties = array('150'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Ảnh đại diện','url_hinh','input_medium'); //label id&name class
+	$views = array('Ảnh đại diện','url_img','input_medium'); //label id&name class
     $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
@@ -116,15 +116,15 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//id
-	$values = $row_detail['id'];
-	$views = array('id'); //name class
-    $this->getProperties('2',$values,'',$views);
-	echo $this->DisplayProperties();
-	
 	//lang
 	$values = $lang;
 	$views = array('lang'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//id
+	$values = $row_detail['id'];
+	$views = array('id'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	
@@ -133,7 +133,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	//btn_submit
 	$properties = ''; //disabled, readonly
-	$views = array($lable_submit,'btn_action','submit btn_action'); //label id&name class style
+	$views = array($arr_action['lable_submit'],'btn_action','submit btn_action'); //label id&name class style
     $this->getProperties('9','',$properties,$views,$other);
 	echo $this->DisplayProperties();
 

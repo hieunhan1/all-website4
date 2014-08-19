@@ -14,7 +14,7 @@
                 <?php
                 $data = $this->_model->_web_menu($lang, 0, 6);
                 foreach($data as $row){
-                    echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_hinh'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
+                    echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_img'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
                 }
                 ?>
             </td>

@@ -16,7 +16,7 @@
         echo "<h1>{$row_detail['name']}</h1>";
         ?>
         <div id="product_detail">
-            <div id="product_detail_img"><img src="<?php echo CONS_IMAGES_PRODUCTS.$row_detail['url_hinh'];?>" alt="<?php echo $row_detail['name'];?>" /></div>
+            <div id="product_detail_img"><img src="<?php echo CONS_IMAGES_PRODUCTS.$row_detail['url_img'];?>" alt="<?php echo $row_detail['name'];?>" /></div>
             <div id="product_detail_tt">
                 <div id="product_detail_code">Mã SP: <b><?php echo $row_detail['masp'];?></b></div>
                 <?php if($row_detail['giagoc']!='0') echo '<div id="product_detail_giagoc">'.number_format($row_detail['giagoc'],0,',','.').' VNĐ</div>';?>
@@ -53,7 +53,7 @@
             if($i%4 != 1) $style='style="margin-left:9px"'; else $style='';
             if($row['giagoc']!=0) $giagoc = number_format($row['giagoc'],0,'.',','); else $giagoc='';
             echo '<div class="product_box" '.$style.'>
-                <div class="product_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_hinh'].'" alt="'.$row['name'].'" /></a></div>
+                <div class="product_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
                 <div class="product_price"><span>'.$giagoc.'</span> '.number_format($row['giaban'],0,'.',',').'đ</div>
                 <a href="'.$row['url'].'"><h3 class="product_name">'.$row['name'].'</h3></a>
                 <div class="product_buy" idsp="'.$row['id'].'" alias="'.$row['name_alias'].'">mua hàng</div>

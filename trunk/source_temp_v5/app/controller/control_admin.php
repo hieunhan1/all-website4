@@ -183,29 +183,24 @@ class control_admin extends control_admin_form{
 		else return FALSE;
 	}
 	
-	public function select_from_all($lang, &$arr, $str_search='', $select_field='', $order_by=''){
+	public function select_from_all($lang, &$arr, $select_field='', $order_by=''){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");
 		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
-		
 		if(!empty($_GET)){
 			$this->search_data($str_search, $url_search);
 		}
-		
 		$select = '`id`,`name`,`status`'.$select_field;
 		$table  = $this->_action;
 		$where  = "lang='{$lang}' ".$str_search;
 		$order_by = $order_by.' `id` DESC ';
-		
 		$data = $this->_model->_select_field_table($select, $table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
-		
 		$arr = array(
 			'currentpage'=>$currentpage,
 			'startrow'	=>$startrow,
 			'totalrows'	=>$totalrows,
 			'url_search'=>$url_search
 		);
-		
 		return $data;
 	}
 	
@@ -223,9 +218,32 @@ class control_admin extends control_admin_form{
 		}
 	}
 	
-	public function select_from_menu($lang){
-		$where  = " AND lang='{$lang}' ";
+	public function select_from_menu($lang, $where=NULL){
+		if($where==NULL) $where = " AND lang='{$lang}' ";
+		else $where = " AND lang='{$lang}' AND ({$where})";
 		$data = $this->_model->_web_menu(0, '', NULL, $where);
+		return $data;
+	}
+	
+	public function select_from_slider_banner($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*";
+		$all_table = $table.',web_slider_banner_position';
+		$where  = "lang='{$lang}' ";
+		$order_by = '`position_id`, `id` DESC ';
+		$data = $this->_model->_select_field_table($select, $table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
 		return $data;
 	}
 	
@@ -286,7 +304,7 @@ class control_admin extends control_admin_form{
 	
 	public function datetime_current_vn($time){
 		$timezone  = +7; //(GMT +7:00)
-        return gmdate("d/m/Y H:i", $time + 3600*($timezone+date("0")));
+        return gmdate("Y-m-d H:i", $time + 3600*($timezone+date("0")));
 	}
 	
 	public function ckeditor_full($name){

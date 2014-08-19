@@ -128,8 +128,13 @@ class model_admin extends db{
 	public function _create($table, $fields, $values){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			$str_field .= "`{$fields[$i]}`,";
-			$str_value .= "'".$this->_change_dau_nhay($values[$i])."',";
+			if($fields[$i]!='datetime'){
+				$str_field .= "`{$fields[$i]}`,";
+				$str_value .= "'".$this->_change_dau_nhay($values[$i])."',";
+			}else{
+				$str_field .= "`{$fields[$i]}`,";
+				$str_value .= "'".strtotime($values[$i])."',";
+			}
 		}
 		$str_field = trim($str_field,',');
 		$str_value = trim($str_value,',');
@@ -140,7 +145,8 @@ class model_admin extends db{
 	public function _update($table, $fields, $values, $id){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			$str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
+			if($fields[$i]!='datetime') $str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
+			else $str .= "`{$fields[$i]}`='".strtotime($values[$i])."',";
 		}
 		$str = trim($str,',');
 		$str = "UPDATE `{$table}` SET {$str} WHERE `id`='{$id}' ";
@@ -181,7 +187,7 @@ class model_admin extends db{
 		return $str_keys.'fields%%%values'.$str_values;
 	}
 	public function _restore_data($id){
-		$sql = "SELECT `action`,`table`,`content` FROM `web_logs` WHERE `id`='{$id}'";
+		$sql = "SELECT `action`,`table`,`content` FROM `web_logs` WHERE `status`=0 AND `id`='{$id}'";
 		$result = $this->db->query($sql);
 		$row = $result->fetch_assoc();
 		if($row['action']=='delete'){
@@ -209,30 +215,31 @@ class model_admin extends db{
 		
 		if(!$this->db->query($str_sql)) die($this->db->error);
 		else{
-			$this->db->query("DELETE FROM `web_logs` WHERE id='{$id}' ");
+			$this->db->query("UPDATE `web_logs` SET `status`=1,`date_restore`='".time()."',`user_restore`='".$_SESSION['admin_user']."' WHERE id='{$id}' ");
 			return true;
 		}
 	}
 	public function _web_log($name, $action, $table, $user, $content, $lang){
 		$time = time();
-		$sql = "INSERT INTO `web_logs` VALUES (NULL, '{$name}', '{$action}', '{$table}', '{$time}', '{$user}', '{$content}', '{$lang}', '0')";
+		$sql = "INSERT INTO `web_logs` VALUES (NULL, '{$name}', '{$action}', '{$table}', '{$time}', '{$user}', '{$content}', '{$lang}', '0', NULL, NULL)";
 		$this->db->query($sql);
 	}
 	/*end web_log*/
 	
 	/*web_menu*/
-	public function _web_menu($parent_id, $style, $arr, $where=''){
+	public function _web_menu($parent, $style, $arr, $where=''){
 		if(!$arr) $arr = array();
-		$sql = "SELECT `id`,`name`,`status`,`order` FROM `web_menu`
-		WHERE parent_id='{$parent_id}' {$where} ORDER BY `order` ";
+		$sql = "SELECT `id`,`name`,`url`,`order`,`status` FROM `web_menu`
+		WHERE parent='{$parent}' {$where} ORDER BY `order` ";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		
 		while($row = $result->fetch_assoc()){
 			$arr[] = array(
 				'id'=>$row['id'],
 				'name'=>$style.$row['name'],
+				'url'=>$row['url'],
 				'order'=>$style.$row['order'],
-				'status'=>$row['status']
+				'status'=>$row['status'],
 			);
 			$arr = $this->_web_menu($row['id'], $style.'-- ', $arr, $where);
 		}
