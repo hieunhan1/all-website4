@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
+$this->create_edit_data($table, $arr_action, $row_detail);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -34,38 +34,32 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//soluong
-	$values = $row_detail['soluong'];
+	//number
+	$values = $row_detail['number'];
 	$properties = array('5'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Số lượng','soluong','input_medium'); //label id&name class style
+	$views = array('Số lượng','number','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//dongia
-	$values = $row_detail['dongia'];
+	//price
+	$values = $row_detail['price'];
 	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Đơn giá','dongia','input_medium'); //label id&name class style
+	$views = array('Đơn giá','price','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//giamgia
-	$values = $row_detail['giamgia'];
+	//discounts
+	$values = $row_detail['discounts'];
 	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Giảm giá','giamgia','input_medium'); //label id&name class style
+	$views = array('Giảm giá','discounts','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//thanhtien
-	$values = $row_detail['tien'];
+	//total
+	$values = $row_detail['total'];
 	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Thành tiền','tien','input_medium'); //label id&name class style
+	$views = array('Thành tiền','total','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//id
-	$values = $row_detail['id'];
-	$views = array('id'); //name class
-    $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	
 	//lang
@@ -74,12 +68,18 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	
+	//id
+	$values = $row_detail['id'];
+	$views = array('id'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
 	//btn_cancel
 	$other = '<input type="button" name="btn_cancel" id="btn_cancel" value="Hủy" class="submit" onClick="window.location.href=\''.$_SESSION['link_back'].'\'" />';
 	
 	//btn_submit
 	$properties = ''; //disabled, readonly
-	$views = array($lable_submit,'btn_action','submit btn_action'); //label id&name class style
+	$views = array($arr_action['lable_submit'],'btn_action','submit btn_action'); //label id&name class style
     $this->getProperties('9','',$properties,$views,$other);
 	echo $this->DisplayProperties();
 

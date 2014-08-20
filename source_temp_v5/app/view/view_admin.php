@@ -62,9 +62,7 @@ function SetFileField(fileUrl, data){
         
     	<?php if( $this->_action!='home' && !isset($_GET['id']) && !isset($_GET['user']) ){ ?>
     	<div class="title" style="width:auto; float:right">
-        	<a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a>&nbsp; | &nbsp;
-            <a href="javascript:;" id="update">See the change</a>
-            <a href="javascript:;" id="create">See the not change</a>
+        	<a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$this->_action.'/?id=0';?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>add.gif"> Thêm mới</a> &nbsp; &nbsp; 
         </div>
         <?php }?>
         

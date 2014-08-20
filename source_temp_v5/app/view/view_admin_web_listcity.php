@@ -8,21 +8,21 @@ include_once('view/view_admin_search.php');
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="150" align="left">Vị trí</th>
-            <th width="200" align="left">Link</th>
+            <th width="100" align="left">Phí giao hàng</th>
+            <th width="100" align="left">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_slider_banner($lang,$arr,',`position_id`,`url`');
+		$data = $this->select_from_all($lang,$arr,',`deliverycosts`,`order`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['position'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['url'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo number_format($row['deliverycosts']);?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['order'];?></p></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;

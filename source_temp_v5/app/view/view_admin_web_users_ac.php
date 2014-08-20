@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
+$this->create_edit_data($table, $arr_action, $row_detail);
 
 echo '<p style="color:#360; font-size:110%">Lưu ý: Khi tạo tài khoản password mặc định là "<b>00112233</b>"</p>';
 
@@ -24,37 +24,69 @@ echo '<form name="form_action" method="post" action="">
 	
 	//username
 	$values = $row_detail['username'];
-	$properties = array('32',$disabled); //maxlength OTHER (disabled, readonly)
+	$properties = array('32',$arr_action['disabled']); //maxlength OTHER (disabled, readonly)
 	$views = array('Username','username','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//phone
+	$values = $row_detail['phone'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Điện thoại','phone','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//email
+	$values = $row_detail['email'];
+	$properties = array('60'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Email','email','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//address
+	$values = $row_detail['address'];
+	$properties = array('250'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Địa chỉ','address','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//phan quyen
 	$arr = $this->_model->_web_menu_admin();
 	
-	$properties = $row_detail['quyen_xem']; //default check
+	$properties = $row_detail['rule_view']; //default check
 	$views = array('Xem','','checkbox checkbox_xem','width:167px; height:270px;'); //label name class width
 	$this->getProperties('7',$arr,$properties,$views);
 	$xem = $this->DisplayProperties();
 	
-	$properties = $row_detail['quyen_action']; //default check
+	$properties = $row_detail['rule_action']; //default check
 	$views = array('Quyền','','checkbox checkbox_action','width:167px; height:270px;'); //label name class width
 	$this->getProperties('7',$arr,$properties,$views);
 	$quyen = $this->DisplayProperties();
 	
-	$values = $row_detail['quyen_xem'];
-	$views = array('quyen_xem', 'value_quyen_xem'); //name class
+	$values = $row_detail['rule_view'];
+	$views = array('rule_view', 'value_rule_view'); //name class
     $this->getProperties('2',$values,'',$views);
 	$xem .= $this->DisplayProperties();
 	
-	$values = $row_detail['quyen_action'];
-	$views = array('quyen_action', 'value_quyen_action'); //name class
+	$values = $row_detail['rule_action'];
+	$views = array('rule_action', 'value_rule_action'); //name class
     $this->getProperties('2',$values,'',$views);
 	$quyen .= $this->DisplayProperties();
 	
 	echo '<tr><td class="label">Phân quyền</td> <td>'.$xem.$quyen.'</td></tr>';
 	
-	echo $field_password;
+	if($_GET['id']==0){
+		$values = md5('00112233');
+		$views = array('password'); //name class
+		$this->getProperties('2',$values,'',$views);
+		echo $this->DisplayProperties();
+	}
+	
+	//lang
+	$values = $lang;
+	$views = array('lang'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
 	
 	//id
 	$values = $row_detail['id'];
@@ -67,10 +99,10 @@ echo '<form name="form_action" method="post" action="">
 	
 	//btn_submit
 	$properties = ''; //disabled, readonly
-	$views = array($lable_submit,'btn_action','submit btn_action'); //label id&name class style
+	$views = array($arr_action['lable_submit'],'btn_action','submit btn_action'); //label id&name class style
     $this->getProperties('9','',$properties,$views,$other);
 	echo $this->DisplayProperties();
 
 echo '</table></form>';
 
-if($user_admin=='admin') echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>00112233</b>")</a></p>';
+if($this->_user=='admin') echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>00112233</b>")</a></p>';

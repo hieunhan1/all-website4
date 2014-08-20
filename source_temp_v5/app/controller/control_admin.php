@@ -204,6 +204,79 @@ class control_admin extends control_admin_form{
 		return $data;
 	}
 	
+	public function select_from_menu($lang, $where=NULL){
+		if($where==NULL) $where = " AND lang='{$lang}' ";
+		else $where = " AND lang='{$lang}' AND ({$where})";
+		$data = $this->_model->_web_menu(0, '', NULL, $where);
+		return $data;
+	}
+	
+	public function select_from_slider_banner($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, web_slider_banner_position.name as position";
+		$all_table = $table.',web_slider_banner_position';
+		$where  = "lang='{$lang}' AND position_id=web_slider_banner_position.id ".$str_search;
+		$order_by = '`position_id`, `id` DESC ';
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
+	public function select_from_listdistricts($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, web_listcity.name as city";
+		$all_table = $table.',web_listcity';
+		$where  = "{$table}.lang='{$lang}' AND listcity_id=web_listcity.id ".$str_search;
+		$order_by = "`listcity_id`, {$table}.`order`";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
+	public function select_from_product_order($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, web_listcity.name as city";
+		$all_table = $table.',web_listcity';
+		$where  = "{$table}.lang='{$lang}' AND listcity_id=web_listcity.id ".$str_search;
+		$order_by = "`datetime` DESC";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
 	public function search_data(&$str_search, &$url_search){
 		$fields = array_keys($_GET);
 		$values = array_values($_GET);
@@ -218,33 +291,19 @@ class control_admin extends control_admin_form{
 		}
 	}
 	
-	public function select_from_menu($lang, $where=NULL){
-		if($where==NULL) $where = " AND lang='{$lang}' ";
-		else $where = " AND lang='{$lang}' AND ({$where})";
-		$data = $this->_model->_web_menu(0, '', NULL, $where);
-		return $data;
-	}
-	
-	public function select_from_slider_banner($lang, &$arr){
-		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
-		settype($currentpage,"int");
-		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
-		if(!empty($_GET)){
-			$this->search_data($str_search, $url_search);
+	public function search_data_forms(&$str_search, &$url_search){
+		$fields = array_keys($_GET);
+		$values = array_values($_GET);
+		$table = $this->_action;
+		for($i=0; $i < count($fields)-1; $i++){
+			if($fields[$i]!='search'){
+				if($values[$i]!='') $str_search .= " AND {$table}.`{$fields[$i]}`='".$this->_model->_change_dau_nhay($values[$i])."' ";
+				$url_search .= "&{$fields[$i]}={$values[$i]}";
+			}else{
+				if($values[$i]!='') $str_search .= " AND {$table}.name LIKE '%".$this->_model->_change_dau_nhay($values[$i])."%' ";
+				$url_search .= '&search='.$values[$i];
+			}
 		}
-		$table  = $this->_action;
-		$select = "{$table}.*";
-		$all_table = $table.',web_slider_banner_position';
-		$where  = "lang='{$lang}' ";
-		$order_by = '`position_id`, `id` DESC ';
-		$data = $this->_model->_select_field_table($select, $table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
-		$arr = array(
-			'currentpage'=>$currentpage,
-			'startrow'	=>$startrow,
-			'totalrows'	=>$totalrows,
-			'url_search'=>$url_search
-		);
-		return $data;
 	}
 	
 	public function delete_one($lang){

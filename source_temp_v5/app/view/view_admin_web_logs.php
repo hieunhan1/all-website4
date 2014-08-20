@@ -41,7 +41,7 @@
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
             <th width="80" align="left">Action</th>
-            <th width="100" align="left">Table</th>
+            <th width="150" align="left">Table</th>
             <th width="120" align="left">Date</th>
             <th width="100" align="left">User</th>
             <th width="90">Thao tác</th>
@@ -54,7 +54,7 @@
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><?php echo $row['name'];?></td>
+            <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
             <td><?php echo $row['action'];?></td>
             <td><?php echo $row['table'];?></td>
             <td><?php echo $this->datetime_current_vn($row['datetime']);?></td>

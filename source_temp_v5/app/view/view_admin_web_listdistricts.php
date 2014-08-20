@@ -1,28 +1,41 @@
-<?php
-include_once('view/view_admin_language.php');
-include_once('view/view_admin_search.php');
-?>
-
+<?php include_once('view/view_admin_language.php');?>
+<div id="search">
+	<form action="" method="get" name="search" onsubmit="if(search.value=='' && action.value=='' && table.value=='' && username.value=='') return false;">
+    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
+        <select name="listcity_id" class="select">
+            <?php
+            $data = $this->_model->_web_listcity();
+			foreach($data as $row){
+				if($_GET['listcity_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
+				else echo "<option value='{$row['id']}' selected='selected'>{$row['name']}</option>";
+			}
+			?>
+        </select>
+    	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
+	</form>
+</div>
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="150" align="left">Vị trí</th>
-            <th width="200" align="left">Link</th>
+            <th width="150" align="left">Tỉnh - Thành</th>
+            <th width="100" align="left">Phí giao hàng</th>
+            <th width="100" align="left">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_slider_banner($lang,$arr,',`position_id`,`url`');
+		$data = $this->select_from_listdistricts($lang,$arr,',`deliverycosts`,`order`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['position'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['url'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['city'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo number_format($row['deliverycosts']);?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['order'];?></p></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;
