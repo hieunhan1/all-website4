@@ -1,6 +1,6 @@
 <?php
 /*action create, edit*/
-$this->create_edit_data($table, $lable_submit, $row_detail, $disabled, $change_alias);
+$this->create_edit_data($table, $arr_action, $row_detail);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -13,6 +13,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//listcity_id
+	$arr = $this->_model->_web_listcity();
+	$properties = $row_detail['listcity_id']; //default check
+	$views = array('Tỉnh thành','listcity_id','input_medium'); //label id&name class
+    $this->getProperties('5',$arr,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//name
 	$values = $row_detail['name'];
 	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
@@ -20,10 +27,10 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//phigiaohang
-	$values = $row_detail['phigiaohang'];
+	//deliverycosts
+	$values = $row_detail['deliverycosts'];
 	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Phí giao hàng','phigiaohang','input_medium'); //label id&name class style
+	$views = array('Phí giao hàng','deliverycosts','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
@@ -34,15 +41,15 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//id
-	$values = $row_detail['id'];
-	$views = array('id'); //name class
-    $this->getProperties('2',$values,'',$views);
-	echo $this->DisplayProperties();
-	
 	//lang
 	$values = $lang;
 	$views = array('lang'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//id
+	$values = $row_detail['id'];
+	$views = array('id'); //name class
     $this->getProperties('2',$values,'',$views);
 	echo $this->DisplayProperties();
 	
@@ -51,7 +58,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	//btn_submit
 	$properties = ''; //disabled, readonly
-	$views = array($lable_submit,'btn_action','submit btn_action'); //label id&name class style
+	$views = array($arr_action['lable_submit'],'btn_action','submit btn_action'); //label id&name class style
     $this->getProperties('9','',$properties,$views,$other);
 	echo $this->DisplayProperties();
 

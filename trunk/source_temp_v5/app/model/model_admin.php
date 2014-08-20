@@ -266,7 +266,6 @@ class model_admin extends db{
 		$sql = "SELECT `id`,`name` FROM `web_slider_banner_position` WHERE `status`=1 ORDER BY `id`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
-		$data[] = array('id'=>0, 'name'=>'-- Chọn vị trí --');
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}

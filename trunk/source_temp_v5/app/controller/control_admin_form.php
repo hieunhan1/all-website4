@@ -90,8 +90,8 @@ class control_admin_form{
 			$str .= '<option value="'.$value['id'].'" '.$select.'>'.$value['name'].'</option>';
 		}
 		
-		if($views[0] == '') $str = '<select name="'.$views[1].'" id="'.$views[1].'" class="'.$views[2].'">'.$str.'</select>';
-		else $str = '<tr><td class="label">'.$views[0].'</td> <td><select name="'.$views[1].'" id="'.$views[1].'" class="'.$views[2].'">'.$str.'</select>'.$others.'</td></tr>';
+		if($views[0] == '') $str = '<select name="'.$views[1].'" id="'.$views[1].'" class="'.$views[2].'" '.$views['3'].'>'.$str.'</select>';
+		else $str = '<tr><td class="label">'.$views[0].'</td> <td><select name="'.$views[1].'" id="'.$views[1].'" class="'.$views[2].'" '.$views['3'].'>'.$str.'</select>'.$others.'</td></tr>';
 		
 		return $str;
 	}
