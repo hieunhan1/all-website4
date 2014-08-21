@@ -1,7 +1,19 @@
-<?php
-include_once('view/view_admin_language.php');
-include_once('view/view_admin_search.php');
-?>
+<div id="search">
+	<form action="" method="get" name="search" onsubmit="if(search.value=='' && action.value=='' && table.value=='' && username.value=='') return false;">
+    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
+        <select name="position_id" class="select">
+        	<option value="">-- chọn vị trí --</option>
+            <?php
+            $data = $this->_model->_web_slider_banner_position();
+			foreach($data as $row){
+				if($_GET['position_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
+				else echo "<option value='{$row['id']}' selected='selected'>{$row['name']}</option>";
+			}
+			?>
+        </select>
+    	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
+	</form>
+</div>
 
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">

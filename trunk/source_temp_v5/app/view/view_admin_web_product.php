@@ -1,7 +1,10 @@
-<?php
-include_once('view/view_admin_language.php');
-include_once('view/view_admin_search.php');
-?>
+<div id="search">
+	<form action="" method="get" name="search" onsubmit="if(search.value=='' && code.value=='') return false;">
+    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
+        <input type="text" name="code" value="<?php if(isset($_GET['code'])) echo $_GET['code']; ?>" class="txt"  placeholder="Mã sản phẩm" />
+    	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
+	</form>
+</div>
 
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">

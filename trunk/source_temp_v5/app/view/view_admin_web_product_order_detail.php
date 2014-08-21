@@ -1,4 +1,3 @@
-<?php include_once('view/view_admin_language.php');?>
 <div id="search">
 	<form action="" method="get" name="search" onsubmit="if(search.value=='' && order_id.value=='') return false;">
         <input type="text" name="order_id" value="<?php if(isset($_GET['order_id'])) echo $_GET['order_id']; ?>" class="txt"  placeholder="Nhập mã đơn hàng" />

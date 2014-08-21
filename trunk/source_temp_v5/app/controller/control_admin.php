@@ -57,6 +57,11 @@ class control_admin extends control_admin_form{
 		$menu_admin_left = $menu_admin[0];
 		$menu_admin_right = $menu_admin[1];
 		
+		if(isset($_GET['ajax'])){
+			include_once('view/view_admin_ajax.php');
+			return TRUE;
+		}/*ajax*/
+		
 		/*checks view, create || edit*/
 		if(isset($_GET['id'])){
 			$set_authorities = $rule_action;
@@ -83,10 +88,6 @@ class control_admin extends control_admin_form{
 				$this->menu_id($lang);
 				return true;
 			}/*menu_id*/
-			if(isset($_GET['ajax'])){
-				include_once('view/view_admin_ajax.php');
-				return TRUE;
-			}/*ajax*/
 			
 			if(file_exists($file_view)){
 				$include = ob_start();
