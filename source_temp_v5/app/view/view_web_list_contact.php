@@ -12,13 +12,16 @@ foreach($data as $row){
 
 <div class="viewpost">
 	<?php
-    echo "<h1>{$this->_config['name']}</h1>";
-	echo $this->_config['contact_foo'].'<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
+    echo "<h1>{$this->_config['sitename']}</h1>";
+	echo '<p>Địa chỉ: '.$this->_config['address'].'</p>
+		<p>Điện thoại: '.$this->_config['tel'].'</p>
+		<p>Email: '.$this->_config['email'].'</p>
+		<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
 	//echo '<h2 style="color:#00F">'.$menu_info['description'].'</h2>';
     ?>
 </div>
 
-<div id="loading_contact"><img src="css/web_img/loader.gif" /></div>
+<div id="loading_contact"><img src="themes/website/img/loader.gif" /></div>
 <div id="contact">
 	<div id="error_contact" class="error"></div>
     <table width="88%" border="0" cellspacing="20" cellpadding="0" style="margin:0 auto 30px auto">
@@ -35,7 +38,7 @@ foreach($data as $row){
         <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_PHONE;?>:</td>
         <td valign="top"><input type="text" name="phone_contact" class="contact_txt" maxlength="20" /><p class="error" id="phone_contact"></p></td>
         <td align="right" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_ADDRESS;?>:</td>
-        <td valign="top"><input type="text" name="diachi_contact" class="contact_txt" maxlength="250" /></td>
+        <td valign="top"><input type="text" name="address_contact" class="contact_txt" maxlength="250" /></td>
       </tr>
       <tr>
         <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_MESSAGE;?>:</td>
@@ -53,7 +56,7 @@ foreach($data as $row){
 $(document).ready(function(e) {
 	$("input[name=btnSend]").click(function(){
 		var message = check_text_length("textarea[name=message_contact","#message_contact","Nội dung phải hơn 30 ký tự",30);
-		var diachi = $("input[name=diachi_contact]").val();
+		var address = $("input[name=address_contact]").val();
 		var phone = check_phone("input[name=phone_contact]","#phone_contact","Điện thoại chưa đúng");
 		var email = check_email("input[name=email_contact]","#email_contact","Email chưa đúng");
 		var name = check_text_length("input[name=name_contact]","#name_contact","Nhập họ tên",2);
@@ -64,7 +67,7 @@ $(document).ready(function(e) {
 		$.ajax({ 	
 			url:"ajax/",
 			type:'post',
-			data:{contact_name:name,email:email,phone:phone,diachi:diachi,message:message},
+			data:{contact_name:name,email:email,phone:phone,address:address,message:message},
 			cache:false,
 			success: function(data){
 				setTimeout(function(){

@@ -26,7 +26,7 @@
     </tr>
     <tr class="thongtin">
     	<th width="100" align="left">Địa chỉ</th>
-        <td><?php echo $row['diachi'];?></td>
+        <td><?php echo $row['address'];?></td>
     </tr>
     <tr class="thongtin">
     	<th width="100" align="left">Email</th>

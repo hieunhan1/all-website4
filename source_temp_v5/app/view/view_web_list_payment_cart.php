@@ -2,7 +2,7 @@
 $data = $this->order_sp_view();
 $all_sp = count($data);/*view gio hang*/
 ?>
-<div id="loading" style="display:none; width:960px; height:435px; text-align:center; position:absolute; z-index:2; background-color:#FFF; opacity: 0.4; filter:alpha(opacity=40);"><img src="css/web_img/loader.gif" width="100" style="margin-top:150px" /></div>
+<div id="loading" style="display:none; width:960px; height:435px; text-align:center; position:absolute; z-index:2; background-color:#FFF; opacity: 0.4; filter:alpha(opacity=40);"><img src="themes/website/img/loader.gif" width="100" style="margin-top:150px" /></div>
 <div class="ajax_data" style="position:relative; z-index:1">
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
@@ -22,8 +22,8 @@ $all_sp = count($data);/*view gio hang*/
 		if($all_sp > 0){
 			foreach($data as $row){
 				$tongtien += $row['thanhtien'];
-				if($row['giagoc']==0) $price_sp=number_format($row['giaban'],0,',','.').' VNĐ';
-				else $price_sp='<span style="color:#888; font-size:85%; text-decoration:line-through; padding-right:15px">'.number_format($row['giagoc'],0,',','.').' VNĐ</span>'.number_format($row['giaban'],0,',','.').' VNĐ';
+				if($row['price_cost']==0) $price_sp=number_format($row['price'],0,',','.').' VNĐ';
+				else $price_sp='<span style="color:#888; font-size:85%; text-decoration:line-through; padding-right:15px">'.number_format($row['price_cost'],0,',','.').' VNĐ</span>'.number_format($row['price'],0,',','.').' VNĐ';
 				echo '<tr>
 					<td align="center"><span class="order_sp_trash bogoc_5px" idsp="'.$row['id'].'">x</span></td>
 					<td><a href="'.$row['link'].'" title="Xem lại sản phẩm">'.$row['name'].'</a></td>

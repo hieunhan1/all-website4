@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2014 at 12:46 PM
+-- Generation Time: Aug 21, 2014 at 12:08 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -87,15 +87,15 @@ CREATE TABLE IF NOT EXISTS `web_config` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `web_config`
 --
 
 INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) VALUES
-(1, 'Slogan', 'slogan', 'Thương hiệu vững chắc', 'vi', 1),
-(2, 'Slogan', 'slogan', 'Thương hiệu vững chắc', 'en', 1),
+(1, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'vi', 1),
+(2, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'en', 1),
 (5, 'Số tin / trang', 'limit_1', '10', 'vi', 1),
 (6, 'Số SP / trang', 'limit_2', '10', 'vi', 1),
 (7, 'Số photo / trang', 'limit_3', '10', 'vi', 1),
@@ -117,7 +117,9 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 (23, 'Hotline', 'hotline', '0988 388 003', 'en', 1),
 (24, 'Yahoo', 'yahoo', 'hieu_nhan1', 'en', 1),
 (25, 'Skype', 'skype', 'hieu_nhan1', 'en', 1),
-(26, 'Address', 'address', '123 CMT 8', 'en', 1);
+(26, 'Address', 'address', '123 CMT 8', 'en', 1),
+(27, 'Tên trang website', 'sitename', 'Thời trang 09', 'vi', 1),
+(28, 'Site name', 'sitename', 'Thời trang 09', 'en', 1);
 
 -- --------------------------------------------------------
 
@@ -263,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `web_listdistricts` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
   `name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `deliverycosts` int(8) NOT NULL DEFAULT '0',
-  `listcity_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `order` int(3) DEFAULT '0',
   `lang` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
@@ -274,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `web_listdistricts` (
 -- Dumping data for table `web_listdistricts`
 --
 
-INSERT INTO `web_listdistricts` (`id`, `name`, `deliverycosts`, `listcity_id`, `order`, `lang`, `status`) VALUES
+INSERT INTO `web_listdistricts` (`id`, `name`, `deliverycosts`, `city_id`, `order`, `lang`, `status`) VALUES
 (127, 'Quận 1', 0, 3, 1, 'vi', 1),
 (128, 'Quận 2', 0, 3, 2, 'vi', 1),
 (129, 'Quận 3', 0, 3, 3, 'vi', 1),
@@ -979,7 +981,61 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=49 ;
+
+--
+-- Dumping data for table `web_logs`
+--
+
+INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`, `content`, `lang`, `status`, `date_restore`, `user_restore`) VALUES
+(1, 'vi', 'update', 'web_product_order', 1408594137, 'admin', '`id`,`name`,`email`,`phone`,`address`,`total_current`,`total_number`,`deliverycosts`,`discounts`,`total`,`datetime`,`other`,`lang`,`status`,`listcity_id`,`districts_id`fields%%%values2%%%vi%%%info@dayamthuc.vn%%%0168 937 3352%%%9/9 Đường 5E, BHH A%%%450000%%%3%%%10000%%%0%%%660000%%%1408445230%%%màu xanh%%%vi%%%0%%%3%%%128', 'vi', 0, NULL, NULL),
+(2, 'Mùng chống muỗi hình nón', 'update', 'web_product_order_detail', 1408594142, 'admin', '`id`,`name`,`number`,`price`,`discounts`,`total`,`lang`,`status`,`product_id`,`order_id`fields%%%values33%%%Mùng chống muỗi hình nón%%%1%%%200000%%%0%%%200000%%%vi%%%1%%%1%%%1408445230', 'vi', 0, NULL, NULL),
+(3, 'Địa chỉ', 'delete', 'web_config', 1408594809, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408594818, 'admin'),
+(4, 'Nhân', 'update', 'web_users', 1408594835, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`login_number`,`disable_date`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values32%%%Nhân%%%12 CMT 8%%%0988388003%%%hieunhan@yahoo.com%%%0%%%1%%%%%%%%%nhan%%%867e1a36d190000d2f266d80889683fc%%%,1,2,%%%,1,2,%%%%%%0%%%%%%%%%vi%%%0%%%1%%%0', 'vi', 0, NULL, NULL),
+(5, 'Địa chỉ', 'delete', 'web_config', 1408594850, 'nhan', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408594876, 'nhan'),
+(6, 'Địa chỉ', 'delete', 'web_config', 1408594925, 'nhan', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408594976, 'admin'),
+(7, 'Địa chỉ', 'delete', 'web_config', 1408594985, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408594996, 'admin'),
+(8, 'Địa chỉ', 'delete', 'web_config', 1408595012, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408595109, 'admin'),
+(9, 'Địa chỉ', 'delete', 'web_config', 1408595146, 'nhan', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values15%%%Địa chỉ%%%address%%%123 cách mạng tháng 8, phường 10, quận 10, Tp.HCM%%%vi%%%1', 'vi', 1, 1408595158, 'admin'),
+(10, 'Trần Nhân', 'status', 'web_contact', 1408595205, 'admin', '1', 'vi', 0, NULL, NULL),
+(11, 'Trần Nhân', 'status', 'web_contact', 1408595210, 'admin', '0', 'vi', 0, NULL, NULL),
+(12, 'vi', 'status', 'web_product_order', 1408595441, 'admin', '1', 'vi', 0, NULL, NULL),
+(13, 'vi', 'status', 'web_product_order', 1408595444, 'admin', '0', 'vi', 0, NULL, NULL),
+(14, 'Nhân', 'status', 'web_product_order', 1408595445, 'admin', '0', 'vi', 0, NULL, NULL),
+(15, 'Tầm nhìn', 'update', 'web_menu', 1408612220, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Tầm nhìn%%%tam-nhin%%%tam-nhin/%%%%%%Tầm nhìn%%%Tầm nhìn%%%tầm nhìn,tam nhin%%%2%%%1%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(16, 'Hướng dẫn thanh toán', 'update', 'web_menu', 1408612239, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Hướng dẫn thanh toán%%%huong-dan-thanh-toan%%%huong-dan-thanh-toan/%%%%%%Hướng dẫn thanh toán%%%Hướng dẫn thanh toán%%%hướng dẫn thanh toán,huong dan thanh toan%%%0%%%3%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(17, 'Thông tin sản phẩm', 'update', 'web_menu', 1408612259, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values8%%%Thông tin sản phẩm%%%thong-tin-san-pham%%%thong-tin-san-pham/%%%%%%Thông tin sản phẩm%%%Thông tin sản phẩm%%%thông tin sản phẩm,thong tin san pham%%%0%%%5%%%0%%%vi%%%1%%%6%%%,2,', 'vi', 0, NULL, NULL),
+(18, 'Hướng dẫn thanh toán', 'status', 'web_menu', 1408612271, 'admin', '0', 'vi', 0, NULL, NULL),
+(19, 'Sản phẩm', 'update', 'web_menu', 1408612287, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values6%%%Sản phẩm%%%san-pham%%%san-pham/%%%%%%Sản phẩm%%%Sản phẩm%%%sản phẩm,san pham%%%0%%%3%%%0%%%vi%%%1%%%3%%%,2,', 'vi', 0, NULL, NULL),
+(20, 'Sản phẩm', 'update', 'web_menu', 1408612332, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values6%%%Sản phẩm%%%san-pham%%%san-pham/%%%%%%Sản phẩm%%%Sản phẩm%%%sản phẩm,san pham%%%0%%%3%%%0%%%vi%%%1%%%3%%%,', 'vi', 0, NULL, NULL),
+(21, 'Mùng chống muỗi', 'update', 'web_menu', 1408612372, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values13%%%Mùng chống muỗi%%%mung-chong-muoi%%%mung-chong-muoi/%%%icon-mung-chong-muoi.gif%%%Mùng chống muỗi%%%Mùng chống muỗi%%%mùng chống muỗi,mung chong muoi%%%6%%%1%%%1%%%vi%%%1%%%3%%%,2,', 'vi', 0, NULL, NULL),
+(22, 'Rèn chống muỗi', 'update', 'web_menu', 1408612399, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values14%%%Rèn chống muỗi%%%ren-chong-muoi%%%ren-chong-muoi/%%%icon-ren-chong-muoi.gif%%%Rèn chống muỗi%%%Rèn chống muỗi%%%rèn chống muỗi,ren chong muoi%%%6%%%2%%%1%%%vi%%%1%%%3%%%,2,', 'vi', 0, NULL, NULL),
+(23, 'Võng chống muỗi', 'update', 'web_menu', 1408612429, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values15%%%Võng chống muỗi%%%vong-chong-muoi%%%vong-chong-muoi/%%%icon-vong-chong-muoi.gif%%%Võng chống muỗi%%%Võng chống muỗi%%%võng chống muỗi,vong chong muoi%%%6%%%3%%%1%%%vi%%%1%%%3%%%,2,', 'vi', 0, NULL, NULL),
+(24, 'Thời trang Nữ', 'update', 'web_menu', 1408612435, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values14%%%Thời trang Nữ%%%thoi-trang-nu%%%thoi-trang-nu/%%%%%%Thời trang dành cho Nữ%%%Thời trang dành cho Nữ%%%thời trang nữ,thoi trang nu%%%6%%%2%%%1%%%vi%%%1%%%3%%%,2,', 'vi', 0, NULL, NULL),
+(25, 'Hướng dẫn thanh toán', 'update', 'web_menu', 1408612454, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Hướng dẫn thanh toán%%%huong-dan-thanh-toan%%%huong-dan-thanh-toan/%%%%%%Hướng dẫn thanh toán%%%Hướng dẫn thanh toán%%%hướng dẫn thanh toán,huong dan thanh toan%%%0%%%4%%%0%%%vi%%%0%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(26, 'Slogan', 'update', 'web_config', 1408612524, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values1%%%Slogan%%%slogan%%%Thương hiệu vững chắc%%%vi%%%1', 'vi', 0, NULL, NULL),
+(27, 'Slogan', 'update', 'web_config', 1408612530, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values2%%%Slogan%%%slogan%%%Thương hiệu vững chắc%%%en%%%1', 'en', 0, NULL, NULL),
+(28, 'Hướng dẫn thanh toán', 'update', 'web_menu', 1408612576, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Hướng dẫn thanh toán%%%huong-dan-thanh-toan%%%huong-dan-thanh-toan/%%%%%%Hướng dẫn thanh toán%%%Hướng dẫn thanh toán%%%hướng dẫn thanh toán,huong dan thanh toan%%%2%%%4%%%0%%%vi%%%0%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(29, 'Sứ mệnh', 'update', 'web_menu', 1408612596, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values4%%%Sứ mệnh%%%su-menh%%%su-menh/%%%%%%Sứ mệnh%%%Sứ mệnh%%%su menh%%%2%%%2%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(30, 'Áo Nam', 'update', 'web_menu', 1408612604, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Áo Nam%%%ao-nam%%%ao-nam/%%%%%%Áo Nam%%%Áo Nam%%%áo nam,ao nam%%%13%%%1%%%0%%%vi%%%0%%%3%%%,4,', 'vi', 0, NULL, NULL),
+(31, 'Đối tác', 'update', 'web_menu', 1408612627, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values5%%%Đối tác%%%doi-tac%%%doi-tac/%%%%%%Đối tác%%%Đối tác%%%đối tác,doi tac%%%2%%%3%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(32, 'Trang chủ', 'update', 'web_menu', 1408612747, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values1%%%Trang chủ%%%trang-chu%%%%%%%%%Title trang chủ%%%Des trang chủ%%%trang chủ,trang chu%%%0%%%1%%%0%%%vi%%%1%%%1%%%,2,', 'vi', 0, NULL, NULL),
+(33, 'Giới thiệu', 'update', 'web_menu', 1408612756, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values2%%%Giới thiệu%%%gioi-thieu%%%gioi-thieu/%%%%%%Title giới thiệu%%%Des giới thiệu%%%giới thiệu,gioi thieu%%%0%%%2%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(34, 'Sản phẩm', 'update', 'web_menu', 1408612760, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values6%%%Sản phẩm%%%san-pham%%%san-pham/%%%%%%Sản phẩm%%%Sản phẩm%%%sản phẩm,san pham%%%0%%%3%%%0%%%vi%%%1%%%3%%%,4,', 'vi', 0, NULL, NULL),
+(35, 'Liên hệ', 'update', 'web_menu', 1408612772, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values9%%%Liên hệ%%%lien-he%%%lien-he/%%%%%%Liên hệ%%%Liên hệ%%%liên hệ,lien he%%%0%%%6%%%0%%%vi%%%1%%%13%%%,2,', 'vi', 0, NULL, NULL),
+(36, 'Hướng dẫn thanh toán', 'update', 'web_menu', 1408612775, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values7%%%Hướng dẫn thanh toán%%%huong-dan-thanh-toan%%%huong-dan-thanh-toan/%%%%%%Hướng dẫn thanh toán%%%Hướng dẫn thanh toán%%%hướng dẫn thanh toán,huong dan thanh toan%%%0%%%4%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(37, 'Thông tin sản phẩm', 'update', 'web_menu', 1408612778, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values8%%%Thông tin sản phẩm%%%thong-tin-san-pham%%%thong-tin-san-pham/%%%%%%Thông tin sản phẩm%%%Thông tin sản phẩm%%%thông tin sản phẩm,thong tin san pham%%%0%%%5%%%0%%%vi%%%1%%%2%%%,2,', 'vi', 0, NULL, NULL),
+(38, 'Facebook', 'create', 'web_menu', 1408612904, 'admin', '', 'vi', 0, NULL, NULL),
+(39, 'Youtube', 'create', 'web_menu', 1408612933, 'admin', '', 'vi', 0, NULL, NULL),
+(40, 'Youtube', 'update', 'web_menu', 1408613144, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values20%%%Youtube%%%youtube%%%javascript:;%%%youtube.gif%%%Youtube%%%Youtube%%%Youtube%%%0%%%102%%%0%%%vi%%%1%%%14%%%,6,', 'vi', 0, NULL, NULL),
+(41, 'Tên trang website', 'create', 'web_config', 1408613228, 'admin', '', 'vi', 0, NULL, NULL),
+(42, 'Site name', 'create', 'web_config', 1408613248, 'admin', '', 'en', 0, NULL, NULL),
+(43, 'Mùng chống muỗi tam giác ba dây trắng', 'update', 'web_product', 1408613832, 'admin', '`id`,`name`,`name_alias`,`code`,`url`,`url_img`,`description`,`tags`,`price`,`price_cost`,`content`,`more`,`other`,`datetime`,`lang`,`status`,`menu_id`fields%%%values2%%%Mùng chống muỗi tam giác ba dây trắng%%%mung-chong-muoi-tam-giac-ba-day-trang%%%MMTG-01%%%mung-chong-muoi/mung-chong-muoi-tam-giac-ba-day-trang.html%%%mung-chong-muoi-tam-giac-ba-day-trang.jpg%%%Mùng chống muỗi tam giác ba dây trắng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.%%%mùng chống muỗi tam giác ba dây trắng,mung chong muoi tam giac ba day trang%%%250000%%%0%%%<h2>M&ugrave;ng chống muỗi tam gi&aacute;c ba d&acirc;y trắng&nbsp;l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng.</h2>\r\n\r\n<p>M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n%%%<p>Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng</p>\r\n\r\n<p>Giao h&agrave;ng to&agrave;n quốc</p>\r\n%%%1%%%1408460940%%%vi%%%1%%%,6,13,', 'vi', 0, NULL, NULL),
+(44, 'Mùng chống muỗi hình nón', 'update', 'web_product', 1408613840, 'admin', '`id`,`name`,`name_alias`,`code`,`url`,`url_img`,`description`,`tags`,`price`,`price_cost`,`content`,`more`,`other`,`datetime`,`lang`,`status`,`menu_id`fields%%%values1%%%Mùng chống muỗi hình nón%%%mung-chong-muoi-hinh-non%%%MMHT-01%%%mung-chong-muoi/mung-chong-muoi-hinh-non.html%%%mung-chong-muoi.jpg%%%Mùng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.%%%mùng chống muỗi hình nón,mung chong muoi hinh non%%%200000%%%250000%%%<p>M&ugrave;ng l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng. M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n%%%%%%1%%%1408460940%%%vi%%%1%%%,6,13,', 'vi', 0, NULL, NULL),
+(45, 'Giỏ hàng', 'update', 'web_menu', 1408613994, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values17%%%Giỏ hàng%%%gio-hang%%%gio-hang/%%%%%%Giỏ hàng%%%Giỏ hàng%%%giỏ hàng,gio hang%%%16%%%1%%%0%%%vi%%%1%%%0', 'vi', 0, NULL, NULL),
+(46, 'Thanh toán', 'update', 'web_menu', 1408614002, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values18%%%Thanh toán%%%thanh-toan%%%thanh-toan/%%%%%%Thanh toán%%%Thanh toán%%%thanh toán,thanh toan%%%16%%%2%%%0%%%vi%%%1%%%0', 'vi', 0, NULL, NULL),
+(47, 'Đặt hàng', 'update', 'web_menu', 1408614721, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values16%%%Đặt hàng%%%dat-hang%%%dat-hang/%%%%%%Đặt hàng%%%Đặt hàng%%%đặt hàng,dat hang%%%0%%%100%%%0%%%vi%%%1%%%7%%%,9,', 'vi', 0, NULL, NULL),
+(48, 'Giỏ hàng', 'update', 'web_menu', 1408614732, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values17%%%Giỏ hàng%%%gio-hang%%%gio-hang/%%%%%%Giỏ hàng%%%Giỏ hàng%%%giỏ hàng,gio hang%%%16%%%1%%%0%%%vi%%%1%%%7%%%,9,', 'vi', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1004,31 +1060,33 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
   `type_id` int(1) NOT NULL,
   `position_id` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `web_menu`
 --
 
 INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_img`, `title`, `description`, `tags`, `parent`, `order`, `other`, `lang`, `status`, `type_id`, `position_id`) VALUES
-(2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', '', 'Title giới thiệu', 'Des giới thiệu', 'giới thiệu,gioi thieu', 0, 2, 0, 'vi', 1, 2, ',2,'),
-(3, 'Tầm nhìn', 'tam-nhin', 'tam-nhin/', '', 'Tầm nhìn', 'Tầm nhìn', 'tầm nhìn,tam nhin', 2, 1, 0, 'vi', 1, 2, ',2,'),
-(4, 'Sứ mệnh', 'su-menh', 'su-menh/', '', 'Sứ mệnh', 'Sứ mệnh', 'su menh', 2, 2, 0, 'vi', 1, 2, ',2,'),
-(5, 'Đối tác', 'doi-tac', 'doi-tac/', '', 'Đối tác', 'Đối tác', 'đối tác,doi tac', 2, 3, 0, 'vi', 1, 2, ',2,'),
-(6, 'Sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm', 'Sản phẩm', 'sản phẩm,san pham', 0, 3, 0, 'vi', 1, 3, ',2,'),
-(7, 'Hướng dẫn thanh toán', 'huong-dan-thanh-toan', 'huong-dan-thanh-toan/', '', 'Hướng dẫn thanh toán', 'Hướng dẫn thanh toán', 'hướng dẫn thanh toán,huong dan thanh toan', 0, 4, 0, 'vi', 1, 2, ',2,'),
-(8, 'Thông tin sản phẩm', 'thong-tin-san-pham', 'thong-tin-san-pham/', '', 'Thông tin sản phẩm', 'Thông tin sản phẩm', 'thông tin sản phẩm,thong tin san pham', 0, 5, 0, 'vi', 1, 6, ',2,'),
-(9, 'Liên hệ', 'lien-he', 'lien-he/', '', 'Liên hệ', 'Liên hệ', 'liên hệ,lien he', 0, 6, 0, 'vi', 1, 13, ',2,'),
+(2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', '', 'Title giới thiệu', 'Des giới thiệu', 'giới thiệu,gioi thieu', 0, 2, 0, 'vi', 1, 2, ',2,3,'),
+(3, 'Áo Nam', 'ao-nam', 'ao-nam/', '', 'Áo Nam', 'Áo Nam', 'áo nam,ao nam', 13, 1, 0, 'vi', 1, 3, ',4,'),
+(4, 'Quần Nam', 'quan-nam', 'quan-nam/', '', 'Quần Nam', 'Quần Nam', 'quần nam,quan nam', 13, 2, 0, 'vi', 1, 3, ',4,'),
+(5, 'Giày Nam', 'giay-nam', 'giay-nam/', '', 'Giày Nam', 'Giày Nam', 'giày nam,giay nam', 13, 3, 0, 'vi', 1, 3, ',4,'),
+(6, 'Sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm', 'Sản phẩm', 'sản phẩm,san pham', 0, 3, 0, 'vi', 1, 3, ',3,4,'),
+(7, 'Hướng dẫn thanh toán', 'huong-dan-thanh-toan', 'huong-dan-thanh-toan/', '', 'Hướng dẫn thanh toán', 'Hướng dẫn thanh toán', 'hướng dẫn thanh toán,huong dan thanh toan', 0, 4, 0, 'vi', 1, 2, ',2,3,'),
+(8, 'Thông tin sản phẩm', 'thong-tin-san-pham', 'thong-tin-san-pham/', '', 'Thông tin sản phẩm', 'Thông tin sản phẩm', 'thông tin sản phẩm,thong tin san pham', 0, 5, 0, 'vi', 1, 2, ',2,3,'),
+(9, 'Liên hệ', 'lien-he', 'lien-he/', '', 'Liên hệ', 'Liên hệ', 'liên hệ,lien he', 0, 6, 0, 'vi', 1, 13, ',2,3,'),
 (10, 'Home', 'home', '/?lang=en', '', 'Home', 'Home', 'Home', 0, 1, 0, 'en', 1, 0, ''),
 (11, 'About US', 'about-us', 'about-us/', '', 'About US', 'About US', 'About US', 0, 2, 0, 'en', 1, 0, ''),
 (12, 'Products', 'products', 'products/', '', 'Products', 'Products', 'Products', 0, 3, 0, 'en', 1, 0, ''),
-(13, 'Mùng chống muỗi', 'mung-chong-muoi', 'mung-chong-muoi/', 'icon-mung-chong-muoi.gif', 'Mùng chống muỗi', 'Mùng chống muỗi', 'mùng chống muỗi,mung chong muoi', 6, 1, 1, 'vi', 1, 3, ',2,'),
-(14, 'Rèn chống muỗi', 'ren-chong-muoi', 'ren-chong-muoi/', 'icon-ren-chong-muoi.gif', 'Rèn chống muỗi', 'Rèn chống muỗi', 'rèn chống muỗi,ren chong muoi', 6, 2, 1, 'vi', 1, 3, ',2,'),
-(15, 'Võng chống muỗi', 'vong-chong-muoi', 'vong-chong-muoi/', 'icon-vong-chong-muoi.gif', 'Võng chống muỗi', 'Võng chống muỗi', 'võng chống muỗi,vong chong muoi', 6, 3, 1, 'vi', 1, 3, ',2,'),
-(16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 100, 0, 'vi', 1, 7, ',9,'),
-(17, 'Giỏ hàng', 'gio-hang', 'gio-hang/', '', 'Giỏ hàng', 'Giỏ hàng', 'giỏ hàng,gio hang', 16, 1, 0, 'vi', 1, 0, ''),
-(18, 'Thanh toán', 'thanh-toan', 'thanh-toan/', '', 'Thanh toán', 'Thanh toán', 'thanh toán,thanh toan', 16, 2, 0, 'vi', 1, 0, ''),
-(1, 'Trang chủ', 'trang-chu', '', '', 'Title trang chủ', 'Des trang chủ', 'trang chủ,trang chu', 0, 1, 0, 'vi', 1, 1, ',2,');
+(13, 'Thời trang Nam', 'thoi-trang-nam', 'thoi-trang-nam/', '', 'Thời trang dành cho Nam', 'Thời trang dành cho Nam', 'thời trang nam,thoi trang nam', 6, 1, 1, 'vi', 1, 3, ',4,'),
+(14, 'Thời trang Nữ', 'thoi-trang-nu', 'thoi-trang-nu/', '', 'Thời trang dành cho Nữ', 'Thời trang dành cho Nữ', 'thời trang nữ,thoi trang nu', 6, 2, 1, 'vi', 1, 3, ',4,'),
+(15, 'Thời trang Trẻ em - Bé', 'thoi-trang-tre-em-be', 'thoi-trang-tre-em-be/', '', 'Thời trang dành cho Trẻ em - Bé', 'Thời trang dành cho Trẻ em - Bé', 'thời trang trẻ em bé,thoi trang tre em be', 6, 3, 1, 'vi', 1, 3, ',4,'),
+(16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 100, 0, 'vi', 1, 8, ',9,'),
+(17, 'Giỏ hàng', 'gio-hang', 'gio-hang/', '', 'Giỏ hàng', 'Giỏ hàng', 'giỏ hàng,gio hang', 16, 1, 0, 'vi', 1, 8, ',9,'),
+(18, 'Thanh toán', 'thanh-toan', 'thanh-toan/', '', 'Thanh toán', 'Thanh toán', 'thanh toán,thanh toan', 16, 2, 0, 'vi', 1, 7, ',9,'),
+(19, 'Facebook', 'facebook', 'javascript:;', 'icon-facebook.gif', 'Facebook', 'Facebook', 'Facebook', 0, 101, 0, 'vi', 1, 14, ',6,'),
+(1, 'Trang chủ', 'trang-chu', '', '', 'Title trang chủ', 'Des trang chủ', 'trang chủ,trang chu', 0, 1, 0, 'vi', 1, 1, ',2,3,'),
+(20, 'Youtube', 'youtube', 'javascript:;', 'icon-youtube.gif', 'Youtube', 'Youtube', 'Youtube', 0, 102, 0, 'vi', 1, 14, ',6,');
 
 -- --------------------------------------------------------
 
@@ -1099,9 +1157,9 @@ INSERT INTO `web_menu_position` (`id`, `name`, `order`, `status`) VALUES
 (1, 'Top', 1, 0),
 (2, 'Main', 2, 1),
 (3, 'Bottom', 3, 1),
-(4, 'Left', 4, 0),
+(4, 'Left', 4, 1),
 (5, 'Right', 5, 0),
-(6, 'Social', 6, 0),
+(6, 'Social', 6, 1),
 (7, 'Other 1', 7, 0),
 (8, 'Other 2', 8, 0),
 (9, 'Không', 9, 1);
@@ -1196,8 +1254,8 @@ CREATE TABLE IF NOT EXISTS `web_product` (
 --
 
 INSERT INTO `web_product` (`id`, `name`, `name_alias`, `code`, `url`, `url_img`, `description`, `tags`, `price`, `price_cost`, `content`, `more`, `other`, `datetime`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Mùng chống muỗi hình nón', 'mung-chong-muoi-hinh-non', 'MMHT-01', 'mung-chong-muoi/mung-chong-muoi-hinh-non.html', 'mung-chong-muoi.jpg', 'Mùng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi hình nón,mung chong muoi hinh non', 200000, 250000, '<p>M&ugrave;ng l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng. M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '', 1, 1408460940, 'vi', 1, ''),
-(2, 'Mùng chống muỗi tam giác ba dây trắng', 'mung-chong-muoi-tam-giac-ba-day-trang', 'MMTG-01', 'mung-chong-muoi/mung-chong-muoi-tam-giac-ba-day-trang.html', 'mung-chong-muoi-tam-giac-ba-day-trang.jpg', 'Mùng chống muỗi tam giác ba dây trắng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi tam giác ba dây trắng,mung chong muoi tam giac ba day trang', 250000, 0, '<h2>M&ugrave;ng chống muỗi tam gi&aacute;c ba d&acirc;y trắng&nbsp;l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng.</h2>\r\n\r\n<p>M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '<p>Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng</p>\r\n\r\n<p>Giao h&agrave;ng to&agrave;n quốc</p>\r\n', 1, 1408460940, 'vi', 1, ',6,13,');
+(1, 'Mùng chống muỗi hình nón', 'mung-chong-muoi-hinh-non', 'MMHT-01', 'thoi-trang-nam/mung-chong-muoi-hinh-non.html', 'mung-chong-muoi.jpg', 'Mùng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi hình nón,mung chong muoi hinh non', 200000, 250000, '<p>M&ugrave;ng l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng. M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '', 1, 1408460940, 'vi', 1, ',6,13,'),
+(2, 'Mùng chống muỗi tam giác ba dây trắng', 'mung-chong-muoi-tam-giac-ba-day-trang', 'MMTG-01', 'thoi-trang-nam/mung-chong-muoi-tam-giac-ba-day-trang.html', 'mung-chong-muoi-tam-giac-ba-day-trang.jpg', 'Mùng chống muỗi tam giác ba dây trắng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi tam giác ba dây trắng,mung chong muoi tam giac ba day trang', 250000, 0, '<h2>M&ugrave;ng chống muỗi tam gi&aacute;c ba d&acirc;y trắng&nbsp;l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng.</h2>\r\n\r\n<p>M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '<p>Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng</p>\r\n\r\n<p>Giao h&agrave;ng to&agrave;n quốc</p>\r\n', 1, 1408460940, 'vi', 1, ',6,13,');
 
 -- --------------------------------------------------------
 
@@ -1220,7 +1278,7 @@ CREATE TABLE IF NOT EXISTS `web_product_order` (
   `other` varchar(250) DEFAULT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `listcity_id` int(3) NOT NULL,
+  `city_id` int(3) NOT NULL,
   `districts_id` int(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -1229,9 +1287,9 @@ CREATE TABLE IF NOT EXISTS `web_product_order` (
 -- Dumping data for table `web_product_order`
 --
 
-INSERT INTO `web_product_order` (`id`, `name`, `email`, `phone`, `address`, `total_current`, `total_number`, `deliverycosts`, `discounts`, `total`, `datetime`, `other`, `lang`, `status`, `listcity_id`, `districts_id`) VALUES
-(1, 'Nhân', 'hieunhan@yahoo.com', '0988388003', '12 CMT 8', 450000, 2, 5000, 0, 455000, 1408439655, 'màu trắng', 'vi', 1, 3, 127),
-(2, 'vi', 'info@dayamthuc.vn', '0168 937 3352', '9/9 Đường 5E, BHH A', 450000, 3, 10000, 0, 660000, 1408445230, 'màu xanh', 'vi', 0, 3, 128);
+INSERT INTO `web_product_order` (`id`, `name`, `email`, `phone`, `address`, `total_current`, `total_number`, `deliverycosts`, `discounts`, `total`, `datetime`, `other`, `lang`, `status`, `city_id`, `districts_id`) VALUES
+(1, 'Nhân', 'hieunhan@yahoo.com', '0988388003', '12 CMT 8', 450000, 2, 5000, 0, 455000, 1408439655, 'màu trắng', 'vi', 0, 3, 127),
+(2, 'vi', 'info@dayamthuc.vn', '0168 937 3352', '9/9 Đường 5E, BHH A', 450000, 3, 10000, 0, 660000, 1408463220, 'màu xanh', 'vi', 0, 3, 128);
 
 -- --------------------------------------------------------
 
@@ -1350,7 +1408,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
 (25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 0),
-(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,', ',1,2,', NULL, 0, NULL, NULL, 'vi', 0, 1, 0);
+(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 0, 1, 0);
 
 -- --------------------------------------------------------
 

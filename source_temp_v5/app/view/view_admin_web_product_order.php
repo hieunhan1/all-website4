@@ -1,15 +1,15 @@
 <div id="search">
-	<form action="" method="get" name="search" onsubmit="if(search.value=='' && datetime.value=='' && listcity_id.value=='') return false;">
+	<form action="" method="get" name="search" onsubmit="if(search.value=='' && datetime.value=='' && city_id.value=='') return false;">
     	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Họ tên" />
         <input type="text" name="datetime" value="<?php if(isset($_GET['datetime'])) echo $_GET['datetime']; ?>" class="txt"  placeholder="Mã đơn hàng" />
-        <select name="listcity_id" class="select">
+        <select name="city_id" class="select">
             <?php
 			$i = 0;
             $data = $this->_model->_web_listcity();
 			foreach($data as $row){
 				$i++;
 				if($i!=1) $value = $row['id']; else $value = '';
-				if($_GET['listcity_id']!=$value) echo "<option value='{$value}'>{$row['name']}</option>";
+				if($_GET['city_id']!=$value) echo "<option value='{$value}'>{$row['name']}</option>";
 				else echo "<option value='{$value}' selected='selected'>{$row['name']}</option>";
 			}
 			?>

@@ -1,11 +1,11 @@
 <div id="search">
 	<form action="" method="get" name="search" onsubmit="if(search.value=='' && action.value=='' && table.value=='' && username.value=='') return false;">
     	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
-        <select name="listcity_id" class="select">
+        <select name="city_id" class="select">
             <?php
             $data = $this->_model->_web_listcity();
 			foreach($data as $row){
-				if($_GET['listcity_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
+				if($_GET['city_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
 				else echo "<option value='{$row['id']}' selected='selected'>{$row['name']}</option>";
 			}
 			?>

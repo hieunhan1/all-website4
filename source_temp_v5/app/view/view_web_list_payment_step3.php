@@ -2,13 +2,13 @@
 $order_id = $_GET['order_id'];
 $row = $this->_model->_view_product_order($order_id);
 
-$row_tinh = $this->_model->_web_ds_tinhthanh($row['tinh_thanh']);
-$tinh_thanh = ', '.$row_tinh[0]['name'];
+$row_tinh = $this->_model->_web_listcity($row['city_id']);
+$city_id = ', '.$row_tinh[0]['name'];
 
-$row_quan = $this->_model->_web_ds_quanhuyen(0,$row['quan_huyen']);
-$quan_huyen = ', '.$row_quan[0]['name'];
+$row_quan = $this->_model->_web_listdistricts(0,$row['districts_id']);
+$districts_id = ', '.$row_quan[0]['name'];
 
-if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
+if($row['city_id']==3 || $row['city_id']==2){
 	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
 	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> <br />
@@ -39,12 +39,12 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
         <p>Mã đơn hàng: <b><?php echo $row['id'];?></b></p>
         <?php echo $phuongthuc_giaohang;?>
         <p style="font-weight:bold">Chúng tôi sẽ liên hệ với bạn trước khi giao hàng.</p>
-    	<!--<p style="color:#F00">Phí giao hàng: <b><?php if($row['phigiaohang']!=0) echo number_format($row['phigiaohang'],0,',','.').'đ'; else echo 'Miễn phí';?></b></p>-->
+    	<!--<p style="color:#F00">Phí giao hàng: <b><?php if($row['deliverycosts']!=0) echo number_format($row['deliverycosts'],0,',','.').'đ'; else echo 'Miễn phí';?></b></p>-->
         <div style="color:#666; margin:10px 0 30px 0">
         	<b>Giao hàng đến</b><br />
             <span style="margin-left:35px; display:block"><?php
 				echo "Người nhận: {$row['name']}<br />
-				Địa chỉ: {$row['diachi']}{$quan_huyen}{$tinh_thanh}<br />
+				Địa chỉ: {$row['address']}{$districts_id}{$city_id}<br />
 				Điện thoại: {$row['phone']}<br />
 				Email: {$row['email']}<br />
 				Ngày đặt: ".date('H:i d/m/Y',strtotime($row['date_create']))."<br />".$other;
@@ -86,7 +86,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
                 </tr>
                 <tr>
                     <th colspan="2" align="right">Phí giao hàng</th>
-                    <th colspan="2" align="right" style="color:#F00"><span id="phigiaohang">'.number_format($row['phigiaohang'],0,',','.').'</span> VNĐ</th>
+                    <th colspan="2" align="right" style="color:#F00"><span id="deliverycosts">'.number_format($row['deliverycosts'],0,',','.').'</span> VNĐ</th>
                 </tr>
                 <tr style="color:#00F">
                     <th colspan="2" align="right">Thành tiền</th>
@@ -125,9 +125,9 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 							</tr>
 							<tr>
 							  <td valign="top">Địa chỉ:</td>
-							  <td>'.$row['diachi'].$quan_huyen.$tinh_thanh.'</td>
+							  <td>'.$row['address'].$districts_id.$city_id.'</td>
 							  <td valign="top">Địa chỉ:</td>
-							  <td>'.$row['diachi'].$quan_huyen.$tinh_thanh.'</td>
+							  <td>'.$row['address'].$districts_id.$city_id.'</td>
 							</tr>
 							<tr>
 								<td>Điện thoại:</td>

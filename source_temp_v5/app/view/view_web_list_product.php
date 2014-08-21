@@ -18,17 +18,17 @@
     
     <div class="product_list">
         <?php
-        $per_page=$this->_config['max_limit_2'];
+        $per_page=$this->_config['limit_2'];
         $startrow=($currentpage-1)*$per_page;
         $data = $this->_model->_list_web_product($idMenu, $per_page, $startrow, $totalrows);
         $i=0;
         foreach($data as $row){
             $i++;
             if($i%4 != 1) $style='style="margin-left:9px"'; else $style='';
-            if($row['giagoc']!=0) $giagoc = number_format($row['giagoc'],0,'.',','); else $giagoc='';
+            if($row['price_cost']!=0) $price_cost = number_format($row['price_cost'],0,'.',','); else $price_cost='';
             echo '<div class="product_box" '.$style.'>
                 <div class="product_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
-                <div class="product_price"><span>'.$giagoc.'</span> '.number_format($row['giaban'],0,'.',',').'đ</div>
+                <div class="product_price"><span>'.$price_cost.'</span> '.number_format($row['price'],0,'.',',').'đ</div>
                 <a href="'.$row['url'].'"><h3 class="product_name">'.$row['name'].'</h3></a>
                 <div class="product_buy" idsp="'.$row['id'].'" alias="'.$row['name_alias'].'">mua hàng</div>
             </div>';
