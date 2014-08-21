@@ -15,7 +15,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	if($row_detail['action']=='update' || $row_detail['action']=='delete'){
 		if($row_detail['status']==0){
-			$btn_restore = '<tr><td class="label">&nbsp;</td><td style="font-size:110%"><a href="javascript:;" id="restore">Ấn vào đây! Phục hồi lại dữ liệu <b>`'.$row_detail['name'].'`</b> trong bảng <b>`'.$row_detail['table'].'`</b>?</a></td></tr>';
+			if($this->_user=='admin') $btn_restore = '<tr><td class="label">&nbsp;</td><td style="font-size:110%"><a href="javascript:;" id="restore">Ấn vào đây! Phục hồi lại dữ liệu <b>`'.$row_detail['name'].'`</b> trong bảng <b>`'.$row_detail['table'].'`</b>?</a></td></tr>';
 			$info_restore = '';
 		}else{
 			$btn_restore = '';

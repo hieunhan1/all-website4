@@ -1,4 +1,3 @@
-<?php include_once('view/view_admin_language.php');?>
 <div id="search">
 	<form action="" method="get" name="search" onsubmit="if(search.value=='' && datetime.value=='' && listcity_id.value=='') return false;">
     	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Họ tên" />

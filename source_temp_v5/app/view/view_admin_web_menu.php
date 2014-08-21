@@ -1,4 +1,3 @@
-<?php include_once('view/view_admin_language.php');?>
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">

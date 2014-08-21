@@ -41,6 +41,22 @@ $(document).ready(function(e) {
 	var url_img_css = 'themes/admin/img/';
 	var url_link_ad = 'cp_admin/';
 	
+	/*ajax_number_item*/
+	function ajax_number_item(table){
+		$.ajax({ 	
+			url:"cp_admin/",
+			type:'get',
+			data:{ajax:"ajax_number_item",table:table},
+			cache:false,
+			success: function(data) {
+				$("#" + table).html(" (" + data + ")");
+			}
+		});
+	}
+	ajax_number_item("web_product_order");
+	ajax_number_item("web_contact");
+	/*end ajax_number_item*/
+	
 	/*status*/
 	$(".status").click(function(){
 		var id 		= $(this).attr('status_id');

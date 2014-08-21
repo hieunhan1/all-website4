@@ -1,7 +1,4 @@
-<?php
-include_once('view/view_admin_language.php');
-include_once('view/view_admin_search.php');
-?>
+<?php include_once('view/view_admin_search.php');?>
 
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
