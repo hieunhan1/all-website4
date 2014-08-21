@@ -25,7 +25,7 @@ class control_web{
 		<meta property="og:site_name" content="'.$site_name.'" />
 		<meta property="og:type" content="'.$type_name.'" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<link type="icon/x-icon" href="css/web_img/favicon.ico" rel="shortcut icon" />';
+		<link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />';
 		return $str;
 	}
 	
@@ -68,14 +68,14 @@ class control_web{
 	
 	public function home_page($lang, &$idMenu, &$menu_root_id){
 		$row = $this->_model->_web_menu_type(1);
-		if($row['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT;
-		else $site_image = CONS_IMAGES_CATALOG.$row['url_hinh'];
+		if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
+		else $site_image = CONS_IMAGES_CATALOG.$row['url_img'];
 		$arr = array(
 			'id'=>$row['id'],
 			'name'=>strip_tags($row['name']),
 			'title'=>strip_tags($row['title']),
-			'description'=>strip_tags($row['metaDescription']),
-			'keyword'=>strip_tags($row['metaKeyword']),
+			'description'=>strip_tags($row['description']),
+			'keyword'=>strip_tags($row['tags']),
 			'url'=>CONS_BASE_URL.'/'.$row['url'],
 			'image'=>CONS_BASE_URL.'/'.$site_image,
 			'type_name'=>'site',
@@ -106,16 +106,16 @@ class control_web{
 		if($row=$this->_model->_web_menu_one($alias_menu)){
 			$lang	= $row['lang'];
 			$idMenu = $row['id'];
-			if($row['url_hinh']=='') $site_image = CONS_IMAGE_DEFAULT;
-			else $site_image = CONS_IMAGES_CATALOG.$row['url_hinh'];
+			if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
+			else $site_image = CONS_IMAGES_CATALOG.$row['url_img'];
 			$type_id= $row['type_id'];
 			$type_menu = $this->menu_type($type_id);
 			$arr = array(
 				'id'=>$row['id'],
 				'name'=>strip_tags($row['name']),
 				'title'=>strip_tags($row['title']),
-				'description'=>strip_tags($row['metaDescription']),
-				'keyword'=>strip_tags($row['metaKeyword']),
+				'description'=>strip_tags($row['description']),
+				'keyword'=>strip_tags($row['tags']),
 				'url'=>CONS_BASE_URL.'/'.$row['url'],
 				'image'=>CONS_BASE_URL.'/'.$site_image,
 				'type_name'=>$type_menu['name'],
@@ -143,14 +143,14 @@ class control_web{
 		$name_detail_model = '_detail_'.$type_name;
 		$name_detail_view = 'view_web_detail_'.$type_name;
 		if($row_detail=$this->_model->$name_detail_model($alias_detail)){
-			if($row_detail['url_hinh']!='') $site_image = $type_menu['url_img'].$row_detail['url_hinh'];
+			if($row_detail['url_img']!='') $site_image = $type_menu['url_img'].$row_detail['url_img'];
 			else $site_image = CONS_IMAGE_DEFAULT;
 			$arr = array(
 				'id'=>$row_detail['id'],
 				'name'=>strip_tags($row_detail['name']),
 				'title'=>strip_tags($row_detail['name']),
-				'description'=>strip_tags($row_detail['metaDescription']),
-				'keyword'=>strip_tags($row_detail['metaKeyword']),
+				'description'=>strip_tags($row_detail['description']),
+				'keyword'=>strip_tags($row_detail['tags']),
 				'url'=>CONS_BASE_URL.'/'.$this->_control.'/'.$row_detail['name_alias'].'.html',
 				'image'=>CONS_BASE_URL.'/'.$site_image,
 				'type_name'=>$type_name,
@@ -209,8 +209,8 @@ class control_web{
 		if(count($row) > 1){
 			$id = $row['id'];
 			$_SESSION['list_order_sp_name'][$id] = $row['name'];
-			$_SESSION['list_order_sp_giagoc'][$id] = $row['giagoc'];
-			$_SESSION['list_order_sp_giaban'][$id] = $row['giaban'];
+			$_SESSION['list_order_sp_price_cost'][$id] = $row['price_cost'];
+			$_SESSION['list_order_sp_price'][$id] = $row['price'];
 			$_SESSION['list_order_sp_link'][$id] = $row['url'];
 			$_SESSION['list_order_sp_soluong'][$id] = $soluong;
 			
@@ -224,25 +224,25 @@ class control_web{
 		if(isset($_SESSION['list_order_sp_soluong'])) $_SESSION['list_order_sp_soluong'] = array_filter($_SESSION['list_order_sp_soluong'], 'strlen');
 		if ($all_sp>0){
 			reset($_SESSION['list_order_sp_name']);
-			reset($_SESSION['list_order_sp_giagoc']);
-			reset($_SESSION['list_order_sp_giaban']);
+			reset($_SESSION['list_order_sp_price_cost']);
+			reset($_SESSION['list_order_sp_price']);
 			reset($_SESSION['list_order_sp_soluong']);
 			reset($_SESSION['list_order_sp_link']);
 			$tongtien=0; $tongsoluong=0;
 			for ($i=0; $i<$all_sp; $i++) {
 				$idSP = key($_SESSION['list_order_sp_name']);
 				$name = current($_SESSION['list_order_sp_name']);
-				$giagoc = current($_SESSION['list_order_sp_giagoc']);
-				$giaban = current($_SESSION['list_order_sp_giaban']);
+				$price_cost = current($_SESSION['list_order_sp_price_cost']);
+				$price = current($_SESSION['list_order_sp_price']);
 				$soluong = current($_SESSION['list_order_sp_soluong']);
 				$link = current($_SESSION['list_order_sp_link']);
-				$thanhtien = $giaban*$soluong;
+				$thanhtien = $price*$soluong;
 				$tongtien += $thanhtien;
 				$tongsoluong += $soluong;
-				$data[] = array('id'=>$idSP,'name'=>$name,'giaban'=>$giaban,'giagoc'=>$giagoc,'soluong'=>$soluong,'link'=>$link,'thanhtien'=>$thanhtien);
+				$data[] = array('id'=>$idSP,'name'=>$name,'price'=>$price,'price_cost'=>$price_cost,'soluong'=>$soluong,'link'=>$link,'thanhtien'=>$thanhtien);
 				next($_SESSION['list_order_sp_name']);
-				next($_SESSION['list_order_sp_giagoc']);
-				next($_SESSION['list_order_sp_giaban']);
+				next($_SESSION['list_order_sp_price_cost']);
+				next($_SESSION['list_order_sp_price']);
 				next($_SESSION['list_order_sp_soluong']);
 				next($_SESSION['list_order_sp_link']);
 			}
@@ -251,8 +251,8 @@ class control_web{
 	}
 	public function order_sp_trash($id){
 		unset($_SESSION['list_order_sp_name'][$id]);
-		unset($_SESSION['list_order_sp_giagoc'][$id]);
-		unset($_SESSION['list_order_sp_giaban'][$id]);
+		unset($_SESSION['list_order_sp_price_cost'][$id]);
+		unset($_SESSION['list_order_sp_price'][$id]);
 		unset($_SESSION['list_order_sp_soluong'][$id]);
 		unset($_SESSION['list_order_sp_link'][$id]);
 	}

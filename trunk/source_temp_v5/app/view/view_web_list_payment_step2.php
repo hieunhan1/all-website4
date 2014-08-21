@@ -1,6 +1,5 @@
 <?php
 $row_email = $this->_model->_web_product_order_email($_GET['email']);
-
 ?>
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
@@ -26,26 +25,26 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
             <tr><td colspan="2"><div style="height:1px; margin:10px 60px 10px 30px; background-color:#CCC"></div></td></tr>
             <tr>
             	<td width="150" align="right">Tỉnh / thành phố:</td>
-                <td><select name="tinh_thanh" class="sel_order">
+                <td><select name="city_id" class="sel_order">
                 	<option value="">Chọn Tỉnh - Thành</option>
                     <?php
-                    $data = $this->_model->_web_ds_tinhthanh();
+                    $data = $this->_model->_web_listcity();
 					foreach($data as $row){
-						if($row['id']!=$row_email['tinh_thanh']) echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+						if($row['id']!=$row_email['city_id']) echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
 						else echo '<option value="'.$row['id'].'" selected="selected">'.$row['name'].'</option>';
 					}
 					?>
-                </select> <span class="error" id="tinh_thanh"></span></td>
+                </select> <span class="error" id="city_id"></span></td>
             </tr>
             <tr>
             	<td width="150" align="right">Quận / huyện:</td>
-                <td><select name="quan_huyen" class="sel_order">
+                <td><select name="districts_id" class="sel_order">
                 	<option value="">Chọn Quận - Huyện</option>
-                </select> <span class="error" id="quan_huyen" ma="<?php echo $row_email['quan_huyen'];?>"></span></td>
+                </select> <span class="error" id="districts_id" ma="<?php echo $row_email['districts_id'];?>"></span></td>
             </tr>
             <tr>
             	<td width="150" align="right">Địa chỉ:</td>
-                <td><input type="text" name="diachi" placeholder="Nhập địa chỉ" class="txt_order" value="<?php echo $row_email['diachi'];?>" maxlength="100" /> <span class="error" id="diachi"></span></td>
+                <td><input type="text" name="address" placeholder="Nhập địa chỉ" class="txt_order" value="<?php echo $row_email['address'];?>" maxlength="100" /> <span class="error" id="address"></span></td>
             </tr>
             <tr>
            	  <td width="150" align="right" valign="top">Yêu cầu:</td>
@@ -65,35 +64,35 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
 <script>
 $(document).ready(function(e) {
 	/*kiem tra phi gh*/
-	var code = $("select[name=tinh_thanh]").val();
-	var ma_quan_huyen = $("#quan_huyen").attr("ma");
-	$.post("ajax/",{data_quanhuyen:code,ma_quan_huyen:ma_quan_huyen},function(data){
-		$("select[name=quan_huyen]").html(data);
+	var code = $("select[name=city_id]").val();
+	var districts_id = $("#districts_id").attr("ma");
+	$.post("ajax/",{data_districts:code,districts_id:districts_id},function(data){
+		$("select[name=districts_id]").html(data);
 	});
-	$("select[name=tinh_thanh]").change(function(){
+	$("select[name=city_id]").change(function(){
 		var code = $(this).val();
-		$("select[name=quan_huyen]").html('<option value="">Đang tải danh sách...</option>');
-		$.post("ajax/",{data_quanhuyen:code},function(data){
-			$("select[name=quan_huyen]").html(data);
+		$("select[name=districts_id]").html('<option value="">Đang tải danh sách...</option>');
+		$.post("ajax/",{data_districts:code},function(data){
+			$("select[name=districts_id]").html(data);
 		});
 	});
-	$("select[name=quan_huyen]").change(function(){
+	$("select[name=districts_id]").change(function(){
 		var code = $(this).val();
 		$("#order_sp_info_loading").show();
 		$.ajax({
 			url:"ajax/",
 			type:"POST", /* dataType:"json", //xml, html, json, text */
-			data:{phi_quanhuyen:code},
+			data:{costs_districts:code},
 			cache:false,
 			success:function(data){
 				data = data.split("-|-");
-				var obj = { "phigiaohang": data[0],"thanhtien": data[1] };
-				var phigiaohang = obj.phigiaohang;
+				var obj = { "deliverycosts": data[0],"thanhtien": data[1] };
+				var deliverycosts = obj.deliverycosts;
 				var thanhtien = obj.thanhtien;
 				setTimeout(function(){
 					$("#order_sp_info_loading").hide();
-					$("#quan_huyen").html("<span style='color:#00F'>Phí giao hàng: " + phigiaohang + " VNĐ</span>");
-					$("#phigiaohang").html(phigiaohang);
+					$("#districts_id").html("<span style='color:#00F'>Phí giao hàng: " + deliverycosts + " VNĐ</span>");
+					$("#deliverycosts").html(deliverycosts);
 					$("#thanhtien").html(thanhtien);
 				},500);
 			}
@@ -104,18 +103,18 @@ $(document).ready(function(e) {
 	$(".order_sp_btn a").click(function(){
 		var hoten = check_text_length("input[name=hoten]","#hoten","Họ tên >= 2 ký tự",2);
 		var dienthoai = check_phone("input[name=dienthoai]","#dienthoai","Số điện thoại chưa đúng");
-		var tinh_thanh = check_number("select[name=tinh_thanh]","#tinh_thanh","Chọn tỉnh thành");
-		var quan_huyen = check_number("select[name=quan_huyen]","#quan_huyen","Chọn quận huyện");
-		var diachi = check_text_length("input[name=diachi]","#diachi","Địa chỉ >= 6 ký tự",6);
+		var city_id = check_number("select[name=city_id]","#city_id","Chọn tỉnh thành");
+		var districts_id = check_number("select[name=districts_id]","#districts_id","Chọn quận huyện");
+		var address = check_text_length("input[name=address]","#address","Địa chỉ >= 6 ký tự",6);
 		var other = $.trim($("textarea[name=other]").val());
 				
-		if(hoten==false || dienthoai==false || tinh_thanh==false || quan_huyen==false || diachi==false) return false;
+		if(hoten==false || dienthoai==false || city_id==false || districts_id==false || address==false) return false;
 		
 		$("#ajax").html("");
 		$.ajax({
 			url:"ajax/",
 			type:"POST",
-			data:{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,tinh_thanh:tinh_thanh,quan_huyen:quan_huyen,diachi:diachi,other:other},
+			data:{insert_order_sp:"<?php echo $_GET['email'];?>",name:hoten,phone:dienthoai,city_id:city_id,districts_id:districts_id,address:address,other:other},
 			cache:false,
 			success:function(data){
 				if(data!='') window.location = "<?php echo $link_step3;?>&order_id=" + data;

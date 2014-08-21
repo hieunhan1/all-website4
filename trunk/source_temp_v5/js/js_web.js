@@ -76,6 +76,9 @@ $(document).ready(function($){
 		$(".bogoc_5px").corner("5px");
 		$(".bogoc_8px").corner("8px");
 		$(".bogoc_10px").corner("10px");
+		$(".bogoc_top_5px").corner("top 5px");
+		$(".bogoc_bottom_5px").corner("bottom 5px");
+		$(".bogoc_right_15px").corner("right 15px");
 	}
 	
 	$("#run_top").click(function(){

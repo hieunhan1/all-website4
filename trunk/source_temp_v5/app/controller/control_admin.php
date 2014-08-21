@@ -244,8 +244,8 @@ class control_admin extends control_admin_form{
 		$table  = $this->_action;
 		$select = "{$table}.*, web_listcity.name as city";
 		$all_table = $table.',web_listcity';
-		$where  = "{$table}.lang='{$lang}' AND listcity_id=web_listcity.id ".$str_search;
-		$order_by = "`listcity_id`, {$table}.`order`";
+		$where  = "{$table}.lang='{$lang}' AND city_id=web_listcity.id ".$str_search;
+		$order_by = "`city_id`, {$table}.`order`";
 		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
 		$arr = array(
 			'currentpage'=>$currentpage,
@@ -266,7 +266,7 @@ class control_admin extends control_admin_form{
 		$table  = $this->_action;
 		$select = "{$table}.*, web_listcity.name as city";
 		$all_table = $table.',web_listcity';
-		$where  = "{$table}.lang='{$lang}' AND listcity_id=web_listcity.id ".$str_search;
+		$where  = "{$table}.lang='{$lang}' AND city_id=web_listcity.id ".$str_search;
 		$order_by = "`datetime` DESC";
 		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
 		$arr = array(

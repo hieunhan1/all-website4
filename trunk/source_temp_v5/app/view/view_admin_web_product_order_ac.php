@@ -80,15 +80,15 @@ echo '<form name="form_action" method="post" action="">
 	
 	echo '<tr><td colspan=2><div style="height:2px; background-color:#CCC; margin:5px 300px 5px 30px"></div></td></tr>';
 	
-	//listcity_id
+	//city_id
 	$arr = $this->_model->_web_listcity();
-	$properties = $row_detail['listcity_id']; //default check
-	$views = array('Tỉnh / Thành','listcity_id','input_medium',$disabled); //label id&name class
+	$properties = $row_detail['city_id']; //default check
+	$views = array('Tỉnh / Thành','city_id','input_medium',$disabled); //label id&name class
     $this->getProperties('5',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//districts_id
-	$arr = $this->_model->_web_listdistricts($row_detail['listcity_id']);
+	$arr = $this->_model->_web_listdistricts($row_detail['city_id']);
 	$properties = $row_detail['districts_id']; //default check
 	$views = array('Quận / Huyện','districts_id','input_medium',$disabled); //label id&name class properties
     $this->getProperties('5',$arr,$properties,$views);

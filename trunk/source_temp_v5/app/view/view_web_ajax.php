@@ -10,38 +10,38 @@ if(isset($_POST['order_sp'])){
 }
 
 /*dat hang & check phi giao hang*/
-if(isset($_POST['data_quanhuyen'])){
-	$id = $_POST['data_quanhuyen'];
-	$ma_quan_huyen = $_POST['ma_quan_huyen'];
+if(isset($_POST['data_districts'])){
+	$id = $_POST['data_districts'];
+	$districts_id = $_POST['districts_id'];
 	$str = '<option value="">Chọn Quận - Huyện</option>';
 	
 	if($id!=''){
-		$data = $this->_model->_web_ds_tinhthanh($id);
-		$_SESSION['order_sp_phigiao'] = $_SESSION['phigiaohang_tinhthanh'] = $data[0]['phigiaohang'];
-		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
+		$data = $this->_model->_web_listcity($id);
+		$_SESSION['order_deliverycosts'] = $_SESSION['deliverycosts_city'] = $data[0]['deliverycosts'];
+		$_SESSION['order_total'] = $_SESSION['order_total_current'] + $_SESSION['order_deliverycosts'];
 		
-		$data = $this->_model->_web_ds_quanhuyen($id);
+		$data = $this->_model->_web_listdistricts($id);
 		foreach($data as $row){
-			if($row['id']!=$ma_quan_huyen) $str .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+			if($row['id']!=$districts_id) $str .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
 			else $str .= '<option value="'.$row['id'].'" selected="selected">'.$row['name'].'</option>';
 		}
 	}else{
-		$_SESSION['order_sp_phigiao'] = $_SESSION['phigiaohang_tinhthanh'] = 0;
-		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
+		$_SESSION['order_deliverycosts'] = $_SESSION['deliverycosts_city'] = 0;
+		$_SESSION['order_total'] = $_SESSION['order_total_current'] + $_SESSION['order_deliverycosts'];
 	}
 	echo $str;
 }
-if(isset($_POST['phi_quanhuyen'])){
-	$id = $_POST['phi_quanhuyen'];
+if(isset($_POST['costs_districts'])){
+	$id = $_POST['costs_districts'];
 	if($id!=''){
-		$data = $this->_model->_web_ds_quanhuyen(0,$id);
-		$_SESSION['order_sp_phigiao'] = $_SESSION['phigiaohang_tinhthanh'] + $data[0]['phigiaohang'];
-		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
+		$data = $this->_model->_web_listdistricts(0,$id);
+		$_SESSION['order_deliverycosts'] = $_SESSION['deliverycosts_city'] + $data[0]['deliverycosts'];
+		$_SESSION['order_total'] = $_SESSION['order_total_current'] + $_SESSION['order_deliverycosts'];
 	}else{
-		$_SESSION['order_sp_phigiao'] = $_SESSION['phigiaohang_tinhthanh'];
-		$_SESSION['order_sp_thanhtien'] = $_SESSION['order_sp_tongtien'] + $_SESSION['order_sp_phigiao'];
+		$_SESSION['order_deliverycosts'] = $_SESSION['deliverycosts_city'];
+		$_SESSION['order_total'] = $_SESSION['order_total_current'] + $_SESSION['order_deliverycosts'];
 	}
-	echo number_format($_SESSION['order_sp_phigiao'],0,',','.').'-|-'.number_format($_SESSION['order_sp_thanhtien'],0,',','.');
+	echo number_format($_SESSION['order_deliverycosts'],0,',','.').'-|-'.number_format($_SESSION['order_total'],0,',','.');
 }
 if(isset($_POST['dayid']) && isset($_POST['daysoluong'])){
 	$dayid = str_replace('&','',$_POST['dayid']);
@@ -67,30 +67,30 @@ if(isset($_POST['insert_order_sp'])){
 	$email = check_email($_POST['insert_order_sp']);
 	$name = checks_text($_POST['name'],2);
 	$phone = checks_phone($_POST['phone']);
-	$tinh_thanh = checks_number($_POST['tinh_thanh']);
-	$quan_huyen = checks_number($_POST['quan_huyen']);
-	$diachi = checks_text($_POST['diachi'],2);
+	$city_id = checks_number($_POST['city_id']);
+	$districts_id = checks_number($_POST['districts_id']);
+	$address = checks_text($_POST['address'],2);
 	$other = $_POST['other'];
-	$tongtien = $_SESSION['order_sp_tongtien'];
+	$tongtien = $_SESSION['order_total_current'];
 	$tongsoluong = $_SESSION['order_sp_tongsoluong'];
-	$phigiaohang = $_SESSION['order_sp_phigiao'];
+	$deliverycosts = $_SESSION['order_deliverycosts'];
 	$giamgia = 0;
-	$thanhtien = $_SESSION['order_sp_thanhtien'];
+	$thanhtien = $_SESSION['order_total'];
 	
 	if($email==false) return false;
 	if($name==false) return false;
 	if($phone==false) return false;
-	if($tinh_thanh==false) return false;
-	if($quan_huyen==false) return false;
-	if($diachi==false) return false;
+	if($city_id==false) return false;
+	if($districts_id==false) return false;
+	if($address==false) return false;
 	
 	$order_id = rand(0,9).date('dmis');
-	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$tinh_thanh,$quan_huyen,$diachi,$tongtien,$tongsoluong,$phigiaohang,$giamgia,$thanhtien,$other);
+	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$city_id,$districts_id,$address,$tongtien,$tongsoluong,$deliverycosts,$giamgia,$thanhtien,$other);
 	
 	$giamgia = 0;
 	$data = $this->order_sp_view();
 	foreach($data as $row){
-		$this->_model->_web_product_order_detail_insert($row['name'],$row['id'],$order_id,$row['soluong'],$row['giaban'],$giamgia,$row['thanhtien']);
+		$this->_model->_web_product_order_detail_insert($row['name'],$row['id'],$order_id,$row['soluong'],$row['price'],$giamgia,$row['thanhtien']);
 	}
 	echo $order_id;
 }
@@ -101,11 +101,11 @@ if(isset($_POST['contact_name'])){
 	$name = trim($_POST['contact_name']);
 	$email = trim($_POST['email']);
 	$phone = trim($_POST['phone']);
-	$diachi = trim($_POST['diachi']);
+	$address = trim($_POST['address']);
 	$message = $_POST['message'];
 	
 	if($name!='' && $email!='' && $phone!='' && $message!=''){
-		$id_contact = $this->_model->_web_contact_insert($name,$email,$phone,$diachi,$message);
+		$id_contact = $this->_model->_web_contact_insert($name,$email,$phone,$address,$message);
 		
 		$title = $name;
 		$subject = 'No-reply | Liên hệ';

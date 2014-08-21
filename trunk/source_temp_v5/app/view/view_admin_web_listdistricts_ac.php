@@ -13,10 +13,10 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//listcity_id
+	//city_id
 	$arr = $this->_model->_web_listcity();
-	$properties = $row_detail['listcity_id']; //default check
-	$views = array('Tỉnh thành','listcity_id','input_medium'); //label id&name class
+	$properties = $row_detail['city_id']; //default check
+	$views = array('Tỉnh thành','city_id','input_medium'); //label id&name class
     $this->getProperties('5',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	

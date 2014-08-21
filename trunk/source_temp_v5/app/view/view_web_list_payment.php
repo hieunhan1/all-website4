@@ -6,7 +6,7 @@ $all_sp = count($_SESSION['list_order_sp_name']);
 
 if(!isset($_GET['step'])) include_once('view_web_list_payment_cart.php');
 elseif($_GET['step']=='step1' && $all_sp>0){
-	$_SESSION['order_sp_phigiao'] = 0;
+	$_SESSION['order_deliverycosts'] = 0;
 	include_once('view_web_list_payment_step1.php');
 }elseif($_GET['step']=='step2' && $all_sp>0){
 	if(!isset($_GET['email'])) header('location: '.$link_step1);

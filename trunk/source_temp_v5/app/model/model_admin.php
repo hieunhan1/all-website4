@@ -290,7 +290,7 @@ class model_admin extends db{
 		return $data;
 	}
 	public function _web_listdistricts($city_id){
-		$sql = "SELECT `id`,`name` FROM `web_listdistricts` WHERE `status`=1 AND listcity_id='{$city_id}' ORDER BY `order`";
+		$sql = "SELECT `id`,`name` FROM `web_listdistricts` WHERE `status`=1 AND city_id='{$city_id}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		$data[] = array('id'=>0, 'name'=>'-- Chọn quận/huyện --');

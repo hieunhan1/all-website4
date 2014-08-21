@@ -18,7 +18,12 @@
                 }
                 ?>
             </td>
-            <td valign="top" style="line-height:180%"><?php echo '<p style="color:#F60465; font-weight:bold">'.$this->_config['name'].'</p>'.$this->_config['contact_foo'];?></td>
+            <td valign="top" style="line-height:180%">
+				<?php echo '<p style="color:#F60465; font-weight:bold">'.$this->_config['sitename'].'</p>
+				<p>Địa chỉ: '.$this->_config['address'].'</p>
+				<p>Điện thoại: '.$this->_config['tel'].'</p>
+				<p>Email: '.$this->_config['email'].'</p>';?>
+            </td>
             <td style="text-align:right">Copyright © 2014 heoxinhshop.com</td>
         </tr>
     </table>

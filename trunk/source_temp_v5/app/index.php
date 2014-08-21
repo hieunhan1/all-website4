@@ -3,6 +3,8 @@
 require_once "config.php";
 error_reporting(E_ALL ^ E_NOTICE);
 
+date_default_timezone_set('Asia/Ho_Chi_Minh');
+
 function tach_url($url, &$control, &$action, &$data){
 	$arr = explode("/", $url);
 	if($arr[1]==''){

@@ -19,8 +19,8 @@
             <div id="product_detail_img"><img src="<?php echo CONS_IMAGES_PRODUCTS.$row_detail['url_img'];?>" alt="<?php echo $row_detail['name'];?>" /></div>
             <div id="product_detail_tt">
                 <div id="product_detail_code">Mã SP: <b><?php echo $row_detail['masp'];?></b></div>
-                <?php if($row_detail['giagoc']!='0') echo '<div id="product_detail_giagoc">'.number_format($row_detail['giagoc'],0,',','.').' VNĐ</div>';?>
-                <div id="product_detail_giaban" price_sp="<?php echo $row_detail['giaban'];?>">Giá bán: <?php echo number_format($row_detail['giaban'],0,',','.');?> VNĐ</div>
+                <?php if($row_detail['price_cost']!='0') echo '<div id="product_detail_price_cost">'.number_format($row_detail['price_cost'],0,',','.').' VNĐ</div>';?>
+                <div id="product_detail_price" price_sp="<?php echo $row_detail['price'];?>">Giá bán: <?php echo number_format($row_detail['price'],0,',','.');?> VNĐ</div>
                 <div>Số lượng: <input type="text" name="soluong" maxlength="5" id="product_detail_soluong" value="1" /></div>
                 <?php
                 if(count($_SESSION['list_order_sp_name'])==0){
@@ -51,10 +51,10 @@
         foreach($data as $row){
             $i++;
             if($i%4 != 1) $style='style="margin-left:9px"'; else $style='';
-            if($row['giagoc']!=0) $giagoc = number_format($row['giagoc'],0,'.',','); else $giagoc='';
+            if($row['price_cost']!=0) $price_cost = number_format($row['price_cost'],0,'.',','); else $price_cost='';
             echo '<div class="product_box" '.$style.'>
                 <div class="product_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
-                <div class="product_price"><span>'.$giagoc.'</span> '.number_format($row['giaban'],0,'.',',').'đ</div>
+                <div class="product_price"><span>'.$price_cost.'</span> '.number_format($row['price'],0,'.',',').'đ</div>
                 <a href="'.$row['url'].'"><h3 class="product_name">'.$row['name'].'</h3></a>
                 <div class="product_buy" idsp="'.$row['id'].'" alias="'.$row['name_alias'].'">mua hàng</div>
             </div>';

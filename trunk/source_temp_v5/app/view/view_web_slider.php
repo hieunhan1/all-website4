@@ -3,8 +3,8 @@ $position = 1;
 $data = $this->_model->_web_slider_banner($position, $lang, $idMenu);
 if($data){
 ?>
-<link rel="stylesheet" href="library/js/nivo-slider/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="library/js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/nivo-slider/default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 <div id="slider" class="bogoc_5px">
 	<div class="slider-wrapper theme-default"><div id="slider_run" class="nivoSlider">
 		<?php
@@ -14,7 +14,7 @@ if($data){
         ?>
     </div></div>
 </div>
-<script type="text/javascript" src="library/js/nivo-slider/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="js/nivo-slider/jquery.nivo.slider.js"></script>
 <script type="text/javascript">
 	$(window).load(function() {
 		$("#slider_run").nivoSlider();

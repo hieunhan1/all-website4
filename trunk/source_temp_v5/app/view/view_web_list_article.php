@@ -18,7 +18,7 @@ foreach($data as $row){
 <div id="article_list">
 	<?php
 	$i = 0;
-    $per_page=$this->_config['max_limit_1'];
+    $per_page=$this->_config['limit_1'];
     $startrow=($currentpage-1)*$per_page;
     $data = $this->_model->_list_web_article($idMenu, $per_page, $startrow, $totalrows);
 	if(count($data)>1){
