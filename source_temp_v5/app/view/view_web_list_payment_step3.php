@@ -170,14 +170,14 @@ if($row['city_id']==3 || $row['city_id']==2){
 						<p><b>Nhân viên giao nhận</b> sẽ liên hệ với quí khách để hẹn lịch giao hàng. Trong trường hợp quí khách đi vắng, vui lòng uỷ thác cho người khác nhận hàng và thanh toán tiền thay.</p>
 						<p>Cảm ơn quý khách và kính chúc mọi sự tốt lành!<br />
 						<span style="font-weight:bold; color:#307601">Mungchongmuoi.com.vn - ChamCham mùng chống muỗi</span></p>
-						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$row_config['tel'].'</b> hoặc email: <b>'.$row_config['email'].'</b></p>
+						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$this->comfig['tel'].'</b> hoặc email: <b>'.$this->comfig['email'].'</b></p>
 					</div>
 				</div>';
 				
 				$add_address = array();
 				$add_address[] = array('email'=>$row['email'],'name'=>$row['name']);
 				$add_bcc = array();
-				//$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
+				//$add_bcc[] = array('email'=>$this->comfig['email'],'name'=>'Mùng chống muỗi');
 				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
 				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');

@@ -4,7 +4,7 @@ require_once('class.phpmailer.php');
 $email_gui = 'no-reply@dayamthuc.vn';
 $email_gui_pass = 'no-reply#123*';
 
-//$email_nhan = $row_config['email'];
+//$email_nhan = $this->comfig['email'];
 //$name_nhan = 'Admin';
 $subject = $title;
 
