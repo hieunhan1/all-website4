@@ -56,7 +56,7 @@
             <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
             <td><?php echo $row['action'];?></td>
             <td><?php echo $row['table'];?></td>
-            <td><?php echo $this->datetime_current_vn($row['datetime']);?></td>
+            <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td><?php echo $row['username'];?></td>
             <td align="center">
                 <?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" />';?> &nbsp;

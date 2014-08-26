@@ -10,25 +10,25 @@
             <th align="right">Thành tiền</th>
         </tr>
         <?php
-		$tongtien = 0;
+		$total_current = 0;
 		foreach($data as $row){
-			$tongtien += $row['thanhtien'];
-			$tongsoluong += $row['soluong'];
+			$total_current += $row['total'];
+			$total_number += $row['soluong'];
 			$price_sp=number_format($row['price'],0,',','.');
 			echo '<tr>
 				<td>'.$row['name'].'</td>
 				<td align="right" valign="top">'.$price_sp.'</td>
 				<td align="center" valign="top">'.$row['soluong'].'</td>
-				<td align="right" valign="top">'.number_format($row['thanhtien'],0,',','.').'</td>
+				<td align="right" valign="top">'.number_format($row['total'],0,',','.').'</td>
 			</tr>';
 		}
-		$_SESSION['order_total_current'] = $tongtien;
-		$_SESSION['order_sp_tongsoluong'] = $tongsoluong;
+		$_SESSION['order_total_current'] = $total_current;
+		$_SESSION['order_sp_total_number'] = $total_number;
 		$_SESSION['order_total'] = $_SESSION['order_total_current'] + $_SESSION['order_deliverycosts'];
 		if(!isset($_SESSION['order_deliverycosts'])) $_SESSION['order_deliverycosts'] = 0;
 		echo '<tr>
 			<th colspan="2" align="right">Tổng số lượng</th>
-			<th>'.$_SESSION['order_sp_tongsoluong'].'</th><th>&nbsp;</th>
+			<th>'.$_SESSION['order_sp_total_number'].'</th><th>&nbsp;</th>
 		</tr>
 		<tr>
 			<th colspan="2" align="right">Tổng cộng</th>
@@ -40,7 +40,7 @@
 		</tr>
 		<tr style="color:#00F">
 			<th colspan="2" align="right">Thành tiền</th>
-			<th colspan="2" align="right"><span id="thanhtien">'.number_format($_SESSION['order_total'],0,',','.').'</span> VNĐ</th>
+			<th colspan="2" align="right"><span id="total">'.number_format($_SESSION['order_total'],0,',','.').'</span> VNĐ</th>
 		</tr>';
 		?>
     </table>

@@ -247,17 +247,17 @@ class model_web extends db{
 	}
 	public function _web_product_order_insert($order_id,$name,$email,$phone,$city_id,$districts_id,$address,$total_current,$total_number,$deliverycosts,$discounts,$total,$other=NULL){
 		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order` VALUES ('{$order_id}', '{$name}', '{$email}', '{$phone}', '{$city_id}', '{$districts_id}', '{$address}', '{$total_current}', '{$total_number}', '{$deliverycosts}', '{$discounts}', '{$total}', '{$other}', 'vi', '3', '{$date}', '{$date}', 'khachhang', NULL, '0')";
+		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$total_current}', '{$total_number}', '{$deliverycosts}', '{$discounts}', '{$total}', '{$order_id}', '{$other}', 'vi', '3', '{$city_id}', '{$districts_id}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
-	public function _web_product_order_detail_insert($name,$product_id,$order_id,$soluong,$dongia,$discounts,$total){
+	public function _web_product_order_detail_insert($name,$number,$price,$discounts,$total,$product_id,$order_id){
 		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$product_id}', '{$order_id}', '{$soluong}', '{$dongia}', '{$discounts}', '{$total}', 'vi', '1', '{$date}', NULL, 'khachhang', NULL, '0')";
+		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$number}', '{$price}', '{$discounts}', '{$total}', 'vi', '1', '{$product_id}', '{$order_id}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 	}
 	public function _view_product_order($id){
-		$sql = "SELECT * FROM `web_product_order` WHERE `id`='{$id}' LIMIT 1";
+		$sql = "SELECT * FROM `web_product_order` WHERE `datetime`='{$id}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();

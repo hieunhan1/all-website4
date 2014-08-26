@@ -9,11 +9,11 @@ $row_quan = $this->_model->_web_listdistricts(0,$row['districts_id']);
 $districts_id = ', '.$row_quan[0]['name'];
 
 if($row['city_id']==3 || $row['city_id']==2){
-	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
+	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['total'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
-	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> <br />
+	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['total'],0,',','.').'đ</b> <br />
 	<span style="margin-left:35px; display:block">Thông tin chuyển khoản vui lòng <a href="http://mungchongmuoi.com.vn/huong-dan-mua-hang-thanh-toan/thong-tin-thanh-toan-chuyen-khoan.html">ấn vào đây</a>.</span>
-	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$row['id'].'</b></span>
+	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$order_id.'</b></span>
 	<span style="margin-left:220px; font-style:italic; display:block">hoặc <b>'.$row['name'].' + '.$row['phone'].'</b></span>
 	</p>';
 }
@@ -36,7 +36,7 @@ if($row['city_id']==3 || $row['city_id']==2){
     <div style="width:600px; float:left">
     	<p style="font-size:110%; color:#00F"><b>Đặt hàng thành công.</b></p>
         <p style="color:#00F">Chúng tôi đã gửi thông tin đặt hàng của bạn đến địa chỉ mail <b><?php echo $row['email'];?></b> mà bạn đã khai báo.</p>
-        <p>Mã đơn hàng: <b><?php echo $row['id'];?></b></p>
+        <p>Mã đơn hàng: <b><?php echo $order_id;?></b></p>
         <?php echo $phuongthuc_giaohang;?>
         <p style="font-weight:bold">Chúng tôi sẽ liên hệ với bạn trước khi giao hàng.</p>
     	<!--<p style="color:#F00">Phí giao hàng: <b><?php if($row['deliverycosts']!=0) echo number_format($row['deliverycosts'],0,',','.').'đ'; else echo 'Miễn phí';?></b></p>-->
@@ -47,7 +47,7 @@ if($row['city_id']==3 || $row['city_id']==2){
 				Địa chỉ: {$row['address']}{$districts_id}{$city_id}<br />
 				Điện thoại: {$row['phone']}<br />
 				Email: {$row['email']}<br />
-				Ngày đặt: ".date('H:i d/m/Y',strtotime($row['date_create']))."<br />".$other;
+				Ngày đặt: ".date('H:i d/m/Y',$row['datetime'])."<br />".$other;
             ?></span>
         </div>
         
@@ -67,22 +67,22 @@ if($row['city_id']==3 || $row['city_id']==2){
                     <th align="right">Thành tiền</th>
                 </tr>
                 <?php
-				$data = $this->_model->_view_product_order_detail($row['id']);
+				$data = $this->_model->_view_product_order_detail($row['datetime']);
                 foreach($data as $row_dt){
                     $view_str .= '<tr>
                         <td>'.$row_dt['name'].'</td>
-                        <td align="right" valign="top">'.number_format($row_dt['dongia'],0,',','.').'</td>
-                        <td align="center" valign="top">'.$row_dt['soluong'].'</td>
-                        <td align="right" valign="top">'.number_format($row_dt['tien'],0,',','.').'</td>
+                        <td align="right" valign="top">'.number_format($row_dt['price'],0,',','.').'</td>
+                        <td align="center" valign="top">'.$row_dt['number'].'</td>
+                        <td align="right" valign="top">'.number_format($row_dt['total'],0,',','.').'</td>
                     </tr>';
                 }
                 $view_str .= '<tr>
                     <th colspan="2" align="right">Tổng số lượng</th>
-                    <th colspan="2">'.$row['tongsoluong'].'</th>
+                    <th colspan="2">'.$row['total_number'].'</th>
                 </tr>
                 <tr>
                     <th colspan="2" align="right">Tổng cộng</th>
-                    <th colspan="2" align="right">'.number_format($row['tongtien'],0,',','.').' VNĐ</th>
+                    <th colspan="2" align="right">'.number_format($row['total_current'],0,',','.').' VNĐ</th>
                 </tr>
                 <tr>
                     <th colspan="2" align="right">Phí giao hàng</th>
@@ -90,7 +90,7 @@ if($row['city_id']==3 || $row['city_id']==2){
                 </tr>
                 <tr style="color:#00F">
                     <th colspan="2" align="right">Thành tiền</th>
-                    <th colspan="2" align="right"><span id="thanhtien">'.number_format($row['thanhtien'],0,',','.').'</span> VNĐ</th>
+                    <th colspan="2" align="right"><span id="total">'.number_format($row['total'],0,',','.').'</span> VNĐ</th>
                 </tr>';
 				echo $view_str;
                 ?>
@@ -101,14 +101,14 @@ if($row['city_id']==3 || $row['city_id']==2){
 
 			if($row['status']==3){
 				$title = 'Mùng chống muỗi ChamCham';
-				$subject = 'No-reply | Mã số đơn hàng mùng chống muỗi: '.$row['id'];
+				$subject = 'No-reply | Mã số đơn hàng mùng chống muỗi: '.$order_id;
 				$body = '<div style="width:770px; line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; margin:20px auto">
 					<p style="color:#F00; text-align:center">Neu khong doc duoc tieng Viet, vui long chon menu View / Encoding -&gt; Chon charset la UTF-8.</p>
 					
 					<div style="width:770px; padding:5px; border:solid 5px #3C9401">
 						<h3>Kính chào Quý khách!</h3>
 						<p>Cám ơn Quý khách đã đặt hàng tại Mungchongmuoi.com.vn</p>
-						<p>Đơn hàng của Quý khách có mã số <b style="color:#00F">'.$row['id'].'</b>, các thông tin chi tiết về đơn hàng được liệt kê dưới đây:</p>
+						<p>Đơn hàng của Quý khách có mã số <b style="color:#00F">'.$order_id.'</b>, các thông tin chi tiết về đơn hàng được liệt kê dưới đây:</p>
 						
 						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#3C9401">Thông tin đơn hàng</div>
 						<p style="padding-left:5px; font-weight:bold">Địa chỉ email: '.$row['email'].'</p>
@@ -141,11 +141,11 @@ if($row['city_id']==3 || $row['city_id']==2){
 						<table width="100%" border="0" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif">
 							<tr>
 								<td><b>Mã số đơn hàng</b></td>
-								<td><b style="color:#00F">'.$row['id'].'</b></td>
+								<td><b style="color:#00F">'.$order_id.'</b></td>
 							</tr>
 							<tr>
 								<td>Ngày đặt hàng</td>
-								<td>'.date('H:i d/m/Y',strtotime($row['date_create'])).'</td>
+								<td>'.date('H:i d/m/Y',$row['datetime']).'</td>
 							</tr>
 							<tr>
 								<td valign="top">Phương thức thanh toán</td>
@@ -181,10 +181,10 @@ if($row['city_id']==3 || $row['city_id']==2){
 				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
 				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
-				/*cap nhat trang thai*/
+				//cap nhat trang thai
 				$this->_model->_web_product_order_update_status($row['id']);
 				
-				/*gui mail*/
+				//gui mail
 				ob_start();
 				$this->_model->_sendmail($title,$subject,$body,$add_address,'',$add_bcc);
 				ob_get_clean();
