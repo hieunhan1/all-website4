@@ -18,10 +18,10 @@ $all_sp = count($data);/*view gio hang*/
             <th width="120px" align="right">Thành tiền</th>
         </tr>
         <?php
-		$tongtien = 0;
+		$total_current = 0;
 		if($all_sp > 0){
 			foreach($data as $row){
-				$tongtien += $row['thanhtien'];
+				$total_current += $row['total'];
 				if($row['price_cost']==0) $price_sp=number_format($row['price'],0,',','.').' VNĐ';
 				else $price_sp='<span style="color:#888; font-size:85%; text-decoration:line-through; padding-right:15px">'.number_format($row['price_cost'],0,',','.').' VNĐ</span>'.number_format($row['price'],0,',','.').' VNĐ';
 				echo '<tr>
@@ -29,7 +29,7 @@ $all_sp = count($data);/*view gio hang*/
 					<td><a href="'.$row['link'].'" title="Xem lại sản phẩm">'.$row['name'].'</a></td>
 					<td align="right">'.$price_sp.'</td>
 					<td align="center" class="soluong"><input type="text" name="soluong" value="'.$row['soluong'].'" style="width:30px; padding:2px" /><input type="hidden" name="idSP" value="'.$row['id'].'" /></td>
-					<td align="right">'.number_format($row['thanhtien'],0,',','.').' VNĐ</td>
+					<td align="right">'.number_format($row['total'],0,',','.').' VNĐ</td>
 				</tr>';
 			}
 		}else echo '<td colspan="5" class="error" style="font-size:120%" align="center">'.$data[0]['name'].'</td>';
@@ -43,10 +43,10 @@ $all_sp = count($data);/*view gio hang*/
           <td><b>Giảm 5%</b> nếu tổng số lượng đặt hàng &gt;=10</td></tr>
         <tr><td>Gọi <b><?php echo $this->_config['tel'];?></b> để được hỗ trợ thêm.</td></tr>
     </table>
-    <?php if($tongtien!=0){?>
+    <?php if($total_current!=0){?>
     <table width="38%" border="0" cellpadding="0" cellspacing="0" class="order_sp bogoc_10px" style="float:right">
     	<tr><td><span class="order_sp_btn bogoc_10px"><a href="javascript:;" id="order_sp_update">Cập nhật</a></span> <a href="gio-hang/?step=clear" id="order_sp_cancel">Xóa giỏ hàng</a></td></tr>
-        <tr><td style="font-weight:bold; font-size:150%; color:#F60">Tổng cộng: <?php echo number_format($tongtien,0,',','.').' VNĐ';?></td></tr>
+        <tr><td style="font-weight:bold; font-size:150%; color:#F60">Tổng cộng: <?php echo number_format($total_current,0,',','.').' VNĐ';?></td></tr>
         <tr><td>
         	<a href="san-pham/" style="display:block; width:auto; float:left; margin-top:8px">&lt;&lt; Trở lại mua hàng</a>
             <div class="order_sp_btn bogoc_10px" style="background-color:#4DBE01; float:right"><a href="gio-hang/?step=step1">Bước kế tiếp &gt;&gt;</a></div>

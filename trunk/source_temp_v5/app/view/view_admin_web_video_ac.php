@@ -14,8 +14,8 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//datetime
-	if($row_detail['datetime']==0) $values = $this->datetime_current_vn(time());
-	else $values = $this->datetime_current_vn($row_detail['datetime']);
+	if($row_detail['datetime']==0) $values = $this->view_datetime(time());
+	else $values = $this->view_datetime($row_detail['datetime']);
 	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Ngày đăng','datetime','input_large datetimepick'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);

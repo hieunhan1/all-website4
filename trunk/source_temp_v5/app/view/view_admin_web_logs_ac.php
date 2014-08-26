@@ -21,7 +21,7 @@ echo '<form name="form_action" method="post" action="">
 			$btn_restore = '';
 			$info_restore = '<tr>
 				<td class="label">Date restore</td>
-				<td style="line-height:22px; color:#666">'.$this->datetime_current_vn($row_detail['date_restore']).'</td>
+				<td style="line-height:22px; color:#666">'.$this->view_datetime($row_detail['date_restore']).'</td>
 			</tr>
 			<tr>
 				<td class="label">User restore</td>
@@ -33,7 +33,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	echo '<tr>
 		<td class="label">Date</td>
-		<td style="line-height:22px; color:#666">'.$this->datetime_current_vn($row_detail['datetime']).'</td>
+		<td style="line-height:22px; color:#666">'.$this->view_datetime($row_detail['datetime']).'</td>
 	</tr>
 	<tr>
 		<td class="label">Mô tả</td>

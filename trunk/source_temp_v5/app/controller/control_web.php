@@ -211,7 +211,7 @@ class control_web{
 			$_SESSION['list_order_sp_name'][$id] = $row['name'];
 			$_SESSION['list_order_sp_price_cost'][$id] = $row['price_cost'];
 			$_SESSION['list_order_sp_price'][$id] = $row['price'];
-			$_SESSION['list_order_sp_link'][$id] = $row['url'];
+			$_SESSION['list_order_sp_url'][$id] = $row['url'];
 			$_SESSION['list_order_sp_soluong'][$id] = $soluong;
 			
 			//echo $this->order_sp_thanhtoan_link();
@@ -227,24 +227,24 @@ class control_web{
 			reset($_SESSION['list_order_sp_price_cost']);
 			reset($_SESSION['list_order_sp_price']);
 			reset($_SESSION['list_order_sp_soluong']);
-			reset($_SESSION['list_order_sp_link']);
-			$tongtien=0; $tongsoluong=0;
+			reset($_SESSION['list_order_sp_url']);
+			$total_current=0; $total_number=0;
 			for ($i=0; $i<$all_sp; $i++) {
 				$idSP = key($_SESSION['list_order_sp_name']);
 				$name = current($_SESSION['list_order_sp_name']);
 				$price_cost = current($_SESSION['list_order_sp_price_cost']);
 				$price = current($_SESSION['list_order_sp_price']);
 				$soluong = current($_SESSION['list_order_sp_soluong']);
-				$link = current($_SESSION['list_order_sp_link']);
-				$thanhtien = $price*$soluong;
-				$tongtien += $thanhtien;
-				$tongsoluong += $soluong;
-				$data[] = array('id'=>$idSP,'name'=>$name,'price'=>$price,'price_cost'=>$price_cost,'soluong'=>$soluong,'link'=>$link,'thanhtien'=>$thanhtien);
+				$link = current($_SESSION['list_order_sp_url']);
+				$total = $price*$soluong;
+				$total_current += $total;
+				$total_number += $soluong;
+				$data[] = array('id'=>$idSP,'name'=>$name,'price'=>$price,'price_cost'=>$price_cost,'soluong'=>$soluong,'link'=>$link,'total'=>$total);
 				next($_SESSION['list_order_sp_name']);
 				next($_SESSION['list_order_sp_price_cost']);
 				next($_SESSION['list_order_sp_price']);
 				next($_SESSION['list_order_sp_soluong']);
-				next($_SESSION['list_order_sp_link']);
+				next($_SESSION['list_order_sp_url']);
 			}
 		}else $data[] = array('name'=>'Bạn chưa đặt mua sản phẩm.');
 		return $data;
@@ -254,7 +254,7 @@ class control_web{
 		unset($_SESSION['list_order_sp_price_cost'][$id]);
 		unset($_SESSION['list_order_sp_price'][$id]);
 		unset($_SESSION['list_order_sp_soluong'][$id]);
-		unset($_SESSION['list_order_sp_link'][$id]);
+		unset($_SESSION['list_order_sp_url'][$id]);
 	}
 	public function order_sp_edit_sl(){
 		$id = $_POST["id"];

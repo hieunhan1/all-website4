@@ -2,11 +2,6 @@
 //print_r($_SESSION);
 if(isset($_POST['order_sp'])){
 	$this->order_sp();
-	/*echo '<script>
-	$(document).ready(function(){
-		$("#cart_icon").html("'.count($_SESSION['list_order_sp_name']).'");
-	});
-	</script>';*/
 }
 
 /*dat hang & check phi giao hang*/
@@ -71,11 +66,11 @@ if(isset($_POST['insert_order_sp'])){
 	$districts_id = checks_number($_POST['districts_id']);
 	$address = checks_text($_POST['address'],2);
 	$other = $_POST['other'];
-	$tongtien = $_SESSION['order_total_current'];
-	$tongsoluong = $_SESSION['order_sp_tongsoluong'];
+	$total_current = $_SESSION['order_total_current'];
+	$total_number = $_SESSION['order_sp_total_number'];
 	$deliverycosts = $_SESSION['order_deliverycosts'];
-	$giamgia = 0;
-	$thanhtien = $_SESSION['order_total'];
+	$discounts = 0;
+	$total = $_SESSION['order_total'];
 	
 	if($email==false) return false;
 	if($name==false) return false;
@@ -84,13 +79,13 @@ if(isset($_POST['insert_order_sp'])){
 	if($districts_id==false) return false;
 	if($address==false) return false;
 	
-	$order_id = rand(0,9).date('dmis');
-	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$city_id,$districts_id,$address,$tongtien,$tongsoluong,$deliverycosts,$giamgia,$thanhtien,$other);
+	$order_id = time();
+	$this->_model->_web_product_order_insert($order_id,$name,$email,$phone,$city_id,$districts_id,$address,$total_current,$total_number,$deliverycosts,$discounts,$total,$other);
 	
-	$giamgia = 0;
+	$discounts = 0;
 	$data = $this->order_sp_view();
 	foreach($data as $row){
-		$this->_model->_web_product_order_detail_insert($row['name'],$row['id'],$order_id,$row['soluong'],$row['price'],$giamgia,$row['thanhtien']);
+		$this->_model->_web_product_order_detail_insert($row['name'],$row['soluong'],$row['price'],$discounts,$row['total'],$row['id'],$order_id);
 	}
 	echo $order_id;
 }

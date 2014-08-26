@@ -362,9 +362,8 @@ class control_admin extends control_admin_form{
 			$_SESSION['link_back'] = $_SERVER['HTTP_REFERER'];
 	}
 	
-	public function datetime_current_vn($time){
-		$timezone  = +7; //(GMT +7:00)
-        return gmdate("Y-m-d H:i", $time + 3600*($timezone+date("0")));
+	public function view_datetime($time){
+        return date('Y-m-d H:i', $time);
 	}
 	
 	public function ckeditor_full($name){

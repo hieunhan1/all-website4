@@ -86,14 +86,14 @@ $(document).ready(function(e) {
 			cache:false,
 			success:function(data){
 				data = data.split("-|-");
-				var obj = { "deliverycosts": data[0],"thanhtien": data[1] };
+				var obj = { "deliverycosts": data[0],"total": data[1] };
 				var deliverycosts = obj.deliverycosts;
-				var thanhtien = obj.thanhtien;
+				var total = obj.total;
 				setTimeout(function(){
 					$("#order_sp_info_loading").hide();
 					$("#districts_id").html("<span style='color:#00F'>Phí giao hàng: " + deliverycosts + " VNĐ</span>");
 					$("#deliverycosts").html(deliverycosts);
-					$("#thanhtien").html(thanhtien);
+					$("#total").html(total);
 				},500);
 			}
 		});
