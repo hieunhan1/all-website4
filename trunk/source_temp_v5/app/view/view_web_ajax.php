@@ -111,7 +111,7 @@ if(isset($_POST['contact_name'])){
 			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?id_contact='.$id_contact.'">Click vào đây để xem thông tin</a></p>
 		</div>';
 		$add_address = array();
-		$add_address[] = array('email'=>$row_config['email'],'name'=>'Admin');
+		$add_address[] = array('email'=>$this->comfig['email'],'name'=>'Admin');
 		$add_cc = '';
 		$add_bcc = array();
 		$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Tran Nhan');
