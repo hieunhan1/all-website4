@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Trang quản trị</title>
 <meta name="robots" content="nofollow" />
+<link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" type="text/css" href="<?php echo CONS_ADMIN_CSS_STYLE; ?>">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/js_admin.js"></script>
