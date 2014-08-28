@@ -53,7 +53,7 @@ $(document).ready(function(e) {
 			}
 		});
 	}
-	ajax_number_item("web_product_order");
+	ajax_number_item("web_booking");
 	ajax_number_item("web_contact");
 	/*end ajax_number_item*/
 	
