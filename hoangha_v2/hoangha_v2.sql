@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2014 at 11:47 AM
+-- Generation Time: Aug 28, 2014 at 12:37 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -52,7 +52,7 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_img`, `descri
 (2, 'Công dụng của mùng chuống muỗi', 'cong-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/cong-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'công dụng của mùng chuống muỗi,cong dung cua mung chuong muoi', '<p>Sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền, c&ocirc;ng nghệ đột ph&aacute;.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
 (3, 'Tác dụng của mùng chuống muỗi', 'tac-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/tac-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'tác dụng của mùng chuống muỗi,tac dung cua mung chuong muoi', '<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</h2>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
 (4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'about-home-mung-chong-muoi.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi &iacute;ch m&ugrave;ng chống muỗi sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền</h2>\r\n', 0, 1408459800, 'vi', 1, ',8,'),
-(5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 0, 1408439640, 'vi', 1, ',2,');
+(5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 0, 1409217240, 'vi', 1, ',2,');
 
 -- --------------------------------------------------------
 
@@ -70,6 +70,90 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
   `status` tinyint(1) DEFAULT '1',
   `article_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_booking`
+--
+
+CREATE TABLE IF NOT EXISTS `web_booking` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `message` text NOT NULL,
+  `mathang` varchar(100) NOT NULL,
+  `form` varchar(10) NOT NULL,
+  `to` varchar(10) NOT NULL,
+  `number` varchar(10) NOT NULL,
+  `temperature` varchar(100) NOT NULL,
+  `volume_weight` varchar(100) DEFAULT NULL,
+  `other` varchar(30) DEFAULT NULL,
+  `datetime` bigint(10) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_booking_form`
+--
+
+CREATE TABLE IF NOT EXISTS `web_booking_form` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ma` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_booking_price`
+--
+
+CREATE TABLE IF NOT EXISTS `web_booking_price` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `form` varchar(10) NOT NULL,
+  `to` varchar(10) NOT NULL,
+  `weight` varchar(50) NOT NULL,
+  `rate` varchar(50) NOT NULL,
+  `myc` varchar(50) NOT NULL DEFAULT '0',
+  `msc` varchar(50) NOT NULL DEFAULT '0',
+  `mcc` varchar(50) NOT NULL DEFAULT '0',
+  `tcs` varchar(50) NOT NULL DEFAULT '0',
+  `awb` varchar(50) NOT NULL DEFAULT '0',
+  `service` varchar(50) NOT NULL DEFAULT '0',
+  `other` varchar(60) DEFAULT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_booking_to`
+--
+
+CREATE TABLE IF NOT EXISTS `web_booking_to` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ma` (`code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -975,7 +1059,19 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `web_logs`
+--
+
+INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`, `content`, `lang`, `status`, `date_restore`, `user_restore`) VALUES
+(1, 'Giới thiệu về công ty', 'update', 'web_article', 1409218252, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1408439640%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
+(2, 'Giới thiệu về công ty', 'update', 'web_article', 1409218362, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%0%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
+(3, 'Giới thiệu về công ty', 'update', 'web_article', 1409218370, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%1409391120%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
+(4, 'Giới thiệu về công ty', 'update', 'web_article', 1409218377, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%1406885520%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
+(5, 'Nhân', 'update', 'web_users', 1409221135, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`login_number`,`disable_date`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values32%%%Nhân%%%12 CMT 8%%%0988388003%%%hieunhan@yahoo.com%%%0%%%1%%%%%%%%%nhan%%%867e1a36d190000d2f266d80889683fc%%%,1,2,22,%%%,1,2,22,%%%%%%0%%%%%%%%%vi%%%1408459980%%%1%%%3', 'vi', 0, NULL, NULL),
+(6, 'Nhân', 'update', 'web_users', 1409221982, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`login_number`,`disable_date`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values32%%%Nhân%%%12 CMT 8%%%0988388003%%%hieunhan@yahoo.com%%%0%%%1%%%%%%%%%nhan%%%867e1a36d190000d2f266d80889683fc%%%,1,2,22,%%%,1,2,22,%%%%%%0%%%%%%%%%vi%%%1408459980%%%1%%%1', 'vi', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1055,14 +1151,14 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (2, 'Cấu hình website', 'web_config', 'icon-cau-hinh.jpg', 2, 1, NULL, 1),
 (3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 0, NULL, 1),
 (4, 'Thông tin, bài viết', 'web_article', 'icon-info.jpg', 4, 0, NULL, 1),
-(5, 'Sản phẩm', 'web_product', 'icon-product.jpg', 5, 0, NULL, 1),
-(6, 'Thư viện ảnh', 'web_photo', 'icon-thu-vien-anh.jpg', 6, 0, NULL, 1),
-(7, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 7, 0, NULL, 1),
+(5, 'Sale Online', 'web_sale_online', 'icon-product.jpg', 5, 0, NULL, 1),
+(6, 'Tracing Express', 'web_tracing_express', 'icon-thu-vien-anh.jpg', 6, 0, NULL, 1),
+(7, 'Track Trace', 'web_tracktrace', 'icon-thu-vien-video.jpg', 7, 0, NULL, 1),
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
-(9, 'DS Tỉnh - Thành', 'web_listcity', 'icon-city.jpg', 9, 0, NULL, 1),
-(10, 'DS Quận - Huyện', 'web_listdistricts', 'icon-districts.jpg', 10, 0, NULL, 1),
-(11, 'Đơn đặt hàng', 'web_product_order', 'icon-order.jpg', 11, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 1),
-(12, 'Đơn đặt hàng chi tiết', 'web_product_order_detail', 'icon-order-detail.jpg', 12, 1, NULL, 1),
+(9, 'Booking đi từ', 'web_booking_to', 'icon-city.jpg', 9, 0, NULL, 1),
+(10, 'Booking đi đến', 'web_booking_form', 'icon-districts.jpg', 10, 0, NULL, 1),
+(11, 'Booking bảng giá', 'web_booking_price', 'icon-order.jpg', 11, 0, '', 1),
+(12, 'Khách hàng booking', 'web_booking', 'icon-order-detail.jpg', 12, 1, '<span id="web_booking" class="ajax_thongtin"></span>', 1),
 (13, 'Item 13', '', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 0),
 (14, 'Item 14', '', 'icon-contact.jpg', 14, 0, NULL, 0),
 (15, 'Item 15', '', 'icon-tuyendung-ho-so.jpg', 15, 0, NULL, 0),
@@ -1165,92 +1261,22 @@ INSERT INTO `web_photo` (`id`, `name`, `url_img`, `order`, `lang`, `status`, `me
 -- --------------------------------------------------------
 
 --
--- Table structure for table `web_product`
+-- Table structure for table `web_sale_online`
 --
 
-CREATE TABLE IF NOT EXISTS `web_product` (
+CREATE TABLE IF NOT EXISTS `web_sale_online` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(250) NOT NULL,
-  `name_alias` varchar(250) NOT NULL,
-  `code` varchar(10) NOT NULL,
-  `url` varchar(250) NOT NULL,
-  `url_img` varchar(150) NOT NULL,
-  `description` varchar(300) NOT NULL,
-  `tags` varchar(250) NOT NULL,
-  `price` int(7) NOT NULL,
-  `price_cost` int(7) DEFAULT NULL,
-  `content` text NOT NULL,
-  `more` varchar(500) DEFAULT NULL,
-  `other` tinyint(1) DEFAULT '0',
-  `datetime` bigint(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `regency` varchar(30) NOT NULL,
+  `yahoo` varchar(30) NOT NULL,
+  `skype` varchar(30) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
+  `status` tinyint(1) DEFAULT '0',
   `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `web_product`
---
-
-INSERT INTO `web_product` (`id`, `name`, `name_alias`, `code`, `url`, `url_img`, `description`, `tags`, `price`, `price_cost`, `content`, `more`, `other`, `datetime`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Mùng chống muỗi hình nón', 'mung-chong-muoi-hinh-non', 'MMHT-01', 'thoi-trang-nam/mung-chong-muoi-hinh-non.html', 'mung-chong-muoi.jpg', 'Mùng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi hình nón,mung chong muoi hinh non', 200000, 250000, '<p>M&ugrave;ng l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng. M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '', 1, 1408460940, 'vi', 1, ',6,13,'),
-(2, 'Mùng chống muỗi tam giác ba dây trắng', 'mung-chong-muoi-tam-giac-ba-day-trang', 'MMTG-01', 'thoi-trang-nam/mung-chong-muoi-tam-giac-ba-day-trang.html', 'mung-chong-muoi-tam-giac-ba-day-trang.jpg', 'Mùng chống muỗi tam giác ba dây trắng là màn ngủ ứng dụng kỹ thuật mới với sợi màn bằng nguyên liệu Polyethylene tích hợp Permethrin tạo nên chiếc màn bền chắc, thông thoáng khí và đặc biệt là tính năng xua đuổi diệt muỗi, côn trùng cho người sử dụng.', 'mùng chống muỗi tam giác ba dây trắng,mung chong muoi tam giac ba day trang', 250000, 0, '<h2>M&ugrave;ng chống muỗi tam gi&aacute;c ba d&acirc;y trắng&nbsp;l&agrave; m&agrave;n ngủ ứng dụng kỹ thuật mới với sợi m&agrave;n bằng nguy&ecirc;n liệu Polyethylene t&iacute;ch hợp Permethrin tạo n&ecirc;n chiếc m&agrave;n bền chắc, th&ocirc;ng tho&aacute;ng kh&iacute; v&agrave; đặc biệt l&agrave; t&iacute;nh năng xua đuổi diệt muỗi, c&ocirc;n tr&ugrave;ng cho người sử dụng.</h2>\r\n\r\n<p>M&ugrave;ng ChamCham rất hữu &iacute;ch cho ph&ograve;ng chống lan truyền bệnh sốt r&eacute;t, sốt xuất huyết, vi&ecirc;m n&atilde;o Nhật Bản B v&agrave; c&aacute;c bệnh kh&aacute;c g&acirc;y ra do c&ocirc;n tr&ugrave;ng ch&iacute;ch đốt gi&uacute;p bảo vệ sức khỏe người sử dụng.</p>\r\n\r\n<p>M&ugrave;ng V&otilde;ng R&egrave;m ChamCham đ&aacute;p ứng nhu cầu sử dụng đa dạng trong nh&agrave;, ngo&agrave;i trời, treo m&oacute;c...</p>\r\n', '<p>Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng Bảo h&agrave;nh 12 th&aacute;ng</p>\r\n\r\n<p>Giao h&agrave;ng to&agrave;n quốc</p>\r\n', 1, 1408460940, 'vi', 1, ',6,13,');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `web_product_order`
---
-
-CREATE TABLE IF NOT EXISTS `web_product_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(250) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `address` varchar(200) NOT NULL,
-  `total_current` int(9) NOT NULL,
-  `total_number` int(4) NOT NULL,
-  `deliverycosts` int(8) NOT NULL DEFAULT '0',
-  `discounts` int(8) NOT NULL DEFAULT '0',
-  `total` int(8) NOT NULL,
-  `datetime` bigint(10) NOT NULL,
-  `other` varchar(250) DEFAULT NULL,
-  `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  `city_id` int(3) NOT NULL,
-  `districts_id` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `web_product_order_detail`
---
-
-CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(250) NOT NULL,
-  `number` int(4) NOT NULL,
-  `price` int(8) NOT NULL,
-  `discounts` int(8) NOT NULL DEFAULT '0',
-  `total` int(8) NOT NULL,
-  `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  `product_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
-
---
--- Dumping data for table `web_product_order_detail`
---
-
-INSERT INTO `web_product_order_detail` (`id`, `name`, `number`, `price`, `discounts`, `total`, `lang`, `status`, `product_id`, `order_id`) VALUES
-(37, 'Mùng chống muỗi tam giác ba dây trắng', 2, 250000, 0, 500000, 'vi', 1, 2, 1409024803),
-(36, 'Mùng chống muỗi hình nón', 1, 200000, 0, 200000, 'vi', 1, 1, 1409024803),
-(35, 'Mùng chống muỗi hình nón', 1, 200000, 0, 200000, 'vi', 1, 1, 1409024551);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1304,6 +1330,47 @@ INSERT INTO `web_slider_banner_position` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `web_tracing_express`
+--
+
+CREATE TABLE IF NOT EXISTS `web_tracing_express` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `send_to` varchar(100) NOT NULL,
+  `send_post_offices` varchar(50) NOT NULL,
+  `send_datetime` varchar(10) NOT NULL,
+  `receive_form` varchar(100) NOT NULL,
+  `receive_post_offices` varchar(50) NOT NULL,
+  `receive_datetime` bigint(10) DEFAULT NULL,
+  `weight` varchar(10) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_tracktrace`
+--
+
+CREATE TABLE IF NOT EXISTS `web_tracktrace` (
+  `id` int(1) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `code` varchar(10) NOT NULL,
+  `code_bill` varchar(10) NOT NULL,
+  `menu_id` int(11) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ma` (`code_bill`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_users`
 --
 
@@ -1338,8 +1405,8 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 0),
-(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 0, 1, 0);
+(25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1408459980, 1, 3),
+(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 1408459980, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -1351,7 +1418,7 @@ CREATE TABLE IF NOT EXISTS `web_users_group` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `web_users_group`
@@ -1360,7 +1427,8 @@ CREATE TABLE IF NOT EXISTS `web_users_group` (
 INSERT INTO `web_users_group` (`id`, `name`) VALUES
 (1, 'Khách hàng'),
 (2, 'Thành viên'),
-(3, 'Quản trị website');
+(3, 'Quản trị website'),
+(4, 'Quản trị forum');
 
 -- --------------------------------------------------------
 
