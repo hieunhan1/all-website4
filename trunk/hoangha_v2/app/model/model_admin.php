@@ -128,7 +128,7 @@ class model_admin extends db{
 	public function _create($table, $fields, $values){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			if($fields[$i]!='datetime'){
+			if(!preg_match("/^datetime/", $fields[$i])){
 				$str_field .= "`{$fields[$i]}`,";
 				$str_value .= "'".$this->_change_dau_nhay($values[$i])."',";
 			}else{
@@ -145,7 +145,7 @@ class model_admin extends db{
 	public function _update($table, $fields, $values, $id){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			if($fields[$i]!='datetime') $str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
+			if(!preg_match("/^datetime/", $fields[$i])) $str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
 			else $str .= "`{$fields[$i]}`='".strtotime($values[$i])."',";
 		}
 		$str = trim($str,',');
