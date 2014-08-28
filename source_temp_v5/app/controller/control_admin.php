@@ -33,7 +33,8 @@ class control_admin extends control_admin_form{
 			if( strlen(trim($user))<4 || strlen($pass)<6 ){
 				$error = CONS_LOGIN_FAILED;
 			}else{
-				$result = $this->_model->_xuly_dangnhap($user,$pass);
+				$group_id = 3;//group quan tri
+				$result = $this->_model->_xuly_dangnhap($user, $pass, $group_id);
 				if($result==TRUE) header('location: '.CONS_DEFAULT_LINK_LOGIN_ADMIN);
 				else $error = CONS_LOGIN_FAILED;
 			}
@@ -268,6 +269,28 @@ class control_admin extends control_admin_form{
 		$all_table = $table.',web_listcity';
 		$where  = "{$table}.lang='{$lang}' AND city_id=web_listcity.id ".$str_search;
 		$order_by = "`datetime` DESC";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
+	public function select_from_users($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, web_users_group.name as group_name";
+		$all_table = $table.',web_users_group';
+		$where  = "lang='{$lang}' AND group_id=web_users_group.id ".$str_search;
+		$order_by = '`group_id`, `username` ';
 		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
 		$arr = array(
 			'currentpage'=>$currentpage,
