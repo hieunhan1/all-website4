@@ -1,10 +1,10 @@
 <?php
 include_once('model_db.php');
 class model_admin extends db{
-	public function _xuly_dangnhap($u,$p){
+	public function _xuly_dangnhap($u, $p, $group_id){
 		$u = strip_tags($u);
 		$p = md5($p);
-		$sql = "SELECT `id`,`name`,`username`,`rule_view`,`rule_action` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1";
+		$sql = "SELECT `id`,`name`,`username`,`rule_view`,`rule_action` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `group_id`='{$group_id}' AND `status`=1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) {
 			$row = $result->fetch_assoc();
@@ -40,6 +40,14 @@ class model_admin extends db{
 	
 	public function _list_username(){
 		$sql = "SELECT `username` FROM `web_users` WHERE `status`=1 ORDER BY `username`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
+	public function _web_users_group(){
+		$sql = "SELECT * FROM `web_users_group` ORDER BY `id`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -128,7 +136,7 @@ class model_admin extends db{
 	public function _create($table, $fields, $values){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			if(!preg_match("/^datetime/", $fields[$i])){
+			if(!preg_match("/datetime/", $fields[$i])){
 				$str_field .= "`{$fields[$i]}`,";
 				$str_value .= "'".$this->_change_dau_nhay($values[$i])."',";
 			}else{
@@ -145,7 +153,7 @@ class model_admin extends db{
 	public function _update($table, $fields, $values, $id){
 		$total_field = count($fields);
 		for($i=0; $i < $total_field-1; $i++){
-			if(!preg_match("/^datetime/", $fields[$i])) $str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
+			if(!preg_match("/datetime/", $fields[$i])) $str .= "`{$fields[$i]}`='".$this->_change_dau_nhay($values[$i])."',";
 			else $str .= "`{$fields[$i]}`='".strtotime($values[$i])."',";
 		}
 		$str = trim($str,',');
