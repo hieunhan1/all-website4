@@ -150,13 +150,19 @@ $(document).ready(function(e) {
 	url_auto('.url_auto','#name_alias');
 	
 	/*lấy link tu dong detail*/
-	$(".auto_link_detail").dblclick(function(){
+	function auto_link_detail(class_name, ajax){
 		var name_alias = $.trim($("#name_alias").val());
 		var menu_id = $.trim($("#menu_id").val());
-		var url = $(location).attr('href') + "&menu_id=" + menu_id;
+		var url = $(location).attr('href') + "&ajax=" + ajax + "&menu_id=" + menu_id;
 		$.post(url,function(data){
-			$(".auto_link_detail").val(data + name_alias + ".html");
+			$(class_name).val(data + name_alias + ".html");
 		});
+	}
+	$(".auto_link_detail").dblclick(function(){
+		auto_link_detail(this, "menu_id");
+	});
+	$(".auto_link_detail_forum").dblclick(function(){
+		auto_link_detail(this, "forum_menu_id");
 	});
 	/*end lấy link tu dong detail*/
 	
