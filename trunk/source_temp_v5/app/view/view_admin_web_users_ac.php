@@ -2,7 +2,7 @@
 /*action create, edit*/
 $this->create_edit_data($table, $arr_action, $row_detail);
 
-echo '<p style="color:#360; font-size:110%">Lưu ý: Khi tạo tài khoản password mặc định là "<b>00112233</b>"</p>';
+echo '<p style="color:#360; font-size:110%">Lưu ý: Khi tạo tài khoản password mặc định là "<b>'.CONS_ADMIN_PASSWORD_DEFAULT.'</b>"</p>';
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
@@ -83,7 +83,7 @@ echo '<form name="form_action" method="post" action="">
 	echo '<tr><td class="label">Phân quyền</td> <td>'.$xem.$quyen.'</td></tr>';
 	
 	if($_GET['id']==0){
-		$values = md5('00112233');
+		$values = md5(CONS_ADMIN_PASSWORD_DEFAULT);
 		$views = array('password'); //name class
 		$this->getProperties('2',$values,'',$views);
 		echo $this->DisplayProperties();
@@ -112,4 +112,4 @@ echo '<form name="form_action" method="post" action="">
 
 echo '</table></form>';
 
-if($this->_user=='admin') echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>00112233</b>")</a></p>';
+if($this->_user=='admin') echo '<p><a href="javascript:;" id="reset_pass">Reset password (Password: "<b>'.CONS_ADMIN_PASSWORD_DEFAULT.'</b>")</a></p>';
