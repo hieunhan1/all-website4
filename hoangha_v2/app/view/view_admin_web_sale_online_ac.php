@@ -13,52 +13,58 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//order_id
-	$values = $row_detail['order_id'];
-	$properties = array('10',$disabled); //maxlength OTHER (disabled, readonly) 
-	$views = array('ID order','order_id','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	//menu_id
+	$values = $row_detail['menu_id'];
+	$views = array('menu_id', 'value_checks_box'); //name class
+    $this->getProperties('2',$values,'',$views);
+	$hidden_item = $this->DisplayProperties();
 	
-	//product_id
-	$values = $row_detail['product_id'];
-	$properties = array('10',$disabled); //maxlength OTHER (disabled, readonly) 
-	$views = array('ID product','product_id','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	$where = " AND (type_id=1 OR type_id=4) AND lang='{$lang}' ";
+	$arr = $this->_model->_web_menu(0, '', NULL, $where);
+	$properties = $row_detail['menu_id']; //default check
+	$views = array('','','checkbox checkbox_item','width:345px; height:100px;'); //label name class width
+    $this->getProperties('7',$arr,$properties,$views);
+	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
 	
 	//name
 	$values = $row_detail['name'];
-	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Tên sản phẩm','name','input_medium'); //label id&name class style
+	$properties = array('100'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Họ tên','name','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//number
-	$values = $row_detail['number'];
-	$properties = array('5'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Số lượng','number','input_medium'); //label id&name class style
+	//regency
+	$values = $row_detail['regency'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Chức vụ','regency','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//price
-	$values = $row_detail['price'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Đơn giá','price','input_medium'); //label id&name class style
+	//yahoo
+	$values = $row_detail['yahoo'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Yahoo','yahoo','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//discounts
-	$values = $row_detail['discounts'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Giảm giá','discounts','input_medium'); //label id&name class style
+	//skype
+	$values = $row_detail['skype'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Skype','skype','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//total
-	$values = $row_detail['total'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Thành tiền','total','input_medium'); //label id&name class style
+	//phone
+	$values = $row_detail['phone'];
+	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Phone','phone','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//email
+	$values = $row_detail['email'];
+	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Email','email','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	

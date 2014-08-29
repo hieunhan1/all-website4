@@ -85,10 +85,6 @@ class control_admin extends control_admin_form{
 				$this->status_one($lang);
 				return true;
 			}/*status item*/
-			if(isset($_GET['menu_id'])){
-				$this->menu_id($lang);
-				return true;
-			}/*menu_id*/
 			
 			if(file_exists($file_view)){
 				$include = ob_start();
@@ -128,10 +124,10 @@ class control_admin extends control_admin_form{
 			if(preg_match("/,{$row['id']},/i", $rule_view)){
 				$link = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$row['url'].'/';
 				if($active==$row['url']) $style = 'style="color:#00F"'; else $style = '';
-				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>';
-				if($row['other']==1) $str .= '<hr />';
-				
-				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['url_img'].'" alt="" /><p>'.$row['name'].'</p></a></div>';
+				if($row['other']==1) $hr='<div style="clear:both; height:4px"><hr /></div>';
+				else $hr='';
+				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>'.$hr;
+				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['url_img'].'" alt="" /><p>'.$row['name'].'</p></a></div>'.$hr;
 			}
 		}
 		return array($str,'<div id="chucnang">'.$str2.'</div>');
@@ -180,7 +176,7 @@ class control_admin extends control_admin_form{
 	public function reset_password(){
 		$id_user_reset = $_GET['id_u'];
 		settype($id_user_reset,"int");
-		$pass_default = '00112233';
+		$pass_default = CONS_ADMIN_PASSWORD_DEFAULT;
 		if($this->_user=='admin') $this->_model->_reset_password($id_user_reset,$pass_default);
 		else return FALSE;
 	}
@@ -257,28 +253,6 @@ class control_admin extends control_admin_form{
 		return $data;
 	}
 	
-	public function select_from_product_order($lang, &$arr){
-		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
-		settype($currentpage,"int");
-		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
-		if(!empty($_GET)){
-			$this->search_data_forms($str_search, $url_search);
-		}
-		$table  = $this->_action;
-		$select = "{$table}.*, web_listcity.name as city";
-		$all_table = $table.',web_listcity';
-		$where  = "{$table}.lang='{$lang}' AND city_id=web_listcity.id ".$str_search;
-		$order_by = "`datetime` DESC";
-		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
-		$arr = array(
-			'currentpage'=>$currentpage,
-			'startrow'	=>$startrow,
-			'totalrows'	=>$totalrows,
-			'url_search'=>$url_search
-		);
-		return $data;
-	}
-	
 	public function select_from_users($lang, &$arr){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");
@@ -330,6 +304,35 @@ class control_admin extends control_admin_form{
 		}
 	}
 	
+	public function select_from_forum_menu($lang, $where=NULL){
+		if($where==NULL) $where = " AND lang='{$lang}' ";
+		else $where = " AND lang='{$lang}' AND ({$where})";
+		$data = $this->_model->_forum_menu(0, '', NULL, $where);
+		return $data;
+	}
+	
+	public function select_from_forum_article_cm($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, forum_article.name as article_name";
+		$all_table = $table.',forum_article';
+		$where  = "{$table}.lang='{$lang}' AND article_id=forum_article.id ".$str_search;
+		$order_by = "`datetime` DESC";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
 	public function delete_one($lang){
 		$id = $_GET['delete_one'];
 		settype($id,'int');
@@ -342,11 +345,6 @@ class control_admin extends control_admin_form{
 		$name = $this->_model->_change_dau_nhay($_GET['name']);
 		if($_GET['status_one']==1) $status=0; elseif($_GET['status_one']==0) $status=1;
 		$this->_model->_status_one($name, $this->_action, $id, $status, $this->_user, $lang);
-	}
-	
-	public function menu_id(){
-		$menu_id = $_GET['menu_id'];
-		echo $this->_model->_menu_id($menu_id);
 	}
 	
 	public function create_edit_data($table, &$arr_action, &$row_detail){

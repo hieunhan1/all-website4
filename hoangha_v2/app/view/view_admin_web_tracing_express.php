@@ -1,46 +1,38 @@
 <div id="search">
-	<form action="" method="get" name="search" onsubmit="if(search.value=='' && datetime.value=='' && city_id.value=='') return false;">
-    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Họ tên" />
-        <input type="text" name="datetime" value="<?php if(isset($_GET['datetime'])) echo $_GET['datetime']; ?>" class="txt"  placeholder="Mã đơn hàng" />
-        <select name="city_id" class="select">
-            <?php
-			$i = 0;
-            $data = $this->_model->_web_listcity();
-			foreach($data as $row){
-				$i++;
-				if($i!=1) $value = $row['id']; else $value = '';
-				if($_GET['city_id']!=$value) echo "<option value='{$value}'>{$row['name']}</option>";
-				else echo "<option value='{$value}' selected='selected'>{$row['name']}</option>";
-			}
-			?>
-        </select>
+	<form action="" method="get" name="search" onsubmit="if(search.value=='') return false;">
+    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mã bill" />
     	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
 	</form>
 </div>
+
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
-            <th width="120" align="left">Mã đơn hàng</th>
-            <th align="left">Họ tên</th>
-            <th width="120" align="left">Điện thoại</th>
-            <th width="150" align="left">Tỉnh thành</th>
-            <th width="120" align="left">Ngày đặt</th>
+            <th width="90" align="left">Mã Bill</th>
+            <th width="100" align="left">Loại hàng</th>
+            <th align="left">Nơi gửi</th>
+            <th width="110" align="left">Bưu cục gửi</th>
+            <th width="110" align="left">Người nhận</th>
+            <th width="110" align="left">Bưu cục nhận</th>
+            <th width="100" align="left">Ngày phát</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_product_order($lang,$arr,',`phone`,`datetime`,`city`');
+		$data = $this->select_from_all($lang,$arr,',`send_to`,`send_post_offices`,`receive_form`,`receive_post_offices`,`category`,`send_datetime`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><p class="height_25px_hidden"><?php echo $row['datetime'];?></p></td>
             <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['phone'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['city'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $this->view_datetime($row['datetime']);?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['category'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['send_to'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['send_post_offices'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['receive_form'];?></p></td>
+            <td><p class="height_25px_hidden"><?php echo $row['receive_post_offices'];?></p></td>
+            <td><?php echo $this->view_datetime($row['send_datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;
