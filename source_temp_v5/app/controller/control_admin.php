@@ -85,10 +85,6 @@ class control_admin extends control_admin_form{
 				$this->status_one($lang);
 				return true;
 			}/*status item*/
-			if(isset($_GET['menu_id'])){
-				$this->menu_id($lang);
-				return true;
-			}/*menu_id*/
 			
 			if(file_exists($file_view)){
 				$include = ob_start();
@@ -180,7 +176,7 @@ class control_admin extends control_admin_form{
 	public function reset_password(){
 		$id_user_reset = $_GET['id_u'];
 		settype($id_user_reset,"int");
-		$pass_default = '00112233';
+		$pass_default = CONS_ADMIN_PASSWORD_DEFAULT;
 		if($this->_user=='admin') $this->_model->_reset_password($id_user_reset,$pass_default);
 		else return FALSE;
 	}
@@ -342,11 +338,6 @@ class control_admin extends control_admin_form{
 		$name = $this->_model->_change_dau_nhay($_GET['name']);
 		if($_GET['status_one']==1) $status=0; elseif($_GET['status_one']==0) $status=1;
 		$this->_model->_status_one($name, $this->_action, $id, $status, $this->_user, $lang);
-	}
-	
-	public function menu_id(){
-		$menu_id = $_GET['menu_id'];
-		echo $this->_model->_menu_id($menu_id);
 	}
 	
 	public function create_edit_data($table, &$arr_action, &$row_detail){

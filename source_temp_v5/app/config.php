@@ -38,6 +38,7 @@ define('CONS_ADMIN_RESET', 'reset');
 define('CONS_ADMIN_CSS_IMG', 'themes/admin/img/');
 define('CONS_ADMIN_CSS_STYLE', 'themes/admin/admin_default.css');
 define('CONS_ADMIN_PER_PAGE', 30);
+define('CONS_ADMIN_PASSWORD_DEFAULT', '00112233');
 
 /*OTHER*/
 define('CONS_AJAX_NAME', 'ajax');
