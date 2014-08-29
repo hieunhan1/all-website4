@@ -128,10 +128,10 @@ class control_admin extends control_admin_form{
 			if(preg_match("/,{$row['id']},/i", $rule_view)){
 				$link = CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$row['url'].'/';
 				if($active==$row['url']) $style = 'style="color:#00F"'; else $style = '';
-				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>';
-				if($row['other']==1) $str .= '<hr />';
-				
-				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['url_img'].'" alt="" /><p>'.$row['name'].'</p></a></div>';
+				if($row['other']==1) $hr='<div style="clear:both; height:4px"><hr /></div>';
+				else $hr='';
+				$str .= '<a href="'.$link.'" '.$style.'>'.$row['name'].$row['ajax'].'</a>'.$hr;
+				$str2 .= '<div class="item"><a href="'.$link.'"><img src="'.CONS_ADMIN_CSS_IMG.$row['url_img'].'" alt="" /><p>'.$row['name'].'</p></a></div>'.$hr;
 			}
 		}
 		return array($str,'<div id="chucnang">'.$str2.'</div>');
