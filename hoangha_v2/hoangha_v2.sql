@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 28, 2014 at 12:37 PM
+-- Generation Time: Aug 30, 2014 at 07:19 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -19,6 +19,208 @@ SET time_zone = "+00:00";
 --
 -- Database: `hoangha_v2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_article`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `name_alias` varchar(250) NOT NULL,
+  `url` varchar(250) NOT NULL,
+  `url_img` varchar(150) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `tags` varchar(250) NOT NULL,
+  `content` text NOT NULL,
+  `other` tinyint(1) DEFAULT '0',
+  `datetime` bigint(10) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  `menu_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `forum_article`
+--
+
+INSERT INTO `forum_article` (`id`, `name`, `name_alias`, `url`, `url_img`, `description`, `tags`, `content`, `other`, `datetime`, `username`, `lang`, `status`, `menu_id`) VALUES
+(1, 'Nội quy sử dụng forum HIL', 'noi-quy-su-dung-forum-hil', 'thong-bao-chung/noi-quy-su-dung-forum-hil.html', '', '', 'nội quy sử dụng forum hil,noi quy su dung forum hil', '<p style="margin-top: 0.2cm; margin-bottom: 0cm">Ch&agrave;o mừng bạn đến với Forum HIL</p>\r\n\r\n<p style="margin-top: 0.2cm; margin-bottom: 0cm">Đ&acirc;y l&agrave; một diễn đ&agrave;n nhỏ, nơi chia sẻ th&ocirc;ng tin về c&ocirc;ng việc, về ng&agrave;nh nghề li&ecirc;n quan đến c&aacute;c dịch vụ của HIL.</p>\r\n\r\n<p style="margin-top: 0.2cm; margin-bottom: 0cm">Để đảm bảo t&iacute;nh thống nhất v&agrave; hợp lệ, bạn vui l&ograve;ng tu&acirc;n thủ những quy định khi tham gia viết b&agrave;i, b&igrave;nh luận tại Forum HIL.</p>\r\n\r\n<p style="margin-top: 0.2cm; margin-bottom: 0cm">Một số quy định:</p>\r\n\r\n<ul>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Sử dụng ng&ocirc;n ngữ Tiếng Việt c&oacute; dấu hoặc Tiếng Anh</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Ng&ocirc;n từ lịch sự, dễ hiểu v&agrave; trong s&aacute;ng.</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Sử dụng những th&ocirc;ng tin, h&igrave;nh ảnh để chia sẻ phải ghi r&otilde; nguồn gốc (source)</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">C&oacute; những tranh luận trao đổi cần giữ đ&uacute;ng mực, kh&ocirc;ng b&agrave;n t&aacute;n xa rời chủ đề của chủ topic</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Kh&ocirc;ng sử dụng, chia sẻ những th&ocirc;ng tin, h&igrave;nh ảnh g&acirc;y phản cảm, vi phạm ph&aacute;p luật</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Kh&ocirc;ng đưa những b&agrave;i viết, những sự việc mang t&iacute;nh c&aacute; nh&acirc;n (việc ri&ecirc;ng) v&agrave;o forum</p>\r\n	</li>\r\n	<li>\r\n	<p style="margin-top: 0.2cm; margin-bottom: 0cm">Kh&ocirc;ng sử dụng ng&ocirc;n từ mang h&agrave;m &yacute; khi&ecirc;u kh&iacute;ch ch&acirc;m chọc hay đả k&iacute;ch c&aacute; nh&acirc;n tổ chức kh&aacute;c</p>\r\n	</li>\r\n</ul>\r\n\r\n<p style="margin-top: 0.2cm; margin-bottom: 0cm">Những c&acirc;u hỏi về chuy&ecirc;n m&ocirc;n hoặc những th&ocirc;ng tin li&ecirc;n quan đến hoạt động của HIL sẽ được giải đ&aacute;p, chia sẻ bởi c&aacute;c bộ phận c&oacute; li&ecirc;n quan.</p>\r\n\r\n<p style="margin-top: 0.2cm; margin-bottom: 0cm">Tr&acirc;n trọng k&iacute;nh ch&agrave;o.</p>\r\n', 0, 1382065200, 'admin', 'vi', 1, ',1,'),
+(2, 'Chao cac ban cua Toi.', 'chao-cac-ban-cua-toi', 'network/chao-cac-ban-cua-toi.html', '', '', 'chao cac ban cua toi', '<p>Xin gui loi chao den toan the cac ban thuoc To Network .</p>\r\n\r\n<p>Toi tham gia forum nham muc dich tim hieu them ve cac hinh thuc giao nhan door thong qua network . Cac ban am hieu nhieu xin vui long chia se mot so thong tin sau :</p>\r\n\r\n<p>1/.Co bao nhieu hinh thuc giao nhan duoc thuc hien thong qua cac dai ly tai nuoc ngoai . Cu the cac loai hinh dich vu ay .</p>\r\n\r\n<p>2/.Lam sao de co the chuyen mot lo hang bat ky tu London - Anh Quoc ve TPHCM va khach hang se tra tien tai VN . Vui long huong dan cu the de khach hang hieu ro ve dich vu.</p>\r\n\r\n<p>Than chao.</p>\r\n\r\n<p>&nbsp;</p>\r\n', 1, 1418719380, 'huynhhai', 'vi', 1, ',3,'),
+(3, 'WELCOME TO NETWORK FORUM', 'welcome-to-network-forum', 'network/welcome-to-network-forum.html', '', '', 'welcome to network forum', '<p>Any question related to Agents? Please feel free to contact.&nbsp;</p>\r\n', 1, 1409301840, 'tony', 'vi', 1, ',3,');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_article_cm`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_article_cm` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `content` text NOT NULL,
+  `datetime` bigint(10) NOT NULL,
+  `lang` varchar(3) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  `article_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `forum_article_cm`
+--
+
+INSERT INTO `forum_article_cm` (`id`, `name`, `content`, `datetime`, `lang`, `status`, `article_id`) VALUES
+(1, 'tracy', '<p>Ch&agrave;o bạn,</p>\r\n\r\n<p>Ho&agrave;ng H&agrave; hiện tại đang cung cấp dịch vụ theo 1 chuỗi cung ứng, c&oacute; nghĩa l&agrave; kh&aacute;ch h&agrave;ng c&oacute; thể sử dụng 1 ph&acirc;n đoạn hoặc cả một chuỗi c&aacute;c dịch vụ để h&agrave;ng h&oacute;a được chuyển từ tay người gửi đến tay người nhận. (door to door, door to airport, airport to airport, airport to door... c&aacute;c term giao nhận h&agrave;ng bạn c&oacute; thể xem trong Incoterm). Do vậy khi kh&aacute;ch h&agrave;ng c&oacute; bất cứ y&ecirc;u cầu n&agrave;o về dịch vụ, Ho&agrave;ng H&agrave; sẽ li&ecirc;n hệ với đại l&yacute; nước ngo&agrave;i để request y&ecirc;u cầu v&agrave; ch&agrave;o gi&aacute; cho kh&aacute;ch.</p>\r\n\r\n<p>Khi c&oacute; h&agrave;ng từ Anh (hoặc bất cứ nước n&agrave;o) c&oacute; nhu cầu chuyển về VN, việc đầu ti&ecirc;n bạn t&igrave;m đại l&yacute; của m&igrave;nh tại nước đ&oacute;, li&ecirc;n hệ check gi&aacute; cả (nhớ note với đại l&yacute; l&agrave; h&igrave;nh thức thanh to&aacute;n tại VN, gọi l&agrave; cước collect), b&aacute;o gi&aacute; cho kh&aacute;ch. Sau khi kh&aacute;ch đồng &yacute; gi&aacute; cả th&igrave; cho h&agrave;ng l&ecirc;n đường th&ocirc;i!!!</p>\r\n', 1387423524, 'vi', 1, 2),
+(2, 'hubert', '<p>Gởi bạn,</p>\r\n\r\n<p>Cám ơn bạn đã gởi yêu cầu.</p>\r\n\r\n<p>Yêu cầu bạn phải cho bên mình biết mặt hàng là gì , kích thước , thời gian vận chuyển yêu cầu , số lượng, trọng lượng&nbsp;. Một số mặt hàng bị cấm nhập khẩu theo quy định của hải quan Việt Nam nên không phải mặt hàng nào cũng được phép nhập khẩu, và các quy định khác liên quan .&nbsp;</p>\r\n\r\n<p>Thân chào.</p>', 1389416789, 'vi', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_config`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_config` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) NOT NULL,
+  `name_var` varchar(30) NOT NULL,
+  `value` varchar(250) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+
+--
+-- Dumping data for table `forum_config`
+--
+
+INSERT INTO `forum_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) VALUES
+(1, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'vi', 1),
+(2, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'en', 1),
+(5, 'Số tin / trang', 'limit_1', '10', 'vi', 1),
+(6, 'Số SP / trang', 'limit_2', '10', 'vi', 1),
+(7, 'Số photo / trang', 'limit_3', '10', 'vi', 1),
+(8, 'Số video / trang', 'limit_4', '10', 'vi', 1),
+(9, 'Copyright', 'copyright', 'Copyright © 2014', 'vi', 1),
+(10, 'Email', 'email', 'info@hoangha.com', 'vi', 1),
+(11, 'Điện thoại', 'tel', '(84.8) 3 948 4696', 'vi', 1),
+(15, 'Địa chỉ', 'address', '87 Thăng Long, Phường 4, Quận Tân Bình, Tp.Hồ Chí Minh, Việt Nam.', 'vi', 1),
+(16, 'News number / page', 'limit_1', '10', 'en', 1),
+(17, 'Product number / page', 'limit_2', '10', 'en', 1),
+(18, 'Photos number / page', 'limit_3', '10', 'en', 1),
+(19, 'Videos number / page', 'limit_4', '10', 'en', 1),
+(20, 'Copyright', 'copyright', 'Copyright © 2014', 'en', 1),
+(21, 'Email', 'email', 'info@hoangha.com', 'en', 1),
+(22, 'Telephone', 'tel', '(84.8) 3 948 4696', 'en', 1),
+(26, 'Address', 'address', '87 Thăng Long, Phường 4, Quận Tân Bình, Tp.Hồ Chí Minh, Việt Nam.', 'en', 1),
+(27, 'Tên trang website', 'sitename', 'HOANG HA INTERNATIONAL LOGISTICS JSC.,', 'vi', 1),
+(28, 'Site name', 'sitename', 'HOANG HA INTERNATIONAL LOGISTICS JSC.,', 'en', 1),
+(29, 'Fax', 'fax', '(84.8) 3 948 4697', 'vi', 1),
+(30, 'Fax', 'fax', '(84.8) 3 948 4697', 'en', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_menu`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_menu` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `name_alias` varchar(100) NOT NULL,
+  `url` varchar(150) NOT NULL,
+  `url_img` varchar(150) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `description` varchar(1300) DEFAULT NULL,
+  `tags` varchar(150) DEFAULT NULL,
+  `parent` int(3) NOT NULL DEFAULT '0',
+  `order` int(3) DEFAULT '0',
+  `other` tinyint(1) DEFAULT '0',
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  `type_id` int(1) NOT NULL,
+  `position_id` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `forum_menu`
+--
+
+INSERT INTO `forum_menu` (`id`, `name`, `name_alias`, `url`, `url_img`, `title`, `description`, `tags`, `parent`, `order`, `other`, `lang`, `status`, `type_id`, `position_id`) VALUES
+(1, 'Thông báo chung', 'thong-bao-chung', 'thong-bao-chung/', '', 'Forum Hoang Ha Logistics', 'Chào mừng Forum HIL \nVới mục đích tạo ra nơi trao đổi thông tin, chia sẻ những kinh nghiệm và những khó khăn gặp phải trong quá trình thực hiện nghiệp vụ nên Forum HIL ra đời.\nĐây cũng là nơi gặp nhau giữa quản lý và nhân viên của mình thông qua những thông tin về tiến trình thực hiện công việc, về những vướng mắc khó nói trực tiếp để có thể thấu hiểu nhau hơn giúp cho công việc đạt hiệu quả cao hơn.\nCùng chung tay tạo dựng một môi trường thân thiện, hòa đồng và đoàn kết tiến tới mục tiêu chung của HIL là hình ảnh chuyên nghiệp, chất lượng hoàn hảo và một tổ chức thống nhất.', 'Forum Hoang Ha Logistics', 0, 1, 0, 'vi', 1, 2, ',9,'),
+(2, 'Sale - Cust', 'sale-cust', 'sale-cust/', 'sale-marketing.png', 'Sale - Cust', 'Chào mừng bạn đến với Forum Sale -Cust', 'sale cust', 0, 2, 0, 'vi', 1, 2, ',2,'),
+(3, 'Network', 'network', 'network/', 'ky-thuat.png', 'Network', 'Chào mừng bạn đến với Forum Network', 'Network', 0, 3, 0, 'vi', 1, 2, ',2,'),
+(4, 'Kế toán', 'ke-toan', 'ke-toan/', 'ke-toan.png', 'Kế toán', 'Chào mừng bạn đến với Forum Kế Toán', 'kế toán,ke toan', 0, 4, 0, 'vi', 1, 2, ',2,'),
+(5, 'Hành chánh', 'hanh-chanh', 'hanh-chanh/', 'kinh-doanh.png', 'Hành chánh', 'Chào mừng bạn đến với Forum hành chánh', 'hành chánh,hanh chanh', 0, 5, 0, 'vi', 1, 2, ',2,'),
+(6, 'Handling', 'handling', 'handling/', 'handling.png', 'Handling', 'Chào mừng bạn đến với Forum Handling', 'handling', 0, 6, 0, 'vi', 1, 2, ',2,');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_menu_position`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_menu_position` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `order` int(1) NOT NULL DEFAULT '0',
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `forum_menu_position`
+--
+
+INSERT INTO `forum_menu_position` (`id`, `name`, `order`, `status`) VALUES
+(1, 'Top', 1, 1),
+(2, 'Main', 2, 1),
+(3, 'Bottom', 3, 1),
+(4, 'Left', 4, 0),
+(5, 'Right', 5, 0),
+(6, 'Social', 6, 0),
+(7, 'Other 1', 7, 0),
+(8, 'Other 2', 8, 0),
+(9, 'Không', 9, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `forum_menu_type`
+--
+
+CREATE TABLE IF NOT EXISTS `forum_menu_type` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `order` int(2) NOT NULL,
+  `status` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `forum_menu_type`
+--
+
+INSERT INTO `forum_menu_type` (`id`, `name`, `order`, `status`) VALUES
+(1, 'Trang chủ', 1, 1),
+(2, 'Thông tin bài viết', 2, 1),
+(3, 'Sản phẩm', 3, 0),
+(4, 'Dịch vụ', 4, 0),
+(5, 'Hình ảnh', 5, 0),
+(6, 'Video', 6, 0),
+(7, 'Đặt hàng', 7, 0),
+(8, 'Thanh toán', 8, 0),
+(9, 'Item 9', 9, 0),
+(10, 'Item 10', 10, 0),
+(11, 'Item 11', 11, 0),
+(12, 'Đăng ký', 12, 0),
+(13, 'Liên hệ', 13, 0),
+(14, 'Không', 14, 1);
 
 -- --------------------------------------------------------
 
@@ -41,18 +243,7 @@ CREATE TABLE IF NOT EXISTS `web_article` (
   `status` tinyint(1) DEFAULT '1',
   `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `web_article`
---
-
-INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_img`, `description`, `tags`, `content`, `other`, `datetime`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Home - Mùng chống muỗi', 'home-mung-chong-muoi', '', 'about-home-mung-chong-muoi.png', 'Phòng ngủ của bạn sẽ sạch sẽ hơn, an toàn hơn, giấc ngủ sẽ sâu hơn, trọn vẹn hơn khi bạn có chiếc mùng (màn) ChamCham với chức năng đặc biệt: xua đuổi diệt muỗi, ruồi, gián, rận, rệp, kiến, rầy, bọ, v.v.', 'home mùng chống muỗi', '<p><img alt="Home - Mùng chống muỗi" src="/all/source_temp_v4/public/images/articles/about-home-mung-chong-muoi.png" style="width: 300px; height: 180px; float: right; margin-left: 10px; margin-right: 10px;" /></p>\r\n\r\n<h2>Ph&ograve;ng ngủ của bạn sẽ sạch sẽ hơn, an to&agrave;n hơn, giấc ngủ sẽ s&acirc;u hơn, trọn vẹn hơn khi bạn c&oacute; chiếc m&ugrave;ng (m&agrave;n) ChamCham với chức năng đặc biệt: xua đuổi diệt muỗi, ruồi, gi&aacute;n, rận, rệp, kiến, rầy, bọ, v.v. Kh&ocirc;ng c&ograve;n ch&iacute;ch đốt, kh&ocirc;ng c&ograve;n vo ve. Giấc ngủ an to&agrave;n, giấc ngủ ngon!</h2>\r\n\r\n<h2>Sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền, c&ocirc;ng nghệ đột ph&aacute;.</h2>\r\n\r\n<h2>Sản phẩm c&oacute; khả năng xua đuổi diệt muỗi v&agrave; c&ocirc;n tr&ugrave;ng, kh&ocirc;ng cho ch&uacute;ng đến gần ch&iacute;ch đốt, vo ve bực bội b&ecirc;n tai.</h2>\r\n', 1, 1408459980, 'vi', 1, ',1,'),
-(2, 'Công dụng của mùng chuống muỗi', 'cong-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/cong-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'công dụng của mùng chuống muỗi,cong dung cua mung chuong muoi', '<p>Sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền, c&ocirc;ng nghệ đột ph&aacute;.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
-(3, 'Tác dụng của mùng chuống muỗi', 'tac-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/tac-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'tác dụng của mùng chuống muỗi,tac dung cua mung chuong muoi', '<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</h2>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
-(4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'about-home-mung-chong-muoi.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi &iacute;ch m&ugrave;ng chống muỗi sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền</h2>\r\n', 0, 1408459800, 'vi', 1, ',8,'),
-(5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 0, 1409217240, 'vi', 1, ',2,');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -81,13 +272,13 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
 CREATE TABLE IF NOT EXISTS `web_booking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `email` varchar(60) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `address` varchar(200) NOT NULL,
   `message` text NOT NULL,
-  `mathang` varchar(100) NOT NULL,
-  `form` varchar(10) NOT NULL,
-  `to` varchar(10) NOT NULL,
+  `booking_form_id` int(2) NOT NULL,
+  `booking_to_id` int(4) NOT NULL,
+  `items` varchar(100) NOT NULL,
   `number` varchar(10) NOT NULL,
   `temperature` varchar(100) NOT NULL,
   `volume_weight` varchar(100) DEFAULT NULL,
@@ -96,7 +287,14 @@ CREATE TABLE IF NOT EXISTS `web_booking` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `web_booking`
+--
+
+INSERT INTO `web_booking` (`id`, `name`, `email`, `phone`, `address`, `message`, `booking_form_id`, `booking_to_id`, `items`, `number`, `temperature`, `volume_weight`, `other`, `datetime`, `lang`, `status`) VALUES
+(1, 'DNTN Hồng Ngọc', 'Info@hongngocseafood.com', '0914155221', '174 Hùng Vuong Tuy Hoa', '<p>111</p>\r\n', 4, 1, 'Tuna Tuoi', '10000', '0', '(Length x Width x Height) / 6000 = 0', '111', 1409281680, 'vi', 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +311,17 @@ CREATE TABLE IF NOT EXISTS `web_booking_form` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ma` (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `web_booking_form`
+--
+
+INSERT INTO `web_booking_form` (`id`, `name`, `code`, `email`, `lang`, `status`) VALUES
+(1, 'Can Tho', 'CT', 'david@hoangha.com', 'vi', 1),
+(2, 'Da Nang', 'DN', 'hubert@hoangha.com', 'vi', 1),
+(3, 'Ha Noi', 'HN', 'helen@hoangha.com', 'vi', 1),
+(4, 'Tp.HCM', 'HCM', 'catherine@hoangha.com', 'vi', 1);
 
 -- --------------------------------------------------------
 
@@ -124,8 +332,8 @@ CREATE TABLE IF NOT EXISTS `web_booking_form` (
 CREATE TABLE IF NOT EXISTS `web_booking_price` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
-  `form` varchar(10) NOT NULL,
-  `to` varchar(10) NOT NULL,
+  `booking_form_id` int(2) NOT NULL,
+  `booking_to_id` int(4) NOT NULL,
   `weight` varchar(50) NOT NULL,
   `rate` varchar(50) NOT NULL,
   `myc` varchar(50) NOT NULL DEFAULT '0',
@@ -138,7 +346,14 @@ CREATE TABLE IF NOT EXISTS `web_booking_price` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `web_booking_price`
+--
+
+INSERT INTO `web_booking_price` (`id`, `name`, `booking_form_id`, `booking_to_id`, `weight`, `rate`, `myc`, `msc`, `mcc`, `tcs`, `awb`, `service`, `other`, `lang`, `status`) VALUES
+(1, 'Tp.HCM - Hoa Kỳ', 4, 2, '+100, +200, +300, +500, +1000', '3.0, 2.8, 2.6, 2.4, 2.2', '0.2,0.1,-', '', '', '', '', '', 'AMS (Mỹ),EMS (Châu Âu)', 'vi', 1);
 
 -- --------------------------------------------------------
 
@@ -154,7 +369,16 @@ CREATE TABLE IF NOT EXISTS `web_booking_to` (
   `status` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ma` (`code`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `web_booking_to`
+--
+
+INSERT INTO `web_booking_to` (`id`, `name`, `code`, `lang`, `status`) VALUES
+(1, 'Nước Anh', 'US', 'vi', 1),
+(2, 'Hoa Kỳ', 'USA', 'vi', 1),
+(3, 'Singapo', 'SGP', 'vi', 1);
 
 -- --------------------------------------------------------
 
@@ -1059,19 +1283,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
-
---
--- Dumping data for table `web_logs`
---
-
-INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`, `content`, `lang`, `status`, `date_restore`, `user_restore`) VALUES
-(1, 'Giới thiệu về công ty', 'update', 'web_article', 1409218252, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1408439640%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
-(2, 'Giới thiệu về công ty', 'update', 'web_article', 1409218362, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%0%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
-(3, 'Giới thiệu về công ty', 'update', 'web_article', 1409218370, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%1409391120%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
-(4, 'Giới thiệu về công ty', 'update', 'web_article', 1409218377, 'admin', '`id`,`name`,`name_alias`,`url`,`url_img`,`description`,`tags`,`content`,`other`,`datetime`,`datetime_2`,`lang`,`status`,`menu_id`fields%%%values5%%%Giới thiệu về công ty%%%gioi-thieu-ve-cong-ty%%%gioi-thieu/gioi-thieu-ve-cong-ty.html%%%%%%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.%%%giới thiệu về công ty,gioi thieu ve cong ty%%%<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n%%%0%%%1409217240%%%1406885520%%%vi%%%1%%%,2,', 'vi', 0, NULL, NULL),
-(5, 'Nhân', 'update', 'web_users', 1409221135, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`login_number`,`disable_date`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values32%%%Nhân%%%12 CMT 8%%%0988388003%%%hieunhan@yahoo.com%%%0%%%1%%%%%%%%%nhan%%%867e1a36d190000d2f266d80889683fc%%%,1,2,22,%%%,1,2,22,%%%%%%0%%%%%%%%%vi%%%1408459980%%%1%%%3', 'vi', 0, NULL, NULL),
-(6, 'Nhân', 'update', 'web_users', 1409221982, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`login_number`,`disable_date`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values32%%%Nhân%%%12 CMT 8%%%0988388003%%%hieunhan@yahoo.com%%%0%%%1%%%%%%%%%nhan%%%867e1a36d190000d2f266d80889683fc%%%,1,2,22,%%%,1,2,22,%%%%%%0%%%%%%%%%vi%%%1408459980%%%1%%%1', 'vi', 0, NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1096,33 +1308,7 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
   `type_id` int(1) NOT NULL,
   `position_id` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
-
---
--- Dumping data for table `web_menu`
---
-
-INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_img`, `title`, `description`, `tags`, `parent`, `order`, `other`, `lang`, `status`, `type_id`, `position_id`) VALUES
-(2, 'Giới thiệu', 'gioi-thieu', 'gioi-thieu/', '', 'Title giới thiệu', 'Des giới thiệu', 'giới thiệu,gioi thieu', 0, 2, 0, 'vi', 1, 2, ',2,3,'),
-(3, 'Áo Nam', 'ao-nam', 'ao-nam/', '', 'Áo Nam', 'Áo Nam', 'áo nam,ao nam', 13, 1, 0, 'vi', 1, 3, ',4,'),
-(4, 'Quần Nam', 'quan-nam', 'quan-nam/', '', 'Quần Nam', 'Quần Nam', 'quần nam,quan nam', 13, 2, 0, 'vi', 1, 3, ',4,'),
-(5, 'Giày Nam', 'giay-nam', 'giay-nam/', '', 'Giày Nam', 'Giày Nam', 'giày nam,giay nam', 13, 3, 0, 'vi', 1, 3, ',4,'),
-(6, 'Sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm', 'Sản phẩm', 'sản phẩm,san pham', 0, 3, 0, 'vi', 1, 3, ',3,4,'),
-(7, 'Hướng dẫn thanh toán', 'huong-dan-thanh-toan', 'huong-dan-thanh-toan/', '', 'Hướng dẫn thanh toán', 'Hướng dẫn thanh toán', 'hướng dẫn thanh toán,huong dan thanh toan', 0, 4, 0, 'vi', 1, 2, ',2,3,'),
-(8, 'Thông tin sản phẩm', 'thong-tin-san-pham', 'thong-tin-san-pham/', '', 'Thông tin sản phẩm', 'Thông tin sản phẩm', 'thông tin sản phẩm,thong tin san pham', 0, 5, 0, 'vi', 1, 2, ',2,3,'),
-(9, 'Liên hệ', 'lien-he', 'lien-he/', '', 'Liên hệ', 'Liên hệ', 'liên hệ,lien he', 0, 6, 0, 'vi', 1, 13, ',2,3,'),
-(10, 'Home', 'home', '/?lang=en', '', 'Home', 'Home', 'Home', 0, 1, 0, 'en', 1, 0, ''),
-(11, 'About US', 'about-us', 'about-us/', '', 'About US', 'About US', 'About US', 0, 2, 0, 'en', 1, 0, ''),
-(12, 'Products', 'products', 'products/', '', 'Products', 'Products', 'Products', 0, 3, 0, 'en', 1, 0, ''),
-(13, 'Thời trang Nam', 'thoi-trang-nam', 'thoi-trang-nam/', '', 'Thời trang dành cho Nam', 'Thời trang dành cho Nam', 'thời trang nam,thoi trang nam', 6, 1, 1, 'vi', 1, 3, ',4,'),
-(14, 'Thời trang Nữ', 'thoi-trang-nu', 'thoi-trang-nu/', '', 'Thời trang dành cho Nữ', 'Thời trang dành cho Nữ', 'thời trang nữ,thoi trang nu', 6, 2, 1, 'vi', 1, 3, ',4,'),
-(15, 'Thời trang Trẻ em - Bé', 'thoi-trang-tre-em-be', 'thoi-trang-tre-em-be/', '', 'Thời trang dành cho Trẻ em - Bé', 'Thời trang dành cho Trẻ em - Bé', 'thời trang trẻ em bé,thoi trang tre em be', 6, 3, 1, 'vi', 1, 3, ',4,'),
-(16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 100, 0, 'vi', 1, 8, ',9,'),
-(17, 'Giỏ hàng', 'gio-hang', 'gio-hang/', '', 'Giỏ hàng', 'Giỏ hàng', 'giỏ hàng,gio hang', 16, 1, 0, 'vi', 1, 8, ',9,'),
-(18, 'Thanh toán', 'thanh-toan', 'thanh-toan/', '', 'Thanh toán', 'Thanh toán', 'thanh toán,thanh toan', 16, 2, 0, 'vi', 1, 7, ',9,'),
-(19, 'Facebook', 'facebook', 'javascript:;', 'icon-facebook.gif', 'Facebook', 'Facebook', 'Facebook', 0, 101, 0, 'vi', 1, 14, ',6,'),
-(1, 'Trang chủ', 'trang-chu', '', '', 'Title trang chủ', 'Des trang chủ', 'trang chủ,trang chu', 0, 1, 0, 'vi', 1, 1, ',2,3,'),
-(20, 'Youtube', 'youtube', 'javascript:;', 'icon-youtube.gif', 'Youtube', 'Youtube', 'Youtube', 0, 102, 0, 'vi', 1, 14, ',6,');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1155,14 +1341,14 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (6, 'Tracing Express', 'web_tracing_express', 'icon-thu-vien-anh.jpg', 6, 0, NULL, 1),
 (7, 'Track Trace', 'web_tracktrace', 'icon-thu-vien-video.jpg', 7, 0, NULL, 1),
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
-(9, 'Booking đi từ', 'web_booking_to', 'icon-city.jpg', 9, 0, NULL, 1),
-(10, 'Booking đi đến', 'web_booking_form', 'icon-districts.jpg', 10, 0, NULL, 1),
+(9, 'Booking đi từ', 'web_booking_form', 'icon-city.jpg', 9, 0, NULL, 1),
+(10, 'Booking đi đến', 'web_booking_to', 'icon-districts.jpg', 10, 0, NULL, 1),
 (11, 'Booking bảng giá', 'web_booking_price', 'icon-order.jpg', 11, 0, '', 1),
 (12, 'Khách hàng booking', 'web_booking', 'icon-order-detail.jpg', 12, 1, '<span id="web_booking" class="ajax_thongtin"></span>', 1),
-(13, 'Item 13', '', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 0),
-(14, 'Item 14', '', 'icon-contact.jpg', 14, 0, NULL, 0),
-(15, 'Item 15', '', 'icon-tuyendung-ho-so.jpg', 15, 0, NULL, 0),
-(16, 'Item 16', '', '', 16, 0, NULL, 0),
+(13, 'Cấu hình forum', 'forum_config', 'icon-cau-hinh.jpg', 13, 0, NULL, 1),
+(14, 'Danh mục forum', 'forum_menu', 'icon-menu.jpg', 14, 0, NULL, 1),
+(15, 'Bài viết forum', 'forum_article', 'icon-info.jpg', 15, 0, NULL, 1),
+(16, 'Comment forum', 'forum_article_cm', 'icon-info.jpg', 16, 1, NULL, 1),
 (17, 'Item 17', '', '', 17, 0, NULL, 0),
 (18, 'Item 18', '', '', 18, 0, NULL, 0),
 (19, 'Item 19', '', '', 19, 0, NULL, 0),
@@ -1249,14 +1435,7 @@ CREATE TABLE IF NOT EXISTS `web_photo` (
   `status` tinyint(1) DEFAULT '1',
   `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `web_photo`
---
-
-INSERT INTO `web_photo` (`id`, `name`, `url_img`, `order`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Hoạt động', '', 1, 'vi', 1, ',');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1295,15 +1474,7 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
   `position_id` int(1) NOT NULL,
   `menu_id` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `web_slider_banner`
---
-
-INSERT INTO `web_slider_banner` (`id`, `name`, `url_img`, `url`, `order`, `lang`, `status`, `position_id`, `menu_id`) VALUES
-(1, 'Trang chủ', 'slider-home.jpg', 'javascript:;', 1, 'vi', 1, 1, ',1,'),
-(2, 'Giới thiệu', '', 'javascript:;', 2, 'vi', 1, 1, ',2,');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1361,12 +1532,47 @@ CREATE TABLE IF NOT EXISTS `web_tracktrace` (
   `name` varchar(100) NOT NULL,
   `code` varchar(10) NOT NULL,
   `code_bill` varchar(10) NOT NULL,
-  `menu_id` int(11) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
+  `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ma` (`code_bill`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Dumping data for table `web_tracktrace`
+--
+
+INSERT INTO `web_tracktrace` (`id`, `name`, `code`, `code_bill`, `lang`, `status`, `menu_id`) VALUES
+(1, 'DHL', 'DHL', '89', 'vi', 1, ''),
+(2, 'TNT', 'TNT', 'GD127', 'vi', 1, ''),
+(3, 'UPS', 'UPS', '1Z', 'vi', 1, ''),
+(4, 'AMERICAN AIRLINES', 'AA', '001', 'vi', 1, ''),
+(5, 'AIR FRANCE', 'AF', '057', 'vi', 1, ''),
+(6, 'FINNAIR', 'AY', '105', 'vi', 1, ''),
+(7, 'UNI AIR', 'B7', '525', 'vi', 1, ''),
+(8, 'BR – EVA AIR', '', '695', 'vi', 1, ''),
+(9, 'CHINA AIRLINES', 'CI', '297', 'vi', 1, ''),
+(10, 'CARGOLUX', 'CV', '172', 'vi', 1, ''),
+(11, 'CATHAY PACIFIC CARGO', 'CX', '160', 'vi', 1, ''),
+(12, 'CHINA SOUTHERN AIRLINES', 'CZ', '784', 'vi', 1, ''),
+(13, 'EMIRATES', 'CK', '176', 'vi', 1, ''),
+(14, 'ETIHAD CRYSTAL CARGO', 'EY', '607', 'vi', 1, ''),
+(15, 'HONGKONG AIRLINES', 'HX', '851', 'vi', 1, ''),
+(16, 'JAPAN AIRLINES', 'JL', '131', 'vi', 1, ''),
+(17, 'KOREAN AIR CARGO', 'KE', '180', 'vi', 1, ''),
+(18, 'NIPPON CARGO AIRLINES', 'KZ', '933', 'vi', 1, ''),
+(19, 'LUFTHANSA CARGO', 'LH', '020', 'vi', 1, ''),
+(20, 'MASKARGO', 'MH', '232', 'vi', 1, ''),
+(21, 'ANA CARGO', 'NH', '205', 'vi', 1, ''),
+(22, 'ASIANA CARGO', 'OZ', '988', 'vi', 1, ''),
+(23, 'PHILLIPINE AIRLINES', 'PR', '079', 'vi', 1, ''),
+(24, 'QATAR AIRWAYS', 'QR', '157', 'vi', 1, ''),
+(25, 'SINGARPORE AIRLINES', 'SQ', '618', 'vi', 1, ''),
+(26, 'THAI CARGO', 'TG', '217', 'vi', 1, ''),
+(27, 'TURKISH AIRLINES', 'TK', '235', 'vi', 1, ''),
+(28, 'VIETNAM AIRLINES', 'VN', '738', 'vi', 1, ''),
+(29, 'SKYDART EXPRESS', '', 'SGN100', 'vi', 1, '');
 
 -- --------------------------------------------------------
 
@@ -1396,17 +1602,70 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `datetime` bigint(10) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `group_id` int(1) NOT NULL,
+  `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=85 ;
 
 --
 -- Dumping data for table `web_users`
 --
 
-INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1408459980, 1, 3),
-(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 1408459980, 1, 3);
+INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`, `menu_id`) VALUES
+(25, 'Admin', '87', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 1408459980, 1, 3, ',1,2,3,4,5,6,'),
+(32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 1408459980, 1, 3, ''),
+(33, 'Express Saigon', '', '', '', 0, 1, '', '', 'expresssgn', '867e1a36d190000d2f266d80889683fc', ',1,6,', ',1,6,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3, ''),
+(34, 'Express Đà Nẵng', '', '', '', 0, 1, '', '', 'expressdad', '867e1a36d190000d2f266d80889683fc', ',1,6,', ',1,6,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3, ''),
+(35, 'Express Hà Nội', '', '', '', 0, 1, '', '', 'expresshan', '867e1a36d190000d2f266d80889683fc', ',1,6,', ',1,6,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3, ''),
+(36, 'Express Cần Thơ', '', '', '', 0, 1, '', '', 'expressvca', '867e1a36d190000d2f266d80889683fc', ',1,6,', ',1,6,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3, ''),
+(37, 'Lê Thái Bình', 'Tp.HCM', '', '', 0, 1, '', '', 'thaibinh', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,6,'),
+(38, 'Âu Thị Mỹ Linh', 'Tp.HCM', '', '', 0, 1, '', '', 'aulinh', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(39, 'Lê Khắc Sáu', 'Tp.HCM', '', '', 0, 1, '', '', 'khacsau', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(40, 'Phùng Mỹ Linh', 'Tp.HCM', '', '', 0, 1, '', '', 'mylinh', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,6,'),
+(41, 'Lê Thị Hường', 'Tp.HCM', '', '', 0, 1, '', '', 'lehuong', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,6,'),
+(42, 'Nguyễn Thanh Nam', 'Tp.HCM', '', '', 0, 1, '', '', 'thanhnam', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(43, 'Nguyễn Chánh Tín', '', '', '', 0, 1, '', '', 'steven_gsa', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,3,6,'),
+(44, 'Thùy Dương', 'Hà Nội', '', '', 0, 1, '', '', 'thuyduong', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(45, 'Lê Quang Hòa', 'Tp.HCM', '', '', 0, 1, '', '', 'quanghoa', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,6,'),
+(46, 'Trần Hoài Phong', 'Tp.HCM', '', '', 0, 1, '', '', 'rattapong', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(47, 'Lê Ngọc Hường', 'Hà Nội', '', '', 0, 1, '', '', 'Anna-Le', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(48, 'Nguyễn Thị Tú Uyên', 'Tp.HCM', '', '', 0, 1, '', '', 'catherine', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(49, 'Vũ Thị Thành', 'Đà Nẵng', '', '', 0, 1, '', '', 'Trissy', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(50, 'Phạm Ngọc Hiền', 'Tp.HCM', '', '', 0, 1, '', '', 'ngochien', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(51, 'Trần Thị Bảo Xuyên', 'Tp.HCM', '', '', 0, 1, '', '', 'serena', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(52, 'Trần Phong Trường Sơn', 'Tp.HCM', '', '', 0, 1, '', '', 'sean', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(53, 'Võ Thái Trân', 'Tp.HCM', '', '', 0, 1, '', '', 'Cherry', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(54, 'Nguyễn Thị Ngọc Hiền', 'Tp.HCM', '', '', 0, 1, '', '', 'jessica', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(55, 'Phạm Thị Lựu', 'Tp.HCM', '', '', 0, 1, '', '', 'lena', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(56, 'Lê Thị Bích Ngọc', 'Tp.HCM', '', '', 0, 1, '', '', 'sapphire', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(57, 'Trần Quốc Vương', 'Tp.HCM', '', '', 0, 1, '', '', 'adam', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(58, 'Lê Văn Vượng', 'Tp.HCM', '', '', 0, 1, '', '', 'kevin', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(59, 'Trần Thị Ngọc Bích', 'Tp.HCM', '', '', 0, 1, '', '', 'maggie', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(60, 'Nguyễn Thị Minh Thy', 'Tp.HCM', '', '', 0, 1, '', '', 'tina', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(61, 'Nguyễn Hoài Minh', 'Tp.HCM', '', '', 0, 1, '', '', 'martin', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(62, 'Phan Hoàng Yến', 'Tp.HCM', '', '', 0, 1, '', '', 'Jenifer', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(63, 'Sabrina', 'Tp.HCM', '', '', 0, 1, '', '', 'sabrina', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(64, 'Trần Thị Bích Loan', 'Tp.HCM', '', '', 0, 1, '', '', 'lily', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(65, 'Lâm Thiên Trân', 'Tp.HCM', '', '', 0, 1, '', '', 'Rosy', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(66, 'Đặng Thị Như Chi', 'Tp.HCM', '', '', 0, 1, '', '', 'AnnaDang', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(67, 'Trần Thị Mỹ Duyên', 'Can Tho', '', '', 0, 1, '', '', 'flora', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(68, 'Võ Ngọc Kim Chi', 'Can Tho', '', '', 0, 1, '', '', 'elise', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,3,'),
+(69, 'Huỳnh Bá Hải', 'Tp.HCM', '', '', 0, 1, '', '', 'huynhhai', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(70, 'Nguyễn Văn Dũng', 'Can Tho', '', '', 0, 1, '', '', 'david', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,3,'),
+(71, 'Lê Ngọc Hường', 'Hà Nội', '', '', 0, 1, '', '', 'anna', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,3,'),
+(72, 'Lê Thị Thủy', 'Hà Nội', '', '', 0, 1, '', '', 'tara', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(73, 'Đặng Thanh Hải', 'Hà Nội', '', '', 0, 1, '', '', 'helen', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(74, 'Vũ Phương Thảo', 'Hà Nội', '', '', 0, 1, '', '', 'tracy', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(75, 'Lê Văn Hiền', 'Hà Nội', '', '', 0, 1, '', '', 'hubert', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(76, 'Nguyễn Ngọc Giàu', 'Can Tho', '', '', 0, 1, '', '', 'candy', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(77, 'Phan Thị Nguyền', 'Tp.HCM', '', '', 0, 1, '', '', 'nices', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(78, 'Lục Bích Thanh', 'Tp.HCM', '', '', 0, 1, '', '', 'elsa', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(79, 'Mã Ngọc Hà', 'Tp.HCM', '', '', 0, 1, '', '', 'harper', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(80, 'Nguyễn Thị Kim Diệu', 'Tp.HCM', '', '', 0, 1, '', '', 'ashley', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,'),
+(81, 'Jasmine', 'Tp.HCM', '', '', 0, 1, '', '', 'jasmine', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,6,'),
+(82, 'Thomas Nguyen', 'Tp.HCM', '', '', 0, 1, '', '', 'Thomas', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,4,5,'),
+(83, 'Tony Trần', 'Tp.HCM', '', '', 0, 1, '', '', 'tony', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',1,2,3,6,'),
+(84, 'Lâm Mỹ Hằng', 'Tp.HCM', '', '', 0, 1, '', '', 'maria', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 0, NULL, NULL, 'vi', 0, 1, 2, ',3,');
 
 -- --------------------------------------------------------
 
@@ -1418,7 +1677,7 @@ CREATE TABLE IF NOT EXISTS `web_users_group` (
   `id` int(2) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `web_users_group`
@@ -1426,9 +1685,8 @@ CREATE TABLE IF NOT EXISTS `web_users_group` (
 
 INSERT INTO `web_users_group` (`id`, `name`) VALUES
 (1, 'Khách hàng'),
-(2, 'Thành viên'),
-(3, 'Quản trị website'),
-(4, 'Quản trị forum');
+(2, 'Thành viên forum'),
+(3, 'Quản trị website');
 
 -- --------------------------------------------------------
 
@@ -1453,14 +1711,7 @@ CREATE TABLE IF NOT EXISTS `web_video` (
   `status` tinyint(1) DEFAULT '1',
   `menu_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `web_video`
---
-
-INSERT INTO `web_video` (`id`, `name`, `name_alias`, `type`, `url`, `url_img`, `url_code`, `description`, `tags`, `content`, `other`, `datetime`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Video trang chủ', 'video-trang-chu', 1, 'su-menh/video-trang-chu.html', 'Chrysanthemum.jpg', '432432432', 'Video trang chủ', 'video trang chủ,video trang chu', '<p>Video trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủ</p>\r\n', 1, 1408497780, 'vi', 1, ',4,');
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
