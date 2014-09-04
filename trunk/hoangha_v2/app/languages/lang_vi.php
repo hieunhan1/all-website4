@@ -17,4 +17,6 @@ define('CONS_CONTACT_PHONE', 'Điện thoại');
 define('CONS_CONTACT_ADDRESS', 'Địa chỉ');
 define('CONS_CONTACT_MESSAGE', 'Nội dung');
 define('CONS_CONTACT_SEND', 'GỬI LIÊN HỆ');
+
+define('CONS_HOME_PARTNER', 'Đối tác liên kết');
 ?>

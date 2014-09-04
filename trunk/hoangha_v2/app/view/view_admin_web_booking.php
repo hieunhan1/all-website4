@@ -8,7 +8,7 @@
             <th width="100" align="left">Phone</th>
             <th width="150" align="left">Mặt hàng</th>
             <th width="100" align="left">Số lượng</th>
-            <th width="100" align="left">Ngày</th>
+            <th width="110" align="left">Ngày</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

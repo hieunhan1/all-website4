@@ -11,7 +11,7 @@
         </div>
     </div>
     <div id="lang">
-        <a href="vi/"><div class="all_icon lang_item">&nbsp;</div></a>
+        <a href="/"><div class="all_icon lang_item">&nbsp;</div></a>
         <a href="en/"><div class="all_icon lang_item" style="background-position:-50px 0px">&nbsp;</div></a>
     </div>
     <div id="menu_top">
@@ -22,9 +22,10 @@
 		foreach($data as $row){
 			$i++;
 			if($i!=$total) $style = '|'; else $style = '';
-			echo '<a href="'.$row['url'].'">'.$row['name'].'</a>'.$style;
+			if($i!=1) $lang_top = $lang.'/'; else $lang_top='';
+			echo '<a href="'.$lang_top.$row['url'].'">'.$row['name'].'</a>'.$style;
 		}
-		?>
+		?>|<a href="forum/">Forum</a>
     </div>
     <?php include_once('view_web_menu.php');?>
 </div>

@@ -6,9 +6,9 @@
         	<th width="50">STT</th>
             <th align="left">Mô tả</th>
             <th width="140" align="left">Chức vụ</th>
-            <th width="140" align="left">Yahoo</th>
-            <th width="140" align="left">Skype</th>
-            <th width="140" align="left">Phone</th>
+            <th width="110" align="left">Yahoo</th>
+            <th width="110" align="left">Skype</th>
+            <th width="100" align="left">Phone</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

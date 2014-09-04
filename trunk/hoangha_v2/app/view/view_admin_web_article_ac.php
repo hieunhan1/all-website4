@@ -27,7 +27,7 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$where = " AND (type_id=1 OR type_id=2) AND lang='{$lang}' ";
+	$where = " AND (type_id=1 OR type_id=2 OR type_id=3 OR type_id=4) AND lang='{$lang}' ";
 	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:200px;'); //label name class width
@@ -48,13 +48,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views,$arr_action['change_alias'].'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
 	echo $this->DisplayProperties();
 	
-	//url
+	/*//url
 	if($row_detail['id'] != 0) $change_url = '<a href="javascript:;" id="change_url" style="padding:0 10px; font-weight:bold">Thay đổi</a>';
 	$values = $row_detail['url'];
 	$properties = array('200',$arr_action['disabled']); //maxlength OTHER (disabled, readonly)
 	$views = array('Link','url','input_medium auto_link_detail'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,$change_url.'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//url_img
 	$values = 'url_img'; //field name

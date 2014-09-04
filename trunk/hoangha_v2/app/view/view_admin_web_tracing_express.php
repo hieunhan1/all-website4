@@ -15,7 +15,7 @@
             <th width="110" align="left">Bưu cục gửi</th>
             <th width="110" align="left">Người nhận</th>
             <th width="110" align="left">Bưu cục nhận</th>
-            <th width="100" align="left">Ngày phát</th>
+            <th width="110" align="left">Ngày phát</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

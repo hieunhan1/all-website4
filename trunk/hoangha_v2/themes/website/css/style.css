@@ -36,10 +36,10 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 
 /*left*/
 #left{width:222px; float:left}
-#quick_booking{font-size:90%; margin-bottom:40px; padding:10px 7px; border-top:solid 1px #D9D9D9; border-left:solid 1px #D9D9D9; border-right:solid 1px #D9D9D9; background-position:0px -300px}
+#quick_booking{font-size:90%; margin-bottom:35px; padding:10px 7px 15px 7px; border:solid 1px #D9D9D9; background-position:0px -300px}
 #quick_booking .titleQuickBooking{color:#00AFEC; font-weight:bold; font-size:110%; padding-bottom:15px}
-#quick_booking .txtQuickBooking{width:140px; height:16px; line-height:16px; margin-bottom:10px; border:solid 1px #CCC}
-#quick_booking .txtareaQuickBooking{width:140px; height:64px; overflow:auto; line-height:16px; resize:none; margin-bottom:10px; border:solid 1px #CCC}
+#quick_booking .txtQuickBooking{width:134px; height:16px; font-size:95%; line-height:16px; margin-bottom:10px; padding:1px 3px; border:solid 1px #CCC}
+#quick_booking .txtareaQuickBooking{width:134px; height:64px; overflow:auto; font-size:95%; line-height:16px; resize:none; margin-bottom:10px; padding:0 3px; border:solid 1px #CCC}
 #quick_booking .btnQuickBooking{height:20px; line-height:20px; color:#FFF; font-weight:bold; padding:0px 20px; border:none; background-position:0px -100px; cursor:pointer}
 #call{height:65px; clear:both; background-position:0px -150px}
 
@@ -47,15 +47,18 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #right{width:765px; float:right;}
 
 /*home*/
-#service_home{height:235px; margin-bottom:30px; background-position:0px -250px}
+#service_home{height:265px; margin-bottom:30px; background-position:0px -250px}
 #service_home h2{font-size:100%; margin:15px 0 15px 20px}
 #service_home a{color:#666}
 #service_home a:hover{color:#EA1D22}
-#service_home .service_home_box{width:233px; height:175px; float:left; margin-left:12px; border:solid 1px #CCC; background-color:#FFF}
-#service_home .service_home_title{height:40px; line-height:40px; font-size:100%; margin:0 10px 5px 10px; padding-left:80px; border-bottom:solid 1px #CCC}
-#service_home .service_home_item{font-size:100%; font-weight:100; line-height:25px; margin:0 10px; padding-left:15px; background-position:0px -392px}
+#service_home .service_home_box{width:233px; height:205px; float:left; margin-left:12px; border:solid 1px #CCC; background-color:#FFF}
+#service_home .service_home_title{display:block; height:40px; line-height:40px; margin:0 10px 5px 10px; padding-left:80px; border-bottom:solid 1px #CCC}
+#service_home .service_home_title h3{font-size:100%}
+#service_home .service_home_item{font-size:100%; font-weight:100; line-height:17px; margin:0 10px; padding:4px 0 4px 15px; background-position:0px -392px}
+#service_home .service_home_hotline{font-weight:bold; color:#999; text-align:center; line-height:30px;}
 
-.news_home_title{color:#7A7A7A; font-size:130%; font-weight:bold; margin-bottom:20px}
+.news_home_title{color:#7A7A7A; font-size:135%; font-weight:bold; margin-bottom:20px}
+.news_home_title a{color:#7A7A7A}
 #news_home{width:550px; float:left; margin-left:30px}
 #news_home .news_home_item{list-style:none; height:25px; line-height:25px; overflow:hidden; margin-bottom:10px; padding-left:33px; background-position:0px -246px }
 #news_home .news_home_item a{color:#666}
@@ -122,11 +125,11 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #nav li a {color:#FFF; line-height:30px; text-transform:uppercase; text-shadow:1px 1px 1px #333; padding:0 20px}
 #nav a:hover {color:#FFFF66}
 #nav li {float:left; position:relative}
-#nav ul {position:absolute; width:200px; top:35px; display:none}
-#nav li ul a {width:160px; line-height:22px; float:left; font-weight:normal; padding:5px 20px; background-color:#FFD5B3; border-bottom:solid 1px #FFF}
-#nav li ul a:hover {background-color:#FFB77D}
+#nav ul {position:absolute; width:200px; top:30px; display:none}
+#nav li ul a {width:180px; line-height:20px; float:left; text-transform:none; font-weight:normal; padding:5px 20px; background-color:#00ADEC; border-bottom:solid 1px #95E2FF}
+#nav li ul a:hover {background-color:#007AA7}
 #nav ul ul {top:auto}
-#nav li ul ul {left:180px}
+#nav li ul ul {left:220px}
 #nav li:hover ul ul,
 #nav li:hover ul ul ul,
 #nav li:hover ul ul ul ul {display:none}

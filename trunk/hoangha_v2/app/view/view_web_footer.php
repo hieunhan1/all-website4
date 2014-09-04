@@ -1,9 +1,12 @@
 <div id="footer">
     <div id="menu_footer" class="bogoc_10px">
         <?php
+		$i=0;
         $data = $this->_model->_web_menu($lang, 0, 3);
         foreach($data as $row){
-            echo '<a href="'.$row['url'].'">'.$row['name'].'</a>';
+			$i++;
+			if($i!=1) $lang_foo=$lang.'/'; else $lang_foo='';
+            echo '<a href="'.$lang_foo.$row['url'].'">'.$row['name'].'</a>';
         }
         ?>
         <div id="run_top">TOP</div>
