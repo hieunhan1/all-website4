@@ -17,4 +17,6 @@ define('CONS_CONTACT_PHONE', 'Phone');
 define('CONS_CONTACT_ADDRESS', 'Address');
 define('CONS_CONTACT_MESSAGE', 'Message');
 define('CONS_CONTACT_SEND', 'SEND CONTACT');
+
+define('CONS_HOME_PARTNER', 'Partner');
 ?>

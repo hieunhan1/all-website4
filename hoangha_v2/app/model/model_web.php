@@ -29,8 +29,8 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	
-	public function _web_menu_type($type){
-		$sql = "SELECT * FROM `web_menu` WHERE status=1 AND type_id='{$type}' LIMIT 1";
+	public function _web_menu_type($type, $lang){
+		$sql = "SELECT * FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `type_id`='{$type}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
@@ -62,7 +62,7 @@ class model_web extends db{
 	
 	public function _web_slider_banner($position, $lang, $menu_id=NULL){
 		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
-		$sql = "SELECT `name`,`url_img`,`url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' AND lang='{$lang}' {$menu_id} ORDER BY `order`";
+		$sql = "SELECT `name`,`url_img`,`url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' AND `lang`='{$lang}' {$menu_id} ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -87,27 +87,31 @@ class model_web extends db{
 	
 	/*home*/
 	public function _home_about($id){
-		$sql = "SELECT `name`,`url_img`,`content` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' LIMIT 1";
+		$sql = "SELECT `name`, `content` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
-	public function _home_baiviet_moi($lang, $limit=5){
-		$sql = "SELECT `name`,`url` FROM `web_article` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `datetime` LIMIT {$limit}";
+	public function _home_menu_type($type_id){
+		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`=0 AND `type_id`='{$type_id}'";
+		$result = $this->db->query($sql);
+		return $result->fetch_assoc();
+	}
+	public function _home_services($idMenu){
+		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`='{$idMenu}' ORDER BY `order` LIMIT 5";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _home_danhmuc_product($lang){
-		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+	public function _home_services_article($idMenu, $limit=5){
+		$sql = "SELECT `name`,`name_alias` FROM `web_article` WHERE `status`=1 AND `other`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _home_web_product($lang, $limit=5, $idMenu=NULL){
-		if($idMenu!=NULL) $idMenu = " AND menu_id LIKE '%,{$idMenu},%' ";
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_img`,`price`,`price_cost` FROM `web_product` WHERE `status`=1 AND `other`=1 {$idMenu} ORDER BY `datetime` DESC LIMIT {$limit}";
+	public function _home_news_article($idMenu, $limit=5){
+		$sql = "SELECT `name`,`name_alias` FROM `web_article` WHERE `status`=1 AND `other`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

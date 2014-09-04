@@ -34,49 +34,71 @@
 	<?php include_once('view_web_slider.php');?>
     
     <div class="viewpost">
-    	<h1>Công ty cổ phần quốc tế Lô-Gi-Stic Hoàng Hà (HIL) được thành lập từ năm 1992.</h1>
-        <p>HIL là một trong những công ty cung cấp dịch vụ logistics sớm nhất ở Việt Nam.</p>
-        <p>Dịch vụ của chúng tôi bao gồm: dịch vụ hàng không, dịch vụ tàu biển, đường bộ, xuất nhập khẩu, khai hải quan, chứng từ xuất nhập khẩu, giao hàng tận nơi, kho bãi.</p>
-        <p>Dịch vụ vận chuyển hàng không HIL là lựa chọn tốt nhất cho những loại hàng hóa yêu cầu hạn định thời gian. Đội HIL Cargo sẽ thiết kế những giải pháp tình huống phù hợp nhất với nhu cầu của bạn.</p>
+    	<?php
+        $row = $this->_model->_home_about($idMenu);
+		echo $row['content'];
+		?>
     </div>
 </div>
 <div style="clear:both; height:15px"></div>
 
 <div id="service_home" class="all_icon_bg bogoc_5px">
-	<h2>Dịch vụ vận chuyển của chúng tôi</h2>
-    <div class="service_home_box bogoc_5px">
-    	<h3 class="service_home_title all_icon" style="color:#0099D2; background-position:0px -43px">Hàng không</h3>
-        <h4 class="service_home_item all_icon"><a href="">Động vật sống</a></h4>
-        <h4 class="service_home_item all_icon"><a href="">Hàng hóa dễ hỏng</a></h4>
-        <h4 class="service_home_item all_icon"><a href="">Hàng hóa chuyên môn</a></h4>
-    </div>
-    <div class="service_home_box bogoc_5px">
-    	<h3 class="service_home_title all_icon" style="color:#EB000B; background-position:5px -96px">Hàng không</h3>
-    </div>
-    <div class="service_home_box bogoc_5px">
-    	<h3 class="service_home_title all_icon" style="color:#057F01; background-position:5px -145px">Hàng không</h3>
-    </div>
-    <div class="service_home_box bogoc_5px">
-    	<h3 class="service_home_title all_icon" style="background-position:10px -194px">Chuyển phát nhanh</h3>
-    </div>
+    <?php
+	$arr_hotline_service = explode(',',$this->_config['hotline_service']);
+    $arr_background = array(
+		'style="color:#0099D2; background-position:0px -43px"',
+		'style="color:#EB000B; background-position:5px -96px"',
+		'style="color:#057F01; background-position:5px -145px"',
+		'style="background-position:10px -194px"');
+	
+	$data_service = $this->_model->_home_menu_type(4);
+	$str_service .= '<a href="'.$lang.'/'.$data_service['url'].'"><h2>'.$data_service['title'].'</h2></a>';
+	
+	$i=0;
+	$data = $this->_model->_home_services($data_service['id']);
+	foreach($data as $row){
+		$str_service .= '<div class="service_home_box bogoc_5px"><a href="'.$lang.'/'.$row['url'].'" class="service_home_title all_icon" '.$arr_background[$i].'><h3>'.$row['name'].'</h3></a>';
+		$str_service .= '<div class="service_home_hotline">Hotline: '.$arr_hotline_service[$i].'</div>';
+		
+		$data2 = $this->_model->_home_services($row['id']);
+		$total = count($data2);
+		if($total>0){
+			foreach($data2 as $row2){
+				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row2['url'].'">'.$row2['name'].'</a></h4>';
+			}
+		}else{
+			$data2 = $this->_model->_home_services_article($row['id']);
+			foreach($data2 as $row2){
+				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row['url'].$row2['name_alias'].'.html">'.$row2['name'].'</a></h4>';
+			}
+		}
+		$str_service .= '</div>';
+		$i++;
+	}
+	echo $str_service;
+	?>
 </div>
 
 <div id="news_home">
-	<div class="news_home_title">Tin tức - Sự kiện</div>
-    <li class="news_home_item all_icon"><a href="">Biên bản và nghị quyết đại hội cổ đông thường niên năm 2014</a></li>
-    <li class="news_home_item all_icon"><a href="">Biên bản và nghị quyết đại hội cổ đông thường niên năm 2014</a></li>
-    <li class="news_home_item all_icon"><a href="">Biên bản và nghị quyết đại hội cổ đông thường niên năm 2014</a></li>
-    <li class="news_home_item all_icon"><a href="">Biên bản và nghị quyết đại hội cổ đông thường niên năm 2014</a></li>
-    <li class="news_home_item all_icon"><a href="">Biên bản và nghị quyết đại hội cổ đông thường niên năm 2014</a></li>
+	<?php
+    $data_news = $this->_model->_home_menu_type(2);
+	echo '<div class="news_home_title"><a href="'.$lang.'/'.$data_news['url'].'">'.$data_news['name'].'</a></div>';
+	
+	$data = $this->_model->_home_news_article($data_news['id']);
+	foreach($data as $row){
+		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$data_news['url'].$row['name_alias'].'.html">'.$row['name'].'</a></li>';
+	}
+	?>
 </div>
 
 <div id="partner_home">
-	<div class="news_home_title">Đối tác liên kết</div>
-	<li class="partner_home_item"><a href=""><img src="" alt="" /></a></li>
-	<li class="partner_home_item"><a href=""><img src="" alt="" /></a></li>
-	<li class="partner_home_item"><a href=""><img src="" alt="" /></a></li>
-	<li class="partner_home_item"><a href=""><img src="" alt="" /></a></li>
-	<li class="partner_home_item"><a href=""><img src="" alt="" /></a></li>
+	<?php
+	echo '<div class="news_home_title">'.CONS_HOME_PARTNER.'</div>';
+    $data = $this->_model->_web_slider_banner(3,$lang);
+	foreach($data as $row){
+		echo '<li class="partner_home_item"><a href="'.$row['url'].'" title="'.$row['name'].'"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['url_img'].'" alt="'.$row['name'].'" /></a></li>';
+	}
+	?>
 </div>
 
 <div style="clear:both; height:30px"></div>

@@ -1,4 +1,21 @@
-<?php include_once('view/view_admin_search.php');?>
+<div id="search">
+	<form action="" method="get" name="search" onsubmit="if(search.value=='' && menu_id.value=='') return false;">
+    	<input type="text" name="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>" class="txt"  placeholder="Mô tả" />
+        <select name="menu_id" class="select">
+            <?php
+			$arr = array();
+			$arr[] = array('id'=>0, 'name'=>'-- Danh mục gốc --');
+			$where = " AND (type_id=1 OR type_id=2 OR type_id=3 OR type_id=4) AND lang='{$lang}' ";
+			$arr = $this->_model->_web_menu(0, '', $arr, $where);
+			foreach($arr as $row){
+				if($_GET['menu_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
+				else echo "<option value='{$row['id']}' selected='selected'>{$row['name']}</option>";
+			}
+			?>
+        </select>
+    	<input type="submit" name="btnSearch" value="Tìm kiếm" class="btn" />
+	</form>
+</div>
 
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
@@ -6,7 +23,7 @@
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
             <th width="250" align="left">Tên hình</th>
-            <th width="100" align="left">Ngày</th>
+            <th width="110" align="left">Ngày</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

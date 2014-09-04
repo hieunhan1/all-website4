@@ -19,10 +19,10 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$where = " AND (type_id=1 OR type_id=4) AND lang='{$lang}' ";
+	$where = " AND (type_id=7 OR type_id=8) AND lang='{$lang}' ";
 	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
-	$views = array('','','checkbox checkbox_item','width:345px; height:100px;'); //label name class width
+	$views = array('','','checkbox checkbox_item','width:345px; height:150px;'); //label name class width
     $this->getProperties('7',$arr,$properties,$views);
 	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
 	

@@ -4,12 +4,14 @@ class control_web{
 	public $_control;
 	public $_action;
 	public $_data;
+	public $_lang;
 	public $_config;
-	public function __construct($control,$action,$data){
+	public function __construct($control,$action,$data,$lang){
 		$this->_model	= new model_web;
 		$this->_control	= $control;
 		$this->_action	= $action;
 		$this->_data	= $data;
+		$this->_lang	= $lang;
 	}//construct
 	
 	public function tab_head($site_name,$site_title,$site_des,$site_key,$site_url,$site_image,$type_name){
@@ -35,7 +37,7 @@ return $str;
 		if($data){
 			$view = '<ul>';
 			foreach($data as $row){
-				$view .= '<li><a href="'.$row['url'].'">'.$row['name'].'</a>';
+				$view .= '<li><a href="'.$lang.'/'.$row['url'].'">'.$row['name'].'</a>';
 				$view .= $this->getSubmenu($lang, $row['id'], $position);
 				$view .= '</li>';
 			}
@@ -68,7 +70,7 @@ return $str;
 	}
 	
 	public function home_page($lang, &$idMenu, &$menu_root_id){
-		$row = $this->_model->_web_menu_type(1);
+		$row = $this->_model->_web_menu_type(1, $lang);
 		if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
 		else $site_image = CONS_IMAGES_CATALOG.$row['url_img'];
 		$arr = array(
@@ -171,7 +173,7 @@ return $str;
 	}
 	
 	public function index(){
-		$lang = $this->language();
+		$lang = $this->_lang;
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
 			$this->_config = $this->web_config($lang);
