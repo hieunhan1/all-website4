@@ -1,8 +1,8 @@
 @charset "utf-8";
 *{margin:0px}
-body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; background:url(../img/bg.gif) repeat-x #FFF}
+body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; background:url(../img/bg.gif) repeat-x #FFF; background-position:0px -12px;}
 img{border:0px;}
-a{color:#0072FF; text-decoration:none}
+a{color:#0085B5; text-decoration:none}
 a:hover{color:#EA1D22; text-decoration:underline}
 input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif}
 hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
@@ -36,11 +36,11 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 
 /*left*/
 #left{width:222px; float:left}
-#quick_booking{font-size:90%; margin-bottom:35px; padding:10px 7px 15px 7px; border:solid 1px #D9D9D9; background-position:0px -300px}
-#quick_booking .titleQuickBooking{color:#00AFEC; font-weight:bold; font-size:110%; padding-bottom:15px}
+#quick_booking{font-size:90%; margin-bottom:25px; padding:0 7px; border:solid 1px #D9D9D9; background-position:0px -300px}
+#quick_booking .titleQuickBooking{color:#00AFEC; font-weight:bold; font-size:110%; padding:10px 0; cursor:pointer}
 #quick_booking .txtQuickBooking{width:134px; height:16px; font-size:95%; line-height:16px; margin-bottom:10px; padding:1px 3px; border:solid 1px #CCC}
 #quick_booking .txtareaQuickBooking{width:134px; height:64px; overflow:auto; font-size:95%; line-height:16px; resize:none; margin-bottom:10px; padding:0 3px; border:solid 1px #CCC}
-#quick_booking .btnQuickBooking{height:20px; line-height:20px; color:#FFF; font-weight:bold; padding:0px 20px; border:none; background-position:0px -100px; cursor:pointer}
+#quick_booking .btnQuickBooking{height:20px; line-height:20px; color:#FFF; font-weight:bold; margin-bottom:20px; padding:0px 20px; border:none; background-position:0px -100px; cursor:pointer}
 #call{height:65px; clear:both; background-position:0px -150px}
 
 /*right*/
@@ -85,12 +85,17 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 .viewpost p, .viewpost div {margin:12px 0}
 .viewpost li{padding:0; margin:5px 35px}
 
+#other_about{clear:both; margin-top:20px}
+#other_about li{list-style:none; line-height:20px; font-weight:bold; border-bottom:dashed 1px #AAA}
+#other_about li a{display:block; padding:8px 0 8px 25px; background:url(../img/icon-other-about.png) no-repeat left top; background-position:8px 12px}
+#other_about li a:hover{background-position:8px -22px}
+
 #other_post{clear:both; padding-top:20px}
 #other_post #other_post_title{color:#666; font-weight:bold; font-size:150%; padding:10px 0 10px 30px}
 #other_post li{list-style:none; line-height:30px; margin-left:45px}
 #other_post a{padding-left:15px; background:url(../img/other_post.gif) no-repeat left}
 
-#navigator{clear:both; margin:20px 0 40px 0}
+#navigator{clear:both; margin:10px 0 25px 0; padding-left:5px}
 #navigator a{padding-right:15px; font-size:12px; color:#888}
 #navigator a:hover{color:#333; text-decoration:none}
 #navigator span{font-size:9px; color:#999; padding-right:5px}

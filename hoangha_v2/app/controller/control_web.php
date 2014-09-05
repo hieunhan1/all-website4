@@ -90,17 +90,12 @@ return $str;
 	
 	public function menu_type($type_id){
 		settype($type_id,"int");
-		switch($type_id){
-			case 1 : $type_menu = array('name'=>'site',		'url_img'=>''); break;
-			case 2 : $type_menu = array('name'=>'article',	'url_img'=>CONS_IMAGES_ARTICLES); break;
-			case 3 : $type_menu = array('name'=>'product',	'url_img'=>CONS_IMAGES_PRODUCTS); break;
-			case 4 : $type_menu = array('name'=>'service',	'url_img'=>CONS_IMAGES_SERVICES); break;
-			case 5 : $type_menu = array('name'=>'photo',	'url_img'=>CONS_IMAGES_PHOTOS); break;
-			case 6 : $type_menu = array('name'=>'video',	'url_img'=>CONS_IMAGES_VIDEOS); break;
-			case 8 : $type_menu = array('name'=>'payment',	'url_img'=>''); break;
-			case 12: $type_menu = array('name'=>'register',	'url_img'=>''); break;
-			case 13: $type_menu = array('name'=>'contact',	'url_img'=>''); break;
-			default: $type_menu = array('name'=>'site',		'url_img'=>'');
+		$data = $this->_model->_list_menu_type();
+		foreach($data as $row){
+			if($type_id==$row['id']){
+				$type_menu = array('name'=>$row['name'], 'url_img'=>$row['url_img']);
+				return $type_menu;
+			}else $type_menu = array('name'=>'site', 'url_img'=>'');
 		}
 		return $type_menu;
 	}
@@ -119,7 +114,7 @@ return $str;
 				'title'=>strip_tags($row['title']),
 				'description'=>strip_tags($row['description']),
 				'keyword'=>strip_tags($row['tags']),
-				'url'=>CONS_BASE_URL.'/'.$row['url'],
+				'url'=>CONS_BASE_URL.'/'.$lang.'/'.$row['url'],
 				'image'=>CONS_BASE_URL.'/'.$site_image,
 				'type_name'=>$type_menu['name'],
 			);
@@ -141,10 +136,10 @@ return $str;
 		$file_view = "view/{$name_list_view}.php";
 		if(file_exists($file_view)) include_once($file_view);
 	}
-	public function detail($lang, $idMenu, $type_name){
+	public function detail($lang, $idMenu, $menu_info){
 		$alias_detail = $this->_data;
-		$name_detail_model = '_detail_'.$type_name;
-		$name_detail_view = 'view_web_detail_'.$type_name;
+		$name_detail_model = '_detail_'.$menu_info['type_name'];
+		$name_detail_view = 'view_web_detail_'.$menu_info['type_name'];
 		if($row_detail=$this->_model->$name_detail_model($alias_detail)){
 			if($row_detail['url_img']!='') $site_image = $type_menu['url_img'].$row_detail['url_img'];
 			else $site_image = CONS_IMAGE_DEFAULT;
@@ -156,7 +151,7 @@ return $str;
 				'keyword'=>strip_tags($row_detail['tags']),
 				'url'=>CONS_BASE_URL.'/'.$this->_control.'/'.$row_detail['name_alias'].'.html',
 				'image'=>CONS_BASE_URL.'/'.$site_image,
-				'type_name'=>$type_name,
+				'type_name'=>$menu_info['type_name'],
 			);
 			include_once("view/{$name_detail_view}.php");
 			return $arr;
@@ -188,7 +183,7 @@ return $str;
 					$site_info = $menu_info;
 					$this->menu_page($lang, $idMenu, $menu_info['type_name'], $menu_info);
 				}elseif($this->_action == CONS_WEB_VIEW_DETAIL){
-					$site_info = $this->detail($lang, $idMenu, $menu_info['type_name']);
+					$site_info = $this->detail($lang, $idMenu, $menu_info);
 				}//end danh muc hoac chi tiet
 			}else if($this->_control==CONS_AJAX_NAME){
 				$this->ajax();
