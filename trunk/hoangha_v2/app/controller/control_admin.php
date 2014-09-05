@@ -279,12 +279,15 @@ class control_admin extends control_admin_form{
 		$fields = array_keys($_GET);
 		$values = array_values($_GET);
 		for($i=0; $i < count($fields)-1; $i++){
-			if($fields[$i]!='search'){
+			if($fields[$i]!='search' && $fields[$i]!='menu_id'){
 				if($values[$i]!='') $str_search .= " AND `{$fields[$i]}`='".$this->_model->_change_dau_nhay($values[$i])."' ";
 				$url_search .= "&{$fields[$i]}={$values[$i]}";
-			}else{
+			}elseif($fields[$i]=='search'){
 				if($values[$i]!='') $str_search .= " AND name LIKE '%".$this->_model->_change_dau_nhay($values[$i])."%' ";
 				$url_search .= '&search='.$values[$i];
+			}elseif($fields[$i]=='menu_id'){
+				if($values[$i]!='') $str_search .= " AND menu_id LIKE '%,".$this->_model->_change_dau_nhay($values[$i]).",%' ";
+				$url_search .= '&menu_id='.$values[$i];
 			}
 		}
 	}

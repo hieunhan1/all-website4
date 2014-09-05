@@ -14,9 +14,9 @@ foreach($data as $row){
 	<?php
     echo "<h1>{$this->_config['sitename']}</h1>";
 	echo '<p>Địa chỉ: '.$this->_config['address'].'</p>
-		<p>Điện thoại: '.$this->_config['tel'].'</p>
-		<p>Email: '.$this->_config['email'].'</p>
-		<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
+	<p>Điện thoại: '.$this->_config['tel'].' - Fax: '.$this->_config['fax'].'</p>
+	<p>Email: '.$this->_config['email'].'</p>
+	<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
 	//echo '<h2 style="color:#00F">'.$menu_info['description'].'</h2>';
     ?>
 </div>
