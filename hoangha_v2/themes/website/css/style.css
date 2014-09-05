@@ -69,11 +69,12 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #partner_home .partner_home_item img{width:95px}
 /*end home*/
 
+#article_list{clear:both; margin:0; padding:0}
 .article_item_date{color:#999; font-style:italic; margin-bottom:8px}
-.article_item{width:460px; height:380px}
+.article_item{width:370px; height:270px}
 .article_item h3{line-height:22px; font-size:130%; margin-bottom:5px}
-.article_item .article_item_img{height:200px; overflow:hidden; margin-bottom:5px;border:solid 1px #CCC}
-.article_item .article_item_img img{width:460px}
+.article_item .article_item_img{height:160px; overflow:hidden; margin-bottom:5px; padding:0; border:solid 1px #CCC}
+.article_item .article_item_img img{width:370px}
 .article_item p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}
 .article_item .article_item_link{text-align:right}
 .article_item .article_item_link a{color:#F00; font-weight:bold; padding:0 20px}
@@ -89,9 +90,9 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #other_post li{list-style:none; line-height:30px; margin-left:45px}
 #other_post a{padding-left:15px; background:url(../img/other_post.gif) no-repeat left}
 
-#navigator{clear:both; margin-bottom:20px}
-#navigator a{padding-right:15px; font-size:12px; color:#666}
-#navigator a:hover{color:#1A1A1A}
+#navigator{clear:both; margin:20px 0 40px 0}
+#navigator a{padding-right:15px; font-size:12px; color:#888}
+#navigator a:hover{color:#333; text-decoration:none}
 #navigator span{font-size:9px; color:#999; padding-right:5px}
 
 #phantrang{clear:both; padding:20px 0 30px 0}

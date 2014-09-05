@@ -4,7 +4,7 @@
         <select name="menu_id" class="select">
             <?php
 			$arr = array();
-			$arr[] = array('id'=>0, 'name'=>'-- Danh mục gốc --');
+			$arr[] = array('id'=>'', 'name'=>'-- Danh mục gốc --');
 			$where = " AND (type_id=1 OR type_id=2 OR type_id=3 OR type_id=4) AND lang='{$lang}' ";
 			$arr = $this->_model->_web_menu(0, '', $arr, $where);
 			foreach($arr as $row){
