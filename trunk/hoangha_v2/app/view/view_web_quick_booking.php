@@ -1,9 +1,6 @@
 <div id="quick_booking" class="all_icon_bg bogoc_5px">
-	<?php
-    if($this->_action==CONS_WEB_VIEW_DETAIL) $view_quick_booking = array('<i>(click here)</i>','style="display:none"');
-	?>
-	<div class="titleQuickBooking">Quick booking <?php echo $view_quick_booking[0];?></div>
-    <table width="100%" border="0" cellpadding="0" cellspacing="0" id="frm_QuickBooking" <?php echo $view_quick_booking[1];?>>
+	<div class="titleQuickBooking">Quick booking <span></span></div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" id="frm_QuickBooking">
       <tr>
         <td valign="top" width="60">Name</td>
         <td><input type="text" name="name" class="txtQuickBooking bogoc_5px" /></td>
@@ -28,10 +25,21 @@
 </div>
 
 <div id="call" class="all_icon_bg bogoc_5px"></div>
+
+<?php
+    if($this->_action!=CONS_DEFAULT_WEB_ACTION){
+?>
 <script type="text/javascript">
 	$(document).ready(function(e) {
-        $(".titleQuickBooking").click(function(){
+        var height_right = $("#right").height();
+		if(height_right < 400){
+			$("#frm_QuickBooking").css("display","none");
+			$(".titleQuickBooking span").html('<i>(click here)</i>');
+		}
+		
+		$(".titleQuickBooking").click(function(){
 			$("#frm_QuickBooking").toggle(200);
 		});
     });
 </script>
+<?php }?>
