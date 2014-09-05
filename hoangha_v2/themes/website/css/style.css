@@ -32,7 +32,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #track_code #form_code #btnCode{width:30px; height:20px; line-height:20px; color:#FFF; font-weight:bold; margin:12px 0 0 175px; background-color:#999; border:none; cursor:pointer; position:relative; z-index:2}
 /*end header*/
 
-#slider{clear:both; margin-bottom:20px}
+#slider{clear:both; height:auto; margin-bottom:20px}
 
 /*left*/
 #left{width:222px; float:left}
