@@ -87,17 +87,12 @@ class control_web{
 	
 	public function menu_type($type_id){
 		settype($type_id,"int");
-		switch($type_id){
-			case 1 : $type_menu = array('name'=>'site',		'url_img'=>''); break;
-			case 2 : $type_menu = array('name'=>'article',	'url_img'=>CONS_IMAGES_ARTICLES); break;
-			case 3 : $type_menu = array('name'=>'product',	'url_img'=>CONS_IMAGES_PRODUCTS); break;
-			case 4 : $type_menu = array('name'=>'service',	'url_img'=>CONS_IMAGES_SERVICES); break;
-			case 5 : $type_menu = array('name'=>'photo',	'url_img'=>CONS_IMAGES_PHOTOS); break;
-			case 6 : $type_menu = array('name'=>'video',	'url_img'=>CONS_IMAGES_VIDEOS); break;
-			case 8 : $type_menu = array('name'=>'payment',	'url_img'=>''); break;
-			case 12: $type_menu = array('name'=>'register',	'url_img'=>''); break;
-			case 13: $type_menu = array('name'=>'contact',	'url_img'=>''); break;
-			default: $type_menu = array('name'=>'site',		'url_img'=>'');
+		$data = $this->_model->_list_menu_type();
+		foreach($data as $row){
+			if($type_id==$row['id']){
+				$type_menu = array('name'=>$row['name'], 'url_img'=>$row['url_img']);
+				return $type_menu;
+			}else $type_menu = array('name'=>'site', 'url_img'=>'');
 		}
 		return $type_menu;
 	}
@@ -138,10 +133,10 @@ class control_web{
 		$file_view = "view/{$name_list_view}.php";
 		if(file_exists($file_view)) include_once($file_view);
 	}
-	public function detail($lang, $idMenu, $type_name){
+	public function detail($lang, $idMenu, $type_menu){
 		$alias_detail = $this->_data;
-		$name_detail_model = '_detail_'.$type_name;
-		$name_detail_view = 'view_web_detail_'.$type_name;
+		$name_detail_model = '_detail_'.$type_menu['name'];
+		$name_detail_view = 'view_web_detail_'.$type_menu['name'];
 		if($row_detail=$this->_model->$name_detail_model($alias_detail)){
 			if($row_detail['url_img']!='') $site_image = $type_menu['url_img'].$row_detail['url_img'];
 			else $site_image = CONS_IMAGE_DEFAULT;
@@ -153,7 +148,7 @@ class control_web{
 				'keyword'=>strip_tags($row_detail['tags']),
 				'url'=>CONS_BASE_URL.'/'.$this->_control.'/'.$row_detail['name_alias'].'.html',
 				'image'=>CONS_BASE_URL.'/'.$site_image,
-				'type_name'=>$type_name,
+				'type_name'=>$type_menu['name'],
 			);
 			include_once("view/{$name_detail_view}.php");
 			return $arr;
