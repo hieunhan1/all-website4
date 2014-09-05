@@ -29,8 +29,8 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	
-	public function _web_menu_type($type){
-		$sql = "SELECT * FROM `web_menu` WHERE status=1 AND type_id='{$type}' LIMIT 1";
+	public function _web_menu_type($type, $lang){
+		$sql = "SELECT * FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `type_id`='{$type}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}

@@ -67,7 +67,7 @@ class control_web{
 	}
 	
 	public function home_page($lang, &$idMenu, &$menu_root_id){
-		$row = $this->_model->_web_menu_type(1);
+		$row = $this->_model->_web_menu_type(1, $lang);
 		if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
 		else $site_image = CONS_IMAGES_CATALOG.$row['url_img'];
 		$arr = array(
