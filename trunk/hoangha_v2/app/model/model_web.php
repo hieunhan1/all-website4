@@ -29,6 +29,14 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	
+	public function _list_menu_type(){
+		$sql = "SELECT `id`,`name`,`url_img`,`url_img_thumb` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	public function _web_menu_type($type, $lang){
 		$sql = "SELECT * FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `type_id`='{$type}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
@@ -134,7 +142,7 @@ class model_web extends db{
 		return $data;
 	}
 	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_img`,`description`,`datetime` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url_img`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -150,6 +158,12 @@ class model_web extends db{
 	
 	/*detail*/
 	public function _detail_article($alias){
+		$sql = "SELECT * FROM `web_article` WHERE `status`=1 AND `name_alias`='{$alias}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	public function _detail_about($alias){
 		$sql = "SELECT * FROM `web_article` WHERE `status`=1 AND `name_alias`='{$alias}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
@@ -207,6 +221,13 @@ class model_web extends db{
 	/*end contact*/
 	
 	/*other post*/
+	public function _other_post_about($idMenu,$limit=5){
+		$sql = "SELECT `id`,`name`,`name_alias` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 	public function _other_post_article($id,$idMenu,$limit=5){
 		$sql = "SELECT `name`,`url`,`url_img` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
