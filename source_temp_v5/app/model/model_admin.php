@@ -263,7 +263,7 @@ class model_admin extends db{
 	}
 	
 	public function _web_menu_type(){
-		$sql = "SELECT `id`,`name` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
+		$sql = "SELECT `id`,`description` as `name` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

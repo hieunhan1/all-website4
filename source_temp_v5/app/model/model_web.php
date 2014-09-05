@@ -29,6 +29,14 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	
+	public function _list_menu_type(){
+		$sql = "SELECT `id`,`name`,`url_img`,`url_img_thumb` FROM `web_menu_type` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	public function _web_menu_type($type, $lang){
 		$sql = "SELECT * FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `type_id`='{$type}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);

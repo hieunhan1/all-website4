@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2014 at 08:48 AM
+-- Generation Time: Sep 05, 2014 at 11:02 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -1075,7 +1075,7 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (17, 'Item 17', '', '', 17, 0, NULL, 0),
 (18, 'Item 18', '', '', 18, 0, NULL, 0),
 (19, 'Item 19', '', '', 19, 0, NULL, 0),
-(20, 'Item 20', '', '', 20, 0, NULL, 0),
+(20, 'Loại danh mục', 'web_menu_type', 'icon-item.jpg', 2, 0, NULL, 1),
 (21, 'Liên hệ trực tuyến', 'web_contact', 'icon-lien-he.jpg', 21, 0, '<span id="web_contact" class="ajax_thongtin"></span>', 1),
 (22, 'Event logs', 'web_logs', 'icon-logs.jpg', 22, 0, '', 1),
 (23, 'Tài khoản', 'web_users', 'icon-account.jpg', 100, 0, NULL, 1);
@@ -1117,31 +1117,36 @@ INSERT INTO `web_menu_position` (`id`, `name`, `order`, `status`) VALUES
 
 CREATE TABLE IF NOT EXISTS `web_menu_type` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(30) NOT NULL,
+  `url_img` varchar(100) NOT NULL,
+  `url_img_thumb` varchar(100) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `order` int(2) NOT NULL,
   `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `web_menu_type`
 --
 
-INSERT INTO `web_menu_type` (`id`, `name`, `order`, `status`) VALUES
-(1, 'Trang chủ', 1, 1),
-(2, 'Thông tin bài viết', 2, 1),
-(3, 'Sản phẩm', 3, 1),
-(4, 'Dịch vụ', 4, 1),
-(5, 'Hình ảnh', 5, 1),
-(6, 'Video', 6, 1),
-(7, 'Đặt hàng', 7, 1),
-(8, 'Thanh toán', 8, 1),
-(9, 'Item 9', 9, 0),
-(10, 'Item 10', 10, 0),
-(11, 'Item 11', 11, 0),
-(12, 'Đăng ký', 12, 0),
-(13, 'Liên hệ', 13, 1),
-(14, 'Không', 14, 1);
+INSERT INTO `web_menu_type` (`id`, `name`, `description`, `url_img`, `url_img_thumb`, `lang`, `order`, `status`) VALUES
+(1, 'site', 'Trang chủ', '', '', 'vi', 1, 1),
+(2, 'article', 'Thông tin bài viết', 'public/images/articles/', 'public/_thumbs/Images/articles/', 'vi', 2, 1),
+(3, 'product', 'Sản phẩm', 'public/images/products/', 'public/_thumbs/Images/products/', 'vi', 3, 1),
+(4, 'service', 'Dịch vụ', 'public/images/articles/', 'public/_thumbs/Images/articles/', 'vi', 4, 1),
+(5, 'photo', 'Hình ảnh', 'public/images/photos/', 'public/_thumbs/Images/photos/', 'vi', 5, 1),
+(6, 'video', 'Video', 'public/images/videos/', 'public/_thumbs/Images/videos/', 'vi', 6, 1),
+(7, 'item_1', 'Item 1', '', '', 'vi', 7, 0),
+(8, 'item_2', 'Item 2', '', '', 'vi', 8, 0),
+(9, 'item_3', 'Item 3', '', '', 'vi', 9, 0),
+(10, 'item_4', 'Item 4', '', '', 'vi', 10, 0),
+(11, 'payment', 'Payment', '', '', 'vi', 11, 1),
+(12, 'register', 'Register', '', '', 'vi', 12, 1),
+(13, 'contact', 'Liên hệ', '', '', 'vi', 13, 1),
+(14, 'no', 'Không', '', '', 'vi', 14, 1);
 
 -- --------------------------------------------------------
 
@@ -1351,7 +1356,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 3),
+(25, 'Admin', '', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'e10adc3949ba59abbe56e057f20f883e', ',1,2,20,3,4,5,6,7,8,9,10,11,12,21,22,23,', ',1,2,20,3,4,5,6,7,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 3),
 (32, 'Nhân', '12 CMT 8', '0988388003', 'hieunhan@yahoo.com', 0, 1, '', '', 'nhan', '867e1a36d190000d2f266d80889683fc', ',1,2,22,', ',1,2,22,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3);
 
 -- --------------------------------------------------------
