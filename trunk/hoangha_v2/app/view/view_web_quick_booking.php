@@ -31,11 +31,11 @@
 ?>
 <script type="text/javascript">
 	$(document).ready(function(e) {
-        var height_right = $("#right").height();
+        /*var height_right = $("#right").height();
 		if(height_right < 400){
 			$("#frm_QuickBooking").css("display","none");
 			$(".titleQuickBooking span").html('<i>(click here)</i>');
-		}
+		}*/
 		
 		$(".titleQuickBooking").click(function(){
 			$("#frm_QuickBooking").toggle(200);

@@ -24,16 +24,27 @@
         echo $row_detail['content'];
         ?>
     </div>
+    
+    <?php
+	$data = $this->_model->_other_post_article($row_detail['id'],$idMenu);
+	if(count($data) > 0){
+		echo '<div id="other_post"><hr /><div id="other_post_title">'.CONS_OTHER_POST.'</div>';
+		foreach($data as $row){
+			echo '<li class="all_icon"><a href="'.$current_menu['url'].$row['name_alias'].'.html">'.$row['name'].'</a></li>';
+		}
+		echo '</div>';
+	}
+	?>
 </div>
 
 <div id="left">
 	<div id="other_about">
     <?php
-	$data = $this->_model->_other_post_about($idMenu);
+	$data = $this->_model->_list_menu_parent($current_menu['root_id']);
 	if(count($data) > 0){
 		foreach($data as $row){
-			if($row_detail['id']!=$row['id']) $style=''; else $style='style="color:#EA1D22; background-position:8px -22px"';
-			echo '<li><a href="'.$current_menu['url'].$row['name_alias'].'.html" '.$style.'>'.$row['name'].'</a></li>';
+			if($idMenu!=$row['id']) $style=''; else $style='style="color:#EA1D22; background-position:8px -22px"';
+			echo '<li><a href="'.$lang.'/'.$row['url'].'" '.$style.'>'.$row['name'].'</a></li>';
 		}
 	}
 	?>

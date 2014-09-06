@@ -85,15 +85,14 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 .viewpost p, .viewpost div {margin:12px 0}
 .viewpost li{padding:0; margin:5px 35px}
 
-#other_about{clear:both; margin-top:20px}
+#other_about{clear:both; margin:45px 0 25px 0}
 #other_about li{list-style:none; line-height:20px; font-weight:bold; border-bottom:dashed 1px #AAA}
 #other_about li a{display:block; padding:8px 0 8px 25px; background:url(../img/icon-other-about.png) no-repeat left top; background-position:8px 12px}
 #other_about li a:hover{background-position:8px -22px}
 
 #other_post{clear:both; padding-top:20px}
-#other_post #other_post_title{color:#666; font-weight:bold; font-size:150%; padding:10px 0 10px 30px}
-#other_post li{list-style:none; line-height:30px; margin-left:45px}
-#other_post a{padding-left:15px; background:url(../img/other_post.gif) no-repeat left}
+#other_post #other_post_title{color:#888; font-weight:bold; font-size:130%; padding:10px 0 10px 10px}
+#other_post li{list-style:none; line-height:30px; margin-left:25px; padding-left:20px; background-position:0px -340px}
 
 #navigator{clear:both; margin:10px 0 25px 0; padding-left:5px}
 #navigator a{padding-right:15px; font-size:12px; color:#888}

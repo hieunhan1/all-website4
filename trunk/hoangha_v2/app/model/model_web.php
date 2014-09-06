@@ -128,19 +128,6 @@ class model_web extends db{
 	/*end home*/
 	
 	/*list*/
-	public function _list_web_product($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_img`,`price`,`price_cost` FROM `web_product` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		
-		$sql = "SELECT count(*) FROM `web_product` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%'";
-		$result = $this->db->query($sql);
-		$row = $result->fetch_row();
-		$totalrows=$row[0];
-		
-		return $data;
-	}
 	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
 		$sql = "SELECT `id`,`name`,`name_alias`,`url_img`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
@@ -152,6 +139,14 @@ class model_web extends db{
 		$row = $result->fetch_row();
 		$totalrows=$row[0];
 		
+		return $data;
+	}
+	
+	public function _list_menu_parent($idMenu){
+		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	/*end list*/
@@ -229,7 +224,7 @@ class model_web extends db{
 		return $data;
 	}
 	public function _other_post_article($id,$idMenu,$limit=5){
-		$sql = "SELECT `name`,`url`,`url_img` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
+		$sql = "SELECT `name`,`name_alias`,`menu_id` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
