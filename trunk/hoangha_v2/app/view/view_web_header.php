@@ -11,8 +11,10 @@
         </div>
     </div>
     <div id="lang">
-        <a href="/"><div class="all_icon lang_item">&nbsp;</div></a>
-        <a href="en/"><div class="all_icon lang_item" style="background-position:-50px 0px">&nbsp;</div></a>
+    	<?php
+        if($lang=='vi') echo '<a href="en/"><div class="all_icon lang_item" style="background-position:-50px 0px">&nbsp;</div> English</a>';
+		else echo '<a href="/"><div class="all_icon lang_item">&nbsp;</div> Việt Nam</a>';
+        ?>
     </div>
     <div id="menu_top">
     	<?php

@@ -5,9 +5,9 @@
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Họ tên</th>
-            <th width="220" align="left">Email</th>
-            <th width="100" align="left">Phone</th>
-            <th width="250" align="left">Address</th>
+            <th width="210" align="left">Email</th>
+            <th width="130" align="left">Phone</th>
+            <th width="240" align="left">Address</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

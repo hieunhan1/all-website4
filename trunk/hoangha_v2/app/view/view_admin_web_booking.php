@@ -9,7 +9,7 @@
             <th width="150" align="left">Mặt hàng</th>
             <th width="100" align="left">Số lượng</th>
             <th width="110" align="left">Ngày</th>
-            <th width="90">Thao tác</th>
+            <th width="100">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
