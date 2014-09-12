@@ -46,6 +46,7 @@ define('CONS_DEFAULT_FORUM_ACTION', 'index');
 
 /*OTHER*/
 define('CONS_AJAX_NAME', 'ajax');
+define('CONS_HOST_SMTP_SERVER', 'localhost');
 define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@localhost.com');
 define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
 define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');

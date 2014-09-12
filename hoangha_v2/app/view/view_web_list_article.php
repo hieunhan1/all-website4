@@ -19,8 +19,8 @@
     </div>
     
     <div class="viewpost">
-        <h1><?php echo $menu_info['title'];?></h1>
-        <h2 style="color:#666; margin-bottom:30px"><?php echo $menu_info['description'];?></h2>
+        <h1><?php echo $current_menu['title'];?></h1>
+        <h2 style="margin-bottom:20px"><?php echo $current_menu['description'];?></h2>
     </div>
     
     <div id="article_list">
@@ -43,7 +43,7 @@
                     </div>-->
                 </div>';
             }
-            echo '<div id="phantrang">'.$this->_model->_pageslist($menu_info['url'], $totalrows, 5, $per_page, $currentpage).'</div>';
+            echo '<div id="phantrang">'.$this->_model->_pageslist($current_menu['url'], $totalrows, 5, $per_page, $currentpage).'</div>';
         }else if(count($data)==1) header('location: '.CONS_BASE_URL.'/'.$lang.'/'.$this->_model->_link_detail($data[0]['menu_id']).$data[0]['name_alias'].'.html');
         else echo '<p style="padding:30px 50px 100px">Update...</p>';
         ?>

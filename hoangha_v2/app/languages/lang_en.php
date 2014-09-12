@@ -18,5 +18,12 @@ define('CONS_CONTACT_ADDRESS', 'Address');
 define('CONS_CONTACT_MESSAGE', 'Message');
 define('CONS_CONTACT_SEND', 'SEND CONTACT');
 
+define('CONS_HOME_CALL_NOW', 'Call us now');
 define('CONS_HOME_PARTNER', 'Partner');
+
+define('CONS_ERROR_NAME', 'Input name ');
+define('CONS_ERROR_PHONE', 'Phone is not correct ');
+define('CONS_ERROR_ADDRESS', 'Input address');
+define('CONS_ERROR_EMAIL', 'Wrong email address');
+define('CONS_ERROR_MESSAGE', 'Your comment should be more than 10 characters');
 ?>

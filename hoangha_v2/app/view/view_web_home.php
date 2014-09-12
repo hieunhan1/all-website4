@@ -20,25 +20,25 @@
 		'style="color:#057F01; background-position:5px -145px"',
 		'style="background-position:10px -194px"');
 	
-	$data_service = $this->_model->_home_menu_type(4);
+	$data_service = $this->_model->_home_menu_type($lang, 4);
 	$str_service .= '<a href="'.$lang.'/'.$data_service['url'].'"><h2>'.$data_service['title'].'</h2></a>';
 	
 	$i=0;
-	$data = $this->_model->_home_services($data_service['id']);
+	$data = $this->_model->_home_services($lang, $data_service['id']);
 	foreach($data as $row){
-		$str_service .= '<div class="service_home_box bogoc_5px"><a href="'.$lang.'/'.$row['url'].'" class="service_home_title all_icon" '.$arr_background[$i].'><h3>'.$row['name'].'</h3></a>';
+		$str_service .= '<div class="service_home_box bogoc_5px"><a href="'.$lang.'/'.$row['url'].'" title="'.$row['title'].'" class="service_home_title all_icon" '.$arr_background[$i].'><h3>'.$row['name'].'</h3></a>';
 		$str_service .= '<div class="service_home_hotline">Hotline: '.$arr_hotline_service[$i].'</div>';
 		
-		$data2 = $this->_model->_home_services($row['id']);
+		$data2 = $this->_model->_home_services($lang, $row['id']);
 		$total = count($data2);
 		if($total>0){
 			foreach($data2 as $row2){
-				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row2['url'].'">'.$row2['name'].'</a></h4>';
+				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row2['url'].'" title="'.$row2['title'].'">'.$row2['name'].'</a></h4>';
 			}
 		}else{
 			$data2 = $this->_model->_home_services_article($row['id']);
 			foreach($data2 as $row2){
-				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row['url'].$row2['name_alias'].'.html">'.$row2['name'].'</a></h4>';
+				$str_service .= '<h4 class="service_home_item all_icon"><a href="'.$lang.'/'.$row['url'].$row2['name_alias'].'.html" title="'.$row2['name'].'">'.$row2['name'].'</a></h4>';
 			}
 		}
 		$str_service .= '</div>';
@@ -50,12 +50,12 @@
 
 <div id="news_home">
 	<?php
-    $data_news = $this->_model->_home_menu_type(2);
+    $data_news = $this->_model->_home_menu_type($lang, 2);
 	echo '<div class="news_home_title"><a href="'.$lang.'/'.$data_news['url'].'">'.$data_news['name'].'</a></div>';
 	
 	$data = $this->_model->_home_news_article($data_news['id']);
 	foreach($data as $row){
-		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$data_news['url'].$row['name_alias'].'.html">'.$row['name'].'</a></li>';
+		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$data_news['url'].$row['name_alias'].'.html" title="'.$row['name'].'">'.$row['name'].'</a></li>';
 	}
 	?>
 </div>

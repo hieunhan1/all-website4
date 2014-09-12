@@ -18,5 +18,12 @@ define('CONS_CONTACT_ADDRESS', 'Địa chỉ');
 define('CONS_CONTACT_MESSAGE', 'Nội dung');
 define('CONS_CONTACT_SEND', 'GỬI LIÊN HỆ');
 
+define('CONS_HOME_CALL_NOW', 'Gọi cho chúng tôi');
 define('CONS_HOME_PARTNER', 'Đối tác liên kết');
+
+define('CONS_ERROR_NAME', 'Nhập họ tên');
+define('CONS_ERROR_PHONE', 'Điện thoại chưa đúng');
+define('CONS_ERROR_ADDRESS', 'Nhập địa chỉ');
+define('CONS_ERROR_EMAIL', 'Email chưa đúng');
+define('CONS_ERROR_MESSAGE', 'Nội dung phải hơn 10 ký tự');
 ?>

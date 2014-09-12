@@ -44,19 +44,17 @@ class model_web extends db{
 	}
 	
 	public function _web_menu_id($id){
-		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE status=1 AND id='{$id}' LIMIT 1";
+		$sql = "SELECT `id`,`name`,`url`,`parent` FROM `web_menu` WHERE status=1 AND id='{$id}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
 	
 	public function _web_menu_root($parent, $id, &$name, &$url){
 		if($parent==0) return $id;
-		else{
-			$row = $this->_web_menu_id($parent);
-			$name = $row['name'];
-			$url = $row['url'];
-			return $this->_web_menu_root($row['parent'],$row['id'],$name,$url);
-		}
+		$row = $this->_web_menu_id($parent);
+		$name = $row['name'];
+		$url = $row['url'];
+		return $this->_web_menu_root($row['parent'],$row['id'],$name,$url);
 	}
 	
 	public function _link_detail($menu_id){
@@ -99,13 +97,13 @@ class model_web extends db{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
-	public function _home_menu_type($type_id){
-		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`=0 AND `type_id`='{$type_id}'";
+	public function _home_menu_type($lang, $type_id){
+		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`=0 AND `lang`='{$lang}' AND `type_id`='{$type_id}'";
 		$result = $this->db->query($sql);
 		return $result->fetch_assoc();
 	}
-	public function _home_services($idMenu){
-		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`='{$idMenu}' ORDER BY `order` LIMIT 5";
+	public function _home_services($lang, $idMenu){
+		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `other`=1 AND `parent`='{$idMenu}' AND `lang`='{$lang}' ORDER BY `order` LIMIT 5";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -143,7 +141,7 @@ class model_web extends db{
 	}
 	
 	public function _list_menu_parent($idMenu){
-		$sql = "SELECT `id`,`name`,`url` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -164,8 +162,8 @@ class model_web extends db{
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
 	}
-	public function _detail_product($alias){
-		$sql = "SELECT * FROM `web_product` WHERE `status`=1 AND `name_alias`='{$alias}' LIMIT 1";
+	public function _detail_service_item($alias){
+		$sql = "SELECT * FROM `web_article` WHERE `status`=1 AND `name_alias`='{$alias}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
@@ -174,8 +172,8 @@ class model_web extends db{
 	
 	/*contact*/
 	public function _web_contact_insert($name,$email,$phone,$address,$message,$lang='vi'){
-		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_contact` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$message}', '{$lang}', '0', '{$date}', NULL, 'khachhang', NULL, '0');";
+		$date = $this->_current_date_time();
+		$sql = "INSERT INTO `web_contact` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$message}', '{$date}', '{$lang}', '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
@@ -186,7 +184,7 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	public function _web_contact_update($id){
-		$date = $this->_date_time_vietnam();
+		$date = $this->_current_date_time();
 		$sql = "UPDATE `web_contact` SET `status`=1, `datetime`='{$date}' WHERE `id`='{$id}'";
 		if(!$result = $this->db->query($sql)) return FALSE;
 	}
@@ -194,10 +192,9 @@ class model_web extends db{
 		include_once('class.phpmailer.php');
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // Gọi đến class xử lý SMTP
-		$mail->Host       = "mail.heoxinhshop.com"; // tên SMTP server
+		$mail->Host       = CONS_HOST_SMTP_SERVER; // tên SMTP server
 		$mail->SMTPDebug  = 2; // enables SMTP debug information (for testing): 1 = errors and messages, 2 = messages only
 		$mail->SMTPAuth   = true; // Sử dụng đăng nhập vào account
-		//$mail->Host       = "localhost"; // Thiết lập thông tin của SMPT
 		$mail->Port       = 25; // Thiết lập cổng gửi email của máy
 		$mail->Username   = CONS_SEND_MAIL_ACCOUNT; // SMTP account username
 		$mail->Password   = CONS_SEND_MAIL_PASSWORD; // SMTP account password
@@ -206,11 +203,9 @@ class model_web extends db{
 		foreach($add_address as $row) $mail->AddAddress($row['email'],$row['name']); //Thiết lập thông tin người nhận
 		if($add_cc!='') foreach($add_cc as $row) $mail->AddCC($row['email'],$row['name']);
 		if($add_bcc!='') foreach($add_bcc as $row) $mail->AddBCC($row['email'],$row['name']);
-		//$mail->AddReplyTo("contact@domain.com","Name"); //Thiết lập email nhận email hồi đáp, nếu người nhận nhấn nút Reply
 		$mail->CharSet = "utf-8";
 		$mail->Subject = $subject; //Thiết lập tiêu đề
 		$mail->Body = $body; //Thiết lập nội dung chính của email
-		
 		if($mail->Send()) return true;
 	}
 	/*end contact*/
@@ -239,63 +234,46 @@ class model_web extends db{
 	}
 	/*end other post*/
 	
-	/*order*/
-	public function _web_listcity($id=0){
-		if($id!=0) $str=" AND `id`='{$id}' ";
-		$sql = "SELECT `id`,`name`,`deliverycosts` FROM `web_listcity` WHERE `status`=1 {$str} ORDER BY `order` DESC, `name`";
+	/*sale_online*/
+	public function _web_sale_online($idMenu){
+		$sql = "SELECT `name`,`regency`,`yahoo`,`skype`,`phone`,`email` FROM `web_sale_online` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%'";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_listdistricts($city=0,$id=0){
-		$str='';
-		if($city!=0) $str.=" AND `city_id`='{$city}' ";
-		if($id!=0) $str.=" AND `id`='{$id}' ";
-		if($city==0 && $id==0) $str.=" AND `id`='0' ";
-		$sql = "SELECT `id`,`name`,`deliverycosts` FROM `web_listdistricts` WHERE `status`=1 {$str} ORDER BY `order`";
+	/*end sale_online*/
+	
+	/*service*/
+	public function _list_services($idMenu){
+		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_product_order_email($email){
-		$sql = "SELECT `name`,`phone`,`city_id`,`districts_id`,`address` FROM `web_product_order` WHERE `email`='{$email}' LIMIT 1";
-		if(!$result = $this->db->query($sql)) return FALSE;
-		if($result->num_rows != 1) return FALSE;
-		return $result->fetch_assoc();
+	public function _services_article($idMenu){
+		$sql = "SELECT `id`,`name`,`name_alias` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
 	}
-	public function _web_product_order_insert($order_id,$name,$email,$phone,$city_id,$districts_id,$address,$total_current,$total_number,$deliverycosts,$discounts,$total,$other=NULL){
-		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$total_current}', '{$total_number}', '{$deliverycosts}', '{$discounts}', '{$total}', '{$order_id}', '{$other}', 'vi', '3', '{$city_id}', '{$districts_id}')";
+	/*end service*/
+	
+	/*web_booking*/
+	public function _quick_booking_insert($name,$address,$phone,$message){
+		$date = $this->_current_date_time();
+		$sql = "INSERT INTO `web_booking` (`name`,`address`,`phone`,`message`,`datetime`,`status`) VALUES ('{$name}', '{$address}', '{$phone}', '{$message}', '{$date}', '0')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
-	public function _web_product_order_detail_insert($name,$number,$price,$discounts,$total,$product_id,$order_id){
-		$date = $this->_date_time_vietnam();
-		$sql = "INSERT INTO `web_product_order_detail` VALUES (NULL, '{$name}', '{$number}', '{$price}', '{$discounts}', '{$total}', 'vi', '1', '{$product_id}', '{$order_id}')";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-	}
-	public function _view_product_order($id){
-		$sql = "SELECT * FROM `web_product_order` WHERE `datetime`='{$id}' LIMIT 1";
-		if(!$result = $this->db->query($sql)) return FALSE;
-		if($result->num_rows != 1) return FALSE;
-		return $result->fetch_assoc();
-	}
-	public function _view_product_order_detail($order_id){
-		$sql = "SELECT * FROM `web_product_order_detail` WHERE `order_id`='{$order_id}' ";
-		if(!$result = $this->db->query($sql)) return FALSE;
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	public function _web_product_order_update_status($id){
-		$sql = "UPDATE `web_product_order` SET `status`=0 WHERE `id`='{$id}' ";
-		if(!$result = $this->db->query($sql)) return FALSE;
-	}
-	/*end order*/
+	/*end web_booking*/
 	
 	/*function*/
+	public function _current_date_time(){
+        return time(); 
+	}
 	public function _date_time_vietnam(){
 		$timezone = +7; //(GMT +7:00)  
         return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
