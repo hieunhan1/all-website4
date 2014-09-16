@@ -20,7 +20,7 @@ define('CONS_CONTACT_SEND', 'SEND CONTACT');
 
 define('CONS_HOME_CALL_NOW', 'Call us now');
 define('CONS_HOME_PARTNER', 'Partner');
-
+define('CONS_HEADER_INPUT_CODE', 'Input code');
 define('CONS_ERROR_NAME', 'Input name ');
 define('CONS_ERROR_PHONE', 'Phone is not correct ');
 define('CONS_ERROR_ADDRESS', 'Input address');

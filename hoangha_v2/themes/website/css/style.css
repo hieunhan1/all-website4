@@ -164,14 +164,14 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #menu{clear:both; width:765px; height:30px; float:right; font-size:90%; background-position:0px -50px}
 #nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
-#nav li a {color:#FFF; line-height:30px; text-transform:uppercase; text-shadow:1px 1px 1px #333; padding:0 20px}
+#nav li a {color:#FFF; line-height:30px; text-transform:uppercase; text-shadow:1px 1px 1px #333; padding:0 15px}
 #nav a:hover {color:#FFFF66}
 #nav li {float:left; position:relative}
 #nav ul {position:absolute; width:200px; top:30px; display:none}
-#nav li ul a {width:180px; line-height:20px; float:left; text-transform:none; font-weight:normal; padding:5px 20px; background-color:#00ADEC; border-bottom:solid 1px #95E2FF}
+#nav li ul a {width:180px; line-height:20px; float:left; text-transform:none; font-weight:normal; padding:5px 15px; background-color:#00ADEC; border-bottom:solid 1px #95E2FF}
 #nav li ul a:hover {background-color:#007AA7}
 #nav ul ul {top:auto}
-#nav li ul ul {left:220px}
+#nav li ul ul {left:200px}
 #nav li:hover ul ul,
 #nav li:hover ul ul ul,
 #nav li:hover ul ul ul ul {display:none}

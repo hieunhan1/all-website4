@@ -6,7 +6,7 @@
         <div class="tab_code bogoc_top_5px tab_code_active">Express</div>
         <div class="tab_code bogoc_top_5px">Track &amp; trace</div>
         <div id="form_code" class="all_icon_bg bogoc_right_5px">
-        	<input type="text" name="txtCode" id="txtCode" class="bogoc_5px" maxlength="20" placeholder="Nhập mã" />
+        	<input type="text" name="txtCode" id="txtCode" class="bogoc_5px" maxlength="20" placeholder="<?php echo CONS_HEADER_INPUT_CODE;?>" />
         	<input type="button" name="btnCode" id="btnCode" class="bogoc_5px" value="GO" />
         </div>
     </div>

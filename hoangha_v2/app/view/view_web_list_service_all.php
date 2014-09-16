@@ -33,19 +33,14 @@
 			'style="background-position:10px -194px"');
 		
 		$i=0;
+		if($lang=='vi') $arr_float = array('float:left;', 'float:right;', 'float:left;', 'float:right;');
+		else $arr_float = array('float:left;', 'float:right;', 'float:right;', 'float:left;');
+		
 		$arr_service = array();
 		$data = $this->_model->_list_services($idMenu);
 		foreach($data as $row){
-			if($i%2 == 0){
-				$style='float:left; ';
-				$clear='';
-			}else{
-				$style='float:right; ';
-				$clear='<div style="clear:both; height:20px"></div>';
-			}
-			
 			$str_service = '';
-			$str_service .= '<div class="service_list_box bogoc_5px" style="'.$style.'"><a href="'.$lang.'/'.$row['url'].'" title="'.$row['title'].'" class="service_list_title all_icon" '.$arr_background[$i].'><h3>'.$row['name'].'</h3></a>';
+			$str_service .= '<div class="service_list_box bogoc_5px" style="'.$arr_float[$i].'"><a href="'.$lang.'/'.$row['url'].'" title="'.$row['title'].'" class="service_list_title all_icon" '.$arr_background[$i].'><h3>'.$row['name'].'</h3></a>';
 			$str_service .= '<div class="service_list_hotline">Hotline: '.$arr_hotline_service[$i].'</div>';
 			
 			$data2 = $this->_model->_list_services($row['id']);
@@ -70,7 +65,8 @@
 			$arr_service[] = $str_service;
 			$i++;
 		}
-		echo $arr_service[0].$arr_service[1].$arr_service[3].$arr_service[2];
+		if($lang=='vi') echo $arr_service[0].$arr_service[1].$arr_service[3].$arr_service[2];
+		else echo $arr_service[0].$arr_service[1].$arr_service[2].$arr_service[3];
 		?>
     </div>
 </div>
