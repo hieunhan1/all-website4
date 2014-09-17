@@ -40,18 +40,18 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//max_limit_2
-	$values = $row_detail['max_limit_2'];
+	/*$values = $row_detail['max_limit_2'];
 	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Tuyển dụng','max_limit_2','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//max_limit_3
-	$values = $row_detail['max_limit_3'];
+	/*$values = $row_detail['max_limit_3'];
 	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Số hình ảnh','max_limit_3','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//max_limit_4
 	$values = $row_detail['max_limit_4'];

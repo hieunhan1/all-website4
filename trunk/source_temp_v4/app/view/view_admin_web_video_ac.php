@@ -40,6 +40,14 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views,$change_alias.'<span class="notes">Nhấp doubleclick để lấy tên không dấu</span>');
 	echo $this->DisplayProperties();
 	
+	//url
+	if($row_detail['id'] != 0) $change_url = '<a href="javascript:;" id="change_url" style="padding:0 10px; font-weight:bold">Thay đổi</a>';
+	$values = $row_detail['url'];
+	$properties = array('200',$disabled); //maxlength OTHER (disabled, readonly)
+	$views = array('Link','url','input_medium auto_link_detail'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views,$change_url.'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
+	echo $this->DisplayProperties();
+	
 	//url_hinh
 	$values = 'url_hinh'; //field name
 	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
@@ -57,7 +65,7 @@ echo '<form name="form_action" method="post" action="">
 	//url_video
 	$values = $row_detail['url_video'];
 	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Youtube or Vimeo','url_video','input_medium'); //label id&name class style
+	$views = array('Code youtube','url_video','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,'<span class="notes">Mã code Youtube hoặc Vimeo</span>');
 	echo $this->DisplayProperties();
 	

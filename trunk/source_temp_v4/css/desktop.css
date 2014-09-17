@@ -46,6 +46,12 @@ hr{height:1px; background-color:#E8E8E8; border:none; margin-bottom:10px}
 #about_home{clear:both}
 #about_home h2{line-height:22px; font-size:100%; font-weight:100; margin:10px 0; padding-left:30px; background:url(web_img/icon_about_home.jpg) no-repeat top left; background-position:0px 3px}
 
+.home_video_box{width:227px; height:200px; float:left; margin-bottom:20px;}
+.home_video_box .home_video_img_bg{width:225px; height:160px; position:absolute; border:solid 1px #1B1B1B; background:url(web_img/bg-video.png) no-repeat}
+.home_video_box .home_video_img{height:160px; overflow:hidden; margin-bottom:8px}
+.home_video_box .home_video_img img{width:230px}
+.home_video_box h3{font-size:100%; line-height:150%}
+
 .product_list{clear:both}
 .product_list .product_title{height:44px; line-height:44px; font-size:180%; color:#3C9401; margin-bottom:20px; padding-left:50px}
 .product_list .product_item {width:225px; height:320px; overflow:hidden; float:left; margin-bottom:35px; border:solid 1px #CCC}
