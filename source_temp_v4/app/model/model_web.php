@@ -88,7 +88,7 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	public function _home_danhmuc_product($lang){
-		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`type_id` FROM `web_menu` WHERE `delete`=0 AND `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -96,6 +96,13 @@ class model_web extends db{
 	}
 	public function _home_products($id){
 		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _home_video($id){
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh` FROM `web_video` WHERE `delete`=0 AND `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
@@ -130,6 +137,19 @@ class model_web extends db{
 		
 		return $data;
 	}
+	public function _list_web_video($id, $per_page=10, $startrow=0, &$totalrows){
+		$sql = "SELECT `id`,`name`,`url`,`url_hinh`,`metaDescription` FROM `web_video` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `ngay_dang` DESC LIMIT $startrow, $per_page";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		
+		$sql = "SELECT count(*) FROM `web_video` WHERE `delete`=0 AND `status`=1 AND menu_id LIKE '%,{$id},%'";
+		$result = $this->db->query($sql);
+		$row = $result->fetch_row();
+		$totalrows=$row[0];
+		
+		return $data;
+	}
 	/*end list*/
 	
 	/*detail*/
@@ -141,6 +161,12 @@ class model_web extends db{
 	}
 	public function _detail_product($alias){
 		$sql = "SELECT * FROM `web_product` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	public function _detail_video($alias){
+		$sql = "SELECT * FROM `web_video` WHERE `delete`=0 AND status=1 AND name_alias='{$alias}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
@@ -200,6 +226,13 @@ class model_web extends db{
 	}
 	public function _other_post_product($id,$idMenu,$limit=5){
 		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		foreach ($result as $row) $data[] = $row;
+		return $data;
+	}
+	public function _other_post_video($id,$idMenu,$limit=5){
+		$sql = "SELECT `name`,`url`,`url_hinh` FROM `web_video` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		foreach ($result as $row) $data[] = $row;
