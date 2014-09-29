@@ -63,9 +63,20 @@ flush();
                 	<?php
                     $data = $this->_model->_web_menu($lang, 0, 6);
 					foreach($data as $row){
-						echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_hinh'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
+						echo '<a href="'.$row['url'].'" target="_blank"><img src="'.CONS_IMAGES_CATALOG.$row['url_hinh'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
 					}
 					?>
+                </td>
+                <td width="250">
+                	<div class="fb-like" data-href="https://www.facebook.com/pages/Gian-h%C3%A0ng-b%C3%A1n-l%E1%BA%BB/817637464948022" data-width="250" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                	<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
                 </td>
             </tr>
         </table>
