@@ -114,6 +114,10 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #sale_online .sale_online_regency{font-weight:bold; color:#999}
 #sale_online .sale_online_phone_email{}
 
+#tracing_express{width:auto; height:30px; line-height:30px; color:#0085B5; font-weight:bold; margin:0 0 20px 100px}
+#tracing_express #txtfrmcode{width:250px; height:25px; margin:0 5px 0 0; padding:0 5px; border:solid 1px #CCC; background:none}
+#tracing_express #btnfrmcode{height:27px; color:#FFF; font-weight:bold; margin:0; padding:0 15px; border:none; background-color:#EE000B; cursor:pointer}
+
 #other_about{clear:both; margin:45px 0 25px 0}
 #other_about li{list-style:none; line-height:20px; font-weight:bold; border-bottom:dashed 1px #AAA}
 #other_about li a{display:block; padding:8px 0 8px 25px; background:url(../img/icon-other-about.png) no-repeat left top; background-position:8px 12px}

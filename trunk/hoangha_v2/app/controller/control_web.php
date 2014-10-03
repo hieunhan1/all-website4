@@ -201,6 +201,26 @@ class control_web{
 		include_once('view/view_web.php');
 	}//index
 	
+	public function tracking_code_export_xml($code){
+		if($code=='') return false;
+		require_once("../php/simple_html_dom.php");
+		$request = array(
+			'http' => array(
+				'method' => 'POST',
+				'content' => http_build_query(array(
+					'code' => $code,
+				)),
+			)
+		);
+		$context = stream_context_create($request);
+		$url = "http://hoanghasgn.somee.com/hhewebservice.asmx/GetPostMailListAll";
+		$html = file_get_html($url, false, $context);
+		$fp = fopen("../public/code.xml", "w+") or exit("Không tìm thấy file để mở");
+		fwrite($fp, $html);
+		fclose($fp);
+		return true;
+	}
+	
 	public function checks_video_youtube_vimeo($url_video,$domain=NULL){
 		if(is_numeric($url_video)){
 			$str = '<iframe src="//player.vimeo.com/video/'.$url_video.'" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
