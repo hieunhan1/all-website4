@@ -85,4 +85,12 @@ $(document).ready(function($){
 		$(".tab_code").removeClass("tab_code_active");
 		$(this).addClass("tab_code_active");
 	});
+	
+	$("#btnCode").click(function(){
+		var code = $.trim($("#txtCode").val());
+		var linkCode = $("#linkCode").val();
+		
+		if(code != '') window.location = linkCode + code;
+		else alert('Input code!');
+	});
 });

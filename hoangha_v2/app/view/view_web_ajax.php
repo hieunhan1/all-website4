@@ -70,4 +70,11 @@ if(isset($_POST['QuickBooking'])){
 		return true;
 	}else return false;
 }
+
+if(isset($_POST['delete_code'])){
+	$content = '<?xml version="1.0" encoding="utf-8"?>';
+	$fp = fopen("../public/code.xml", "w+") or exit("Không tìm thấy file để mở");
+	fwrite($fp, $content);
+	fclose($fp);
+}
 ?>
