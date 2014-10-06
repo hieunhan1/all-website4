@@ -29,7 +29,7 @@ $code = $this->_model->_change_dau_nhay($code);
     </div>
     
     <div id="article_list">
-    	<form action="<?php echo $current_menu['url'];?>" method="get"><div id="tracing_express">Mã bưu kiện, bưu phẩm: &nbsp; <input type="text" name="code" value="<?php echo $code;?>" id="txtfrmcode" placeholder="<?php echo CONS_HEADER_INPUT_CODE;?>" /><input type="submit" value="Tracking" id="btnfrmcode" /></div></form>
+    	<form action="<?php echo $current_menu['url'];?>" method="get"><div id="tracing_express">Mã bưu phẩm bưu kiện: &nbsp; <input type="text" name="code" value="<?php echo $code;?>" id="txtfrmcode" placeholder="<?php echo CONS_HEADER_INPUT_CODE;?>" /><input type="submit" value="Tracking" id="btnfrmcode" /></div></form>
         <?php
         $tracking_code = $this->tracking_code_export_xml($code);
 		if($code!=''){
