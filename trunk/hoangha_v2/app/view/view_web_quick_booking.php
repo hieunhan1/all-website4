@@ -28,7 +28,7 @@
 
 <div id="call" class="all_icon_bg bogoc_5px">
 	<p><?php echo CONS_HOME_CALL_NOW;?></p>
-    <div class="all_icon">(84.8) 3948 4696</div>
+    <div class="all_icon"><?php if($current_menu['tel']=='') echo $this->_config['tel']; else echo $current_menu['tel'];?></div>
 </div>
 
 <script type="text/javascript">

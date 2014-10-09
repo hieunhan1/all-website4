@@ -100,6 +100,7 @@ class control_web{
 				'keyword'=>strip_tags($row['tags']),
 				'url'=>CONS_BASE_URL.'/'.$lang.'/'.$row['url'],
 				'image'=>CONS_BASE_URL.'/'.$site_image,
+				'tel'=>$row['tel'],
 				'type_id'=>$type_id,
 				'type_name'=>$type_menu['name'],
 				'type_img'=>$type_menu['url_img'],
