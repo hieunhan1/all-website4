@@ -22,7 +22,7 @@ define('CONS_IMAGES_PHOTOS','public/images/photos/');
 define('CONS_IMAGES_PHOTOS_THUMBS','public/_thumbs/Images/photos/');
 
 /*WEBSITE*/
-define('CONS_IMAGE_DEFAULT','images/no-image.jpg');
+define('CONS_IMAGE_DEFAULT','themes/website/img/no-image.jpg');
 define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
 define('CONS_WEB_VIEW_MENU','view_menu');
