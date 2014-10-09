@@ -35,17 +35,25 @@ $code = $this->_model->_change_dau_nhay($code);
 		if($code!=''){
 		?>
         <table width="80%" border="1" cellpadding="10" cellspacing="0" style="line-height:20px; border:solid 1px #CCC; border-collapse:collapse; margin:auto">
-        	<tr>
-            	<td style="font-weight:bold" width="100">Ngày</td>
-            	<td style="font-weight:bold">Thông tin</td>
+        	<tr bgcolor="#EEE">
+            	<td style="font-weight:bold" width="120">Thời gian</td>
+            	<td style="font-weight:bold">Chi tiết</td>
             </tr>
             <tbody id="ajax_code"></tbody>
         </table>
         <div style="height:30px; clear:both"></div>
 		<script type="text/javascript">
 		$(document).ready(function(e) {
+			function format_datetime(datetime){
+				datetime = datetime.split("T");
+				var date = datetime[0];
+				date = date.split("-");
+				var time = datetime[1];
+				time = time.split(".");
+				return date[2] + '-' + date[1] + '-' + date[0] + ' ' + time[0];
+			}
 			$.ajax({
-				type: "POST",
+				type: "GET",
 				url: "public/code.xml",
 				dataType: "xml",
 				cache: false,
@@ -53,10 +61,8 @@ $code = $this->_model->_change_dau_nhay($code);
 					$(xml).find('table').each(function(){
 						var createddate = $(this).find('createddate').text();
 						var remark 		= $(this).find('remark').text();
-						createddate = new Date(createddate);
-						createddate = createddate.getDate() + '-' + createddate.getMonth() + '-' + createddate.getFullYear() + ' ' + createddate.getHours() + ':' + createddate.getMinutes();
 						var data = '<tr>';
-						data += '<td>' + createddate + '</td>';
+						data += '<td>' + format_datetime(createddate) + '</td>';
 						data += '<td>' + remark + '</td>';
 						data += '</tr>';
 						$(data).appendTo('#ajax_code');
