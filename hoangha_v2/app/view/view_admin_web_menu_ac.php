@@ -100,6 +100,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
+	//tel
+	$values = $row_detail['tel'];
+	$properties = array('20'); //maxlength OTHER (disabled, readonly)
+	$views = array('Điện thoại','tel','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//order
 	$values = $row_detail['order'];
 	$properties = array('3'); //maxlength OTHER (disabled, readonly)

@@ -22,8 +22,8 @@ function _change_dau_nhay($str){
 	return $str;
 }
 
-$con	= connect_data('localhost', 'root', 'root', 'hoangha');
-$con_v2	= connect_data('localhost', 'root', 'root', 'hoangha_v2');
+$con	= connect_data('localhost', 'hoangha_us', 'K97D5#vGt', 'hoangha_db');
+//$con_v2	= connect_data('localhost', 'root', 'root', 'hoangha_v2');
 
 /*//menu
 $sql = "SELECT * FROM `menu`";
