@@ -118,6 +118,11 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #tracing_express #txtfrmcode{width:250px; height:25px; margin:0 5px 0 0; padding:0 5px; border:solid 1px #CCC; background:none}
 #tracing_express #btnfrmcode{height:27px; color:#FFF; font-weight:bold; margin:0; padding:0 15px; border:none; background-color:#EE000B; cursor:pointer}
 
+#photo_list{clear:both}
+#photo_list .photo_list_item{width:240px; height:210px; float:left; text-align:center; overflow:hidden; margin:5px; border:solid 2px #999}
+#photo_list .photo_list_item img{height:150px; margin:10px}
+#photo_list .photo_list_item h3{font-size:100%}
+
 #other_about{clear:both; margin:45px 0 25px 0}
 #other_about li{list-style:none; line-height:20px; font-weight:bold; border-bottom:dashed 1px #AAA}
 #other_about li a{display:block; padding:8px 0 8px 25px; background:url(../img/icon-other-about.png) no-repeat left top; background-position:8px 12px}
@@ -195,3 +200,11 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 .txt{width:310px; margin:5px 0; padding:5px 5px; background-color:#F1F1F1; border:solid 1px #DDDDDD}
 .textarea{width:750px; height:110px; line-height:22px; overflow:auto; resize:none; margin:5px 0; padding:5px 5px; background-color:#F1F1F1; border:solid 1px #DDDDDD}
 .btn{background-color:#FF8A00; border:none; font-size:160%; color:#FFF; font-weight:bold; padding:8px 30px; margin-top:10px; cursor:pointer}
+
+/*Photos*/
+#photos * {margin:0px; padding:0px}
+#photos ul li {display:inline; width:180px; height:160px; float:left; overflow:hidden; margin:5px}
+#photos .wide {border-bottom:1px #000 solid; width:4000px}
+#photos .img{display:block; height:120px; overflow:hidden; text-align:center; margin-bottom:3px; border:solid 1px #999}
+#photos .img img{width:180px}
+#photos h3{font-size:100%; font-weight:100; color:#666; text-align:center}

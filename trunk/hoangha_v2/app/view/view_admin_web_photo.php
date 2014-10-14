@@ -5,7 +5,7 @@
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="100" align="left">Tên hình</th>
+            <th width="300" align="left">Tên hình</th>
             <th width="100" align="left">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
