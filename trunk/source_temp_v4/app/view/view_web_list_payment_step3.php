@@ -8,7 +8,9 @@ $tinh_thanh = ', '.$row_tinh[0]['name'];
 $row_quan = $this->_model->_web_ds_quanhuyen(0,$row['quan_huyen']);
 $quan_huyen = ', '.$row_quan[0]['name'];
 
-if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
+$phuongthuc_giaohang = 'Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.';
+
+/*if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
 	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> <br />
@@ -16,7 +18,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$row['id'].'</b></span>
 	<span style="margin-left:220px; font-style:italic; display:block">hoặc <b>'.$row['name'].' + '.$row['phone'].'</b></span>
 	</p>';
-}
+}*/
 ?>
 <div style="clear:both; height:20px"></div>
 <div class="viewpost">
@@ -37,7 +39,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
     	<p style="font-size:110%; color:#00F"><b>Đặt hàng thành công.</b></p>
         <p style="color:#00F">Chúng tôi đã gửi thông tin đặt hàng của bạn đến địa chỉ mail <b><?php echo $row['email'];?></b> mà bạn đã khai báo.</p>
         <p>Mã đơn hàng: <b><?php echo $row['id'];?></b></p>
-        <?php echo $phuongthuc_giaohang;?>
+        <p><?php echo $phuongthuc_giaohang;?></p>
         <p style="font-weight:bold">Chúng tôi sẽ liên hệ với bạn trước khi giao hàng.</p>
     	<!--<p style="color:#F00">Phí giao hàng: <b><?php if($row['phigiaohang']!=0) echo number_format($row['phigiaohang'],0,',','.').'đ'; else echo 'Miễn phí';?></b></p>-->
         <div style="color:#666; margin:10px 0 30px 0">
