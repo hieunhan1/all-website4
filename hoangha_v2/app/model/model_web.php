@@ -141,7 +141,7 @@ class model_web extends db{
 	}
 	
 	public function _list_menu_parent($idMenu){
-		$sql = "SELECT `id`,`name`,`url`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`url_img`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -167,6 +167,13 @@ class model_web extends db{
 		if(!$result = $this->db->query($sql)) return FALSE;
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
+	}
+	public function _list_photo($idMenu){
+		$sql = "SELECT `id`,`name`,`url_img` FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
 	}
 	/*end detail*/
 	
