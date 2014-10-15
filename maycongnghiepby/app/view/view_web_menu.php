@@ -6,7 +6,7 @@
 		$data = $this->_model->_web_menu($lang, 0, $position);
 		foreach($data as $row){
 			$i++;
-			if($menu_root['id'] != $row['id']) $style=''; else $style='style="color:#008612"';
+			if($menu_root['id'] != $row['id']) $style=''; else $style='style="color:#FF0"';
 			if($i!=1){
 				$view_menu .= '<li><a href="'.$row['url'].'" '.$style.'>'.$row['name'].'</a>';
 				$view_menu .= $this->getSubmenu($lang, $row['id'], $position);

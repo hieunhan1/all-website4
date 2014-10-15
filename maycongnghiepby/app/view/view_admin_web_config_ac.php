@@ -34,7 +34,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	//slogan
 	$values = $row_detail['slogan'];
-	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('100'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Slogan','slogan','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
