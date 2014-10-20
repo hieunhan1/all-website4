@@ -277,6 +277,16 @@ class model_web extends db{
 	}
 	/*end web_booking*/
 	
+	/*web_chinhanh*/
+	public function _list_web_chinhanh(){
+		$sql = "SELECT * FROM `web_chinhanh` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	/*end web_chinhanh*/
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

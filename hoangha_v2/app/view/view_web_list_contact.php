@@ -18,14 +18,36 @@ foreach($data as $row){
 </div>
 
 <div class="viewpost">
-	<?php
-    echo "<h1>{$this->_config['sitename']}</h1>";
-	echo '<p>Địa chỉ: '.$this->_config['address'].'</p>
-	<p>Điện thoại: '.$this->_config['tel'].' - Fax: '.$this->_config['fax'].'</p>
-	<p>Email: '.$this->_config['email'].'</p>
-	<div style="clear:both; height:15px"></div><hr /><div style="clear:both; height:1px"></div>';
-	//echo '<h2 style="color:#00F">'.$current_menu['description'].'</h2>';
-    ?>
+	<table width="100%" cellpadding="10" cellspacing="0">
+    	<?php
+		$i = 0;
+		$arr_row = array();
+        $data = $this->_model->_list_web_chinhanh();
+		foreach($data as $row){
+			$i++;
+			if($row['email']!='') $email = ' - Email: '.$row['email']; else $email = '';
+			if($i!=1){
+				$arr_row[] = '<td valign="top">
+					<h3 class="h1" style="margin:0">'.$row['name'].'</h2>
+					Địa chỉ: '.$row['address'].'<br />
+					Điện thoại: '.$row['phone'].' - Fax: '.$row['fax'].$email.'<br />
+					Google Maps: <a href="javascript:;" class="google_map" name="'.$row['name'].'" info="'.$row['google_map'].'">Click vào đây để xem</a>
+				</td>';
+			}else{
+				$arr_row[] = '<td colspan="2" align="center">
+					<h1 style="margin:0; color:#EC0D18">'.$row['name'].'</h1>
+					Địa chỉ: '.$row['address'].'<br />
+					Điện thoại: '.$row['phone'].' - Fax: '.$row['fax'].$email.'<br />
+					Google Maps: <a href="javascript:;" class="google_map" name="'.$row['name'].'" info="'.$row['google_map'].'">Click vào đây để xem</a>
+				</td>';
+			}
+		}
+		
+		echo '<tr>'.$arr_row[0].'</tr>
+		<tr>'.$arr_row[1].$arr_row[2].'</tr>
+		<tr>'.$arr_row[3].$arr_row[4].'</tr>';
+		?>
+    </table>
 </div>
 
 <div id="loading_contact"><img src="themes/website/img/loader.gif" /></div>
@@ -59,6 +81,16 @@ foreach($data as $row){
       </tr>
     </table>
 </div>
+
+<div id="popupContact">
+    <div id="content_popup">
+    	<div style="text-align:right; padding:5px 5px 0 0; background-color:#FFF"><a href="javascript:;" id="popupContactClose"><img src="themes/website/img/close.png" alt="" /></a></div>
+        <div id="ajax_google_map" style="height:450px"></div>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&language=vi"></script>
+	</div>
+</div>
+<div id="backgroundPopup"></div>
+
 <script type="text/javascript">
 $(document).ready(function(e) {
 	$("input[name=btnSend]").click(function(){
@@ -97,5 +129,32 @@ $(document).ready(function(e) {
 			}
 		});
 	});
+	
+	$(".google_map").click(function(){
+		var name = $(this).attr("name");
+		var id_map = $(this).attr("info");
+		var height = $("#popupContact").height();
+		
+		$("#popupContact").height(height);
+		centerPopup("fix");
+		loadPopup();
+		$(window).bind("resize", function(){ centerPopup("fix"); });
+		
+		$.ajax({ 	
+			url:"<?php echo $lang;?>/ajax/",
+			type:'post',
+			data:{google_map:id_map,name:name},
+			cache:false,
+			success: function(data){
+				$("#ajax_google_map").html(data);
+			}
+		});
+	});
+	
+	
+	$("#backgroundPopup, #popupContactClose").click(function(){
+		disablePopup();
+	});
+	
 });
 </script>

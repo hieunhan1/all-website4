@@ -39,6 +39,16 @@ if(isset($_GET['id_contact'])){
 		include_once('view_web_detail_contact.php');
 	}
 }
+
+if(isset($_POST['google_map'])){
+	$id_map = trim($_POST['google_map']);
+	$id_map = $this->_model->_change_dau_nhay($id_map);
+	$name = trim($_POST['name']);
+	$name = $this->_model->_change_dau_nhay($name);
+	if($id_map!='' && $name!=''){
+		include_once('view_web_google_map.php');
+	}
+}
 /*end contact*/
 
 if(isset($_POST['QuickBooking'])){
