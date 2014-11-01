@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 07, 2014 at 10:29 AM
--- Server version: 5.5.25a
--- PHP Version: 5.4.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 28, 2014 at 10:29 AM
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `web_article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `url` varchar(250) NOT NULL,
@@ -44,8 +44,7 @@ CREATE TABLE IF NOT EXISTS `web_article` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
@@ -56,8 +55,8 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `metaD
 (1, 'HEO XINH shop', '', '', 'home.png', '', 'HEO XINH shop', '<p><strong>Chuyên cung cấp sỉ quần áo thời trang&nbsp;giá rẻ</strong> chỉ 150.000đ, 180.000đ, 250.00đ chất liệu cotton mềm mại, thoáng mát, màu sắc hoa văn tươi sáng thoáng mát</p>\r\n\r\n<p><strong>Quần áo xuất xứ từ Thái Lan và hàng Việt Nam chất lượng cao.</strong></p>\r\n\r\n<p>Bạn sẽ hài lòng khi mua quần áo tại&nbsp;<strong>HEO XINH shop</strong>&nbsp;với các chế độ bảo hành và cam kết chất lượng của cửa hàng chúng tôi.</p>\r\n', 1, ',1,', 'vi', 1, '2014-05-29 15:00:00', '2014-05-29 09:35:29', '2014-07-25 09:26:05', 'admin', 'admin', 0),
 (2, 'Công dụng của mùng chuống muỗi', 'cong-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/cong-dung-cua-mung-chuong-muoi.html', 'home.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'công dụng của mùng chuống muỗi,cong dung cua mung chuong muoi', '<p>Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.</p>\r\n', 1, ',8,', 'vi', 1, '2014-06-03 20:49:00', '2014-06-03 15:50:29', '2014-07-25 16:40:29', 'admin', 'admin', 0),
 (3, 'Tác dụng của mùng chuống muỗi', 'tac-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/tac-dung-cua-mung-chuong-muoi.html', 'home.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'tác dụng của mùng chuống muỗi,tac dung cua mung chuong muoi', '<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</h2>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, ',8,', 'vi', 1, '2014-06-05 20:49:00', '2014-06-03 15:50:52', '2014-07-25 16:41:18', 'admin', 'admin', 0),
-(4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'home.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền</h2>\r\n', 1, ',8,', 'vi', 1, '2014-06-06 20:49:00', '2014-06-03 15:51:26', '2014-07-25 16:41:26', 'admin', 'admin', 0),
-(5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<p><span style="line-height: 1.6em;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</span></p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>&#39;Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, ',2,', 'vi', 1, '2014-06-03 20:57:00', '2014-06-03 15:57:55', '2014-07-25 16:44:28', 'admin', 'admin', 0);
+(4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'home.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi &iacute;ch m&ugrave;ng chống muỗi sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo <a href="http://localhost/all/thoitrang9/thoi-trang-nam/mstyle-850015-ao-thun-co-tron-den.html" title="day">d&acirc;y chuyền</a></h2>\r\n', 1, ',8,', 'vi', 1, '2014-06-06 20:49:00', '2014-06-03 15:51:26', '2014-10-22 19:37:08', 'admin', 'admin', 0),
+(5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<h2><span style="line-height: 1.6em;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</span></h2>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>&#39;Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, ',2,', 'vi', 1, '2014-06-03 20:57:00', '2014-06-03 15:57:55', '2014-10-22 19:58:49', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------
 
@@ -66,7 +65,7 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `metaD
 --
 
 CREATE TABLE IF NOT EXISTS `web_article_cm` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(60) NOT NULL,
   `content` text NOT NULL,
@@ -77,8 +76,7 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) NOT NULL,
   `user_update` varchar(20) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -88,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_config` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(30) NOT NULL,
   `lang` char(2) NOT NULL DEFAULT '',
   `domain` varchar(30) DEFAULT NULL,
@@ -110,9 +108,7 @@ CREATE TABLE IF NOT EXISTS `web_config` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) NOT NULL,
   `user_update` varchar(20) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `lang` (`lang`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
@@ -131,7 +127,7 @@ INSERT INTO `web_config` (`id`, `name`, `lang`, `domain`, `max_limit_1`, `max_li
 --
 
 CREATE TABLE IF NOT EXISTS `web_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -143,8 +139,7 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) NOT NULL,
   `user_update` varchar(20) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
@@ -154,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_ds_quanhuyen` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `phigiaohang` int(8) NOT NULL DEFAULT '0',
   `tinhthanh_id` int(11) NOT NULL,
@@ -165,8 +160,7 @@ CREATE TABLE IF NOT EXISTS `web_ds_quanhuyen` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `user_update` datetime DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=901 ;
 
 --
@@ -852,8 +846,7 @@ CREATE TABLE IF NOT EXISTS `web_ds_tinhthanh` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) NOT NULL,
   `user_update` varchar(20) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -932,12 +925,11 @@ INSERT INTO `web_ds_tinhthanh` (`id`, `name`, `phigiaohang`, `status`, `order`, 
 --
 
 CREATE TABLE IF NOT EXISTS `web_language` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(20) NOT NULL,
   `ma` varchar(10) NOT NULL,
   `order` int(3) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
+  `status` tinyint(1) DEFAULT '1'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
@@ -955,7 +947,7 @@ INSERT INTO `web_language` (`id`, `name`, `ma`, `order`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_list_sendmail` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+`id` int(2) NOT NULL,
   `name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
@@ -964,8 +956,7 @@ CREATE TABLE IF NOT EXISTS `web_list_sendmail` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(20) NOT NULL,
   `user_update` varchar(20) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
@@ -985,7 +976,7 @@ INSERT INTO `web_list_sendmail` (`id`, `name`, `email`, `lang`, `status`, `date_
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `name_alias` varchar(100) NOT NULL,
   `url` varchar(150) NOT NULL,
@@ -1004,8 +995,7 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
@@ -1018,14 +1008,14 @@ INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, 
 (3, 'Sản phẩm khuyến mãi', 'san-pham-khuyen-mai', 'san-pham-khuyen-mai/', '', 'Sản phẩm khuyến mãi', 'Sản phẩm thời trang khuyến mãi', 'sản phẩm khuyến mãi,san pham khuyen mai', 1, 3, ',9,', 1, 1, 'vi', 1, '2014-05-29 00:00:00', '2014-07-25 09:23:15', 'admin', 'admin', 0),
 (4, 'Áo Nam', 'ao-nam', 'ao-nam/', '', 'Áo Nam', 'Áo Nam', 'áo nam,ao nam', 13, 3, ',4,', 1, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-07-26 11:10:04', 'admin', 'admin', 0),
 (5, 'Quần Nam', 'quan-nam', 'quan-nam/', '', 'Quần Nam', 'Quần Nam', 'quần nam,quan nam', 13, 3, ',4,', 2, 0, 'vi', 1, '2014-05-29 00:00:00', '2014-07-26 10:55:00', 'admin', 'admin', 0),
-(6, 'Tất cả sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm thời trang 9', 'Sản phẩm', 'thời trang HEO XINH shop,thời trang nam,thời trang nữ,thời trang cho bé,phụ kiện thời trang', 0, 3, ',3,4,', 3, 0, 'vi', 1, '2014-05-30 10:19:14', '2014-08-07 15:04:34', 'admin', 'admin', 0),
+(6, 'Sản phẩm', 'san-pham', 'san-pham/', '', 'Sản phẩm thời trang 9', 'Sản phẩm', 'thời trang HEO XINH shop,thời trang nam,thời trang nữ,thời trang cho bé,phụ kiện thời trang', 0, 3, ',2,3,4,', 3, 0, 'vi', 1, '2014-05-30 10:19:14', '2014-10-22 19:05:59', 'admin', 'admin', 0),
 (7, 'Hướng dẫn thanh toán', 'huong-dan-thanh-toan', 'huong-dan-thanh-toan/', '', 'Hướng dẫn thanh toán', 'Hướng dẫn thanh toán', 'hướng dẫn thanh toán,huong dan thanh toan', 0, 2, ',2,3,', 4, 0, 'vi', 1, '2014-05-30 11:06:51', '2014-08-07 15:06:37', 'admin', 'admin', 0),
 (8, 'Thông tin sản phẩm', 'thong-tin-san-pham', 'thong-tin-san-pham/', '', 'Thông tin sản phẩm', 'Thông tin sản phẩm', 'thông tin sản phẩm,thong tin san pham', 0, 2, ',2,3,', 5, 0, 'vi', 1, '2014-05-30 11:07:21', '2014-08-07 15:06:42', 'admin', 'admin', 0),
 (9, 'Liên hệ', 'lien-he', 'lien-he/', '', 'Liên hệ', 'Liên hệ', 'liên hệ,lien he', 0, 13, ',2,3,', 6, 0, 'vi', 1, '2014-05-30 11:07:57', '2014-08-07 15:06:44', 'admin', 'admin', 0),
 (10, 'Home', 'home', '/?lang=en', '', 'Home', 'Home', 'Home', 0, 1, ',2,', 1, 0, 'en', 1, '2014-06-14 05:12:47', '2014-06-14 05:15:41', 'admin', 'admin', 0),
 (11, 'About US', 'about-us', 'about-us/', '', 'About US', 'About US', 'About US', 0, 2, ',2,', 2, 0, 'en', 1, '2014-06-14 05:15:37', NULL, 'admin', NULL, 0),
 (12, 'Products', 'products', 'products/', '', 'Products', 'Products', 'Products', 0, 3, ',2,', 3, 0, 'en', 1, '2014-06-14 05:16:42', NULL, 'admin', NULL, 0),
-(13, 'Thời trang Nam', 'thoi-trang-nam', 'thoi-trang-nam/', '', 'Thời trang dành cho Nam giới', 'Hãy cập nhật xu hướng thời trang nam mới nhất cùng quần, áo sơ mi nam, phụ kiện, thắt lưng, ví da, giày nam. Mua ngay thời trang nam giá tốt tại heoxinhshop.com', 'thời trang nam,thoi trang nam,quần thời trang nam,áo thời trang nam', 6, 3, ',4,', 1, 1, 'vi', 1, '2014-06-14 07:58:44', '2014-08-07 12:38:45', 'admin', 'admin', 0),
+(13, 'Thời trang Nam', 'thoi-trang-nam', 'thoi-trang-nam/', '', 'Thời trang dành cho Nam giới', 'Hãy cập nhật xu hướng thời trang nam mới nhất cùng quần, áo sơ mi nam, phụ kiện, thắt lưng, ví da, giày nam. Mua ngay thời trang nam giá tốt tại heoxinhshop.com', 'thời trang nam,thoi trang nam,quần thời trang nam,áo thời trang nam', 6, 3, ',2,4,', 1, 1, 'vi', 1, '2014-06-14 07:58:44', '2014-10-22 19:51:01', 'admin', 'admin', 0),
 (14, 'Thời trang Nữ', 'thoi-trang-nu', 'thoi-trang-nu/', '', 'Thời trang dành cho Nữ giới', 'HEO XINH Shop online quần áo nữ, trang phục công sở nữ, đồ nữ đẹp, giày dép nữ, phụ kiện thời trang nữ giá tốt.', 'thời trang nữ,thoi trang nu,quần áo nữ,trang phục công sở', 6, 3, ',2,4,', 2, 0, 'vi', 1, '2014-06-14 08:00:30', '2014-07-26 10:57:02', 'admin', 'admin', 0),
 (15, 'Thời trang Trẻ em - Bé', 'thoi-trang-tre-em-be', 'thoi-trang-tre-em-be/', '', 'Thời trang dành cho Trẻ em - Bé', 'Thời trang dành cho Trẻ em - Bé tốt nhất sản phẩm chất lượng tốt cho sức khỏe con bạn.', 'thời trang trẻ em bé,thoi trang tre em be', 6, 3, ',2,4,', 3, 0, 'vi', 1, '2014-06-14 08:00:56', '2014-07-26 10:57:24', 'admin', 'admin', 0),
 (16, 'Đặt hàng', 'dat-hang', 'dat-hang/', '', 'Đặt hàng', 'Đặt hàng', 'đặt hàng,dat hang', 0, 7, ',9,', 100, 0, 'vi', 1, '2014-06-21 09:21:42', NULL, 'admin', NULL, 0),
@@ -1045,15 +1035,14 @@ INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_hinh`, `title`, 
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_admin` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `url` varchar(150) NOT NULL,
   `url_hinh` varchar(150) DEFAULT NULL,
   `order` int(3) DEFAULT '0',
   `status` tinyint(1) DEFAULT '1',
   `other` tinyint(1) DEFAULT '0',
-  `ajax` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `ajax` varchar(100) DEFAULT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
@@ -1092,11 +1081,10 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_hinh`, `order`, `status`
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_position` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `order` int(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `status` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
@@ -1121,11 +1109,10 @@ INSERT INTO `web_menu_position` (`id`, `name`, `order`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_type` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `order` int(2) NOT NULL,
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `status` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
@@ -1155,7 +1142,7 @@ INSERT INTO `web_menu_type` (`id`, `name`, `order`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_photo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `url_hinh` varchar(150) DEFAULT NULL,
   `menu_id` varchar(10) DEFAULT NULL,
@@ -1166,8 +1153,7 @@ CREATE TABLE IF NOT EXISTS `web_photo` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -1184,7 +1170,7 @@ INSERT INTO `web_photo` (`id`, `name`, `url_hinh`, `menu_id`, `order`, `lang`, `
 --
 
 CREATE TABLE IF NOT EXISTS `web_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `masp` varchar(10) NOT NULL,
@@ -1205,8 +1191,7 @@ CREATE TABLE IF NOT EXISTS `web_product` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
@@ -1218,7 +1203,7 @@ INSERT INTO `web_product` (`id`, `name`, `name_alias`, `masp`, `url`, `url_hinh`
 (3, 'Lata TR02 - Túi du lịch (Da bò nhạt)', 'lata-tr02-tui-du-lich-da-bo-nhat', 'TR02', 'thoi-trang-nu/lata-tr02-tui-du-lich-da-bo-nhat.html', 'lata-tr02-tui-du-lich-da-bo-nhat.jpg', 'Một chiếc túi chắc chắn, bền đẹp là phụ kiện không thể thiếu cho những chuyến du lịch. Sở hữu kiểu dáng trẻ trung, năng động với từng đường may chắc chắn, túi du lịch Lata TR02 là lựa chọn lý tưởng dành cho bạn.', 'lata tr02 túi du lịch da bò nhạt,lata tr02 tui du lich da bo nhat', 899000, 999000, '<h2>Một chiếc t&uacute;i chắc chắn, bền đẹp l&agrave; phụ kiện kh&ocirc;ng thể thiếu cho những chuyến du lịch. Sở hữu kiểu d&aacute;ng trẻ trung, năng động với từng đường may chắc chắn, t&uacute;i du lịch&nbsp;Lata TR02&nbsp;l&agrave; lựa chọn l&yacute; tưởng d&agrave;nh cho bạn.</h2>\r\n\r\n<p>T&uacute;i được l&agrave;m từ chất liệu da tổng hợp với kh&ocirc;ng gian rộng r&atilde;i, chia th&agrave;nh nhiều ngăn, bạn c&oacute; thể dễ d&agrave;ng sắp xếp c&aacute;c vật dụng c&aacute; nh&acirc;n của m&igrave;nh một c&aacute;ch gọn g&agrave;ng.</p>\r\n\r\n<p><strong>ĐẶC ĐIỂM NỔI BẬT</strong></p>\r\n\r\n<p><strong>Chất liệu da tổng hợp</strong><br />\r\nT&uacute;i l&agrave;m từ da tổng hợp cao cấp với c&aacute;c đường may tỉ mỉ, đảm bảo bền chắc suốt thời gian sử dụng, đặc biệt l&agrave; trong những chuyến du lịch xa nh&agrave;.</p>\r\n\r\n<p><strong>Thiết kế đơn giản, tinh tế</strong><br />\r\nThiết kế tuy đơn giản nhưng vẫn tinh tế, gi&uacute;p bạn trở n&ecirc;n thu h&uacute;t v&agrave; nổi bật hơn.</p>\r\n\r\n<p><strong>Th&ocirc;ng tin chi tiết</strong><br />\r\n- K&iacute;ch thước: 65 x 25 x 25cm<br />\r\n- K&iacute;ch thước d&acirc;y đeo: 120cm<br />\r\n- Số ngăn: 1 ngăn ch&iacute;nh, 4 ngăn phụ ngo&agrave;i, 2 ngăn phụ trong</p>\r\n', '<p>Chất liệu da tổng hợp</p>\r\n\r\n<p>Thiết kế trẻ trung, hiện đại</p>\r\n\r\n<p>Xuất xứ Việt Nam</p>\r\n', 1, ',3,6,14,', 'vi', 1, '2014-07-26 10:08:00', '2014-07-26 10:10:09', '2014-07-26 10:13:34', 'admin', 'admin', 0),
 (2, 'Thắt lưng nam da bò', 'that-lung-nam-da-bo', 'TTN-01', 'thoi-trang-nam/that-lung-nam-da-bo.html', 'that-lung-nam-da-bo.jpg', 'Bên cạnh trang phục, bóp ví, việc lựa chọn và sở hữu riêng cho mình 1 chiếc thắt lưng cá tính cũng góp phần bật lên phong cách cho các bạn nam, thắt lưng nam được may thủ công từ chất liệu 100% da bò', 'thắt lưng nam da bò,that lung nam da bo', 709000, 830000, '<h2>Bên cạnh trang phục, bóp ví, việc lựa chọn và sở hữu riêng cho mình 1 chiếc thắt lưng cá tính cũng góp phần bật lên phong cách cho các bạn nam, thắt lưng nam được may thủ công từ chất liệu 100% da bò</h2>\r\n\r\n<p><strong>Chất liệu 100% da bò</strong></p>\r\n\r\n<p>Thắt lưng sử dụng chất liệu từ da cao cấp, bề mặt da láng, bền đẹp, được xử lý và gia công với tiêu chuẩn cao. Khi dùng lực kéo, thắt lưng da bò rất chặt và không có độ giãn, mặt sau được chia theo sớ tự nhiên, không đều tăm tắp như silicon. Quan trọng nhất, khi đốt trên ngọn lửa, dây bằng silicon sẽ để lại vết cháy và vón cục, với thắt lưng da bò thật sẽ không có dấu vết để lại. Bạn có thể yên tâm sử dụng tối đa tiện ích của&nbsp;T&amp;T T01060N0&nbsp;mà không lo dây nhanh hỏng hoặc rách.</p>\r\n\r\n<p><strong>Đầu gài truyền thồng</strong></p>\r\n\r\n<p>Thắt lưng&nbsp;da bò&nbsp;có thiết kế phần đầu gài theo kiểu truyền thống, dễ sử dụng cùng độ dài 125cm.</p>\r\n\r\n<p><strong>Màu sắc sang trọng, nam tính</strong></p>\r\n\r\n<p>Sản phẩm được phối màu sang trọng, năng động cùng điểm nhấn là 2 đường đục lỗ vuông song song, giúp tôn thêm vẻ đẹp nam tính cho các đấng mày râu.</p>\r\n', '<p>Chất liệu da bò</p>\r\n\r\n<p>Chiều dài 125cm</p>\r\n\r\n<p>Giao hàng toàn quốc</p>\r\n', 1, ',3,6,13,15,', 'vi', 1, '2014-06-14 14:15:00', '2014-06-14 09:16:57', '2014-07-25 14:47:49', 'admin', 'admin', 0),
 (4, 'Fashion TV Watch Paris FT0275 - Đồng hồ nữ (Đen)', 'fashion-tv-watch-paris-ft0275-dong-ho-nu-den', 'FT0275', 'thoi-trang-nam/fashion-tv-watch-paris-ft0275-dong-ho-nu-den.html', 'fashion-tv-watch-paris-ft0275-dong-ho-nu-den.jpg', 'Đồng hồ không chỉ là món đồ hữu ích để xem giờ mà còn là một phụ kiện giúp bạn thể hiện đẳng cấp, gu thẩm mỹ cũng như nét cá tính của mình. ', 'fashion tv watch paris ft0275 đồng hồ nữ đen,fashion tv watch paris ft0275 dong ho nu den', 3969000, 4409000, '<p><strong>TH&Ocirc;NG SỐ KỸ THUẬT</strong></p>\r\n\r\n<p>Xuất xứ:&nbsp;Ph&aacute;p<br />\r\nKiểu m&aacute;y:&nbsp;Quartz<br />\r\nD&agrave;nh cho:&nbsp;Nữ<br />\r\nChất liệu vỏ:&nbsp;Th&eacute;p kh&ocirc;ng gỉ&nbsp;<br />\r\nChất liệu mặt trước:&nbsp;K&iacute;nh Sapphire<br />\r\nChất liệu mặt sau:&nbsp;Th&eacute;p kh&ocirc;ng gỉ<br />\r\nChất liệu d&acirc;y:&nbsp;D&acirc;y da<br />\r\nV&agrave;nh đồng hồ:&nbsp;V&agrave;nh đ&iacute;nh đ&aacute;<br />\r\nK&iacute;ch thước mặt:&nbsp;41mm<br />\r\nĐộ d&agrave;y mặt:&nbsp;9mm<br />\r\nLoại mặt:&nbsp;Kh&ocirc;ng số, kh&ocirc;ng lịch<br />\r\nSố kim:&nbsp;3 kim<br />\r\nĐộ chịu nước:&nbsp;5ATM<br />\r\nNăng lượng sử dụng:&nbsp;Pin<br />\r\nThời hạn bảo h&agrave;nh:&nbsp;2 năm</p>\r\n', '<p>M&aacute;y Quartz</p>\r\n\r\n<p>Thiết kế trẻ trung</p>\r\n\r\n<p>Xuất xứ Ph&aacute;p</p>\r\n', 1, ',3,6,13,', 'vi', 1, '2014-07-26 10:11:00', '2014-07-26 10:13:09', NULL, 'admin', NULL, 0),
-(5, 'Mstyle 850015 - Áo thun cổ tròn (Đen)', 'mstyle-850015-ao-thun-co-tron-den', '850015', 'thoi-trang-nam/mstyle-850015-ao-thun-co-tron-den.html', 'mstyle-850015-ao-thun-co-tron-den.jpg', 'Bên cạnh sơ mi chỉnh tề thì áo thun là lựa chọn lý tưởng dành cho phái mạnh. Áo thun cổ tròn Mstyle 850015 sở hữu phom dáng năng động với những đường cắt may tinh tế, tôn vinh vẻ đẹp hiện đại của người mặc. ', 'mstyle 850015 áo thun cổ tròn đen,mstyle 850015 ao thun co tron den', 160000, 200000, '<p>B&ecirc;n cạnh sơ mi chỉnh tề th&igrave; &aacute;o thun l&agrave; lựa chọn l&yacute; tưởng d&agrave;nh cho ph&aacute;i mạnh. &Aacute;o thun cổ tr&ograve;n&nbsp;Mstyle 850015&nbsp;sở hữu phom d&aacute;ng năng động với những đường cắt may tinh tế, t&ocirc;n vinh vẻ đẹp hiện đại của người mặc. Với chiếc &aacute;o n&agrave;y, bạn c&oacute; thể dễ d&agrave;ng kết hợp c&ugrave;ng nhiều phụ kiện kh&aacute;c nhau. Diện trong những buổi họp mặt bạn b&egrave;, dạo phố, d&atilde; ngoại, hẳn bạn sẽ trở n&ecirc;n nổi bật trong mắt mọi người.</p>\r\n\r\n<p><strong>ĐẶC ĐIỂM NỔI BẬT</strong></p>\r\n\r\n<p><strong>Loại sản phẩm:&nbsp;&Aacute;o thun cổ tr&ograve;n.</strong><br />\r\nChất liệu:&nbsp;Thun cao cấp, co gi&atilde;n tốt, tho&aacute;ng m&aacute;t, thấm h&uacute;t mồ h&ocirc;i tốt.<br />\r\nThiết kế:&nbsp;Trẻ trung, năng động, ph&ugrave; hợp c&aacute;c bạn trẻ hiện đại.<br />\r\nGợi &yacute; phối phụ kiện:&nbsp;Quần jeans, quần short c&ugrave;ng gi&agrave;y sneakers v&agrave; v&agrave;i phụ kiện như mũ snapback, k&iacute;nh m&aacute;t l&agrave; lựa chọn l&yacute; tưởng.</p>\r\n', '<p>Thiết kế trẻ trung; hiện đại</p>\r\n\r\n<p>Ph&ugrave; hợp nhiều phong c&aacute;ch trang phục</p>\r\n\r\n<p>Xuất xứ Việt Nam</p>\r\n', 1, ',3,6,13,', 'vi', 1, '2014-07-26 10:13:00', '2014-07-26 10:14:57', NULL, 'admin', NULL, 0);
+(5, 'Mstyle 850015 - Áo thun cổ tròn (Đen) nam tinh', 'mstyle-850015-ao-thun-co-tron-den', '850015', 'thoi-trang-nam/mstyle-850015-ao-thun-co-tron-den.html', 'mstyle-850015-ao-thun-co-tron-den.jpg', 'Bên cạnh sơ mi chỉnh tề thì áo thun là lựa chọn lý tưởng dành cho phái mạnh. Áo thun cổ tròn Mstyle 850015 sở hữu phom dáng năng động với những đường cắt may tinh tế, tôn vinh vẻ đẹp hiện đại của người mặc. ', 'mstyle 850015 áo thun cổ tròn đen,mstyle 850015 ao thun co tron den', 160000, 0, '<p>B&ecirc;n cạnh sơ mi chỉnh tề th&igrave; &aacute;o thun l&agrave; lựa chọn l&yacute; tưởng d&agrave;nh cho ph&aacute;i mạnh. &Aacute;o thun cổ tr&ograve;n&nbsp;Mstyle 850015&nbsp;sở hữu phom d&aacute;ng năng động với những đường cắt may tinh tế, t&ocirc;n vinh vẻ đẹp hiện đại của người mặc. Với chiếc &aacute;o n&agrave;y, bạn c&oacute; thể dễ d&agrave;ng kết hợp c&ugrave;ng nhiều phụ kiện kh&aacute;c nhau. Diện trong những buổi họp mặt bạn b&egrave;, dạo phố, d&atilde; ngoại, hẳn bạn sẽ trở n&ecirc;n nổi bật trong mắt mọi người.</p>\r\n\r\n<p><strong>ĐẶC ĐIỂM NỔI BẬT</strong></p>\r\n\r\n<p><strong>Loại sản phẩm:&nbsp;&Aacute;o thun cổ tr&ograve;n.</strong><br />\r\nChất liệu:&nbsp;Thun cao cấp, co gi&atilde;n tốt, tho&aacute;ng m&aacute;t, thấm h&uacute;t mồ h&ocirc;i tốt.<br />\r\nThiết kế:&nbsp;Trẻ trung, năng động, ph&ugrave; hợp c&aacute;c bạn trẻ hiện đại.<br />\r\nGợi &yacute; phối phụ kiện:&nbsp;Quần jeans, quần short c&ugrave;ng gi&agrave;y sneakers v&agrave; v&agrave;i phụ kiện như mũ snapback, k&iacute;nh m&aacute;t l&agrave; lựa chọn l&yacute; tưởng.</p>\r\n', '<p>Thiết kế trẻ trung; hiện đại</p>\r\n\r\n<p>Ph&ugrave; hợp nhiều phong c&aacute;ch trang phục</p>\r\n\r\n<p>Xuất xứ Việt Nam</p>\r\n', 1, ',3,6,13,4,', 'vi', 1, '2014-07-26 10:13:00', '2014-07-26 10:14:57', '2014-10-22 19:27:53', 'admin', 'admin', 0);
 
 -- --------------------------------------------------------
 
@@ -1227,7 +1212,7 @@ INSERT INTO `web_product` (`id`, `name`, `name_alias`, `masp`, `url`, `url_hinh`
 --
 
 CREATE TABLE IF NOT EXISTS `web_product_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `email` varchar(80) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -1246,9 +1231,15 @@ CREATE TABLE IF NOT EXISTS `web_product_order` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=807084248 ;
+  `delete` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=822102202 ;
+
+--
+-- Dumping data for table `web_product_order`
+--
+
+INSERT INTO `web_product_order` (`id`, `name`, `email`, `phone`, `tinh_thanh`, `quan_huyen`, `diachi`, `tongtien`, `tongsoluong`, `phigiaohang`, `giamgia`, `thanhtien`, `other`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
+(822102201, 'Nhan', 'hieu@yahoo.com', '0988388003', 3, 146, '123 cmt 8', 3969000, 1, 15000, 0, 3984000, 'test', 'vi', 0, '2014-10-22 19:22:01', '2014-10-22 19:22:01', 'khachhang', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1257,7 +1248,7 @@ CREATE TABLE IF NOT EXISTS `web_product_order` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `product_id` int(5) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -1271,9 +1262,15 @@ CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+  `delete` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `web_product_order_detail`
+--
+
+INSERT INTO `web_product_order_detail` (`id`, `name`, `product_id`, `order_id`, `soluong`, `dongia`, `giamgia`, `tien`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
+(18, 'Fashion TV Watch Paris FT0275 - Đồng hồ nữ (Đen)', 4, 822102201, 1, 3969000, 0, 3969000, 'vi', 1, '2014-10-22 19:22:01', NULL, 'khachhang', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1282,7 +1279,7 @@ CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_slider_banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `url_hinh` varchar(150) DEFAULT NULL,
   `url` varchar(200) DEFAULT NULL,
@@ -1295,8 +1292,7 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
@@ -1314,10 +1310,9 @@ INSERT INTO `web_slider_banner` (`id`, `name`, `url_hinh`, `url`, `position_id`,
 --
 
 CREATE TABLE IF NOT EXISTS `web_slider_banner_position` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
+  `status` tinyint(1) DEFAULT '1'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
@@ -1336,7 +1331,7 @@ INSERT INTO `web_slider_banner_position` (`id`, `name`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `diachi` varchar(250) NOT NULL,
   `phone` varchar(30) NOT NULL,
@@ -1361,9 +1356,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
+  `delete` tinyint(1) DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
@@ -1382,9 +1375,8 @@ INSERT INTO `web_users` (`id`, `name`, `diachi`, `phone`, `email`, `ngaysinh`, `
 --
 
 CREATE TABLE IF NOT EXISTS `web_users_group` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+`id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
@@ -1403,7 +1395,7 @@ INSERT INTO `web_users_group` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_video` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `url_hinh` varchar(150) NOT NULL,
@@ -1419,8 +1411,7 @@ CREATE TABLE IF NOT EXISTS `web_video` (
   `date_update` datetime DEFAULT NULL,
   `user_create` varchar(30) NOT NULL,
   `user_update` varchar(30) DEFAULT NULL,
-  `delete` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `delete` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
@@ -1430,6 +1421,240 @@ CREATE TABLE IF NOT EXISTS `web_video` (
 INSERT INTO `web_video` (`id`, `name`, `name_alias`, `url_hinh`, `url_video`, `metaDescription`, `metaKeyword`, `content`, `other`, `menu_id`, `lang`, `status`, `date_create`, `date_update`, `user_create`, `user_update`, `delete`) VALUES
 (1, 'Video trang chủ', 'video-trang-chu', 'Chrysanthemum.jpg', '432432432', 'Video trang chủ', 'video trang chủ,video trang chu', '<p>Video trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủ</p>\r\n', 1, ',8,', 'vi', 1, '2014-05-30 10:29:43', '2014-05-30 11:12:31', 'admin', 'admin', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `web_article`
+--
+ALTER TABLE `web_article`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_article_cm`
+--
+ALTER TABLE `web_article_cm`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_config`
+--
+ALTER TABLE `web_config`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `lang` (`lang`);
+
+--
+-- Indexes for table `web_contact`
+--
+ALTER TABLE `web_contact`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_ds_quanhuyen`
+--
+ALTER TABLE `web_ds_quanhuyen`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_ds_tinhthanh`
+--
+ALTER TABLE `web_ds_tinhthanh`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_language`
+--
+ALTER TABLE `web_language`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_list_sendmail`
+--
+ALTER TABLE `web_list_sendmail`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu`
+--
+ALTER TABLE `web_menu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_admin`
+--
+ALTER TABLE `web_menu_admin`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_position`
+--
+ALTER TABLE `web_menu_position`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_type`
+--
+ALTER TABLE `web_menu_type`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_photo`
+--
+ALTER TABLE `web_photo`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product`
+--
+ALTER TABLE `web_product`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product_order`
+--
+ALTER TABLE `web_product_order`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product_order_detail`
+--
+ALTER TABLE `web_product_order_detail`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_slider_banner`
+--
+ALTER TABLE `web_slider_banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_slider_banner_position`
+--
+ALTER TABLE `web_slider_banner_position`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_users`
+--
+ALTER TABLE `web_users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `web_users_group`
+--
+ALTER TABLE `web_users_group`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_video`
+--
+ALTER TABLE `web_video`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `web_article`
+--
+ALTER TABLE `web_article`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `web_article_cm`
+--
+ALTER TABLE `web_article_cm`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `web_config`
+--
+ALTER TABLE `web_config`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_contact`
+--
+ALTER TABLE `web_contact`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_ds_quanhuyen`
+--
+ALTER TABLE `web_ds_quanhuyen`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=901;
+--
+-- AUTO_INCREMENT for table `web_language`
+--
+ALTER TABLE `web_language`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_list_sendmail`
+--
+ALTER TABLE `web_list_sendmail`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_menu`
+--
+ALTER TABLE `web_menu`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+--
+-- AUTO_INCREMENT for table `web_menu_admin`
+--
+ALTER TABLE `web_menu_admin`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `web_menu_position`
+--
+ALTER TABLE `web_menu_position`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `web_menu_type`
+--
+ALTER TABLE `web_menu_type`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `web_photo`
+--
+ALTER TABLE `web_photo`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `web_product`
+--
+ALTER TABLE `web_product`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `web_product_order`
+--
+ALTER TABLE `web_product_order`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=822102202;
+--
+-- AUTO_INCREMENT for table `web_product_order_detail`
+--
+ALTER TABLE `web_product_order_detail`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `web_slider_banner`
+--
+ALTER TABLE `web_slider_banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_slider_banner_position`
+--
+ALTER TABLE `web_slider_banner_position`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `web_users`
+--
+ALTER TABLE `web_users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `web_users_group`
+--
+ALTER TABLE `web_users_group`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `web_video`
+--
+ALTER TABLE `web_video`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
