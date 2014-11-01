@@ -12,7 +12,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 	$phuongthuc_giaohang = '<p>Bạn sẽ thanh toán <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> bằng tiền mặt khi nhận hàng tại nhà.</p>';
 }else{
 	$phuongthuc_giaohang = '<p>Bạn sẽ phải chuyển khoản trước với số tiền <b>'.number_format($row['thanhtien'],0,',','.').'đ</b> <br />
-	<span style="margin-left:35px; display:block">Thông tin chuyển khoản vui lòng <a href="http://mungchongmuoi.com.vn/huong-dan-mua-hang-thanh-toan/thong-tin-thanh-toan-chuyen-khoan.html">ấn vào đây</a>.</span>
+	<span style="margin-left:35px; display:block">Thông tin chuyển khoản vui lòng <a href="'.CONS_BASE_URL.'/huong-dan-thanh-toan/">ấn vào đây</a>.</span>
 	<span style="margin-left:35px; font-style:italic; display:block">*** Lưu ý: Nội dung chuyển khoản: <b>mã đơn hàng '.$row['id'].'</b></span>
 	<span style="margin-left:220px; font-style:italic; display:block">hoặc <b>'.$row['name'].' + '.$row['phone'].'</b></span>
 	</p>';
@@ -100,17 +100,17 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 			echo $ct_donhang;
 
 			if($row['status']==3){
-				$title = 'Mùng chống muỗi ChamCham';
-				$subject = 'No-reply | Mã số đơn hàng mùng chống muỗi: '.$row['id'];
+				$title = 'Đơn hàng ThoiTrang9.com';
+				$subject = 'No-reply | Mã số đơn hàng ThoiTrang9.com: '.$row['id'];
 				$body = '<div style="width:770px; line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif; margin:20px auto">
 					<p style="color:#F00; text-align:center">Neu khong doc duoc tieng Viet, vui long chon menu View / Encoding -&gt; Chon charset la UTF-8.</p>
 					
-					<div style="width:770px; padding:5px; border:solid 5px #3C9401">
+					<div style="width:770px; padding:5px; border:solid 5px #F70463">
 						<h3>Kính chào Quý khách!</h3>
-						<p>Cám ơn Quý khách đã đặt hàng tại Mungchongmuoi.com.vn</p>
+						<p>Cám ơn Quý khách đã đặt hàng tại <b>ThoiTrang9.com</b></p>
 						<p>Đơn hàng của Quý khách có mã số <b style="color:#00F">'.$row['id'].'</b>, các thông tin chi tiết về đơn hàng được liệt kê dưới đây:</p>
 						
-						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#3C9401">Thông tin đơn hàng</div>
+						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#F70463">Thông tin đơn hàng</div>
 						<p style="padding-left:5px; font-weight:bold">Địa chỉ email: '.$row['email'].'</p>
 						<table width="100%" border="0" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif">
 							<tr>
@@ -137,7 +137,7 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 							</tr>
 						</table>
 						
-						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#3C9401">Chi tiết đơn hàng</div>
+						<div style="color:#FFF; font-weight:bold; padding:3px 5px 3px 5px; background-color:#F70463">Chi tiết đơn hàng</div>
 						<table width="100%" border="0" cellpadding="5" cellspacing="0" style="line-height:140%; color:#333; font-size:13px; font-family:Arial, Helvetica, sans-serif">
 							<tr>
 								<td><b>Mã số đơn hàng</b></td>
@@ -169,18 +169,18 @@ if($row['tinh_thanh']==3 || $row['tinh_thanh']==2){
 						<p style="font-style:italic">'.$other.'</p>
 						<p><b>Nhân viên giao nhận</b> sẽ liên hệ với quí khách để hẹn lịch giao hàng. Trong trường hợp quí khách đi vắng, vui lòng uỷ thác cho người khác nhận hàng và thanh toán tiền thay.</p>
 						<p>Cảm ơn quý khách và kính chúc mọi sự tốt lành!<br />
-						<span style="font-weight:bold; color:#307601">Mungchongmuoi.com.vn - ChamCham mùng chống muỗi</span></p>
-						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$row_config['tel'].'</b> hoặc email: <b>'.$row_config['email'].'</b></p>
+						<span style="font-weight:bold; color:#307601">ThoiTrang9.com - '.$this->_config['slogan'].'</span></p>
+						<p style="font-style:italic; color:#666">Mọi thắc mắc vui lòng liên hệ số điện thoại: <b>'.$this->_config['tel'].'</b> hoặc email: <b>'.$this->_config['email'].'</b></p>
 					</div>
 				</div>';
 				
 				$add_address = array();
 				$add_address[] = array('email'=>$row['email'],'name'=>$row['name']);
 				$add_bcc = array();
-				//$add_bcc[] = array('email'=>$row_config['email'],'name'=>'Mùng chống muỗi');
-				$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
+				$add_bcc[] = array('email'=>$this->_config['email'],'name'=>'ThoiTrang9.com');
+				/*$add_bcc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Trần Nhân');
 				$add_bcc[] = array('email'=>'thanhdatnhattdn@gmail.com','name'=>'Thành');
-				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');
+				$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Tấn Hảo');*/
 				/*cap nhat trang thai*/
 				$this->_model->_web_product_order_update_status($row['id']);
 				

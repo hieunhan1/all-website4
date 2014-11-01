@@ -64,21 +64,22 @@ $row_email = $this->_model->_web_product_order_email($_GET['email']);
 </div>
 <script>
 $(document).ready(function(e) {
-	/*kiem tra phi gh*/
-	var code = $("select[name=tinh_thanh]").val();
-	var ma_quan_huyen = $("#quan_huyen").attr("ma");
-	$.post("ajax/",{data_quanhuyen:code,ma_quan_huyen:ma_quan_huyen},function(data){
-		$("select[name=quan_huyen]").html(data);
-	});
-	$("select[name=tinh_thanh]").change(function(){
-		var code = $(this).val();
+	/*kiem tra phi giao hang*/
+	function tinh_thanh(){
+		var code = $("select[name=tinh_thanh]").val();
+		var ma_quan_huyen = $("#quan_huyen").attr("ma");
 		$("select[name=quan_huyen]").html('<option value="">Đang tải danh sách...</option>');
-		$.post("ajax/",{data_quanhuyen:code},function(data){
+		$.post("ajax/",{data_quanhuyen:code,ma_quan_huyen:ma_quan_huyen},function(data){
 			$("select[name=quan_huyen]").html(data);
 		});
+	}
+	tinh_thanh();
+	$("select[name=tinh_thanh]").change(function(){
+		tinh_thanh();
 	});
-	$("select[name=quan_huyen]").change(function(){
-		var code = $(this).val();
+	
+	function phigiaohang(){
+		var code = $("select[name=quan_huyen]").val();
 		$("#order_sp_info_loading").show();
 		$.ajax({
 			url:"ajax/",
@@ -98,8 +99,12 @@ $(document).ready(function(e) {
 				},500);
 			}
 		});
+	}
+	phigiaohang();
+	$("select[name=quan_huyen]").change(function(){
+		phigiaohang();
 	});
-	/*end kiem tra phi gh*/
+	/*end kiem tra phi giao hang*/
 	
 	$(".order_sp_btn a").click(function(){
 		var hoten = check_text_length("input[name=hoten]","#hoten","Họ tên >= 2 ký tự",2);
