@@ -36,7 +36,7 @@ foreach($data as $row){
             </div>';
         }
         echo '<div id="phantrang">'.$this->_model->_pageslist($current_menu['url'], $totalrows, 5, $per_page, $currentpage).'</div>';
-    }else if(count($data)==1) header('location: '.CONS_BASE_URL.'/'.$this->_model->_link_detail($data[0]['menu_id']).$data[0]['name_alias'].'.html');
+    }else if(count($data)==1) header('location: '.CONS_BASE_URL.'/'.$data[0]['url']);
     else echo '<p style="padding:30px 50px 100px">Update...</p>';
     ?>
 </div>

@@ -264,11 +264,27 @@ class control_web{
 			if($i%4!=1) $style='style="margin-left:22px"'; else $style='';
 			$str .= '<div class="home_box_list_item" '.$style.'>
 				<div class="home_box_list_img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_MONAN_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
-				<a href="'.$row['url'].'" title="'.$row['name'].'"><h3>'.$row['name'].'</h3></a>
+				<a href="'.$row['url'].'" title="'.$row['name'].'"><h3 style="height:22px">'.$row['name'].'</h3></a>
 				<p>Đầu bếp: '.$row['daubep_id'].'</p>
 			</div>';
 		}
 		$str .= '<div class="clear_1px"></div></div>';
+		return $str;
+	}
+	public function home_box_nghethuat_amthuc($idMenu, $nameMenu){
+		$i = 0;
+		$str = '<div class="title_home"><span>'.$nameMenu.'</span></div><div class="home_box_list">';
+		$data = $this->_model->_home_list_item($idMenu, 4);
+		foreach($data as $row){
+			$i++;
+			if($i%4!=1) $style='style="margin-left:22px"'; else $style='';
+			$str .= '<div class="home_box_list_item" '.$style.'>
+				<div class="home_box_list_img" style="height:125px"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_ARTICLES_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
+				<a href="'.$row['url'].'" title="'.$row['name'].'"><h3 style="height:44px">'.$row['name'].'</h3></a>
+				<p>'.$row['description'].'</p>
+			</div>';
+		}
+		$str .= '<div style="clear:both; height:20px"></div></div>';
 		return $str;
 	}
 	//end home
