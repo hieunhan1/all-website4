@@ -29,11 +29,11 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//email
-	$values = $row_detail['email'];
+	/*$values = $row_detail['email'];
 	$properties = array('60');  
 	$views = array('Email','email','input_medium'); 
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//phone
 	$values = $row_detail['phone'];
@@ -50,46 +50,46 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//booking_form_id
-	$arr = $this->_model->_web_booking_form();
+	/*$arr = $this->_model->_web_booking_form();
 	$properties = $row_detail['booking_form_id'];
 	$views = array('Đi từ','booking_form_id','input_medium');
     $this->getProperties('5',$arr,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//booking_to_id
-	$arr = $this->_model->_web_booking_to();
+	/*$arr = $this->_model->_web_booking_to();
 	$properties = $row_detail['booking_to_id'];
 	$views = array('Đi đến','booking_to_id','input_medium');
     $this->getProperties('5',$arr,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//items
-	$values = $row_detail['items'];
+	/*$values = $row_detail['items'];
 	$properties = array('100');  
 	$views = array('Mặt hàng','items','input_medium'); 
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//number
-	$values = $row_detail['number'];
+	/*$values = $row_detail['number'];
 	$properties = array('10');  
 	$views = array('Số lượng','number','input_medium'); 
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//temperature
-	$values = $row_detail['temperature'];
+	/*$values = $row_detail['temperature'];
 	$properties = array('100');  
 	$views = array('Nhiệt độ','temperature','input_medium'); 
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//volume_weight
-	$values = $row_detail['volume_weight'];
+	/*$values = $row_detail['volume_weight'];
 	$properties = array('100');  
 	$views = array('Volume weight','volume_weight','input_medium'); 
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//other
 	$values = $row_detail['other'];
