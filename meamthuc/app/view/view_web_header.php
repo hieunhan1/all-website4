@@ -13,6 +13,17 @@
 	}
 	?>
     </div>
-    <!--<div id="top_right">Đăng ký &nbsp; | &nbsp; Đăng nhập &nbsp; | &nbsp; Giỏ hàng</div>-->
+    <div id="top_right">
+    	<?php
+		$i=0;
+        $position = 7;
+		$data = $this->_model->_web_menu($lang, 0, $position);
+		foreach($data as $row){
+			$i++;
+			if($i!=1) $style=' &nbsp; | &nbsp; '; else $style='';
+			echo $style.'<a href="'.$row['url'].'">'.$row['name'].'</a>';
+		}
+		?>
+    </div>
     <?php include('view_web_menu.php');?>
 </div>

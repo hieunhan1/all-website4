@@ -26,6 +26,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #top_left{width:auto; float:left; color:#cbcbcb; margin:65px 0 10px 140px}
 #top_left a{color:#cbcbcb}
 #top_right{width:auto; float:right; color:#cbcbcb; margin:65px 0 10px 0}
+#top_right a{color:#cbcbcb}
 #menu{clear:both; height:55px; padding-left:115px; background-color:#859D07}
 /*end header*/
 
@@ -95,6 +96,9 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #navigator a:hover{color:#333; text-decoration:none}
 #navigator span{font-size:9px; color:#999; padding-right:5px}
 
+.txt_register{width:250px; height:25px; line-height:25px; padding:0 3px; border:solid 1px #CCC; background-color:#F1F1F1}
+.btn_register{font-size:110%; padding:8px 35px; cursor:pointer}
+
 #phantrang{clear:both; text-align:center; padding:20px 0 30px 0}
 #phantrang a{margin-right:3px; padding:10px 15px; font-size:120%; text-align:center; background-color:#869E0A; color:#FFF}
 #phantrang a:hover{background-color:#E18B05}
@@ -107,7 +111,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #contact_left h3{font-size:150%; margin:25px 0 8px 0}
 #contact_left b, #contact_left strong{color:#859D07}
 #contact_right{width:450px; float:right}
-#loading_contact{display:none; width:1000px; height:330px; text-align:center; position:absolute; z-index:2; background-color:#FFF; opacity: 0.4; filter:alpha(opacity=40);}
+#loading_contact{display:none; width:430px; height:400px; text-align:center; position:absolute; z-index:2; background-color:#FFF; opacity: 0.4; filter:alpha(opacity=40);}
 #loading_contact img{width:100px; margin-top:100px}
 #error_contact{display:none; line-height:30px; color:#06C; font-size:120%; padding:10px 50px 100px 50px}
 #error_contact h3{font-size:150%; margin-bottom:10px}
