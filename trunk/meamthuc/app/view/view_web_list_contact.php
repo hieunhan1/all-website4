@@ -65,7 +65,7 @@
             $("#loading_contact").show(); $("#error_contact").html(""); $("#error_contact").hide();
             
             $.ajax({ 	
-                url:"<?php echo $lang;?>/ajax/",
+                url:"ajax/",
                 type:'post',
                 data:{contact_name:name,email:email,phone:phone,address:address,message:message},
                 cache:false,

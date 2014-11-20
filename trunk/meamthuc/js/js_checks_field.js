@@ -66,7 +66,7 @@ function check_email_nl(name_check,name_message,message_error,condition){
 	var str2 = $.trim($(condition).val());
 	if(str!=str2 || str2==''){
 		$(name_message).html(message_error);
-		$(condition).focus();
+		$(name_check).focus();
 		return false;
 	}else{
 		$(name_message).html('');
