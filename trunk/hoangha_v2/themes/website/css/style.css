@@ -1,6 +1,6 @@
 @charset "utf-8";
 *{margin:0px}
-body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; background:url(../img/bg.gif) repeat-x #FFF; background-position:0px -12px;}
+body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; background:url(../img/bg.gif) repeat-x #FFF; background-position:0px -12px; z-index:0}
 img{border:0px;}
 a{color:#0085B5; text-decoration:none}
 a:hover{color:#EA1D22; text-decoration:underline}
@@ -14,7 +14,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 .all_icon{background:url(../img/icon.png) no-repeat top left}
 .all_icon_bg{background:url(../img/icon_bg.png) repeat-x top}
 
-#wrapper{width:1000px; margin:auto}
+#wrapper{width:1000px; margin:auto; z-index:20}
 
 /*header*/
 #header{clear:both; height:95px; margin-bottom:5px; padding-top:5px}

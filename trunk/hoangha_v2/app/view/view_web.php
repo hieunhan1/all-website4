@@ -26,6 +26,7 @@
 	echo $include; flush();
 	
 	include_once('view_web_footer.php');
+	include_once('../public/event/noel.php');
 	?>
 </div>
 <script type="text/javascript" src="js/jquery.corner.js"></script>
