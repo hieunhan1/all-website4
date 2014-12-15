@@ -44,7 +44,7 @@
     
     <?php
     $i=0;
-    $data = $this->_model->_other_post_product($row_detail['id'],$idMenu,5);
+    $data = $this->_model->_other_post_product($row_detail['id'],$idMenu,4);
     if(count($data)>0){
         echo '<div id="other_post"><hr /><div id="other_post_title" style="margin-bottom:20px; padding:0">Sản phẩm cùng loại</div></div>
         <div class="product_list">';
