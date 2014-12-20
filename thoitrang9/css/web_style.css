@@ -49,8 +49,8 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #slider{clear:both; border:solid 1px #CCC; margin-bottom:30px; padding:0}
 
 .product_list{clear:both}
-.product_list .product_title{height:28px; line-height:28px; margin-bottom:15px; border:solid 1px #CCC; background-color:#FFF}
-.product_list .product_title .product_title_name{width:auto; float:left; color:#fff; font-weight:bold; padding:0 100px 0 15px; background-color:#F60465}
+.product_list .product_title{height:28px; line-height:28px; overflow:hidden; margin-bottom:15px; border:solid 1px #CCC; background-color:#FFF}
+.product_list .product_title .product_title_name{width:auto !important; float:left; color:#fff; font-weight:bold; padding:0 100px 0 15px; background-color:#F60465}
 .product_list .product_title .product_title_more{width:auto; float:right; margin:0; padding-right:38px; background:url(web_img/icon.png) no-repeat right -287px}
 .product_list .product_title .product_title_more a{color:#666}
 
