@@ -20,7 +20,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #header{clear:both; height:95px; margin-bottom:5px; padding-top:5px}
 #logo{width:auto; float:left; margin-top:7px}
 #menu_top{width:auto; float:right}
-#menu_top a{color:#666; margin:0px; padding:0 5px}
+#menu_top a{color:#666; margin:0px; padding:0 5px; white-space:nowrap}
 #lang{width:auto; float:right; margin:0 8px}
 #lang .lang_item{width:23px; height:15px; float:left; margin:0 3px}
 #lang a{color:#666}
@@ -175,7 +175,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #menu{clear:both; width:765px; height:30px; float:right; font-size:90%; background-position:0px -50px}
 #nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
-#nav li a {color:#FFF; line-height:30px; text-transform:uppercase; text-shadow:1px 1px 1px #333; padding:0 15px}
+#nav li a {color:#FFF; line-height:30px; text-transform:uppercase; text-shadow:1px 1px 1px #333; padding:0 15px; white-space:nowrap}
 #nav a:hover {color:#FFFF66}
 #nav li {float:left; position:relative}
 #nav ul {position:absolute; width:200px; top:30px; display:none}
