@@ -50,7 +50,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 
 .product_list{clear:both}
 .product_list .product_title{height:28px; line-height:28px; overflow:hidden; margin-bottom:15px; border:solid 1px #CCC; background-color:#FFF}
-.product_list .product_title .product_title_name{width:auto !important; float:left; color:#fff; font-weight:bold; padding:0 100px 0 15px; background-color:#F60465}
+.product_list .product_title .product_title_name{width:auto !important; float:left; color:#fff; font-weight:bold; padding:0 100px 0 15px; background-color:#F60465; white-space:nowrap}
 .product_list .product_title .product_title_more{width:auto; float:right; margin:0; padding-right:38px; background:url(web_img/icon.png) no-repeat right -287px}
 .product_list .product_title .product_title_more a{color:#666}
 
@@ -159,7 +159,7 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #icon_home{width:18px; height:30px; background:url(web_img/icon.png) no-repeat; background-position:25px -141px}
 #nav{width:auto; float:left; list-style:none; position:relative; line-height:35px; z-index:10; margin:0; padding:0}
 #nav ul {list-style:none; position:relative; line-height:35px; z-index:10; margin:0; padding:0}
-#nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
+#nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none; white-space:nowrap}
 #nav li a {color:#595959; font-weight:bold; padding:0 20px}
 #nav a:hover {color:#F60465}
 #nav li {float:left; position:relative}
