@@ -1,5 +1,5 @@
 <div id="noel_bg" style="width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1; background: url(public/event/tuyetroi5.gif)"></div>
-<embed width="100%" height="43" src="public/event/merry-christmas.mp3" autostart="true" loop="true" volume="50" hidden="true">
+<!--<embed width="100%" height="43" src="public/event/merry-christmas.mp3" autostart="true" loop="true" volume="50" hidden="true">-->
 <script type="text/javascript">
 $(document).ready(function(e) {
     $("#header").css("background","url(public/event/noel-header.png) no-repeat top left");
