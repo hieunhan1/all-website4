@@ -1,16 +1,16 @@
-<div id="noel_bg" style="width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1; background: url(public/event/tuyetroi5.gif)"></div>
-<!--<embed width="100%" height="43" src="public/event/merry-christmas.mp3" autostart="true" loop="true" volume="50" hidden="true">-->
+<div id="noel_bg" style="width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1; background: url(public/event/tet-2015/bg-2.gif)"></div>
+<!--<embed width="100%" height="43" src="public/event/tet-2015/merry-christmas.mp3" autostart="true" loop="true" volume="50" hidden="true">-->
 <script type="text/javascript">
 $(document).ready(function(e) {
-    $("#header").css("background","url(public/event/noel-header.png) no-repeat top left");
+    $("#header").css("background","url(public/event/tet-2015/header.png) no-repeat top left");
 });
 </script>
 
 <div id="divAdRight" style="display:none; position:absolute; top:0px; height:100%">
-	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/caythong.gif" alt="" width="135" /></a>
+	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/tet-2015/right.jpg" alt="" width="120" /></a>
 </div>
 <div id="divAdLeft" style="display:none; position:absolute; top:0px; height:100%">
-	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/ong-gia-noel.png" alt="" width="135" /></a>
+	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/tet-2015/left.gif" alt="" width="74" /></a>
 </div>
 <script> 
     function FloatTopDiv() 
@@ -72,8 +72,8 @@ $(document).ready(function(e) {
 
 <script type="text/javascript" language="javascript">
 	MainContentW = 1000;
-	LeftBannerW = 135;
-	RightBannerW = 135;
+	LeftBannerW = 74;
+	RightBannerW = 120;
 	LeftAdjust = 0;
 	RightAdjust = 0;
 	TopAdjust = 0;
