@@ -253,28 +253,6 @@ class control_admin extends control_admin_form{
 		return $data;
 	}
 	
-	public function select_from_product_order($lang, &$arr){
-		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
-		settype($currentpage,"int");
-		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
-		if(!empty($_GET)){
-			$this->search_data_forms($str_search, $url_search);
-		}
-		$table  = $this->_action;
-		$select = "{$table}.*, web_listcity.name as city";
-		$all_table = $table.',web_listcity';
-		$where  = "{$table}.lang='{$lang}' AND city_id=web_listcity.id ".$str_search;
-		$order_by = "`datetime` DESC";
-		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
-		$arr = array(
-			'currentpage'=>$currentpage,
-			'startrow'	=>$startrow,
-			'totalrows'	=>$totalrows,
-			'url_search'=>$url_search
-		);
-		return $data;
-	}
-	
 	public function select_from_users($lang, &$arr){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");
@@ -327,6 +305,35 @@ class control_admin extends control_admin_form{
 				$url_search .= '&search='.$values[$i];
 			}
 		}
+	}
+	
+	public function select_from_forum_menu($lang, $where=NULL){
+		if($where==NULL) $where = " AND lang='{$lang}' ";
+		else $where = " AND lang='{$lang}' AND ({$where})";
+		$data = $this->_model->_forum_menu(0, '', NULL, $where);
+		return $data;
+	}
+	
+	public function select_from_forum_article_cm($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, forum_article.name as article_name";
+		$all_table = $table.',forum_article';
+		$where  = "{$table}.lang='{$lang}' AND article_id=forum_article.id ".$str_search;
+		$order_by = "`datetime` DESC";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
 	}
 	
 	public function delete_one($lang){

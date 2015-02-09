@@ -5,7 +5,7 @@
             <?php
 			$arr = array();
 			$arr[] = array('id'=>'', 'name'=>'-- Danh mục gốc --');
-			$where = " AND (type_id=1 OR type_id=2 OR type_id=3 OR type_id=4) AND lang='{$lang}' ";
+			$where = " AND (type_id=1 OR type_id=2 OR type_id=3 OR type_id=4 OR type_id=5) AND lang='{$lang}' ";
 			$arr = $this->_model->_web_menu(0, '', $arr, $where);
 			foreach($arr as $row){
 				if($_GET['menu_id']!=$row['id']) echo "<option value='{$row['id']}'>{$row['name']}</option>";
@@ -23,7 +23,7 @@
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
             <th width="250" align="left">Tên hình</th>
-            <th width="100" align="left">Ngày</th>
+            <th width="110" align="left">Ngày</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php

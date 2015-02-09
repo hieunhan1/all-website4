@@ -58,7 +58,6 @@ function isInt(num){
 }/*ham kiem tra so int*/
 
 $(document).ready(function($){
-	
 	$("#txtSearch").keydown(function(e){
 		if(e.keyCode==13) SearchGoogle("txtSearch");
 	});
@@ -74,65 +73,24 @@ $(document).ready(function($){
 	
 	if(browserVersion()!=7 && browserVersion()!=8){
 		$(".bogoc_5px").corner("5px");
-		$(".bogoc_8px").corner("8px");
-		$(".bogoc_10px").corner("10px");
 		$(".bogoc_top_5px").corner("top 5px");
-		$(".bogoc_bottom_5px").corner("bottom 5px");
-		$(".bogoc_right_15px").corner("right 15px");
+		$(".bogoc_right_5px").corner("right 5px");
 	}
 	
 	$("#run_top").click(function(){
 		sroll_top();
 	});
 	
-	$("#product_detail_order").click(function(){
-		var alias = $(this).attr("alias");
-		var soluong = parseInt($("#product_detail_soluong").val());
-		if(!isInt(soluong) || soluong<1){
-			alert("Số lượng phải là số và lớn hơn hoặc bằng 1");
-			return false;
-		}
-		
-		$.ajax({
-			url:"ajax/",
-			type:'post',
-			data:{order_sp:alias,soluong:soluong},
-			cache:false,
-			success: function(data) {
-				if(data!='0'){
-					//$("#btn_thanhtoan").html(data);
-					window.location = "gio-hang/";
-				}else{
-					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
-					return false;
-				}
-			}
-		});
-		
-		$(this).html("Đã đặt hàng");
-		$(this).css("background-color","#4DBE01");
+	$(".tab_code").click(function(){
+		$(".tab_code").removeClass("tab_code_active");
+		$(this).addClass("tab_code_active");
 	});
 	
-	$(".product_buy").click(function(){
-		var id = $(this).attr("idsp");
-		var alias = $(this).attr("alias");
-		var soluong = 1;
-		$.ajax({ 	
-			url:"ajax/",
-			type:'post',
-			data:{order_sp:alias,soluong:soluong},
-			cache:false,
-			success: function(data) {
-				if(data!='0'){
-					//$("#ajax_order_" + id).html(data);
-					window.location = "gio-hang/";
-				}else{
-					alert("Đặt hàng không thành công. Vui lòng ấn F5 thử lại");
-					return false;
-				}
-			}
-		});
-		$(this).html("Đã đặt hàng");
-		$(this).css("background-color","#4DBE01");
+	$("#btnCode").click(function(){
+		var code = $.trim($("#txtCode").val());
+		var linkCode = $("#linkCode").val();
+		
+		if(code != '') window.location = linkCode + code;
+		else alert('Input code!');
 	});
 });

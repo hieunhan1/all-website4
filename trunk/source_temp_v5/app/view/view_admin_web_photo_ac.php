@@ -19,7 +19,7 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
 	
-	$where = " AND (type_id=1 OR type_id=5) AND lang='{$lang}' ";
+	$where = " AND (type_id=1 OR type_id=2 OR type_id=6) AND lang='{$lang}' ";
 	$arr = $this->_model->_web_menu(0, '', NULL, $where);
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:200px;'); //label name class width

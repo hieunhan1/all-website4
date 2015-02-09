@@ -1,7 +1,7 @@
 var popupStatus = 0;
 function loadPopup() {
     if(popupStatus==0) {
-        $("#backgroundPopup").css({"opacity": "0.9"});
+        $("#backgroundPopup").css({"opacity": "0.5"});
         $("#backgroundPopup").fadeIn("slow");
         $("#popupContact").fadeIn("slow");
         popupStatus = 1;

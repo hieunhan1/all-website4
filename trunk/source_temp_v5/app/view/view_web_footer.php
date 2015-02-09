@@ -1,30 +1,19 @@
 <div id="footer">
     <div id="menu_footer" class="bogoc_10px">
         <?php
+		$i=0;
         $data = $this->_model->_web_menu($lang, 0, 3);
         foreach($data as $row){
-            echo '<a href="'.$row['url'].'">'.$row['name'].'</a>';
+			$i++;
+			if($i!=1) $lang_foo=$lang.'/'; else $lang_foo='';
+            echo '<a href="'.$lang_foo.$row['url'].'">'.$row['name'].'</a>';
         }
         ?>
-        <div id="run_top">Đầu trang</div>
+        <div id="run_top">TOP</div>
     </div>
-    <table width="100%" border="0" cellpadding="0" cellspacing="10" style="color:#666; margin-bottom:10px">
-        <tr>
-            <td valign="top"><p style="margin-bottom:5px">Kết nối với chúng tôi</p>
-                <?php
-                $data = $this->_model->_web_menu($lang, 0, 6);
-                foreach($data as $row){
-                    echo '<a href="'.$row['url'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_img'].'" alt="'.$row['name'].'" style="margin-right:5px" /></a>';
-                }
-                ?>
-            </td>
-            <td valign="top" style="line-height:180%">
-				<?php echo '<p style="color:#F60465; font-weight:bold">'.$this->_config['sitename'].'</p>
-				<p>Địa chỉ: '.$this->_config['address'].'</p>
-				<p>Điện thoại: '.$this->_config['tel'].'</p>
-				<p>Email: '.$this->_config['email'].'</p>';?>
-            </td>
-            <td style="text-align:right">Copyright © 2014 heoxinhshop.com</td>
-        </tr>
-    </table>
+	<div id="contact_foo">
+    	<?php echo '<p>'.$this->_config['copyright'].'. <b>'.$this->_config['sitename'].'</b></p>
+		<p>Địa chỉ: '.$this->_config['address'].'</p>
+		<p>Điện thoại: '.$this->_config['tel'].' - Fax: '.$this->_config['fax'].' - Email: '.$this->_config['email'].'</p>';?>
+    </div>
 </div>

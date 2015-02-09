@@ -53,7 +53,7 @@ $(document).ready(function(e) {
 			}
 		});
 	}
-	ajax_number_item("web_product_order");
+	ajax_number_item("web_booking");
 	ajax_number_item("web_contact");
 	/*end ajax_number_item*/
 	
@@ -160,6 +160,9 @@ $(document).ready(function(e) {
 	}
 	$(".auto_link_detail").dblclick(function(){
 		auto_link_detail(this, "menu_id");
+	});
+	$(".auto_link_detail_forum").dblclick(function(){
+		auto_link_detail(this, "forum_menu_id");
 	});
 	/*end lấy link tu dong detail*/
 	

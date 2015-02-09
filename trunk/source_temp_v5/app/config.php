@@ -1,11 +1,11 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/source_temp_v5');/*domain*/
-define('CONS_BASE_DIR', '/all/source_temp_v5');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all/forexcareer');/*domain*/
+define('CONS_BASE_DIR', '/all/forexcareer');/*upload host tắt CONS này*/
 
-define('CONS_HOST',		'localhost');
+define('CONS_HOST',	'localhost');
 define('CONS_USER_DB',	'root');
-define('CONS_PASS_DB',	'root');
-define('CONS_DB_NAME',	'source_temp_v5');
+define('CONS_PASS_DB',	'');
+define('CONS_DB_NAME',	'forexcareer');
 
 /*IMAGES UPLOAD*/
 define('CONS_IMAGES_ARTICLES','public/images/articles/');
@@ -22,7 +22,7 @@ define('CONS_IMAGES_PHOTOS','public/images/photos/');
 define('CONS_IMAGES_PHOTOS_THUMBS','public/_thumbs/Images/photos/');
 
 /*WEBSITE*/
-define('CONS_IMAGE_DEFAULT','images/no-image.jpg');
+define('CONS_IMAGE_DEFAULT','themes/website/img/no-image.jpg');
 define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
 define('CONS_WEB_VIEW_MENU','view_menu');
@@ -40,8 +40,13 @@ define('CONS_ADMIN_CSS_STYLE', 'themes/admin/admin_default.css');
 define('CONS_ADMIN_PER_PAGE', 30);
 define('CONS_ADMIN_PASSWORD_DEFAULT', '00112233');
 
+/*FORUM*/
+define('CONS_DEFAULT_FORUM_CONTROLLER', 'forum');
+define('CONS_DEFAULT_FORUM_ACTION', 'index');
+
 /*OTHER*/
 define('CONS_AJAX_NAME', 'ajax');
+define('CONS_HOST_SMTP_SERVER', 'localhost');
 define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@localhost.com');
 define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
 define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');

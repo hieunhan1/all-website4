@@ -1,7 +1,8 @@
-<?php session_start();
+<?php
+session_start();
 //session_destroy();
-require_once "config.php";
 error_reporting(E_ALL ^ E_NOTICE);
+require_once "config.php";
 
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
