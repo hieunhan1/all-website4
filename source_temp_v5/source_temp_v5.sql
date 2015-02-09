@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.12
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2014 at 11:02 AM
--- Server version: 5.6.16
--- PHP Version: 5.5.11
+-- Generation Time: Feb 09, 2015 at 05:33 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `source_temp_v5`
+-- Database: `forexcareer`
 --
 
 -- --------------------------------------------------------
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `web_article` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `url` varchar(250) NOT NULL,
@@ -39,9 +39,8 @@ CREATE TABLE IF NOT EXISTS `web_article` (
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `menu_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+  `menu_id` varchar(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_article`
@@ -51,7 +50,7 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_img`, `descri
 (1, 'Home - Mùng chống muỗi', 'home-mung-chong-muoi', '', 'about-home-mung-chong-muoi.png', 'Phòng ngủ của bạn sẽ sạch sẽ hơn, an toàn hơn, giấc ngủ sẽ sâu hơn, trọn vẹn hơn khi bạn có chiếc mùng (màn) ChamCham với chức năng đặc biệt: xua đuổi diệt muỗi, ruồi, gián, rận, rệp, kiến, rầy, bọ, v.v.', 'home mùng chống muỗi', '<p><img alt="Home - Mùng chống muỗi" src="/all/source_temp_v4/public/images/articles/about-home-mung-chong-muoi.png" style="width: 300px; height: 180px; float: right; margin-left: 10px; margin-right: 10px;" /></p>\r\n\r\n<h2>Ph&ograve;ng ngủ của bạn sẽ sạch sẽ hơn, an to&agrave;n hơn, giấc ngủ sẽ s&acirc;u hơn, trọn vẹn hơn khi bạn c&oacute; chiếc m&ugrave;ng (m&agrave;n) ChamCham với chức năng đặc biệt: xua đuổi diệt muỗi, ruồi, gi&aacute;n, rận, rệp, kiến, rầy, bọ, v.v. Kh&ocirc;ng c&ograve;n ch&iacute;ch đốt, kh&ocirc;ng c&ograve;n vo ve. Giấc ngủ an to&agrave;n, giấc ngủ ngon!</h2>\r\n\r\n<h2>Sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền, c&ocirc;ng nghệ đột ph&aacute;.</h2>\r\n\r\n<h2>Sản phẩm c&oacute; khả năng xua đuổi diệt muỗi v&agrave; c&ocirc;n tr&ugrave;ng, kh&ocirc;ng cho ch&uacute;ng đến gần ch&iacute;ch đốt, vo ve bực bội b&ecirc;n tai.</h2>\r\n', 1, 1408459980, 'vi', 1, ',1,'),
 (2, 'Công dụng của mùng chuống muỗi', 'cong-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/cong-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'công dụng của mùng chuống muỗi,cong dung cua mung chuong muoi', '<p>Sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền, c&ocirc;ng nghệ đột ph&aacute;.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
 (3, 'Tác dụng của mùng chuống muỗi', 'tac-dung-cua-mung-chuong-muoi', 'thong-tin-san-pham/tac-dung-cua-mung-chuong-muoi.html', 'about-home-mung-chong-muoi.png', 'Sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền, công nghệ đột phá.', 'tác dụng của mùng chuống muỗi,tac dung cua mung chuong muoi', '<h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</h2>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci.</p>\r\n\r\n<p>Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor.</p>\r\n\r\n<p>Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis.</p>\r\n\r\n<p>Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 1, 1408459980, 'vi', 1, ',8,'),
-(4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'about-home-mung-chong-muoi.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi &iacute;ch m&ugrave;ng chống muỗi sản phẩm m&ugrave;ng xua đuổi diệt muỗi ChamCham đ&aacute;p ứng được ti&ecirc;u chuẩn xuất khẩu l&agrave; sản phẩm m&ugrave;ng ngủ chất lượng sản xuất theo d&acirc;y chuyền</h2>\r\n', 0, 1408459800, 'vi', 1, ',8,'),
+(4, 'Lợi ích mùng chống muỗi', 'loi-ich-mung-chong-muoi', 'thong-tin-san-pham/loi-ich-mung-chong-muoi.html', 'about-home-mung-chong-muoi.png', 'Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền', 'lợi ích mùng chống muỗi,loi ich mung chong muoi', '<h2>Lợi ích mùng chống muỗi sản phẩm mùng xua đuổi diệt muỗi ChamCham đáp ứng được tiêu chuẩn xuất khẩu là sản phẩm mùng ngủ chất lượng sản xuất theo dây chuyền</h2>\r\n', 0, 1408459800, 'vi', 1, ',8,'),
 (5, 'Giới thiệu về công ty', 'gioi-thieu-ve-cong-ty', 'gioi-thieu/gioi-thieu-ve-cong-ty.html', '', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.', 'giới thiệu về công ty,gioi thieu ve cong ty', '<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla.</p>\r\n\r\n<p>Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus.</p>\r\n\r\n<p>Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros.</p>\r\n\r\n<p>Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis.</p>\r\n\r\n<p>Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.</p>\r\n', 0, 1408439640, 'vi', 1, ',2,');
 
 -- --------------------------------------------------------
@@ -61,16 +60,15 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `url_img`, `descri
 --
 
 CREATE TABLE IF NOT EXISTS `web_article_cm` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(60) NOT NULL,
   `content` text NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `article_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `article_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -79,14 +77,13 @@ CREATE TABLE IF NOT EXISTS `web_article_cm` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_config` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(30) NOT NULL,
   `name_var` varchar(30) NOT NULL,
   `value` varchar(250) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_config`
@@ -127,7 +124,7 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 --
 
 CREATE TABLE IF NOT EXISTS `web_contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -135,9 +132,8 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `message` text NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `status` tinyint(1) DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_contact`
@@ -153,13 +149,12 @@ INSERT INTO `web_contact` (`id`, `name`, `email`, `phone`, `address`, `message`,
 --
 
 CREATE TABLE IF NOT EXISTS `web_language` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(20) NOT NULL,
   `code` varchar(10) NOT NULL,
   `order` int(3) DEFAULT '0',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_language`
@@ -181,8 +176,7 @@ CREATE TABLE IF NOT EXISTS `web_listcity` (
   `deliverycosts` int(8) NOT NULL DEFAULT '0',
   `order` int(2) DEFAULT '0',
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
+  `status` tinyint(1) DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
@@ -261,15 +255,14 @@ INSERT INTO `web_listcity` (`id`, `name`, `deliverycosts`, `order`, `lang`, `sta
 --
 
 CREATE TABLE IF NOT EXISTS `web_listdistricts` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   `deliverycosts` int(8) NOT NULL DEFAULT '0',
   `city_id` int(11) NOT NULL,
   `order` int(3) DEFAULT '0',
   `lang` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=901 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=901 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `web_listdistricts`
@@ -943,13 +936,12 @@ INSERT INTO `web_listdistricts` (`id`, `name`, `deliverycosts`, `city_id`, `orde
 --
 
 CREATE TABLE IF NOT EXISTS `web_listsendmail` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
+`id` int(2) NOT NULL,
   `name` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_listsendmail`
@@ -968,7 +960,7 @@ INSERT INTO `web_listsendmail` (`id`, `name`, `email`, `lang`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_logs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `action` varchar(30) NOT NULL,
   `table` varchar(30) NOT NULL,
@@ -978,9 +970,8 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
-  `user_restore` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `user_restore` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -989,7 +980,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `name_alias` varchar(100) NOT NULL,
   `url` varchar(150) NOT NULL,
@@ -1003,9 +994,8 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   `type_id` int(1) NOT NULL,
-  `position_id` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+  `position_id` varchar(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_menu`
@@ -1040,16 +1030,15 @@ INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `url_img`, `title`, `
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_admin` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `url` varchar(150) NOT NULL,
   `url_img` varchar(150) DEFAULT NULL,
   `order` int(3) DEFAULT '0',
   `other` tinyint(1) DEFAULT '0',
   `ajax` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_menu_admin`
@@ -1060,7 +1049,7 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (2, 'Cấu hình website', 'web_config', 'icon-cau-hinh.jpg', 2, 1, NULL, 1),
 (3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 0, NULL, 1),
 (4, 'Thông tin, bài viết', 'web_article', 'icon-info.jpg', 4, 0, NULL, 1),
-(5, 'Sản phẩm', 'web_product', 'icon-product.jpg', 5, 0, NULL, 1),
+(5, 'Sản phẩm', 'web_product', 'icon-product.jpg', 5, 0, NULL, 0),
 (6, 'Thư viện ảnh', 'web_photo', 'icon-thu-vien-anh.jpg', 6, 0, NULL, 1),
 (7, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 7, 0, NULL, 1),
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
@@ -1087,12 +1076,11 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_position` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(100) NOT NULL,
   `order` int(1) NOT NULL DEFAULT '0',
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+  `status` tinyint(1) DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_menu_position`
@@ -1116,17 +1104,15 @@ INSERT INTO `web_menu_position` (`id`, `name`, `order`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_menu_type` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
+`id` int(3) NOT NULL,
   `name` varchar(20) NOT NULL,
   `description` varchar(30) NOT NULL,
   `url_img` varchar(100) NOT NULL,
   `url_img_thumb` varchar(100) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `order` int(2) NOT NULL,
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+  `status` tinyint(1) DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_menu_type`
@@ -1135,16 +1121,16 @@ CREATE TABLE IF NOT EXISTS `web_menu_type` (
 INSERT INTO `web_menu_type` (`id`, `name`, `description`, `url_img`, `url_img_thumb`, `lang`, `order`, `status`) VALUES
 (1, 'site', 'Trang chủ', '', '', 'vi', 1, 1),
 (2, 'article', 'Thông tin bài viết', 'public/images/articles/', 'public/_thumbs/Images/articles/', 'vi', 2, 1),
-(3, 'product', 'Sản phẩm', 'public/images/products/', 'public/_thumbs/Images/products/', 'vi', 3, 1),
-(4, 'service', 'Dịch vụ', 'public/images/articles/', 'public/_thumbs/Images/articles/', 'vi', 4, 1),
-(5, 'photo', 'Hình ảnh', 'public/images/photos/', 'public/_thumbs/Images/photos/', 'vi', 5, 1),
-(6, 'video', 'Video', 'public/images/videos/', 'public/_thumbs/Images/videos/', 'vi', 6, 1),
+(3, 'product', 'Sản phẩm', 'public/images/products/', 'public/_thumbs/Images/products/', 'vi', 3, 0),
+(4, 'service', 'Dịch vụ', 'public/images/articles/', 'public/_thumbs/Images/articles/', 'vi', 4, 0),
+(5, 'photo', 'Hình ảnh', 'public/images/photos/', 'public/_thumbs/Images/photos/', 'vi', 5, 0),
+(6, 'video', 'Video', 'public/images/videos/', 'public/_thumbs/Images/videos/', 'vi', 6, 0),
 (7, 'item_1', 'Item 1', '', '', 'vi', 7, 0),
 (8, 'item_2', 'Item 2', '', '', 'vi', 8, 0),
 (9, 'item_3', 'Item 3', '', '', 'vi', 9, 0),
 (10, 'item_4', 'Item 4', '', '', 'vi', 10, 0),
-(11, 'payment', 'Payment', '', '', 'vi', 11, 1),
-(12, 'register', 'Register', '', '', 'vi', 12, 1),
+(11, 'payment', 'Payment', '', '', 'vi', 11, 0),
+(12, 'register', 'Register', '', '', 'vi', 12, 0),
 (13, 'contact', 'Liên hệ', '', '', 'vi', 13, 1),
 (14, 'no', 'Không', '', '', 'vi', 14, 1);
 
@@ -1155,15 +1141,14 @@ INSERT INTO `web_menu_type` (`id`, `name`, `description`, `url_img`, `url_img_th
 --
 
 CREATE TABLE IF NOT EXISTS `web_photo` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `url_img` varchar(150) DEFAULT NULL,
   `order` int(3) NOT NULL DEFAULT '0',
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `menu_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `menu_id` varchar(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_photo`
@@ -1179,7 +1164,7 @@ INSERT INTO `web_photo` (`id`, `name`, `url_img`, `order`, `lang`, `status`, `me
 --
 
 CREATE TABLE IF NOT EXISTS `web_product` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -1195,9 +1180,8 @@ CREATE TABLE IF NOT EXISTS `web_product` (
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `menu_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `menu_id` varchar(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_product`
@@ -1214,7 +1198,7 @@ INSERT INTO `web_product` (`id`, `name`, `name_alias`, `code`, `url`, `url_img`,
 --
 
 CREATE TABLE IF NOT EXISTS `web_product_order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `email` varchar(80) NOT NULL,
   `phone` varchar(20) NOT NULL,
@@ -1229,9 +1213,8 @@ CREATE TABLE IF NOT EXISTS `web_product_order` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   `city_id` int(3) NOT NULL,
-  `districts_id` int(5) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+  `districts_id` int(5) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_product_order`
@@ -1248,7 +1231,7 @@ INSERT INTO `web_product_order` (`id`, `name`, `email`, `phone`, `address`, `tot
 --
 
 CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `number` int(4) NOT NULL,
   `price` int(8) NOT NULL,
@@ -1257,9 +1240,8 @@ CREATE TABLE IF NOT EXISTS `web_product_order_detail` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   `product_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+  `order_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_product_order_detail`
@@ -1277,7 +1259,7 @@ INSERT INTO `web_product_order_detail` (`id`, `name`, `number`, `price`, `discou
 --
 
 CREATE TABLE IF NOT EXISTS `web_slider_banner` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
   `url_img` varchar(150) DEFAULT NULL,
   `url` varchar(200) DEFAULT NULL,
@@ -1285,9 +1267,8 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   `position_id` int(1) NOT NULL,
-  `menu_id` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `menu_id` varchar(30) DEFAULT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_slider_banner`
@@ -1304,11 +1285,10 @@ INSERT INTO `web_slider_banner` (`id`, `name`, `url_img`, `url`, `order`, `lang`
 --
 
 CREATE TABLE IF NOT EXISTS `web_slider_banner_position` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `status` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `status` tinyint(1) DEFAULT '1'
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_slider_banner_position`
@@ -1326,7 +1306,7 @@ INSERT INTO `web_slider_banner_position` (`id`, `name`, `status`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `address` varchar(250) NOT NULL,
   `phone` varchar(30) NOT NULL,
@@ -1346,10 +1326,8 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
   `datetime` bigint(10) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
-  `group_id` int(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
+  `group_id` int(1) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_users`
@@ -1366,10 +1344,9 @@ INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, 
 --
 
 CREATE TABLE IF NOT EXISTS `web_users_group` (
-  `id` int(2) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+`id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_users_group`
@@ -1387,7 +1364,7 @@ INSERT INTO `web_users_group` (`id`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `web_video` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL,
   `name_alias` varchar(250) NOT NULL,
   `type` int(1) NOT NULL DEFAULT '1',
@@ -1401,17 +1378,261 @@ CREATE TABLE IF NOT EXISTS `web_video` (
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
-  `menu_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+  `menu_id` varchar(20) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_video`
 --
 
 INSERT INTO `web_video` (`id`, `name`, `name_alias`, `type`, `url`, `url_img`, `url_code`, `description`, `tags`, `content`, `other`, `datetime`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Video trang chủ', 'video-trang-chu', 1, 'su-menh/video-trang-chu.html', 'Chrysanthemum.jpg', '432432432', 'Video trang chủ', 'video trang chủ,video trang chu', '<p>Video trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủ</p>\r\n', 1, 1408497780, 'vi', 1, ',4,');
+(1, 'Video trang chủ', 'video-trang-chu', 1, 'quan-nam/video-trang-chu.html', 'Chrysanthemum.jpg', '432432432', 'Video trang chủ', 'video trang chủ,video trang chu', '<p>Video trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủVideo trang chủ</p>\r\n', 1, 1408497780, 'vi', 1, ',4,');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `web_article`
+--
+ALTER TABLE `web_article`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_article_cm`
+--
+ALTER TABLE `web_article_cm`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_config`
+--
+ALTER TABLE `web_config`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_contact`
+--
+ALTER TABLE `web_contact`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_language`
+--
+ALTER TABLE `web_language`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_listcity`
+--
+ALTER TABLE `web_listcity`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_listdistricts`
+--
+ALTER TABLE `web_listdistricts`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_listsendmail`
+--
+ALTER TABLE `web_listsendmail`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_logs`
+--
+ALTER TABLE `web_logs`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu`
+--
+ALTER TABLE `web_menu`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_admin`
+--
+ALTER TABLE `web_menu_admin`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_position`
+--
+ALTER TABLE `web_menu_position`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_menu_type`
+--
+ALTER TABLE `web_menu_type`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `name` (`name`);
+
+--
+-- Indexes for table `web_photo`
+--
+ALTER TABLE `web_photo`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product`
+--
+ALTER TABLE `web_product`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product_order`
+--
+ALTER TABLE `web_product_order`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_product_order_detail`
+--
+ALTER TABLE `web_product_order_detail`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_slider_banner`
+--
+ALTER TABLE `web_slider_banner`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_slider_banner_position`
+--
+ALTER TABLE `web_slider_banner_position`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_users`
+--
+ALTER TABLE `web_users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `web_users_group`
+--
+ALTER TABLE `web_users_group`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_video`
+--
+ALTER TABLE `web_video`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `web_article`
+--
+ALTER TABLE `web_article`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `web_article_cm`
+--
+ALTER TABLE `web_article_cm`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `web_config`
+--
+ALTER TABLE `web_config`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
+--
+-- AUTO_INCREMENT for table `web_contact`
+--
+ALTER TABLE `web_contact`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `web_language`
+--
+ALTER TABLE `web_language`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_listdistricts`
+--
+ALTER TABLE `web_listdistricts`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=901;
+--
+-- AUTO_INCREMENT for table `web_listsendmail`
+--
+ALTER TABLE `web_listsendmail`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_logs`
+--
+ALTER TABLE `web_logs`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `web_menu`
+--
+ALTER TABLE `web_menu`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `web_menu_admin`
+--
+ALTER TABLE `web_menu_admin`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `web_menu_position`
+--
+ALTER TABLE `web_menu_position`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `web_menu_type`
+--
+ALTER TABLE `web_menu_type`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `web_photo`
+--
+ALTER TABLE `web_photo`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `web_product`
+--
+ALTER TABLE `web_product`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_product_order`
+--
+ALTER TABLE `web_product_order`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `web_product_order_detail`
+--
+ALTER TABLE `web_product_order_detail`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `web_slider_banner`
+--
+ALTER TABLE `web_slider_banner`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_slider_banner_position`
+--
+ALTER TABLE `web_slider_banner_position`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `web_users`
+--
+ALTER TABLE `web_users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT for table `web_users_group`
+--
+ALTER TABLE `web_users_group`
+MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `web_video`
+--
+ALTER TABLE `web_video`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

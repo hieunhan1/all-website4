@@ -1,14 +1,37 @@
 <div id="header">
     <div id="logo">
-        <a href="/"><img src="themes/website/img/logo.png" alt="thoitrang09" /></a>
-        <h3><?php echo $this->_config['slogan'];?></h3>
+        <a href="/"><img src="themes/website/img/logo.gif" alt="<?php echo $this->_config['sitename']?>" /></a>
     </div>
-    <div class="icon_header">
-        <a href="gio-hang/"><div id="cart"><?php echo count($_SESSION['list_order_sp_name']);?></div>
-        <p>Giỏ hàng</p></a>
+    <div id="track_code">
+        <div class="tab_code bogoc_top_5px tab_code_active">Tracing Express</div>
+        <!--<div class="tab_code bogoc_top_5px">Track &amp; trace</div>-->
+        <div id="form_code" class="all_icon_bg bogoc_right_5px">
+        	<input type="text" name="txtCode" id="txtCode" class="bogoc_5px" maxlength="20" placeholder="<?php echo CONS_HEADER_INPUT_CODE;?>" value="<?php echo $_GET['code'];?>" />
+        	<input type="button" name="btnCode" id="btnCode" class="bogoc_5px" value="GO" />
+            <?php
+            $data = $this->_model->_web_menu_type(11, $lang);
+			echo '<input type="hidden" name="linkCode" id="linkCode" value="vi/'.$data['url'].'?code=" />';
+			?>
+        </div>
     </div>
-    <div class="icon_header">
-        <div class="icon" style="background-position:center -100px"></div>
-        <p><?php echo $this->_config['tel'];?></p>
+    <div id="lang">
+    	<?php
+        if($lang=='vi') echo '<a href="en/"><div class="all_icon lang_item" style="background-position:-50px 0px">&nbsp;</div> English</a>';
+		else echo '<a href="/"><div class="all_icon lang_item">&nbsp;</div> Việt Nam</a>';
+        ?>
     </div>
+    <div id="menu_top">
+    	<?php
+        $data = $this->_model->_web_menu($lang, 0, 1);
+		$total = count($data);
+		$i = 0;
+		foreach($data as $row){
+			$i++;
+			if($i!=$total) $style = '|'; else $style = '';
+			if($i!=1) $lang_top = $lang.'/'; else $lang_top='';
+			echo '<a href="'.$lang_top.$row['url'].'">'.$row['name'].'</a>'.$style;
+		}
+		?><!--|<a href="forum/">Forum</a>-->
+    </div>
+    <?php include_once('view_web_menu.php');?>
 </div>

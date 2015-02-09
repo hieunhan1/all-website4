@@ -5,7 +5,7 @@ if($data){
 ?>
 <link rel="stylesheet" href="js/nivo-slider/default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
-<div id="slider" class="bogoc_5px">
+<div id="slider">
 	<div class="slider-wrapper theme-default"><div id="slider_run" class="nivoSlider">
 		<?php
         foreach($data as $row){
