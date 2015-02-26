@@ -1,4 +1,4 @@
-<div id="noel_bg" style="width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1; background: url(public/event/tet-2015/bg-2.gif)"></div>
+<!--<div id="noel_bg" style="width:100%; height:100%; position:fixed; top:0; left:0; z-index:-1; background: url(public/event/tet-2015/bg-2.gif)"></div>-->
 <!--<embed width="100%" height="43" src="public/event/tet-2015/merry-christmas.mp3" autostart="true" loop="true" volume="50" hidden="true">-->
 <script type="text/javascript">
 $(document).ready(function(e) {
