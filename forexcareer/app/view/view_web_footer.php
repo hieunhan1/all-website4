@@ -15,10 +15,9 @@
                 echo '<a href="'.$row['url'].'">'.$row['name'].'</a>';
             }
             ?>
-            <div id="run_top">TOP</div>
         </div>
         
-        
+        <div id="run_top">TOP</div>
         
         <div class="clear_1px"></div>
     </div>

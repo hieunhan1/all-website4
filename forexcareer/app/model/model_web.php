@@ -91,7 +91,20 @@ class model_web extends db{
 	}
 	
 	/*home*/
-	
+	public function _list_menu_home_page($lang){
+		$sql = "SELECT `id`,`name`,`url`,`url_img` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _list_article_home_page($id){
+		$sql = "SELECT `id`,`name`,`url`,`url_img`,`description` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 	/*end home*/
 	
 	/*list*/
