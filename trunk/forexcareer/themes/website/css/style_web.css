@@ -32,13 +32,12 @@ header #lang a{display:block; padding:5px 20px}
 .box_new_market .other .item{clear:both; height:70px; margin-top:10px; border-bottom:dashed 1px #CCC}
 .box_new_market .other .item .img{width:60px; height:60px; overflow:hidden; float:left; margin-right:10px}
 .box_new_market .other .item .img img{height:60px}
-.box_new_market .other .item h4{font-size:100%; margin-bottom:5px}
-.box_new_market .other .item p{height:40px; overflow:hidden}
+.box_new_market .other .item h4{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px}
 
 footer{clear:both; line-height:150%; color:#DDD; background:url(../img/bg-menu.gif)}
 #content_footer{width:1000px; margin:auto; padding:20px 0}
-#contact_footer{width:380px; float:left}
-#menu_footer{width:600px; float:right; line-height:28px}
+#contact_footer{width:auto; float:left}
+#menu_footer{width:auto; float:right; clear:right; margin-bottom:10px}
 #menu_footer a{color:#DDD; padding:0 10px}
-#run_top{width:auto; float:right; height:28px; line-height:28px; clear:right; padding-left:35px; background:url(../img/top.png) no-repeat left top}
+#run_top{width:auto; float:right; clear:right; height:28px; line-height:28px; padding:0 20px 0 35px; background:url(../img/top.png) no-repeat left top}
 #run_top:hover{font-weight:bold; color:#FFF; background-position:0px -32px; cursor:pointer}
