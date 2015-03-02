@@ -34,9 +34,10 @@
                 $i++;
                 if($i%2==1) $style='style="float:left"'; else $style='style="float:right"';
 				if($row['url_img']!='') $img=CONS_IMAGES_ARTICLES.$row['url_img']; else $img=CONS_IMAGE_DEFAULT;
+				$link = $lang.'/'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html';
                 echo '<div class="article_item" '.$style.'>
-                    <a href="'.$lang.'/'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html"><h3>'.$row['name'].'</h3></a>
-                    <div class="article_item_img"><img src="'.$img.'" alt="'.$row['name'].'" /></div>
+                    <a href="'.$link.'" title="'.$row['name'].'"><h3>'.$row['name'].'</h3></a>
+                    <div class="article_item_img"><a href="'.$link.'"><img src="'.$img.'" alt="'.$row['name'].'" /></a></div>
                     <p>'.$row['description'].'</p>
                     <!--<div class="article_item_link">
                         <a href="javascript:;" onclick="facebook_share(\''.CONS_BASE_URL.'/'.$row['url'].'\')" style="color:#666">Share facebook</a>
