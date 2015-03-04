@@ -15,7 +15,7 @@
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><?php echo $row['name'];?></td>
+            <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
             <td><?php echo $row['url'];?></td>
             <td><?php echo $row['order'];?></td>
             <td align="center">

@@ -53,7 +53,7 @@
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
             <td><?php echo $row['action'];?></td>
             <td><?php echo $row['table'];?></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>

@@ -18,9 +18,9 @@
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['phone'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['address'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['phone'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['address'];?></p></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;

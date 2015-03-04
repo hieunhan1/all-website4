@@ -17,9 +17,9 @@
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['url_img'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['order'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['url_img'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['order'];?></p></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;

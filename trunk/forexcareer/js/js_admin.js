@@ -188,5 +188,4 @@ $(document).ready(function(e) {
 	checks_box_item('.checkbox_item', '.value_checks_box'); //class, id
 	checks_box_item('.checkbox_xem', '.value_rule_view');
 	checks_box_item('.checkbox_action', '.value_rule_action');
-	
 });

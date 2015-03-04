@@ -98,8 +98,8 @@ class model_admin extends db{
 		if($to > $totalpages) $to = $totalpages;
 		$links = '';
 		for($j=$from; $j<=$to; $j++){
-			if($j==$currentpage) $links = $links."<span>{$j}</span>"; 
-			else $links = $links."<a href='{$baseurl}&page={$j}'>{$j}</a>"; 	
+			if($j!=$currentpage) $links = $links."<a href='{$baseurl}&page={$j}'>{$j}</a>";
+			else $links = $links."<span>{$j}</span>";	
 		}
 		return $links;
 	}
@@ -325,69 +325,5 @@ class model_admin extends db{
 	
 	/*function*/
 	
-	//booking
-	public function _web_booking_form(){
-		$sql = "SELECT `id`,`name` FROM `web_booking_form` WHERE `status`=1 ORDER BY `name`";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	public function _web_booking_to(){
-		$sql = "SELECT `id`,`name` FROM `web_booking_to` WHERE `status`=1 ORDER BY `name`";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	
-	//menu_forum
-	public function _forum_menu_position(){
-		$sql = "SELECT `id`,`name` FROM `forum_menu_position` WHERE `status`=1 ORDER BY `order`";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	public function _forum_menu_type(){
-		$sql = "SELECT `id`,`name` FROM `forum_menu_type` WHERE `status`=1 ORDER BY `order`";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	public function _forum_menu($parent, $style, $arr, $where=''){
-		if(!$arr) $arr = array();
-		$sql = "SELECT `id`,`name`,`url`,`order`,`status` FROM `forum_menu`
-		WHERE parent='{$parent}' {$where} ORDER BY `order` ";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		
-		while($row = $result->fetch_assoc()){
-			$arr[] = array(
-				'id'=>$row['id'],
-				'name'=>$style.$row['name'],
-				'url'=>$row['url'],
-				'order'=>$style.$row['order'],
-				'status'=>$row['status'],
-			);
-			$arr = $this->_web_menu($row['id'], $style.'-- ', $arr, $where);
-		}
-		return $arr;
-	}
-	public function _forum_menu_id($menu_id){
-		$str = explode(',',$menu_id);
-		$i = count($str)-2;
-		$sql = "SELECT `url` FROM `forum_menu` WHERE `id`='".$str[$i]."'";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$row = $result->fetch_assoc();
-		return $row['url'];
-	}
-	
-	public function _forum_article_name($id){
-		$sql = "SELECT `name` FROM `forum_article` WHERE `status`=1 AND `id`='{$id}'";
-		$result = $this->db->query($sql);
-		$row = $result->fetch_assoc();
-		return $row['name'];
-	}
 	/*end function*/
 }//class

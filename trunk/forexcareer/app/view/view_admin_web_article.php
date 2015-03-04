@@ -22,20 +22,18 @@
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="250" align="left">Tên hình</th>
             <th width="110" align="left">Ngày</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`url_img`,`datetime`');
+		$data = $this->select_from_all($lang,$arr,',`datetime`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
-            <td><p class="height_25px_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_25px_hidden"><?php echo $row['url_img'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;

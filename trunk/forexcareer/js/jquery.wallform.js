@@ -1,43 +1,17 @@
 /*!
- * jQuery Form Plugin
- * version: 2.84 (12-AUG-2011)
- * @requires jQuery v1.3.2 or later
+ * jQuery WallForm Plugin
+ * version: 2.84 (22-AUG-2011)
+ * @requires jQuery v1.3.3 or later
  *
  * Examples and documentation at: http://malsup.com/jquery/form/
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
+ * Modified by Arun Sekar http://9lessons.info 
  */
 ;(function($) {
 
-/*
-	Usage Note:
-	-----------
-	Do not use both ajaxSubmit and ajaxForm on the same form.  These
-	functions are intended to be exclusive.  Use ajaxSubmit if you want
-	to bind your own submit handler to the form.  For example,
 
-	$(document).ready(function() {
-		$('#myForm').bind('submit', function(e) {
-			e.preventDefault(); // <-- important
-			$(this).ajaxSubmit({
-				target: '#output'
-			});
-		});
-	});
-
-	Use ajaxForm when you want the plugin to manage all the event binding
-	for you.  For example,
-
-	$(document).ready(function() {
-		$('#myForm').ajaxForm({
-			target: '#output'
-		});
-	});
-
-	When using ajaxForm, the ajaxSubmit function will be invoked for you
-	at the appropriate time.
-*/
 
 /**
  * ajaxSubmit() provides a mechanism for immediately submitting
@@ -218,7 +192,7 @@ $.fn.ajaxSubmit = function(options) {
 				id = n;
 		}
 		else {
-			$io = $('<iframe name="' + id + '" src="../upload/scripts/'+ s.iframeSrc +'" />');
+			$io = $('<iframe name="' + id + '" src="'+ s.iframeSrc +'" />');
 			$io.css({ position: 'absolute', top: '-1000px', left: '-1000px' });
 		}
 		io = $io[0];
@@ -549,7 +523,21 @@ $.fn.ajaxSubmit = function(options) {
 					$.globalEval(data);
 				}
 			}
-			return data;
+			//return data;
+			// Modification www.9lessons.info
+			var exp = /<img[^>]+>/i;
+		
+            expResult = data.match(exp);
+           if(expResult == null)
+           {
+            alert("Something went wrong.");
+           }
+           else{
+			$(options.target).prepend(data);
+			}
+		   $("#photoimg").val('');
+		   // Modification End www.9lessons.info
+
 		};
 	}
 };
@@ -691,7 +679,7 @@ $.fn.formToArray = function(semantic) {
 
 /**
  * Serializes form data into a 'submittable' string. This method will return a string
- * in the format: name1=value1&name2=value2
+ * in the format: name1=value1&amp;name2=value2
  */
 $.fn.formSerialize = function(semantic) {
 	//hand off to jQuery.param for proper encoding
@@ -700,7 +688,7 @@ $.fn.formSerialize = function(semantic) {
 
 /**
  * Serializes all field elements in the jQuery object into a query string.
- * This method will return a string in the format: name1=value1&name2=value2
+ * This method will return a string in the format: name1=value1&amp;name2=value2
  */
 $.fn.fieldSerialize = function(successful) {
 	var a = [];
