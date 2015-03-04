@@ -2,8 +2,33 @@
 /*action create, edit*/
 $this->create_edit_data($table, $arr_action, $row_detail);
 
+include_once('view_admin_upload.php');
+
 echo '<form name="form_action" method="post" action="">
-<table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
+<table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';
+	/*$values = $row_detail['img_avatar'];
+	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Avatar','img_avatar','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	$values = $row_detail['img_arr'];
+	$properties = array('200'); //maxlength OTHER (disabled, readonly) 
+	$views = array('DS img','img_arr','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();*/
+	
+	//img_avatar
+	$values = $row_detail['img_avatar'];
+	$views = array('img_avatar'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
+	//img_arr
+	$values = $row_detail['img_arr'];
+	$views = array('img_arr'); //name class
+    $this->getProperties('2',$values,'',$views);
+	echo $this->DisplayProperties();
+	
 	//status
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Hiện');
@@ -54,20 +79,6 @@ echo '<form name="form_action" method="post" action="">
 	$properties = array('200',$arr_action['disabled']); //maxlength OTHER (disabled, readonly)
 	$views = array('Link','url','input_medium auto_link_detail'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views,$change_url.'<span class="notes">Nhấp doubleclick để lấy link tự động</span>');
-	echo $this->DisplayProperties();
-	
-	//url_img
-	$values = 'url_img'; //field name
-	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
-	$this->getProperties('6',$values,'',$views);
-	$other = $this->DisplayProperties();
-	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>articles</strong>"</p>';
-	if($row_detail['url_img'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_ARTICLES_THUMBS.$row_detail['url_img'].'" /></div>';
-	
-	$values = $row_detail['url_img'];
-	$properties = array('150'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Ảnh đại diện','url_img','input_medium'); //label id&name class
-    $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
 	//description
