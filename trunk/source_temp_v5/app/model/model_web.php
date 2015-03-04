@@ -74,7 +74,7 @@ class model_web extends db{
 		return $data;
 	}
 	
-	public function _pageslist($baseurl, $totalrows, $offset, $per_page, $currentpage){
+	public function _pageslist($baseurl, $totalrows, $offset, $per_page, $currentpage, &$totalpages=0){
 		$totalpages = ceil($totalrows/$per_page);
 		if($totalpages>1){
 			$from = $currentpage-$offset;
@@ -91,12 +91,25 @@ class model_web extends db{
 	}
 	
 	/*home*/
-	
+	public function _list_menu_home_page($lang){
+		$sql = "SELECT `id`,`name`,`url`,`url_img` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _list_article_home_page($id){
+		$sql = "SELECT `id`,`name`,`url`,`url_img`,`description` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 	/*end home*/
 	
 	/*list*/
 	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url_img`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_img`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -109,7 +122,7 @@ class model_web extends db{
 		return $data;
 	}
 	
-	public function _list_menu_parent($idMenu){
+	public function _list_menu_parent($idMenu){ //dung cho thu vien anh
 		$sql = "SELECT `id`,`name`,`url`,`url_img`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
@@ -175,22 +188,8 @@ class model_web extends db{
 	/*end contact*/
 	
 	/*other post*/
-	public function _other_post_about($idMenu,$limit=5){
-		$sql = "SELECT `id`,`name`,`name_alias` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
 	public function _other_post_article($id,$idMenu,$limit=5){
 		$sql = "SELECT `name`,`name_alias`,`menu_id` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$data = array();
-		while($row = $result->fetch_assoc()) $data[] = $row;
-		return $data;
-	}
-	public function _other_post_product($id,$idMenu,$limit=5){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_img`,`price`,`price_cost` FROM `web_product` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

@@ -26,4 +26,3 @@ define('CONS_ERROR_PHONE', 'Phone is not correct ');
 define('CONS_ERROR_ADDRESS', 'Input address');
 define('CONS_ERROR_EMAIL', 'Wrong email address');
 define('CONS_ERROR_MESSAGE', 'Your comment should be more than 10 characters');
-?>

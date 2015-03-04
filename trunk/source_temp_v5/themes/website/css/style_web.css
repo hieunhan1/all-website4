@@ -1,2 +1,43 @@
 /* CSS Document */
+header{height:100px}
+header #logo{width:auto; float:left}
+header #logo img{height:80px; margin:10px 0 0 10px; float:left}
+header #logo h2{font-size:120%; float:left; font-family:Verdana, Geneva, sans-serif; line-height:100px}
+header #login{width:auto; float:right}
+header #login a{display:block; padding:5px 20px; color:#FFF; background:url(../img/bg-menu.gif)}
+header #chat{width:auto; float:right; background-position:2px 5px}
+header #chat a{display:block; padding:5px 20px}
+header #lang{width:auto; float:right}
+header #lang a{display:block; padding:5px 20px}
+/*end header*/
 
+#homepage{clear:both}
+#homepage h2{font-size:180%; text-align:center; margin:20px 0}
+.box_about{width:300px; height:133px; float:left}
+.box_about h3{line-height:150%; color:#3c5e80; font-size:140%; font-weight:100; margin-bottom:5px}
+.box_about p{line-height:150%}
+
+.box_new{width:360px; float:left; padding:5px 0}
+.box_new h3{line-height:250%; font-size:150%; padding-left:15px; border-bottom:solid 1px #CCC}
+.box_new .item{line-height:140%; margin:0 15px; padding:10px 0; border-bottom:dashed 1px #CCC}
+.box_new .item h4{font-size:100%; margin-bottom:5px}
+
+.box_new_market{width:610px; float:right; line-height:20px; padding:5px 10px 15px 10px}
+.box_new_market .highlight{width:230px; float:left}
+.box_new_market .highlight .img{width:230px; height:140px; text-align:center; overflow:hidden; margin-bottom:10px}
+.box_new_market .highlight .img img{height:170px}
+.box_new_market .highlight h3{font-size:120%; font-weight:100; margin-bottom:10px}
+.box_new_market .other{width:365px; float:right}
+.box_new_market .other .title{font-weight:bold; color:#000; text-transform:uppercase; margin-bottom:10px; padding-bottom:5px; border-bottom:solid 1px #CCC}
+.box_new_market .other .item{clear:both; height:70px; margin-top:10px; border-bottom:dashed 1px #CCC}
+.box_new_market .other .item .img{width:60px; height:60px; overflow:hidden; float:left; margin-right:10px}
+.box_new_market .other .item .img img{height:60px}
+.box_new_market .other .item h4{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px}
+
+footer{clear:both; line-height:150%; color:#DDD; background:url(../img/bg-menu.gif)}
+#content_footer{width:1000px; margin:auto; padding:20px 0}
+#contact_footer{width:auto; float:left}
+#menu_footer{width:auto; float:right; clear:right; margin-bottom:10px}
+#menu_footer a{color:#DDD; padding:0 10px}
+#run_top{width:auto; float:right; clear:right; height:28px; line-height:28px; padding:0 20px 0 35px; background:url(../img/top.png) no-repeat left top}
+#run_top:hover{font-weight:bold; color:#FFF; background-position:0px -32px; cursor:pointer}

@@ -6,7 +6,6 @@ if(isset($_POST['contact_name'])){
 	$phone = $this->_model->_change_dau_nhay(trim($_POST['phone']));
 	$address = $this->_model->_change_dau_nhay(trim($_POST['address']));
 	$message = $this->_model->_change_dau_nhay($_POST['message']);
-	
 	if($name!='' && $email!='' && $phone!='' && $message!=''){
 		$id_contact = $this->_model->_web_contact_insert($name,$email,$phone,$address,$message);
 		$title = $name;

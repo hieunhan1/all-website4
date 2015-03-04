@@ -1,11 +1,19 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/forexcareer');/*domain*/
-define('CONS_BASE_DIR', '/all/forexcareer');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/source_temp_v5');/*domain*/
+define('CONS_BASE_DIR', '/source_temp_v5');/*upload host tắt CONS này*/
 
 define('CONS_HOST',	'localhost');
 define('CONS_USER_DB',	'root');
 define('CONS_PASS_DB',	'');
-define('CONS_DB_NAME',	'forexcareer');
+define('CONS_DB_NAME',	'source_temp_v5');
+
+/*SEND MAIL*/
+define('CONS_AJAX_NAME', 'ajax');
+define('CONS_HOST_SMTP_SERVER', 'localhost');
+define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@localhost.com');
+define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
+define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');
+define('CONS_RECEIVE_MAIL_NAME', 'Admin');
 
 /*IMAGES UPLOAD*/
 define('CONS_IMAGES_ARTICLES','public/images/articles/');
@@ -43,14 +51,6 @@ define('CONS_ADMIN_PASSWORD_DEFAULT', '00112233');
 /*FORUM*/
 define('CONS_DEFAULT_FORUM_CONTROLLER', 'forum');
 define('CONS_DEFAULT_FORUM_ACTION', 'index');
-
-/*OTHER*/
-define('CONS_AJAX_NAME', 'ajax');
-define('CONS_HOST_SMTP_SERVER', 'localhost');
-define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@localhost.com');
-define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
-define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');
-define('CONS_RECEIVE_MAIL_NAME', 'Admin');
 
 /*ERROR*/
 define('CONS_400','error/400');
