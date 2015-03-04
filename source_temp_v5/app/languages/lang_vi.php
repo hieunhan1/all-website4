@@ -26,4 +26,3 @@ define('CONS_ERROR_PHONE', 'Điện thoại chưa đúng');
 define('CONS_ERROR_ADDRESS', 'Nhập địa chỉ');
 define('CONS_ERROR_EMAIL', 'Email chưa đúng');
 define('CONS_ERROR_MESSAGE', 'Nội dung phải hơn 10 ký tự');
-?>

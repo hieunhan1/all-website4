@@ -1,12 +1,12 @@
-<div id="menu" class="bogoc_5px all_icon_bg" style="overflow:visible !important">
+<div id="menu">
     <ul id="nav">
     	<?php
 		$position = 2;
-		$data = $this->_model->_web_menu($lang, 0, $position);
+		$data = $this->_model->_web_menu($this->_lang, 0, $position);
 		foreach($data as $row){
-			if($row['id']==$current_menu['root_id']) $style='style="color:#FFFF66"'; else $style='';
-			$view_menu .= '<li><a href="'.$lang.'/'.$row['url'].'" '.$style.'>'.$row['name'].'</a>';
-			$view_menu .= $this->getSubmenu($lang, $row['id'], $position);
+			if($row['id']==$current_menu['root_id']) $style='id="menu_active"'; else $style='';
+			$view_menu .= '<li><a href="'.$row['url'].'" '.$style.'>'.$row['name'].'</a>';
+			$view_menu .= $this->getSubmenu($this->_lang, $row['id'], $position);
 			$view_menu .= '</li>';
 		}
 		echo $view_menu;

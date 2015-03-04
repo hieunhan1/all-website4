@@ -36,7 +36,7 @@ class control_web{
 		if($data){
 			$view = '<ul>';
 			foreach($data as $row){
-				$view .= '<li><a href="'.$lang.'/'.$row['url'].'">'.$row['name'].'</a>';
+				$view .= '<li><a href="'.$row['url'].'">'.$row['name'].'</a>';
 				$view .= $this->getSubmenu($lang, $row['id'], $position);
 				$view .= '</li>';
 			}
@@ -73,6 +73,7 @@ class control_web{
 		$row = $this->_model->_web_menu_type($type, $this->_lang);
 		if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
 		else $site_image = CONS_IMAGES_CATALOG.$row['url_img'];
+		$type_menu = $this->menu_type($row['type_id']);
 		$arr = array(
 			'id'=>$row['id'],
 			'name'=>strip_tags($row['name']),
@@ -81,7 +82,14 @@ class control_web{
 			'keyword'=>strip_tags($row['tags']),
 			'url'=>CONS_BASE_URL.'/'.$row['url'],
 			'image'=>CONS_BASE_URL.'/'.$site_image,
-			'type_menu_name'=>'site',
+			'lang'=>strip_tags($row['lang']),
+			'type_menu_id'=>$type_menu['id'],
+			'type_menu_name'=>$type_menu['name'],
+			'type_menu_img'=>$type_menu['url_img'],
+			'type_menu_img_thumb'=>$type_menu['url_img_thumb'],
+			'root_id'=>$row['id'],
+			'root_name'=>strip_tags($row['name']),
+			'root_url'=>CONS_BASE_URL.'/'.$row['url'],
 		);
 		include_once('view/view_web_home_page.php');
 		return $arr;
@@ -89,6 +97,10 @@ class control_web{
 	
 	public function current_menu(){
 		$alias_menu = $this->_control;
+		$currentpage = $this->_data;
+		$title_page = '';
+		if($currentpage!=1) $title_page = ' - Page '.$currentpage;
+		
 		if( $row = $this->_model->_web_menu_one($alias_menu) ){
 			$this->_lang = $row['lang'];
 			if($row['url_img']=='') $site_image = CONS_IMAGE_DEFAULT;
@@ -107,12 +119,13 @@ class control_web{
 			$arr = array(
 				'id'=>$row['id'],
 				'name'=>strip_tags($row['name']),
-				'title'=>strip_tags($row['title']),
-				'description'=>strip_tags($row['description']),
+				'title'=>strip_tags($row['title']).$title_page,
+				'description'=>strip_tags($row['description']).$title_page,
 				'keyword'=>strip_tags($row['tags']),
-				'url'=>CONS_BASE_URL.'/'.$lang.'/'.$row['url'],
+				'url'=>CONS_BASE_URL.'/'.$row['url'],
 				'image'=>CONS_BASE_URL.'/'.$site_image,
 				'lang'=>strip_tags($row['lang']),
+				'page_number'=>$currentpage,
 				'type_menu_id'=>$type_menu['id'],
 				'type_menu_name'=>$type_menu['name'],
 				'type_menu_img'=>$type_menu['url_img'],
@@ -138,9 +151,6 @@ class control_web{
 	}
 	
 	public function menu_page($current_menu){
-		$currentpage = $this->_data;
-		$idMenu = $current_menu['id'];
-		if($currentpage!=1) $title_page=" - Page {$currentpage}";
 		$name_list_model = '_list_'.$current_menu['type_menu_name'];
 		$name_list_view = 'view_web_list_'.$current_menu['type_menu_name'];
 		$file_view = "view/{$name_list_view}.php";
@@ -149,7 +159,6 @@ class control_web{
 	
 	public function detail_page($current_menu){
 		$alias_detail = $this->_data;
-		$idMenu = $current_menu['id'];
 		$name_detail_model = '_detail_'.$current_menu['type_menu_name'];
 		$name_detail_view = 'view_web_detail_'.$current_menu['type_menu_name'];
 		if($row_detail=$this->_model->$name_detail_model($alias_detail)){
@@ -184,7 +193,7 @@ class control_web{
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
 			$this->_lang = $this->language();
 			$this->_config = $this->web_config($this->_lang);
-			$current_site = $this->home_page();
+			$current_menu = $current_site = $this->home_page();
 		}else{
 			$current_menu = $this->current_menu();
 			$this->_config = $this->web_config($current_menu['lang']);
