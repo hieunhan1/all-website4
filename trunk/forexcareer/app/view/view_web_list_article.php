@@ -13,10 +13,15 @@
 		foreach($data as $row){
 			$i++;
 			if($i%2==1) $style='style="float:left"'; else $style='style="float:right"';
+			
+			$url_img = $current_menu['type_menu_img'].$row['img_avatar'];
+			if(file_exists($url_img)) $url_img = '<img src="'.$url_img.'" alt="'.$row['name'].'" />';
+			else $url_img = '<img src="'.CONS_IMAGE_DEFAULT.'" alt="'.$row['name'].'" />';
+			
 			echo '<div class="article_box" '.$style.'>
 				<a href="'.$row['url'].'"><h3>'.$row['name'].'</h3></a>
 				<div class="date">Cập nhật ngày '.date('d-m-Y H:i', $row['datetime']).'</div>
-				<div class="img"><a href="'.$row['url'].'"><img src="'.$current_menu['type_menu_img'].$row['url_img'].'" alt="'.$row['name'].'" /></a></div>
+				<div class="img"><a href="'.$row['url'].'">'.$url_img.'</a></div>
 				<p>'.$row['description'].'</p>
 				<div class="link">
 					<a href="javascript:;" onclick="facebook_share(\''.CONS_BASE_URL.'/'.$row['url'].'\')" style="color:#666">Share facebook</a>
