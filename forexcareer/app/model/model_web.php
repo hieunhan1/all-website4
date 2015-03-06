@@ -12,7 +12,7 @@ class model_web extends db{
 	}
 	
 	public function _web_menu($lang, $parent, $position){
-		$sql = "SELECT `id`,`name`,`url`,`url_img` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `parent`='{$parent}' AND `position_id` LIKE '%,{$position},%' ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `parent`='{$parent}' AND `position_id` LIKE '%,{$position},%' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -67,7 +67,7 @@ class model_web extends db{
 	
 	public function _web_slider_banner($position, $lang, $menu_id=NULL){
 		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
-		$sql = "SELECT `name`,`url_img`,`url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' AND `lang`='{$lang}' {$menu_id} ORDER BY `order`";
+		$sql = "SELECT `name`,`img_avatar`,`url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' AND `lang`='{$lang}' {$menu_id} ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -92,14 +92,14 @@ class model_web extends db{
 	
 	/*home*/
 	public function _list_menu_home_page($lang){
-		$sql = "SELECT `id`,`name`,`url`,`url_img` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar` FROM `web_menu` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
 	public function _list_article_home_page($id){
-		$sql = "SELECT `id`,`name`,`url`,`url_img`,`description` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC";
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar`,`description` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -109,7 +109,7 @@ class model_web extends db{
 	
 	/*list*/
 	public function _list_web_article($id, $per_page=10, $startrow=0, &$totalrows){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_img`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`img_avatar`,`description`,`datetime`,`menu_id` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$startrow}, {$per_page}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -123,7 +123,7 @@ class model_web extends db{
 	}
 	
 	public function _list_menu_parent($idMenu){ //dung cho thu vien anh
-		$sql = "SELECT `id`,`name`,`url`,`url_img`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar`,`title` FROM `web_menu` WHERE `status`=1 AND `parent`='{$idMenu}' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -139,7 +139,7 @@ class model_web extends db{
 		return $result->fetch_assoc();
 	}
 	public function _list_photo($idMenu){
-		$sql = "SELECT `id`,`name`,`url_img` FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `order`";
+		$sql = "SELECT `id`,`name`,`img_avatar` FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
