@@ -55,37 +55,56 @@ $(document).ready(function() {
 			});
 		}
 	});
+	
+	/*copy link*/
+	
 }); 
 </script>
-<table width="100%" border="0" cellpadding="0" cellspacing="10">
-<tr>
-    <td class="label">Upload ảnh</td>
-    <td>
-        <form id="imageform" method="post" enctype="multipart/form-data" action="cp_admin/web_article/?ajax=upload_images" style="clear:both; margin-bottom:10px">
-            <div id="imageloadstatus" style="display:none"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>loader.gif" alt="Uploading...." /></div>
-            <div id="imageloadbutton">
-                <input type="file" name="photos[]" id="photoimg" multiple="true" />
-            </div>
-        </form>
-        <div id="upload_img">
-        <?php
-        $img_arr = explode(',',$row_detail['img_arr']);
-		$total = count($img_arr);
-		if($total > 1){
-			for($i=$total-2; $i>=0; $i--){
-				if($img_arr[$i] != $row_detail['img_avatar']) $active = ''; else $active = array('active_avatar','style="display:none"');
-				echo '<div class="img_item '.$active[0].'" value="'.$img_arr[$i].'">
-					<div class="select_avatar" '.$active[1].'>Chọn làm đại diện</div>
-					<img class="img" src="public/_thumbs/Images/articles/'.$img_arr[$i].'" />
-					<p class="copylink">Copy link</p>
-					<p class="delete_img"><img src="'.CONS_ADMIN_CSS_IMG.'delete.gif" /></p>
-				</div>';
-			}
-			echo '<div style="clear:both; font-weight:bold; color:#999">Click chọn ảnh đại diện</div>';
-		}
-		?>
+
+<script type="text/javascript" src="js/copy_clip/jquery.zclip.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".copylink").live("click", function(){
+		$(this).zclip({
+			path:'js/copy_clip/ZeroClipboard.swf',
+			copy: function(){
+				var str = "public/images/articles/" + $(this).parent().attr("value");
+				return str;
+			},
+			/*afterCopy: function() {
+				alert('Copy đường dẫn hình thành công');
+				return true;
+			}*/
+		});
+	});
+});
+</script>
+
+<div style="width:160px; float:left; margin:3px 10px 0 0; font-weight:bold; text-align:right">Upload ảnh</div>
+<div style="width:700px; float:left">
+    <form id="imageform" method="post" enctype="multipart/form-data" action="cp_admin/web_article/?ajax=upload_images" style="clear:both; margin-bottom:10px">
+        <div id="imageloadstatus" style="display:none"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>loader.gif" alt="Uploading...." /></div>
+        <div id="imageloadbutton">
+            <input type="file" name="photos[]" id="photoimg" multiple="true" />
         </div>
-        <div id="img_arr"></div>
-    </td>
-</tr>
-</table>
+    </form>
+    
+    <div id="upload_img">
+		<?php
+        $img_arr = explode(',',$row_detail['img_arr']);
+        $total = count($img_arr);
+        if($total > 1){
+            for($i=$total-2; $i>=0; $i--){
+                if($img_arr[$i] != $row_detail['img_avatar']) $active = ''; else $active = array('active_avatar','style="display:none"');
+                echo '<div class="img_item '.$active[0].'" value="'.$img_arr[$i].'">
+                    <div class="select_avatar" '.$active[1].'>Chọn làm đại diện</div>
+                    <img class="img" src="public/_thumbs/Images/articles/'.$img_arr[$i].'" />
+                    <div class="copylink">Copy link</div>
+                    <div class="delete_img"><img src="'.CONS_ADMIN_CSS_IMG.'delete.gif" /></div>
+                </div>';
+            }
+        }
+        ?>
+    </div>
+    <div id="img_arr"></div>
+</div>
