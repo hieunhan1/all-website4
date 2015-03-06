@@ -83,18 +83,7 @@ echo '<form name="form_action" method="post" action="">
 	echo '<tr><td class="label">Quyền trên website</td> <td>'.$xem.$quyen.'</td></tr>';
 	/*end phan quyen tren website*/
 	
-	//menu_id
-	$values = $row_detail['menu_id'];
-	$views = array('menu_id', 'value_checks_box'); //name class
-    $this->getProperties('2',$values,'',$views);
-	$hidden_item = $this->DisplayProperties();
-	$where = " AND lang='{$lang}' ";
-	$arr = $this->_model->_forum_menu(0, '', NULL, $where);
-	$properties = $row_detail['menu_id']; //default check
-	$views = array('','','checkbox checkbox_item','width:345px; height:135px;'); //label name class width
-    $this->getProperties('7',$arr,$properties,$views);
-	echo '<tr><td class="label">Danh mục forum</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
-	
+	//password
 	if($_GET['id']==0){
 		$values = md5(CONS_ADMIN_PASSWORD_DEFAULT);
 		$views = array('password'); //name class
