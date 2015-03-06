@@ -4,15 +4,16 @@
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
         	<th width="50">STT</th>
-            <th width="200" align="left">Mô tả</th>
-            <th width="150" align="left">Tên biến</th>
+            <th width="160" align="left">Mô tả</th>
+            <th width="120" align="left">Tên biến</th>
+            <th width="150" align="left">Table data</th>
             <th align="left">URL image</th>
             <th width="100">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang, $arr, ',`description`,`url_img`,`order`', '`order`, ');
+		$data = $this->select_from_all($lang, $arr, ',`description`,`table_data`,`url_img`,`order`', '`order`, ');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
@@ -20,6 +21,7 @@
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><?php echo $row['description'];?></td>
             <td><?php echo $row['name'];?></td>
+            <td><p class="height_row_hidden"><?php echo $row['table_data'];?></p></td>
             <td><p class="height_row_hidden"><?php echo $row['url_img'];?></p></td>
             <td align="center"><?php echo $row['order'];?></td>
             <td align="center">
