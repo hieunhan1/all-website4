@@ -67,7 +67,7 @@ $(document).ready(function() {
 		$(this).zclip({
 			path:'js/copy_clip/ZeroClipboard.swf',
 			copy: function(){
-				var str = "<?php echo $url_img;?>" + $(this).parent().attr("value");
+				var str = "/<?php echo $url_img;?>" + $(this).parent().attr("value");
 				return str;
 			},
 			/*afterCopy: function() {
@@ -107,3 +107,4 @@ $(document).ready(function() {
     </div>
     <div id="img_arr"></div>
 </div>
+<div style="clear:both; height:1px"></div>

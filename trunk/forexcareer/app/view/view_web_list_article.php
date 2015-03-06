@@ -15,7 +15,7 @@
 			if($i%2==1) $style='style="float:left"'; else $style='style="float:right"';
 			
 			$url_img = $current_menu['type_menu_img'].$row['img_avatar'];
-			if(file_exists($url_img)) $url_img = '<img src="'.$url_img.'" alt="'.$row['name'].'" />';
+			if($row['img_avatar']!='') $url_img = '<img src="'.$url_img.'" alt="'.$row['name'].'" />';
 			else $url_img = '<img src="'.CONS_IMAGE_DEFAULT.'" alt="'.$row['name'].'" />';
 			
 			echo '<div class="article_box" '.$style.'>

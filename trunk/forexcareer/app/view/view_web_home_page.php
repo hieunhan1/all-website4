@@ -36,17 +36,17 @@
 		foreach($data as $row){
 			$i++;
 			$url_img = 'public/_thumbs/Images/articles/'.$row['img_avatar'];
-			if(file_exists($url_img)) $url_img = '<img src="'.$url_img.'" alt="'.$row['name'].'" />';
-			else $url_img = '<img src="'.CONS_IMAGE_DEFAULT.'" alt="'.$row['name'].'" />';
+			if($row['img_avatar']!='') $image = '<img src="'.$url_img.'" alt="'.$row['name'].'" />';
+			else $image = '<img src="'.CONS_IMAGE_DEFAULT.'" alt="'.$row['name'].'" />';
 			
 			if($i!=1){
 				$item .= '<div class="item">
-					<a href="'.$row['url'].'" title="'.$row['name'].'"><div class="img">'.$url_img.'</div><h4>'.$row['name'].'</h4></a>
+					<a href="'.$row['url'].'" title="'.$row['name'].'"><div class="img">'.$image.'</div><h4>'.$row['name'].'</h4></a>
 					<p>February 25, 2015 09:24:00 PM ET</p>
 				</div>';
 			}else{
 				$highlight .= '<div class="highlight">
-					<a href="'.$row['url'].'" title="'.$row['name'].'"><div class="img">'.$url_img.'</div><h3>'.$row['name'].'</h3></a>
+					<a href="'.$row['url'].'" title="'.$row['name'].'"><div class="img">'.$image.'</div><h3>'.$row['name'].'</h3></a>
 					<p>'.$row['description'].'</p>
 				</div>';
 			}
