@@ -270,6 +270,12 @@ class model_admin extends db{
 		return $data;
 	}
 	
+	public function _url_image_menu_type($table){
+		$sql = "SELECT `url_img`,`url_img_thumb` FROM `web_menu_type` WHERE `status`=1 AND `table_data`='{$table}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	
 	public function _web_slider_banner_position(){
 		$sql = "SELECT `id`,`name` FROM `web_slider_banner_position` WHERE `status`=1 ORDER BY `id`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);

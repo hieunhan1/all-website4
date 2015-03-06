@@ -1,3 +1,9 @@
+<?php
+$data = $this->_model->_url_image_menu_type($table);
+$url_img = $data['url_img'];
+$url_img_thumb = $data['url_img_thumb'];
+?>
+<script type="text/javascript" src="js/copy_clip/jquery.zclip.js"></script>
 <script type="text/javascript">
 $(document).ready(function() { 
 	$('#photoimg').die('click').live('change', function(){ 
@@ -47,7 +53,7 @@ $(document).ready(function() {
 				type:'GET',
 				data:{image:name},
 				cache:false,
-				success: function() {
+				success: function(data) {
 					img_arr = img_arr.replace(name + ',','');
 					$("input[name=img_arr]").val(img_arr);
 					if(name==img_avatar) $("input[name=img_avatar]").val('');
@@ -57,18 +63,11 @@ $(document).ready(function() {
 	});
 	
 	/*copy link*/
-	
-}); 
-</script>
-
-<script type="text/javascript" src="js/copy_clip/jquery.zclip.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
 	$(".copylink").live("click", function(){
 		$(this).zclip({
 			path:'js/copy_clip/ZeroClipboard.swf',
 			copy: function(){
-				var str = "public/images/articles/" + $(this).parent().attr("value");
+				var str = "<?php echo $url_img;?>" + $(this).parent().attr("value");
 				return str;
 			},
 			/*afterCopy: function() {
@@ -77,12 +76,12 @@ $(document).ready(function() {
 			}*/
 		});
 	});
-});
+}); 
 </script>
 
 <div style="width:160px; float:left; margin:3px 10px 0 0; font-weight:bold; text-align:right">Upload ảnh</div>
 <div style="width:700px; float:left">
-    <form id="imageform" method="post" enctype="multipart/form-data" action="cp_admin/web_article/?ajax=upload_images" style="clear:both; margin-bottom:10px">
+    <form id="imageform" method="post" enctype="multipart/form-data" action="cp_admin/<?php echo $table;?>/?ajax=upload_images" style="clear:both; margin-bottom:10px">
         <div id="imageloadstatus" style="display:none"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>loader.gif" alt="Uploading...." /></div>
         <div id="imageloadbutton">
             <input type="file" name="photos[]" id="photoimg" multiple="true" />
@@ -98,7 +97,7 @@ $(document).ready(function() {
                 if($img_arr[$i] != $row_detail['img_avatar']) $active = ''; else $active = array('active_avatar','style="display:none"');
                 echo '<div class="img_item '.$active[0].'" value="'.$img_arr[$i].'">
                     <div class="select_avatar" '.$active[1].'>Chọn làm đại diện</div>
-                    <img class="img" src="public/_thumbs/Images/articles/'.$img_arr[$i].'" />
+                    <img class="img" src="'.$url_img_thumb.$img_arr[$i].'" />
                     <div class="copylink">Copy link</div>
                     <div class="delete_img"><img src="'.CONS_ADMIN_CSS_IMG.'delete.gif" /></div>
                 </div>';

@@ -27,6 +27,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
+	//table_data
+	$values = $row_detail['table_data'];
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Ứng với table data','table_data','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
 	//url_img
 	$values = $row_detail['url_img'];
 	$properties = array('100'); //maxlength OTHER (disabled, readonly) 

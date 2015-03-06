@@ -23,7 +23,11 @@ if($_GET['ajax']=='upload_images'){
 	define("MAX_SIZE","9000");
 	$valid_formats = array("jpg", "png", "gif", "bmp","jpeg");
 	if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
-		$uploaddir = "../public/temp_upload/"; //a directory inside
+		$uploaddir = "../public/temp_upload/"; //link ảnh tạm thời chờ xử lý
+		$data = $this->_model->_url_image_menu_type($table);
+		$url_img = $data['url_img'];
+		$url_img_thumb = $data['url_img_thumb'];
+		
 		foreach ($_FILES['photos']['name'] as $name => $value){
 			$filename = stripslashes($_FILES['photos']['name'][$name]);
 			$size=filesize($_FILES['photos']['tmp_name'][$name]);
@@ -33,14 +37,12 @@ if($_GET['ajax']=='upload_images'){
 			
 			if(in_array($ext,$valid_formats)){
 				if ($size < (MAX_SIZE*1024)){
-					$image_name=time().$filename;
-					$newname=$uploaddir.$image_name;
+					$image_name = time().$filename;
+					$newname = $uploaddir.$image_name;
 					
 					if (move_uploaded_file($_FILES['photos']['tmp_name'][$name], $newname)){
-						$result = xuly_image_thumb($image_name);
-						if($result!=FALSE) echo view_image($image_name);
-						//echo view_image($image_name).$result;
-						$time=time();
+						$result = xuly_image($image_name, $uploaddir, $url_img, $url_img_thumb);
+						if($result) echo view_image($image_name, $url_img_thumb);
 						//mysql_query("INSERT INTO user_uploads(image_name,user_id_fk,created) VALUES('$image_name','$session_id','$time')");
 					}else{
 						echo '<span class="imgList">You have exceeded the size limit! so moving unsuccessful! </span>';
@@ -58,9 +60,9 @@ if($_GET['ajax']=='upload_images'){
 }
 if($_GET['ajax']=='delete_img'){
 	$image = $_GET['image'];
-	
-	$url_img_thumb = '../public/_thumbs/Images/articles/'.$image;
-	$url_img = '../public/images/articles/'.$image;
+	$data = $this->_model->_url_image_menu_type($table);
+	$url_img = '../'.$data['url_img'].$image;
+	$url_img_thumb = '../'.$data['url_img_thumb'].$image;
 	
 	$size_info_thumb = getimagesize($url_img_thumb);
 	$size_info = getimagesize($url_img);
@@ -76,15 +78,15 @@ function getExtension($str){
 	$ext = substr($str,$i+1,$l);
 	return $ext;
 }
-function xuly_image_thumb($img){
-	$file = '../public/temp_upload/'.$img;
+function xuly_image($img, $uploaddir, $url_img, $url_img_thumb){
+	$file = $uploaddir.$img;
 	$size_info = getimagesize($file);
 	if(is_array($size_info)){
 		include_once('../php/SimpleImage.php');
 		$image = new SimpleImage();
 		
-		$url_img_thumb = '../public/_thumbs/Images/articles/';
-		$url_img = '../public/images/articles/';
+		$url_img_thumb = '../'.$url_img_thumb;
+		$url_img = '../'.$url_img;
 		
 		$image->load($file);
 		$image->resizeToWidth(250);
@@ -102,13 +104,13 @@ function xuly_image_thumb($img){
 		
 		unlink($file);
 		
-		return $url_img_thumb.$img;
+		return true;
 	}else return false;
 }
-function view_image($image){
+function view_image($image, $url_img_thumb){
 	return '<div class="img_item" value="'.$image.'">
-		<div class="select_avatar" '.$active[1].'>Chọn làm đại diện</div>
-		<img class="img" src="public/_thumbs/Images/articles/'.$image.'" />
+		<div class="select_avatar">Chọn làm đại diện</div>
+		<img class="img" src="'.$url_img_thumb.$image.'" />
 		<p class="copylink">Copy link</p>
 		<p class="delete_img"><img src="'.CONS_ADMIN_CSS_IMG.'delete.gif" /></p>
 	</div>
