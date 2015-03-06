@@ -29,7 +29,7 @@
 		if(count($data)==0){
 			$data2 = $this->_model->_list_photo($idMenu);
 			foreach($data2 as $row){
-				$str_image .= '<li><p class="img"><a class="fancybox" href="'.CONS_IMAGES_PHOTOS.$row['url_img'].'" data-fancybox-group="gallery" title="'.$row['name'].'"><img src="'.CONS_IMAGES_PHOTOS_THUMBS.$row['url_img'].'" alt="'.$row['name'].'" /></a><h3>'.$row['name'].'</h3></p></li>';
+				$str_image .= '<li><p class="img"><a class="fancybox" href="'.CONS_IMAGES_PHOTOS.$row['img_avatar'].'" data-fancybox-group="gallery" title="'.$row['name'].'"><img src="'.CONS_IMAGES_PHOTOS_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></a><h3>'.$row['name'].'</h3></p></li>';
 			}
 			echo '<div id="photos"><ul>'.$str_image.'</ul></div>
 			<div style="clear:both; height:30px;"></div>
@@ -38,7 +38,7 @@
 			<script type="text/javascript" charset="utf-8"> $(document).ready(function(){ $(".fancybox").fancybox(); }); </script>';
 		}else{
 			foreach($data as $row){
-				echo '<div class="photo_list_item"><a href="'.$lang.'/'.$row['url'].'" title="'.$row['name'].'"><img src="'.CONS_IMAGES_CATALOG.$row['url_img'].'" alt="'.$row['name'].'" /><h3>'.$row['name'].'</h3></a></div>';
+				echo '<div class="photo_list_item"><a href="'.$lang.'/'.$row['url'].'" title="'.$row['name'].'"><img src="'.CONS_IMAGES_CATALOG.$row['img_avatar'].'" alt="'.$row['name'].'" /><h3>'.$row['name'].'</h3></a></div>';
 			}
 		}
         ?>
