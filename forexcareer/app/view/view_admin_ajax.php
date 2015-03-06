@@ -37,7 +37,7 @@ if($_GET['ajax']=='upload_images'){
 			
 			if(in_array($ext,$valid_formats)){
 				if ($size < (MAX_SIZE*1024)){
-					$image_name = time().$filename;
+					$image_name = 'forexcareer'.time().'.'.$ext;
 					$newname = $uploaddir.$image_name;
 					
 					if (move_uploaded_file($_FILES['photos']['tmp_name'][$name], $newname)){
@@ -64,11 +64,8 @@ if($_GET['ajax']=='delete_img'){
 	$url_img = '../'.$data['url_img'].$image;
 	$url_img_thumb = '../'.$data['url_img_thumb'].$image;
 	
-	$size_info_thumb = getimagesize($url_img_thumb);
-	$size_info = getimagesize($url_img);
-	
-	if(is_array($size_info_thumb)) unlink($url_img_thumb);
-	if(is_array($size_info)) unlink($url_img);
+	if(file_exists($url_img_thumb)) unlink($url_img_thumb);
+	if(file_exists($url_img)) unlink($url_img);
 	return true;
 }
 function getExtension($str){
