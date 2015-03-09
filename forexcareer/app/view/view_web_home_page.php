@@ -22,7 +22,7 @@
 		foreach($data as $row){
 			echo '<div class="item bogoc_5px">
 				<a href="'.$row['url'].'"><h4>'.$row['name'].'</h4></a>
-				<p>February 25, 2015 09:24:00 PM ET</p>
+				<p>'.date("D d m Y, h:i a", $row['datetime']).'</p>
 			</div>';
 		}
 		?>
