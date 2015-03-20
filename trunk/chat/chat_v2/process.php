@@ -32,7 +32,7 @@ switch($function) {
 			$text = array();
 			foreach($data as $rows => $row){
 				if($rows >= $state){
-					if($row['type']==$typeUser) $text[] = '<div class="item2"><b>You: </b>'.$row['message'].'</div>';
+					if($row['type']==$typeUser) $text[] = '<div class="item2"><b>'.$row['user'].': </b>'.$row['message'].'</div>';
 					else $text[] = '<div class="item1"><b>'.$row['user'].':</b> '.$row['message'].'<embed class="sound" src="images/chat.wav" loop="false" volume="100" /></div>';
 				}
 			}

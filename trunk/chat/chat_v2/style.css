@@ -1,6 +1,6 @@
 body{font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333}
-a{color:#FFF; text-decoration:none}
-a:hover{color:#FF0; text-decoration:underline}
+a{color:#09F; text-decoration:none}
+a:hover{color:#F30; text-decoration:underline}
 #wrapper{width:350px; margin:auto}
 
 .error{color:#F00; font-style:italic}
@@ -31,7 +31,7 @@ a:hover{color:#FF0; text-decoration:underline}
 .item_left em{font-size:11px; color:#666}
 .item_left .info{width:280px; float:left}
 .item_left .chat{display:none; width:40px; height:20px; float:right; font-size:90%; text-align:center; color:#FFF; font-weight:bold; padding:2px 0; background-color:#09F}
-.item_left .chat a{display:block}
+.item_left .chat a{display:block; color:#FFF}
 #active{background-color:#FF9}
 
 #right{width:400px; height:400px; float:right; line-height:20px; padding:10px; border:solid 1px #CCC; background-color:#CCC}
