@@ -72,7 +72,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	//price
 	$values = $row_detail['price'];
-	$properties = array('7'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Giá bàn tiệc','price','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();

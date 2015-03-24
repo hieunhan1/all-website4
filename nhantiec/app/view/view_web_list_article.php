@@ -21,7 +21,6 @@
 			
 			echo '<div class="article_box" '.$style.'>
 				<a href="'.$row['url'].'"><h3>'.$row['name'].'</h3></a>
-				<div class="date">Cập nhật ngày '.date('d-m-Y H:i', $row['datetime']).'</div>
 				<div class="img"><a href="'.$row['url'].'">'.$url_img.'</a></div>
 				<p>'.$row['description'].'</p>
 				<div class="link">

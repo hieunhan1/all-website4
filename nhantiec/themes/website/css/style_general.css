@@ -41,14 +41,16 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 #home_dv .home_dv_box .home_dv_info h2{font-size:145%; margin-bottom:5px}
 #home_dv .home_dv_box .home_dv_info p{height:80px; line-height:20px; overflow:hidden}
 
-.home_item{clear:both}
+.home_item{}
 .home_item h3{text-align:center; text-transform:uppercase; font-size:220%; font-weight:100; margin:20px 0}
 .home_item .home_item_line{clear:both; height:2px; border-bottom:dotted 1px #DAD7CC; border-top:dotted 1px #DAD7CC}
-.home_item .home_item_info{width:675px; margin:25px auto}
-.home_item .home_item_info div{width:500px; float:left}
-.home_item .home_item_info div a{color:#00A651}
+.home_item .home_item_info{margin:15px 25px 10px 0px}
+.home_item .home_item_info .info{width:350px; float:left}
+.home_item .home_item_info .info a{color:#00A651}
 .home_item .home_item_info .img_botron{width:130px; height:130px; overflow:hidden; float:right; border:solid 3px #E1E1E1}
 .home_item .home_item_info .img_botron img{width:130px}
+.home_item .home_item_info li{list-style:none; line-height:20px; padding:8px 0 8px 20px; background:url(../img/other_post.gif) no-repeat left; background-position:0px 12px}
+.home_item .home_item_info li a{display:block; color:#0085b5; font-weight:bold}
 
 #footer{clear:both; font-weight:bold; padding:8px 0; background-color:#FF7C38}
 #footer p{width:auto; float:left; margin:0 20px}
@@ -80,11 +82,13 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 .box_dichvu .box_dichvu_info h3{font-size:200%; margin-bottom:10px}
 .box_dichvu .box_dichvu_info p{line-height:22px}
 
-.box_baiviet{width:400px; margin:10px 0}
-.box_baiviet h3{font-size:110%; margin-bottom:8px}
-.box_baiviet .box_baiviet_img{width:140px; height:85px; float:left; overflow:hidden; margin-right:8px; border:1px solid #999}
-.box_baiviet .box_baiviet_img img{width:140px}
-.box_baiviet p{line-height:22px; height:88px; overflow:hidden}
+.article_box{width:400px; height:360px}
+.article_box h3{font-size:120%; line-height:140%; margin-bottom:5px}
+.article_box .img{height:200px; overflow:hidden; margin-bottom:5px}
+.article_box .img img{width:400px}
+.article_box p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}
+.article_box .link{text-align:right; font-weight:bold}
+.article_box .link a{margin-left:30px; color:#F00}
 
 .box_tiec{width:400px; height:380px}
 .box_tiec .box_tiec_img{height:200px; overflow:hidden}
@@ -157,7 +161,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 #popupContact{display: none; position: fixed; _position: absolute; /*IE 6*/ z-index:1200}
 .popupContactClose{font-weight: bold; cursor:pointer}
 #content_popup{width:760px; height:auto; padding:30px; background-color:#FFF}
-#content_popup h1{font-size:200%; color:#00A651; margin-bottom:10px}
+#content_popup h1{line-height:120%; font-size:200%; color:#00A651; margin-bottom:10px}
 #content_popup .img img{width:385px; float:left}
 #content_popup #content_pp{width:360px; float:right; line-height:20px; margin-bottom:30px}
 #content_popup #content_pp #price_pp{color:#FF7C38; font-size:150%; font-weight:bold; padding:10px 30px; border-top:solid 1px #CCC; border-bottom:solid 1px #CCC}

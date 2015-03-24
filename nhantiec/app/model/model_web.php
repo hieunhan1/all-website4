@@ -105,6 +105,13 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
+	public function _list_article_news($limit=5){
+		$sql = "SELECT `id`,`name`,`url` FROM `web_article` WHERE `status`=1 AND `other`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 	/*end home*/
 	
 	/*list*/
