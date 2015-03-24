@@ -44,7 +44,7 @@ if($totalrows>1){
             <div id="price_pp">Trọn gói: <?php echo $row_detail['price'];?> / bàn tiệc</div>
         </div>
         <div style="clear:both; height:1px"></div>
-        <div class="viewpost"><?php if($row_detail['content']!='') echo '<p style="font-size:130%; font-weight:bold">Thông tin thêm</p>'.$row_detail['content'];?></div>
+        <div class="viewpost"><?php if($row_detail['content']!='') echo $row_detail['content'];?></div>
     </div>
 </div>
 <div id="backgroundPopup"></div>
