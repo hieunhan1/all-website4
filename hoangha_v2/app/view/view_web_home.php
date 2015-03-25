@@ -55,7 +55,7 @@
 	
 	$data = $this->_model->_home_news_article($data_news['id']);
 	foreach($data as $row){
-		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$data_news['url'].$row['name_alias'].'.html" title="'.$row['name'].'">'.$row['name'].'</a></li>';
+		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html" title="'.$row['name'].'">'.$row['name'].'</a></li>';
 	}
 	?>
 </div>
