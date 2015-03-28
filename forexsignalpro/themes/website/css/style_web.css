@@ -1,0 +1,64 @@
+/* CSS Document */
+header{height:101px}
+header #logo{width:auto; float:left}
+header #logo img{height:60px; margin:20px 0 0 10px; float:left}
+header #logo h2{font-size:200%; float:left; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; line-height:100px}
+header #login{width:auto; float:right}
+header #login a{display:block; padding:5px 15px 5px 33px; font-weight:bold; color:#FFF; background: url(../img/login-icon.png) no-repeat left #999; background-position:5px 3px}
+header #signup{width:auto; float:right; font-weight:bold; padding:5px 20px 5px 18px; background:url(../img/icon-signup.gif) no-repeat; background-position:0px 4px}
+header #signup a{display:block}
+header #email_support{width:auto; clear:right; float:right; color:#888; font-size:120%; font-weight:bold; margin-top:40px}
+header #email_support a{color:#F55}
+/*end header*/
+
+#homepage{clear:both}
+#homepage h2{font-size:180%; text-align:center; margin:20px 0}
+.box_about{width:300px; height:100px; float:left}
+.box_about h3{line-height:150%; color:#999999; font-size:140%; margin-bottom:5px}
+.box_about .p{line-height:150%}
+.box_about .p .true{padding:2px 8px; color:#FFF; font-weight:bold; background-color:#090}
+.box_about .p .false{padding:2px 8px; color:#FFF; font-weight:bold; background-color:#F00}
+#total_forex{color:#090; font-size:140%; text-align:center}
+#total_forex span{color:#00F}
+#total_forex a{color:#F00}
+
+.box_sign{width:360px; float:right; text-align:center; font-weight:bold; font-size:150%; padding:5px 0 15px 0; border:dashed 1px #CCC}
+.box_sign img{width:360px}
+.box_sign a{color:#F00}
+
+.box_new{width:610px; float:left; line-height:20px; padding:5px 10px 15px 10px}
+.box_new .highlight{width:230px; float:left}
+.box_new .highlight .img{width:230px; height:140px; text-align:center; overflow:hidden; margin-bottom:10px}
+.box_new .highlight .img img{height:170px}
+.box_new .highlight h3{font-size:120%; font-weight:100; margin-bottom:10px}
+.box_new .other{width:365px; float:right}
+.box_new .other .title{font-weight:bold; color:#000; text-transform:uppercase; margin-bottom:10px; padding-bottom:5px; border-bottom:solid 1px #CCC}
+.box_new .other .item{clear:both; height:70px; margin-top:10px; border-bottom:dashed 1px #CCC}
+.box_new .other .item .img{width:60px; height:60px; overflow:hidden; float:left; margin-right:10px}
+.box_new .other .item .img img{height:60px}
+.box_new .other .item h4{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px}
+
+#bg_slider{width:400%; height:300px; position:absolute; left:-150%; z-index:1; background:url(../img/bg-slider.gif)}
+#slider{height:300px; position:relative; z-index:1}
+
+footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
+#content_footer{width:1000px; margin:auto; padding:20px 0}
+#contact_footer{width:auto; float:left}
+#menu_footer{width:auto; float:right; clear:right; margin-bottom:10px}
+#menu_footer a{color:#DDD; padding:0 10px}
+#run_top{width:auto; float:right; clear:right; height:28px; line-height:28px; padding:0 20px 0 35px; background:url(../img/top.png) no-repeat left top}
+#run_top:hover{font-weight:bold; color:#FFF; background-position:0px -32px; cursor:pointer}
+
+#article{width:620px; float:left}
+#right{width:360px; float:right}
+#social_facebook{margin-top:20px; padding:10px; border:dashed 1px #CCC}
+
+.signup{border-collapse:collapse; border: solid 1px #FFF}
+.signup th{font-size:150%; line-height:150%; color:#090}
+.signup th span{display:block; width:150px; text-align:center; line-height:40px; color:#FFF; background-color:#090;}
+.signup .line{background-color:#39F; color:#FFF; font-weight:bold; font-size:120%}
+.signup .line-2{}
+.signup .line-2 td{line-height:20px; padding:10px; border-bottom:solid 1px #CCC}
+.signup .price{font-weight:bold; font-size:150%; color:#333}
+.signup .signup-now{display:block; color:#FFF; font-weight:bold; font-size:120%; text-decoration:none; margin-top:6px; padding:8px 15px; background-color:#C00}
+.signup .signup-now:hover{background-color:#090}
