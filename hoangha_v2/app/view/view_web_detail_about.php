@@ -18,6 +18,7 @@
     ?>
     </div>
     
+    <div style="clear:both; height:10px"></div>
     <div class="viewpost">
 		<?php
         echo "<h1>{$row_detail['name']}</h1>";

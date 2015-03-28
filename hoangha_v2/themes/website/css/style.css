@@ -75,16 +75,16 @@ hr{height:1px; background-color:#CCC; border:none; margin-bottom:15px}
 #partner_home .partner_home_item img{width:95px}
 /*end home*/
 
-.viewpost{line-height:150%; font-size:100%;}
-.viewpost h1{font-size:135%; color:#007CA9; line-height:150%; margin-bottom:5px}
-.viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:12px 0}
-.viewpost p, .viewpost div {margin:12px 0}
+.viewpost{font-size:100%}
+.viewpost h1{font-size:150%; color:#007CA9; line-height:130%; margin-bottom:10px}
+.viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
+.viewpost p, .viewpost div {line-height:150%; margin:15px 0}
 .viewpost li{padding:0; margin:5px 35px}
 
 #article_list{clear:both; margin:0; padding:0}
 .article_item_date{color:#999; font-style:italic; margin-bottom:8px}
-.article_item{width:370px; height:270px}
-.article_item h3{line-height:22px; height:22px; overflow:hidden; font-size:120%; margin-bottom:5px}
+.article_item{width:370px; height:280px}
+.article_item h3{line-height:22px; overflow:hidden; font-size:120%; margin-bottom:5px}
 .article_item .article_item_img{height:160px; overflow:hidden; margin-bottom:5px; padding:0; border:solid 1px #CCC}
 .article_item .article_item_img img{width:370px}
 .article_item p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}

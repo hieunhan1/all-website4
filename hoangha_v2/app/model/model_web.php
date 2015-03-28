@@ -116,8 +116,8 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _home_news_article($idMenu, $limit=5){
-		$sql = "SELECT `name`,`name_alias`,`menu_id` FROM `web_article` WHERE `status`=1 AND `other`=1 AND (`menu_id` LIKE '%,{$idMenu},%' OR `menu_id` LIKE '%,63,%') ORDER BY `datetime` DESC LIMIT {$limit}";
+	public function _home_news_article($lang, $limit=5){
+		$sql = "SELECT `name`,`name_alias`,`menu_id` FROM `web_article` WHERE `status`=1 AND `lang`='{$lang}' AND `other`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
