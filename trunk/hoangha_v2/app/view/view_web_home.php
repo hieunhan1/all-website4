@@ -49,11 +49,9 @@
 </div>
 
 <div id="news_home">
+	<div class="news_home_title"><?php echo CONS_HOME_NEWS;?></div>
 	<?php
-    $data_news = $this->_model->_home_menu_type($lang, 2);
-	echo '<div class="news_home_title"><a href="'.$lang.'/'.$data_news['url'].'">'.$data_news['name'].'</a></div>';
-	
-	$data = $this->_model->_home_news_article($data_news['id']);
+	$data = $this->_model->_home_news_article($lang);
 	foreach($data as $row){
 		echo '<li class="news_home_item all_icon"><a href="'.$lang.'/'.$this->_model->_link_detail($row['menu_id']).$row['name_alias'].'.html" title="'.$row['name'].'">'.$row['name'].'</a></li>';
 	}

@@ -19,6 +19,7 @@ define('CONS_CONTACT_MESSAGE', 'Nội dung');
 define('CONS_CONTACT_SEND', 'GỬI LIÊN HỆ');
 
 define('CONS_HOME_CALL_NOW', 'Gọi cho chúng tôi');
+define('CONS_HOME_NEWS', 'Thông tin bài viết');
 define('CONS_HOME_PARTNER', 'Đối tác liên kết');
 define('CONS_HEADER_INPUT_CODE', 'Nhập mã');
 define('CONS_ERROR_NAME', 'Nhập họ tên');
