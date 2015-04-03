@@ -142,7 +142,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 #nav li a {line-height:38px; color:#FFF; font-weight:bold; padding:0 12px} /* letter-spacing:1px; word-spacing:2px */
 #nav a:hover {text-decoration:none; background-color:#FF7C38}
 #nav li {float:left; position:relative}
-#nav ul {width:160px; position:absolute; top:38px; display:none}
+#nav ul {width:160px; position:absolute; top:37px; display:none}
 #nav li ul a {width:170px; line-height:30px; float:left; color:#FFF; padding:0 12px; background-color:#888; border-bottom:solid 1px #999}
 #nav li ul a:hover {background-color:#666; color:#FFF}
 #nav ul ul {top:auto}
