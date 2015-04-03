@@ -3,6 +3,8 @@ RewriteRule images - [L]
 RewriteRule js - [L]
 RewriteRule public - [L]
 RewriteRule themes - [L]
+RewriteCond %{HTTP_HOST} ^nhantiec.vn
+RewriteRule ^(.*)$ http://www.nhantiec.vn/$1 [R=permanent,L]
 RewriteRule (.*) app/index.php [L]
 AddDefaultCharset UTF-8
 Options -Indexes

@@ -4,6 +4,7 @@
 <base href="<?php echo CONS_BASE_URL; ?>/" />
 <?php echo $tag_head;?>
 <meta name="google-site-verification" content="CibW4vpePydg4RIO13dFn31vLEUSMZ45wdzlnnSI7X8" />
+<link rel="alternate" href="http://www.nhantiec.vn" hreflang="vi-vn" />
 <link rel="stylesheet" type="text/css" href="themes/website/css/style_general.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
