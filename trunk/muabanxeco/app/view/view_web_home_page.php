@@ -24,6 +24,7 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 		<img src="'.CONS_IMAGES_ARTICLES.$data[0]['img_avatar'].'" alt="'.$data[0]['name'].'" class="img" />'.$data[0]['content'];
         ?>
     </div>
+    <div style="clear:both; height:30px"></div>
     
     <?php
 	$type = 3;
