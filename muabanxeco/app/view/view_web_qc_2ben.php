@@ -1,25 +1,19 @@
 <?php
-/*$slider = $tc->slider_banner(5,$lang);
-echo '<div id="divAdRight" style="display:none; position:absolute; top:0px">';
-while($row_slider = mysql_fetch_array($slider)){
-	echo '<a href="'.$row_slider['link'].'" title="'.$row_slider['name'].'" target="_blank" style="display:block; margin-bottom:8px; border:solid 1px #bdbdbd"><img src="'.url_slider_image.$row_slider['url_hinh'].'" alt="'.$row_slider['name'].'" width="135" /></a>';
-}
-echo '</div>';
-
-$slider = $tc->slider_banner(4,$lang);
-echo '<div id="divAdLeft" style="display:none; position:absolute; top:0px">';
-while($row_slider = mysql_fetch_array($slider)){
-	echo '<a href="'.$row_slider['link'].'" title="'.$row_slider['name'].'" target="_blank" style="display:block; margin-bottom:8px; border:solid 1px #bdbdbd"><img src="'.url_slider_image.$row_slider['url_hinh'].'" alt="'.$row_slider['name'].'" width="135" /></a>';
-}
-echo '</div> ';*/
+$data_l = $this->_model->_web_slider_banner(4, $this->_lang);
+$data_r = $this->_model->_web_slider_banner(5, $this->_lang);
+if(!(count($data_l)==0 && count($data_r)==0)){
+	echo '<div id="divAdLeft" style="display:none; position:absolute; top:0px">';
+	foreach($data_l as $row){
+		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:8px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
+	}
+	echo '</div> ';
+	
+	echo '<div id="divAdRight" style="display:none; position:absolute; top:0px">';
+	foreach($data_r as $row){
+		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:8px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
+	}
+	echo '</div>';
 ?>
-<div id="divAdRight" style="display:none; position:absolute; top:0px; height:100%">
-	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/caythong.gif" alt="" width="135" /></a>
-</div>
-
-<div id="divAdLeft" style="display:none; position:absolute; top:0px; height:100%">
-	<a href="" title="" style="display:block; margin-bottom:8px; position:absolute; bottom:0"><img src="public/event/ong-gia-noel.png" alt="" width="135" /></a>
-</div>
 <script> 
     function FloatTopDiv() 
     { 
@@ -82,9 +76,10 @@ echo '</div> ';*/
 	MainContentW = 1000;
 	LeftBannerW = 135;
 	RightBannerW = 135;
-	LeftAdjust = 0;
-	RightAdjust = 0;
-	TopAdjust = 0;
+	LeftAdjust = 5;
+	RightAdjust = 5;
+	TopAdjust = 10;
 	ShowAdDiv();
 	window.onresize=ShowAdDiv;
 </script>
+<?php } ?>
