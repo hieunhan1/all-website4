@@ -17,6 +17,8 @@
 	?>
     <div style="clear:both; height:1px"></div>
 	<?php include_once('view_web_footer.php');?>
+    
+    <?php include_once('view_web_support.php');?>
 </div>
 <?php include_once('view_web_qc_2ben.php');?>
 <script type="text/javascript" src="js/jquery.corner.js"></script>
