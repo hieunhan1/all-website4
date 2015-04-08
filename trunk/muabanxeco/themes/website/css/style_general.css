@@ -78,7 +78,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 /*menu*/
 #menu{clear:both; height:30px; margin-left:50px}
 #menu_active{color:#FF0 !important}
-#nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
+#nav, #nav ul {list-style:none; position:relative; z-index:5; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
 #nav li a {color:#FFF; line-height:30px; font-size:110%; text-transform:uppercase; margin:0 10px; padding:0 15px; white-space:nowrap; background:url(../img/bg-menu.gif)}
 #nav a:hover {color:#FF0; background-color:#FFF}

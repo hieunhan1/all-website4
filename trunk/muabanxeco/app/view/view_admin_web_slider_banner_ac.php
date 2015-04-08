@@ -14,7 +14,7 @@ echo '<form name="form_action" method="post" action="">
 	echo $this->DisplayProperties();
 	
 	//menu_id
-	$values = $row_detail['menu_id'];
+	/*$values = $row_detail['menu_id'];
 	$views = array('menu_id', 'value_checks_box'); //name class
     $this->getProperties('2',$values,'',$views);
 	$hidden_item = $this->DisplayProperties();
@@ -24,7 +24,7 @@ echo '<form name="form_action" method="post" action="">
 	$properties = $row_detail['menu_id']; //default check
 	$views = array('','','checkbox checkbox_item','width:345px; height:270px;'); //label name class width
     $this->getProperties('7',$arr,$properties,$views);
-	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
+	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';*/
 	
 	//position_id
 	$arr = $this->_model->_web_slider_banner_position();

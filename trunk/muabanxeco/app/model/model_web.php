@@ -247,6 +247,55 @@ class model_web extends db{
 	}
 	/*end web_chinhanh*/
 	
+	/*chat online*/
+	/*function chat customer*/
+	public function _checkCustomer($ip_address){
+		$sql = "SELECT `id`,`keychat`,`datetime` FROM `web_chat_customer` WHERE `ip_address`='{$ip_address}' ORDER BY `id` DESC LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _insertCustomer($name, $phone, $group_id, $ip_address, $keychat, $currentDatetime){
+		$sql = "INSERT INTO `web_chat_customer` (`name`,`phone`,`group_id`,`ip_address`,`keychat`,`datetime`) VALUES ('{$name}', '{$phone}', '{$group_id}', '{$ip_address}', '{$keychat}', '{$currentDatetime}')";
+		if(!$this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	
+	//function chat nhan vien
+	public function _listCustomer($username, $group_id){
+		if($username!='admin') $qr = "WHERE (`username`='{$username}' OR `username`='') AND `group_id`='{$group_id}'";
+		else $qr = "";
+		$sql = "SELECT * FROM `web_chat_customer` {$qr} ORDER BY `id` DESC LIMIT 50";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _checkStaff($keychat){
+		$sql = "SELECT `username` FROM `web_chat_customer` WHERE `keychat`='{$keychat}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _updateUsernameCustomer($keychat, $username){
+		$sql = "UPDATE `web_chat_customer` SET `username`='{$username}' WHERE `keychat`='{$keychat}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	
+	//test chat new
+	public function _viewMessage($keychat){
+		$sql = "SELECT `message`,`user`,`type` FROM `web_chat_message` WHERE `keychat`='{$keychat}' ORDER BY `id`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _insertMessage($message, $keychat, $nickname, $type, $datetime){
+		$sql = "INSERT INTO `web_chat_message` (`message`,`keychat`,`user`,`type`,`datetime`) VALUES ('{$message}', '{$keychat}', '{$nickname}', '{$type}', '{$datetime}')";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	/*end chat online*/
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

@@ -74,8 +74,7 @@ $(document).ready(function($){
 	if(browserVersion()!=7 && browserVersion()!=8){
 		$(".bogoc_5px").corner("5px");
 		$(".bogoc_8px").corner("8px");
-		$(".bogoc_bottom_5px").corner("bottom 5px");
-		$(".bogoc_right_5px").corner("right 5px");
+		$(".bogoc_top_5px").corner("top 5px");
 	}
 	
 	$("#run_top").click(function(){
