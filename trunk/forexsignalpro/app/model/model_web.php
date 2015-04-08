@@ -241,6 +241,14 @@ class model_web extends db{
 	}
 	/*end signup*/
 	
+	/*payment*/
+	public function _insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen){
+		$sql = "INSERT INTO `web_payment` VALUES (NULL, '{$name}', '{$email}', '{$package_id}', '{$PAYEE_ACCOUNT}', '{$PAYMENT_AMOUNT}', '{$PAYMENT_UNITS}', '{$PAYMENT_ID}', '{$TIMESTAMPGMT}', '{$PAYER_ACCOUNT}', '{$tolen}', '{$lang}', '1')";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	/*end payment*/
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

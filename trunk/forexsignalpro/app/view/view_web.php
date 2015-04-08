@@ -12,6 +12,7 @@
 <div id="wrapper">
 	<!--
     payment cancel - http://www.forexsignalpro.net/payment/?status=cancel
+    payment cancel - http://www.forexsignalpro.net/payment/?status=error
     payment success - http://www.forexsignalpro.net/payment/?status=success
     
     chua ro - http://www.forexsignalpro.net/payment/?status=success&url=
