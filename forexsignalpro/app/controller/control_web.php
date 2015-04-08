@@ -186,6 +186,26 @@ class control_web{
 		//header('location: '.CONS_BASE_URL.CONS_400);
 	}
 	
+	public function payment(){
+		$PAYEE_ACCOUNT = $this->_model->_change_dau_nhay($_GET['PAYEE_ACCOUNT']);
+		$PAYMENT_AMOUNT = $this->_model->_change_dau_nhay($_GET['PAYMENT_AMOUNT']);
+		$PAYMENT_UNITS = $this->_model->_change_dau_nhay($_GET['PAYMENT_UNITS']);
+		$PAYMENT_ID = $this->_model->_change_dau_nhay($_GET['PAYMENT_ID']);
+		$TIMESTAMPGMT = $this->_model->_change_dau_nhay($_GET['TIMESTAMPGMT']);
+		$PAYER_ACCOUNT = $this->_model->_change_dau_nhay($_GET['PAYER_ACCOUNT']);
+		$name = $this->_model->_change_dau_nhay($_GET['name']);
+		$email = $this->_model->_change_dau_nhay($_GET['email']);
+		$package_id = $this->_model->_change_dau_nhay($_GET['package_id']);	
+		
+		$tolen='';
+		$tolen_key = array_keys($_REQUEST);
+		$tolen_value = array_values($_REQUEST);
+		for($i=0; $i<count($tolen_key); $i++){
+			$tolen .= '['.$tolen_key[$i].'] => '.$tolen_value[$i].'<br />';
+		}
+		$this->_model->_insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen);
+	}
+	
 	public function index(){
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){

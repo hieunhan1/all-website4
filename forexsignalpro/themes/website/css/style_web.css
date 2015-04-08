@@ -62,3 +62,10 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 .signup .price{font-weight:bold; font-size:150%; color:#333}
 .signup .signup-now{display:block; color:#FFF; font-weight:bold; font-size:120%; text-decoration:none; margin-top:6px; padding:8px 15px; background-color:#C00}
 .signup .signup-now:hover{background-color:#090}
+
+#frm_payment{clear:both}
+#frm_payment p{line-height:26px; margin:20px 0}
+#frm_payment .span{display:block; width:150px; float:left; text-align:right; margin-right:15px}
+#frm_payment .txt{width:350px; margin:0; padding:5px}
+#frm_payment .sel{width:360px; margin:0; padding:5px}
+#frm_payment .btn{font-weight:bold; padding:8px 25px; cursor:pointer}
