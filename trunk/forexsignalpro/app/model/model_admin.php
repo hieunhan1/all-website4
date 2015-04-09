@@ -320,6 +320,14 @@ class model_admin extends db{
 	}
 	/*end order*/
 	
+	public function _web_currency(){
+		$sql = "SELECT `id`,`name` FROM `web_currency` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	/*ajax*/
 	public function _ajax_number_item($table){
 		$sql = "SELECT count(*) FROM {$table} WHERE status=0";

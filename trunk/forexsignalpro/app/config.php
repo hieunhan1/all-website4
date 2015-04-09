@@ -2,10 +2,10 @@
 define('CONS_BASE_URL', 'http://localhost/all/forexsignalpro');/*domain*/
 define('CONS_BASE_DIR', '/all/forexsignalpro');/*upload host tắt CONS này*/
 
-define('CONS_HOST',	'localhost');
-define('CONS_USER_DB',	'root');
-define('CONS_PASS_DB',	'');
-define('CONS_DB_NAME',	'forexsignalpro');
+define('CONS_HOST', 'localhost');
+define('CONS_USER_DB', 'root');
+define('CONS_PASS_DB', '');
+define('CONS_DB_NAME', 'forexsignalpro');
 
 define('CONS_LANG_DEFAULT', 'en');
 
@@ -37,6 +37,9 @@ define('CONS_DEFAULT_WEB_CONTROLLER', 'control_web');
 define('CONS_DEFAULT_WEB_ACTION', 'index');
 define('CONS_WEB_VIEW_MENU','view_menu');
 define('CONS_WEB_VIEW_DETAIL','view_detail');
+
+define('CONS_NUMBER_LOGIN', 8);
+define('CONS_DISABLE_DATE', 60*15);
 
 /*ADMIN*/
 define('CONS_DEFAULT_ADMIN_CONTROLLER', 'cp_admin');
