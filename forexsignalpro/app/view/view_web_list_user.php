@@ -1,5 +1,4 @@
 <div class="clear_20px" style="margin-bottom:20px"></div>
-<div id="change_account"><a href="user/?action=account">Change your account information</a></div>
 <?php
 if(!isset($_SESSION['user_id']) && $this->_control!='user'){
 	include_once('view_web_user_login.php');
@@ -7,7 +6,8 @@ if(!isset($_SESSION['user_id']) && $this->_control!='user'){
 	header('location: '.CONS_BASE_URL.'/login/');
 }else{
 	if(!isset($_GET['action'])){
-		echo '<div id="ajax_forex" style="height:auto">';
+		echo '<div id="change_account"><a href="user/?action=account">Change your account information</a></div>
+		<div id="ajax_forex" style="height:auto">';
 		include_once('view_web_user_forex.php');
 		echo '</div>';
 	}elseif($_GET['action']=='account'){

@@ -33,9 +33,11 @@ $(document).ready(function(e) {
             success: function(data){
                 setTimeout(function(){
                     if(data=="1") window.location = '<?php echo CONS_BASE_URL;?>/user/';
-                    else $("#ajax_error").html(data);
-                    $("input[name=loginBtn], input[name=loginEmail], input[name=loginPass]").attr("disabled", false);
-                    $("input[name=loginBtn]").removeClass("disable");
+                    else{
+						$("#ajax_error").html(data);
+                    	$("input[name=loginBtn], input[name=loginEmail], input[name=loginPass]").attr("disabled", false);
+                    	$("input[name=loginBtn]").removeClass("disable");
+					}
                 }, 1000);
                 return true;
             }
