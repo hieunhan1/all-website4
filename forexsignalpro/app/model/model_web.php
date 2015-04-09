@@ -249,6 +249,61 @@ class model_web extends db{
 	}
 	/*end payment*/
 	
+	/*login user*/
+	public function _check_user_login($email, $pass){
+		$pass = md5($pass);
+		$sql = "SELECT `id`,`name`,`email`,`group_id` FROM `web_users` WHERE `status`=1 AND `group_id`=1 AND `email`='{$email}' AND `password`='{$pass}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _check_lock_ip($ip_address){
+		$sql = "SELECT `id`,`login_number`,`disable_date` FROM `web_users_lock_ip` WHERE `ip_address`='{$ip_address}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _lock_ip($ip_address, $login_number, $datetime){
+		if($login_number==0){
+			$sql = "INSERT INTO `web_users_lock_ip` (`ip_address`,`login_number`,`disable_date`,`datetime`) VALUES ('{$ip_address}', '1', '0', '{$datetime}')";
+		}else{
+			$login_number += 1;
+			if($login_number<CONS_NUMBER_LOGIN){
+				$disable_date = 0;
+			}else{
+				$disable_date = $datetime + CONS_DISABLE_DATE;
+			}
+			$sql = "UPDATE `web_users_lock_ip` SET `login_number`='{$login_number}', `disable_date`='{$disable_date}', `datetime`='{$datetime}' WHERE `ip_address`='{$ip_address}'";
+		}
+		if(!$this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	
+	public function _list_currency(){
+		$sql = "SELECT `id`,`name`,`average` FROM `web_currency` WHERE `status`=1 ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _web_support_resistance(){
+		$sql = "SELECT * FROM `web_support_resistance` WHERE `status`=1 ORDER BY `datetime` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _list_real_time($limit=1){
+		$sql = "SELECT `web_real_time`.*, `web_currency`.`name` as `currency` FROM `web_real_time`,`web_currency` WHERE `web_real_time`.`status`=1 AND `currency_id`=`web_currency`.`id` ORDER BY `datetime` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	/*end login user*/
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

@@ -59,8 +59,10 @@ class control_web{
 	}
 	
 	public function web_config($lang){
-		$file_lang = "languages/lang_{$lang}.php";
-		if (file_exists($file_lang)) include_once($file_lang);
+		if($lang!='') $file_lang = "languages/lang_{$lang}.php";
+		else $file_lang = "languages/lang_".CONS_LANG_DEFAULT.".php";
+		
+		if(file_exists($file_lang)) include_once($file_lang);
 		return $this->_model->_web_config($lang);
 	}
 	
@@ -206,6 +208,38 @@ class control_web{
 		$this->_model->_insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen);
 	}
 	
+	public function user_login($email, $pass, $ip_address){
+		$currentDatetime = time();
+		if($email!='' && $pass!=''){
+			$check_ip = $this->_model->_check_lock_ip($ip_address);
+			$login_number = $check_ip[0]['login_number'];
+			$disable_date = $check_ip[0]['disable_date'];
+			settype($login_number, 'int');
+			if($disable_date<$currentDatetime){
+				$data = $this->_model->_check_user_login($email, $pass);
+				if(count($data)==1){
+					$_SESSION['user_id']=$data[0]['id'];
+					$_SESSION['user_name']=$data[0]['name'];
+					$_SESSION['user_email']=$data[0]['email'];
+					$_SESSION['user_group_id']=$data[0]['group_id'];
+					if($login_number!=0){
+						$login_number=1;
+						$this->_model->_lock_ip($ip_address, $login_number, $currentDatetime);
+					}
+					return true;
+				}else{
+					if($login_number>=CONS_NUMBER_LOGIN) $login_number=5;
+					$this->_model->_lock_ip($ip_address, $login_number, $currentDatetime);
+					return CONS_MESSAGE_USER_PASS_ERROR;
+				}
+			}else{
+				return CONS_MESSAGE_LOCK_IP;
+			}
+		}else{
+			return 'Error';
+		}
+	}
+	
 	public function index(){
 		$include = ob_start();
 		if( $this->_control==CONS_DEFAULT_WEB_CONTROLLER || isset($_GET['lang']) ){
@@ -223,6 +257,8 @@ class control_web{
 					$current_site = $this->detail_page($current_menu);
 				}//end danh muc hoac chi tiet
 			}else if($this->_control==CONS_AJAX_NAME){
+				$this->_lang = $this->language();
+				$this->_config = $this->web_config($this->_lang);
 				$this->ajax();
 				return true;
 			}else{

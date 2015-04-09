@@ -68,4 +68,17 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 #frm_payment .span{display:block; width:150px; float:left; text-align:right; margin-right:15px}
 #frm_payment .txt{width:350px; margin:0; padding:5px}
 #frm_payment .sel{width:360px; margin:0; padding:5px}
-#frm_payment .btn{font-weight:bold; padding:8px 25px; cursor:pointer}
+#frm_payment .btn{font-weight:bold; margin-top:10px; padding:8px 25px; cursor:pointer}
+
+#frmLogin{width:300px; line-height:22px; margin:0 auto 50px auto; padding:30px 35px 35px 30px; border:dashed 1px #CCC;}
+#frmLogin .txt{width:100%; padding:8px 5px; border:solid 1px #CCC; background-color:#FFF}
+#frmLogin .btn{width:310px; font-weight:bold; color:#FFF; padding:10px 5px; border:solid 1px #666; background-color:#999; cursor:pointer}
+#frmLogin .disable{color:#CCC; background-color:#EEE; border:solid 1px #CCC; cursor:auto}
+#frmLogin .label{font-weight:bold}
+#frmLogin .error{height:20px; margin-bottom:10px}
+
+#change_account{clear:both; line-height:22px; margin-bottom:30px; font-weight:bold; text-align:right}
+#change_account a{padding-left:25px; background:url(../img/print-email-bookmark.gif) no-repeat; background-position:-40px -2px}
+.title_user{font-size:110%; color:#C00; margin-bottom:15px}
+#average{width:450px; float:left}
+#support_resistance{width:450px; float:right}
