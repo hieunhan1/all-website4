@@ -117,7 +117,7 @@ class model_web extends db{
 		return array($total_true[0], $total[0]);
 	}
 	public function _list_article_home_page($id, $limt=1){
-		$sql = "SELECT `id`,`name`,`url`,`img_avatar`,`description`,`content` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$limt}";
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar`,`description`,`content`,`datetime` FROM `web_article` WHERE `status`=1 AND `other`=1 AND menu_id LIKE '%,{$id},%' ORDER BY `datetime` DESC LIMIT {$limt}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

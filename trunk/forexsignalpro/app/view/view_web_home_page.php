@@ -53,7 +53,7 @@
 			if($i!=1){
 				$item .= '<div class="item">
 					<a href="'.$row['url'].'" title="'.$row['name'].'"><div class="img">'.$image.'</div><h4>'.$row['name'].'</h4></a>
-					<p>February 25, 2015 09:24:00 PM ET</p>
+					<p>'.date("D d m Y, h:i a", $row['datetime']).'</p>
 				</div>';
 			}else{
 				$highlight .= '<div class="highlight">
