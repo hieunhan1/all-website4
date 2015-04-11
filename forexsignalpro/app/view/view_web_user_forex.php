@@ -1,7 +1,7 @@
 <div id="average">
     <h3 class="title_user">Average of Pair Currencies:</h3>
     <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-        <tr bgcolor="#b6dde8">
+        <tr bgcolor="#96cede">
             <th align="left">Name</th>
             <th align="left">Average</th>
         </tr>
@@ -13,34 +13,70 @@
         ?>
     </table>
 </div>
-
-<div id="support_resistance">
-    <h3 class="title_user">Support and Resistance Points:</h3>
-    <?php $data = $this->_model->_web_support_resistance(); ?>
+<div id="trend">
+	<h3 class="title_user">Trend</h3>
     <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-        <tr bgcolor="#b6dde8">
-            <th align="left">Support</th>
-            <th align="left">Resistance</th>
+        <tr bgcolor="#96cede">
+            <th>Pair Currencies</th>
+            <th>Trend of Today</th>
+            <th>Trend of Week</th>
+            <th>Trend of Month</th>
         </tr>
-        <tr>
-            <td>S1 = <?php echo $data[0]['support_s1']?></td>
-            <td>R1 = <?php echo $data[0]['resistance_r1']?></td>
-        </tr>
-        <tr>
-            <td>S2 = <?php echo $data[0]['support_s2']?></td>
-            <td>R2 = <?php echo $data[0]['resistance_r2']?></td>
-        </tr>
-        <tr>
-            <td>R3 = <?php echo $data[0]['support_r3']?></td>
-            <td>R3 = <?php echo $data[0]['resistance_r3']?></td>
-        </tr>
+        <?php
+        $data = $this->_model->_web_trend($this->_config['limit_2']);
+        foreach($data as $row){
+			if($row['today']==1) $today='UP'; else $today='DOWN';
+			if($row['week']==1) $week='UP'; else $week='DOWN';
+			if($row['month']==1) $month='UP'; else $month='DOWN';
+            echo '<tr>
+				<td align="center">'.$row['currency'].'</td>
+				<td align="center">'.$today.'</td>
+				<td align="center">'.$week.'</td>
+				<td align="center">'.$month.'</td>
+			</tr>';
+        }
+        ?>
     </table>
 </div>
-
 <div class="clear_20px" style="margin-bottom:30px"></div>
+
+<h3 class="title_user">Support and Resistance Points:</h3>
+<table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
+    <tr bgcolor="#96cede">
+    	<th rowspan="2" width="140px">Pair Currencies</th>
+    	<th rowspan="2" width="140px">PIVOT</th>
+        <th colspan="3">Support</th>
+        <th colspan="3">Resistance</th>
+    </tr>
+    <tr bgcolor="#d3ebf1">
+    	<td align="center">S1</td>
+    	<td align="center">S2</td>
+    	<td align="center">R3</td>
+    	<td align="center">R1</td>
+    	<td align="center">R2</td>
+    	<td align="center">R3</td>
+    </tr>
+    <?php
+    $data = $this->_model->_web_support_resistance($this->_config['limit_4']);
+	foreach($data as $row){
+		echo '<tr>
+			<td align="center">'.$row['currency'].'</td>
+			<td align="center">'.$row['pivot'].'</td>
+			<td align="center">'.$row['support_s1'].'</td>
+			<td align="center">'.$row['support_s2'].'</td>
+			<td align="center">'.$row['support_r3'].'</td>
+			<td align="center">'.$row['resistance_r1'].'</td>
+			<td align="center">'.$row['resistance_r2'].'</td>
+			<td align="center">'.$row['resistance_r3'].'</td>
+		</tr>';
+	}
+	?>
+</table>
+<div class="clear_20px" style="margin-bottom:30px"></div>
+
 <h3 class="title_user">Real time Orders:</h3>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-    <tr bgcolor="#b6dde8">
+    <tr bgcolor="#96cede">
         <th align="left">Pair of Currencies</th>
         <th align="left">Oders</th>
         <th align="left">Entry Point</th>
@@ -79,6 +115,6 @@
 				}
 			});
 		}
-		setInterval(function(){ forex(); },5000);
+		setInterval(function(){ forex(); },10000);
 	});
 </script>

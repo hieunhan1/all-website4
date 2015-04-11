@@ -80,5 +80,5 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 #change_account{clear:both; line-height:22px; margin-bottom:30px; font-weight:bold; text-align:right}
 #change_account a{padding-left:25px; background:url(../img/print-email-bookmark.gif) no-repeat; background-position:-40px -2px}
 .title_user{font-size:110%; color:#C00; margin-bottom:15px}
-#average{width:450px; float:left}
-#support_resistance{width:450px; float:right}
+#average{width:400px; float:left}
+#trend{width:550px; float:right}

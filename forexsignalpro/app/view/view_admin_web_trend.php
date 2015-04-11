@@ -5,32 +5,24 @@
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="70">Pivot</th>
-            <th width="70">Sup-S1</th>
-            <th width="70">Sup-S2</th>
-            <th width="70">Sup-R3</th>
-            <th width="70">Res-R1</th>
-            <th width="70">Res-R2</th>
-            <th width="70">Res-R3</th>
-            <th width="110">Ngày</th>
+            <th width="120">Today</th>
+            <th width="120">Week</th>
+            <th width="120">Month</th>
+            <th width="110" align="left">Ngày</th>
             <th width="110">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`pivot`,`support_s1`,`support_s2`,`support_r3`,`resistance_r1`,`resistance_r2`,`resistance_r3`,`datetime`');
+		$data = $this->select_from_all($lang,$arr,',`today`,`week`,`month`,`datetime`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><?php echo $row['name'];?></td>
-            <td align="center"><?php echo $row['pivot'];?></td>
-            <td align="center"><?php echo $row['support_s1'];?></td>
-            <td align="center"><?php echo $row['support_s2'];?></td>
-            <td align="center"><?php echo $row['support_r3'];?></td>
-            <td align="center"><?php echo $row['resistance_r1'];?></td>
-            <td align="center"><?php echo $row['resistance_r2'];?></td>
-            <td align="center"><?php echo $row['resistance_r3'];?></td>
+            <td align="center"><?php if($row['today']==1) echo 'UP'; else echo 'DOWN';?></td>
+            <td align="center"><?php if($row['week']==1) echo 'UP'; else echo 'DOWN';?></td>
+            <td align="center"><?php if($row['month']==1) echo 'UP'; else echo 'DOWN';?></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
