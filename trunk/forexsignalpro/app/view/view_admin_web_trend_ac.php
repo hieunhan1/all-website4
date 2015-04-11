@@ -35,53 +35,31 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//pivot
-	$values = $row_detail['pivot'];
-	$properties = array('10'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Pivot','pivot','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
+	//today
+	$arr = array();
+	$arr[] = array('id'=>'1', 'name'=>'Up');
+	$arr[] = array('id'=>'0', 'name'=>'Down');
+	if($row_detail['today']=='') $properties = 1; else $properties = $row_detail['today']; //default check
+	$views = array('Today','today','radio',' &nbsp; '); //label name class other
+    $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//support_s1
-	$values = $row_detail['support_s1'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Support S1','support_s1','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
+	//week
+	$arr = array();
+	$arr[] = array('id'=>'1', 'name'=>'Up');
+	$arr[] = array('id'=>'0', 'name'=>'Down');
+	if($row_detail['week']=='') $properties = 1; else $properties = $row_detail['week']; //default check
+	$views = array('Week','week','radio',' &nbsp; '); //label name class other
+    $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//support_s2
-	$values = $row_detail['support_s2'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Support S2','support_s2','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//support_r3
-	$values = $row_detail['support_r3'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Support R3','support_r3','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//resistance_r1
-	$values = $row_detail['resistance_r1'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Resistance R1','resistance_r1','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//resistance_r2
-	$values = $row_detail['resistance_r2'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Resistance R2','resistance_r2','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
-	
-	//resistance_r3
-	$values = $row_detail['resistance_r3'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Resistance R3','resistance_r3','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views);
+	//month
+	$arr = array();
+	$arr[] = array('id'=>'1', 'name'=>'Up');
+	$arr[] = array('id'=>'0', 'name'=>'Down');
+	if($row_detail['month']=='') $properties = 1; else $properties = $row_detail['month']; //default check
+	$views = array('Month','month','radio',' &nbsp; '); //label name class other
+    $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//lang

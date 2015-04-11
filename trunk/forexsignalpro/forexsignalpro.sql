@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2015 at 11:47 AM
+-- Generation Time: Apr 11, 2015 at 04:48 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -106,9 +106,9 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 (14, 'Skype', 'skype', 'hieu_nhan1', 'vi', 1),
 (15, 'Địa chỉ', 'address', '123 CMT 8, phường 10, quận 10, Tp.HCM', 'vi', 1),
 (16, 'News number / page', 'limit_1', '10', 'en', 1),
-(17, 'Product number / page', 'limit_2', '10', 'en', 1),
+(17, 'Product number / page', 'limit_2', '10', 'en', 0),
 (18, 'Real time Orders', 'limit_3', '20', 'en', 1),
-(19, 'Videos number / page', 'limit_4', '10', 'en', 1),
+(19, 'Support and resistance', 'limit_4', '10', 'en', 1),
 (20, 'Copyright', 'copyright', 'Copyright © 2014', 'en', 1),
 (21, 'Email', 'email', 'hieunhan112@gmail.com', 'en', 1),
 (22, 'Telephone', 'tel', '0988 388 003', 'en', 1),
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_logs`
@@ -1237,7 +1237,15 @@ INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`,
 (207, 'Photos number / page', 'update', 'web_config', 1428570102, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values18%%%Photos number / page%%%limit_3%%%10%%%en%%%1', 'en', 0, NULL, NULL),
 (208, 'GBP/USD', 'create', 'web_real_time', 1428570172, 'admin', '', 'en', 0, NULL, NULL),
 (209, 'April 09, 2015', 'create', 'web_real_time', 1428570703, 'admin', '', 'en', 0, NULL, NULL),
-(210, 'login', 'update', 'web_menu_type', 1428571799, 'admin', '`id`,`name`,`description`,`table_data`,`url_img`,`url_img_thumb`,`lang`,`order`,`type`,`status`fields%%%values8%%%login%%%Đăng nhập%%%web_users%%%%%%%%%en%%%8%%%1%%%1', 'en', 0, NULL, NULL);
+(210, 'login', 'update', 'web_menu_type', 1428571799, 'admin', '`id`,`name`,`description`,`table_data`,`url_img`,`url_img_thumb`,`lang`,`order`,`type`,`status`fields%%%values8%%%login%%%Đăng nhập%%%web_users%%%%%%%%%en%%%8%%%1%%%1', 'en', 0, NULL, NULL),
+(211, 'April 09, 2015', 'update', 'web_support_resistance', 1428717266, 'admin', '`id`,`name`,`pivot`,`support_s1`,`support_s2`,`support_r3`,`resistance_r1`,`resistance_r2`,`resistance_r3`,`datetime`,`lang`,`status`,`currency_id`fields%%%values1%%%April 09, 2015%%%%%%1%%%1.1%%%1.2%%%2.2%%%2.4%%%2.5%%%1428565680%%%en%%%1%%%0', 'en', 0, NULL, NULL),
+(212, 'Videos number / page', 'update', 'web_config', 1428717501, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values19%%%Videos number / page%%%limit_4%%%10%%%en%%%1', 'en', 0, NULL, NULL),
+(213, 'Product number / page', 'status', 'web_config', 1428717545, 'admin', '0', 'en', 0, NULL, NULL),
+(214, 'April 09, 2015', 'update', 'web_support_resistance', 1428717961, 'admin', '`id`,`name`,`pivot`,`support_s1`,`support_s2`,`support_r3`,`resistance_r1`,`resistance_r2`,`resistance_r3`,`datetime`,`lang`,`status`,`currency_id`fields%%%values1%%%April 09, 2015%%%112%%%1%%%1.1%%%1.2%%%2.2%%%2.4%%%2.5%%%1428565680%%%en%%%1%%%1', 'en', 0, NULL, NULL),
+(215, 'GBP/USD', 'create', 'web_support_resistance', 1428718000, 'admin', '', 'en', 0, NULL, NULL),
+(216, 'Admin', 'update', 'web_users', 1428718564, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values25%%%Admin%%%123 CMT 8%%%0988 388 003%%%hieunhan112@gmail.com%%%0%%%1%%%%%%%%%admin%%%fc7fc678608590b123692867f176fe63%%%,1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,%%%,1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,%%%%%%%%%en%%%0%%%1%%%3', 'en', 0, NULL, NULL),
+(217, 'EUR/USD', 'create', 'web_trend', 1428719395, 'admin', '', 'en', 0, NULL, NULL),
+(218, 'GBP/USD', 'create', 'web_trend', 1428719926, 'admin', '', 'en', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1340,7 +1348,7 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (13, 'Forex', 'web_forex', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 1),
 (14, 'Gói đăng ký', 'web_users_package', 'icon-product.jpg', 14, 0, NULL, 1),
 (15, 'Cặp tiền tệ', 'web_currency', 'icon-tra-cuu-hoc-phi.jpg', 15, 0, NULL, 1),
-(16, 'Item 16', '', 'icon-item.jpg', 16, 0, NULL, 0),
+(16, 'Trend', 'web_trend', 'icon-item.jpg', 16, 0, NULL, 1),
 (17, 'Support and Resistance', 'web_support_resistance', 'icon-cau-hinh.jpg', 17, 0, NULL, 1),
 (18, 'Item 18', '', 'icon-item.jpg', 18, 0, NULL, 0),
 (19, 'Real time Orders', 'web_real_time', 'icon-info.jpg', 19, 1, NULL, 1),
@@ -1650,6 +1658,7 @@ INSERT INTO `web_slider_banner_position` (`id`, `name`, `status`) VALUES
 CREATE TABLE IF NOT EXISTS `web_support_resistance` (
 `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `pivot` varchar(10) NOT NULL,
   `support_s1` float NOT NULL,
   `support_s2` float NOT NULL,
   `support_r3` float NOT NULL,
@@ -1658,15 +1667,43 @@ CREATE TABLE IF NOT EXISTS `web_support_resistance` (
   `resistance_r3` float NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'en',
-  `status` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `currency_id` int(2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_support_resistance`
 --
 
-INSERT INTO `web_support_resistance` (`id`, `name`, `support_s1`, `support_s2`, `support_r3`, `resistance_r1`, `resistance_r2`, `resistance_r3`, `datetime`, `lang`, `status`) VALUES
-(1, 'April 09, 2015', 1, 1.1, 1.2, 2.2, 2.4, 2.5, 1428565680, 'en', 1);
+INSERT INTO `web_support_resistance` (`id`, `name`, `pivot`, `support_s1`, `support_s2`, `support_r3`, `resistance_r1`, `resistance_r2`, `resistance_r3`, `datetime`, `lang`, `status`, `currency_id`) VALUES
+(1, 'EUR/USD', '112', 1, 1.1, 1.2, 2.2, 2.4, 2.5, 1428565680, 'en', 1, 1),
+(2, 'GBP/USD', '113', 1.1, 1.2, 1.3, 2.2, 2.4, 2.6, 1428717960, 'en', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_trend`
+--
+
+CREATE TABLE IF NOT EXISTS `web_trend` (
+`id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `today` tinyint(1) NOT NULL,
+  `week` tinyint(1) NOT NULL,
+  `month` tinyint(1) NOT NULL,
+  `datetime` bigint(10) NOT NULL,
+  `lang` varchar(2) NOT NULL DEFAULT 'en',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `currency_id` int(2) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_trend`
+--
+
+INSERT INTO `web_trend` (`id`, `name`, `today`, `week`, `month`, `datetime`, `lang`, `status`, `currency_id`) VALUES
+(1, 'EUR/USD', 1, 1, 0, 1428719340, 'en', 1, 1),
+(2, 'GBP/USD', 0, 1, 1, 1428719880, 'en', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -1701,7 +1738,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,', NULL, NULL, 'en', 0, 1, 3),
+(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', NULL, NULL, 'en', 0, 1, 3),
 (34, 'Hiếu Nhân', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, NULL, 'en', 0, 1, 1);
 
 -- --------------------------------------------------------
@@ -1736,14 +1773,14 @@ CREATE TABLE IF NOT EXISTS `web_users_lock_ip` (
   `login_number` int(2) NOT NULL,
   `disable_date` bigint(10) NOT NULL,
   `datetime` bigint(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_users_lock_ip`
 --
 
 INSERT INTO `web_users_lock_ip` (`id`, `ip_address`, `login_number`, `disable_date`, `datetime`) VALUES
-(20, '::1', 2, 0, 1428572486);
+(20, '::1', 2, 0, 1428719643);
 
 -- --------------------------------------------------------
 
@@ -1982,6 +2019,12 @@ ALTER TABLE `web_support_resistance`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_trend`
+--
+ALTER TABLE `web_trend`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_users`
 --
 ALTER TABLE `web_users`
@@ -2070,7 +2113,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_logs`
 --
 ALTER TABLE `web_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=211;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=219;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --
@@ -2135,7 +2178,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `web_support_resistance`
 --
 ALTER TABLE `web_support_resistance`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_trend`
+--
+ALTER TABLE `web_trend`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `web_users`
 --
@@ -2150,7 +2198,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `web_users_lock_ip`
 --
 ALTER TABLE `web_users_lock_ip`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `web_users_login`
 --
