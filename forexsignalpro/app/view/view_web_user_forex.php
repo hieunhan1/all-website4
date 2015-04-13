@@ -1,7 +1,7 @@
 <div id="average">
     <h3 class="title_user">Average of Pair Currencies:</h3>
     <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-        <tr bgcolor="#96cede">
+        <tr class="title_forex">
             <th align="left">Name</th>
             <th align="left">Average</th>
         </tr>
@@ -16,7 +16,7 @@
 <div id="trend">
 	<h3 class="title_user">Trend</h3>
     <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-        <tr bgcolor="#96cede">
+        <tr class="title_forex">
             <th>Pair Currencies</th>
             <th>Trend of Today</th>
             <th>Trend of Week</th>
@@ -25,9 +25,9 @@
         <?php
         $data = $this->_model->_web_trend($this->_config['limit_2']);
         foreach($data as $row){
-			if($row['today']==1) $today='UP'; else $today='DOWN';
-			if($row['week']==1) $week='UP'; else $week='DOWN';
-			if($row['month']==1) $month='UP'; else $month='DOWN';
+			if($row['today']==1) $today='<span class="icon_up">UP</span>'; else $today='<span class="icon_down">DOWN</span>';
+			if($row['week']==1) $week='<span class="icon_up">UP</span>'; else $week='<span class="icon_down">DOWN</span>';
+			if($row['month']==1) $month='<span class="icon_up">UP</span>'; else $month='<span class="icon_down">DOWN</span>';
             echo '<tr>
 				<td align="center">'.$row['currency'].'</td>
 				<td align="center">'.$today.'</td>
@@ -42,7 +42,7 @@
 
 <h3 class="title_user">Support and Resistance Points:</h3>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-    <tr bgcolor="#96cede">
+    <tr class="title_forex">
     	<th rowspan="2" width="140px">Pair Currencies</th>
     	<th rowspan="2" width="140px">PIVOT</th>
         <th colspan="3">Support</th>
@@ -76,7 +76,7 @@
 
 <h3 class="title_user">Real time Orders:</h3>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table">
-    <tr bgcolor="#96cede">
+    <tr class="title_forex">
         <th align="left">Pair of Currencies</th>
         <th align="left">Oders</th>
         <th align="left">Entry Point</th>

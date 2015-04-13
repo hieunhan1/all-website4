@@ -309,15 +309,41 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
+	public function _view_infomation_user($id, $email){
+		$sql = "SELECT * FROM `web_users` WHERE `status`=1 AND `group_id`=1 AND `id`='{$id}' AND `email`='{$email}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _update_user_infomation($id, $email, $phone, $birthday, $gender, $address){
+		$sql = "UPDATE `web_users` SET `phone`='{$phone}', `birthday`='{$birthday}', `gender`='{$gender}', `address`='{$address}' WHERE `status`=1 AND `group_id`=1 AND `id`='{$id}' AND `email`='{$email}'";
+		if(!$this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	public function _update_user_password($id, $email, $pass){
+		$pass=md5($pass);
+		$sql = "UPDATE `web_users` SET `password`='{$pass}' WHERE `status`=1 AND `group_id`=1 AND `id`='{$id}' AND `email`='{$email}'";
+		if(!$this->db->query($sql)) die($this->db->error);
+		return true;
+	}
 	/*end login user*/
 	
 	/*function*/
 	public function _current_date_time(){
         return time(); 
 	}
-	public function _date_time_vietnam(){
+	public function _date_time(){
 		$timezone = +7; //(GMT +7:00)  
         return gmdate("Y-m-d H:i:s", time() + 3600*($timezone+date("0"))); 
+	}
+	public function _view_date_time($time){
+		//$timezone = +7; //(GMT +7:00)
+		//$time += 3600*($timezone+date("0"));
+        return date("m-d-Y H:i", $time).' (GMT +7)'; 
+	}
+	public function _view_date($date){
+        return date("m-d-Y", $date); 
 	}
 	/*end function*/
 	

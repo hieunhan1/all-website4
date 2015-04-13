@@ -3,7 +3,7 @@
     <h2><?php echo $data_home[0]['name'];?></h2>
     <?php
 	$i = 0;
-    $data = $this->_model->_list_web_forex($this->_config['limit_3']);
+    $data = $this->_model->_list_web_forex($this->_config['limit_0']);
 	$total = count($data);
 	foreach($data as $row){
 		$i++;
