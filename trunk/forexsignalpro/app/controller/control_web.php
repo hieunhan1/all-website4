@@ -188,6 +188,7 @@ class control_web{
 		//header('location: '.CONS_BASE_URL.CONS_400);
 	}
 	
+	/*payment*/
 	public function payment(){
 		$PAYEE_ACCOUNT = $this->_model->_change_dau_nhay($_GET['PAYEE_ACCOUNT']);
 		$PAYMENT_AMOUNT = $this->_model->_change_dau_nhay($_GET['PAYMENT_AMOUNT']);
@@ -207,7 +208,9 @@ class control_web{
 		}
 		$this->_model->_insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen);
 	}
+	/*end payment*/
 	
+	/*user*/
 	public function user_login($email, $pass, $ip_address){
 		$currentDatetime = time();
 		if($email!='' && $pass!=''){
@@ -239,6 +242,40 @@ class control_web{
 			return 'Error';
 		}
 	}
+	public function user_change_infomation(){
+		$id = $_SESSION['user_id'];
+		$email = $_SESSION['user_email'];
+		$phone = $this->_model->_checks_phone($_POST['phone']);
+		if($phone==false) $phone='';
+		
+		if($_POST['month']!='' && $_POST['day']!='' && $_POST['year']!=''){
+			if($_POST['month']>0 && $_POST['month']<=12) $month=$_POST['month']; else return false;
+			if($_POST['day']>0 && $_POST['day']<=31) $day=$_POST['day']; else return false;
+			if($_POST['year']>1900 && $_POST['year']<date('Y')) $year=$_POST['year']; else return false;
+			$birthday = $year.'-'.$month.'-'.$day;//"{$year}-{$month}-{$day}";
+			$birthday = strtotime($birthday);
+		}else $birthday=0;
+		
+		if($_POST['gender']==0 || $_POST['gender']==1) $gender=$_POST['gender']; else $gender=2;
+		$address = $this->_model->_change_dau_nhay($_POST['address']);
+		
+		$this->_model->_update_user_infomation($id, $email, $phone, $birthday, $gender, $address);
+		return true;
+	}
+	public function user_change_passowrd(){
+		$id = $_SESSION['user_id'];
+		$email = $_SESSION['user_email'];
+		$oldPass = $this->_model->_change_dau_nhay($_POST['oldPass']);
+		$newPass = $this->_model->_change_dau_nhay($_POST['newPass']);
+		if($oldPass!='' && $newPass!=''){
+			$data = $this->_model->_check_user_login($email, $oldPass);
+			if(count($data)==1){
+				$this->_model->_update_user_password($id, $email, $newPass);
+				return true;
+			}else return 'Incorrect password';
+		}else return 'Error';
+	}
+	/*end user*/
 	
 	public function index(){
 		$include = ob_start();

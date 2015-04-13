@@ -62,5 +62,11 @@ if(isset($_POST['forex'])){
 	include_once('view_web_user_forex.php');
 	return true;
 }
+if(isset($_POST['changePassword'])){
+	$check = $this->user_change_passowrd();
+	if($check==1) echo '<span style="font-weight:bold; color:#00F">Successful password change</span>';
+	else echo '<span class="error">'.$check.'</span>';
+	return true;
+}
 /*end login*/
 ?>
