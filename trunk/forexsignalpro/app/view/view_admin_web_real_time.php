@@ -9,7 +9,7 @@
             <th width="90">Entry Point</th>
             <th width="90">Take Profit</th>
             <th width="95">Stop Loss</th>
-            <th width="110" align="left">Status</th>
+            <th width="150" align="left">Status</th>
             <th width="110" align="left">Ngày</th>
             <th width="110">Thao tác</th>
         </tr>
@@ -17,6 +17,12 @@
 		$i = 0;
 		$data = $this->select_from_all($lang,$arr,',`oders`,`entry_point`,`take_profit`,`stop_loss`,`status_real_time`,`datetime`');
 		if($data){
+			$status = array(
+				'0'=>'Failure',
+				'1'=>'Success',
+				'2'=>'Waiting for Opportunity',
+				'3'=>'In Progressing',
+			);
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
@@ -26,7 +32,7 @@
             <td align="center"><?php echo $row['entry_point'];?></td>
             <td align="center"><?php echo $row['take_profit'];?></td>
             <td align="center"><?php echo $row['stop_loss'];?></td>
-            <td><?php if($row['status_real_time']==1) echo 'In Progressing'; else echo 'Out';?></td>
+            <td><?php echo $status[$row['status_real_time']];?></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;

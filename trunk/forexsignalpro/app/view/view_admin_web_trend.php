@@ -15,14 +15,15 @@
 		$i = 0;
 		$data = $this->select_from_all($lang,$arr,',`today`,`week`,`month`,`datetime`');
 		if($data){
+			$strTrend = array('DOWN','UP','NO');
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><?php echo $row['name'];?></td>
-            <td align="center"><?php if($row['today']==1) echo 'UP'; else echo 'DOWN';?></td>
-            <td align="center"><?php if($row['week']==1) echo 'UP'; else echo 'DOWN';?></td>
-            <td align="center"><?php if($row['month']==1) echo 'UP'; else echo 'DOWN';?></td>
+            <td align="center"><?php echo $strTrend[$row['today']];?></td>
+            <td align="center"><?php echo $strTrend[$row['week']];?></td>
+            <td align="center"><?php echo $strTrend[$row['month']];?></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
