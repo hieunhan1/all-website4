@@ -39,7 +39,8 @@ echo '<form name="form_action" method="post" action="">
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Up');
 	$arr[] = array('id'=>'0', 'name'=>'Down');
-	if($row_detail['today']=='') $properties = 1; else $properties = $row_detail['today']; //default check
+	$arr[] = array('id'=>'2', 'name'=>'NO');
+	if($row_detail['today']=='') $properties = 2; else $properties = $row_detail['today']; //default check
 	$views = array('Today','today','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
@@ -48,7 +49,8 @@ echo '<form name="form_action" method="post" action="">
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Up');
 	$arr[] = array('id'=>'0', 'name'=>'Down');
-	if($row_detail['week']=='') $properties = 1; else $properties = $row_detail['week']; //default check
+	$arr[] = array('id'=>'2', 'name'=>'NO');
+	if($row_detail['week']=='') $properties = 2; else $properties = $row_detail['week']; //default check
 	$views = array('Week','week','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
@@ -57,7 +59,8 @@ echo '<form name="form_action" method="post" action="">
 	$arr = array();
 	$arr[] = array('id'=>'1', 'name'=>'Up');
 	$arr[] = array('id'=>'0', 'name'=>'Down');
-	if($row_detail['month']=='') $properties = 1; else $properties = $row_detail['month']; //default check
+	$arr[] = array('id'=>'2', 'name'=>'NO');
+	if($row_detail['month']=='') $properties = 2; else $properties = $row_detail['month']; //default check
 	$views = array('Month','month','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();

@@ -288,21 +288,21 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_trend($limit=6){
+	public function _web_trend($limit=8){
 		$sql = "SELECT `web_trend`.*, `web_currency`.`name` as `currency` FROM `web_trend`,`web_currency` WHERE `web_trend`.`status`=1 AND `currency_id`=`web_currency`.`id` ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _web_support_resistance($limit=6){
+	public function _web_support_resistance($limit=8){
 		$sql = "SELECT `web_support_resistance`.*, `web_currency`.`name` as `currency` FROM `web_support_resistance`,`web_currency` WHERE `web_support_resistance`.`status`=1 AND `currency_id`=`web_currency`.`id` ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _list_real_time($limit=6){
+	public function _list_real_time($limit=8){
 		$sql = "SELECT `web_real_time`.*, `web_currency`.`name` as `currency` FROM `web_real_time`,`web_currency` WHERE `web_real_time`.`status`=1 AND `currency_id`=`web_currency`.`id` ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
