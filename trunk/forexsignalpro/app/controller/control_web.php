@@ -190,15 +190,32 @@ class control_web{
 	
 	/*payment*/
 	public function payment(){
-		$PAYEE_ACCOUNT = $this->_model->_change_dau_nhay($_GET['PAYEE_ACCOUNT']);
-		$PAYMENT_AMOUNT = $this->_model->_change_dau_nhay($_GET['PAYMENT_AMOUNT']);
-		$PAYMENT_UNITS = $this->_model->_change_dau_nhay($_GET['PAYMENT_UNITS']);
-		$PAYMENT_ID = $this->_model->_change_dau_nhay($_GET['PAYMENT_ID']);
-		$TIMESTAMPGMT = $this->_model->_change_dau_nhay($_GET['TIMESTAMPGMT']);
-		$PAYER_ACCOUNT = $this->_model->_change_dau_nhay($_GET['PAYER_ACCOUNT']);
-		$name = $this->_model->_change_dau_nhay($_GET['name']);
-		$email = $this->_model->_change_dau_nhay($_GET['email']);
-		$package_id = $this->_model->_change_dau_nhay($_GET['package_id']);	
+		$PAYEE_ACCOUNT = $this->_model->_change_dau_nhay($_POST['PAYEE_ACCOUNT']);
+		$PAYMENT_AMOUNT = $this->_model->_change_dau_nhay($_POST['PAYMENT_AMOUNT']);
+		$PAYMENT_UNITS = $this->_model->_change_dau_nhay($_POST['PAYMENT_UNITS']);
+		$PAYMENT_ID = $this->_model->_change_dau_nhay($_POST['PAYMENT_ID']);
+		$TIMESTAMPGMT = $this->_model->_change_dau_nhay($_POST['TIMESTAMPGMT']);
+		$PAYER_ACCOUNT = $this->_model->_change_dau_nhay($_POST['PAYER_ACCOUNT']);
+		$name = $this->_model->_change_dau_nhay($_POST['name']);
+		$email = $this->_model->_change_dau_nhay($_POST['email']);
+		$package_id = $this->_model->_change_dau_nhay($_POST['package_id']);
+		
+		$ip_address = $this->_model->_change_dau_nhay($_POST['ip_address']);
+		$currentIP = $_SERVER['REMOTE_ADDR'];
+		if($ip_address==$currentIP){
+			$data = $this->_model->_check_ip_payment($ip_address);
+			$currentTimeInsert = time() - $data[0]['datetime'];
+			if($currentTimeInsert < 30){
+				echo CONS_MESSAGE_LOCK_SIGNUP;
+				return false;
+			}elseif($data[0]['PAYMENT_ID']==$PAYMENT_ID){
+				echo 'Đã đăng ký';
+				return false;
+			}
+		}else{
+			echo 'Error';
+			return false;
+		}
 		
 		$tolen='';
 		$tolen_key = array_keys($_REQUEST);
@@ -206,7 +223,15 @@ class control_web{
 		for($i=0; $i<count($tolen_key); $i++){
 			$tolen .= '['.$tolen_key[$i].'] => '.$tolen_value[$i].'<br />';
 		}
-		$this->_model->_insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen);
+		
+		if($this->_data=='success') $status=1;
+		elseif($this->_data=='error') $status=0;
+		else{
+			echo 'Not found';
+			return false;
+		}
+		
+		$this->_model->_insert_payment($name, $email, $package_id, $ip_address, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen, $status);
 	}
 	/*end payment*/
 	

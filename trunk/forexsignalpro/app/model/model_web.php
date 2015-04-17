@@ -242,8 +242,16 @@ class model_web extends db{
 	/*end signup*/
 	
 	/*payment*/
-	public function _insert_payment($name, $email, $package_id, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen){
-		$sql = "INSERT INTO `web_payment` VALUES (NULL, '{$name}', '{$email}', '{$package_id}', '{$PAYEE_ACCOUNT}', '{$PAYMENT_AMOUNT}', '{$PAYMENT_UNITS}', '{$PAYMENT_ID}', '{$TIMESTAMPGMT}', '{$PAYER_ACCOUNT}', '{$tolen}', '{$lang}', '1')";
+	public function _check_ip_payment($ip){
+		$sql = "SELECT `PAYMENT_ID`,`datetime` FROM `web_payment` WHERE `ip_address`='{$ip}' ORDER BY `datetime` DESC LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _insert_payment($name, $email, $package_id, $ip_address, $PAYEE_ACCOUNT, $PAYMENT_AMOUNT, $PAYMENT_UNITS, $PAYMENT_ID, $TIMESTAMPGMT, $PAYER_ACCOUNT, $tolen, $status){
+		$datetime = time();
+		$sql = "INSERT INTO `web_payment` VALUES (NULL, '{$name}', '{$email}', '{$package_id}', '{$ip_address}', '{$PAYEE_ACCOUNT}', '{$PAYMENT_AMOUNT}', '{$PAYMENT_UNITS}', '{$PAYMENT_ID}', '{$TIMESTAMPGMT}', '{$PAYER_ACCOUNT}', '{$tolen}', '{$datetime}', 'en', '{$status}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return true;
 	}
