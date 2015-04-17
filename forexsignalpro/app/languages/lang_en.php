@@ -29,3 +29,5 @@ define('CONS_ERROR_MESSAGE', 'Your comment should be more than 10 characters');
 
 define('CONS_MESSAGE_USER_PASS_ERROR', 'Username and password not found');
 define('CONS_MESSAGE_LOCK_IP', 'The account is locked for 15 minutes');
+
+define('CONS_MESSAGE_LOCK_SIGNUP', 'Please try again after 30 seconds');

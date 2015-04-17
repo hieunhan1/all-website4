@@ -30,8 +30,8 @@
                 <input type="hidden" name="PAYEE_ACCOUNT" value="U7071279">
                 <input type="hidden" name="PAYEE_NAME" value="Forex Signal">
                 <input type="hidden" name="PAYMENT_UNITS" value="USD">
-                <input type="hidden" name="PAYMENT_URL_METHOD" value="GET">
-                <input type="hidden" name="NOPAYMENT_URL_METHOD" value="GET">
+                <input type="hidden" name="PAYMENT_URL_METHOD" value="POST">
+                <input type="hidden" name="NOPAYMENT_URL_METHOD" value="POST">
                 <input type="hidden" name="SUGGESTED_MEMO" value="">
                 <input type="hidden" name="STATUS_URL" value="forexsignalpro.net@gmail.com">
                 <input type="hidden" name="PAYMENT_URL" value="http://www.forexsignalpro.net/payment/success/">
@@ -53,7 +53,8 @@
                     <p><span class="span">Name:</span><input type="text" name="name" value="" class="txt"><span id="name" class="error"></span></p>
                     <p><span class="span">Email:</span><input type="text" name="email" value="" class="txt"><span id="email" class="error"></span></p>
                     <input type="hidden" name="PAYMENT_AMOUNT" value="">
-                    <input type="hidden" name="BAGGAGE_FIELDS" value="name email package_id">
+                    <input type="hidden" name="ip_address" value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
+                    <input type="hidden" name="BAGGAGE_FIELDS" value="name email package_id ip_address">
                     <p><span class="span">&nbsp;</span><input type="submit" name="PAYMENT_METHOD" value="Pay Now!" class="btn"></p>
                 </div>
             </form>
