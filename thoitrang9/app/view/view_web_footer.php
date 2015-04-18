@@ -19,7 +19,7 @@
                 ?>
             </td>
             <td valign="top" style="line-height:180%"><?php echo '<p style="color:#F60465; font-weight:bold">'.$this->_config['name'].'</p>'.$this->_config['contact_foo'];?></td>
-            <td style="text-align:right">Copyright © 2014 heoxinhshop.com</td>
+            <td style="text-align:right"><?php echo $this->_config['copyright'];?></td>
         </tr>
     </table>
 </div>
