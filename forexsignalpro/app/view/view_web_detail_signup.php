@@ -107,7 +107,7 @@ $(document).ready(function(e) {
 	});
 	
 	$("input[name=PAYMENT_METHOD]").click(function(){
-		var email = check_email("input[name=email]", "#email", " wrong email address");
+		var email = check_email("input[name=email]", "#email", " <?php echo CONS_ERROR_EMAIL;?>");
 		var name = check_text_length("input[name=name]", "#name", " input name", 2);
 		var package_id = check_number("select[name=package_id]","#package_id"," select a subscription");
 		if(email==false || name==false || package_id==false) return false;

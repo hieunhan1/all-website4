@@ -1,5 +1,5 @@
-<div class="viewpost"><h1>Change Password</h1></div>
 <table cellpadding="15" cellspacing="0" style="margin-left:100px">
+	<tr><td colspan="2"><h3 class="title_user">Change Password</h3></td></tr>
     <tr><td colspan="2"><span id="ajaxError"></span></td></tr>
     <tr>
         <th align="right" width="150">Old password</th>

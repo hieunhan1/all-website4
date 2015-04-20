@@ -18,8 +18,14 @@
     chua ro - http://www.forexsignalpro.net/payment/?status=success&url=
     -->
     <?php
-    include_once('view_web_header.php');
-    include_once('view_web_menu.php'); flush();
+    if($this->_control!='user'){
+		include_once('view_web_header.php');
+		include_once('view_web_menu.php');
+	}else{
+		include_once('view_web_user_header.php');
+		include_once('view_web_user_menu.php');
+	}
+	flush();
 	include_once('view_web_slider.php'); flush();
 	echo $include; flush();
 	?>

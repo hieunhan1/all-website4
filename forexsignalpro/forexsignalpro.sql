@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2015 at 04:48 AM
+-- Generation Time: Apr 20, 2015 at 06:35 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `web_config` (
 
 INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) VALUES
 (1, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'vi', 1),
-(2, 'Slogan', 'slogan', 'Thời trang cho mọi người', 'en', 1),
+(2, 'History forex', 'limit_0', '6', 'en', 1),
 (5, 'Số tin / trang', 'limit_1', '10', 'vi', 1),
 (6, 'Số SP / trang', 'limit_2', '10', 'vi', 1),
 (7, 'Số photo / trang', 'limit_3', '10', 'vi', 1),
@@ -106,9 +106,9 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 (14, 'Skype', 'skype', 'hieu_nhan1', 'vi', 1),
 (15, 'Địa chỉ', 'address', '123 CMT 8, phường 10, quận 10, Tp.HCM', 'vi', 1),
 (16, 'News number / page', 'limit_1', '10', 'en', 1),
-(17, 'Product number / page', 'limit_2', '10', 'en', 0),
-(18, 'Real time Orders', 'limit_3', '20', 'en', 1),
-(19, 'Support and resistance', 'limit_4', '10', 'en', 1),
+(17, 'Trend', 'limit_2', '6', 'en', 1),
+(18, 'Real time Orders', 'limit_3', '6', 'en', 1),
+(19, 'Support and resistance', 'limit_4', '6', 'en', 1),
 (20, 'Copyright', 'copyright', 'Copyright © 2014', 'en', 1),
 (21, 'Email', 'email', 'hieunhan112@gmail.com', 'en', 1),
 (22, 'Telephone', 'tel', '0988 388 003', 'en', 1),
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=219 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_logs`
@@ -1245,7 +1245,22 @@ INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`,
 (215, 'GBP/USD', 'create', 'web_support_resistance', 1428718000, 'admin', '', 'en', 0, NULL, NULL),
 (216, 'Admin', 'update', 'web_users', 1428718564, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values25%%%Admin%%%123 CMT 8%%%0988 388 003%%%hieunhan112@gmail.com%%%0%%%1%%%%%%%%%admin%%%fc7fc678608590b123692867f176fe63%%%,1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,%%%,1,2,20,3,4,6,7,8,13,14,15,17,19,21,22,23,%%%%%%%%%en%%%0%%%1%%%3', 'en', 0, NULL, NULL),
 (217, 'EUR/USD', 'create', 'web_trend', 1428719395, 'admin', '', 'en', 0, NULL, NULL),
-(218, 'GBP/USD', 'create', 'web_trend', 1428719926, 'admin', '', 'en', 0, NULL, NULL);
+(218, 'GBP/USD', 'create', 'web_trend', 1428719926, 'admin', '', 'en', 0, NULL, NULL),
+(219, 'Slogan', 'update', 'web_config', 1428894306, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values2%%%Slogan%%%slogan%%%Thời trang cho mọi người%%%en%%%1', 'en', 0, NULL, NULL),
+(220, 'Product number / page', 'update', 'web_config', 1428894671, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values17%%%Product number / page%%%limit_2%%%10%%%en%%%0', 'en', 0, NULL, NULL),
+(221, 'Support and resistance', 'update', 'web_config', 1428920819, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values19%%%Support and resistance%%%limit_4%%%10%%%en%%%1', 'en', 0, NULL, NULL),
+(222, 'Real time Orders', 'update', 'web_config', 1428920823, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values18%%%Real time Orders%%%limit_3%%%20%%%en%%%1', 'en', 0, NULL, NULL),
+(223, 'Trend', 'update', 'web_config', 1428920831, 'admin', '`id`,`name`,`name_var`,`value`,`lang`,`status`fields%%%values17%%%Trend%%%limit_2%%%2%%%en%%%1', 'en', 0, NULL, NULL),
+(224, 'GBP/USD', 'status', 'web_support_resistance', 1429171002, 'admin', '0', 'en', 0, NULL, NULL),
+(225, 'GBP/USD', 'status', 'web_support_resistance', 1429171007, 'admin', '1', 'en', 0, NULL, NULL),
+(226, 'EUR/USD', 'status', 'web_support_resistance', 1429171012, 'admin', '0', 'en', 0, NULL, NULL),
+(227, 'EUR/USD', 'status', 'web_support_resistance', 1429171016, 'admin', '1', 'en', 0, NULL, NULL),
+(228, 'April 09, 2015', 'status', 'web_real_time', 1429171025, 'admin', '0', 'en', 0, NULL, NULL),
+(229, 'April 09, 2015', 'status', 'web_real_time', 1429171029, 'admin', '1', 'en', 0, NULL, NULL),
+(230, 'GBP/USD', 'status', 'web_real_time', 1429171032, 'admin', '0', 'en', 0, NULL, NULL),
+(231, 'GBP/USD', 'status', 'web_real_time', 1429171036, 'admin', '1', 'en', 0, NULL, NULL),
+(232, 'Anh / Mỹ', 'status', 'web_real_time', 1429171037, 'admin', '0', 'en', 0, NULL, NULL),
+(233, 'Anh / Mỹ', 'status', 'web_real_time', 1429171043, 'admin', '1', 'en', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1435,6 +1450,7 @@ CREATE TABLE IF NOT EXISTS `web_payment` (
   `name` varchar(100) NOT NULL,
   `email` varchar(60) NOT NULL,
   `package_id` int(3) NOT NULL,
+  `ip_address` varchar(20) NOT NULL,
   `PAYEE_ACCOUNT` varchar(10) NOT NULL,
   `PAYMENT_AMOUNT` float NOT NULL,
   `PAYMENT_UNITS` varchar(5) NOT NULL,
@@ -1442,16 +1458,21 @@ CREATE TABLE IF NOT EXISTS `web_payment` (
   `TIMESTAMPGMT` bigint(10) NOT NULL,
   `PAYER_ACCOUNT` varchar(10) NOT NULL,
   `token` text NOT NULL,
+  `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_payment`
 --
 
-INSERT INTO `web_payment` (`id`, `name`, `email`, `package_id`, `PAYEE_ACCOUNT`, `PAYMENT_AMOUNT`, `PAYMENT_UNITS`, `PAYMENT_ID`, `TIMESTAMPGMT`, `PAYER_ACCOUNT`, `token`, `lang`, `status`) VALUES
-(1, 'LE TAN HAO', 'tanhao.lee@gmail.com', 0, 'U7071279', 0.1, 'USD', 30489, 1427688697, 'U8147911', '[PAYEE_ACCOUNT] => U7071279<br />[PAYMENT_AMOUNT] => 0.1<br />[PAYMENT_UNITS] => USD<br />[PAYMENT_BATCH_NUM] => 85228803<br />[PAYMENT_ID] => 30489<br />[SUGGESTED_MEMO] => <br />[V2_HASH] => error_empty_phrase<br />[TIMESTAMPGMT] => 1427688697<br />[PAYER_ACCOUNT] => U8147911<br />[name] => LE TAN HAO<br />[email] => tanhao.lee@gmail.com<br />', '', 1);
+INSERT INTO `web_payment` (`id`, `name`, `email`, `package_id`, `ip_address`, `PAYEE_ACCOUNT`, `PAYMENT_AMOUNT`, `PAYMENT_UNITS`, `PAYMENT_ID`, `TIMESTAMPGMT`, `PAYER_ACCOUNT`, `token`, `datetime`, `lang`, `status`) VALUES
+(1, 'LE TAN HAO', 'tanhao.lee@gmail.com', 0, '', 'U7071279', 0.1, 'USD', 30489, 1427688697, 'U8147911', '[PAYEE_ACCOUNT] => U7071279<br />[PAYMENT_AMOUNT] => 0.1<br />[PAYMENT_UNITS] => USD<br />[PAYMENT_BATCH_NUM] => 85228803<br />[PAYMENT_ID] => 30489<br />[SUGGESTED_MEMO] => <br />[V2_HASH] => error_empty_phrase<br />[TIMESTAMPGMT] => 1427688697<br />[PAYER_ACCOUNT] => U8147911<br />[name] => LE TAN HAO<br />[email] => tanhao.lee@gmail.com<br />', 0, '', 1),
+(2, '', '', 0, '', '', 0, '', 0, 0, '', '', 0, '', 1),
+(3, '', '', 0, '', '', 0, '', 0, 0, '', '', 0, '', 1),
+(4, 'LE TAN HAO', 'tanhao.lee@gmail.com', 0, '', 'U7071279', 0.1, 'USD', 30489, 1427688697, 'U8147911', '[PAYEE_ACCOUNT] => U7071279<br />[PAYMENT_AMOUNT] => 0.1<br />[PAYMENT_UNITS] => USD<br />[PAYMENT_BATCH_NUM] => 85228803<br />[PAYMENT_ID] => 30489<br />[SUGGESTED_MEMO] => <br />[V2_HASH] => error_empty_phrase<br />[TIMESTAMPGMT] => 1427688697<br />[PAYER_ACCOUNT] => U8147911<br />[name] => LE TAN HAO<br />[email] => tanhao.lee@gmail.com<br />', 0, '', 1),
+(5, 'LE TAN HAO', 'tanhao.lee@gmail.com', 0, '', 'U7071279', 0.1, 'USD', 30489, 1427688697, 'U8147911', '[PAYEE_ACCOUNT] => U7071279<br />[PAYMENT_AMOUNT] => 0.1<br />[PAYMENT_UNITS] => USD<br />[PAYMENT_BATCH_NUM] => 85228803<br />[PAYMENT_ID] => 30489<br />[SUGGESTED_MEMO] => <br />[V2_HASH] => error_empty_phrase<br />[TIMESTAMPGMT] => 1427688697<br />[PAYER_ACCOUNT] => U8147911<br />[name] => LE TAN HAO<br />[email] => tanhao.lee@gmail.com<br />', 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -1661,7 +1682,7 @@ CREATE TABLE IF NOT EXISTS `web_support_resistance` (
   `pivot` varchar(10) NOT NULL,
   `support_s1` float NOT NULL,
   `support_s2` float NOT NULL,
-  `support_r3` float NOT NULL,
+  `support_s3` float NOT NULL,
   `resistance_r1` float NOT NULL,
   `resistance_r2` float NOT NULL,
   `resistance_r3` float NOT NULL,
@@ -1675,7 +1696,7 @@ CREATE TABLE IF NOT EXISTS `web_support_resistance` (
 -- Dumping data for table `web_support_resistance`
 --
 
-INSERT INTO `web_support_resistance` (`id`, `name`, `pivot`, `support_s1`, `support_s2`, `support_r3`, `resistance_r1`, `resistance_r2`, `resistance_r3`, `datetime`, `lang`, `status`, `currency_id`) VALUES
+INSERT INTO `web_support_resistance` (`id`, `name`, `pivot`, `support_s1`, `support_s2`, `support_s3`, `resistance_r1`, `resistance_r2`, `resistance_r3`, `datetime`, `lang`, `status`, `currency_id`) VALUES
 (1, 'EUR/USD', '112', 1, 1.1, 1.2, 2.2, 2.4, 2.5, 1428565680, 'en', 1, 1),
 (2, 'GBP/USD', '113', 1.1, 1.2, 1.3, 2.2, 2.4, 2.6, 1428717960, 'en', 1, 2);
 
@@ -1718,7 +1739,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `phone` varchar(30) NOT NULL,
   `email` varchar(60) NOT NULL,
   `birthday` bigint(10) NOT NULL,
-  `gender` tinyint(1) NOT NULL DEFAULT '1',
+  `gender` tinyint(1) DEFAULT NULL,
   `url_img` varchar(150) NOT NULL,
   `salt` varchar(3) NOT NULL,
   `username` char(32) NOT NULL,
@@ -1726,7 +1747,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `rule_view` varchar(100) NOT NULL,
   `rule_action` varchar(100) NOT NULL,
   `random_key` varchar(255) DEFAULT NULL,
-  `expiration` bigint(10) DEFAULT NULL,
+  `expiration` bigint(10) NOT NULL,
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
   `datetime` bigint(10) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
@@ -1738,8 +1759,8 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', NULL, NULL, 'en', 0, 1, 3),
-(34, 'Hiếu Nhân', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, NULL, 'en', 0, 1, 1);
+(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan1121@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', NULL, 0, 'en', 0, 1, 3),
+(34, 'Hiếu Nhân', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 609872400, 1, '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, 1430293180, 'en', 1425093180, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1780,7 +1801,7 @@ CREATE TABLE IF NOT EXISTS `web_users_lock_ip` (
 --
 
 INSERT INTO `web_users_lock_ip` (`id`, `ip_address`, `login_number`, `disable_date`, `datetime`) VALUES
-(20, '::1', 2, 0, 1428719643);
+(20, '::1', 2, 0, 1429501233);
 
 -- --------------------------------------------------------
 
@@ -2113,7 +2134,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_logs`
 --
 ALTER TABLE `web_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=219;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=234;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --
@@ -2138,7 +2159,7 @@ MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 -- AUTO_INCREMENT for table `web_payment`
 --
 ALTER TABLE `web_payment`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `web_photo`
 --

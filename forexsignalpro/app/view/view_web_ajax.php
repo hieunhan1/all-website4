@@ -58,8 +58,16 @@ if(isset($_POST['login'])){
 	echo $this->user_login($email, $pass, $ip_address);
 	return true;
 }
-if(isset($_POST['forex'])){
-	include_once('view_web_user_forex.php');
+if(isset($_POST['forexRealTime']) && isset($_SESSION['user_id'])){
+	include_once('view_web_user_forex_realtime.php');
+	return true;
+}
+if(isset($_POST['forexTrend']) && isset($_SESSION['user_id'])){
+	include_once('view_web_user_forex_trend.php');
+	return true;
+}
+if(isset($_POST['forexSupport']) && isset($_SESSION['user_id'])){
+	include_once('view_web_user_forex_support.php');
 	return true;
 }
 if(isset($_POST['changePassword'])){

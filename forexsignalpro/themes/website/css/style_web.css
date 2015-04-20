@@ -77,15 +77,17 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 #frmLogin .label{font-weight:bold}
 #frmLogin .error{height:20px; margin-bottom:10px}
 
-#change_account{clear:both; line-height:22px; margin-bottom:30px; font-weight:bold; text-align:right}
+#ajax_forex{clear:both; margin-bottom:80px}
+
+#welcome{width:auto; float:left; line-height:22px; font-size:140%}
+
+#change_account{width:auto; float:right; line-height:22px; margin-bottom:30px; font-weight:bold; text-align:right}
 #change_account a{padding:0 20px 0 25px; background:url(../img/print-email-bookmark.gif) no-repeat; background-position:-40px -2px}
 .title_user{font-size:110%; color:#C00; margin-bottom:15px}
-#average{width:400px; float:left}
-#trend{width:550px; float:right}
 
 .title_forex{line-height:30px; color:#333; background-color:#96cede}
-.icon_up{display:block; line-height:20px; padding-left:25px; background:url(../img/arrow.png) no-repeat; background-position:30px -40px}
-.icon_down{display:block; line-height:20px; padding-left:30px; background:url(../img/arrow.png) no-repeat; background-position:30px 0px}
+.icon_up{display:block; line-height:20px; padding-left:25px; background:url(../img/arrow.png) no-repeat; background-position:80px -40px}
+.icon_down{display:block; line-height:20px; padding-left:30px; background:url(../img/arrow.png) no-repeat; background-position:80px 0px}
 
 
 #btnChangeAccount{color:#FFF; font-weight:bold; text-decoration:none; padding:6px 20px; border:solid 1px #777; background-color:#999; cursor:pointer}

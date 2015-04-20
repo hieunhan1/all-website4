@@ -56,10 +56,10 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//support_r3
-	$values = $row_detail['support_r3'];
+	//support_s3
+	$values = $row_detail['support_s3'];
 	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Support R3','support_r3','input_medium'); //label id&name class style
+	$views = array('Support S3','support_s3','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
