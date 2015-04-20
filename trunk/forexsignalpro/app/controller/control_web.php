@@ -300,6 +300,13 @@ class control_web{
 			}else return 'Incorrect password';
 		}else return 'Error';
 	}
+	public function logout_user(){
+		session_unset('user_id');
+		session_unset('user_name');
+		session_unset('user_email');
+		session_unset('user_group_id');
+		header('location: '.CONS_BASE_URL.'/login/');
+	}
 	/*end user*/
 	
 	public function index(){

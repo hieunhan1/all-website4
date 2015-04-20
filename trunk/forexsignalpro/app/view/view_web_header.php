@@ -6,7 +6,7 @@
     	<div id="signup"><a href="signup/" title="Forex Sign Up">Signup</a></div>';
 	}else{
 		echo '<div id="login"><a href="user/?action=logout" title="Logout" class="bogoc_bottom_5px">Logout</a></div>
-    	<div id="signup"><a href="user/" title="Change your account information">'.$_SESSION['user_name'].'</a></div>';
+    	<div id="signup"><a href="user/" title="Change your account information">Private ('.$_SESSION['user_name'].')</a></div>';
 	}
 	?>
     

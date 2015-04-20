@@ -8,7 +8,7 @@
             <th width="70">Pivot</th>
             <th width="70">Sup-S1</th>
             <th width="70">Sup-S2</th>
-            <th width="70">Sup-R3</th>
+            <th width="70">Sup-S3</th>
             <th width="70">Res-R1</th>
             <th width="70">Res-R2</th>
             <th width="70">Res-R3</th>
@@ -17,7 +17,7 @@
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`pivot`,`support_s1`,`support_s2`,`support_r3`,`resistance_r1`,`resistance_r2`,`resistance_r3`,`datetime`');
+		$data = $this->select_from_all($lang,$arr,',`pivot`,`support_s1`,`support_s2`,`support_s3`,`resistance_r1`,`resistance_r2`,`resistance_r3`,`datetime`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
@@ -27,7 +27,7 @@
             <td align="center"><?php echo $row['pivot'];?></td>
             <td align="center"><?php echo $row['support_s1'];?></td>
             <td align="center"><?php echo $row['support_s2'];?></td>
-            <td align="center"><?php echo $row['support_r3'];?></td>
+            <td align="center"><?php echo $row['support_s3'];?></td>
             <td align="center"><?php echo $row['resistance_r1'];?></td>
             <td align="center"><?php echo $row['resistance_r2'];?></td>
             <td align="center"><?php echo $row['resistance_r3'];?></td>
