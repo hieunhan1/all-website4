@@ -71,7 +71,7 @@ echo '<form name="form_action" method="post" action="">
 	$arr[] = array('id'=>'3', 'name'=>'In Progressing');
 	$arr[] = array('id'=>'1', 'name'=>'Success');
 	$arr[] = array('id'=>'0', 'name'=>'Failure');
-	if($row_detail['status_real_time']=='') $properties = 1; else $properties = $row_detail['status_real_time']; //default check
+	if($row_detail['status_real_time']=='') $properties = 3; else $properties = $row_detail['status_real_time']; //default check
 	$views = array('Status','status_real_time','radio',' &nbsp; '); //label name class other
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();

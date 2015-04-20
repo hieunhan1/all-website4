@@ -1,30 +1,32 @@
 <h3 class="title_user">Real time Orders:</h3>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table" style="line-height:20px">
     <tr class="title_forex">
-        <th align="left">Pair of Currencies</th>
-        <th align="left">Oders</th>
-        <th align="left">Entry Point</th>
-        <th align="left">Take Profit</th>
-        <th align="left">Stop Loss</th>
-        <th align="left">Status</th>
+        <th width="150">Pair of Currencies</th>
+        <th align="left" width="220" style="padding-left:15px">Status</th>
+        <th>Oders</th>
+        <th>Entry Point</th>
+        <th>Take Profit</th>
+        <th>Stop Loss</th>
+        <th width="180">Datetime</th>
     </tr>
     <?php
 	$status = array(
-		'0'=>'Failure',
-		'1'=>'Success',
-		'2'=>'Waiting for Opportunity',
-		'3'=>'In Progressing',
+		'0'=>'<span class="iconRealTime failure">Failure</span>',
+		'1'=>'<span class="iconRealTime success">Success</span>',
+		'2'=>'<span class="iconRealTime waiting">Waiting for Opportunity</span>',
+		'3'=>'<span class="iconRealTime progressing">In Progressing</span>',
 	);
     $data = $this->_model->_list_real_time($this->_config['limit_3']);
     foreach($data as $row){
-        if($row['oders']==1) $oders='BUY'; else $oders='SELL';
+        if($row['oders']==1) $oders='<span class="buy">&nbsp;</span>'; else $oders='<span class="sell">&nbsp;</span>';
         echo '<tr>
-            <td>'.$row['currency'].'</td>
-            <td>'.$oders.'</td>
-            <td>'.$row['entry_point'].'</td>
-            <td>'.$row['take_profit'].'</td>
-            <td>'.$row['stop_loss'].'</td>
+            <th>'.$row['currency'].'</th>
             <td>'.$status[$row['status_real_time']].'</td>
+            <td>'.$oders.'</td>
+            <td align="center">'.$row['entry_point'].'&nbsp;</td>
+            <td align="center">'.$row['take_profit'].'&nbsp;</td>
+            <td align="center">'.$row['stop_loss'].'&nbsp;</td>
+			<td align="center">'.$this->_model->_view_date_time($row['datetime']).'</td>
         </tr>';
     }
     ?>
