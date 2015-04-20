@@ -89,6 +89,14 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 .icon_up{display:block; line-height:20px; padding-left:25px; background:url(../img/arrow.png) no-repeat; background-position:80px -40px}
 .icon_down{display:block; line-height:20px; padding-left:30px; background:url(../img/arrow.png) no-repeat; background-position:80px 0px}
 
+.iconRealTime{display:block; height:21px; line-height:21px; font-weight:bold; margin-left:10px; padding-left:35px; background-position:50% 50%}
+.failure{color:#df5748; background:url(../img/failure.gif) no-repeat}
+.success{color:#090; background:url(../img/success.gif) no-repeat}
+.waiting{color:#999; background:url(../img/waiting.gif) no-repeat}
+.progressing{color:#057dff; background:url(../img/progressing.gif) no-repeat}
+
+.buy{display:block; width:46px; height:21px; margin:auto; background:url(../img/buy.png) no-repeat}
+.sell{display:block; width:46px; height:21px; margin:auto; background:url(../img/sell.png) no-repeat}
 
 #btnChangeAccount{color:#FFF; font-weight:bold; text-decoration:none; padding:6px 20px; border:solid 1px #777; background-color:#999; cursor:pointer}
 .txtChangeAccount{width:250px; padding:3px 5px}
