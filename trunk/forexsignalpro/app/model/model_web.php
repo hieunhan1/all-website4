@@ -337,6 +337,14 @@ class model_web extends db{
 	}
 	/*end login user*/
 	
+	public function _web_timezone($limit=5){
+		$sql = "SELECT * FROM `web_timezone` WHERE `status`=1 ORDER BY `order` LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

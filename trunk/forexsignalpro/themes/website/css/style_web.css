@@ -22,6 +22,9 @@ header #email_support a{color:#F55}
 #total_forex span{color:#00F}
 #total_forex a{color:#F00}
 
+#timezone{width:630px; float:left}
+#currency{width:350px; float:right}
+
 .box_sign{width:360px; float:right; text-align:center; font-weight:bold; font-size:150%; padding:5px 0 15px 0; border:dashed 1px #CCC}
 .box_sign img{width:360px}
 .box_sign a{color:#F00}

@@ -3,23 +3,27 @@
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
-        	<th width="60">STT</th>
-            <th align="left">Mã cặp tiền tệ (Symbol)</th>
-            <th width="200" align="left">Average</th>
-            <th width="200" align="left">Thứ tự</th>
-            <th width="110">Thao tác</th>
+        	<th width="40">STT</th>
+            <th align="left">Mô tả</th>
+            <th width="200" align="left">Timezone</th>
+            <th width="100">Opens</th>
+            <th width="100">Closes</th>
+            <th width="90">Thứ tự</th>
+            <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`average`,`order`');
+		$data = $this->select_from_all($lang,$arr,',`timezone`,`opens`,`closes`,`order`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><?php echo $row['name'];?></td>
-            <td><?php echo $row['average'];?></td>
-            <td><?php echo $row['order'];?></td>
+            <td><?php echo $row['timezone'];?></td>
+            <td align="center"><?php echo $row['opens'];?>h</td>
+            <td align="center"><?php echo $row['closes'];?>h</td>
+            <td align="center"><?php echo $row['order'];?></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
                 <a href="<?php echo CONS_DEFAULT_ADMIN_CONTROLLER.'/'.$table.'/?id='.$row['id'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG;?>edit.gif" alt=""></a> &nbsp;

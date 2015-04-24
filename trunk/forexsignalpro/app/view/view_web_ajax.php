@@ -77,4 +77,19 @@ if(isset($_POST['changePassword'])){
 	return true;
 }
 /*end login*/
+
+if(isset($_POST['autoCurrency'])){
+	$currency = $this->_model->_change_dau_nhay($_POST['autoCurrency']);
+	
+	include_once('../php/simple_html_dom.php');
+	$url = 'http://globalcurrencies.xignite.com/xGlobalCurrencies.json/GetRealTimeRate?Symbol='.$currency.'&_token=5ADE388647D84CCDB9DCC3D491ED9CD2';
+	$html = file_get_html($url)->plaintext;
+	$html = json_decode($html);
+	echo '<tr><td align="center">&nbsp;</td>';
+	echo '<td align="center">'.$currency.'</td>';
+	echo '<td align="center">'.number_format($html->Bid,5).'</td>';
+	echo '<td align="center">'.number_format($html->Ask,5).'</td>';
+	echo '<td align="center">'.number_format($html->Spread,5).'</td></tr>';
+	return true;
+}
 ?>
