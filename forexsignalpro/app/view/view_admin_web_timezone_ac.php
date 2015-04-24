@@ -15,23 +15,46 @@ echo '<form name="form_action" method="post" action="">
 	
 	//name
 	$values = $row_detail['name'];
-	$properties = array('20'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Mã cặp tiền tệ (Symbol)','name','input_medium'); //label id&name class style
+	$properties = array('30'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Mô tả','name','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//average
-	$values = $row_detail['average'];
-	$properties = array('8'); //maxlength OTHER (disabled, readonly) 
-	$views = array('Average','average','input_medium'); //label id&name class style
+	//timezone
+	$values = $row_detail['timezone'];
+	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Timezone','timezone','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//opens
+	$values = $row_detail['opens'];
+	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Opens','opens','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ theo định dạng 24 tiếng</span>');
+	echo $this->DisplayProperties();
+	
+	//closes
+	$values = $row_detail['closes'];
+	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
+	$views = array('Closes','closes','input_medium'); //label id&name class style
+    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ theo định dạng 24 tiếng</span>');
 	echo $this->DisplayProperties();
 	
 	//order
 	$values = $row_detail['order'];
-	$properties = array('2'); //maxlength OTHER (disabled, readonly) 
+	$properties = array('3'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Thứ tự','order','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
+	echo $this->DisplayProperties();
+	
+	//other
+	$arr = array();
+	$arr[] = array('id'=>'1', 'name'=>'Opens &lt;= Current time &lt; Closes');
+	$arr[] = array('id'=>'0', 'name'=>'Opens &lt;= Current time &gt; Closes');
+	if($row_detail['other']=='') $properties = 1; else $properties = $row_detail['other']; //default check
+	$views = array('Other','other','radio',' &nbsp; '); //label name class other
+    $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
 	//lang

@@ -24,6 +24,7 @@
 		}
 		?>
         
+        <tr><td colspan="5"><img src="themes/website/img/perfectmoney.gif" alt="Perfect Money" style="height:80px; border:solid 1px #CCC; margin:10px" /></td></tr>
         <tr>
         	<td colspan="5">
             <form action="https://perfectmoney.is/api/step1.asp" method="POST">
@@ -66,7 +67,7 @@
     	<h3>100% Satisfaction</h3>
         <p>As forex traders ourselves, we understand you may want to try our  forex signal service before deciding to fully subscribe.</p>
         <p>Monthly subscriptions can be cancelled at anytime if you are not satisfied.</p>
-        <h3>ForexSignal.com Can Help!</h3>
+        <h3>ForexSignalPro.net Can Help!</h3>
         <p>Let us be your eyes to the forex market and alert you to possible trading opportunities as they occur.</p>
         <p>Proven track record: We were established in 1998. We have proudly kept track of our signal results and with integrity and honesty.</p>
         <p>Let us help you: Let us be your eyes to the forex market and alert you to possible trading opportunities as they occur.</p>
@@ -74,7 +75,7 @@
     
     
     <div style="width:70%; float:left">
-    	<p>Instant Access: After you signup you'll have instant access to the cloud based ForexSignal.com platform and you'll be able to setup your email and mobile phone for alerts. We will help Pro and Ultimate users who want to use the Trade Copier and Live Trading Room access.</p>
+    	<p>Instant Access: After you signup you'll have instant access to the cloud based ForexSignalPro.net platform and you'll be able to setup your email and mobile phone for alerts. We will help Pro and Ultimate users who want to use the Trade Copier and Live Trading Room access.</p>
         <p style="font-weight:bold">Do you need help?<br />Email: <?php echo $this->_config['email'];?></p>
     </div>
     <br />

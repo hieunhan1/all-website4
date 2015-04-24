@@ -23,17 +23,19 @@
 	$percent = ($total_true * 100) / $total;
 	?>
     <div class="clear_1px"></div>
-    <h3 id="total_forex">Currently forex properly consulted <span><?php echo round($percent, 2);?>%</span> for <span><?php echo $total_true.' / '.$total;?></span>. <a href="signup/">Sign up today ForexSignalPro.Net</a></h3>
-    <div class="clear_20px"></div>
-    <div class="clear_20px"></div>
+    <h3 id="total_forex">Currently We properly consulted <span><?php echo round($percent, 2);?>%</span> for <span><?php echo $total_true.' / '.$total;?></span>. <a href="signup/">Sign up today ForexSignalPro.Net</a></h3>
+    <div class="clear_20px" style="margin-bottom:30px"></div>
     
     <?php
     $data = $this->_model->_list_article_home_page($current_menu['id'], 1);
-	
 	echo '<h2>'.$data[0]['name'].'</h2><div class="viewpost">'.$data[0]['content'].'</div>';
 	?>
+    <div class="clear_20px" style="margin-bottom:30px"></div>
     
-    <div class="clear_20px"></div>
+    <div id="timezone"><?php include_once('view_web_timezone.php');?></div>
+    <div id="currency"><?php include_once('view_web_currency.php');?></div>
+    
+    <div class="clear_20px" style="margin-bottom:40px"></div>
     <div class="box_sign">
         <a href="signup/"><img src="themes/website/img/sign-up-now.jpg" alt="signup forex" />Registration forex to make money today</a>
     </div>

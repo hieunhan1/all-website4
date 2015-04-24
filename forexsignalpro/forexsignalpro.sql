@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2015 at 06:35 AM
+-- Generation Time: Apr 24, 2015 at 01:22 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -157,8 +157,8 @@ CREATE TABLE IF NOT EXISTS `web_currency` (
 --
 
 INSERT INTO `web_currency` (`id`, `name`, `average`, `order`, `lang`, `status`) VALUES
-(1, 'EUR/USD', 1.2, 1, 'en', 1),
-(2, 'GBP/USD', 1.1, 2, 'en', 1);
+(1, 'EURUSD', 1.2, 1, 'en', 1),
+(2, 'GBPUSD', 1.1, 2, 'en', 1);
 
 -- --------------------------------------------------------
 
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=255 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_logs`
@@ -1260,7 +1260,29 @@ INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`,
 (230, 'GBP/USD', 'status', 'web_real_time', 1429171032, 'admin', '0', 'en', 0, NULL, NULL),
 (231, 'GBP/USD', 'status', 'web_real_time', 1429171036, 'admin', '1', 'en', 0, NULL, NULL),
 (232, 'Anh / Mỹ', 'status', 'web_real_time', 1429171037, 'admin', '0', 'en', 0, NULL, NULL),
-(233, 'Anh / Mỹ', 'status', 'web_real_time', 1429171043, 'admin', '1', 'en', 0, NULL, NULL);
+(233, 'Anh / Mỹ', 'status', 'web_real_time', 1429171043, 'admin', '1', 'en', 0, NULL, NULL),
+(234, 'GBP/USD', 'update', 'web_real_time', 1429505514, 'admin', '`id`,`name`,`oders`,`entry_point`,`take_profit`,`stop_loss`,`status_real_time`,`datetime`,`lang`,`status`,`currency_id`fields%%%values2%%%GBP/USD%%%0%%%1.0114%%%1.0124%%%1.0104%%%1%%%1428570120%%%en%%%1%%%2', 'en', 0, NULL, NULL),
+(235, 'April 09, 2015', 'update', 'web_real_time', 1429515096, 'admin', '`id`,`name`,`oders`,`entry_point`,`take_profit`,`stop_loss`,`status_real_time`,`datetime`,`lang`,`status`,`currency_id`fields%%%values3%%%April 09, 2015%%%1%%%1.0134%%%1.0134%%%1.01%%%1%%%1428570660%%%en%%%1%%%1', 'en', 0, NULL, NULL),
+(236, 'GBP/USD', 'update', 'web_real_time', 1429515282, 'admin', '`id`,`name`,`oders`,`entry_point`,`take_profit`,`stop_loss`,`status_real_time`,`datetime`,`lang`,`status`,`currency_id`fields%%%values2%%%GBP/USD%%%0%%%1.0114%%%1.0124%%%1.0104%%%3%%%1428570120%%%en%%%1%%%2', 'en', 0, NULL, NULL),
+(237, 'April 20, 2015', 'create', 'web_real_time', 1429515346, 'admin', '', 'en', 0, NULL, NULL),
+(238, 'Admin', 'update', 'web_users', 1429865029, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`url_img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values25%%%Admin%%%123 CMT 8%%%0988 388 003%%%hieunhan1121@gmail.com%%%0%%%1%%%%%%%%%admin%%%fc7fc678608590b123692867f176fe63%%%,1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,%%%,1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,%%%%%%0%%%en%%%0%%%1%%%3', 'en', 0, NULL, NULL);
+INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`, `content`, `lang`, `status`, `date_restore`, `user_restore`) VALUES
+(239, 'Frankfurt (Germany)', 'create', 'web_timezone', 1429865386, 'admin', '', 'en', 0, NULL, NULL),
+(240, 'London (Great Britain)', 'create', 'web_timezone', 1429865532, 'admin', '', 'en', 0, NULL, NULL),
+(241, 'New York (United States)', 'create', 'web_timezone', 1429865597, 'admin', '', 'en', 0, NULL, NULL),
+(242, 'Sydney (Austrailia)', 'create', 'web_timezone', 1429865644, 'admin', '', 'en', 0, NULL, NULL),
+(243, 'Tokyo (Japan)', 'create', 'web_timezone', 1429865728, 'admin', '', 'en', 0, NULL, NULL),
+(244, 'Tokyo (Japan)', 'update', 'web_timezone', 1429867690, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values5%%%Tokyo (Japan)%%%Asia/Tokyo%%%1%%%9%%%5%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(245, 'New York (United States)', 'update', 'web_timezone', 1429867697, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values3%%%New York (United States)%%%America/New_York%%%14%%%22%%%3%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(246, 'London (Great Britain)', 'update', 'web_timezone', 1429867700, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values2%%%London (Great Britain)%%%Europe/London%%%9%%%17%%%2%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(247, 'Frankfurt (Germany)', 'update', 'web_timezone', 1429867703, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values1%%%Frankfurt (Germany)%%%Europe/Berlin%%%8%%%16%%%1%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(248, 'Sydney (Austrailia)', 'update', 'web_timezone', 1429867715, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values4%%%Sydney (Austrailia)%%%Australia/Sydney%%%12%%%8%%%4%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(249, 'New York (United States)', 'update', 'web_timezone', 1429869510, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values3%%%New York (United States)%%%America/New_York%%%14%%%22%%%3%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(250, 'New York (United States)', 'update', 'web_timezone', 1429869534, 'admin', '`id`,`name`,`timezone`,`opens`,`closes`,`order`,`other`,`lang`,`status`fields%%%values3%%%New York (United States)%%%America/Martinique%%%14%%%22%%%3%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(251, 'GBP/USD', 'update', 'web_currency', 1429870179, 'admin', '`id`,`name`,`average`,`order`,`lang`,`status`fields%%%values2%%%GBP/USD%%%1.1%%%2%%%en%%%1', 'en', 0, NULL, NULL),
+(252, 'EUR/USD', 'update', 'web_currency', 1429870185, 'admin', '`id`,`name`,`average`,`order`,`lang`,`status`fields%%%values1%%%EUR/USD%%%1.2%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(253, 'GBPUSD', 'status', 'web_currency', 1429873180, 'admin', '0', 'en', 0, NULL, NULL),
+(254, 'GBPUSD', 'status', 'web_currency', 1429873202, 'admin', '1', 'en', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1358,10 +1380,10 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
 (9, 'DS Tỉnh - Thành', 'web_listcity', 'icon-city.jpg', 9, 0, NULL, 0),
 (10, 'DS Quận - Huyện', 'web_listdistricts', 'icon-districts.jpg', 10, 0, NULL, 0),
-(11, 'Đơn đặt hàng', 'web_product_order', 'icon-order.jpg', 11, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 0),
+(11, 'Time zone', 'web_timezone', 'icon-order.jpg', 11, 0, NULL, 1),
 (12, 'Đơn đặt hàng chi tiết', 'web_product_order_detail', 'icon-order-detail.jpg', 12, 1, NULL, 0),
-(13, 'Forex', 'web_forex', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 1),
-(14, 'Gói đăng ký', 'web_users_package', 'icon-product.jpg', 14, 0, NULL, 1),
+(13, 'Gói đăng ký', 'web_users_package', 'icon-product.jpg', 13, 0, NULL, 1),
+(14, 'Forex History', 'web_forex', 'icon-tuyen-dung-thong-tin.jpg', 14, 0, NULL, 1),
 (15, 'Cặp tiền tệ', 'web_currency', 'icon-tra-cuu-hoc-phi.jpg', 15, 0, NULL, 1),
 (16, 'Trend', 'web_trend', 'icon-item.jpg', 16, 0, NULL, 1),
 (17, 'Support and Resistance', 'web_support_resistance', 'icon-cau-hinh.jpg', 17, 0, NULL, 1),
@@ -1611,7 +1633,7 @@ CREATE TABLE IF NOT EXISTS `web_real_time` (
   `lang` varchar(2) NOT NULL DEFAULT 'en',
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `currency_id` int(2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_real_time`
@@ -1619,8 +1641,9 @@ CREATE TABLE IF NOT EXISTS `web_real_time` (
 
 INSERT INTO `web_real_time` (`id`, `name`, `oders`, `entry_point`, `take_profit`, `stop_loss`, `status_real_time`, `datetime`, `lang`, `status`, `currency_id`) VALUES
 (1, 'Anh / Mỹ', 1, 1.0134, 1.0124, 1.0104, 1, 1428566640, 'en', 1, 1),
-(2, 'GBP/USD', 0, 1.0114, 1.0124, 1.0104, 1, 1428570120, 'en', 1, 2),
-(3, 'April 09, 2015', 1, 1.0134, 1.0134, 1.01, 1, 1428570660, 'en', 1, 1);
+(2, 'GBP/USD', 0, 1.0114, 1.0124, 1.0104, 2, 1428570120, 'en', 1, 2),
+(3, 'April 09, 2015', 1, 1.0134, 1.0134, 1.01, 0, 1428570660, 'en', 1, 1),
+(4, 'April 20, 2015', 1, 1.0134, 1.0124, 1.0104, 3, 1429515300, 'en', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1703,6 +1726,35 @@ INSERT INTO `web_support_resistance` (`id`, `name`, `pivot`, `support_s1`, `supp
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `web_timezone`
+--
+
+CREATE TABLE IF NOT EXISTS `web_timezone` (
+`id` int(3) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `timezone` varchar(50) NOT NULL,
+  `opens` int(2) NOT NULL,
+  `closes` int(2) NOT NULL,
+  `order` int(3) NOT NULL DEFAULT '0',
+  `other` tinyint(1) NOT NULL,
+  `lang` varchar(2) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_timezone`
+--
+
+INSERT INTO `web_timezone` (`id`, `name`, `timezone`, `opens`, `closes`, `order`, `other`, `lang`, `status`) VALUES
+(1, 'Frankfurt (Germany)', 'Europe/Berlin', 8, 16, 1, 1, 'en', 1),
+(2, 'London (Great Britain)', 'Europe/London', 9, 17, 2, 1, 'en', 1),
+(3, 'New York (United States)', 'America/New_York', 14, 22, 3, 1, 'en', 1),
+(4, 'Sydney (Austrailia)', 'Australia/Sydney', 12, 8, 4, 0, 'en', 1),
+(5, 'Tokyo (Japan)', 'Asia/Tokyo', 1, 9, 5, 1, 'en', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_trend`
 --
 
@@ -1759,7 +1811,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan1121@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,13,14,15,16,17,19,21,22,23,', NULL, 0, 'en', 0, 1, 3),
+(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan1121@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,6,7,8,11,13,14,15,16,17,19,21,22,23,', ',1,2,20,3,4,6,7,8,11,13,14,15,16,17,19,21,22,23,', NULL, 0, 'en', 0, 1, 3),
 (34, 'Hiếu Nhân', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 609872400, 1, '', '', '', 'e10adc3949ba59abbe56e057f20f883e', '', '', NULL, 1430293180, 'en', 1425093180, 1, 1);
 
 -- --------------------------------------------------------
@@ -1801,7 +1853,7 @@ CREATE TABLE IF NOT EXISTS `web_users_lock_ip` (
 --
 
 INSERT INTO `web_users_lock_ip` (`id`, `ip_address`, `login_number`, `disable_date`, `datetime`) VALUES
-(20, '::1', 2, 0, 1429501233);
+(20, '::1', 2, 0, 1429526604);
 
 -- --------------------------------------------------------
 
@@ -2040,6 +2092,12 @@ ALTER TABLE `web_support_resistance`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_timezone`
+--
+ALTER TABLE `web_timezone`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_trend`
 --
 ALTER TABLE `web_trend`
@@ -2134,7 +2192,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_logs`
 --
 ALTER TABLE `web_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=234;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=255;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --
@@ -2184,7 +2242,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=38;
 -- AUTO_INCREMENT for table `web_real_time`
 --
 ALTER TABLE `web_real_time`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `web_slider_banner`
 --
@@ -2200,6 +2258,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 ALTER TABLE `web_support_resistance`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `web_timezone`
+--
+ALTER TABLE `web_timezone`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `web_trend`
 --
