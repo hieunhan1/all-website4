@@ -40,14 +40,14 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 .article_box .link a{color:#C00; font-weight:bold; padding:0 20px}
 
 #list_product{clear:both}
-#list_product .margin{margin-left:16px}
-#list_product .box-item{width:190px; height:220px; float:left; margin-bottom:16px; padding:5px; border:solid 1px #FFF}
+#list_product .margin{margin-left:18px}
+#list_product .box-item{width:190px; height:220px; float:left; margin-bottom:18px; padding:5px; background:url(../img/bg-box-item-product.png) no-repeat}
 #list_product .box-item .img{height:130px; overflow:hidden; margin-bottom:5px}
 #list_product .box-item .img img{width:190px}
-#list_product .box-item h3{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px}
-#list_product .box-item .price{width:auto; float:right; font-size:90%}
+#list_product .box-item h3{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px; padding:0 5px}
+#list_product .box-item .price{width:auto; float:right; font-size:90%; padding-right:5px}
 #list_product .box-item .price span{display:block; text-decoration:line-through; font-size:90%; text-align:right; margin-bottom:3px}
-#list_product .box-item .buy{height:25px; line-height:25px; color:#FFF; font-weight:bold; float:left; margin-top:5px; padding:0 10px 0 40px; background:url(../img/icon-cart.png) no-repeat #222; background-position:6px 50%}
+#list_product .box-item .buy{height:25px; line-height:25px; color:#FFF; font-weight:bold; float:left; margin:5px 0 0 5px; padding:0 10px 0 40px; background:url(../img/icon-cart.png) no-repeat #222; background-position:6px 50%}
 
 #other_post{clear:both; margin-bottom:30px; padding-top:20px}
 #other_post .title{color:#111; font-weight:bold; font-size:140%; padding:20px 0 10px 30px}
