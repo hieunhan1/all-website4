@@ -4,13 +4,13 @@ $data_r = $this->_model->_web_slider_banner(5, $this->_lang);
 if(!(count($data_l)==0 && count($data_r)==0)){
 	echo '<div id="divAdLeft" style="display:none; position:absolute; top:0px">';
 	foreach($data_l as $row){
-		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:8px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
+		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:5px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
 	}
 	echo '</div> ';
 	
 	echo '<div id="divAdRight" style="display:none; position:absolute; top:0px">';
 	foreach($data_r as $row){
-		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:8px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
+		echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; margin-bottom:5px"><img src="'.CONS_IMAGES_SLIDER_BANNER.$row['img_avatar'].'" alt="'.$row['name'].'" width="135" /></a>';
 	}
 	echo '</div>';
 ?>
@@ -78,7 +78,7 @@ if(!(count($data_l)==0 && count($data_r)==0)){
 	RightBannerW = 135;
 	LeftAdjust = 5;
 	RightAdjust = 5;
-	TopAdjust = 10;
+	TopAdjust = 5;
 	ShowAdDiv();
 	window.onresize=ShowAdDiv;
 </script>

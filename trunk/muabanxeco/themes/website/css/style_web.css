@@ -20,8 +20,8 @@ header #logo{width:auto; float:left; margin:120px 0 0 90px}
 #about .img{float:left; margin:20px 10px 0 0}
 /*end homepage*/
 
-#bg_slider{width:400%; height:300px; position:absolute; left:-150%; z-index:1; background:url(../img/bg-slider.gif)}
-#slider{height:300px; position:relative; z-index:1}
+#slider{float:right; margin:55px 120px 15px 0}
+#slider img{height:210px}
 
 footer{clear:both; line-height:150%}
 #social p{margin-bottom:5px; font-weight:bold}
