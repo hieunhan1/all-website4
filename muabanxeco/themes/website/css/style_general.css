@@ -32,7 +32,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 
 .article_box{width:410px; height:330px}
 .article_box .date{color:#999; font-style:italic; margin-bottom:8px}
-.article_box h3{line-height:20px; font-size:130%; margin-bottom:5px}
+.article_box h3{line-height:20px; font-size:130%; font-weight:100; margin-bottom:5px}
 .article_box .img{height:160px; overflow:hidden; margin-bottom:5px;border:solid 1px #CCC}
 .article_box .img img{width:410px}
 .article_box p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}
