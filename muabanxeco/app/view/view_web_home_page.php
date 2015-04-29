@@ -4,7 +4,7 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 ?>
 <div style="clear:both; height:70px"></div>
 <div id="homepage" class="content z-index-2">
-	<div id="news">
+	<!--<div id="news">
     	<div class="title_home font-times"><?php echo $data_menu[0]['name'];?></div>
         <?php
         $data = $this->_model->_list_article_home_page($data_menu[0]['id'], 3);
@@ -24,7 +24,7 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 		<img src="'.CONS_IMAGES_ARTICLES.$data[0]['img_avatar'].'" alt="'.$data[0]['name'].'" class="img" />'.$data[0]['content'];
         ?>
     </div>
-    <div style="clear:both; height:30px"></div>
+    <div style="clear:both; height:30px"></div>-->
     
     <?php
 	$type = 3;
