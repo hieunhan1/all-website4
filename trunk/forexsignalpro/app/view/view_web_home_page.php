@@ -27,10 +27,10 @@
     <div class="clear_20px" style="margin-bottom:30px"></div>
     
     <?php
-    $data = $this->_model->_list_article_home_page($current_menu['id'], 1);
-	echo '<h2>'.$data[0]['name'].'</h2><div class="viewpost">'.$data[0]['content'].'</div>';
+    //$data = $this->_model->_list_article_home_page($current_menu['id'], 1);
+	//echo '<h2>'.$data[0]['name'].'</h2><div class="viewpost">'.$data[0]['content'].'</div>';
 	?>
-    <div class="clear_20px" style="margin-bottom:30px"></div>
+    <!--<div class="clear_20px" style="margin-bottom:30px"></div>-->
     
     <div id="timezone"><?php include_once('view_web_timezone.php');?></div>
     <div id="currency"><?php include_once('view_web_currency.php');?></div>
