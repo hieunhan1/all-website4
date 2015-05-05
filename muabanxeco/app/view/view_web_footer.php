@@ -24,7 +24,7 @@
             <?php
             echo '<h3 style="font-size:100%">'.$this->_config['sitename'].'</h3>
 				<p>Địa chỉ: '.$this->_config['address'].'</p>
-				<p>Điện thoại: '.$this->_config['tel'].' - Hotline: '.$this->_config['hotline'].'</p>
+				<p>Hotline: '.$this->_config['hotline'].'</p>
 				<p>Email: '.$this->_config['email'].'</p>
 			';
 			?>

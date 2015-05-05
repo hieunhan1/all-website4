@@ -50,12 +50,12 @@ if(isset($_POST['google_map'])){
 }
 /*end contact*/
 
-if(isset($_POST['chat_online'])){
+/*chat online*/
+/*if(isset($_POST['chat_online'])){
 	$_SESSION['typeUser'] = 1;
 	include_once('view_web_support_customer.php');
 }
 
-/*chat online*/
 $currentDatetime = time();
 $ip_address = $_SERVER['REMOTE_ADDR'];
 if(isset($_POST['getCustomer'])){
@@ -77,6 +77,6 @@ if(isset($_POST['getCustomer'])){
 		echo 0;
 		return FALSE;
 	}
-}
+}*/
 /*end chat online*/
 ?>

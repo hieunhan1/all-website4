@@ -4,7 +4,7 @@
 	<?php
     echo "<h1>{$current_menu['title']}</h1>";
 	echo '<p style="line-height:30px">Địa chỉ: '.$this->_config['address'].'<br />
-	Điện thoại: '.$this->_config['tel'].' - Hotline: '.$this->_config['hotline'].'<br />
+	Hotline: '.$this->_config['hotline'].'<br />
 	Email: '.$this->_config['email'].'</p>';
 	//echo '<h2 style="color:#00F">'.$current_menu['description'].'</h2>';
     ?>

@@ -35,14 +35,11 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 		$data_xe = $this->_model->_list_product_home_page($row['id'], $this->_config['limit_3']);
 		foreach($data_xe as $row_xe){
 			$i++;
-			if($row_xe['price']!=0) $price='Giá: '.number_format($row_xe['price'],0,',','.').'<sup>đ</sup>'; else $price='Liên hệ để biết giá';
-			if($row_xe['price_cost']==0) $price_cost='<br />'; else $price_cost='<span>'.number_format($row_xe['price_cost'],0,',','.').'<sup>đ</sup></span>';
 			if($i%4 != 1) $style=' margin'; else $style='';
 			$str .= '<div class="box-item'.$style.'">
 				<div class="img"><a href="'.$row_xe['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row_xe['img_avatar'].'" alt="'.$row_xe['name'].'" /></a></div>
 				<a href="'.$row_xe['url'].'" title="'.$row_xe['name'].'"><h3>'.$row_xe['name'].'</h3></a>
-				<div class="price">'.$price_cost.$price.'</div>
-				<div class="buy bogoc_5px">Mua</div>
+				<div class="buy bogoc_5px">Liên hệ</div>
 			</div>';
 		}
 		echo '<div id="list_product">
