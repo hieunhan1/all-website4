@@ -47,7 +47,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 #list_product .box-item h3{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px; padding:0 5px}
 #list_product .box-item .price{width:auto; float:right; font-size:90%; padding-right:5px}
 #list_product .box-item .price span{display:block; text-decoration:line-through; font-size:90%; text-align:right; margin-bottom:3px}
-#list_product .box-item .buy{height:25px; line-height:25px; color:#FFF; font-weight:bold; float:left; margin:5px 0 0 5px; padding:0 10px 0 40px; background:url(../img/icon-cart.png) no-repeat #222; background-position:6px 50%}
+#list_product .box-item .buy{width:auto; height:25px; float:right; line-height:25px; color:#FFF; font-weight:bold; margin:5px 5px 0 5px; padding:0 15px; background-color:#222; cursor:pointer}
 
 #other_post{clear:both; margin-bottom:30px; padding-top:20px}
 #other_post .title{color:#111; font-weight:bold; font-size:140%; padding:20px 0 10px 30px}
@@ -76,7 +76,7 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 .google_map{color:#EA1D22; font-style:italic}
 
 /*menu*/
-#menu{clear:both; height:30px; margin-left:50px}
+#menu{clear:both; height:30px; margin-left:25px}
 #menu_active{color:#FF0 !important}
 #nav, #nav ul {list-style:none; position:relative; z-index:5; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}

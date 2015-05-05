@@ -1,10 +1,13 @@
 <div id="support" class="bogoc_top_5px">
-	<div class="title font-times">HỖ TRỢ TRỰC TUYẾN <span class="window minimize">&nbsp;</span><span class="window maximum">&nbsp;</span></div>
+	<div class="title font-times">HÃY GỌI CHÚNG TÔI <span class="window minimize">&nbsp;</span><span class="window maximum">&nbsp;</span></div>
     <div class="s-content">
-    	<p id="chat"><a href="javascript:;">Chat với chúng tôi</a></p>
-    	<p class="p">Điện thoại: <span class="tel"><?php echo $this->_config['tel']?></span></p>
-    	<p class="p">Hotline: <span class="hot"><?php echo $this->_config['hotline']?></span></p>
-        <div id="ajax_chat"></div>
+    	
+		<?php
+        /*$hotline = explode(',', $this->_config['hotline']);
+		$count = count($hotline);
+		for($i=0; $i<$count; $i++) echo '<p class="p font-times">'.$hotline[$i].'</p>';*/
+		?>
+        <p class="p font-times">Hotline: <span class="tel"><?php echo $this->_config['hotline'];?></span></p>
     </div>
 </div>
 <script type="text/javascript">
