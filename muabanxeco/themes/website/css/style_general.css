@@ -30,18 +30,17 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 .viewpost p, .viewpost div {line-height:160%; margin:20px 0}
 .viewpost li{line-height:150%; margin:5px 35px; padding:0}
 
-.article_box{width:410px; height:330px}
-.article_box .date{color:#999; font-style:italic; margin-bottom:8px}
-.article_box h3{line-height:20px; font-size:130%; font-weight:100; margin-bottom:5px}
-.article_box .img{height:160px; overflow:hidden; margin-bottom:5px;border:solid 1px #CCC}
-.article_box .img img{width:410px}
-.article_box p{line-height:20px; height:60px; overflow:hidden; margin-bottom:5px}
+.article_box{clear:both; height:240px}
+.article_box h3{line-height:20px; font-size:130%; font-weight:100; margin-bottom:8px}
+.article_box .img{width:260px; height:180px; float:left; overflow:hidden; margin-right:15px; border:solid 1px #CCC}
+.article_box .img img{height:200px}
+.article_box p{line-height:20px; height:100px; overflow:hidden; margin-bottom:5px}
 .article_box .link{text-align:right}
 .article_box .link a{color:#C00; font-weight:bold; padding:0 20px}
 
-#list_product{clear:both}
+#list_product{}
 #list_product .margin{margin-left:18px}
-#list_product .box-item{width:190px; height:220px; float:left; margin-bottom:18px; padding:5px; background:url(../img/bg-box-item-product.png) no-repeat}
+#list_product .box-item{width:184px; height:214px; float:left; margin-bottom:18px; padding:8px; background:url(../img/bg-box-item-product.png) no-repeat}
 #list_product .box-item .img{height:130px; overflow:hidden; margin-bottom:5px}
 #list_product .box-item .img img{width:190px}
 #list_product .box-item h3{font-size:100%; line-height:20px; height:40px; overflow:hidden; margin-bottom:5px; padding:0 5px}
