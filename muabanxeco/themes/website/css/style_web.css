@@ -9,7 +9,7 @@ header #logo{width:auto; float:left; margin:120px 0 0 90px}
 .z-index-3{position:relative; z-index:3}
 
 /*homepage*/
-.title_home{font-size:200%; margin-bottom:20px}
+.title_home{font-size:220%; margin-bottom:20px}
 #homepage{clear:both}
 #news{width:300px; float:left}
 #news .item{clear:both; line-height:22px; margin-bottom:15px}
