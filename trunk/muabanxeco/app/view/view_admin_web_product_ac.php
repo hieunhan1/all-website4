@@ -70,7 +70,7 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('1',$values,$properties,$views,$other);
 	echo $this->DisplayProperties();
 	
-	//price
+	/*//price
 	$values = $row_detail['price'];
 	$properties = array('9'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Giá bán','price','input_medium'); //label id&name class style
@@ -82,7 +82,7 @@ echo '<form name="form_action" method="post" action="">
 	$properties = array('9'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Giá gốc','price_cost','input_medium'); //label id&name class style
     $this->getProperties('1',$values,$properties,$views);
-	echo $this->DisplayProperties();
+	echo $this->DisplayProperties();*/
 	
 	//description
 	$values = $row_detail['description'];

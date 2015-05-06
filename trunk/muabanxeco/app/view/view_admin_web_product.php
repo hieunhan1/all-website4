@@ -22,21 +22,19 @@
     	<tr bgcolor="#88C4FF">
         	<th width="40">STT</th>
             <th align="left">Mô tả</th>
-            <th width="100" align="left">Giá bán</th>
             <th width="250" align="left">Tên hình</th>
             <th width="110" align="left">Ngày</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`img_avatar`,`price`,`datetime`');
+		$data = $this->select_from_all($lang,$arr,',`img_avatar`,`datetime`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
-            <td><?php echo number_format($row['price'],0,',','.');?><sup>đ</sup></td>
             <td><p class="height_row_hidden"><?php echo $row['img_avatar'];?></p></td>
             <td><?php echo $this->view_datetime($row['datetime']);?></td>
             <td align="center">

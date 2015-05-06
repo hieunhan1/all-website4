@@ -50,7 +50,7 @@ footer{clear:both; line-height:150%}
 #dactinh .img img{width:350px}
 #dactinh .price{font-size:150%; color:#C00; margin:0 0 10px 0}
 #dactinh .price span{display:block; font-size:80%; color:#333; text-decoration:line-through; margin:0}
-#dactinh .buy{width:auto; float:left; color:#FFF; font-size:120%; font-weight:bold; margin:0 0 5px 0; padding:8px 20px 8px 45px; background:url(../img/icon-cart.png) no-repeat #333; background-position:10px 50%; cursor:pointer}
+#dactinh .buy{width:auto; float:left; color:#FFF; font-size:120%; font-weight:bold; margin:0 0 5px 15px; padding:8px 20px 8px 45px; background:url(../img/icon-cart.png) no-repeat #333; background-position:10px 50%; cursor:pointer}
 #dactinh .dactinh{width:280px; float:left; margin:0 0 10px 0}
 #dactinh .dactinh p, #dactinh .dactinh div{margin:15px 0 15px 15px; padding-left:25px; background:url(../img/icon_dactinh.png) no-repeat; background-position:0px 2px}
 

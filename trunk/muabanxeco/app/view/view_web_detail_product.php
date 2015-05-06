@@ -20,7 +20,7 @@
         echo '<div id="other_post"><hr class="hr" /><div style="font-weight:bold; font-size:150%; margin: 10px 0 20px 0">'.CONS_OTHER_PRODUCT.'</div><div id="list_product">';
         foreach($data as $row){
 			$i++;
-			if($i%4 != 1) $style=' margin'; else $style='';
+			if($i%3 != 1) $style=' margin'; else $style='';
 			echo '<div class="box-item bogoc_5px'.$style.'">
 				<div class="img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></a></div>
 				<a href="'.$row['url'].'" title="'.$row['name'].'"><h3>'.$row['name'].'</h3></a>

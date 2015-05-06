@@ -164,6 +164,12 @@ class model_web extends db{
 		if($result->num_rows != 1) return FALSE;
 		return $result->fetch_assoc();
 	}
+	public function _detail_about($alias){
+		$sql = "SELECT * FROM `web_article` WHERE `status`=1 AND `name_alias`='{$alias}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
 	public function _list_photo($idMenu){
 		$sql = "SELECT `id`,`name`,`img_avatar` FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
@@ -171,8 +177,8 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _list_article($limit=3){
-		$sql = "SELECT `id`,`name`,`url`,`description` FROM `web_article` WHERE `status`=1 AND `other`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
+	public function _list_article($limit=5){
+		$sql = "SELECT `id`,`name`,`url`,`description` FROM `web_article` WHERE `status`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -222,7 +228,7 @@ class model_web extends db{
 	
 	/*other post*/
 	public function _other_post_article($id,$idMenu,$limit=5){
-		$sql = "SELECT `name`,`url` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
+		$sql = "SELECT `name`,`url`,`description` FROM `web_article` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -230,6 +236,13 @@ class model_web extends db{
 	}
 	public function _other_post_product($id,$idMenu,$limit=3){
 		$sql = "SELECT `id`,`name`,`url`,`img_avatar`,`price`,`price_cost` FROM `web_product` WHERE `status`=1 AND `id`<>'{$id}' AND `menu_id` LIKE '%,{$idMenu},%' ORDER BY `datetime` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _other_product_hot($limit=3){
+		$sql = "SELECT `id`,`name`,`url`,`img_avatar` FROM `web_product` WHERE `status`=1 AND `other`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
