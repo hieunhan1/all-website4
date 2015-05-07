@@ -345,6 +345,17 @@ class model_web extends db{
 		return $data;
 	}
 	
+	public function _list_time_zone($id=NULL){
+		$str='';
+		if($id==NULL) $str="ORDER BY `order` DESC";
+		else $str="WHERE `id`='{$id}' LIMIT 1 ";
+		$sql = "SELECT * FROM `timezone` ".$str;
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	/*function*/
 	public function _current_date_time(){
         return time(); 

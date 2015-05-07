@@ -4,7 +4,7 @@ $script='';
 $data = $this->_model->_list_currency();
 foreach($data as $row){
 	$str .= '<tbody id="'.$row['name'].'"></tbody>';
-	//$script .= 'setInterval(function(){ autoCurrency("'.$row['name'].'") }, 5000);';
+	$script .= 'setInterval(function(){ autoCurrency("'.$row['name'].'") }, 15000);';
 }
 ?>
 <table width="100%" border="1" cellpadding="5" cellspacing="0" class="table" style="line-height:25px; border:solid 1px #CCC">
