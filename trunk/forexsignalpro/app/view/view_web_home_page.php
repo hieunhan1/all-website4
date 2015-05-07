@@ -33,7 +33,7 @@
     <!--<div class="clear_20px" style="margin-bottom:30px"></div>-->
     
     <div id="timezone"><?php include_once('view_web_timezone.php');?></div>
-    <div id="currency"><?php include_once('view_web_currency.php');?></div>
+    <!--<div id="currency"><?php //include_once('view_web_currency.php');?></div>-->
     
     <div class="clear_20px" style="margin-bottom:40px"></div>
     <div class="box_sign">

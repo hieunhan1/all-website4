@@ -31,14 +31,14 @@ echo '<form name="form_action" method="post" action="">
 	$values = $row_detail['opens'];
 	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Opens','opens','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ theo định dạng 24 tiếng</span>');
+    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ UTC theo định dạng 24 tiếng</span>');
 	echo $this->DisplayProperties();
 	
 	//closes
 	$values = $row_detail['closes'];
 	$properties = array('50'); //maxlength OTHER (disabled, readonly) 
 	$views = array('Closes','closes','input_medium'); //label id&name class style
-    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ theo định dạng 24 tiếng</span>');
+    $this->getProperties('1',$values,$properties,$views,'<span class="notes">nhập giờ UTC theo định dạng 24 tiếng</span>');
 	echo $this->DisplayProperties();
 	
 	//order

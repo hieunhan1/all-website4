@@ -82,7 +82,7 @@ if(isset($_POST['autoCurrency'])){
 	$currency = $this->_model->_change_dau_nhay($_POST['autoCurrency']);
 	
 	include_once('../php/simple_html_dom.php');
-	$url = 'http://globalcurrencies.xignite.com/xGlobalCurrencies.json/GetRealTimeRate?Symbol='.$currency.'&_token=5ADE388647D84CCDB9DCC3D491ED9CD2';
+	$url = 'http://globalcurrencies.xignite.com/xGlobalCurrencies.json/GetRealTimeRate?Symbol='.$currency.'&_token=48F61AA6188F45668A01662A73995C4F';
 	$html = file_get_html($url)->plaintext;
 	$html = json_decode($html);
 	echo '<tr><td align="center">&nbsp;</td>';
@@ -90,6 +90,13 @@ if(isset($_POST['autoCurrency'])){
 	echo '<td align="center">'.number_format($html->Bid,5).'</td>';
 	echo '<td align="center">'.number_format($html->Ask,5).'</td>';
 	echo '<td align="center">'.number_format($html->Spread,5).'</td></tr>';
+	return true;
+}
+
+if(isset($_POST['changeTimeZone'])){
+	$idTimeZone = $this->_model->_change_dau_nhay($_POST['changeTimeZone']);
+	settype($idTimeZone, "int");
+	include_once('view_web_timezone.php');
 	return true;
 }
 ?>
