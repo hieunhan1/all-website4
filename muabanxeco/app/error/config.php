@@ -1,11 +1,11 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/muabanxeco');/*domain*/
-define('CONS_BASE_DIR', '/all/muabanxeco');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://nhantiec.vn/muabanxeco');/*domain*/
+define('CONS_BASE_DIR', '/muabanxeco');/*upload host tắt CONS này*/
 
 define('CONS_HOST',	'localhost');
-define('CONS_USER_DB',	'root');
-define('CONS_PASS_DB',	'');
-define('CONS_DB_NAME',	'muabanxeco');
+define('CONS_USER_DB',	'nhantiec_user2');
+define('CONS_PASS_DB',	'nhantiec_temp#123*');
+define('CONS_DB_NAME',	'nhantiec_temp');
 
 define('CONS_LANG_DEFAULT', 'vi');
 

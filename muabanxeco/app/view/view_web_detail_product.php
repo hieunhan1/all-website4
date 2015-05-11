@@ -2,12 +2,29 @@
 <div id="article" class="z-index-2">
     <div class="viewpost">
         <?php
+		$data = $this->_model->_web_product_img($row_detail['id']);
+		$strProductImg='';
+		if($data!=1){
+			$strProductImg = '<div id="photos"><ul>';
+			foreach($data as $row){
+				$strProductImg .= '<li class="li2">
+				<a class="fancybox" href="'.CONS_IMAGES_PRODUCTS_IMG.$row['img_avatar'].'" data-fancybox-group="gallery" title="'.$row['name'].'">
+					<div class="img2"><img src="'.CONS_IMAGES_PRODUCTS_IMG_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></div>
+				</a>
+			</li>';
+			}
+			$strProductImg .= '</ul></div> <div class="clear_1px"></div>';
+		}
+		
         echo '<h1>'.$row_detail['name'].'</h1>';
 		echo '<div id="dactinh">
-			<div class="img"><img src="'.$current_menu['type_menu_img'].$row_detail['img_avatar'].'" alt="'.$row_detail['name'].'" /></div>
+			<div class="image">
+				<img src="'.$current_menu['type_menu_img'].$row_detail['img_avatar'].'" alt="'.$row_detail['name'].'" />
+			</div>
 			<div class="dactinh">'.$row_detail['dactinh'].'</div>
 			<div class="buy bogoc_8px">Liên hệ để biết giá</div>
 			<div class="clear_1px"></div>
+			'.$strProductImg.'
 		</div>';
         echo '<div style="font-size:110%">'.$row_detail['content'].'</div>';
         ?>
@@ -33,3 +50,11 @@
 </div>
 <?php include_once('view_web_right.php');?>
 <div class="clear_20px"></div>
+
+<link rel="stylesheet" type="text/css" href="js/extension/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+<script type="text/javascript" src="js/extension/source/jquery.fancybox.js?v=2.1.5"></script>
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+</script>

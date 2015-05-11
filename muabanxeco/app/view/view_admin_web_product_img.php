@@ -3,22 +3,22 @@
 <div id="content">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
-        	<th width="40">STT</th>
+        	<th width="50">STT</th>
             <th align="left">Mô tả</th>
-            <th width="300" align="left">Tên hình</th>
+            <th width="350" align="left">Tên sản phẩm</th>
             <th width="100" align="left">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`img_avatar`,`order`');
+		$data = $this->select_from_product_img($lang,$arr,'');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_row_hidden"><?php echo $row['img_avatar'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['name_product'];?></p></td>
             <td><p class="height_row_hidden"><?php echo $row['order'];?></p></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;

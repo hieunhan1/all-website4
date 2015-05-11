@@ -330,6 +330,14 @@ class model_admin extends db{
 	/*end ajax*/
 	
 	/*function*/
+	public function _web_product_img(){
+		$sql = "SELECT `id`,`name` FROM `web_product` WHERE `status`=1 ORDER BY `name`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	public function _web_users_package($parent, $style, $arr, $where=''){
 		if(!$arr) $arr = array();
 		$sql = "SELECT `id`,`name`,`price`,`discount`,`songay`,`order`,`status` FROM `web_users_package`

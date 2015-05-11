@@ -13,18 +13,13 @@ echo '<form name="form_action" method="post" action="">
     $this->getProperties('4',$arr,$properties,$views);
 	echo $this->DisplayProperties();
 	
-	//menu_id
-	$values = $row_detail['menu_id'];
-	$views = array('menu_id', 'value_checks_box'); //name class
-    $this->getProperties('2',$values,'',$views);
-	$hidden_item = $this->DisplayProperties();
-	
-	$where = " AND (type_id=1 OR type_id=2 OR type_id=5) AND lang='{$lang}' ";
-	$arr = $this->_model->_web_menu(0, '', NULL, $where);
-	$properties = $row_detail['menu_id']; //default check
-	$views = array('','','checkbox checkbox_item','width:345px; height:200px;'); //label name class width
-    $this->getProperties('7',$arr,$properties,$views);
-	echo '<tr><td class="label">Danh mục</td> <td>'.$this->DisplayProperties().$hidden_item.'</td></tr>';
+	//product_id
+	$arr = array();
+	$arr = $this->_model->_web_product_img();
+	$properties = $row_detail['product_id']; //default check
+	$views = array('Chọn sản phẩm','product_id','input_medium'); //label id&name class
+    $this->getProperties('5',$arr,$properties,$views);
+	echo $this->DisplayProperties();
 	
 	//name
 	$values = $row_detail['name'];
@@ -38,8 +33,8 @@ echo '<form name="form_action" method="post" action="">
 	$views = array('Chọn file ảnh','btnBrowse','button'); //label id&name class
 	$this->getProperties('6',$values,'',$views);
 	$other = $this->DisplayProperties();
-	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>photos</strong>"</p>';
-	if($row_detail['img_avatar'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_PHOTOS_THUMBS.$row_detail['img_avatar'].'" /></div>';
+	$other .= '<p class="notes">Upload hình ảnh vào thư mục "<strong>product_img</strong>"</p>';
+	if($row_detail['img_avatar'] != '') $other .= '<div class="avarta"><img src="'.CONS_IMAGES_PRODUCTS_IMG_THUMBS.$row_detail['img_avatar'].'" /></div>';
 	
 	$values = $row_detail['img_avatar'];
 	$properties = array('150'); //maxlength OTHER (disabled, readonly) 
