@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2015 at 06:43 AM
+-- Generation Time: May 11, 2015 at 11:59 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -97,7 +97,7 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 (5, 'Số tin / trang', 'limit_1', '6', 'vi', 1),
 (6, 'Số xe / trang', 'limit_2', '6', 'vi', 1),
 (7, 'Số xe / trang home', 'limit_3', '8', 'vi', 1),
-(8, 'Số video / trang', 'limit_4', '10', 'vi', 0),
+(8, 'Số photo / trang', 'limit_4', '20', 'vi', 1),
 (9, 'Copyright', 'copyright', 'Copyright © 2015 by muabanxeco.com', 'vi', 1),
 (10, 'Email', 'email', 'quanly.hongcuong@gmail.com', 'vi', 1),
 (11, 'Điện thoại', 'tel', '(84.8) 3726 7477', 'vi', 0),
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `web_language` (
 
 INSERT INTO `web_language` (`id`, `name`, `code`, `order`, `status`) VALUES
 (1, 'Việt Nam', 'vi', 1, 1),
-(2, 'English', 'en', 2, 1);
+(2, 'English', 'en', 2, 0);
 
 -- --------------------------------------------------------
 
@@ -1060,13 +1060,13 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (3, 'Danh mục menu', 'web_menu', 'icon-menu.jpg', 3, 0, NULL, 1),
 (4, 'Thông tin, bài viết', 'web_article', 'icon-info.jpg', 4, 0, NULL, 1),
 (5, 'Mua bán xe cổ', 'web_product', 'icon-product.jpg', 5, 0, NULL, 1),
-(6, 'Thư viện ảnh', 'web_photo', 'icon-thu-vien-anh.jpg', 6, 0, NULL, 0),
-(7, 'Thư viện video', 'web_video', 'icon-thu-vien-video.jpg', 7, 0, NULL, 0),
+(6, 'Thư viện ảnh', 'web_photo', 'icon-thu-vien-anh.jpg', 7, 0, NULL, 1),
+(7, 'Hình xe theo sản phẩm', 'web_product_img', 'icon-thu-vien-video.jpg', 6, 0, NULL, 1),
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
-(9, 'DS Tỉnh - Thành', 'web_listcity', 'icon-city.jpg', 9, 0, NULL, 1),
-(10, 'DS Quận - Huyện', 'web_listdistricts', 'icon-districts.jpg', 10, 0, NULL, 1),
-(11, 'Đơn đặt hàng', 'web_product_order', 'icon-order.jpg', 11, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 1),
-(12, 'Đơn đặt hàng chi tiết', 'web_product_order_detail', 'icon-order-detail.jpg', 12, 1, NULL, 1),
+(9, 'DS Tỉnh - Thành', 'web_listcity', 'icon-city.jpg', 9, 0, NULL, 0),
+(10, 'DS Quận - Huyện', 'web_listdistricts', 'icon-districts.jpg', 10, 0, NULL, 0),
+(11, 'K.hàng liên hệ mua xe', 'web_product_order', 'icon-order.jpg', 20, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 1),
+(12, 'Đơn đặt hàng chi tiết', 'web_product_order_detail', 'icon-order-detail.jpg', 12, 1, NULL, 0),
 (13, 'Forex', 'web_forex', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 0),
 (14, 'Gói đăng ký', 'web_users_package', 'icon-tuyen-dung-thong-tin.jpg', 14, 0, NULL, 0),
 (15, 'Item 15', '', 'icon-tuyendung-ho-so.jpg', 15, 0, NULL, 0),
@@ -1160,14 +1160,16 @@ CREATE TABLE IF NOT EXISTS `web_photo` (
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
   `menu_id` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_photo`
 --
 
 INSERT INTO `web_photo` (`id`, `name`, `img_avatar`, `order`, `lang`, `status`, `menu_id`) VALUES
-(1, 'Hoạt động', '', 1, 'vi', 1, ',');
+(1, 'Thư viện ảnh 1', '1.jpg', 0, 'vi', 1, ',25,'),
+(2, 'Thư viện ảnh 2', '2.jpg', 0, 'vi', 1, ',25,'),
+(3, 'Thư viện ảnh 3', '3.jpg', 0, 'vi', 1, ',25,');
 
 -- --------------------------------------------------------
 
@@ -1210,6 +1212,31 @@ INSERT INTO `web_product` (`id`, `name`, `name_alias`, `code`, `url`, `img_avata
 (6, 'Lam Vespa màu trắng Zin', 'lam-vespa-mau-trang-zin', '', 'vespa/lam-vespa-mau-trang-zin.html', '6.jpg', '', 'Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.', '<p>Zin 98%</p>\r\n\r\n<p>Bảo hành 12 tháng</p>\r\n', 'lam vespa màu trắng zin,lam vespa mau trang zin', 0, NULL, '<h2>Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.</h2>\r\n\r\n<p>Tương lai tươi sáng đang chờ đón chi nhánh sản xuất mô tô của tập đoàn BMW khi ngày càng có nhiều lực lượng chức năng chọn xe của họ làm phương tiện phục vụ công tác. Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang môtô BMW. Sở dĩ môtô BMW ngày càng được các cơ quan hành pháp ưa chuộng vì chúng sở hữu khả năng vận hành vượt trội, công nghệ kỹ thuật hiện đại và cho phép nâng cấp dễ dàng.</p>\r\n\r\n<p>Dòng môtô dành cho lực lượng chức năng của BMW hiện vẫn đang được sản xuất tại nhà máy ở Berline-Spandau, Đức. Có 4 dòng môtô BMW đi kèm phiên bản dành cho lực lượng chức năng, bao gồm R1200RT, F800GT, F800GS và F650GS. Trong đó, xe được lựa chọn nhiều nhất là BMW R1200RT.</p>\r\n', NULL, 1, 1430881260, 'vi', 1, ',20,21,3,15,'),
 (7, 'Xe Honda 67 xanh đen', 'xe-honda-67-xanh-den', '', 'honda/xe-honda-67-xanh-den.html', '7.jpg', '', 'Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.', '<p>Zin 98%</p>\r\n\r\n<p>Bảo hành 12 tháng</p>\r\n', 'xe honda 67 xanh đen,xe honda 67 xanh den', 0, NULL, '<h2>Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.</h2>\r\n\r\n<p>Tương lai tươi sáng đang chờ đón chi nhánh sản xuất mô tô của tập đoàn BMW khi ngày càng có nhiều lực lượng chức năng chọn xe của họ làm phương tiện phục vụ công tác. Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang môtô BMW. Sở dĩ môtô BMW ngày càng được các cơ quan hành pháp ưa chuộng vì chúng sở hữu khả năng vận hành vượt trội, công nghệ kỹ thuật hiện đại và cho phép nâng cấp dễ dàng.</p>\r\n\r\n<p>Dòng môtô dành cho lực lượng chức năng của BMW hiện vẫn đang được sản xuất tại nhà máy ở Berline-Spandau, Đức. Có 4 dòng môtô BMW đi kèm phiên bản dành cho lực lượng chức năng, bao gồm R1200RT, F800GT, F800GS và F650GS. Trong đó, xe được lựa chọn nhiều nhất là BMW R1200RT.</p>\r\n', NULL, 1, 1430881320, 'vi', 1, ',20,21,3,7,'),
 (8, 'Xe Honda 67 trắng đen', 'xe-honda-67-trang-den', '', 'honda/xe-honda-67-trang-den.html', '8.jpg', '', 'Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.', '<p>Zin 98%</p>\r\n\r\n<p>Bảo hành 12 tháng</p>\r\n', 'xe honda 67 trắng đen,xe honda 67 trang den', 0, NULL, '<h2>Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang mô tô BMW.</h2>\r\n\r\n<p>Tương lai tươi sáng đang chờ đón chi nhánh sản xuất mô tô của tập đoàn BMW khi ngày càng có nhiều lực lượng chức năng chọn xe của họ làm phương tiện phục vụ công tác. Ngay cả các cơ quan hành pháp của Mỹ cũng dần rời bỏ dòng xe Harley-Davidson và chuyển sang môtô BMW. Sở dĩ môtô BMW ngày càng được các cơ quan hành pháp ưa chuộng vì chúng sở hữu khả năng vận hành vượt trội, công nghệ kỹ thuật hiện đại và cho phép nâng cấp dễ dàng.</p>\r\n\r\n<p>Dòng môtô dành cho lực lượng chức năng của BMW hiện vẫn đang được sản xuất tại nhà máy ở Berline-Spandau, Đức. Có 4 dòng môtô BMW đi kèm phiên bản dành cho lực lượng chức năng, bao gồm R1200RT, F800GT, F800GS và F650GS. Trong đó, xe được lựa chọn nhiều nhất là BMW R1200RT.</p>\r\n', NULL, 1, 1430881380, 'vi', 1, ',20,21,3,7,');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_product_img`
+--
+
+CREATE TABLE IF NOT EXISTS `web_product_img` (
+`id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `img_avatar` varchar(150) DEFAULT NULL,
+  `order` int(3) NOT NULL DEFAULT '0',
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) DEFAULT '1',
+  `product_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_product_img`
+--
+
+INSERT INTO `web_product_img` (`id`, `name`, `img_avatar`, `order`, `lang`, `status`, `product_id`) VALUES
+(1, 'Chụp nguyên hình', '1.jpg', 1, 'vi', 1, 6),
+(2, 'Chụp phần đầu', '6.jpg', 2, 'vi', 1, 6),
+(3, 'Chụp phần đuôi', '4.jpg', 3, 'vi', 1, 6);
 
 -- --------------------------------------------------------
 
@@ -1354,14 +1381,15 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `datetime` bigint(10) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `group_id` int(1) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_users`
 --
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `url_img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `login_number`, `disable_date`, `expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
-(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,5,8,9,10,11,12,21,22,23,', ',1,2,20,3,4,5,8,9,10,11,12,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 3);
+(25, 'Admin', '123 CMT 8', '0988 388 003', 'hieunhan112@gmail.com', 0, 1, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,20,3,4,5,7,11,6,8,21,22,23,', ',1,2,20,3,4,5,7,11,6,8,21,22,23,', NULL, 0, '2011-09-21 16:42:26', NULL, 'vi', 0, 1, 3),
+(34, 'Hồng Cường', '', '', '', 0, 1, '', '', 'hongcuong', '867e1a36d190000d2f266d80889683fc', ',1,2,3,4,5,7,6,8,11,21,', ',1,2,3,4,5,7,6,8,11,21,', NULL, 0, NULL, NULL, 'vi', 0, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -1510,6 +1538,12 @@ ALTER TABLE `web_product`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_product_img`
+--
+ALTER TABLE `web_product_img`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_product_order`
 --
 ALTER TABLE `web_product_order`
@@ -1619,12 +1653,17 @@ MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 -- AUTO_INCREMENT for table `web_photo`
 --
 ALTER TABLE `web_photo`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `web_product`
 --
 ALTER TABLE `web_product`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `web_product_img`
+--
+ALTER TABLE `web_product_img`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `web_product_order`
 --
@@ -1649,7 +1688,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `web_users`
 --
 ALTER TABLE `web_users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `web_users_group`
 --

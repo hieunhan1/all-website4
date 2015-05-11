@@ -261,6 +261,28 @@ class control_admin extends control_admin_form{
 		return $data;
 	}
 	
+	public function select_from_product_img($lang, &$arr){
+		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
+		settype($currentpage,"int");
+		$startrow = ($currentpage-1)*CONS_ADMIN_PER_PAGE;
+		if(!empty($_GET)){
+			$this->search_data_forms($str_search, $url_search);
+		}
+		$table  = $this->_action;
+		$select = "{$table}.*, web_product.name as name_product";
+		$all_table = $table.',web_product';
+		$where  = "{$table}.lang='{$lang}' AND product_id=web_product.id ".$str_search;
+		$order_by = "`product_id` DESC, {$table}.`id` DESC";
+		$data = $this->_model->_select_field_table($select, $all_table, $where, $order_by, CONS_ADMIN_PER_PAGE, $startrow, $totalrows);
+		$arr = array(
+			'currentpage'=>$currentpage,
+			'startrow'	=>$startrow,
+			'totalrows'	=>$totalrows,
+			'url_search'=>$url_search
+		);
+		return $data;
+	}
+	
 	public function select_from_users($lang, &$arr){
 		if(!isset($_GET['page'])) $currentpage = 1; else $currentpage = $_GET['page'];
 		settype($currentpage,"int");

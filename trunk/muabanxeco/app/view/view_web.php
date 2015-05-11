@@ -20,7 +20,10 @@
     
     <?php include_once('view_web_support.php');?>
 </div>
-<?php include_once('view_web_qc_2ben.php');?>
+<?php
+include_once('view_web_qc_2ben.php');
+include_once('view_web_popup.php');
+?>
 <script type="text/javascript" src="js/jquery.corner.js"></script>
 <script type="text/javascript" src="js/js_checks_field.js"></script>
 <script type="text/javascript" src="js/js_web.js"></script>

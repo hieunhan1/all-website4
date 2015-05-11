@@ -149,6 +149,19 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
+	public function _list_web_photo($id, $per_page=20, $startrow=0, &$totalrows){
+		$sql = "SELECT `id`,`name`,`img_avatar` FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `order` DESC LIMIT {$startrow}, {$per_page}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		
+		$sql = "SELECT count(`id`) FROM `web_photo` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%'";
+		$result = $this->db->query($sql);
+		$row = $result->fetch_row();
+		$totalrows=$row[0];
+		
+		return $data;
+	}
 	/*end list*/
 	
 	/*detail*/
@@ -179,6 +192,13 @@ class model_web extends db{
 	}
 	public function _list_article($limit=5){
 		$sql = "SELECT `id`,`name`,`url`,`description` FROM `web_article` WHERE `status`=1 ORDER BY `datetime` DESC LIMIT {$limit}";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	public function _web_product_img($id){
+		$sql = "SELECT `id`,`name`,`img_avatar` FROM `web_product_img` WHERE `status`=1 AND `product_id`='{$id}' ORDER BY `order` DESC";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

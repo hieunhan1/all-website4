@@ -96,15 +96,22 @@ input, textarea, select {color:#666; font-size:13px; font-family:Arial, Helvetic
 #nav li li li li:hover ul {display:block}
 
 /* popup */
-#backgroundPopup{display: none; position: fixed; _position: absolute; /*IE 6*/ height: 100%; width: 100%; top: 0; left: 0; background: #FFF; order: 1px solid #CECECE; z-index:1100}
+#backgroundPopup{display: none; position: fixed; _position: absolute; /*IE 6*/ height: 100%; width: 100%; top: 0; left: 0; background: #000; order: 1px solid #CECECE; z-index:1100}
 #popupContact{display: none; position: fixed; _position: absolute; /*IE 6*/ z-index:1200}
 .popupContactClose{font-weight: bold; cursor:pointer; background:none}
-#content_popup{width:800px; height:auto; padding:10px; background:none}
+#content_popup{width:450px; height:auto; color:#666; padding:10px; background-color:#FFF}
+#content_popup .title{font-weight:bold; font-size:140%; margin:20px 0}
+#content_popup .txt{width:300px; padding:3px}
+#content_popup .btn{padding:10px 25px; cursor:pointer}
 
 /*Photos*/
 #photos * {margin:0px; padding:0px}
-#photos ul li {display:inline; width:180px; height:160px; float:left; overflow:hidden; margin:5px}
+#photos ul .li{display:inline; width:162px; height:160px; float:left; overflow:hidden; margin:5px}
 #photos .wide {border-bottom:1px #000 solid; width:4000px}
-#photos .img{display:block; height:120px; overflow:hidden; text-align:center; margin-bottom:3px; border:solid 1px #999}
-#photos .img img{width:180px}
-#photos h3{font-size:100%; font-weight:100; color:#666; text-align:center}
+#photos .img{display:block; height:120px; overflow:hidden; text-align:center; margin-bottom:3px; border:solid 1px #FFF}
+#photos .img img{width:162px}
+#photos h3{font-size:100%; font-weight:100; text-align:center}
+
+#photos ul .li2{display:inline; width:80px; height:70px; float:left; overflow:hidden; margin-right:8px}
+#photos .img2{display:block; height:60px; overflow:hidden; text-align:center; margin-bottom:3px; border:solid 1px #FFF}
+#photos .img2 img{width:80px}
