@@ -22,7 +22,7 @@
 				<img src="'.$current_menu['type_menu_img'].$row_detail['img_avatar'].'" alt="'.$row_detail['name'].'" />
 			</div>
 			<div class="dactinh">'.$row_detail['dactinh'].'</div>
-			<div class="buy bogoc_8px">Liên hệ để biết giá</div>
+			<div class="buy bogoc_8px" id="'.$row_detail['id'].'" name="'.$row_detail['name'].'">Liên hệ để biết giá</div>
 			<div class="clear_1px"></div>
 			'.$strProductImg.'
 		</div>';

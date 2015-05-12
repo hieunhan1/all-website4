@@ -6,8 +6,9 @@ if(isset($_POST['contact_name'])){
 	$phone = $this->_model->_change_dau_nhay(trim($_POST['phone']));
 	$address = $this->_model->_change_dau_nhay(trim($_POST['address']));
 	$message = $this->_model->_change_dau_nhay($_POST['message']);
-	if($name!='' && $email!='' && $phone!='' && $message!=''){
-		$id_contact = $this->_model->_web_contact_insert($name,$email,$phone,$address,$message);
+	$product_id = $this->_model->_change_dau_nhay($_POST['id']);
+	if($name!='' && $phone!='' && $message!=''){
+		$id_contact = $this->_model->_web_contact_insert($name,$email,$phone,$address,$message,$product_id);
 		$title = $name;
 		$subject = 'No-reply | Contact';
 		$body = '<div style="line-height:18px; color:#333; font-size:12pt">

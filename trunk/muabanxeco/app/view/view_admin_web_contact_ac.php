@@ -3,7 +3,12 @@
 $this->create_edit_data($table, $arr_action, $row_detail);
 
 echo '<form name="form_action" method="post" action="">
-<table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
+<table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';
+	if($row_detail['product_id']!=0){
+		$data = $this->_model->_product_name($row_detail['product_id']);
+		echo '<tr><td class="label">Sản phẩm</td>
+		<td style="font-weight:bold">'.$data['name'].' - <a href="'.$data['url'].'" target="_blank">Link</a></td></tr>';
+	}
 	//status
 	$arr = array();
 	$arr[] = array('id'=>'0', 'name'=>'Chưa xem');
