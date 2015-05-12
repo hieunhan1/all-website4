@@ -337,7 +337,11 @@ class model_admin extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	
+	public function _product_name($id){
+		$sql = "SELECT `id`,`name`,`url` FROM `web_product` WHERE `status`=1 AND `id`='{$id}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
 	public function _web_users_package($parent, $style, $arr, $where=''){
 		if(!$arr) $arr = array();
 		$sql = "SELECT `id`,`name`,`price`,`discount`,`songay`,`order`,`status` FROM `web_users_package`

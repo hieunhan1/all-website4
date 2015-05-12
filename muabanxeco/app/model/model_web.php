@@ -207,9 +207,9 @@ class model_web extends db{
 	/*end detail*/
 	
 	/*contact*/
-	public function _web_contact_insert($name,$email,$phone,$address,$message,$lang='vi'){
+	public function _web_contact_insert($name,$email,$phone,$address,$message,$product_id,$lang='vi'){
 		$date = $this->_current_date_time();
-		$sql = "INSERT INTO `web_contact` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$message}', '{$date}', '{$lang}', '0')";
+		$sql = "INSERT INTO `web_contact` VALUES (NULL, '{$name}', '{$email}', '{$phone}', '{$address}', '{$message}', '{$date}', '{$lang}', '0', '{$product_id}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}

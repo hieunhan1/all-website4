@@ -39,7 +39,7 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 			$str .= '<div class="box-item'.$style.'">
 				<div class="img"><a href="'.$row_xe['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row_xe['img_avatar'].'" alt="'.$row_xe['name'].'" /></a></div>
 				<a href="'.$row_xe['url'].'" title="'.$row_xe['name'].'"><h3>'.$row_xe['name'].'</h3></a>
-				<div class="buy bogoc_5px">Liên hệ</div>
+				<div class="buy bogoc_5px" id="'.$row_xe['id'].'" name="'.$row_xe['name'].'">Liên hệ</div>
 			</div>';
 		}
 		echo '<div id="list_product">

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2015 at 11:59 AM
+-- Generation Time: May 12, 2015 at 06:17 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -135,8 +135,22 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `message` text NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
-  `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `status` tinyint(1) DEFAULT '0',
+  `product_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_contact`
+--
+
+INSERT INTO `web_contact` (`id`, `name`, `email`, `phone`, `address`, `message`, `datetime`, `lang`, `status`, `product_id`) VALUES
+(8, 'NGUYEN THI KIM THANH', 'hieunhan112@gmail.com', '0988388003', '', 'ssssssssssssssss', 1431403345, 'vi', 0, 6),
+(7, 'Nhan Tran', 'forexsignalpro.net@gmail.com', '0988388003', '', '333333333333', 1431403269, 'vi', 0, 5),
+(6, 'Nhan Tran', 'forexsignalpro.net@gmail.com', '0988388003', '', '222222222222222222', 1431403252, 'vi', 0, 5),
+(5, 'Nhan Hieu Tran', 'forexsignalpro.net@gmail.com', '0988388003', '', '11111111111111111111', 1431403234, 'vi', 0, 7),
+(9, 'Nhan Hieu Tran', '', '0988388003', '', '11111111111111111111111', 1431403912, 'vi', 0, 7),
+(10, 'Nhan Hieu Tran', 'hieunhan112@gmail.com', '0988388003', '', '11111111111111111111111', 1431403945, 'vi', 0, 7),
+(11, 'Nhan Hieu Tran', '', '0988388003', '', '333333333333333333333333', 1431403958, 'vi', 0, 7);
 
 -- --------------------------------------------------------
 
@@ -981,6 +995,26 @@ INSERT INTO `web_listsendmail` (`id`, `name`, `email`, `lang`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `web_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `web_logs` (
+`id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `action` varchar(30) NOT NULL,
+  `table` varchar(30) NOT NULL,
+  `datetime` bigint(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `content` text,
+  `lang` varchar(2) NOT NULL DEFAULT 'vi',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `date_restore` bigint(10) DEFAULT NULL,
+  `user_restore` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `web_menu`
 --
 
@@ -1065,7 +1099,7 @@ INSERT INTO `web_menu_admin` (`id`, `name`, `url`, `url_img`, `order`, `other`, 
 (8, 'Slider & banner', 'web_slider_banner', 'icon-slider-banner.jpg', 8, 1, NULL, 1),
 (9, 'DS Tỉnh - Thành', 'web_listcity', 'icon-city.jpg', 9, 0, NULL, 0),
 (10, 'DS Quận - Huyện', 'web_listdistricts', 'icon-districts.jpg', 10, 0, NULL, 0),
-(11, 'K.hàng liên hệ mua xe', 'web_product_order', 'icon-order.jpg', 20, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 1),
+(11, 'K.hàng liên hệ mua xe', 'web_product_order', 'icon-order.jpg', 20, 0, '<span id="web_product_order" class="ajax_thongtin"></span>', 0),
 (12, 'Đơn đặt hàng chi tiết', 'web_product_order_detail', 'icon-order-detail.jpg', 12, 1, NULL, 0),
 (13, 'Forex', 'web_forex', 'icon-tuyen-dung-thong-tin.jpg', 13, 0, NULL, 0),
 (14, 'Gói đăng ký', 'web_users_package', 'icon-tuyen-dung-thong-tin.jpg', 14, 0, NULL, 0),
@@ -1502,6 +1536,12 @@ ALTER TABLE `web_listsendmail`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_logs`
+--
+ALTER TABLE `web_logs`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_menu`
 --
 ALTER TABLE `web_menu`
@@ -1608,7 +1648,7 @@ MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 -- AUTO_INCREMENT for table `web_contact`
 --
 ALTER TABLE `web_contact`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `web_forex`
 --
@@ -1629,6 +1669,11 @@ MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=901;
 --
 ALTER TABLE `web_listsendmail`
 MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_logs`
+--
+ALTER TABLE `web_logs`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --

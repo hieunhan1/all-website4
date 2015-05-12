@@ -67,15 +67,15 @@ $(document).ready(function(e) {
 		$.ajax({ 	
 			url:"<?php echo CONS_BASE_URL;?>/ajax/",
 			type:'post',
-			data:{contact_name:name,email:email,phone:phone,address:address,message:message},
+			data:{contact_name:name,email:email,phone:phone,address:address,message:message,id:0},
 			cache:false,
 			success: function(data){
 				setTimeout(function(){
 					if(data=='1'){
-						$("#contact").html('<div id="error_contact">' +
-											'<h3>Contact success</h3>' +
-											'<p>Please inform your contacts to <b><?php echo $this->_config['sitename'];?></b> successful website. We will reply to you soon.</p>' +
-											'<p>Sincerely,</p>' +
+						$("#contact").html('<div id="error_contact" style="margin-bottom:30px">' +
+											'<h3>Liên hệ thành công</h3>' +
+											'<p>Xin thông báo bạn đã liên hệ đến website <b><?php echo $this->_config['sitename'];?></b> thành công. Chúng tôi sẽ trả lời cho bạn sớm nhất.</p>' +
+											'<p>Trân trọng,</p>' +
 										'</div>');
 						$("#error_contact").show();
 						$("#loading_contact").hide();

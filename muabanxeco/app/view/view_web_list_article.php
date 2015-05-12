@@ -42,7 +42,7 @@ else echo '<p style="padding:10px 0px 100px 50px">Update...</p>';
 			echo '<div class="box-item" style="float:right; margin:10px 10px 10px 0">
 				<div class="img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></a></div>
 				<a href="'.$row['url'].'" title="'.$row['name'].'"><h3>'.$row['name'].'</h3></a>
-				<div class="buy bogoc_5px">Liên hệ</div>
+				<div class="buy bogoc_5px" id="'.$row['id'].'" name="'.$row['name'].'">Liên hệ</div>
 			</div>';
 		}
 		?>
