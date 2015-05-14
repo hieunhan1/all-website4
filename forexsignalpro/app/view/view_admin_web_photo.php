@@ -11,14 +11,14 @@
         </tr>
         <?php
 		$i = 0;
-		$data = $this->select_from_all($lang,$arr,',`url_img`,`order`');
+		$data = $this->select_from_all($lang,$arr,',`url_avatar`,`order`');
 		if($data){
 		foreach($data as $row){
 			$i++; ?>
         <tr class="row row_<?php echo $row['id'];?>">
             <td align="center"><?php echo $arr['startrow']+$i; ?></td>
             <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
-            <td><p class="height_row_hidden"><?php echo $row['url_img'];?></p></td>
+            <td><p class="height_row_hidden"><?php echo $row['url_avatar'];?></p></td>
             <td><p class="height_row_hidden"><?php echo $row['order'];?></p></td>
             <td align="center">
                 <a href="javascript:;"><?php echo '<img src="'.CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif" class="status" id="status_'.$row['id'].'" status_id="'.$row['id'].'" status_name="'.$row['name'].'" url="'.$table.'" status="'.$row['status'].'" />';?></a> &nbsp;
