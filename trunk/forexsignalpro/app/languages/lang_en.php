@@ -11,7 +11,7 @@ define('CONS_CHANGE_PASSWORD','Change password');
 define('CONS_OTHER_POST','Other post');
 define('CONS_OTHER_PRODUCT','Other product');
 
-define('CONS_CONTACT_INFO', 'Contact Information');
+define('CONS_CONTACT_INFO', 'Customer Information');
 define('CONS_CONTACT_NAME', 'Name');
 define('CONS_CONTACT_PHONE', 'Phone');
 define('CONS_CONTACT_ADDRESS', 'Address');
