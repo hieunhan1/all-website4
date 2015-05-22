@@ -4,7 +4,7 @@ define('CONS_BASE_DIR', '/all/hoangha_v2');/*upload host tắt CONS này*/
 
 define('CONS_HOST',		'localhost');
 define('CONS_USER_DB',	'root');
-define('CONS_PASS_DB',	'root');
+define('CONS_PASS_DB',	'');
 define('CONS_DB_NAME',	'hoangha_v2');
 
 /*IMAGES UPLOAD*/
