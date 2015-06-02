@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule js - [L]
+RewriteRule upload - [L]
+RewriteRule themes - [L]
+RewriteRule (.*) application/index.php [L]
+AddDefaultCharset UTF-8
+Options -Indexes
