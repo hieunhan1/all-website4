@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2015 at 12:05 PM
+-- Generation Time: Jun 02, 2015 at 08:44 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -541,17 +541,17 @@ INSERT INTO `web_config` (`id`, `name`, `name_var`, `value`, `lang`, `status`) V
 (13, 'Yahoo', 'yahoo', 'hieu_nhan1', 'vi', 1),
 (14, 'Skype', 'skype', 'hieu_nhan1', 'vi', 1),
 (15, 'Địa chỉ', 'address', '123 CMT 8, phường 10, quận 10, Tp.HCM', 'vi', 1),
-(16, 'News number / page', 'limit_1', '10', 'en', 1),
-(17, 'Trend', 'limit_2', '6', 'en', 1),
-(18, 'Real time Orders', 'limit_3', '6', 'en', 1),
-(19, 'Support and resistance', 'limit_4', '6', 'en', 1),
+(16, 'News number / page', 'limit_1', '8', 'en', 1),
+(17, 'Trend', 'limit_2', '8', 'en', 1),
+(18, 'Real time Orders', 'limit_3', '8', 'en', 1),
+(19, 'Support and resistance', 'limit_4', '8', 'en', 1),
 (20, 'Copyright', 'copyright', 'Copyright © 2014', 'en', 1),
-(21, 'Email', 'email', 'hieunhan112@gmail.com', 'en', 1),
-(22, 'Telephone', 'tel', '0988 388 003', 'en', 1),
-(23, 'Hotline', 'hotline', '0988 388 003', 'en', 1),
-(24, 'Yahoo', 'yahoo', 'hieu_nhan1', 'en', 1),
-(25, 'Skype', 'skype', 'hieu_nhan1', 'en', 1),
-(26, 'Address', 'address', '123 CMT 8', 'en', 1),
+(21, 'Email', 'email', 'support@forexsignalpro.net', 'en', 1),
+(22, 'Telephone', 'tel', '0988 388 003', 'en', 0),
+(23, 'Hotline', 'hotline', '0988 388 003', 'en', 0),
+(24, 'Yahoo', 'yahoo', 'hieu_nhan1', 'en', 0),
+(25, 'Skype', 'skype', 'hieu_nhan1', 'en', 0),
+(26, 'Address', 'address', '123 CMT 8', 'en', 0),
 (27, 'Tên trang website', 'sitename', 'ForexSignalPro', 'vi', 1),
 (28, 'Site name', 'sitename', 'ForexSignalPro', 'en', 1);
 
