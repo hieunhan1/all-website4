@@ -99,7 +99,8 @@ if(isset($_POST['webContact'])){
 	$address = $c->_model->_changeDauNhay(trim($_POST['address']));
 	$message = $c->_model->_changeDauNhay($_POST['message']);
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
-	$check = $c->_model->_checksIpContact($ipAddress);
+	$table = 'web_contact';
+	$check = $c->_model->_checksIpAddress($table, $ipAddress);
 	$check = time() - $check['datetime'];
 	if($check<30){
 		echo 2;
@@ -129,9 +130,10 @@ if(isset($_GET['idContact'])){ //view detail contact
 	if(!isset($_GET['idContact']) || !isset($_GET['name'])) return false;
 	$id = $c->_model->_changeDauNhay($_GET['idContact']);
 	$name = $c->_model->_changeDauNhay($_GET['name']);
-	$row = $c->_model->_viewDetailContact($id, $name);
+	$table = 'web_contact';
+	$row = $c->_model->_viewDetail($table, $id, $name);
 	include_once('view/web_contact_detail.php');
-	if($row['status']==0) $c->_model->_updateStatusContact($id);
+	if($row['status']==0) $c->_model->_updateStatus($table, $id);
 	return true;
 }
 if(isset($_POST['google_map'])){
