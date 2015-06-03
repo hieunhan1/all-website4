@@ -41,26 +41,27 @@ class modelAjax extends modelDB{
 		return $row[0];
 	}
 	
-	public function _checksIpContact($ipAddress){
-		$sql = "SELECT `datetime` FROM `web_contact` WHERE `ip_address`='{$ipAddress}' ORDER BY `datetime` DESC LIMIT 1";
+	public function _checksIpAddress($table, $ipAddress){
+		$sql = "SELECT `datetime` FROM `{$table}` WHERE `ip_address`='{$ipAddress}' ORDER BY `datetime` DESC LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
+	public function _viewDetail($table, $id, $name){
+		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}' AND `name`='{$name}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _updateStatus($table, $id){
+		$sql = "UPDATE `{$table}` SET `status`=1 WHERE `id`='{$id}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	
 	public function _webContactInsert($name, $email, $phone, $address, $message, $ipAddress){
 		$date = time();
 		$sql = "INSERT INTO `web_contact` (`name`, `email`, `phone`, `address`, `message`, `ip_address`, `datetime`) VALUES ('{$name}', '{$email}', '{$phone}', '{$address}', '{$message}', '{$ipAddress}', '{$date}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
-	}
-	public function _viewDetailContact($id, $name){
-		$sql = "SELECT * FROM `web_contact` WHERE `id`='{$id}' AND `name`='{$name}' LIMIT 1";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		return $result->fetch_assoc();
-	}
-	public function _updateStatusContact($id){
-		$sql = "UPDATE `web_contact` SET `status`=1 WHERE `id`='{$id}' LIMIT 1";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		return true;
 	}
 }
 ?>
