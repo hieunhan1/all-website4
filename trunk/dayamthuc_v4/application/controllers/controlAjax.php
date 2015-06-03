@@ -107,6 +107,60 @@ if(isset($_POST['khoahoc_search'])){
 	}
 	return true;
 }
+
+if(isset($_POST['sendmailDK'])){
+	$idDK = $c->_model->_changeDauNhay($_POST['id']);
+	$idNV = $c->_model->_changeDauNhay($_POST['sendmailDK']);
+	if($idDK=='' || $idNV==''){ echo 'Error'; return false; }
+	
+	$sql = "SELECT `id`,`name`,`email` FROM `web_dangky_nhanvien` WHERE `status`=1 AND `id`='{$idNV}' LIMIT 1";
+	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
+	$row = $result->fetch_assoc();
+	if(!isset($row['id'])){ echo 'Không tìm thấy người gửi'; return false; }
+	
+	$sql = "SELECT `id`, `name`, `khoahoc`, `noihoc` FROM `web_dangky_tructuyen` WHERE `id`='{$idDK}' LIMIT 1";
+	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
+	$row2 = $result->fetch_assoc();
+	if(!isset($row2['id'])){ echo 'Không tìm thấy người đăng ký'; return false; }
+	
+	$date = time();
+	$sql = "UPDATE `web_dangky_nhanvien` SET `datetime`='{$date}' WHERE `id`='{$row['id']}' LIMIT 1";
+	if(!$c->_model->db->query($sql)) die($c->_model->db->error);
+	$sql = "UPDATE `web_dangky_tructuyen` SET `status`='2', `nhanvien_lienhe`='{$row['id']}' WHERE `id`='{$row2['id']}' LIMIT 1";
+	if(!$c->_model->db->query($sql)) die($c->_model->db->error);
+	
+	$title = $row2['name'];
+	$subject = 'No-reply | Đăng ký học: '.$row2['khoahoc'];
+	$body = '<div style="line-height:20px; color:#333; font-size:12pt">
+		<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
+		<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> đăng ký học.</p>
+		<p style="margin-bottom:20px">Tên khóa học: '.$row2['khoahoc'].'</p>
+		<p style="margin-bottom:20px">Tại cơ sở: '.$row2['noihoc'].'</p>
+		<p style="font-weight:bold; font-style:italic">Thông tin học viên: <a href="'.CONS_BASE_URL.'/ajax/?idDangKy='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
+	</div>';
+	$add_address = array();
+	$add_address[] = array('email'=>$row['email'], 'name'=>$row['name']);
+	$add_cc = array();
+	if($row['id']<>5 && $row['id']<>6 && $row['id']<>7){
+		//$add_cc[] = array('email'=>'ceo@netspace.edu.vn', 'name'=>'Nguyễn Quốc Y');
+	}
+	
+	$c->sendmail($title, $subject, $body, $add_address, $add_cc);
+	return true;
+}
+if(isset($_GET['idDangKy'])){ //view detail contact
+	if(!isset($_GET['idNV']) || !isset($_GET['name'])) return false;
+	$id = $c->_model->_changeDauNhay($_GET['idDangKy']);
+	$name = $c->_model->_changeDauNhay($_GET['name']);
+	$table = 'web_dangky_tructuyen';
+	$row = $c->_model->_viewDetail($table, $id, $name);
+	
+	if($_GET['idNV']!=$row['nhanvien_lienhe']) return false;
+	
+	include_once('view/web_dangky_detail.php');
+	if($row['status']==2) $c->_model->_updateStatus($table, $id);
+	return true;
+}
 /*end admin*/
 
 /*web*/
@@ -117,7 +171,8 @@ if(isset($_POST['webContact'])){
 	$address = $c->_model->_changeDauNhay(trim($_POST['address']));
 	$message = $c->_model->_changeDauNhay($_POST['message']);
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
-	$check = $c->_model->_checksIpContact($ipAddress);
+	$table = 'web_contact';
+	$check = $c->_model->_checksIpAddress($table, $ipAddress);
 	$check = time() - $check['datetime'];
 	if($check<30){
 		echo 2;
@@ -147,9 +202,10 @@ if(isset($_GET['idContact'])){ //view detail contact
 	if(!isset($_GET['idContact']) || !isset($_GET['name'])) return false;
 	$id = $c->_model->_changeDauNhay($_GET['idContact']);
 	$name = $c->_model->_changeDauNhay($_GET['name']);
-	$row = $c->_model->_viewDetailContact($id, $name);
+	$table = 'web_contact';
+	$row = $c->_model->_viewDetail($table, $id, $name);
 	include_once('view/web_contact_detail.php');
-	if($row['status']==0) $c->_model->_updateStatusContact($id);
+	if($row['status']==0) $c->_model->_updateStatus($table, $id);
 	return true;
 }
 if(isset($_POST['google_map'])){
@@ -170,7 +226,8 @@ if(isset($_POST['webDangKy'])){
 	$khoahoc = $c->_model->_changeDauNhay($_POST['khoahoc']);
 	$noihoc = $c->_model->_changeDauNhay($_POST['noihoc']);
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
-	$check = $c->_model->_checksIpDangKy($ipAddress);
+	$table = 'web_dangky_tructuyen';
+	$check = $c->_model->_checksIpAddress($table, $ipAddress);
 	$check = time() - $check['datetime'];
 	if($check<30){
 		echo 2;

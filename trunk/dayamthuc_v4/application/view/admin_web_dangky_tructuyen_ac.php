@@ -36,6 +36,7 @@ echo '<form name="form_action" method="post" action="">
 		$valueCheck=$rowDetail[$name];
 	}else $valueCheck=$_POST[$name];
 	$data = $cF->select($name, $values, $valueCheck, 'input_large', 1);
+	$data .= '<input type="button" id="sendmail" value="Sendmail" style="color:#666; margin-left:5px; padding:3px 15px" /><p id="messageSendmail" class="message"></p>';
 	echo $cF->displayTable('Gửi đến nhân viên', $data);
 	
 	$name = 'name';

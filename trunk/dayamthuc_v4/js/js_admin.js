@@ -265,4 +265,22 @@ $(document).ready(function(e) {
 		$(".value_data").hide(100);
 		return true;
 	});
+	
+	/*sendmail*/
+	$("#sendmail").click(function(){
+		var id = $("#id").val();
+		var email = $("#nhanvien_lienhe").val();
+		$(this).attr("disabled", true);
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{sendmailDK:email, id:id},
+			cache:false,
+			success: function(data) {
+				$("#status2").attr("checked", true);
+				$("#messageSendmail").html(data);
+				return true;
+			}
+		});
+	});
 });
