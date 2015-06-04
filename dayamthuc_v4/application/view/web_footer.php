@@ -1,4 +1,5 @@
 <div id="footer">
+	<div style="clear:both; height:2px; margin-bottom:20px; background-color:#FFF"></div>
 	<div class="content">
     	<div id="run_top">TOP</div>
         <table width="100%" border="0" cellpadding="0" cellspacing="10">

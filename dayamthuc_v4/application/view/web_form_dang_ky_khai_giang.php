@@ -38,6 +38,10 @@
             </select><span class="error" id="noihoc"></span></td>
           </tr>
           <tr>
+            <td align="right" valign="top">Lời nhắn:</td>
+            <td><textarea name="messageContact" class="textarea" maxlength="250" style="width:220px; height:60px"></textarea></td>
+          </tr>
+          <tr>
             <td>&nbsp;</td>
             <td><input type="button" name="btnSendContact" class="btn" value="GHI DANH" /></td>
           </tr>
@@ -79,6 +83,7 @@ $(document).ready(function(e) {
 		var khoahoc = $("h1").html();
 		var address = $("input[name=addressContact]").val();
 		var email = $("input[name=emailContact]").val();
+		var message = $("textarea[name=messageContact]").val();
 		var noihoc = check_text_length("select[name=noihoc]","#noihoc","Vui lòng chọn nơi học",2);
 		var phone = check_phone("input[name=phoneContact]","#phoneContact","<?php echo CONS_ERROR_PHONE;?>");
 		var name = check_text_length("input[name=nameContact]","#nameContact","<?php echo CONS_ERROR_NAME;?>",2);
@@ -90,7 +95,7 @@ $(document).ready(function(e) {
 		$.ajax({ 	
 			url:"ajax/",
 			type:'post',
-			data:{webDangKy:name, email:email, phone:phone, address:address, khoahoc:khoahoc, noihoc:noihoc},
+			data:{webDangKy:name, email:email, phone:phone, address:address, khoahoc:khoahoc, noihoc:noihoc, message:message},
 			cache:false,
 			success: function(data){
 				setTimeout(function(){

@@ -225,6 +225,7 @@ if(isset($_POST['webDangKy'])){
 	$address = $c->_model->_changeDauNhay(trim($_POST['address']));
 	$khoahoc = $c->_model->_changeDauNhay($_POST['khoahoc']);
 	$noihoc = $c->_model->_changeDauNhay($_POST['noihoc']);
+	$message = $c->_model->_changeDauNhay($_POST['message']);
 	$ipAddress = $_SERVER['REMOTE_ADDR'];
 	$table = 'web_dangky_tructuyen';
 	$check = $c->_model->_checksIpAddress($table, $ipAddress);
@@ -234,7 +235,7 @@ if(isset($_POST['webDangKy'])){
 		return false;
 	}
 	if($name!='' && $phone!='' && $noihoc!='' && $khoahoc!=''){
-		$c->_model->_webDangKyInsert($name, $email, $phone, $address, $khoahoc, $noihoc, $ipAddress);
+		$c->_model->_webDangKyInsert($name, $email, $phone, $address, $khoahoc, $noihoc, $message, $ipAddress);
 		echo 1;
 	}else echo 0;
 	return true;
@@ -246,6 +247,10 @@ if(isset($_POST['chat'])){
 }
 /*end web*/
 
+if(isset($_GET['translale'])){
+	include_once('view/web_translale.php');
+	return true;
+}
 
 
 //other  LINK: ajax/?updateData=1&table1=web_article2&table2=web_article
