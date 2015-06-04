@@ -95,6 +95,11 @@ echo '<form name="form_action" method="post" action="">
     $data = $cF->inputText($name, $value, 'input_medium', $properties);
 	echo $cF->displayTable('Nơi học', $data);
 	
+	$name = 'message';
+	if(!isset($_POST[$name])) $value=$rowDetail[$name]; else $value=$_POST[$name];
+    $data = $cF->textArea($name, $value, 'textarea');
+	echo $cF->displayTable('Lời nhắn', $data);
+	
 	/*$name = 'other';
 	$properties = array();
 	$properties[] = array('propertie'=>'maxlength', 'value'=>'50');

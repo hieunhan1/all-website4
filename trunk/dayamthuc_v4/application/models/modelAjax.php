@@ -63,9 +63,9 @@ class modelAjax extends modelDB{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
-	public function _webDangKyInsert($name, $email, $phone, $address, $khoahoc, $noihoc, $ipAddress){
+	public function _webDangKyInsert($name, $email, $phone, $address, $khoahoc, $noihoc, $message, $ipAddress){
 		$date = time();
-		$sql = "INSERT INTO `web_dangky_tructuyen` (`name`, `email`, `phone`, `address`, `khoahoc`, `noihoc`, `ip_address`, `datetime`) VALUES ('{$name}', '{$email}', '{$phone}', '{$address}', '{$khoahoc}', '{$noihoc}', '{$ipAddress}', '{$date}')";
+		$sql = "INSERT INTO `web_dangky_tructuyen` (`name`, `email`, `phone`, `address`, `khoahoc`, `noihoc`, `message`, `ip_address`, `datetime`) VALUES ('{$name}', '{$email}', '{$phone}', '{$address}', '{$khoahoc}', '{$noihoc}', '{$message}', '{$ipAddress}', '{$date}')";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}

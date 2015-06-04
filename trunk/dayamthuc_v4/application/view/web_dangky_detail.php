@@ -43,6 +43,10 @@ td{border-bottom:solid 1px #FFF}
     	<td class="label">Nơi học</td>
         <td><?php echo $row['noihoc']; ?></td>
     </tr>
+    <tr class="thongtin">
+    	<td class="label">Lời nhắn</td>
+        <td><?php echo $row['message']; ?></td>
+    </tr>
 </table>
 
 </body>
