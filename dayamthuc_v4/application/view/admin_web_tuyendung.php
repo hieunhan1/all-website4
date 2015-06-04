@@ -7,23 +7,22 @@ echo $c->viewFormSearch();
     	<tr bgcolor="#88C4FF">
         	<th width="50">STT</th>
             <th align="left">Mô tả</th>
-            <th width="120" align="left">Phone</th>
-            <th width="120">Nơi học</th>
-            <th width="120">Nhân viên</th>
-            <th width="120">Ngày đăng ký</th>
+            <th width="100">Nơi làm</th>
+            <th width="150">Mức lương</th>
+            <th width="120" align="left">Ngày đăng</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
+		$noilamviec = array('','Tp.HCM','Hà Nội','Huế','Đà Nẵng','Cần Thơ','Đồng Nai','Bình Dương','Nước ngoài','Khác');
 		$i = 0;
-		$data = $c->selectFromAll('', $arr, $table, "`{$table}`.`phone`, `{$table}`.`noihoc`, `{$table}`.`nhanvien_lienhe`, `{$table}`.`datetime`");
+		$data = $c->selectFromAll($lang, $arr, $table, "`{$table}`.`noilamviec`, `{$table}`.`mucluong`, `{$table}`.`datetime`");
 		foreach($data as $row){
 			$i++; ?>
             <tr class="row" id="<?php echo $row['id'];?>" name="<?php echo $row['name'];?>">
                 <td align="center"><?php echo $arr['startRow']+$i; ?></td>
                 <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
-                <td><p class="height_row_hidden"><?php echo $row['phone'];?></p></td>
-                <td align="center"><?php echo $row['noihoc'];?></td>
-                <td align="center"><?php echo $row['nhanvien_lienhe'];?></td>
+                <td align="center"><?php echo $noilamviec[$row['noilamviec']];?></td>
+                <td align="center"><?php echo $row['mucluong'];?></td>
                 <td><?php echo $c->viewDatetime($row['datetime']);?></p></td>
                 <td align="center">
                     <a href="javascript:;" class="status_one" status="<?php echo $row['status'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif';?>" /></a> &nbsp;

@@ -3,7 +3,8 @@ $cF = new controlAdminForm;
 
 $c->createEditData($table, $arrAction, $rowDetail);
 
-echo '<form name="form_action" method="post" action="">
+echo '<div id="tableName" style="display:none">'.$table.'</div>
+<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
 
 	$name = 'status';
@@ -41,7 +42,7 @@ echo '<form name="form_action" method="post" action="">
 	$properties[] = array('propertie'=>'style', 'value'=>'width:280px; margin-left:10px');
     $data .= $cF->inputText('', '', 'input_medium value_name', $properties);
 	$data .= '<input type="button" value="Tìm kiếm" class="value_search" style="color:#666; margin-left:5px; padding:2px 5px" />';
-	$data .= '<div id="value_view"></div>';
+	$data .= '<div id="value_view" table="web_article"></div>';
 	echo $cF->displayTable('Khóa học', $data);
 	
 	$name = 'name';

@@ -1,7 +1,7 @@
 <div class="clear1"></div><a name="formghidanh"></a>
 <div id="tab_khoahoc">
-	<span class="tab active" name="dangky">Ghi danh trực tuyến</span>
-	<span class="tab" name="khaigiang">Lịch khai giảng</span>
+	<span class="tabKH active" name="dangky">Ghi danh trực tuyến</span>
+	<span class="tabKH" name="khaigiang">Lịch khai giảng</span>
 </div>
 <div id="tab_dangky" style="display:block; clear:both">
 	<div id="contact">
@@ -66,8 +66,8 @@
 
 <script type="text/javascript">
 $(document).ready(function(e) {
-	$(".tab").click(function(){
-		$(".tab").removeClass("active");
+	$(".tabKH").click(function(){
+		$(".tabKH").removeClass("active");
 		$(this).addClass("active");
 		var tab = $(this).attr("name");
 		if(tab=="dangky"){

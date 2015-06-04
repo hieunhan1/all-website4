@@ -5,7 +5,8 @@ $c->createEditData($table, $arrAction, $rowDetail);
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';	
-	echo $cF->displayTable('Ngày liên hệ', $c->viewDatetime($rowDetail['datetime']));
+	
+	echo $cF->displayTable('Ngày liên hệ', '<p style="color:#00F; font-weight:bold; margin-top:3px">'.$c->viewDatetime($rowDetail['datetime']).'</p>' );
 	
 	$name = 'status';
 	$values = array();
@@ -18,6 +19,16 @@ echo '<form name="form_action" method="post" action="">
 	}else $valueCheck=$_POST[$name];
 	$data = $cF->inputRadio($name, $values, $valueCheck, 'radio');
 	echo $cF->displayTable('Trạng thái', $data);
+	
+	$name = 'nhanvien_lienhe';
+	$values = $c->_model->_listDanhSachNhanVien();
+	array_unshift($values, array('name'=>'-- chọn nhân viên --', 'id'=>''));
+	if(!isset($_POST[$name])){
+		$valueCheck=$rowDetail[$name];
+	}else $valueCheck=$_POST[$name];
+	$data = $cF->select($name, $values, $valueCheck, 'input_large', 1);
+	$data .= '<input type="button" id="sendmail" table="'.$table.'" value="Sendmail" style="color:#666; margin-left:5px; padding:3px 15px" /><p id="messageSendmail" class="message"></p>';
+	echo $cF->displayTable('Gửi đến nhân viên', $data);
 	
 	$name = 'name';
 	$properties = array();

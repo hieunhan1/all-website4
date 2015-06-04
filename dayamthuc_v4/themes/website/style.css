@@ -156,7 +156,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 
 /*tab detail*/
 #tab_khoahoc{clear:both; height:31px; line-height:30px; border-bottom:solid 5px #999}
-#tab_khoahoc .tab{width:auto; float:left; font-weight:bold; margin-right:7px; padding:0 20px; border:solid 1px #999; border-top-left-radius:5px; border-top-right-radius:5px; background-color:#EEE; cursor:pointer}
+#tab_khoahoc .tabKH{width:auto; float:left; font-weight:bold; margin-right:7px; padding:0 20px; border:solid 1px #999; border-top-left-radius:5px; border-top-right-radius:5px; background-color:#EEE; cursor:pointer}
 #tab_khoahoc .active{color:#333; border:solid 1px #999; background-color:#FF6}
 
 #tab_khaigiang{clear:both}
