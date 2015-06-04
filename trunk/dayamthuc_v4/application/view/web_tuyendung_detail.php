@@ -69,7 +69,7 @@
             </tr>
             <tr>
             	<td align="right" valign="top" style="border-right:dashed 1px #CCC; font-weight:bold; color:#F60">Hạn nộp hồ sơ:</td>
-            	<td style="font-weight:bold; color:#060; font-size:130%"><?php echo date('d/m/Y',strtotime($rowDetail['hannop'])); ?></td>
+            	<td style="font-weight:bold; color:#060; font-size:130%"><?php echo date('d/m/Y', $rowDetail['datetime_hannop']); ?></td>
             </tr>
         </table>
         <div id="other_post">

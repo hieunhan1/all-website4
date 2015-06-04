@@ -173,7 +173,7 @@ $(document).ready(function(e) {
 			cache:false,
 			success: function(data) {
 				if(data=='0') $(".messageUrl").html("");
-				else $(".messageUrl").html("Link này đã tồn tại, vui lòng nhập Alias khác.");;
+				else $(".messageUrl").html("Link này đã tồn tại, vui lòng nhập Alias khác.");
 			}
 		});
 		return true;
@@ -219,11 +219,11 @@ $(document).ready(function(e) {
 	checks_box_item('.checkboxAction', '.valueRuleAction');
 	
 	/*other*/
-	function khoahoc_name(id){
+	function searchID(id, table){
 		$.ajax({
 			url: url_link_ajax,
 			type:'POST',
-			data:{khoahoc_name:id},
+			data:{searchID:id, table:table},
 			cache:false,
 			success: function(data) {
 				if(data!='') $(".value_name").val(data);
@@ -232,11 +232,11 @@ $(document).ready(function(e) {
 			}
 		});
 	}
-	function khoahoc_search(name){
+	function searchName(name, table){
 		$.ajax({
 			url: url_link_ajax,
 			type:'POST',
-			data:{khoahoc_search:name},
+			data:{searchName:name, table:table},
 			cache:false,
 			success: function(data) {
 				if(data!='') $("#value_view").html(data);
@@ -247,14 +247,16 @@ $(document).ready(function(e) {
 	}
 	$(".value_id").blur(function(){
 		var id = $(this).val();
-		if(Number(id)) khoahoc_name(id);
-		else alert("Vui lòng nhập số");
+		var table = $("#value_view").attr("table");
+		if(Number(id)) searchID(id, table);
+		else if(id!='') alert("Vui lòng nhập số");
 		return true;
 	});
 	
 	$(".value_search").click(function(){
 		var name = $.trim($(".value_name").val());
-		if(name!='') khoahoc_search(name);
+		var table = $("#value_view").attr("table");
+		if(name!='') searchName(name, table);
 		return true;
 	});
 	$(".value_data").live("click", function(){
@@ -269,12 +271,13 @@ $(document).ready(function(e) {
 	/*sendmail*/
 	$("#sendmail").click(function(){
 		var id = $("#id").val();
-		var email = $("#nhanvien_lienhe").val();
+		var idNV = $("#nhanvien_lienhe").val();
+		var table = $(this).attr("table");
 		$(this).attr("disabled", true);
 		$.ajax({
 			url: url_link_ajax,
 			type:'POST',
-			data:{sendmailDK:email, id:id},
+			data:{sendmail:idNV, id:id, table:table},
 			cache:false,
 			success: function(data) {
 				$("#status2").attr("checked", true);

@@ -19,7 +19,7 @@
             <?php
 			$perPage = $config['limit_2'];
 			$startRow = ($currentPage-1)*$perPage;
-			$select = '`noilamviec`, `mucluong`, `hannop`';
+			$select = '`noilamviec`, `mucluong`, `datetime_hannop`';
 			$data = $c->_model->_listDataTable($table, $currentMenu['id'], $totalRows, $perPage, $startRow, $select);
 			$noilamviec = array('','Tp.HCM','Hà Nội','Huế','Đà Nẵng','Cần Thơ','Đồng Nai','Bình Dương','Nước ngoài','Khác');
 			$i=$startRow;
@@ -29,7 +29,7 @@
 				<td valign="top"><a href="'.$row['url'].'">'.$row['name'].'</a></td>
 				<td align="center" valign="top">'.$noilamviec[$row['noilamviec']].'</td>
 				<td align="center" valign="top">'.$row['mucluong'].'</td>
-				<td align="center" valign="top">'.date('d/m/Y', strtotime($row['hannop'])).'</td></tr>';
+				<td align="center" valign="top">'.date('d/m/Y', $row['datetime_hannop']).'</td></tr>';
 			}
 			?>
         </table>

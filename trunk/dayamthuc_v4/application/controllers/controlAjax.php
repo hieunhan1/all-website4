@@ -90,17 +90,19 @@ if(isset($_POST['ajaxNumberItem'])){
 	return true;
 }
 
-if(isset($_POST['khoahoc_name'])){
-	$id = $c->_model->_changeDauNhay($_POST['khoahoc_name']);
-	$sql = "SELECT `name` FROM `web_article` WHERE `status`=1 AND `id`='{$id}' LIMIT 1";
+if(isset($_POST['searchID'])){
+	$id = $c->_model->_changeDauNhay($_POST['searchID']);
+	$table = $c->_model->_changeDauNhay($_POST['table']);
+	$sql = "SELECT `name` FROM `{$table}` WHERE `status`=1 AND `id`='{$id}' LIMIT 1";
 	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
 	$row = $result->fetch_assoc();
 	echo $row['name'];
 	return true;
 }
-if(isset($_POST['khoahoc_search'])){
-	$name = $c->_model->_changeDauNhay($_POST['khoahoc_search']);
-	$sql = "SELECT `id`,`name` FROM `web_article` WHERE `status`=1 AND `name` LIKE '%{$name}%' LIMIT 10";
+if(isset($_POST['searchName'])){
+	$name = $c->_model->_changeDauNhay($_POST['searchName']);
+	$table = $c->_model->_changeDauNhay($_POST['table']);
+	$sql = "SELECT `id`,`name` FROM `{$table}` WHERE `status`=1 AND `name` LIKE '%{$name}%' LIMIT 10";
 	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
 	while($row = $result->fetch_assoc()){
 		echo '<p class="value_data" id="'.$row['id'].'">'.$row['name'].'</p>';
@@ -108,36 +110,48 @@ if(isset($_POST['khoahoc_search'])){
 	return true;
 }
 
-if(isset($_POST['sendmailDK'])){
-	$idDK = $c->_model->_changeDauNhay($_POST['id']);
-	$idNV = $c->_model->_changeDauNhay($_POST['sendmailDK']);
-	if($idDK=='' || $idNV==''){ echo 'Error'; return false; }
+if(isset($_POST['sendmail'])){
+	$id = $c->_model->_changeDauNhay($_POST['id']);
+	$idNV = $c->_model->_changeDauNhay($_POST['sendmail']);
+	$table = $c->_model->_changeDauNhay($_POST['table']);
+	if($id=='' || $idNV==''){ echo 'Error'; return false; }
 	
 	$sql = "SELECT `id`,`name`,`email` FROM `web_dangky_nhanvien` WHERE `status`=1 AND `id`='{$idNV}' LIMIT 1";
 	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
 	$row = $result->fetch_assoc();
 	if(!isset($row['id'])){ echo 'Không tìm thấy người gửi'; return false; }
 	
-	$sql = "SELECT `id`, `name`, `khoahoc`, `noihoc` FROM `web_dangky_tructuyen` WHERE `id`='{$idDK}' LIMIT 1";
+	$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}' LIMIT 1";
 	if(!$result = $c->_model->db->query($sql)) die($c->_model->db->error);
 	$row2 = $result->fetch_assoc();
-	if(!isset($row2['id'])){ echo 'Không tìm thấy người đăng ký'; return false; }
+	if(!isset($row2['id'])){ echo 'Không tìm thấy thông tin người liên hệ'; return false; }
 	
 	$date = time();
 	$sql = "UPDATE `web_dangky_nhanvien` SET `datetime`='{$date}' WHERE `id`='{$row['id']}' LIMIT 1";
 	if(!$c->_model->db->query($sql)) die($c->_model->db->error);
-	$sql = "UPDATE `web_dangky_tructuyen` SET `status`='2', `nhanvien_lienhe`='{$row['id']}' WHERE `id`='{$row2['id']}' LIMIT 1";
+	$sql = "UPDATE `{$table}` SET `status`='2', `nhanvien_lienhe`='{$row['id']}' WHERE `id`='{$row2['id']}' LIMIT 1";
 	if(!$c->_model->db->query($sql)) die($c->_model->db->error);
 	
-	$title = $row2['name'];
-	$subject = 'No-reply | Đăng ký học: '.$row2['khoahoc'];
-	$body = '<div style="line-height:20px; color:#333; font-size:12pt">
-		<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
-		<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> đăng ký học.</p>
-		<p style="margin-bottom:20px">Tên khóa học: '.$row2['khoahoc'].'</p>
-		<p style="margin-bottom:20px">Tại cơ sở: '.$row2['noihoc'].'</p>
-		<p style="font-weight:bold; font-style:italic">Thông tin học viên: <a href="'.CONS_BASE_URL.'/ajax/?idDangKy='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
-	</div>';
+	if($table=='web_dangky_tructuyen'){
+		$title = $row2['name'];
+		$subject = 'No-reply | Đăng ký học: '.$row2['khoahoc'];
+		$body = '<div style="line-height:20px; color:#333; font-size:12pt">
+			<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
+			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> đăng ký học.</p>
+			<p style="margin-bottom:20px">Tên khóa học: '.$row2['khoahoc'].'</p>
+			<p style="margin-bottom:20px">Tại cơ sở: '.$row2['noihoc'].'</p>
+			<p style="font-weight:bold; font-style:italic">Thông tin học viên: <a href="'.CONS_BASE_URL.'/ajax/?idDangKy='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
+		</div>';
+	}else{
+		$title = $row2['name'];
+		$subject = 'No-reply | Contact';
+		$body = '<div style="line-height:20px; color:#333; font-size:12pt">
+			<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
+			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> để lại lời nhắn sau:</p>
+			<p style="color:#666; margin-bottom:20px">'.$row2['message'].'</p>
+			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
+		</div>';
+	}
 	$add_address = array();
 	$add_address[] = array('email'=>$row['email'], 'name'=>$row['name']);
 	$add_cc = array();
@@ -180,21 +194,6 @@ if(isset($_POST['webContact'])){
 	}
 	if($name!='' && $email!='' && $phone!='' && $message!=''){
 		$idContact = $c->_model->_webContactInsert($name, $email, $phone, $address, $message, $ipAddress);
-		$title = $name;
-		$subject = 'No-reply | Contact';
-		$body = '<div style="line-height:20px; color:#333; font-size:12pt">
-			<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
-			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$name.'</span> để lại lời nhắn sau:</p>
-			<p style="color:#666; margin-bottom:20px">'.$message.'</p>
-			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$idContact.'&name='.$name.'">Click vào đây để xem thông tin</a></p>
-		</div>';
-		$add_address = array();
-		$add_address[] = array('email'=>$config['email'], 'name'=>'Admin');
-		/*$add_cc = array();
-		$add_cc[] = array('email'=>'hieunhan112@gmail.com','name'=>'Tran Nhan');
-		$add_bcc = array();
-		$add_bcc[] = array('email'=>'tanhao.lee@gmail.com','name'=>'Hao Le');*/
-		$c->sendmail($title, $subject, $body, $add_address);
 	}else echo 0;
 	return true;
 }
@@ -204,8 +203,11 @@ if(isset($_GET['idContact'])){ //view detail contact
 	$name = $c->_model->_changeDauNhay($_GET['name']);
 	$table = 'web_contact';
 	$row = $c->_model->_viewDetail($table, $id, $name);
+	
+	if($_GET['idNV']!=$row['nhanvien_lienhe']) return false;
+	
 	include_once('view/web_contact_detail.php');
-	if($row['status']==0) $c->_model->_updateStatus($table, $id);
+	if($row['status']==2) $c->_model->_updateStatus($table, $id);
 	return true;
 }
 if(isset($_POST['google_map'])){
@@ -370,7 +372,13 @@ if($_GET['updateData']==4){
 		$sql = "UPDATE `{$table}` SET `url`='{$url}' WHERE `id`='{$id}' LIMIT 1";
 		$c->_model->db->query($sql);*/
 		
-		echo $row['name'].'<br />';
+		$dateUpdate = $row['hannop'];
+		$strtotime = strtotime($dateUpdate);
+		$datetime = date('Y-m-d H:i:s', $strtotime);
+		/*$sql = "UPDATE `{$table}` SET `datetime_hannop`='{$strtotime}' WHERE `id`='{$id}' LIMIT 1";
+		$c->_model->db->query($sql);*/
+		
+		echo $row['name'].' | '.$dateUpdate.' | '.$strtotime.' | '.$datetime.' | '.'<br />';
 	}
 }
 
