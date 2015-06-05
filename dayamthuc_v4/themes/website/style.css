@@ -197,7 +197,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #support .info .itemInfo .tel{color:#00F; font-weight:bold; font-size:120%}
 #support .info .itemInfo .hotline{color:#F30; font-weight:bold; font-size:120%}
 #support .info .hidden{display:none}
-#support #chat{text-align:center; text-decoration:underline; font-weight:bold; color:#F0F; padding-top:10px; cursor:pointer}
+#support #chat{text-align:center; text-decoration:underline; font-weight:bold; color:#F0C; padding-top:10px; cursor:pointer; background-position:48px -590px}
 
 /*contact*/
 #contact{clear:both}

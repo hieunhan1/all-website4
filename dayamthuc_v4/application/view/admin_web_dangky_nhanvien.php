@@ -6,6 +6,7 @@ echo $c->viewFormSearch();
 	<table width="100%" border="0" cellpadding="0" cellspacing="0" id="view_select">
     	<tr bgcolor="#88C4FF">
         	<th width="50">STT</th>
+        	<th width="80">ID</th>
             <th align="left">Mô tả</th>
             <th width="500" align="left">Email</th>
             <th width="90">Thao tác</th>
@@ -17,6 +18,7 @@ echo $c->viewFormSearch();
 			$i++; ?>
             <tr class="row" id="<?php echo $row['id'];?>" name="<?php echo $row['name'];?>">
                 <td align="center"><?php echo $arr['startRow']+$i; ?></td>
+                <td align="center"><?php echo $row['id'];?></td>
                 <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
                 <td><?php echo $row['email'];?></td>
                 <td align="center">
