@@ -140,7 +140,7 @@ if(isset($_POST['sendmail'])){
 			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> đăng ký học.</p>
 			<p style="margin-bottom:20px">Tên khóa học: '.$row2['khoahoc'].'</p>
 			<p style="margin-bottom:20px">Tại cơ sở: '.$row2['noihoc'].'</p>
-			<p style="font-weight:bold; font-style:italic">Thông tin học viên: <a href="'.CONS_BASE_URL.'/ajax/?idDangKy='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
+			<p style="font-weight:bold; font-style:italic">Thông tin học viên: <a href="'.CONS_BASE_URL.'/ajax/?idDangKy='.$row2['id'].'&idNV='.$row['id'].'">Click vào đây để xem thông tin</a></p>
 		</div>';
 	}else{
 		$title = $row2['name'];
@@ -149,25 +149,25 @@ if(isset($_POST['sendmail'])){
 			<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
 			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$row2['name'].'</span> để lại lời nhắn sau:</p>
 			<p style="color:#666; margin-bottom:20px">'.$row2['message'].'</p>
-			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$row2['id'].'&idNV='.$row['id'].'&name='.$row2['name'].'">Click vào đây để xem thông tin</a></p>
+			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$row2['id'].'&idNV='.$row['id'].'">Click vào đây để xem thông tin</a></p>
 		</div>';
 	}
 	$add_address = array();
 	$add_address[] = array('email'=>$row['email'], 'name'=>$row['name']);
 	$add_cc = array();
-	if($row['id']<>5 && $row['id']<>6 && $row['id']<>7){
-		//$add_cc[] = array('email'=>'ceo@netspace.edu.vn', 'name'=>'Nguyễn Quốc Y');
+	if(!($row['id']>=4 && $row['id']<=8)){
+		$add_cc[] = array('email'=>'ceo@netspace.edu.vn', 'name'=>'Nguyễn Quốc Y');
 	}
-	
-	$c->sendmail($title, $subject, $body, $add_address, $add_cc);
+	$add_bcc = array();
+	$add_bcc[] = array('email'=>'temp@dayamthuc.vn', 'name'=>'Temp');
+	$c->sendmail($title, $subject, $body, $add_address, $add_cc, $add_bcc);
 	return true;
 }
 if(isset($_GET['idDangKy'])){ //view detail contact
-	if(!isset($_GET['idNV']) || !isset($_GET['name'])) return false;
+	if(!isset($_GET['idNV'])) return false;
 	$id = $c->_model->_changeDauNhay($_GET['idDangKy']);
-	$name = $c->_model->_changeDauNhay($_GET['name']);
 	$table = 'web_dangky_tructuyen';
-	$row = $c->_model->_viewDetail($table, $id, $name);
+	$row = $c->_model->_viewDetail($table, $id);
 	
 	if($_GET['idNV']!=$row['nhanvien_lienhe']) return false;
 	
@@ -198,11 +198,10 @@ if(isset($_POST['webContact'])){
 	return true;
 }
 if(isset($_GET['idContact'])){ //view detail contact
-	if(!isset($_GET['idContact']) || !isset($_GET['name'])) return false;
+	if(!isset($_GET['idNV'])) return false;
 	$id = $c->_model->_changeDauNhay($_GET['idContact']);
-	$name = $c->_model->_changeDauNhay($_GET['name']);
 	$table = 'web_contact';
-	$row = $c->_model->_viewDetail($table, $id, $name);
+	$row = $c->_model->_viewDetail($table, $id);
 	
 	if($_GET['idNV']!=$row['nhanvien_lienhe']) return false;
 	
