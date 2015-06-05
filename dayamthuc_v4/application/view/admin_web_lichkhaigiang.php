@@ -13,18 +13,20 @@ echo $c->viewFormSearch($otherSearch);
         	<th width="50">STT</th>
             <th align="left">Mô tả</th>
             <th width="260" align="left">Khai giảng</th>
+            <th width="100">Khóa học ID</th>
             <th width="100">Thứ tự</th>
             <th width="90">Thao tác</th>
         </tr>
         <?php
 		$i = 0;
-		$data = $c->selectFromAll($lang, $arr, $table, "`{$table}`.`khaigiang`, `{$table}`.`order`", "`{$table}`.`order`");
+		$data = $c->selectFromAll($lang, $arr, $table, "`{$table}`.`khaigiang`, `{$table}`.`order`, `{$table}`.`article_id`", "`{$table}`.`order`");
 		foreach($data as $row){
 			$i++; ?>
             <tr class="row" id="<?php echo $row['id'];?>" name="<?php echo $row['name'];?>">
                 <td align="center"><?php echo $arr['startRow']+$i; ?></td>
                 <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
                 <td><p class="height_row_hidden"><?php echo $row['khaigiang'];?></p></td>
+                <td align="center"><?php echo $row['article_id'];?></td>
                 <td align="center"><?php echo $row['order'];?></td>
                 <td align="center">
                     <a href="javascript:;" class="status_one" status="<?php echo $row['status'];?>"><img src="<?php echo CONS_ADMIN_CSS_IMG.'anhien_'.$row['status'].'.gif';?>" /></a> &nbsp;
