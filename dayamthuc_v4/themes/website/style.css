@@ -146,9 +146,9 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #homeType3 .box .viewmore{width:110px; height:42px; line-height:42px; text-align:center; text-transform:uppercase; font-weight:bold; font-size:110%; position:absolute; margin:-20px 0 0 100px; background-position:50% -300px}
 #homeType3 .box .viewmore a{display:block; color:#FFF}
 
-#homeType4{clear:both; height:390px}
+#homeType4{clear:both; height:auto; margin-bottom:40px}
 #homeType4 .title{height:50px; color:#FFF; font-weight:100; font-size:150%; text-align:center; text-transform:uppercase; letter-spacing:1px; word-spacing:1px; margin-bottom:10px; padding-top:20px; background-position:50% -450px}
-#homeType4 .img{height:250px; overflow:hidden}
+#homeType4 .img{clear:both}
 
 #homeType5{clear:both; height:390px}
 #homeType5 .title{height:50px; color:#FFF; font-weight:100; font-size:150%; text-align:center; text-transform:uppercase; letter-spacing:1px; word-spacing:1px; margin-bottom:10px; padding-top:20px; background-position:50% -450px}
