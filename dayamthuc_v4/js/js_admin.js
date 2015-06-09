@@ -132,6 +132,10 @@ $(document).ready(function(e) {
 	$("#changeUser").click(function(){
 		$("#username").attr("disabled", false);
 	});
+	/*resetPass*/
+	$("#resetPass").click(function(){
+		$("#password").attr("disabled", false);
+	});
 	
 	/*biến đổi alias*/
 	function name_alias(dest, source){
