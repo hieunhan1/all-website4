@@ -18,13 +18,13 @@ class modelAdmin extends modelDB{
 			return FALSE;
 		}
 	}
-	public function _checkUser($u,$p){
+	public function _checkUser($u, $p){
 		$p = md5($p);
 		$sql = "SELECT `id` FROM `web_users` WHERE `username`='{$u}' AND `password`='{$p}' AND `status`=1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		if($result->num_rows==1) return TRUE; else return FALSE;
 	}
-	public function _changePassword($u,$p){
+	public function _changePassword($u, $p){
 		$p = md5($p);
 		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `username`='{$u}' ";
 		$this->db->query($sql);
