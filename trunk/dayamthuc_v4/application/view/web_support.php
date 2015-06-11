@@ -19,8 +19,8 @@
 		}
 		echo $str1.'<div class="clear10"></div>'.$str2;
 		?>
-        <div id="chat" class="allIcon">Chat với chúng tôi!</div>
-        <div id="ajaxChat"></div>
+        <!--<div id="chat" class="allIcon">Chat với chúng tôi!</div>
+        <div id="ajaxChat"></div>-->
     </div>
 </div>
 

@@ -5,7 +5,7 @@
             $parent=0; $position=1;
             $data = $c->_model->_listMenu($lang, $parent, $position);
             foreach($data as $row){
-				if($currentMenu['rootId']!=$row['id']) $style=''; else $style='style="color:#00F"';
+				if($currentMenu['rootId']!=$row['id']) $style=''; else $style='style="color:#FFF"';
 				$data2 = $c->_model->_listMenu($lang, $row['id'], $position); //print_r($data2);
 				if(count($data2)>0){
 					$str='<ul>';
@@ -27,11 +27,13 @@
     </div>
 </div>
 
-<div id="header" class="content">
+<div id="header" >
+<div class="content">
 	<?php
     if($lang==CONS_DEFAULT_LANG) $link=CONS_BASE_URL;
 	else $link=CONS_BASE_URL.'/?lang='.$lang;
 	?>
-	<a href="<?php echo $link;?>" title="<?php echo $config['sitename'];?>"><img src="themes/website/img/logo.png" id="logo" alt="<?php echo $config['sitename'];?>" /></a>
+	<a href="<?php echo $link;?>" title="<?php echo $config['sitename'];?>"><img src="themes/website/img/logo-2.png" id="logo" alt="<?php echo $config['sitename'];?>" /></a>
     <?php include_once('web_menu.php');?>
+</div>
 </div>

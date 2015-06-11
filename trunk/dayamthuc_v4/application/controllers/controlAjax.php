@@ -155,9 +155,7 @@ if(isset($_POST['sendmail'])){
 	$add_address = array();
 	$add_address[] = array('email'=>$row['email'], 'name'=>$row['name']);
 	$add_cc = array();
-	if(!($row['id']>=4 && $row['id']<=8)){
-		$add_cc[] = array('email'=>'ceo@netspace.edu.vn', 'name'=>'Nguyễn Quốc Y');
-	}
+	$add_cc[] = array('email'=>'ceo@netspace.edu.vn', 'name'=>'Nguyễn Quốc Y');
 	$add_bcc = array();
 	$add_bcc[] = array('email'=>'temp@dayamthuc.vn', 'name'=>'Temp');
 	$c->sendmail($title, $subject, $body, $add_address, $add_cc, $add_bcc);
