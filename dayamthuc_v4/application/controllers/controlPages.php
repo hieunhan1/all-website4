@@ -69,7 +69,7 @@ class controlPages{
 			if($i!=1)
 				$str.='<span>&gt;&gt;</span><a href="'.$row['url'].'" title="'.$row['title'].'">'.$row['name'].'</a>';
 			else
-				$str.='<a href="/" id="menuHome" class="allIcon">&nbsp;</a>';
+				$str.='<a href="/" id="iconHome" class="allIcon">&nbsp;</a>';
 		}
 		$str.='</div>';
 		return $str;

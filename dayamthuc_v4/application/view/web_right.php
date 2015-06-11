@@ -24,6 +24,10 @@
 	}
 	echo '<div class="box2">'.$title.$str.'</div>';
 	
+	echo '<div class="box">';
+	include_once('web_support.php');
+	echo '</div>';
+	
 	if(isset($config['facebook']))
 		echo '<div class="box">
 			<div id="fb-root"></div>

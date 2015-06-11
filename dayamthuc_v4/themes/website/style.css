@@ -31,7 +31,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .content{width:980px; margin:auto}
 
 .viewpost{line-height:180%; font-size:100%; padding-bottom:20px}
-.viewpost h1{font-size:150%; line-height:140%; margin-bottom:20px; padding-bottom:10px; border-bottom:dotted 5px #CCC}
+.viewpost h1{color:#ed3136; font-size:150%; line-height:140%; margin-bottom:20px; padding-bottom:10px; border-bottom:dotted 5px #CCC}
 .viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
 .viewpost li{padding:0; margin:5px 0 5px 35px}
@@ -54,6 +54,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #other_post .link{padding-left:18px; background:url(img/other_post.gif) no-repeat left}
 
 #navigator{clear:both; padding:40px 0px 25px 0}
+#navigator #iconHome{background-position:-80px 0px}
 #navigator a{padding-right:15px; font-size:12px; color:#888}
 #navigator a:hover{color:#333; text-decoration:none}
 #navigator span{font-size:9px; color:#999; padding-right:5px}
@@ -64,26 +65,26 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #phantrang span{margin-right:3px; padding:5px 10px; text-align:center; background-color:#E18B05; color:#FFF}
 
 /*top*/
-#top{height:20px; line-height:20px; font-size:90%; padding:2px 0; border-bottom:solid 1px #CCC}
+#top{height:16px; line-height:16px; font-size:90%; padding:6px 0; background-color:#460404}
 #top #lang{width:auto; float:right}
 #top #lang a{ padding:1px 12px}
 #top #search{width:auto; margin-left:25px; padding-left:20px; float:right}
-#top #search input{width:100px; font-size:90%; padding:3px; border:none}
+#top #search input{width:100px; font-size:90%; padding:3px; border:none; background:none}
 
 /*#top #menuTop{width:auto; float:left}
 #top #menuTop a{color:#666; padding:0 7px; border-right:solid 1px #CCC}*/
 
 #menuTop, #menuTop ul {list-style:none; width:auto; float:left; position:relative; z-index:21; margin:0; padding:0}
 #menuTop a:link, #menuTop a:active, #menuTop a:visited {display:block; background-color:none; text-decoration:none}
-#menuTop li a {display:block; color:#000; padding:0 7px; border-right:solid 1px #CCC}
-#menuTop a:hover {color:#F00}
+#menuTop li a {display:block; color:#ffb402; padding:0 7px; border-right:solid 1px #5d2f2f}
+#menuTop a:hover {color:#FF0}
 #menuTop li {float:left; position:relative}
-#menuTop ul {position:absolute; width:200px; top:20px; display:none}
+#menuTop ul {position:absolute; width:200px; top:16px; display:none}
 #menuTop li ul a {width:180px; float:left; line-height:25px; color:#FFF; text-transform:none; font-weight:normal; padding:0 10px; background-color:#999; border-bottom:solid 1px #CCC}
 #menuTop li ul a:hover {color:#FF0}
 
 /*header*/
-#header{height:55px; padding:10px 0; position:relative; z-index:15; background-color:#FFF}
+#header{height:55px; padding:10px 0; position:relative; z-index:15; background-color:#6f0808}
 #header #logo{width:auto; height:55px; float:left}
 
 /*slider*/
@@ -186,16 +187,16 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #tuyendung_content td, #tuyendung_content th{padding:10px 5px; border-bottom:dashed 1px #CCC}
 
 /*support*/
-#support{width:300px; position:fixed; right:10px; bottom:0; overflow:hidden; background-color:#FFF; border:solid 1px #BBB; border-bottom:none; border-top-left-radius:5px; border-top-right-radius:5px; z-index:20}
-#support .title{text-transform:uppercase; padding:12px 10px 8px 45px; color:#FFF; font-weight:bold; background-position:10px -545px; background-color:#F90; cursor:pointer}
-#support .title span{margin-left:50px; padding:0 5px; background:url(img/icon-service.png) no-repeat; background-position:0 1px}
+#support{border:solid 1px #AAA}
+#support .title{font-size:100%; text-transform:uppercase; padding:12px 10px 8px 40px; color:#FFF; font-weight:bold; background-position:10px -545px; border:none; background-color:#F90; cursor:pointer}
+#support .title span{margin-left:40px; padding:0 5px; background:url(img/icon-service.png) no-repeat; background-position:0 1px}
 #support .title .tru{background-position:0px -49px}
 #support .info{padding:5px 15px 15px 15px}
-#support .info .tab{width:auto; float:left; color:#333; margin:5px; padding:4px 10px; border:solid 1px #999; background-color:#EEE; cursor:pointer}
+#support .info .tab{width:auto; float:left; color:#333; margin:5px 2px; padding:4px 6px; border:solid 1px #999; background-color:#EEE; cursor:pointer}
 #support .info .active{background-color:#FF6; color:#000; border:solid 1px #666}
 #support .info .itemInfo{line-height:140%; text-align:center}
 #support .info .itemInfo .tel{color:#00F; font-weight:bold; font-size:120%}
-#support .info .itemInfo .hotline{color:#F30; font-weight:bold; font-size:120%}
+#support .info .itemInfo .hotline{color:#F30; font-weight:bold; font-size:110%}
 #support .info .hidden{display:none}
 #support #chat{text-align:center; text-decoration:underline; font-weight:bold; color:#F0C; padding-top:10px; cursor:pointer; background-position:48px -590px}
 
@@ -216,14 +217,14 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 /*menu*/
 #menu{width:auto; float:right; margin-top:20px}
 #menuHome{padding:0 15px !important; border:none !important; background-position:10px -120px !important}
-#menuActive{padding-bottom:5px; border-bottom:solid 2px #F00; background-position:50% -142px}
+#menuActive{padding-bottom:5px; border-bottom:solid 2px #ffcc00; background-position:50% -142px}
 #nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
-#nav li a {color:#333; line-height:16px; font-size:90%; font-weight:bold; text-transform:uppercase; padding:0 10px; border-left:solid 1px #CCC}
-#nav a:hover {color:#F00}
+#nav li a {color:#ffcc00; line-height:16px; font-size:90%; font-weight:bold; text-transform:uppercase; padding:0 10px}
+#nav a:hover {color:#FFF}
 #nav li {float:left; position:relative}
 #nav ul {position:absolute; width:200px; top:16px; display:none}
-#nav li ul a {width:180px; float:left; line-height:25px; color:#FFF; text-transform:none; font-weight:normal; padding:0 10px; background-color:#ed3136; border-bottom:solid 1px #f16366; border-right:solid 1px #f16366}
+#nav li ul a {width:180px; float:left; line-height:25px; color:#FFF; text-transform:none; font-weight:normal; padding:0 10px; background-color:#6a0606; border-bottom:solid 1px #860606; border-right:solid 1px #860606; border-left:solid 1px #860606}
 #nav li ul a:hover {color:#FF0}
 #nav ul ul {top:auto}
 #nav li ul ul {left:200px}
