@@ -2,7 +2,7 @@
 define('CONS_LOGIN_FAILED','Tên đăng nhập hoặc mật khẩu sai');
 
 define('CONS_MESSAGE_CHANGE_PASS_1',' - Mật khẩu mới và mật khẩu nhắc lại không khớp.<br />');
-define('CONS_MESSAGE_CHANGE_PASS_2',' - Mật khẩu mới phải bé hơn 20 ký tự <br />');
+define('CONS_MESSAGE_CHANGE_PASS_2',' - Mật khẩu mới phải bé hơn 32 ký tự <br />');
 define('CONS_MESSAGE_CHANGE_PASS_3',' - Mật khẩu mới phải 6 ký tự trở lên <br />');
 define('CONS_MESSAGE_CHANGE_PASS_4',' - Mật khẩu phải chứa ít nhất 1 ký tự <strong>SỐ</strong> <br />');
 define('CONS_MESSAGE_CHANGE_PASS_5',' - Mật khẩu phải chứa ít nhất 1 ký tự <strong>THƯỜNG</strong> <br />');

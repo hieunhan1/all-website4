@@ -114,7 +114,7 @@ if(isset($_POST['webContact'])){
 			<h3 style="font-size:150%; margin-bottom:20px">Chào ban quản trị website.</h3>
 			<p>Bạn  <span style="text-transform:uppercase; font-weight:bold">'.$name.'</span> để lại lời nhắn sau:</p>
 			<p style="color:#666; margin-bottom:20px">'.$message.'</p>
-			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$idContact.'&name='.$name.'">Click vào đây để xem thông tin</a></p>
+			<p style="font-weight:bold; font-style:italic">Thông tin người liên hệ: <a href="'.CONS_BASE_URL.'/ajax/?idContact='.$idContact.'&ipAddress='.$ipAddress.'">Click vào đây để xem thông tin</a></p>
 		</div>';
 		$add_address = array();
 		$add_address[] = array('email'=>$config['email'], 'name'=>'Admin');
@@ -127,11 +127,11 @@ if(isset($_POST['webContact'])){
 	return true;
 }
 if(isset($_GET['idContact'])){ //view detail contact
-	if(!isset($_GET['idContact']) || !isset($_GET['name'])) return false;
+	if(!isset($_GET['ipAddress'])) return false;
 	$id = $c->_model->_changeDauNhay($_GET['idContact']);
-	$name = $c->_model->_changeDauNhay($_GET['name']);
+	$ipAddress = $c->_model->_changeDauNhay($_GET['ipAddress']);
 	$table = 'web_contact';
-	$row = $c->_model->_viewDetail($table, $id, $name);
+	$row = $c->_model->_viewDetail($table, $id, $ipAddress);
 	include_once('view/web_contact_detail.php');
 	if($row['status']==0) $c->_model->_updateStatus($table, $id);
 	return true;
