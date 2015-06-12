@@ -9,7 +9,7 @@ if(count($data)>0){
 	<div class="slider-wrapper theme-default"><div id="slider_run" class="nivoSlider">
 		<?php
         foreach($data as $row){
-            echo '<a href="'.$row['url'].'"><img src="'.$urlImg[12]['url_img'].$row['img'].'" data-thumb="'.$urlImg[12]['url_img_thumb'].$row['img'].'" alt="'.$row['name'].'" title="" data-transition="slideInLeft" /></a>';
+            echo '<a href="'.$row['url'].'"><img src="'.$urlImg[12]['url_img'].$row['img'].'" data-thumb="'.$urlImg[12]['url_img_thumb'].$row['img'].'" alt="'.$row['name'].'" title="<p>'.$row['name'].'</p>'.$row['info'].'" data-transition="slideInLeft" /></a>';
         }
         ?>
     </div></div>
