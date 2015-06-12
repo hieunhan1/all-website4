@@ -50,6 +50,40 @@ class controlAdmin{
 		header("location: ".CONS_BASE_URL.'/'.CONS_DEFAULT_ADMIN_CONTROLLER.'/');
 		return true;
 	}
+	public function changePassword(){
+		$error='';
+		$password = $this->_model->_changeDauNhay($_POST['password']);
+		$password_new = $this->_model->_changeDauNhay($_POST['password_new']);
+		$password_repeat = $this->_model->_changeDauNhay($_POST['password_repeat']);
+		if($password=='' || $password_new=='' || $password_repeat=='') return false;
+		if($password_new!=$password_repeat) $error.=CONS_MESSAGE_CHANGE_PASS_1;
+		if( strlen($password_new) > 32 ) $error.=CONS_MESSAGE_CHANGE_PASS_2;
+		if( strlen($password_new) < 6 ) $error.=CONS_MESSAGE_CHANGE_PASS_3;   
+		/*
+		//Mat khau kho
+		if( !preg_match("#[0-9]+#", $password_new) ) $error.=CONS_MESSAGE_CHANGE_PASS_4;  
+		if( !preg_match("#[a-z]+#", $password_new) ) $error.=CONS_MESSAGE_CHANGE_PASS_5;   
+		if( !preg_match("#[A-Z]+#", $password_new) ) $error.=CONS_MESSAGE_CHANGE_PASS_6;
+		*/
+		if($error!=''){
+			return '<p class="error">'.CONS_MESSAGE_CHANGE_PASS_7.'</p> <p class="error">'.$error.'</p>';
+		}else{
+			$result = $this->_model->_checkUser($_SESSION['adminUser'], $password);
+			if($result != true){
+				return '<p class="error">'.CONS_MESSAGE_CHANGE_PASS_8.'</p>';
+			}else{
+				$this->_model->_changePassword($_SESSION['adminUser'], $password_new);
+				return '<p class="message">'.CONS_MESSAGE_CHANGE_PASS_9.'</p>';
+			}
+		}
+	}
+	public function resetPassword(){
+		$id_user_reset = $_GET['id_u'];
+		settype($id_user_reset,"int");
+		$pass_default = CONS_ADMIN_PASSWORD_DEFAULT;
+		if($this->_user=='admin') $this->_model->_reset_password($id_user_reset, $pass_default);
+		else return FALSE;
+	}
 	
 	public function navigator($url){
 		return $this->_model->_navigator($url);

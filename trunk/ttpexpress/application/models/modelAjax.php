@@ -46,8 +46,8 @@ class modelAjax extends modelDB{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}
-	public function _viewDetail($table, $id, $name){
-		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}' AND `name`='{$name}' LIMIT 1";
+	public function _viewDetail($table, $id, $ipAddress){
+		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}' AND `ip_address`='{$ipAddress}' LIMIT 1";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $result->fetch_assoc();
 	}

@@ -55,6 +55,7 @@ $(document).ready(function(e) {
 		});
 		return true;
 	}
+	ajax_number_item("web_dangky_tructuyen");
 	ajax_number_item("web_contact");
 	/*end ajax_number_item*/
 	
@@ -131,6 +132,10 @@ $(document).ready(function(e) {
 	$("#changeUser").click(function(){
 		$("#username").attr("disabled", false);
 	});
+	/*resetPass*/
+	$("#resetPass").click(function(){
+		$("#password").attr("disabled", false);
+	});
 	
 	/*biến đổi alias*/
 	function name_alias(dest, source){
@@ -172,7 +177,7 @@ $(document).ready(function(e) {
 			cache:false,
 			success: function(data) {
 				if(data=='0') $(".messageUrl").html("");
-				else $(".messageUrl").html("Link này đã tồn tại, vui lòng nhập Alias khác.");;
+				else $(".messageUrl").html("Link này đã tồn tại, vui lòng nhập Alias khác.");
 			}
 		});
 		return true;
@@ -216,4 +221,73 @@ $(document).ready(function(e) {
 	checks_box_item('.checkboxItem', '.valueChecksBox'); //class, id
 	checks_box_item('.checkboxView', '.valueRuleView');
 	checks_box_item('.checkboxAction', '.valueRuleAction');
+	
+	/*other*/
+	function searchID(id, table){
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{searchID:id, table:table},
+			cache:false,
+			success: function(data) {
+				if(data!='') $(".value_name").val(data);
+				else alert("Không tìm thấy dữ liệu");
+				return true;
+			}
+		});
+	}
+	function searchName(name, table){
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{searchName:name, table:table},
+			cache:false,
+			success: function(data) {
+				if(data!='') $("#value_view").html(data);
+				else alert("Không tìm thấy dữ liệu");
+				return true;
+			}
+		});
+	}
+	$(".value_id").blur(function(){
+		var id = $(this).val();
+		var table = $("#value_view").attr("table");
+		if(Number(id)) searchID(id, table);
+		else if(id!='') alert("Vui lòng nhập số");
+		return true;
+	});
+	
+	$(".value_search").click(function(){
+		var name = $.trim($(".value_name").val());
+		var table = $("#value_view").attr("table");
+		if(name!='') searchName(name, table);
+		return true;
+	});
+	$(".value_data").live("click", function(){
+		var id = $(this).attr("id");
+		var name = $(this).html();
+		$(".value_id").val(id);
+		$(".value_name").val(name);
+		$(".value_data").hide(100);
+		return true;
+	});
+	
+	/*sendmail*/
+	$("#sendmail").click(function(){
+		var id = $("#id").val();
+		var idNV = $("#nhanvien_lienhe").val();
+		var table = $(this).attr("table");
+		$(this).attr("disabled", true);
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{sendmail:idNV, id:id, table:table},
+			cache:false,
+			success: function(data) {
+				$("#status2").attr("checked", true);
+				$("#messageSendmail").html(data);
+				return true;
+			}
+		});
+	});
 });

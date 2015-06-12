@@ -37,6 +37,21 @@ echo '<form name="form_action" method="post" action="">
 	$data = $cF->inputText($name, $value, 'input_medium', $properties, $others);
 	echo $cF->displayTable('Username', $data);
 	
+	if($id==0){
+		$name = 'password';
+		$value = md5(CONS_ADMIN_PASSWORD_DEFAULT);
+		$data = $cF->inputHidden($name, $value);
+		echo $data;
+	}else{
+		$name = 'password';
+		$properties = array();
+		$properties[] = array('propertie'=>'readonly', 'value'=>'readonly');
+		$properties[] = $arrAction['disabled'];
+		$value = md5(CONS_ADMIN_PASSWORD_DEFAULT);
+		$data = $cF->inputText($name, $value, 'input_medium', $properties);
+		echo $cF->displayTable('Reset pass', $data.'<a href="javascript:;" id="resetPass" class="change">Reset</a>');
+	}
+	
 	$name = 'name';
 	$properties = array();
 	$properties[] = array('propertie'=>'maxlength', 'value'=>'100');
@@ -83,13 +98,6 @@ echo '<form name="form_action" method="post" action="">
     $dataAction .= $cF->inputHidden($name, $value, 'input_medium valueRuleAction');
 	$data = '<div class="listCheckboxSmall" style="margin-right:4px">'.$dataView.'</div> <div class="listCheckboxSmall">'.$dataAction.'</div>';
 	echo $cF->displayTable('Quyền trên website', $data);
-	
-	if($id==0){
-		$name = 'password';
-		$value = md5(CONS_ADMIN_PASSWORD_DEFAULT);
-		$data = $cF->inputHidden($name, $value);
-		echo $data;
-	}
 	
 	$name = 'lang';
     $data = $cF->inputHidden($name, $lang);
