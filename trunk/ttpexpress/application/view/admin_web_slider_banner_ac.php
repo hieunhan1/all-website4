@@ -66,6 +66,11 @@ echo '<form name="form_action" method="post" action="">
 	$data .= $cF->inputButton($name, 'Chọn file ảnh', 'button', $properties, $others);
 	echo $cF->displayTable('Ảnh đại diện', $data);
 	
+	$name = 'info';
+	if(!isset($_POST[$name])) $value=$rowDetail[$name]; else $value=$_POST[$name];
+    $data = $cF->textArea($name, $value, 'textarea');
+	echo $cF->displayTable('Description', $data);
+	
 	$name = 'order';
 	$properties = array();
 	$properties[] = array('propertie'=>'maxlength', 'value'=>'3');

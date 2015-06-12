@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2015 at 12:13 PM
+-- Generation Time: Jun 12, 2015 at 11:26 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -137,7 +137,15 @@ CREATE TABLE IF NOT EXISTS `web_contact` (
   `ip_address` varchar(20) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_contact`
+--
+
+INSERT INTO `web_contact` (`id`, `name`, `email`, `phone`, `address`, `message`, `datetime`, `ip_address`, `lang`, `status`) VALUES
+(7, 'tran nhan', 'hieunhan112@gmail.com', '0988388003', '123 cmt 8', 'hieunhan112@gmail.com hieunhan112@gmail.com', 1433990362, '::1', 'vi', 0),
+(8, 'tran nhan 2', 'hieunhan112@gmail.com', '0988388003', '123 cmt 8', 'hieunhan112@gmail.com hieunhan112@gmail.com', 1433990412, '::1', 'vi', 0);
 
 -- --------------------------------------------------------
 
@@ -1307,6 +1315,7 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
   `name` varchar(200) NOT NULL,
   `img` varchar(150) NOT NULL,
   `url` varchar(200) DEFAULT NULL,
+  `info` varchar(300) DEFAULT NULL,
   `order` int(3) NOT NULL DEFAULT '0',
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1',
@@ -1318,9 +1327,9 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
 -- Dumping data for table `web_slider_banner`
 --
 
-INSERT INTO `web_slider_banner` (`id`, `name`, `img`, `url`, `order`, `lang`, `status`, `position_id`, `menu_id`) VALUES
-(1, 'Slider trang chủ', 'slider-home.jpg', 'javascript:;', 1, 'vi', 1, 1, ',1,'),
-(9, 'Slider home', 'slider-home.jpg', 'javascript:;', 1, 'en', 1, 1, ',10,');
+INSERT INTO `web_slider_banner` (`id`, `name`, `img`, `url`, `info`, `order`, `lang`, `status`, `position_id`, `menu_id`) VALUES
+(1, 'Slider trang chủ', 'slide-1.jpg', 'javascript:;', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, nulla. ', 1, 'vi', 1, 1, ',1,'),
+(9, 'Slider home', 'slider-home.jpg', 'javascript:;', NULL, 1, 'en', 1, 1, ',10,');
 
 -- --------------------------------------------------------
 
@@ -1660,7 +1669,7 @@ MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 -- AUTO_INCREMENT for table `web_contact`
 --
 ALTER TABLE `web_contact`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `web_language`
 --

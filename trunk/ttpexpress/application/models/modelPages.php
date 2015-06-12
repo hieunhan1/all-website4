@@ -55,7 +55,7 @@ class modelPages extends modelDB{
 	public function _listSliderBanner($lang, $position, $menu_id=NULL){
 		if($lang!='') $lang="AND `lang`='{$lang}'";
 		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
-		$sql = "SELECT `name`, `img`, `url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' {$lang} {$menu_id} ORDER BY `order`";
+		$sql = "SELECT `name`, `img`, `url`, `info` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' {$lang} {$menu_id} ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
