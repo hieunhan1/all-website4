@@ -33,7 +33,7 @@ echo '<form name="form_action" method="post" action="">
 	$properties[] = array('propertie'=>'maxlength', 'value'=>'50');
 	if(!isset($_POST[$name])) $value=$rowDetail[$name]; else $value=$_POST[$name];
     $data = $cF->inputText($name, $value, 'input_medium', $properties);
-	echo $cF->displayTable('Mô tả', $data);
+	echo $cF->displayTable('Họ tên', $data);
 	
 	$name = 'phone';
 	$properties = array();
