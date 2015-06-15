@@ -37,7 +37,8 @@
 					$i++;
 					if($i%4 != 1) $style='style="margin-left:10px"'; else $style='';
 					if($row['yahoo']!='') $yahoo='<a href="ymsgr:sendIM?'.$row['yahoo'].'"><img src="http://opi.yahoo.com/online?u='.$row['yahoo'].'&m=g&t=1" /></a>'; else $yahoo='';
-					if($row['skype']=='') $skype=''; else $skype='<a href="Skype:'.$row['skype'].'?chat"><img src="http://mystatus.skype.com/bigclassic/'.$row['skype'].'" title="'.$row['name'].'" width="90" alt="'.$row['name'].'"></a>';
+					/*if($row['skype']=='') $skype=''; else $skype='<a href="Skype:'.$row['skype'].'?chat"><img src="http://mystatus.skype.com/bigclassic/'.$row['skype'].'" title="'.$row['name'].'" width="90" alt="'.$row['name'].'"></a>';*/
+					$skype='';
 					$str_sale_online .= '<div class="sale_online_item" '.$style.'>
 						<div class="sale_online_yahoo_skype">'.$yahoo.$skype.'</div>
 						<div class="sale_online_name">'.$row['name'].'</div>
@@ -55,7 +56,8 @@
 				$i++;
 				if($i%4 != 1) $style='style="margin-left:10px"'; else $style='';
 				if($row['yahoo']!='') $yahoo='<a href="ymsgr:sendIM?'.$row['yahoo'].'"><img src="http://opi.yahoo.com/online?u='.$row['yahoo'].'&m=g&t=1" /></a>'; else $yahoo='';
-				if($row['skype']=='') $skype=''; else $skype='<a href="Skype:'.$row['skype'].'?chat"><img src="http://mystatus.skype.com/bigclassic/'.$row['skype'].'" title="'.$row['name'].'" width="90" alt="'.$row['name'].'"></a>';
+				/*if($row['skype']=='') $skype=''; else $skype='<a href="Skype:'.$row['skype'].'?chat"><img src="http://mystatus.skype.com/bigclassic/'.$row['skype'].'" title="'.$row['name'].'" width="90" alt="'.$row['name'].'"></a>';*/
+				$skype='';
 				$str_sale_online .= '<div class="sale_online_item" '.$style.'>
 					<div class="sale_online_yahoo_skype">'.$yahoo.$skype.'</div>
 					<div class="sale_online_name">'.$row['name'].'</div>
