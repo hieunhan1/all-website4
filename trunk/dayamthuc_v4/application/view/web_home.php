@@ -65,16 +65,33 @@ $arrIcon = array('style="background-position:0px -350px"', 'style="background-po
 
 <?php
 if(isset($dataHome[7]['id'])){
-	$position = 2;
-	$data = $c->_model->_listSliderBanner($lang, $position, $dataHome[7]['id']);
-	if(count($data)>0){
 ?>
-    <div id="homeType4" class="content">
-        <a href="<?php echo $dataHome[7]['url'];?>" title="<?php echo $dataHome[7]['title'];?>"><h3 class="title allIcon"><?php echo $dataHome[7]['name'];?></h3></a>
-        <div class="img"><a href="<?php echo $data[0]['url'];?>" title="<?php echo $data[0]['name'];?>"><img src="<?php echo $urlImg[12]['url_img'].$data[0]['img'];?>" alt="<?php echo $data[0]['name'];?>" /></a></div>
+	<div id="homeType4" class="content">
+    	<a href="<?php echo $dataHome[7]['url'];?>" title="<?php echo $dataHome[7]['title'];?>"><h3 class="title allIcon"><?php echo $dataHome[7]['name'];?></h3></a>
+        <div class="news">
+        	<?php
+            $data = $c->_model->_listDetailMenu($dataHome[7]['id'], 5);
+			foreach($data as $row){
+				echo '<div class="item">
+					<div class="img"><a href="'.$row['url'].'" title="'.$row['name'].'"><img src="'.$urlImg[2]['url_img'].$row['img'].'" alt="'.$row['name'].'" /></a></div>
+					<a href="'.$row['url'].'" title="'.$row['name'].'"><h5>'.$row['name'].'</h5></a>
+					<p class="info">'.$row['description'].'</p>
+				</div>';
+			}
+			?>
+        </div>
+        <div class="event">
+        	<?php
+            $position = 2;
+			$data = $c->_model->_listSliderBanner($lang, $position, $dataHome[7]['id']);
+			foreach($data as $row){
+				echo '<div class="img"><a href="'.$row['url'].'" title="'.$row['name'].'"><img src="'.$urlImg[12]['url_img'].$row['img'].'" alt="'.$row['name'].'" /></a></div>';
+			}
+			?>
+        </div>
+        <div class="clear1"></div>
     </div>
-<?php }
-}?>
+<?php }?>
 
 <?php if(isset($dataHome[8]['id'])){?>
 <div id="homeType5" class="content">
