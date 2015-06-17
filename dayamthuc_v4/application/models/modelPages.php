@@ -52,10 +52,11 @@ class modelPages extends modelDB{
 		return $this->_menuRoot($row['parent'], $arr);
 	}
 	
-	public function _listSliderBanner($lang, $position, $menu_id=NULL){
+	public function _listSliderBanner($lang, $position, $menu_id=NULL, $limit=NULL){
 		if($lang!='') $lang="AND `lang`='{$lang}'";
 		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
-		$sql = "SELECT `name`, `img`, `url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' {$lang} {$menu_id} ORDER BY `order`";
+		if($limit!=NULL) $limit = "LIMIT {$limit}";
+		$sql = "SELECT `name`, `img`, `url` FROM `web_slider_banner` WHERE `status`=1 AND `position_id`='{$position}' {$lang} {$menu_id} ORDER BY `order`, `id` DESC {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
@@ -124,7 +125,7 @@ class modelPages extends modelDB{
 		return $data;
 	}
 	public function _listDetailMenu($id, $limit=7){
-		$sql = "SELECT `id`, `name`, `url`, `img` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC, `id` DESC LIMIT {$limit}";
+		$sql = "SELECT `id`, `name`, `url`, `img`, `description` FROM `web_article` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `datetime` DESC, `id` DESC LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
