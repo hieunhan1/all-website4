@@ -111,9 +111,9 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #footer #social img{height:25px; margin-right:3px; border:solid 1px #CCC}
 #run_top{width:60px; height:60px; line-height:60px; color:#FF0; text-align:center; font-size:150%; font-weight:bold; position:absolute; margin:-50px 0 0 460px; background-color:#a81201; border-radius:50px; border-top:solid 2px #FFF}
 #run_top:hover{box-shadow:0 0 10px #000; border:solid 2px #FFF; cursor:pointer}
-#tagsALl{clear:both; line-height:22px; margin-top:20px}
-#tagsALl a{color:#bbb; padding:0 7px; border-right:solid 1px #c74334}
-#tagsALl a:hover{color:#EEE}
+#tagsAll{clear:both; line-height:22px; margin-top:20px}
+#tagsAll a{color:#bbb; padding:0 7px; border-right:solid 1px #c74334}
+#tagsAll a:hover{color:#EEE}
 
 /*home*/
 #homeType1{clear:both; height:400px}
