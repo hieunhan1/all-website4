@@ -29,7 +29,7 @@ echo '<form name="form_action" method="post" action="">
 	
 	$name = 'name';
 	$properties = array();
-	$properties[] = array('propertie'=>'maxlength', 'value'=>'30');
+	$properties[] = array('propertie'=>'maxlength', 'value'=>'200');
 	if(!isset($_POST[$name])) $value=$rowDetail[$name]; else $value=$_POST[$name];
     $data = $cF->inputText($name, $value, 'input_medium', $properties);
 	echo $cF->displayTable('Mô tả', $data);
