@@ -125,100 +125,29 @@ class modelAdmin extends modelDB{
 	}
 	
 	public function _getSql($type, $table, $fields, $values, $id=NULL){
+		$backup = new modelBackupRestore;
 		if($type==1){
-			$type_name = 'create';
+			$content='';
+			$action = 'create';
 			$sql = $this->_create($table, $fields, $values);
 		}elseif( $type==2 && is_numeric($id) ){
-			$type_name = 'update';
-			//$content = $this->_backupData($id, $name, $table);
+			$content = $backup->_backupData($id, $name, $table);
+			$action = 'update';
 			$sql = $this->_update($table, $fields, $values, $id);
 		}else return FALSE;
 		
 		if(!$this->db->query($sql)){
-			echo $this->db->error;
+			die($this->db->error);
 			return FALSE;
 		}else{
 			if($type==1){
 				$id = $this->db->insert_id;
-				//$this->_backupData($id, $name, $table);
+				$backup->_backupData($id, $name, $table);
 			}
-			//$this->_webLog($name, $type_name, $table, $_SESSION['adminUser'], $content, $_SESSION['adminLang']);
+			$backup->_webLog($name, $action, $table, $_SESSION['adminUser'], $content, $_SESSION['adminLang']);
 			return TRUE;
 		}
 	}
-	
-	public function _deleteOne($table, $id, $user, $lang){
-		//$content = $this->_backupData($id, $name, $table);
-		$sql = "DELETE FROM `{$table}` WHERE `id`='{$id}' ";
-		$this->db->query($sql);
-		//$this->_webLog($name, 'delete', $table, $user, $content, $lang);
-	}
-	
-	public function _statusOne($name, $table, $id, $status, $user, $lang){
-		$sql = "UPDATE `{$table}` SET `status`='{$status}' WHERE `id`='{$id}' ";
-		$this->db->query($sql);
-		//$this->_webLog($name, 'status', $table, $user, $status, $lang);
-	}
-	
-	/*web_log
-	Fields & values:	fields%%%values
-	Giá trị field:		,
-	Giá trị nội dung:	%%%
-	*/
-	public function _backupData($id, &$name, $table){
-		$sql = "SELECT * FROM `{$table}` WHERE `id`='{$id}'";
-		$result = $this->db->query($sql);
-		$row = $result->fetch_assoc();
-		$name = $row['name'];
-		$row_keys = array_keys($row);
-		$row_values = array_values($row);
-		for($i=0; $i<count($row_keys); $i++){
-			$str_keys .= "`{$row_keys[$i]}`,";
-			$str_values .= "{$row_values[$i]}%%%";
-		}
-		$str_keys = trim($str_keys,',');
-		$str_values = trim($str_values,'%%%');
-		return $str_keys.'fields%%%values'.$str_values;
-	}
-	public function _restoreData($id){
-		$sql = "SELECT `action`,`table`,`content` FROM `web_logs` WHERE `status`=0 AND `id`='{$id}'";
-		$result = $this->db->query($sql);
-		$row = $result->fetch_assoc();
-		if($row['action']=='delete'){
-			$data = explode('fields%%%values', $row['content']);
-			$data_keys = explode(',', $data[0]);
-			$data_values = explode('%%%', $data[1]);
-			for($i=0; $i<count($data_keys); $i++){
-				$str_keys .= "{$data_keys[$i]},";
-				$str_values .= "'{$data_values[$i]}',";
-			}
-			$str_keys = trim($str_keys, ',');
-			$str_values = trim($str_values, ',');
-			$str_sql = "INSERT INTO `{$row['table']}` ({$str_keys}) VALUES ({$str_values})";
-		}elseif($row['action']=='update'){
-			$data = explode('fields%%%values', $row['content']);
-			$data_keys = explode(',', $data[0]);
-			$data_values = explode('%%%', $data[1]);
-			for($i=0; $i<count($data_keys); $i++){
-				if($data_keys[$i]!='`id`') $str_set .= "{$data_keys[$i]}='{$data_values[$i]}',";
-				else $id_restore = $data_values[$i];
-			}
-			$str_set = trim($str_set, ',');
-			$str_sql = "UPDATE `{$row['table']}` SET {$str_set} WHERE id='{$id_restore}'";
-		}else return false;
-		
-		if(!$this->db->query($str_sql)) die($this->db->error);
-		else{
-			$this->db->query("UPDATE `web_logs` SET `status`=1,`date_restore`='".time()."',`user_restore`='".$_SESSION['admin_user']."' WHERE id='{$id}' ");
-			return true;
-		}
-	}
-	public function _webLog($name, $action, $table, $user, $content, $lang){
-		$time = time();
-		$sql = "INSERT INTO `web_logs` VALUES (NULL, '{$name}', '{$action}', '{$table}', '{$time}', '{$user}', '{$content}', '{$lang}', '0', NULL, NULL)";
-		$this->db->query($sql);
-	}
-	/*end web_log*/
 	
 	/*web_menu*/
 	public function _webMenu($parent, $style, $arr, $where=''){
@@ -301,15 +230,6 @@ class modelAdmin extends modelDB{
 		return $data;
 	}
 	/*end order*/
-	
-	/*ajax*/
-	public function _ajaxNumberItem($table){
-		$sql = "SELECT count(*) FROM {$table} WHERE status=0";
-		if(!$result = $this->db->query($sql)) die($this->db->error);
-		$row = $result->fetch_row();
-		return $row[0];
-	}
-	/*end ajax*/
 	
 	/*function*/
 	
