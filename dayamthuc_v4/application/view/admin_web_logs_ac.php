@@ -22,12 +22,11 @@ echo '<form name="form_action" method="post" action="">
 	
 	$btnSubmit='';
 	if($rowDetail['action']=='update' || $rowDetail['action']=='delete'){
-		$name = 'btn_view_log';
-		$btnSubmit = $cF->inputButton($name, 'View log', 'submit');
 		if($rowDetail['status']==1){
 			echo $cF->displayTable('Date restore', date('Y-m-d H:i:s', $rowDetail['date_restore']));
 			echo $cF->displayTable('User restore', $rowDetail['user_restore']);
 		}else{
+			$name = 'btn_view_log';
 			$btnSubmit = $cF->inputButton($name, 'View log', 'submit');
 		}
 	}elseif($rowDetail['action']=='status'){
