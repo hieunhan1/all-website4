@@ -13,14 +13,20 @@ class modelAjax extends modelDB{
 	public function _statusOne($table, $id, $status){
 		$sql = "UPDATE `{$table}` SET `status`='{$status}' WHERE `id`='{$id}' LIMIT 1";
 		$this->db->query($sql);
-		//$this->_webLog($name, 'status', $table, $user, $status, $lang);
+		
+		if($status==1) $status=0; else $status=1;
+		$backup = new modelBackupRestore;
+		$backup->_backupData($id, $name, $table);
+		$backup->_webLog($name, 'status', $table, $_SESSION['adminUser'], $status, $_SESSION['adminLang']);
 		return true;
 	}
 	public function _deleteOne($table, $id){
-		//$content = $this->_backupData($id, $name, $table);
+		$backup = new modelBackupRestore;
+		$content = $backup->_backupData($id, $name, $table);
+		$backup->_webLog($name, 'delete', $table, $_SESSION['adminUser'], $content, $_SESSION['adminLang']);
+		
 		$sql = "DELETE FROM `{$table}` WHERE `id`='{$id}' LIMIT 1";
 		$this->db->query($sql);
-		//$this->_webLog($name, 'delete', $table, $user, $content, $lang);
 		return true;
 	}
 	public function _urlMenu($id){
