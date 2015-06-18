@@ -48,7 +48,8 @@ textarea{color:#1E1E1E; font-family:Arial, Helvetica, sans-serif; font-size:13px
 .listCheckboxSmall{width:165px; height:300px; overflow:auto; float:left; line-height:22px; padding:5px; border:solid 1px #999; background-color:#FFC}
 
 
-.label{width:150px; text-align:right; vertical-align:top; font-weight:bold; padding-top:3px}
+.label{width:150px; text-align:right; vertical-align:top; font-weight:bold; line-height:22px}
+.labelData{color:#666}
 .radio{margin-top:5px}
 .checkbox{margin-top:5px}
 

@@ -69,6 +69,13 @@ if(isset($_POST['delete_one'])){
 	return true;
 }
 
+if(isset($_POST['ajaxRestore'])){
+	$id=$_POST['ajaxRestore']; settype($id, "int");
+	$backup = new modelBackupRestore;
+	echo $backup->_restoreData($id);
+	return true;
+}
+
 if(isset($_POST['linkDeatil'])){
 	$menu_id = $c->_model->_changeDauNhay($_POST['menu_id']);
 	if($menu_id=='') return false;

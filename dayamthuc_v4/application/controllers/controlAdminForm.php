@@ -3,7 +3,7 @@ class controlAdminForm{
 	public function displayTable($label, $data, $class='label', $id=NULL){
 		if($id!=NULL) $id='id=" '.$id.'"';
 		if($label=='') $label='&nbsp;';
-		$str = '<tr'.$id.'><td class="'.$class.'">'.$label.'</td><td>'.$data.'</td></tr>';
+		$str = '<tr'.$id.'><td class="'.$class.'">'.$label.'</td><td class="labelData">'.$data.'</td></tr>';
 		return $str;
 	}
 	public function displayTableColspan($data, $class='label', $id=NULL){
