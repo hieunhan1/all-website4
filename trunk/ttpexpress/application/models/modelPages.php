@@ -52,6 +52,13 @@ class modelPages extends modelDB{
 		return $this->_menuRoot($row['parent'], $arr);
 	}
 	
+	public function _menuTypeId($typeID){
+		$sql = "SELECT * FROM `web_menu` WHERE `status`=1 AND `type_id`='{$typeID}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) return FALSE;
+		if($result->num_rows != 1) return FALSE;
+		return $result->fetch_assoc();
+	}
+	
 	public function _listSliderBanner($lang, $position, $menu_id=NULL){
 		if($lang!='') $lang="AND `lang`='{$lang}'";
 		if($menu_id!=NULL) $menu_id = "AND `menu_id` LIKE '%,{$menu_id},%'"; else $menu_id = '';
