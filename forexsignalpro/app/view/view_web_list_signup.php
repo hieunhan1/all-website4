@@ -5,22 +5,31 @@
 </div>
 <table width="100%" border="1" cellpadding="8" cellspacing="0" class="signup">
     <tr>
-        <th align="left" style="font-size:230%">FEATURES</th>
-        <th width="150px"><span class="bogoc_5px">STANDARD</span></th>
-        <th width="150px"><span class="bogoc_5px">PRO</span></th>
-        <th width="150px"><span class="bogoc_5px">ULTIMATE</span></th>
+        <th align="left" style="font-size:230%">&nbsp;</th>
+        <th width="150px"><span class="bogoc_5px">1 month</span></th>
+        <th width="150px"><span class="bogoc_5px">3 month</span></th>
+        <th width="150px"><span class="bogoc_5px">12 month</span></th>
     </tr>
     <?php
+	$i=0;
     $price='';
     $price_trial='';
     $package=array();
     $data = $this->_model->_users_package();
     foreach($data as $row){
-        $package[$row['id']] = $row['menu_id'];
-        $price .= '<td align="center" class="price">$'.$row['price'].'/month</td>';
-        $link .= '<td align="center"><a href="signup/'.$row['id'].'.html" class="signup-now bogoc_5px">SIGNUP NOW!</a></td>';
-        $data2 = $this->_model->_users_package($row['id'], 1);
-        $price_trial .= '<td align="center" class="price">$'.$data2[0]['price'].'</td>';
+		$i++;
+		$package[$row['id']] = $row['menu_id'];
+		if($i!=1){
+			$price .= '<td align="center">
+				<span class="price">$'.$row['price'].'</span>
+				<a href="signup/'.$row['id'].'.html" class="signup-now bogoc_5px">SIGNUP NOW!</a>
+			</td>';
+		}else{
+			$price_trial = '<td align="center" colspan="3">
+				<span class="price">$'.$row['price'].' </span>
+				<a href="signup/'.$row['id'].'.html">Signup Trial</a>
+			</td>';
+		}
     }
     
     $data = $this->_model->_list_menu_parent($current_menu['id']);
@@ -45,11 +54,11 @@
         <td colspan="4">Pricing</td>
     </tr>
     <tr class="line-2">
-        <td style="color:#00F; font-weight:bold">Month to Month (Cancel Anytime)</td>
+        <td style="color:#00F; font-weight:bold">&nbsp;</td>
         <?php echo $price;?>
     </tr>
     <tr class="line-2">
-        <td style="color:#F00; font-weight:bold">SPECIAL OFFER: 10 Day Trial Membership: – Try Us Today!</td>
+        <td style="color:#F00; font-weight:bold">SPECIAL OFFER: 10 Day Trial Membership – Try Us Today!</td>
         <?php echo $price_trial;?>
     </tr>
     <tr>
