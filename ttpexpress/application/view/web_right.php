@@ -1,8 +1,13 @@
 <div id="right">
     <div id="tracing">
+    	<?php
+        $typeID=7;
+		$data = $c->_model->_menuTypeId($typeID);?>
+    	<form action="<?php echo $data['url'];?>" method="get" name="tracing">
         <h2 class="title">Tracing <span>Express</span></h2>
         <input type="text" name="txtTracing" class="txt" placeholder="Code" />
-        <input type="button" name="btnTracing" value="SEARCH" class="btn" />
+        <input type="submit" name="btnTracing" value="SEARCH" class="btn" />
+        </form>
     </div>
     
     <div id="news">
