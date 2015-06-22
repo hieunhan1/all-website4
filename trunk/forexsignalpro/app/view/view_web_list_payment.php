@@ -5,6 +5,6 @@
     <?php
 	echo $this->_data.'<br />';
     echo $this->payment().'<br />';
-	print_r($_POST);
+	//print_r($_POST); print_r($_GET);
 	?>
 </div>

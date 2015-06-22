@@ -232,7 +232,7 @@ class model_web extends db{
 	/*end web_chinhanh*/
 	
 	/*signup*/
-	public function _users_package($parent=0, $limit=3){
+	public function _users_package($parent=0, $limit=4){
 		$sql = "SELECT * FROM `web_users_package` WHERE `status`=1 AND `parent`='{$parent}' ORDER BY `order` LIMIT {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
