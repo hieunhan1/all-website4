@@ -73,7 +73,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #header .info{height:34px; line-height:34px; overflow:hidden; background-color:#2f2f2f; border-top-left-radius:5px; border-top-right-radius:5px}
 #header .info .span{color:#FFF; padding:0 18px}
 #header .info .span span{color:#BBB}
-#header #logo{width:auto; height:79px; float:left; padding:20px 0 0 20px}
+#header #logo{width:auto; height:70px; float:left; padding:22px 0 0 10px}
 
 /*slider*/
 #slider{clear:both; margin-bottom:40px; border-bottom:solid 5px #f36f21}
@@ -157,7 +157,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #menuActive a{color:#FFF !important; background-position:50% -200px !important}
 #nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
 #nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
-#nav li a {color:#777; line-height:120px; font-weight:bold; font-size:120%; text-transform:uppercase; letter-spacing:-1px; padding:0 20px}
+#nav li a {color:#777; line-height:120px; font-weight:bold; font-size:115%; text-transform:uppercase; letter-spacing:-1px; padding:0 12px}
 #nav a:hover {color:#FFF; background-color:#e25e10; border-bottom:solid 6px #c84400}
 #nav li {float:left; position:relative}
 #nav ul {position:absolute; width:200px; top:80px; display:none}
