@@ -13,7 +13,13 @@
 <meta property="og:image" content="<?php echo $tagHead['img'];?>" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" />
+
+<!--Insert CSS-->
+<link rel="stylesheet" type="text/css" href="themes/website/style320.css" media="screen and (min-width:320px)">
+<link rel="stylesheet" type="text/css" href="themes/website/style480.css" media="screen and (min-width:480px)">
+<link rel="stylesheet" type="text/css" href="themes/website/style600.css" media="screen and (min-width:600px)">
+<link rel="stylesheet" type="text/css" href="themes/website/style768.css" media="screen and (min-width:768px)">
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:1024px)">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
