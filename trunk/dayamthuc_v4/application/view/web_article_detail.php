@@ -6,7 +6,7 @@
 		echo $rowDetail['content'];
 		echo '<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 		<div style="width:auto; float:left"><g:plusone></g:plusone></div>';
-		echo '<div class="fb-like" data-href="'.CONS_BASE_URL.$row['url'].'" data-width="450px" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>';
+		echo '<div class="fb-like" data-href="'.CONS_BASE_URL.'/'.$rowDetail['url'].'" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>';
 		
 		if($rowDetail['other2']==1) include_once('web_form_dang_ky_khai_giang.php');
 		
