@@ -15,11 +15,9 @@
 <link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
 
 <!--Insert CSS-->
-<link rel="stylesheet" type="text/css" href="themes/website/style320.css" media="screen and (min-width:320px)">
-<link rel="stylesheet" type="text/css" href="themes/website/style480.css" media="screen and (min-width:480px)">
-<link rel="stylesheet" type="text/css" href="themes/website/style600.css" media="screen and (min-width:600px)">
-<link rel="stylesheet" type="text/css" href="themes/website/style768.css" media="screen and (min-width:768px)">
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:1024px)">
+<link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:260px) and (max-width:480px)">
+<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)">
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:800px)">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
