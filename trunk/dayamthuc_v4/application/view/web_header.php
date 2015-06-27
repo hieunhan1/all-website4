@@ -24,16 +24,18 @@
             <a href="javascript:;<?php //echo CONS_BASE_URL.'/?lang=en';?>" class="allIcon" style="background-position:0px -30px">&nbsp;</a>
             <a href="javascript:;<?php //echo CONS_BASE_URL.'/?lang=cn';?>" class="allIcon" style="background-position:0px -60px">&nbsp;</a>
         </div>
+        <div class="clear1"></div>
     </div>
 </div>
 
 <div id="header" >
-<div class="content">
-	<?php
-    if($lang==CONS_DEFAULT_LANG) $link=CONS_BASE_URL;
-	else $link=CONS_BASE_URL.'/?lang='.$lang;
-	?>
-	<a href="<?php echo $link;?>" title="<?php echo $config['sitename'];?>"><img src="themes/website/img/logo-2.png" id="logo" alt="<?php echo $config['sitename'];?>" /></a>
-    <?php include_once('web_menu.php');?>
-</div>
+    <div class="content">
+        <?php
+        if($lang==CONS_DEFAULT_LANG) $link=CONS_BASE_URL;
+        else $link=CONS_BASE_URL.'/?lang='.$lang;
+        ?>
+        <a href="<?php echo $link;?>" title="<?php echo $config['sitename'];?>"><img src="themes/website/img/logo-2.png" id="logo" alt="<?php echo $config['sitename'];?>" /></a>
+        <?php include_once('web_menu.php');?>
+    </div>
+    <div class="clear1"></div>
 </div>
