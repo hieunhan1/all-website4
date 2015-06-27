@@ -45,12 +45,14 @@ echo '</table></form>';
     <?php
 	$str='';
     $data = explode('fields%%%values', $rowDetail['content']);
-	$data_keys = explode(',', $data[0]);
-	$data_values = explode('%%%', $data[1]);
-	for($i=0; $i<count($data_keys); $i++){
-		$str.=$cF->displayTable(ucfirst(trim($data_keys[$i],'`')), $data_values[$i]);
+	if(count($data)==2){
+		$data_keys = explode(',', $data[0]);
+		$data_values = explode('%%%', $data[1]);
+		for($i=0; $i<count($data_keys); $i++){
+			$str.=$cF->displayTable(ucfirst(trim($data_keys[$i],'`')), $data_values[$i]);
+		}
+		echo $str;
 	}
-	echo $str;
 	$data = '<p style="font-size:110%; color:#F60">Phục hồi lại dữ liệu <b>'.$rowDetail['name'].'</b> trong bảng <b>'.$rowDetail['table'].'</b>? <a href="javascript:;" id="restore"><b>Ấn vào đây!</b></a></p>';
 	echo $cF->displayTable('', $data);
 	?>
