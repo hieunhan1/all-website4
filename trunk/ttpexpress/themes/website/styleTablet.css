@@ -32,6 +32,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
 .viewpost li{padding:0; margin:5px 0}
+.viewpost img{max-width:100% !important}
 
 #article{margin:0 5%}
 #article .articleBox{clear:both; margin-bottom:40px}

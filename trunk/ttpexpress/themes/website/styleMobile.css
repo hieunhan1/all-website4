@@ -1,7 +1,7 @@
 @charset "utf-8";
 *{margin:0px}
 body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; background:url(img/bg.gif) repeat-x top; z-index:0}
-img{border:0px;}
+img{max-width:100% !important; height:auto; border:0px;}
 a{color:#0000FF; text-decoration:none}
 a:hover{color:#EA1D22; text-decoration:underline}
 input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif}
@@ -32,6 +32,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
 .viewpost li{padding:0; margin:5px 0}
+.viewpost img{max-width:100% !important}
 
 #article{width:100%}
 #article .articleBox{clear:both; margin-bottom:40px}

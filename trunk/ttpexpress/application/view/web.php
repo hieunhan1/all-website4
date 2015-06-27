@@ -13,11 +13,13 @@
 <meta property="og:image" content="<?php echo $tagHead['img'];?>" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
-
 <!--Insert CSS-->
-<link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:260px) and (max-width:480px)">
-<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)">
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:800px)">
+<link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:210px) and (max-width:480px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:800px)" />
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" />
+<![endif]-->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
