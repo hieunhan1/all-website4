@@ -151,8 +151,8 @@ footer{clear:both; line-height:150%; color:#DDD; background-color:#004274}
 .signup .line{background-color:#39F; color:#FFF; font-weight:bold; font-size:120%}
 .signup .line-2{}
 .signup .line-2 td{line-height:20px; padding:10px; border-bottom:solid 1px #CCC}
-.signup .price{font-weight:bold; font-size:150%; color:#333}
-.signup .signup-now{display:block; color:#FFF; font-weight:bold; font-size:120%; text-decoration:none; margin-top:6px; padding:8px 15px; background-color:#C00}
+.signup .price{display:block; font-weight:bold; font-size:150%; color:#333; margin-bottom:10px}
+.signup .signup-now{color:#FFF; font-weight:bold; font-size:120%; text-decoration:none; margin-top:6px; padding:8px 15px; background-color:#C00}
 .signup .signup-now:hover{background-color:#090}
 
 #frm_payment{clear:both}

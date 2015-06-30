@@ -25,7 +25,7 @@
             }else{
                 $price_trial = '<td align="center" colspan="3">
                     <span class="price">$'.$row['price'].' </span>
-                    <a href="signup/'.$row['id'].'.html">Signup Trial</a>
+                    <a href="signup/'.$row['id'].'.html" class="signup-now bogoc_5px">Signup Trial</a>
                 </td>';
             }
         }
@@ -66,9 +66,9 @@
     </table>
 	<div class="clear_20px"></div>
 
-    <h2><?php echo $data_home[0]['name'];?></h2>
+    <!--<h2><?php //echo $data_home[0]['name'];?></h2>
     <?php
-	$i = 0;
+	/*$i = 0;
     $data = $this->_model->_list_web_forex($this->_config['limit_0']);
 	$total = count($data);
 	foreach($data as $row){
@@ -86,11 +86,11 @@
 	$data = $this->_model->_total_web_forex();
 	$total_true = $data[0];
 	$total = $data[1];
-	$percent = ($total_true * 100) / $total;
+	$percent = ($total_true * 100) / $total;*/
 	?>
     <div class="clear_1px"></div>
-    <h3 id="total_forex">Currently We properly consulted <span><?php echo round($percent, 2);?>%</span> for <span><?php echo $total_true.' / '.$total;?></span>. <a href="signup/">Sign up today ForexSignalPro.Net</a></h3>
-    <div class="clear_20px" style="margin-bottom:30px"></div>
+    <h3 id="total_forex">Currently We properly consulted <span><?php //echo round($percent, 2);?>%</span> for <span><?php //echo $total_true.' / '.$total;?></span>. <a href="signup/">Sign up today ForexSignalPro.Net</a></h3>
+    <div class="clear_20px" style="margin-bottom:30px"></div>-->
     
     <?php
     //$data = $this->_model->_list_article_home_page($current_menu['id'], 1);

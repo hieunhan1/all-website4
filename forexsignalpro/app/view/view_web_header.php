@@ -10,5 +10,5 @@
 	}
 	?>
     
-    <div id="email_support">Email support: <?php echo '<a href="mailto:'.$this->_config['email'].'">'.$this->_config['email'].'</a>';?></div>
+    <!--<div id="email_support">Email support: <?php //echo '<a href="mailto:'.$this->_config['email'].'">'.$this->_config['email'].'</a>';?></div>-->
 </header>
