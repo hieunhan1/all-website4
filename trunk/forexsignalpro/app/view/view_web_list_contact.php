@@ -1,46 +1,47 @@
-<?php include_once('view_web_navigator.php');?>
-
-<div class="viewpost">
-	<?php
-    echo "<h1>{$this->_config['sitename']}</h1>";
-	echo '<p>Support email: '.$this->_config['email'].'</p>
-	<hr />';
-	//echo '<h2 style="color:#00F">'.$current_menu['description'].'</h2>';
-    ?>
+<div class="container">
+	<?php include_once('view_web_navigator.php');?>
+    
+    <div class="viewpost">
+        <?php
+        echo "<h1>{$this->_config['sitename']}</h1>";
+        echo '<p>Support email: '.$this->_config['email'].'</p>
+        <hr />';
+        //echo '<h2 style="color:#00F">'.$current_menu['description'].'</h2>';
+        ?>
+    </div>
+    
+    <div id="loading_contact"><img src="themes/website/img/loader.gif" /></div>
+    <div id="contact">
+        <div id="error_contact" class="error"></div>
+        <table width="900px" border="0" cellspacing="20" cellpadding="0" style="margin:0 auto 30px auto">
+          <tr>
+            <td colspan="4"><p style="font-size:160%"><?php echo CONS_CONTACT_INFO;?></p></td>
+          </tr>
+          <tr>
+            <td width="100" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_NAME;?>:</td>
+            <td valign="top"><input type="text" name="name_contact" class="contact_txt" maxlength="50" /><p class="error" id="name_contact"></p></td>
+            <td width="100" align="right" valign="top" style="padding-top:3px">Email:</td>
+            <td valign="top"><input type="text" name="email_contact" class="contact_txt" maxlength="60" /><p class="error" id="email_contact"></p></td>
+          </tr>
+          <tr>
+            <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_PHONE;?>:</td>
+            <td valign="top"><input type="text" name="phone_contact" class="contact_txt" maxlength="20" /><p class="error" id="phone_contact"></p></td>
+            <td align="right" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_ADDRESS;?>:</td>
+            <td valign="top"><input type="text" name="address_contact" class="contact_txt" maxlength="250" /></td>
+          </tr>
+          <tr>
+            <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_MESSAGE;?>:</td>
+            <td colspan="3"><textarea name="message_contact" class="contact_textarea"></textarea><p class="error" id="message_contact"></p></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><input type="button" name="btnSendContact" class="contact_btn" value="<?php echo CONS_CONTACT_SEND;?>" /></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+    </div>
 </div>
-
-<div id="loading_contact"><img src="themes/website/img/loader.gif" /></div>
-<div id="contact">
-	<div id="error_contact" class="error"></div>
-    <table width="900px" border="0" cellspacing="20" cellpadding="0" style="margin:0 auto 30px auto">
-      <tr>
-        <td colspan="4"><p style="font-size:160%"><?php echo CONS_CONTACT_INFO;?></p></td>
-      </tr>
-      <tr>
-        <td width="100" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_NAME;?>:</td>
-        <td valign="top"><input type="text" name="name_contact" class="contact_txt" maxlength="50" /><p class="error" id="name_contact"></p></td>
-        <td width="100" align="right" valign="top" style="padding-top:3px">Email:</td>
-        <td valign="top"><input type="text" name="email_contact" class="contact_txt" maxlength="60" /><p class="error" id="email_contact"></p></td>
-      </tr>
-      <tr>
-        <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_PHONE;?>:</td>
-        <td valign="top"><input type="text" name="phone_contact" class="contact_txt" maxlength="20" /><p class="error" id="phone_contact"></p></td>
-        <td align="right" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_ADDRESS;?>:</td>
-        <td valign="top"><input type="text" name="address_contact" class="contact_txt" maxlength="250" /></td>
-      </tr>
-      <tr>
-        <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_MESSAGE;?>:</td>
-        <td colspan="3"><textarea name="message_contact" class="contact_textarea"></textarea><p class="error" id="message_contact"></p></td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><input type="button" name="btnSendContact" class="contact_btn" value="<?php echo CONS_CONTACT_SEND;?>" /></td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table>
-</div>
-
 <!--
 <div id="popupContact">
     <div id="content_popup">

@@ -1,16 +1,16 @@
-<table cellpadding="15" cellspacing="0" style="margin-left:100px">
+<table cellpadding="15" cellspacing="0" style="margin-left:5%">
 	<tr><td colspan="2"><h3 class="title_user">Change Password</h3></td></tr>
     <tr><td colspan="2"><span id="ajaxError"></span></td></tr>
     <tr>
-        <th align="right" width="150">Old password</th>
+        <th align="right">Old password</th>
         <td><input type="password" name="oldPass" class="txtChangeAccount" /> <span id="oldPass" class="error"></span></td>
     </tr>
     <tr>
-        <th align="right" width="100">New password</th>
+        <th align="right">New password</th>
         <td><input type="password" name="newPass" class="txtChangeAccount" /> <span id="newPass" class="error"></span></td>
     </tr>
     <tr>
-        <th align="right" width="100">Confirm new password</th>
+        <th align="right">Confirm new password</th>
         <td><input type="password" name="confirmNewPass" class="txtChangeAccount" /> <span id="confirmNewPass" class="error"></span></td>
     </tr>
     <tr>

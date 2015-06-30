@@ -1,4 +1,4 @@
-<header>
+<header class="container">
     <div id="logo"><a href="/"><img src="themes/website/img/logo.jpg" alt="Logo ForexSignalPro" /><h2>ForexSignalPro.Net</h2></a></div>
     <?php
     if(!isset($_SESSION['user_id'])){

@@ -1,4 +1,4 @@
-<table cellpadding="15" cellspacing="0" style="margin-left:100px">
+<table cellpadding="15" cellspacing="0" style="margin-left:5%">
 	<tr>
         <th align="right">Date of registration</th>
         <td><?php echo $this->_model->_view_date_time($data[0]['datetime']);?></td>
