@@ -1,5 +1,71 @@
 <?php $data_home = $this->_model->_list_menu_home_page($this->_lang);?>
-<div id="homepage">
+<div id="homepage" class="container">
+	<div class="clear_20px"></div>
+	<table width="100%" border="1" cellpadding="8" cellspacing="0" class="signup">
+        <tr>
+            <th align="left">&nbsp;</th>
+            <th><span class="bogoc_5px">1 month</span></th>
+            <th><span class="bogoc_5px">3 months</span></th>
+            <th><span class="bogoc_5px">12 months</span></th>
+        </tr>
+        <?php
+        $i=0;
+        $price='';
+        $price_trial='';
+        $package=array();
+        $data = $this->_model->_users_package();
+        foreach($data as $row){
+            $i++;
+            $package[$row['id']] = $row['menu_id'];
+            if($i!=1){
+                $price .= '<td align="center">
+                    <span class="price">$'.$row['price'].'</span>
+                    <a href="signup/'.$row['id'].'.html" class="signup-now bogoc_5px">SIGNUP NOW!</a>
+                </td>';
+            }else{
+                $price_trial = '<td align="center" colspan="3">
+                    <span class="price">$'.$row['price'].' </span>
+                    <a href="signup/'.$row['id'].'.html">Signup Trial</a>
+                </td>';
+            }
+        }
+        
+        $data = $this->_model->_list_menu_parent(5);
+        foreach($data as $row){
+            echo '<tr class="line"><td colspan="4">'.$row['name'].'</td></tr>';
+            $data2 = $this->_model->_list_menu_parent($row['id']);
+            foreach($data2 as $row2){
+                $str = ','.$row2['id'].',';
+                if(preg_match($str, $package[1])) $standard='<img src="themes/website/img/select.png" width="20px" alt="select" />'; else $standard='&nbsp;';
+                if(preg_match($str, $package[2])) $pro='<img src="themes/website/img/select.png" width="20px" alt="select" />'; else $pro='&nbsp;';
+                if(preg_match($str, $package[3])) $ultimate='<img src="themes/website/img/select.png" width="20px" alt="select" />'; else $ultimate='&nbsp;';
+                echo '<tr class="line-2">
+                    <td>'.$row2['name'].'</td>
+                    <td align="center">'.$standard.'</td>
+                    <td align="center">'.$pro.'</td>
+                    <td align="center">'.$ultimate.'</td>
+                </tr>';
+            }
+        }
+        ?>
+        <tr class="line">
+            <td colspan="4">Pricing</td>
+        </tr>
+        <tr class="line-2">
+            <td style="color:#00F; font-weight:bold">&nbsp;</td>
+            <?php echo $price;?>
+        </tr>
+        <tr class="line-2">
+            <td style="color:#F00; font-weight:bold">SPECIAL OFFER: 10 Day Trial Membership – Try Us Today!</td>
+            <?php echo $price_trial;?>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <?php echo $link;?>
+        </tr>
+    </table>
+	<div class="clear_20px"></div>
+
     <h2><?php echo $data_home[0]['name'];?></h2>
     <?php
 	$i = 0;
@@ -35,14 +101,14 @@
     <div id="timezone"><?php include_once('view_web_timezone.php');?></div>
     <!--<div id="currency"><?php //include_once('view_web_currency.php');?></div>-->
     
-    <div class="clear_20px" style="margin-bottom:40px"></div>
+    <!--<div class="clear_20px" style="margin-bottom:40px"></div>
     <div class="box_sign">
         <a href="signup/"><img src="themes/website/img/sign-up-now.jpg" alt="signup forex" />Registration forex to make money today</a>
-    </div>
+    </div>-->
     
-    <div class="box_new">
+    <!--<div class="box_new">
     	<?php
-		$i = 0;
+		/*$i = 0;
 		$item = '';
 		$highlight = '';
         $data = $this->_model->_list_article_home_page($data_home[1]['id'], 5);
@@ -64,8 +130,8 @@
 				</div>';
 			}
 		}
-		echo $highlight.'<div class="other"><div class="title">'.$data_home[1]['name'].'</div>'.$item.'</div>';
+		echo $highlight.'<div class="other"><div class="title">'.$data_home[1]['name'].'</div>'.$item.'</div>';*/
 		?>
-    </div>
+    </div>-->
     <div class="clear_20px"></div>
 </div>

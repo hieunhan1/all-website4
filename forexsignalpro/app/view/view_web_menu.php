@@ -1,4 +1,4 @@
-<div id="menu">
+<div id="menu" class="container">
     <ul id="nav">
     	<?php
 		$i=0;

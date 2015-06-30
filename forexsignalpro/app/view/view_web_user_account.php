@@ -37,10 +37,10 @@ if(!isset($_GET['status'])){
 ?>
 <div id="account">
     <form action="" method="post" name="frm">
-    <table cellpadding="15" cellspacing="0" style="margin-left:100px">
+    <table cellpadding="15" cellspacing="0" style="margin-left:5%">
     	<tr><td colspan="2"><h3 class="title_user">Account Information</h3></td></tr>
         <tr>
-        	<th align="right" width="150">Name</th>
+        	<th align="right">Name</th>
             <td><?php echo $data[0]['name'];?></td>
         </tr>
     	<tr>
