@@ -24,36 +24,33 @@
     </div>
     
     <div id="contact">
-        <div class="loading"><img src="themes/website/img/loader.gif" /></div>
+        <div class="loading container"><img src="themes/website/img/loader.gif" /></div>
+        <div class="info"><?php echo CONS_CONTACT_INFO;?></div>
         <div class="error errorContact"></div>
         <div class="message messageContact"></div>
-        <table border="0" cellspacing="20" cellpadding="0">
-          <tr>
-            <td colspan="4"><p style="font-size:160%"><?php echo CONS_CONTACT_INFO;?></p></td>
-          </tr>
-          <tr>
-            <td width="90" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_NAME;?>:<span class="error">**</span></td>
-            <td valign="top"><input type="text" name="nameContact" class="txt" maxlength="50" /><p class="error" id="nameContact"></p></td>
-            <td width="90" align="right" valign="top" style="padding-top:3px">Email:<span class="error">**</span></td>
-            <td valign="top"><input type="text" name="emailContact" class="txt" maxlength="60" /><p class="error" id="emailContact"></p></td>
-          </tr>
-          <tr>
-            <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_PHONE;?>:<span class="error">**</span></td>
-            <td valign="top"><input type="text" name="phoneContact" class="txt" maxlength="20" /><p class="error" id="phoneContact"></p></td>
-            <td align="right" valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_ADDRESS;?>:</td>
-            <td valign="top"><input type="text" name="addressContact" class="txt" maxlength="250" /></td>
-          </tr>
-          <tr>
-            <td valign="top" style="padding-top:3px"><?php echo CONS_CONTACT_MESSAGE;?>:<span class="error">**</span></td>
-            <td colspan="3"><textarea name="messageContact" class="textarea"></textarea><p class="error" id="messageContact"></p></td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td><input type="button" name="btnSendContact" class="btn" value="<?php echo CONS_CONTACT_SEND;?>" /></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-        </table>
+        <div class="row">
+        	<div class="label"><?php echo CONS_CONTACT_NAME;?>:<span class="error">**</span></div>
+            <div class="field"><input type="text" name="nameContact" class="txt" maxlength="50" /><p class="error" id="nameContact"></p></div>
+            <div class="label">Email:<span class="error">**</span></div>
+            <div class="field"><input type="text" name="emailContact" class="txt" maxlength="60" /><p class="error" id="emailContact"></p></div>
+            <div class="clear1"></div>
+        </div>
+        <div class="row">
+        	<div class="label"><?php echo CONS_CONTACT_PHONE;?>:<span class="error">**</span></div>
+            <div class="field"><input type="text" name="phoneContact" class="txt" maxlength="20" /><p class="error" id="phoneContact"></p></div>
+            <div class="label"><?php echo CONS_CONTACT_ADDRESS;?>:</div>
+            <div class="field"><input type="text" name="addressContact" class="txt" maxlength="250" /></div>
+            <div class="clear1"></div>
+        </div>
+        <div class="row">
+        	<div class="label"><?php echo CONS_CONTACT_MESSAGE;?>:<span class="error">**</span></div>
+            <div class="field2"><textarea name="messageContact" class="textarea"></textarea><p class="error" id="messageContact"></p></div>
+            <div class="clear1"></div>
+        </div>
+        <div class="row">
+        	<div class="label">&nbsp;</div>
+            <div class="field"><input type="button" name="btnSendContact" class="btn" value="<?php echo CONS_CONTACT_SEND;?>" /></div>
+        </div>
     </div>
     <div style="clear:both; height:50px"></div>
 </div>
