@@ -24,7 +24,7 @@
     </div>
     
     <div id="contact">
-        <div class="loading container"><img src="themes/website/img/loader.gif" /></div>
+        <div class="loading content"><img src="themes/website/img/loader.gif" /></div>
         <div class="info"><?php echo CONS_CONTACT_INFO;?></div>
         <div class="error errorContact"></div>
         <div class="message messageContact"></div>
