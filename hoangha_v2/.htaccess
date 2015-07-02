@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^hoangha.com
+RewriteRule ^(.*)$ http://www.hoangha.com/$1 [R=permanent,L]
 RewriteRule images - [L]
 RewriteRule js - [L]
 RewriteRule public - [L]
