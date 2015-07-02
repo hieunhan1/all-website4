@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^ttpexpress.com
+RewriteRule ^(.*)$ http://www.ttpexpress.com/$1 [R=permanent,L]
 RewriteRule js - [L]
 RewriteRule public - [L]
 RewriteRule themes - [L]
