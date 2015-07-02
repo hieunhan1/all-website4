@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^qsevn.com
+RewriteRule ^(.*)$ http://www.qsevn.com/$1 [R=permanent,L]
 RewriteRule js - [L]
 RewriteRule public - [L]
 RewriteRule themes - [L]
