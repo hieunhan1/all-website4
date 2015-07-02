@@ -1,4 +1,6 @@
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^dayamthuc.vn
+RewriteRule ^(.*)$ http://www.dayamthuc.vn/$1 [R=permanent,L]
 RewriteRule js - [L]
 RewriteRule upload - [L]
 RewriteRule themes - [L]
