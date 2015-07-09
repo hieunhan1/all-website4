@@ -18,11 +18,13 @@
 				echo '<tr bgcolor="#EEE" style="line-height:40px"><th colspan="2" class="viewlich" id="'.$row['id'].'"><span style="color:#F00; text-transform:uppercase">'.$row['name'].'</span> <i style="cursor:pointer">(xem lịch)</i></th></tr>
 				<tbody class="contentLich contentLich'.$row['id'].'" '.$style.'>';
 				$i=0;
+				$hot='';
 				$data2 = $c->_model->_listKhaiGiang($row['id']);
 				foreach($data2 as $row2){
 					$i++;
+					if(!preg_match('/ HOT/i', $row2['name'])) $hot=''; else $hot=' <img src="themes/website/img/icon_hot.gif" alt="hot" />';
 					echo'<tr>
-						<td>'.$i.'. <a href="'.$row2['url'].'">'.$row2['name'].'</a></td>
+						<td>'.$i.'. <a href="'.$row2['url'].'">'.rtrim($row2['name'], ' HOT').'</a>'.$hot.'</td>
 						<td>'.$row2['khaigiang'].'</td>
 					</tr>';
 				}
