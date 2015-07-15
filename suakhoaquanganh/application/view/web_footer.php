@@ -5,7 +5,7 @@
         <div class="info">
             <h2><?php echo $config['sitename'];?></h2>
             <p><?php echo CONS_CONTACT_ADDRESS.': '.$config['address'];?></p>
-            <p><?php echo CONS_CONTACT_PHONE.': '.$config['tel'].' &nbsp;-&nbsp; Fax: '.$config['fax'];?></p>
+            <p><?php echo CONS_CONTACT_PHONE.': '.$config['tel'];?></p>
             <p>Email: <a href="mailto:<?php echo $config['email'];?>"><?php echo $config['email'];?></a></p>
         </div>
         <div id="social">

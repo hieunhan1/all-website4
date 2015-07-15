@@ -3,7 +3,7 @@
     <div class="viewpost">
     	<h1 style="margin:0"><?php echo $config['sitename'];?></h1>
         <p><b>Địa chỉ:</b> <?php echo $config['address'];?></p>
-        <p><b>Điện thoại:</b> <?php echo $config['tel'];?> <b style="padding-left:50px">Hotline:</b> <?php echo $config['hotline'];?></p>
+        <p><b>Điện thoại:</b> <?php echo $config['tel'];?></p>
         <p><b>Email:</b> <a href="mailto:<?php echo $config['email'];?>"><?php echo $config['email'];?></a><b style="padding-left:50px">Website:</b> <a href="<?php echo CONS_BASE_URL;?>" target="_blank"><?php echo CONS_BASE_URL;?></a></p>
     </div>
     
