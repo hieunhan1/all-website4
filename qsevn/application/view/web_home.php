@@ -21,7 +21,7 @@
 	?>
         <div class="box1">
             <h3 class="title"><a href="<?php echo $data[0]['url'];?>" title="<?php echo $data[0]['name'];?>"><?php echo $data[0]['name'];?></a></h3>
-            <div class="img"><a href=""><img src="<?php echo $urlImg[2]['url_img_thumb'].$data[0]['img'];?>" alt="<?php echo $data[0]['name'];?>" /></a></div>
+            <div class="img"><a href="<?php echo $data[0]['url'];?>"><img src="<?php echo $urlImg[2]['url_img_thumb'].$data[0]['img'];?>" alt="<?php echo $data[0]['name'];?>" /></a></div>
             <div class="info"><?php echo $data[0]['description'];?></div>
             <a href="<?php echo $data[0]['url'];?>" class="link">View more</a>
         </div>
