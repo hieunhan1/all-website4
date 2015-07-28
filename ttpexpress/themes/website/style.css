@@ -15,7 +15,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .clear1{clear:both; height:1px}
 .clear10{clear:both; height:10px}
 .clear20{clear:both; height:20px}
-.clear30{clear:both; height:10px}
+.clear30{clear:both; height:30px}
 
 .allIcon{background:url(img/icon.png) no-repeat}
 /*.allIconBg{background:url(img/icon_bg.png) repeat-x top}*/
@@ -150,8 +150,11 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 
 /*sale*/
 #sale{clear:both}
+#sale .box{width:33%; float:left; margin-bottom:20px}
 #sale .title{color:#e25e10; font-weight:bold; text-transform:uppercase; font-size:110%; padding:5px 0}
-#sale .box{width:280px; float:left; line-height:22px; margin:15px}
+#sale .item{width:280px; float:left; line-height:22px; margin:15px}
+#sale .liSale{ line-height:25px; margin-left:20px; padding-left:20px; background:url(img/icon-service.png) no-repeat; background-position:0px -42px; cursor:pointer}
+#sale .liSale:hover, #sale .active{font-weight:bold; background-position:0px 8px}
 
 /*menu*/
 #menu{width:auto; float:right}

@@ -11,17 +11,16 @@
     <?php
     $data = $c->_model->_listParentMenu($currentMenu['id']);
 	foreach($data as $row){
-		echo '<div class="title">'.$row['name'].'</div> <ol>';
-		$data2 = $c->_model->_listSale($row['id']);
-		foreach($data2 as $row2){
-			echo ' <li class="box"><b>'.$row2['name'].'</b><br />
-            Handphone: '.$row2['phone'].'<br />
-            Email: '.$row2['email'].'</li>';
-		}
-        echo '</ol><div class="clear1"></div>';
+		echo '<div class="box"><div class="title">'.$row['name'].'</div>';
+		$data2 = $c->_model->_listParentMenu($row['id']);
+		foreach($data2 as $row2) echo '<div class="liSale" id="'.$row2['id'].'" name="'.$row2['name'].'">'.$row2['name'].' <em style="font-size:85%">(click view)</em></div>';
+		echo '</div>';
 	}
 	?>
-    </div>
+    <div class="clear1"></div>
+    <div id="ajaxSale"></div>
+    
+    <div class="clear20"></div></div>
     
     <div id="contact">
         <div class="loading content"><img src="themes/website/img/loader.gif" /></div>
@@ -92,6 +91,24 @@ $(document).ready(function(e) {
 						return false;
 					}
 				},500);
+			}
+		});
+	});
+	
+	$(".liSale").click(function(){
+		var id = $(this).attr('id');
+		var name = $(this).attr('name');
+		$(".liSale").removeClass("active");
+		$(this).addClass("active");
+		$("#ajaxSale").html('<p style="font-style:italic; padding:0 0 30px 20px">loading..</p>');
+		$.ajax({
+			url:"ajax/",
+			type:'post',
+			data:{listSale:id, name:name},
+			cache:false,
+			success: function(data){
+				setTimeout(function(){ $("#ajaxSale").html(data); }, 500);
+				return true;
 			}
 		});
 	});
