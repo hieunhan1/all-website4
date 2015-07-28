@@ -69,5 +69,13 @@ class modelAjax extends modelDB{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
+	
+	public function _listSale($id){
+		$sql = "SELECT * FROM `web_sale` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `order`";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
 }
 ?>

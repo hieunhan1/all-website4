@@ -145,11 +145,29 @@ if(isset($_GET['idContact'])){ //view detail contact
 }
 if(isset($_POST['google_map'])){
 	$id_map = trim($_POST['google_map']);
-	$id_map = $c->_model->_change_dau_nhay($id_map);
+	$id_map = $c->_model->_changeDauNhay($id_map);
 	$name = trim($_POST['name']);
-	$name = $c->_model->_change_dau_nhay($name);
+	$name = $c->_model->_changeDauNhay($name);
 	if($id_map!='' && $name!=''){
 		include_once('view_web_google_map.php');
 	}
+}
+
+if(isset($_POST['listSale'])){
+	$id = $c->_model->_changeDauNhay($_POST['listSale']);
+	$name = $c->_model->_changeDauNhay($_POST['name']);
+	if($id!='' && $name!=''){
+		$data = $c->_model->_listSale($id);
+		echo '<h4 class="error" style="margin-left:20px">'.$name.'</h4><ol>';
+		if(count($data)>0){
+			foreach($data as $row){
+				echo ' <li class="item"><b>'.$row['name'].'</b><br />
+				Handphone: '.$row['phone'].'<br />
+				Email: '.$row['email'].'</li>';
+			}
+		}else echo '<p style="line-height:25px">Update...</p>';
+		echo '</ol><div class="clear1"></div>';
+	}
+	return true;
 }
 /*end web*/
