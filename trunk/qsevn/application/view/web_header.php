@@ -1,4 +1,8 @@
 <div id="header" class="content">
+	<div id="lang">
+    	<li class="li allIcon" style="background-position:0px 2px"><a href="/?lang=vi">Tiếng Việt</a></li>
+    	<li class="li allIcon" style="background-position:0px -28px"><a href="/">English</a></li>
+    </div>
 	<?php
     if($lang==CONS_DEFAULT_LANG) $link=CONS_BASE_URL;
 	else $link=CONS_BASE_URL.'/?lang='.$lang;
