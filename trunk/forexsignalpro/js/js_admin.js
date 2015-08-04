@@ -10,7 +10,7 @@ function change_alias(alias,dau_thaythe){
 	str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
 	str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
 	str= str.replace(/đ/g,"d");
-	str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_|-/g, dau_thaythe);
+	str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|–|_|-/g, dau_thaythe);
 	str= str.replace(/\\|\$|\||\{|\}|\`/g, dau_thaythe);
 	/* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
 	str= str.replace(/-+-/g, dau_thaythe); //thay thế 2 - thành 1- 
@@ -39,74 +39,25 @@ $(document).ready(function(e) {
 	});
 	
 	var url_img_css = 'themes/admin/img/';
-	var url_link_ad = 'cp_admin/';
+	var url_link_ajax = 'ajax/';
+	var table = $("#tableName").html();
 	
 	/*ajax_number_item*/
 	function ajax_number_item(table){
 		$.ajax({ 	
-			url:"cp_admin/",
-			type:'get',
-			data:{ajax:"ajax_number_item",table:table},
+			url: url_link_ajax,
+			type:'POST',
+			data:{ajaxNumberItem:1, table:table},
 			cache:false,
 			success: function(data) {
 				$("#" + table).html(" (" + data + ")");
 			}
 		});
+		return true;
 	}
-	ajax_number_item("web_booking");
+	ajax_number_item("web_dangky_tructuyen");
 	ajax_number_item("web_contact");
 	/*end ajax_number_item*/
-	
-	/*status*/
-	$(".status").click(function(){
-		var id 		= $(this).attr('status_id');
-		var name 	= $(this).attr('status_name');
-		var url 	= $(this).attr('url');
-		var status 	= $(this).attr('status');
-		var message	= '';
-		var status_current = '';
-		var url_current = '';
-		if(status=='1'){
-			message = 'Bạn có muốn ẩn `' + name + '`?';
-			status_current = 0;
-			url_current = url_img_css + 'anhien_0.gif';
-		}else{
-			message = 'Bạn có muốn hiện `' + name + '`?';
-			status_current = 1;
-			url_current = url_img_css + 'anhien_1.gif';
-		}
-		if(confirm(message)){
-			$.ajax({
-				url: url_link_ad + url + '/',
-				type:'GET',
-				data:{status_one:status, id_ac:id, name:name},
-				cache:false,
-				success: function() {
-					$('#status_' + id).attr('status', status_current);
-					$('#status_' + id).attr('src', url_current);
-				}
-			});
-		}
-	});
-	
-	/*delete*/
-	$(".delete_one").click(function(){
-		var id 		= $(this).attr('delete_id');
-		var name 	= $(this).attr('delete_name');
-		var url 	= $(this).attr('url');
-		var message	= 'Bạn có muốn xóa `' + name + '`?';
-		if(confirm(message)){
-			$.ajax({
-				url: url_link_ad + url + '/',
-				type:'GET',
-				data:{delete_one:id},
-				cache:false,
-				success: function() {
-					$('.row_' + id).hide();
-				}
-			});
-		}
-	});
 	
 	/*reset_pass*/
 	$("#reset_pass").click(function(){
@@ -121,22 +72,78 @@ $(document).ready(function(e) {
 		}
 	});
 	
-	/*change_alias*/
-	$("#change_alias").click(function(){
-		$("#name_alias").attr("disabled",false);
+	/*status*/
+	$(".status_one").click(function(){
+		var id = $(this).parent().parent().attr('id');
+		var name = $(this).parent().parent().attr('name');
+		var status = $(this).attr('status');
+		var urlImg = '';
+		var message = '';
+		if(status=='1'){
+			message = 'Bạn có muốn ẩn `' + name + '`?';
+			status = 0;
+			urlImg = url_img_css + 'anhien_0.gif';
+		}else{
+			message = 'Bạn có muốn hiện `' + name + '`?';
+			status = 1;
+			urlImg = url_img_css + 'anhien_1.gif';
+		}
+		if(confirm(message)){
+			$.ajax({
+				url: url_link_ajax,
+				type:'POST',
+				data:{status_one:status, table:table, id:id},
+				cache:false,
+				success: function() {
+					$('#' + id + ' .status_one').attr('status', status);
+					$('#' + id + ' .status_one img').attr('src', urlImg);
+				}
+			});
+		}
 	});
 	
-	/*change_url*/
-	$("#change_url").click(function(){
-		$("#url").attr("disabled",false);
+	/*delete*/
+	$(".delete_one").click(function(){
+		var id = $(this).parent().parent().attr('id');
+		var name = $(this).parent().parent().attr('name');
+		var message	= 'Bạn có muốn xóa `' + name + '`?';
+		if(confirm(message)){
+			$.ajax({
+				url: url_link_ajax,
+				type:'POST',
+				data:{delete_one:id, table:table},
+				cache:false,
+				success: function() {
+					$('#' + id).hide();
+				}
+			});
+		}
+	});
+	
+	/*changeAlias*/
+	$("#changeAlias").click(function(){
+		$("#name_alias").attr("disabled", false);
+	});
+	/*changeUrl*/
+	$("#changeUrl").click(function(){
+		$("#url").attr("disabled", false);
+	});
+	/*changeUser*/
+	$("#changeUser").click(function(){
+		$("#username").attr("disabled", false);
+	});
+	/*resetPass*/
+	$("#resetPass").click(function(){
+		$("#password").attr("disabled", false);
 	});
 	
 	/*biến đổi alias*/
-	function name_alias(dest,source){
+	function name_alias(dest, source){
 		$(dest).dblclick(function(){
 			var name = $.trim($(source).val());
 			$(this).val(change_alias(name,'-'));
 		});
+		return true;
 	}
 	name_alias('#name_alias','#name');
 	
@@ -146,25 +153,9 @@ $(document).ready(function(e) {
 			var name_rewrite = $.trim($(source).val());
 			$(this).val(name_rewrite + '/');
 		});
+		return true;
 	}
 	url_auto('.url_auto','#name_alias');
-	
-	/*lấy link tu dong detail*/
-	function auto_link_detail(class_name, ajax){
-		var name_alias = $.trim($("#name_alias").val());
-		var menu_id = $.trim($("#menu_id").val());
-		var url = $(location).attr('href') + "&ajax=" + ajax + "&menu_id=" + menu_id;
-		$.post(url,function(data){
-			$(class_name).val(data + name_alias + ".html");
-		});
-	}
-	$(".auto_link_detail").dblclick(function(){
-		auto_link_detail(this, "menu_id");
-	});
-	$(".auto_link_detail_forum").dblclick(function(){
-		auto_link_detail(this, "forum_menu_id");
-	});
-	/*end lấy link tu dong detail*/
 	
 	/*lấy keyword tự động*/
 	function keyword_auto(dest,source){
@@ -172,8 +163,49 @@ $(document).ready(function(e) {
 			var name = $.trim($(source).val());
 			$(this).val(remove_ky_tu_dac_biet(name,' ') + ',' + change_alias(name,' '));
 		});
+		return true;
 	}
 	keyword_auto('#tags','#name');
+	
+	/*lấy link tu dong detail*/
+	function check_link_detail(url){
+		var id = $.trim($("input[name=id]").val());
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{checkLinkDeatil:id, table:table, url:url},
+			cache:false,
+			success: function(data) {
+				if(data=='0') $(".messageUrl").html("");
+				else $(".messageUrl").html("Link này đã tồn tại, vui lòng nhập Alias khác.");
+			}
+		});
+		return true;
+	}
+	function auto_link_detail(class_name, alias){
+		var menu_id = $.trim($("#menu_id").val());
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{linkDeatil:1, menu_id:menu_id},
+			cache:false,
+			success: function(data) {
+				var url = data + alias + ".html";
+				$(class_name).val(url);
+				check_link_detail(url);
+			}
+		});
+		return true;
+	}
+	$(".auto_link_detail").dblclick(function(){
+		var alias = $.trim($("#name_alias").val());
+		if(alias==''){
+			var name = $.trim($("#name").val());
+			$("#name_alias").val(change_alias(name,'-'));
+			alias = $.trim($("#name_alias").val());
+		}
+		auto_link_detail(this, alias);
+	});
 	
 	/*checks box*/
 	function checks_box_item(list_check, list_view){
@@ -184,8 +216,78 @@ $(document).ready(function(e) {
 			});
 			$(list_view).attr('value',str);
 		});
+		return true;
 	};
-	checks_box_item('.checkbox_item', '.value_checks_box'); //class, id
-	checks_box_item('.checkbox_xem', '.value_rule_view');
-	checks_box_item('.checkbox_action', '.value_rule_action');
+	checks_box_item('.checkboxItem', '.valueChecksBox'); //class, id
+	checks_box_item('.checkboxView', '.valueRuleView');
+	checks_box_item('.checkboxAction', '.valueRuleAction');
+	
+	/*other*/
+	function searchID(id, table){
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{searchID:id, table:table},
+			cache:false,
+			success: function(data) {
+				if(data!='') $(".value_name").val(data);
+				else alert("Không tìm thấy dữ liệu");
+				return true;
+			}
+		});
+	}
+	function searchName(name, table){
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{searchName:name, table:table},
+			cache:false,
+			success: function(data) {
+				if(data!='') $("#value_view").html(data);
+				else alert("Không tìm thấy dữ liệu");
+				return true;
+			}
+		});
+	}
+	$(".value_id").blur(function(){
+		var id = $(this).val();
+		var table = $("#value_view").attr("table");
+		if(Number(id)) searchID(id, table);
+		else if(id!='') alert("Vui lòng nhập số");
+		return true;
+	});
+	
+	$(".value_search").click(function(){
+		var name = $.trim($(".value_name").val());
+		var table = $("#value_view").attr("table");
+		if(name!='') searchName(name, table);
+		return true;
+	});
+	$(".value_data").live("click", function(){
+		var id = $(this).attr("id");
+		var name = $(this).html();
+		$(".value_id").val(id);
+		$(".value_name").val(name);
+		$(".value_data").hide(100);
+		return true;
+	});
+	
+	/*sendmail*/
+	$("#sendmail").click(function(){
+		var id = $("#id").val();
+		var idNV = $("#nhanvien_lienhe").val();
+		var table = $(this).attr("table");
+		$(this).attr("disabled", true);
+		$.ajax({
+			url: url_link_ajax,
+			type:'POST',
+			data:{sendmail:idNV, id:id, table:table},
+			cache:false,
+			success: function(data) {
+				$("#status2").attr("checked", true);
+				$("#messageSendmail").html(data);
+				return true;
+			}
+		});
+	});
 });

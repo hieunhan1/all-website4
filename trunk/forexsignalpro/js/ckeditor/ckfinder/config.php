@@ -6,7 +6,7 @@ function CheckAuthentication()
 
 $config['LicenseName'] = '';
 $config['LicenseKey'] = '';
-$baseUrl = '/all/forexsignalpro/public/';
+$baseUrl = '/all/forexsignalpro_v2/public/';
 
 $baseDir = resolveUrl($baseUrl);
 
@@ -15,8 +15,8 @@ $config['Thumbnails'] = Array(
 		'directory' => $baseDir . '_thumbs',
 		'enabled' => true,
 		'directAccess' => false,
-		'maxWidth' => 250,
-		'maxHeight' => 180,
+		'maxWidth' => 300,
+		'maxHeight' => 250,
 		'bmpSupported' => false,
 		'quality' => 80);
 
