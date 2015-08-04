@@ -1,9 +1,9 @@
 RewriteEngine On
-RewriteRule images - [L]
+RewriteCond %{HTTP_HOST} ^suakhoaquanganh.com
+RewriteRule ^(.*)$ http://www.suakhoaquanganh.com/$1 [R=permanent,L]
 RewriteRule js - [L]
 RewriteRule public - [L]
 RewriteRule themes - [L]
-RewriteRule php - [L]
-RewriteRule (.*) app/index.php [L]
+RewriteRule (.*) application/index.php [L]
 AddDefaultCharset UTF-8
 Options -Indexes

@@ -55,7 +55,7 @@ function sroll_top(){
 function isInt(num){
 	if(parseInt(num)==num) return true;
 	else return false;
-}/*ham kiem tra so int*/
+}
 
 $(document).ready(function($){
 	$("#txtSearch").keydown(function(e){
@@ -65,32 +65,13 @@ $(document).ready(function($){
 		SearchGoogle("txtSearch");
 	});
 	
-	$("#nav li").hover(function(){
+	/*$("#nav li, #menuTop li").hover(function(){
 		$(this).find('ul:first').css({visibility: 'visible', display: 'none'}).show(200);
 	}, function(){
 		$(this).find('ul:first').css({visibility: 'hidden'});
-	});
-	
-	if(browserVersion()!=7 && browserVersion()!=8){
-		$(".bogoc_5px").corner("5px");
-		$(".bogoc_bottom_5px").corner("bottom 5px");
-		$(".bogoc_right_5px").corner("right 5px");
-	}
+	});*/
 	
 	$("#run_top").click(function(){
 		sroll_top();
-	});
-	
-	$(".tab_code").click(function(){
-		$(".tab_code").removeClass("tab_code_active");
-		$(this).addClass("tab_code_active");
-	});
-	
-	$("#btnCode").click(function(){
-		var code = $.trim($("#txtCode").val());
-		var linkCode = $("#linkCode").val();
-		
-		if(code != '') window.location = linkCode + code;
-		else alert('Input code!');
 	});
 });

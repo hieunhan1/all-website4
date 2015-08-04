@@ -5,6 +5,7 @@ body{color:#1E1E1E; font-family:Arial, Helvetica, sans-serif; font-size:13px}
 a {color:#0000FF; text-decoration:none}
 a:hover {color:#F00; text-decoration:underline}
 hr{border: solid 2px #F3A972}
+textarea{color:#1E1E1E; font-family:Arial, Helvetica, sans-serif; font-size:13px}
 
 #login{width:240px; margin:30px auto 0; padding:10px; border:solid 1px #a9c1d4; background:url(img/bg-dangnhap.gif)}
 #login h2{display:block; margin-bottom:10px; padding-bottom:10px; border-bottom:solid 1px #b4b8be}
@@ -43,7 +44,12 @@ hr{border: solid 2px #F3A972}
 #phantrang a:hover{background-color:#ED1E28}
 #phantrang span{margin-right:3px; padding:5px 10px; text-align:center; color:#FFF; font-weight:bold; background-color:#900}
 
-.label{width:150px; text-align:right; vertical-align:top; font-weight:bold; padding-top:3px}
+.listCheckboxMedium{width:345px; height:200px; overflow:auto; float:left; line-height:22px; padding:5px; border:solid 1px #999; background-color:#FFC}
+.listCheckboxSmall{width:165px; height:300px; overflow:auto; float:left; line-height:22px; padding:5px; border:solid 1px #999; background-color:#FFC}
+
+
+.label{width:150px; text-align:right; vertical-align:top; font-weight:bold; line-height:22px}
+.labelData{color:#666}
 .radio{margin-top:5px}
 .checkbox{margin-top:5px}
 
@@ -59,7 +65,7 @@ hr{border: solid 2px #F3A972}
 
 .notes{color:#666; padding-left:5px; font-style:italic; word-spacing:1px}
 .message{color:#00F; padding:10px 0px; font-weight:bold}
-.error{color:#F00; padding:10px 0px; font-weight:bold}
+.error{color:#F00; font-style:italic; font-weight:bold; padding:10px 0px}
 
 #preview{color:#cc0000; font-size:12px}
 .imgList{max-height:150px; margin-left:5px; border:1px solid #dedede; padding:4px; float:left}
@@ -73,10 +79,14 @@ hr{border: solid 2px #F3A972}
 #upload_img .img_item .copylink:hover{color:#F00}
 #upload_img .img_item .delete_img{width:auto; float:right; cursor:pointer}
 
-#search{background-color:#5ECBFF; padding:4px 10px; margin-bottom:5px}
+#search{background-color:#AAA; padding:4px 10px; margin-bottom:5px}
 #search .txt{width:150px; padding:3px; border:solid 1px #999; color:#666}
 #search .select{width:150px; padding:2px; border:solid 1px #999}
 #search .btn{padding:3px 20px;}
+
+#listLang{padding:5px 0 15px 0}
+#listLang a{margin:0 15px; padding:3px 10px}
+#listLang .activeLang{color:#333; background-color:#FF6; border:solid 1px #333}
 
 #chucnang{height:500px; margin:auto; padding:10px 20px 20px 20px}
 #chucnang .item{width:120px; height:125px; float:left; text-align:center; margin:20px 10px; background-color:#FFF}
@@ -85,9 +95,12 @@ hr{border: solid 2px #F3A972}
 .ajax_thongtin{color:#F00}
 
 #reset_pass{display:block; padding-bottom:30px; font-size:110%; font-style:italic}
+.change{padding:0 10px; font-weight:bold}
 
-.avarta{width:300px; height:70px; overflow:hidden}
-.avarta img{height:70px}
+.avarta{clear:both; width:500px; overflow:hidden}
+.avarta img{height:60px}
 
-.true{padding:3px 10px; color:#FFF; font-weight:bold; background-color:#090}
-.false{padding:3px 10px; color:#FFF; font-weight:bold; background-color:#F00}
+/*other*/
+#value_view{line-height:22px}
+#value_view .value_data{color:#00F; cursor:pointer}
+#value_view .value_data:hover{color:#F00}
