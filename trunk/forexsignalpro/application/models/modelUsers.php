@@ -58,14 +58,14 @@ class modelUsers extends modelDB{
 		return true;
 	}
 	
-	/*public function _changePassword($u, $p){
+	public function _changePassword($u, $p){
 		$p = md5($p);
 		$sql = "UPDATE `web_users` SET `password`='{$p}' WHERE `username`='{$u}' ";
 		$this->db->query($sql);
 		return TRUE;
 	}
 	
-	public function _resetPassword($id, $pass){
+	/*public function _resetPassword($id, $pass){
 		$pass = md5($pass);
 		$sql = "UPDATE `web_users` SET `password`='{$pass}' WHERE `id`='{$id}' ";
 		$this->db->query($sql);

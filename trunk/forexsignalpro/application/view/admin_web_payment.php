@@ -22,7 +22,7 @@ echo $c->viewFormSearch();
             <tr class="row" id="<?php echo $row['id'];?>" name="<?php echo $row['name'];?>">
                 <td align="center"><?php echo $arr['startRow']+$i; ?></td>
                 <td><p class="height_row_hidden"><?php echo $row['name'];?></p></td>
-                <td align="center"><?php echo $row['email'];?></td>
+                <td><?php echo $row['email'];?></td>
                 <td align="center"><?php echo $row['package_id'];?></td>
                 <td align="center"><?php echo $row['PAYEE_ACCOUNT'];?></td>
                 <td align="center">$<?php echo $row['PAYMENT_AMOUNT'];?></td>

@@ -16,12 +16,12 @@
 <div class="clear20"></div>
 <script type="text/javascript">
 $(document).ready(function(e) {
-    $("input[name=loginBtn]").click(function(){
-        var password = check_text_length("input[name=loginPass]","#loginPass .error","The password must be 6 characters",6);
+	function loginForex(){
+		var password = check_text_length("input[name=loginPass]","#loginPass .error","The password must be 6 characters",6);
         var email = check_email("input[name=loginEmail]","#loginEmail .error","<?php echo CONS_ERROR_EMAIL;?>");
         if(email==false || password==false) return false;
         $("input[name=loginBtn], input[name=loginEmail], input[name=loginPass]").attr("disabled", true);
-        $(this).addClass("disable");
+        $("input[name=loginBtn]").addClass("disable");
         $.ajax({ 	
             url:"<?php echo CONS_BASE_URL;?>/ajax/",
             type:'post',
@@ -40,6 +40,12 @@ $(document).ready(function(e) {
             }
         });
         return true;
+	}
+    $("input[name=loginBtn]").click(function(){
+        loginForex();
     });
+	$(".txt").keydown(function(e){
+		if(e.keyCode==13) loginForex();
+	});
 });
 </script>
