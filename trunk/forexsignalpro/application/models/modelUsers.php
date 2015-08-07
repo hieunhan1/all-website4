@@ -65,11 +65,39 @@ class modelUsers extends modelDB{
 		return TRUE;
 	}
 	
-	/*public function _resetPassword($id, $pass){
+	/*reset pass*/
+	public function _checksUserEmail($email){
+		$sql = "SELECT `id`, `name`, `email` FROM `web_users` WHERE `status`=1 AND `email`='{$email}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _checksResetEmail($email){
+		$sql = "SELECT * FROM `web_users_reset` WHERE `status`=0 AND `email`='{$email}' ORDER BY `id` DESC LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _insertResetEmail($name, $email, $ip_address, $key, $datetime){
+		$sql = "INSERT INTO `web_users_reset` (`name`, `email`, `ip_address`, `key`, `datetime`, `status`) VALUES ('{$name}', '{$email}', '{$ip_address}', '{$key}', '{$datetime}', '0')";
+		if(!$this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	
+	public function _keyResetPass($key, $email){
+		$sql = "SELECT * FROM `web_users_reset` WHERE `email`='{$email}' AND `key`='{$key}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _updateResetPassword($email, $key){
+		$sql = "UPDATE `web_users_reset` SET `status`=1 WHERE `email`='{$email}' AND `key`='{$key}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	public function _resetPassword($email, $pass){
 		$pass = md5($pass);
-		$sql = "UPDATE `web_users` SET `password`='{$pass}' WHERE `id`='{$id}' ";
-		$this->db->query($sql);
-		return TRUE;
-	}*/
+		$sql = "UPDATE `web_users` SET `password`='{$pass}' WHERE `email`='{$email}' ";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	/*end reset pass*/
 }
 ?>

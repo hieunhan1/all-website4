@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2015 at 12:25 PM
+-- Generation Time: Aug 07, 2015 at 07:49 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `forexsignalpro_v2`
+-- Database: `forexsignalpro`
 --
 
 -- --------------------------------------------------------
@@ -468,20 +468,23 @@ CREATE TABLE IF NOT EXISTS `web_analytics` (
   `table` varchar(30) NOT NULL,
   `value` bigint(10) NOT NULL,
   `datetime` bigint(10) NOT NULL,
+  `other` tinyint(1) NOT NULL DEFAULT '0',
   `lang` varchar(2) NOT NULL DEFAULT 'vi',
   `status` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_analytics`
 --
 
-INSERT INTO `web_analytics` (`id`, `name`, `table`, `value`, `datetime`, `lang`, `status`) VALUES
-(1, 'Tháng 8 năm 2015', 'web_users', 0, 1438362000, 'en', 1),
-(2, 'Tháng 8 năm 2015', 'web_payment', 0, 1438362000, 'en', 1),
-(3, 'Tháng 8 năm 2015', 'web_payment', 1, 1438362000, 'en', 1),
-(4, 'Tháng 8 năm 2015', 'web_payment', 2, 1438362000, 'en', 1),
-(5, 'Tháng 8 năm 2015', 'web_payment', 3, 1438362000, 'en', 1);
+INSERT INTO `web_analytics` (`id`, `name`, `table`, `value`, `datetime`, `other`, `lang`, `status`) VALUES
+(8, 'Tháng 8 năm 2015', 'web_users', 0, 1438362000, 0, 'en', 1),
+(9, 'Tháng 8 năm 2015', 'web_payment', 0, 1438362000, 0, 'en', 1),
+(10, 'Tháng 8 năm 2015', 'web_payment', 1, 1438362000, 0, 'en', 1),
+(11, 'Tháng 8 năm 2015', 'web_payment', 2, 1438362000, 0, 'en', 1),
+(6, 'Thống kê user đang hoạt động', 'web_users', 1, 1420045200, 1, 'en', 1),
+(7, 'Thống kê user hết hạn', 'web_users', 3, 1420045200, 1, 'en', 1),
+(12, 'Tháng 8 năm 2015', 'web_payment', 3, 1438362000, 0, 'en', 1);
 
 -- --------------------------------------------------------
 
@@ -1487,7 +1490,7 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `web_logs`
@@ -1706,7 +1709,22 @@ INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`,
 (209, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438597870, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`lang`,`status`fields%%%values6%%%Tháng 8 năm 2015%%%web_users%%%0%%%1438362000%%%en%%%1', 'en', 0, NULL, NULL),
 (210, 'Admin', 'update', 'web_users', 1438599991, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`date_expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values25%%%Admin%%%%%%%%%admin@gmail.com%%%0%%%%%%%%%%%%admin%%%fc7fc678608590b123692867f176fe63%%%%%%%%%%%%0%%%vi%%%0%%%1%%%3', 'en', 0, NULL, NULL),
 (211, 'Nhan', 'delete', 'web_payment', 1438600359, 'admin', '`id`,`name`,`email`,`package_id`,`ip_address`,`PAYEE_ACCOUNT`,`PAYMENT_AMOUNT`,`PAYMENT_UNITS`,`PAYMENT_ID`,`TIMESTAMPGMT`,`PAYER_ACCOUNT`,`token`,`datetime`,`lang`,`status`fields%%%values41%%%Nhan%%%hieu_nhan1@yahoo.com%%%2%%%::1%%%U7071279%%%150%%%USD%%%1438315219%%%0%%%%%%[ip_address] =&gt; ::1<br />[PAYEE_ACCOUNT] =&gt; U7071279<br />[PAYMENT_AMOUNT] =&gt; 150<br />[PAYMENT_UNITS] =&gt; USD<br />[PAYMENT_ID] =&gt; 1438315219<br />[name] =&gt; Nhan<br />[email] =&gt; hieu_nhan1@yahoo.com<br />[package_id] =&gt; 2<br />%%%1438589111%%%en%%%1', 'en', 0, NULL, NULL),
-(212, 'Nhan', 'update', 'web_payment', 1438680871, 'admin', '`id`,`name`,`email`,`package_id`,`ip_address`,`PAYEE_ACCOUNT`,`PAYMENT_AMOUNT`,`PAYMENT_UNITS`,`PAYMENT_ID`,`TIMESTAMPGMT`,`PAYER_ACCOUNT`,`token`,`datetime`,`lang`,`status`fields%%%values42%%%Nhan%%%hieu_nhan1@yahoo.com%%%2%%%::1%%%U7071279%%%150%%%USD%%%1438315219%%%0%%%%%%[ip_address] =&gt; ::1<br />[PAYEE_ACCOUNT] =&gt; U7071279<br />[PAYMENT_AMOUNT] =&gt; 150<br />[PAYMENT_UNITS] =&gt; USD<br />[PAYMENT_ID] =&gt; 1438315219<br />[name] =&gt; Nhan<br />[email] =&gt; hieu_nhan1@yahoo.com<br />[package_id] =&gt; 2<br />%%%1438600386%%%en%%%1', 'en', 0, NULL, NULL);
+(212, 'Nhan', 'update', 'web_payment', 1438680871, 'admin', '`id`,`name`,`email`,`package_id`,`ip_address`,`PAYEE_ACCOUNT`,`PAYMENT_AMOUNT`,`PAYMENT_UNITS`,`PAYMENT_ID`,`TIMESTAMPGMT`,`PAYER_ACCOUNT`,`token`,`datetime`,`lang`,`status`fields%%%values42%%%Nhan%%%hieu_nhan1@yahoo.com%%%2%%%::1%%%U7071279%%%150%%%USD%%%1438315219%%%0%%%%%%[ip_address] =&gt; ::1<br />[PAYEE_ACCOUNT] =&gt; U7071279<br />[PAYMENT_AMOUNT] =&gt; 150<br />[PAYMENT_UNITS] =&gt; USD<br />[PAYMENT_ID] =&gt; 1438315219<br />[name] =&gt; Nhan<br />[email] =&gt; hieu_nhan1@yahoo.com<br />[package_id] =&gt; 2<br />%%%1438600386%%%en%%%1', 'en', 0, NULL, NULL),
+(213, 'Home', 'update', 'web_menu', 1438744161, 'admin', '`id`,`name`,`name_alias`,`url`,`img`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values1%%%Home%%%home%%%http://localhost/all/forexsignalpro_v2%%%%%%Forex Signal Pro%%%Des Forex Signal Pro%%%Forex Signal Pro%%%0%%%1%%%0%%%en%%%1%%%1%%%,2,3,', 'en', 0, NULL, NULL),
+(214, 'Nhan', 'update', 'web_users', 1438746697, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`date_expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values26%%%Nhan%%%%%%%%%hieu_nhan1@yahoo.com%%%0%%%%%%%%%%%%%%%867e1a36d190000d2f266d80889683fc%%%%%%%%%%%%1441278786%%%vi%%%1441040399%%%1%%%1', 'en', 0, NULL, NULL),
+(215, 'Thống kê user đang hoạt động', 'create', 'web_analytics', 1438850882, 'admin', '', 'en', 0, NULL, NULL),
+(216, 'Thống kê user hết hạn', 'create', 'web_analytics', 1438850898, 'admin', '', 'en', 0, NULL, NULL),
+(217, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438850908, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values5%%%Tháng 8 năm 2015%%%web_payment%%%3%%%1438362000%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(218, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438850909, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values4%%%Tháng 8 năm 2015%%%web_payment%%%2%%%1438362000%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(219, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438850910, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values3%%%Tháng 8 năm 2015%%%web_payment%%%1%%%1438362000%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(220, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438850911, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values2%%%Tháng 8 năm 2015%%%web_payment%%%0%%%1438362000%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(221, 'Tháng 8 năm 2015', 'delete', 'web_analytics', 1438850911, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values1%%%Tháng 8 năm 2015%%%web_users%%%0%%%1438362000%%%0%%%en%%%1', 'en', 0, NULL, NULL),
+(222, 'Thống kê user hết hạn', 'update', 'web_analytics', 1438850950, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values7%%%Thống kê user hết hạn%%%web_users%%%1%%%1438850880%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(223, 'Thống kê user đang hoạt động', 'update', 'web_analytics', 1438850961, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`order`,`lang`,`status`fields%%%values6%%%Thống kê user đang hoạt động%%%web_users%%%1%%%1438850760%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(224, 'Thống kê user hết hạn', 'update', 'web_analytics', 1438851291, 'admin', '`id`,`name`,`table`,`value`,`datetime`,`other`,`lang`,`status`fields%%%values7%%%Thống kê user hết hạn%%%web_users%%%1%%%1420045200%%%1%%%en%%%1', 'en', 0, NULL, NULL),
+(225, 'User Forex', 'update', 'web_users', 1438851819, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`date_expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values26%%%User Forex%%%%%%%%%userforex@gmail.com%%%0%%%%%%%%%%%%%%%867e1a36d190000d2f266d80889683fc%%%%%%%%%%%%1441278780%%%en%%%1441040399%%%1%%%1', 'en', 0, NULL, NULL),
+(226, 'User Forex', 'update', 'web_users', 1438851853, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`date_expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values26%%%User Forex%%%%%%%%%userforex@gmail.com%%%0%%%%%%%%%%%%%%%867e1a36d190000d2f266d80889683fc%%%%%%%%%%%%1441040340%%%en%%%1441040399%%%1%%%1', 'en', 0, NULL, NULL),
+(227, 'User Forex', 'update', 'web_users', 1438851875, 'admin', '`id`,`name`,`address`,`phone`,`email`,`birthday`,`gender`,`img`,`salt`,`username`,`password`,`rule_view`,`rule_action`,`random_key`,`date_expiration`,`lang`,`datetime`,`status`,`group_id`fields%%%values26%%%User Forex%%%%%%%%%userforex@gmail.com%%%0%%%%%%%%%%%%%%%867e1a36d190000d2f266d80889683fc%%%%%%%%%%%%1438793940%%%en%%%1441040399%%%1%%%1', 'en', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1737,7 +1755,7 @@ CREATE TABLE IF NOT EXISTS `web_menu` (
 --
 
 INSERT INTO `web_menu` (`id`, `name`, `name_alias`, `url`, `img`, `title`, `description`, `tags`, `parent`, `order`, `other`, `lang`, `status`, `type_id`, `position_id`) VALUES
-(1, 'Home', 'home', 'http://localhost/all/forexsignalpro_v2', '', 'Forex Signal Pro', 'Des Forex Signal Pro', 'Forex Signal Pro', 0, 1, 0, 'en', 1, 1, ',2,3,'),
+(1, 'Home', 'home', 'http://localhost/all/forexsignalpro', '', 'Forex Signal Pro', 'Des Forex Signal Pro', 'Forex Signal Pro', 0, 1, 0, 'en', 1, 1, ',2,3,'),
 (2, 'Contact US', 'contact-us', 'contact-us/', '', 'Contact US', 'Contact US', 'Contact US', 0, 2, 0, 'en', 1, 13, ',2,3,'),
 (3, 'Login', 'login', 'login/', '', 'Forex Login', 'Forex Login', 'Forex Login', 0, 3, 0, 'en', 0, 8, ',2,'),
 (4, 'Login', 'user', 'user/', '', 'Forex Login', 'Forex Login', 'User', 0, 4, 0, 'en', 1, 8, ',2,'),
@@ -2263,7 +2281,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
   `password` char(32) NOT NULL,
   `rule_view` varchar(100) NOT NULL,
   `rule_action` varchar(100) NOT NULL,
-  `random_key` varchar(255) DEFAULT NULL,
+  `random_key` char(10) DEFAULT NULL,
   `date_expiration` bigint(10) NOT NULL,
   `lang` varchar(3) NOT NULL DEFAULT 'vi',
   `datetime` bigint(10) NOT NULL,
@@ -2277,7 +2295,7 @@ CREATE TABLE IF NOT EXISTS `web_users` (
 
 INSERT INTO `web_users` (`id`, `name`, `address`, `phone`, `email`, `birthday`, `gender`, `img`, `salt`, `username`, `password`, `rule_view`, `rule_action`, `random_key`, `date_expiration`, `lang`, `datetime`, `status`, `group_id`) VALUES
 (25, 'Admin', '123 CMT 8', '0988388003', 'admin@gmail.com', 0, NULL, '', '', 'admin', 'fc7fc678608590b123692867f176fe63', ',1,2,3,4,8,24,27,28,29,30,25,31,19,13,14,20,15,16,17,18,21,22,23,', ',1,2,3,4,8,24,27,28,29,30,25,31,19,13,14,20,15,16,17,18,21,22,23,', NULL, 0, 'en', 0, 1, 3),
-(26, 'Nhan', '', '', 'hieu_nhan1@yahoo.com', 0, NULL, '', '', '', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 1441278786, 'vi', 1441040399, 1, 1);
+(26, 'User Forex', '', '', 'userforex@gmail.com', 0, NULL, '', '', '', '867e1a36d190000d2f266d80889683fc', '', '', NULL, 1441040340, 'en', 1441040399, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2320,7 +2338,7 @@ CREATE TABLE IF NOT EXISTS `web_users_lock_ip` (
 --
 
 INSERT INTO `web_users_lock_ip` (`id`, `ip_address`, `login_number`, `disable_date`, `datetime`) VALUES
-(3, '::1', 2, 0, 1438677752);
+(3, '::1', 2, 0, 1438918772);
 
 -- --------------------------------------------------------
 
@@ -2365,6 +2383,22 @@ INSERT INTO `web_users_package` (`id`, `name`, `price`, `discount`, `songay`, `o
 (2, 'Forex Signal Service - 1 month', 150, 0, 30, 1, 'EABGRY8956Y3C', 0, '', 'en', 1),
 (3, 'Forex Signal Service - 3 months', 400, 0, 90, 2, 'HD7KJMYNYUUH2', 0, '', 'en', 1),
 (4, 'Forex Signal Service - 12 months', 1100, 0, 360, 3, 'VFS88BUMZBX6W', 0, '', 'en', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_users_reset`
+--
+
+CREATE TABLE IF NOT EXISTS `web_users_reset` (
+`id` int(9) NOT NULL,
+  `name` varchar(60) NOT NULL,
+  `email` varchar(60) NOT NULL,
+  `ip_address` varchar(20) NOT NULL,
+  `key` char(10) NOT NULL,
+  `datetime` bigint(10) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2612,6 +2646,12 @@ ALTER TABLE `web_users_package`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `web_users_reset`
+--
+ALTER TABLE `web_users_reset`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_video`
 --
 ALTER TABLE `web_video`
@@ -2630,7 +2670,7 @@ MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=418;
 -- AUTO_INCREMENT for table `web_analytics`
 --
 ALTER TABLE `web_analytics`
-MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `web_article`
 --
@@ -2680,7 +2720,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_logs`
 --
 ALTER TABLE `web_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=213;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=228;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --
@@ -2791,6 +2831,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `web_users_package`
 MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `web_users_reset`
+--
+ALTER TABLE `web_users_reset`
+MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `web_video`
 --

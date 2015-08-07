@@ -1,6 +1,6 @@
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^suakhoaquanganh.com
-RewriteRule ^(.*)$ http://www.suakhoaquanganh.com/$1 [R=permanent,L]
+RewriteCond %{HTTP_HOST} ^forexsignalpro.net
+RewriteRule ^(.*)$ http://www.forexsignalpro.net/$1 [R=permanent,L]
 RewriteRule js - [L]
 RewriteRule public - [L]
 RewriteRule themes - [L]

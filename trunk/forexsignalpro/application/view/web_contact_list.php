@@ -60,18 +60,18 @@ $(document).ready(function(e) {
 				setTimeout(function(){
 					if(data!='0' && data!='2'){
 						$("#contact").html('<div class="messageContact viewpost">' +
-											'<p class="title">Liên hệ thành công</p>' +
-											'<p>Xin thông báo bạn đã liên hệ đến website <b><?php echo $config['sitename'];?></b> thành công. Chúng tôi sẽ trả lời cho bạn sớm nhất.</p>' +
-											'<p>Trân trọng,</p>' +
+											'<p class="title">Contact Success</p>' +
+											'<p>Please notify that you have contacted successfully to <b><?php echo $config['sitename'];?></b> website. We will reply to you soon.</p>' +
+											'<p>Respect,</p>' +
 										'</div>');
 						$(".loading").hide();
 						return true;
 					}else if(data=='2'){
-						$(".errorContact").html("Bạn thao tác quá nhanh, vui lòng thử lại sau 30 giây.");
+						$(".errorContact").html("You manipulate too fast, please try again after 30 seconds.");
 						$(".loading").hide();
 						return false;
 					}else{
-						$(".errorContact").html("Lỗi: Vui lòng ấn F5 thử lại");
+						$(".errorContact").html("Error: Please press F5 key to try again");
 						$(".loading").hide();
 						return false;
 					}
