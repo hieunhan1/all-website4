@@ -120,7 +120,13 @@ if(isset($_SESSION['adminId'])){
 		$str='';
 		if($dataA['table']=='web_users'){
 			$table='Bảng thống kê user';
-			$data = $model->_analyticUser($dateStart, $dateEnd);
+			
+			if($dataA['other']==1){
+				$data = $model->_analyticAllUser($dataA['value']);
+			}else{
+				$data = $model->_analyticUser($dateStart, $dateEnd);
+			}
+			
 			$total = count($data);
 			$str.='<ul id="analytic">';
 			foreach($data as $row){
@@ -181,6 +187,60 @@ if( isset($_SESSION['userId']) && $_SESSION['userExpiration']>time() ){
 	}
 }
 /*end login user*/
+
+/*reset pass*/
+if(isset($_POST['resetPass'])){
+	$u = new controlUsers;
+	$email = $u->_model->_changeDauNhay(trim($_POST['email']));
+	$data = $u->_model->_checksUserEmail($email);
+	if(count($data)!=0){
+		$dataR = $u->_model->_checksResetEmail($email);
+		$datetime = time();
+		$checkTime = $datetime - $dataR['datetime'];
+		if($checkTime > 300){
+			$name = $email;
+			$ip_address = $_SERVER['REMOTE_ADDR'];
+			$key = $u->_model->_randString(10);
+			$u->_model->_insertResetEmail($name, $email, $ip_address, $key, $datetime);
+			
+			$title = 'Reset Password';
+			$subject = 'No-reply | Reset Password ForexSignalPro';
+			$body = '<div style="line-height:20px; color:#333; font-size:12pt">
+				<h3 style="font-size:150%; margin-bottom:20px">Hi, '.$data['name'].'</h3>
+				<p>To retrieve your password please <a href="'.CONS_BASE_URL.'/user/reset/?key='.$key.'&email='.$email.'">click here.</a></p>
+				<p>Thanks and Best regards,</p>
+			</div>';
+			$add_address = array();
+			$add_address[] = array('email'=>$email, 'name'=>$data['name']);
+			ob_start();
+			$c->sendmail($title, $subject, $body, $add_address);
+			ob_get_clean();
+			echo '<span class="message">Một email đã gửi tới <b>'.$email.'</b>, vui lòng kiểm tra hộp thư.</span>';
+		}else{
+			echo '<span class="message">Một email đã gửi tới <b>'.$email.'</b>, vui lòng kiểm tra hộp thư. Thử lại sau 5 phút nếu chưa nhận được email reset password</span>';
+		}
+		return true;
+	}else{
+		echo '<span class="error">Not found <b>'.$email.'</b> email</span>';
+		return false;
+	}
+}
+if(isset($_POST['updateResetPass'])){
+	$u = new controlUsers;
+	$email = $u->_model->_changeDauNhay(trim($_POST['email']));
+	$key = $u->_model->_changeDauNhay(trim($_POST['key']));
+	$pass = $u->_model->_changeDauNhay(trim($_POST['pass']));
+	
+	$data = $u->_model->_keyResetPass($key, $email);
+	if(count($data)!=0 && $data['status']==0){
+		$u->_model->_updateResetPassword($email, $key);
+		$u->_model->_resetPassword($email, $pass);
+		echo 'Reset password success. <a href="user/"><b>Login</b></a>';
+	}else{
+		echo 'Error';
+	}
+}
+/*end reset pass*/
 
 /*web*/
 if(isset($_POST['webContact'])){

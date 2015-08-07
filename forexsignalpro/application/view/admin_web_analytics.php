@@ -59,7 +59,7 @@ echo $c->viewFormSearch();
         <?php
 		$i = 0;
 		$statusPayment = array('cancel', '<span style="color:#0000FF">success</span>', '<span style="color:#009900">check</span>', '<span style="color:#F00">error</span>');
-		$data = $c->selectFromAll($lang, $arr, $table, "`{$table}`.`table`, `{$table}`.`value`, `{$table}`.`datetime` ");
+		$data = $c->selectFromAll($lang, $arr, $table, "`{$table}`.`table`, `{$table}`.`value`, `{$table}`.`datetime` ", "`{$table}`.`other` DESC");
 		foreach($data as $row){
 			$i++; ?>
             <tr class="row" id="<?php echo $row['id'];?>" name="<?php echo $row['name'];?>">

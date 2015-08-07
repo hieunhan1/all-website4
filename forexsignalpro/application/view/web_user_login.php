@@ -12,6 +12,7 @@
         <p class="error"></p>
     </div>
     <div id="loginBtn"><input type="button" name="loginBtn" value="LOGIN" class="btn" /></div>
+    <div style="text-align:right; margin-top:10px"><a href="user/reset/">I can't access my account</a></div>
 </div>
 <div class="clear20"></div>
 <script type="text/javascript">

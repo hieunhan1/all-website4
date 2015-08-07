@@ -61,6 +61,17 @@ echo '<form name="form_action" method="post" action="">
 	$data = $cF->inputRadio($name, $values, $valueCheck, 'radio');
 	echo $cF->displayTable('Status payment', $data);
 	
+	$name = 'other';
+	$values = array();
+	$values[] = array('name'=>'Tất cả', 'id'=>'1');
+	$values[] = array('name'=>'Theo tháng', 'id'=>'0');
+	if(!isset($_POST[$name])){
+		if($rowDetail[$name]=='') $valueCheck=1;
+		else $valueCheck=$rowDetail[$name];
+	}else $valueCheck=$_POST[$name];
+	$data = $cF->inputRadio($name, $values, $valueCheck, 'radio');
+	echo $cF->displayTable('Loại thống kê', $data);
+	
 	$name = 'lang';
     $data = $cF->inputHidden($name, $lang);
 	echo $data;

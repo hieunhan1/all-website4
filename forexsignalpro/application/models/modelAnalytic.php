@@ -20,6 +20,17 @@ class modelAnalytic extends modelDB{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
+	public function _analyticAllUser($type){
+		$datetime = time();
+		if($type==1) $datetime=" AND `date_expiration`>='{$datetime}' ";
+		else $datetime=" AND `date_expiration`<='{$datetime}' ";
+		$sql = "SELECT `name`, `email`, `date_expiration`, `datetime` FROM `web_users` WHERE `status`='1' AND `group_id`=1 {$datetime} ORDER BY `id` DESC";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	
 	public function _analyticPayment($dateStart, $dateEnd, $status){
 		$sql = "SELECT `name`, `email`, `package_id`, `PAYMENT_AMOUNT`, `datetime` FROM `web_payment` WHERE `status`='{$status}' AND `datetime`>='{$dateStart}' AND `datetime`<'{$dateEnd}' ORDER BY `id` DESC";
 		if(!$result = $this->db->query($sql)) die($this->db->error);

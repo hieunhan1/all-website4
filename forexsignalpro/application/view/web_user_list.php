@@ -36,6 +36,8 @@
 		}else{
 			include_once('web_user_info.php');
 		}
+	}elseif($arrUrl['currentPage']=='reset'){
+		include_once('web_user_reset.php');
 	}else{
 		include_once('web_user_login.php');
 	}
