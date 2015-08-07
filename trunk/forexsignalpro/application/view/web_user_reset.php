@@ -11,10 +11,10 @@ if( !(isset($_GET['key']) && isset($_GET['email'])) ){
 		if($data['status']==0){
 			include_once('web_user_reset_update.php');
 		}else{
-			$str = 'Link này đã được sử dụng để lấy lại mật khẩu rồi.';
+			$str = 'This link had already been used to retrieve the password.';
 		}
 	}else{
-		$str = 'Không tìm thấy yêu cầu lấy lại mật khẩu';
+		$str = 'Can not find requested recover password';
 	}
 	echo '<div class="error">'.$str.'</div>';
 }?>
