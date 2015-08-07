@@ -215,9 +215,9 @@ if(isset($_POST['resetPass'])){
 			ob_start();
 			$c->sendmail($title, $subject, $body, $add_address);
 			ob_get_clean();
-			echo '<span class="message">Một email đã gửi tới <b>'.$email.'</b>, vui lòng kiểm tra hộp thư.</span>';
+			echo '<span class="message">An email was sent to <b>'.$email.'</b> please check your mailbox.</span>';
 		}else{
-			echo '<span class="message">Một email đã gửi tới <b>'.$email.'</b>, vui lòng kiểm tra hộp thư. Thử lại sau 5 phút nếu chưa nhận được email reset password</span>';
+			echo '<span class="message">An email was sent to <b>'.$email.'</b> please check your mailbox. Try again after 5 minutes if not received the email to reset your password.</span>';
 		}
 		return true;
 	}else{

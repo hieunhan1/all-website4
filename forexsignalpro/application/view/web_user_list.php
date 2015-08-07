@@ -29,7 +29,7 @@
 					break;
 				case 'changepass': include_once('web_user_changepass.php');
 					break;
-				case 'logout': $c = new controlUsers; $c->logout_user(CONS_BASE_URL.'/user/');
+				case 'logout': $u = new controlUsers; $u->logout_user(CONS_BASE_URL.'/user/');
 					break;
 				default: echo '<div class="clear30"></div>'; break;
 			}
