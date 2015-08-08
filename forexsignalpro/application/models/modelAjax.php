@@ -69,5 +69,26 @@ class modelAjax extends modelDB{
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		return $this->db->insert_id;
 	}
+	
+	/*send mail user*/
+	public function _viewRealTimeOrder($id){
+		$sql = "SELECT `web_real_time`.*, `web_currency`.`name` as nameCurrency FROM `web_real_time`, `web_currency` WHERE `web_real_time`.`id`='{$id}' AND  `currency_id`=`web_currency`.`id` LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return $result->fetch_assoc();
+	}
+	public function _updateRealTimeOrder($id){
+		$sql = "UPDATE `web_real_time` SET `sendmail`=1 WHERE `id`='{$id}' LIMIT 1";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		return true;
+	}
+	public function _listSendMailUser(){
+		$datetime = time();
+		$sql = "SELECT `name`, `email` FROM `web_users` WHERE `status`=1 AND `group_id`=1 AND `date_expiration`>'{$datetime}'";
+		if(!$result = $this->db->query($sql)) die($this->db->error);
+		$data = array();
+		while($row = $result->fetch_assoc()) $data[] = $row;
+		return $data;
+	}
+	/*end send mail user*/
 }
 ?>

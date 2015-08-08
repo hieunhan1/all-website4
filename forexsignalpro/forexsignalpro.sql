@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2015 at 07:49 AM
+-- Generation Time: Aug 08, 2015 at 09:02 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -2057,10 +2057,11 @@ CREATE TABLE IF NOT EXISTS `web_real_time` (
 `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `oders` tinyint(1) NOT NULL,
-  `entry_point` float NOT NULL,
-  `take_profit` float NOT NULL,
-  `stop_loss` float NOT NULL,
+  `entry_point` varchar(10) NOT NULL,
+  `take_profit` varchar(10) NOT NULL,
+  `stop_loss` varchar(10) NOT NULL,
   `status_real_time` tinyint(1) NOT NULL,
+  `sendmail` tinyint(1) NOT NULL DEFAULT '0',
   `datetime` bigint(10) NOT NULL,
   `lang` varchar(2) NOT NULL DEFAULT 'en',
   `status` tinyint(1) NOT NULL DEFAULT '1',
@@ -2071,11 +2072,11 @@ CREATE TABLE IF NOT EXISTS `web_real_time` (
 -- Dumping data for table `web_real_time`
 --
 
-INSERT INTO `web_real_time` (`id`, `name`, `oders`, `entry_point`, `take_profit`, `stop_loss`, `status_real_time`, `datetime`, `lang`, `status`, `currency_id`) VALUES
-(1, 'Anh / Mỹ', 1, 1.0134, 1.0124, 1.0104, 1, 1428566640, 'en', 1, 1),
-(2, 'GBP/USD', 0, 1.0114, 1.0124, 1.0104, 3, 1428570120, 'en', 1, 2),
-(3, 'April 09, 2015', 1, 1.0134, 1.0134, 1.01, 1, 1428570660, 'en', 1, 1),
-(4, 'BUY', 1, 1.5614, 1.5578, 1.5554, 2, 1438132440, 'en', 1, 1);
+INSERT INTO `web_real_time` (`id`, `name`, `oders`, `entry_point`, `take_profit`, `stop_loss`, `status_real_time`, `sendmail`, `datetime`, `lang`, `status`, `currency_id`) VALUES
+(1, 'Anh / Mỹ', 1, '1.0134', '1.0124', '1.0104', 1, 1, 1428566640, 'en', 1, 1),
+(2, 'GBP/USD', 0, '1.0114', '1.0124', '1.0104', 3, 1, 1428570120, 'en', 1, 2),
+(3, 'April 09, 2015', 1, '1.0134', '1.0134', '1.01', 1, 1, 1428570660, 'en', 1, 1),
+(4, 'BUY', 1, '1.5614', '1.5578', '1.5554', 2, 1, 1438132440, 'en', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2338,7 +2339,7 @@ CREATE TABLE IF NOT EXISTS `web_users_lock_ip` (
 --
 
 INSERT INTO `web_users_lock_ip` (`id`, `ip_address`, `login_number`, `disable_date`, `datetime`) VALUES
-(3, '::1', 2, 0, 1438918772);
+(3, '::1', 2, 0, 1439010881);
 
 -- --------------------------------------------------------
 
@@ -2398,7 +2399,17 @@ CREATE TABLE IF NOT EXISTS `web_users_reset` (
   `key` char(10) NOT NULL,
   `datetime` bigint(10) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_users_reset`
+--
+
+INSERT INTO `web_users_reset` (`id`, `name`, `email`, `ip_address`, `key`, `datetime`, `status`) VALUES
+(1, 'userforex@gmail.com', 'userforex@gmail.com', '::1', '2HBbESsZ9L', 1438928821, 1),
+(2, 'userforex@gmail.com', 'userforex@gmail.com', '::1', 'gbuNeWZpuP', 1438931208, 1),
+(3, 'userforex@gmail.com', 'userforex@gmail.com', '::1', 'jTvvnIFwmN', 1438931348, 1),
+(4, 'userforex@gmail.com', 'userforex@gmail.com', '::1', 'q1u0JDuF4r', 1438931429, 1);
 
 -- --------------------------------------------------------
 
@@ -2835,7 +2846,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_users_reset`
 --
 ALTER TABLE `web_users_reset`
-MODIFY `id` int(9) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `web_video`
 --

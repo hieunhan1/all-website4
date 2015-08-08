@@ -98,6 +98,74 @@ if(isset($_SESSION['adminId'])){
 		return true;
 	}
 	
+	//send mail Real Time Orders
+	if(isset($_POST['sendMailRealTime'])){
+		$id = $c->_model->_changeDauNhay($_POST['sendMailRealTime']); settype($id, 'int');
+		$data = $c->_model->_viewRealTimeOrder($id);
+		if($data['oders']==1) $oders='<span style="color:#00F; font-weight:bold">BUY</span>';
+		else $oders='<span style="color:#F00; font-weight:bold">SELL</span>';
+		
+		$i=0;
+		$add_bcc = array();
+		$dataU = $c->_model->_listSendMailUser();
+		$total = count($dataU);
+		foreach($dataU as $row){
+			$i++;
+			if($i%20 != 0){
+				$add_bcc[] = array('email'=>$row['email'], 'name'=>$row['name']);
+			}else{
+				$add_bcc[] = array('email'=>$row['email'], 'name'=>$row['name']);
+				$title = 'Real Time Order';
+				$subject = 'No-reply | Real Time Order - ForexSignalPro';
+				$body = '<div style="line-height:150%; color:#333; font-size:12pt">
+					<h3 style="font-size:150%; margin-bottom:20px">Hi,</h3>
+					<p>ForexSignalPro.Net vừa mới phát lệnh tư vấn.</p>
+					<p>Datetime: '.$c->_model->_viewDateTime($data['datetime']).'</p>
+					<p>Currency: '.$data['nameCurrency'].'</p>
+					<p>Oders: '.$oders.'</p>
+					<p>Entry point: '.$data['entry_point'].'</p>
+					<p>Take profit: '.$data['take_profit'].'</p>
+					<p>Stop loss: '.$data['stop_loss'].'</p>
+					<p>Thanks and Best regards,</p>
+				</div>';
+				$add_address = array();
+				$add_address[] = array('email'=>$config['email'], 'name'=>'ForexSignalPro.Net');
+				$add_cc='';
+				ob_start();
+				$c->sendmail($title, $subject, $body, $add_address, $add_cc, $add_bcc);
+				ob_get_clean();
+				
+				$add_bcc = array();
+			}
+		}
+		
+		$title = 'Real Time Order';
+		$subject = 'No-reply | Real Time Order - ForexSignalPro';
+		$body = '<div style="line-height:150%; color:#333; font-size:12pt">
+			<h3 style="font-size:150%; margin-bottom:20px">Hi,</h3>
+			<p>ForexSignalPro.Net vừa mới phát lệnh tư vấn.</p>
+			<p>Datetime: '.$c->_model->_viewDateTime($data['datetime']).'</p>
+			<p>Currency: '.$data['nameCurrency'].'</p>
+			<p>Oders: '.$oders.'</p>
+			<p>Entry point: '.$data['entry_point'].'</p>
+			<p>Take profit: '.$data['take_profit'].'</p>
+			<p>Stop loss: '.$data['stop_loss'].'</p>
+			<p>Thanks and Best regards,</p>
+		</div>';
+		$add_address = array();
+		$add_address[] = array('email'=>$config['email'], 'name'=>'ForexSignalPro.Net');
+		$add_cc='';
+		
+		ob_start();
+		$c->sendmail($title, $subject, $body, $add_address, $add_cc, $add_bcc);
+		ob_get_clean();
+		
+		$c->_model->_updateRealTimeOrder($id);
+		
+		echo $total;
+		return true;
+	}
+	
 	//analytic
 	if(isset($_POST['viewAnalytic'])){
 		$model = new modelAnalytic;
