@@ -10,7 +10,7 @@ if($totalRows>1){
 	foreach($data as $row){
 		if($row['img']!='') $img=$currentMenu['typeMenuImgThumb'].$row['img']; else $img=CONS_IMAGE_DEFAULT;
 		echo '<div class="box">
-			<div class="img"><a href="'.$row['url'].'"><img src="'.$urlImg[2]['url_img_thumb'].$row['img'].'" alt="'.$row['name'].'" /></a></div>
+			<div class="img"><a href="'.$row['url'].'"><img src="'.$img.'" alt="'.$row['name'].'" /></a></div>
 			<a href="'.$row['url'].'" title="'.$row['name'].'"><h3 class="title">'.$row['name'].'</h3></a>
 			<div class="info">'.$row['description'].'</div>
 			<a href="'.$row['url'].'" class="link">'.CONS_READ_MORE.'</a>
