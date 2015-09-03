@@ -1,0 +1,23 @@
+Version 1.0.4 - 31 July 2006
+-------------------------------
+  - Translate README and comments in source to english
+  - DATABASE.sql now in 2 version - for Mysql 3.23, 4.0
+
+Version 1.0.3 - 17 March 2006
+-------------------------------
+  - Change field LMI_SYS_TRANS_DATE in table payment to type char(17) 
+    for compability with MySQL 4.
+  - Add .zip package
+
+Version 1.0.2 - 21 January 2006
+-------------------------------
+  - Added sending URL by email (if given)
+
+Version 1.0.1 - 20 January 2006
+-------------------------------
+  - Added debug logging into result.php
+  - Added SIGN method checking
+  
+Version 1.0beta - 30 December 2005
+----------------------------------
+  - Initial beta release

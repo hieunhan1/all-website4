@@ -1,0 +1,39 @@
+$Id: README,v 1.8 2006/07/31 14:11:41 asor Exp $
+
+The given sample is written for "one-time"/customized merchandise that cannot be sold to several buyers, E.g.  PIN code of prepaid card. Number/PIN of the given card is transferred to its buyer only.  Though, sample might be customized for other cases too. 
+
+Merchant service is to be set up for ALL purses, logged at wm_config.php: $WM_SHOP_PURSE_WMx as follows: 
+
+Trade name: Project title  (visible to customers when paying via Merchant)
+Secret Key: SecretKey		(here: secret password, same in  $LMI_SECRET_KEY at wm_config.php)
+Result  URL: https://cronos.qwert.ru/merchant/result.php  (x) Transfer parameters in the preliminary request
+Success URL: https://cronos.qwert.ru/merchant/success.php (POST) calling method Success URL
+Fail    URL: https://cronos.qwert.ru/merchant/failed.php  (POST) calling method Fail URL
+Allow to use URL, transferred as:         ( )
+Send payment error reports to Keeper:        (x)
+Method of generating control signature:			  (MD5)   
+                                                 (or SIGN, should coincide with LMI_HASH_METHOD at wm_config.php)
+Test/Working modes:				  (Test) Test mode! No WM are transferred actually
+Activitites:						  (On) Accepting WM to a purse is ON.
+							  (Off) Accepting WM cards or Paymer  checks is OFF.
+Acepting payments via mobile phones (Telepat.ru):	  (Off) Accepting payments from mobile phones is off.
+
+Other fields in items table:
+state:  'Y' - merchandise at stock 
+        'N' - no merchandise at stock (sold out)
+reserved: DATETIME - field for temporal reserving the merchandise at the beginning of payment procedure , timeout 2 minutes
+
+To restore availability at stock during test period, please state "Y" in the state field for necessary merchandise, otherwise you will see a message: "Sorry! All goods are sold!"
+
+Other fields in payment table:
+state:  'I' - initiating payment 
+	'R' - goods reserved 
+	'S' - 'sold' - goods paid 
+	'G' - 'given' -delivered to the buyer 
+	'F' - 'failed' payment failed 
+
+	
+Copyright (c) 2005, Alexander Oryol <eagle.alex@gmail.com>, Moscow
+                    WebMoney WMID:461631619041
+		    
+Last updated: $Date: 2006/07/31 14:11:41 $		    
