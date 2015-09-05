@@ -1,5 +1,15 @@
 <div id="right">
 	<?php
+    $position = 4;
+	$data = $c->_model->_listSliderBanner($lang, $position);
+	if(count($data)>0){
+		echo '<div class="box" style="border:solid 5px #C00">
+			<a href="'.$data[0]['url'].'" title="'.$data[0]['name'].'"><img src="'.$urlImg[12]['url_img'].$data[0]['img'].'" alt="'.$data[0]['name'].'" style="max-width:100%" /></a>
+		</div>';
+	}
+	?>
+    
+	<?php
 	$parent=0; $position=4;
 	$dataLeft = $c->_model->_listMenu($lang, $parent, $position);
 	
