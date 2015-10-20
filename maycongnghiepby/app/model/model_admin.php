@@ -122,7 +122,7 @@ class model_admin extends db{
 		$str_field .= "`date_create`,`user_create`";
 		
 		for($i=0; $i < $toal_field-1; $i++){
-			$str_value .= "'{$values[$i]}',";
+			$str_value .= $this->_changeDauNhay("'{$values[$i]}',");
 		}
 		$str_value .= "'{$date}','{$user}'";
 		
@@ -135,7 +135,7 @@ class model_admin extends db{
 		$toal_field = count($fields);
 		
 		for($i=0; $i < $toal_field-1; $i++){
-			$str .= "`{$fields[$i]}`='{$values[$i]}',";
+			$str .= "`{$fields[$i]}`='".$this->_changeDauNhay($values[$i])."',";
 		}
 		$str .= "`date_update`='{$date}',`user_update`='{$user}'";
 		

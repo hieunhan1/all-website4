@@ -6,4 +6,10 @@ class db{
 		if($this->db->connect_errno) die( $db->connect_error ); 	
 		$this->db->set_charset("utf8");
 	}
+	public function _changeDauNhay($str){
+		$str = str_replace("'",'&#39;', $str);
+		$str = str_replace('"','&quot;', $str);
+		$str = str_replace('"','&#92;', $str);
+		return $str;
+	}
 }

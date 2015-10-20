@@ -204,8 +204,9 @@ class model_web extends db{
 		while($row = $result->fetch_assoc()) $data[] = $row;
 		return $data;
 	}
-	public function _other_post_product($id,$idMenu,$limit=5){
-		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC LIMIT {$limit}";
+	public function _other_post_product($id, $idMenu, $limit=NULL){
+		if($limit==NULL) $limit=''; else $limit='LIMIT '.$limit;
+		$sql = "SELECT `id`,`name`,`name_alias`,`url`,`url_hinh`,`giaban`,`giagoc` FROM `web_product` WHERE `delete`=0 AND `status`=1 AND id<>'{$id}' AND menu_id LIKE '%,{$idMenu},%' ORDER BY `ngay_dang` DESC {$limit}";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;
