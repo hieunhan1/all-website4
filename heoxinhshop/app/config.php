@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/heoxinhshop');/*domain*/
-define('CONS_BASE_DIR', '/all/heoxinhshop');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/heoxinhshop');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/heoxinhshop');/*upload host tắt CONS này*/
 
 define('CONS_HOST',		'localhost');
 define('CONS_USER_DB',	'root');

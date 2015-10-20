@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/thoitrang9');/*domain*/
-define('CONS_BASE_DIR', '/all/thoitrang9');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/thoitrang9');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/thoitrang9');/*upload host tắt CONS này*/
 
 define('CONS_HOST',		'localhost');
 define('CONS_USER_DB',	'root');
