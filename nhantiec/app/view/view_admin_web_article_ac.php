@@ -2,11 +2,11 @@
 /*action create, edit*/
 $this->create_edit_data($table, $arr_action, $row_detail);
 
-//include_once('view_admin_upload.php');
+include_once('view_admin_upload.php');
 
 echo '<form name="form_action" method="post" action="">
 <table width="100%" border="0" cellpadding="0" cellspacing="10" style="margin-bottom:50px">';
-	/*//img_avatar
+	//img_avatar
 	$values = $row_detail['img_avatar'];
 	$views = array('img_avatar'); //name class
     $this->getProperties('2',$values,'',$views);
@@ -16,7 +16,7 @@ echo '<form name="form_action" method="post" action="">
 	$values = $row_detail['img_arr'];
 	$views = array('img_arr'); //name class
     $this->getProperties('2',$values,'',$views);
-	echo $this->DisplayProperties();*/
+	echo $this->DisplayProperties();
 	
 	//status
 	$arr = array();
