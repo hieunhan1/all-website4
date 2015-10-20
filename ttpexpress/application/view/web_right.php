@@ -10,6 +10,10 @@
         </form>
     </div>
     
+    <div id="hotline">
+    	Hotline:<span><?php echo $config['hotline'];?></span>
+    </div>
+    
     <div id="news">
 		<?php
         $parent=0; $position=4;

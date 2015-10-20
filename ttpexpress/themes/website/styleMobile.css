@@ -24,15 +24,15 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .iconNew{background:url(img/icon_new.gif) no-repeat 0px 6px}
 .iconTop{background:url(img/icon_top.gif) no-repeat 0px 6px}
 
-#wrapper{width:100%; margin:auto}
-.content{width:100%; margin:auto}
+#wrapper{margin:0 2%}
+.content{margin:0 2%}
 
 .viewpost{line-height:180%; font-size:100%; padding-bottom:20px}
 .viewpost h1{color:#0065b3; font-size:150%; line-height:140%; margin-bottom:20px; padding-bottom:10px; border-bottom:dotted 5px #CCC}
 .viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
 .viewpost li{padding:0; margin:5px 0}
-.viewpost img{max-width:100% !important}
+.viewpost img{max-width:100% !important; max-height:100% !important}
 
 #article{width:100%}
 #article .articleBox{clear:both; margin-bottom:40px}
@@ -119,13 +119,16 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 /*right*/
 #right{width:100%; clear:both}
 
+#hotline{color:#FFF; line-height:150%; padding:30px 20px; border-radius:5px; margin-bottom:35px; background-color:#c84400}
+#hotline span{font-weight:bold; font-size:180%; margin-left:5px; letter-spacing:1px}
+
 #tracing{margin-bottom:40px; padding:30px; border-radius:5px; background-color:#2f2f2f}
 #tracing .title{color:#fb5800; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:220%; text-transform:uppercase; letter-spacing:-1px; margin-bottom:25px; padding-bottom:20px; border-bottom:solid 1px #444}
 #tracing .title span{color:#FFF; font-size:70%; font-weight:100; padding-left:5px}
 #tracing .txt{width:95%; color:#999; font-style:italic; margin-bottom:15px; padding:5px; border:solid 1px #444; border-radius:3px; background-color:#373737}
 #tracing .btn{width:100%; padding:10px 0; color:#FFF; font-size:120%; font-weight:bold; text-align:center; letter-spacing:-1px; background-color:#c84400; border-radius:3px; border:none; border-top:solid 1px #ff7124; cursor:pointer}
 
-#news{padding:27px 30px; border:solid 1px #CCC; border-radius:5px}
+#news{margin-bottom:30px; padding:27px 30px; border:solid 1px #CCC; border-radius:5px}
 #news .title{color:#333; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:160%; letter-spacing:-1px; word-spacing:2px; text-transform:uppercase; margin-bottom:20px; padding-bottom:20px; border-bottom:solid 1px #CCC}
 #news .box{line-height:20px; font-weight:bold; font-size:90%; margin-bottom:20px}
 #news .box .link{color:#c84400}
