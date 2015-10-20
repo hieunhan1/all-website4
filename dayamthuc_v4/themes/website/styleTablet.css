@@ -34,7 +34,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .viewpost h1{color:#ed3136; font-size:150%; line-height:140%; margin-bottom:20px; padding-bottom:10px; border-bottom:dotted 5px #CCC}
 .viewpost h2, .viewpost h3, .viewpost h4{font-size:100%; line-height:150%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
-.viewpost li{padding:0; margin:5px 0 5px 35px}
+.viewpost li{padding:0; margin:3px 5px}
 .viewpost img{max-width:100% !important; height:auto !important}
 
 #article{width:440px; float:left}
@@ -157,8 +157,8 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #homeType4 .news .item h5{font-size:100%; margin-bottom:5px}
 #homeType4 .news .item .info{line-height:18px; height:54px; overflow:hidden}
 #homeType4 .event{width:45%; float:right}
-#homeType4 .event .img{max-width:100%; height:auto; overflow:hidden; margin-bottom:20px; border-radius:5px}
-#homeType4 .event .img img{max-width:100%;}
+#homeType4 .event .img, #homeType4 .event .img2{max-width:100%; height:auto; overflow:hidden; margin-bottom:20px; border:solid 1px #999; border-radius:5px}
+#homeType4 .event img{max-width:100%;}
 
 #homeType5{clear:both; height:350px; overflow:hidden; margin-bottom:20px}
 #homeType5 .title{height:50px; color:#FFF; font-weight:100; font-size:150%; text-align:center; text-transform:uppercase; letter-spacing:1px; word-spacing:1px; margin-bottom:10px; padding-top:20px; background-position:50% -450px}
