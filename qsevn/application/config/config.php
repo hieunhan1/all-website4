@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/qsevn');/*domain*/
-define('CONS_BASE_DIR', '/all/qsevn/');/*upload host tat CONS nay*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/qsevn');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/qsevn/');/*upload host tat CONS nay*/
 define('CONS_HOST', 'localhost');
 define('CONS_USER_DB', 'root');
 define('CONS_PASS_DB', '');

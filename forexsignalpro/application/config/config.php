@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/forexsignalpro');/*domain*/
-define('CONS_BASE_DIR', '/all/forexsignalpro/');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/forexsignalpro');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/forexsignalpro/');/*upload host tắt CONS này*/
 define('CONS_HOST', 'localhost');
 define('CONS_USER_DB', 'root');
 define('CONS_PASS_DB', '');

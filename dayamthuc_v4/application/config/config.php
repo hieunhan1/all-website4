@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/dayamthuc_v4');/*domain*/
-define('CONS_BASE_DIR', '/all/dayamthuc_v4/');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/dayamthuc_v4');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/dayamthuc_v4/');/*upload host tắt CONS này*/
 define('CONS_HOST', 'localhost');
 define('CONS_USER_DB', 'root');
 define('CONS_PASS_DB', '');

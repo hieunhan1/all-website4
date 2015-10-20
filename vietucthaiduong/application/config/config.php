@@ -1,6 +1,6 @@
 <?php
-define('CONS_BASE_URL', 'http://localhost/all/vietucthaiduong');/*domain*/
-define('CONS_BASE_DIR', '/all/vietucthaiduong/');/*upload host tắt CONS này*/
+define('CONS_BASE_URL', 'http://localhost/all_v4/vietucthaiduong');/*domain*/
+define('CONS_BASE_DIR', '/all_v4/vietucthaiduong/');/*upload host tắt CONS này*/
 define('CONS_HOST', 'localhost');
 define('CONS_USER_DB', 'root');
 define('CONS_PASS_DB', '');
