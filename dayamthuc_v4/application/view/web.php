@@ -30,8 +30,9 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-30563987-1', 'dayamthuc.vn');
+  ga('create', 'UA-30563987-1', 'auto');
   ga('send', 'pageview');
+
 </script>
 <?php
 include_once('web_header.php'); flush();

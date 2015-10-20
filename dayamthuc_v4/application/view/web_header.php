@@ -19,11 +19,11 @@
         <div id="search" class="allIcon" style="background-position:0px -90px">
         	<input type="text" name="txtSearch" id="txtSearch" placeholder="search.." />
         </div>
-        <!--<div id="lang">
-        	<a href="javascript:;" class="allIcon" style="background-position:0px 0px">&nbsp;</a>
-            <a href="javascript:;" class="allIcon" style="background-position:0px -30px">&nbsp;</a>
-            <a href="javascript:;" class="allIcon" style="background-position:0px -60px">&nbsp;</a>
-        </div>-->
+        <div id="lang">
+        	<a href="javascript:;<?php //echo CONS_BASE_URL;?>" class="allIcon" style="background-position:0px 0px">&nbsp;</a>
+            <a href="javascript:;<?php //echo CONS_BASE_URL.'/?lang=en';?>" class="allIcon" style="background-position:0px -30px">&nbsp;</a>
+            <a href="javascript:;<?php //echo CONS_BASE_URL.'/?lang=cn';?>" class="allIcon" style="background-position:0px -60px">&nbsp;</a>
+        </div>
         <div class="clear1"></div>
     </div>
 </div>

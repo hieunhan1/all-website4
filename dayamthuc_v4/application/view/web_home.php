@@ -84,8 +84,11 @@ if(isset($dataHome[7]['id'])){
         	<?php
             $position = 2;
 			$data = $c->_model->_listSliderBanner($lang, $position, $dataHome[7]['id']);
-			foreach($data as $row){
-				echo '<div class="img"><a href="'.$row['url'].'" title="'.$row['name'].'"><img src="'.$urlImg[12]['url_img'].$row['img'].'" alt="'.$row['name'].'" /></a></div>';
+			if(count($data)==1){
+				echo '<div class="img"><a href="'.$data[0]['url'].'" title="'.$data[0]['name'].'"><img src="'.$urlImg[12]['url_img'].$data[0]['img'].'" alt="'.$data[0]['name'].'" /></a></div>';
+			}else{
+				foreach($data as $row)
+					echo '<div class="img2"><a href="'.$row['url'].'" title="'.$row['name'].'"><img src="'.$urlImg[12]['url_img'].$row['img'].'" alt="'.$row['name'].'" /></a></div>';
 			}
 			?>
         </div>
