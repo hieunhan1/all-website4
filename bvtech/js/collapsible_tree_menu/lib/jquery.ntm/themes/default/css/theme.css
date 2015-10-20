@@ -1,0 +1,55 @@
+
+.tree-menu ul { list-style: none; padding-left:18px;}
+
+.tree-menu > ul { padding: 0; }
+
+.tree-menu a {
+  display: block;
+  vertical-align: middle;
+  text-decoration: none;
+  line-height:25px;
+  padding: 0 6px 0 18px;
+  /*background-color: #EAEAEA;*/
+  border-radius: 5px;
+  margin-bottom: 1px;
+  color: #555;
+  -moz-transition: background-color 0.2s linear;
+  -webkit-transition: background-color 0.2s linear;
+  -o-transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear;
+  -moz-transition-delay: 0.1s;
+  -webkit-transition-delay: 0.1s;
+  -o-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+
+.tree-menu a:hover {
+  color: #333;
+  -moz-transition: background-color 0.1s linear;
+  -webkit-transition: background-color 0.1s linear;
+  -o-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+}
+
+.tree-menu .active > a:hover,
+.tree-menu .selected > a,
+.tree-menu a:hover { background-color: #ccc; }
+
+.tree-menu .selected > a {
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tree-menu .active > a { /*background-color: #EAEAEA;*/ }
+
+.tree-menu .closed > a,
+.tree-menu .opened > a {
+  /*padding-left: 20px;*/
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.tree-menu .closed > a { background-image: url(../img/icon-expand.png); }
+
+.tree-menu .opened > a { background-image: url(../img/icon-collapse.png); }
