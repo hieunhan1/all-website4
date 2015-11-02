@@ -3,13 +3,7 @@
 <head>
 <base href="<?php echo CONS_BASE_URL; ?>/" />
 <?php echo $tab_head;?>
-<!--Insert CSS-->
-<link rel="stylesheet" type="text/css" href="css/styleMobile.css" media="screen and (min-width:210px) and (max-width:480px)" />
-<link rel="stylesheet" type="text/css" href="css/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)" />
-<link rel="stylesheet" type="text/css" href="css/web_style.css" media="screen and (min-width:800px)" />
-<!--[if lt IE 9]>
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" />
-<![endif]-->
+<link rel="stylesheet" type="text/css" href="css/web_style.css" />
 <script type="text/javascript" src="library/js/jquery.min.js"></script>
 </head>
 

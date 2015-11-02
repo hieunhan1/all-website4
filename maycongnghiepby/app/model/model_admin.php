@@ -122,7 +122,7 @@ class model_admin extends db{
 		$str_field .= "`date_create`,`user_create`";
 		
 		for($i=0; $i < $toal_field-1; $i++){
-			$str_value .= $this->_changeDauNhay("'{$values[$i]}',");
+			$str_value .= "'".$this->_changeDauNhay($values[$i])."',";
 		}
 		$str_value .= "'{$date}','{$user}'";
 		

@@ -9,7 +9,7 @@ class db{
 	public function _changeDauNhay($str){
 		$str = str_replace("'",'&#39;', $str);
 		$str = str_replace('"','&quot;', $str);
-		$str = str_replace('"','&#92;', $str);
+		$str = str_replace('\\','&#92;', $str);
 		return $str;
 	}
 }
