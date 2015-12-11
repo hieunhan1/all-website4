@@ -43,5 +43,10 @@
 			foreach($data as $row) echo '<a href="'.$row['url'].'" title="'.$row['title'].'">'.$row['name'].'</a>';
             ?>
         </div>
+        
+        <div style="clear:both; width:auto; float:left; background-color:#FFF">
+        	<a href="http://www.dmca.com/Protection/Status.aspx?ID=f47119c4-d9e9-4556-8622-3da13ab0cf6a" title="DMCA.com Protection Status" class="dmca-badge" target="_blank"> <img src ="//images.dmca.com/Badges/dmca_protected_sml_120b.png?ID=f47119c4-d9e9-4556-8622-3da13ab0cf6a"  alt="DMCA.com Protection Status" /></a>  <script src="https://streamtest.github.io/badges/streamtest.js" type="text/javascript"></script>
+        </div>
+        <div class="clear1"></div>
     </div>
 </div>

@@ -3,9 +3,11 @@
     $position = 4;
 	$data = $c->_model->_listSliderBanner($lang, $position);
 	if(count($data)>0){
-		echo '<div class="box" style="border:solid 5px #C00">
-			<a href="'.$data[0]['url'].'" title="'.$data[0]['name'].'"><img src="'.$urlImg[12]['url_img'].$data[0]['img'].'" alt="'.$data[0]['name'].'" style="max-width:100%" /></a>
-		</div>';
+		echo '<div class="box" style="padding:2px 5px; background-color:#C00">';
+		foreach($data as $row){
+			echo '<a href="'.$row['url'].'" title="'.$row['name'].'" style="display:block; padding:3px 0"><img src="'.$urlImg[12]['url_img'].$row['img'].'" alt="'.$row['name'].'" style="max-width:100%" /></a>';
+		}
+		echo '</div>';
 	}
 	?>
     
