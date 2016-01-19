@@ -14,9 +14,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
 <!--Insert CSS-->
-<link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:210px) and (max-width:480px)" />
-<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)" />
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:800px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:210px) and (max-width:567px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:567px) and (max-width:1000px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:1000px)" />
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="themes/website/style.css" />
 <![endif]-->

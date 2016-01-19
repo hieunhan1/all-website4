@@ -15,6 +15,9 @@
         <div class="row">
         	<div class="label"><?php echo CONS_CONTACT_NAME;?>:<span class="error">**</span></div>
             <div class="field"><input type="text" name="nameContact" class="txt" maxlength="50" /><p class="error" id="nameContact"></p></div>
+            <div class="clear1"></div>
+        </div>
+        <div class="row">
             <div class="label">Email:<span class="error">**</span></div>
             <div class="field"><input type="text" name="emailContact" class="txt" maxlength="60" /><p class="error" id="emailContact"></p></div>
             <div class="clear1"></div>
@@ -22,6 +25,9 @@
         <div class="row">
         	<div class="label"><?php echo CONS_CONTACT_PHONE;?>:<span class="error">**</span></div>
             <div class="field"><input type="text" name="phoneContact" class="txt" maxlength="20" /><p class="error" id="phoneContact"></p></div>
+            <div class="clear1"></div>
+        </div>
+        <div class="row">
             <div class="label"><?php echo CONS_CONTACT_ADDRESS;?>:</div>
             <div class="field"><input type="text" name="addressContact" class="txt" maxlength="250" /></div>
             <div class="clear1"></div>
@@ -34,6 +40,7 @@
         <div class="row">
         	<div class="label">&nbsp;</div>
             <div class="field"><input type="button" name="btnSendContact" class="btn" value="<?php echo CONS_CONTACT_SEND;?>" /></div>
+            <div class="clear1"></div>
         </div>
     </div>
     <div style="clear:both; height:50px"></div>

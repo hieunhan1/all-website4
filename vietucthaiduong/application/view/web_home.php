@@ -17,7 +17,7 @@
         $data2 = $c->_home->_listMenuHome($lang);
 		foreach($data2 as $row2){
 			echo '<div class="title"><h2 class="h2">'.$row2['name'].'</h2>
-				<a href="'.$row2['url'].'" title="'.$row2['name'].'" class="link">Xem tất cả -&gt;</a></div>';
+				<a href="'.$row2['url'].'" title="'.$row2['name'].'" class="link">Xem tất cả -&gt;</a><p class="clear1"></p></div>';
 			$i=0;
 			$data = $c->_model->_listProductMenu($row2['id']);
 			foreach($data as $row){

@@ -27,6 +27,7 @@
             echo '</div>';
         }
         ?>
+        <div class="clear1"></div>
     </div>
 
 	<?php include_once('web_left.php');?>

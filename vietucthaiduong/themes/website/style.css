@@ -82,7 +82,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #nav li li li li:hover ul {display:block}
 
 /*footer*/
-#footer{clear:both; line-height:16px; color:#FFF; padding:30px 0; background-color:#f6a800}
+#footer{clear:both; line-height:16px; color:#FFF; padding:30px 0 10px 0; background-color:#f6a800}
 #footer h2{font-size:100%}
 #footer .info{width:60%; float:left; line-height:25px}
 #footer .info a{color:#FFF}
@@ -104,14 +104,13 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #contact .messageContact .title{color:#06F; font-weight:bold; font-size:120%}
 #contact .info{width:90%; font-size:160%; margin:0 auto 20px auto}
 #contact .row{width:90%; margin:0 auto 15px auto}
-#contact .label{width:11%; float:left; padding-top:5px}
-#contact .field{width:34%; float:left}
-#contact .field2{width:70%; float:left}
+#contact .label{width:20%; float:left; padding-top:5px}
+#contact .field{width:75%; float:left}
+#contact .field2{width:75%; float:left}
 #contact .txt{width:75%; padding:5px; background-color:#F7F7F7; border:solid 1px #CCC}
-#contact .textarea{width:100%; height:100px; line-height:20px; resize:none; overflow:auto; padding:5px; background-color:#F7F7F7; border:solid 1px #CCC}
+#contact .textarea{width:75%; height:100px; line-height:20px; resize:none; overflow:auto; padding:5px; background-color:#F7F7F7; border:solid 1px #CCC}
 #contact .btn{width:75%; padding:10px 0; font-weight:bold; color:#FFF; background-color:#ffc448; border:none; cursor:pointer}
 #contact .btn:hover{background-color:#f6a800}
-.google_map{color:#EA1D22; font-style:italic}
 
 /*header*/
 #header{height:90px; padding:10px 0}
@@ -119,6 +118,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #header #slogan{width:560px; line-height:180%; font-size:135%; float:left; text-align:center; padding-top:15px}
 #header #slogan .h2_1{font-size:100%; color:#7ab51d}
 #header #slogan .h2_2{font-size:100%; color:#f6a800}
+#header .right{width:250px; float:right}
 #header #lang{width:auto; float:right; margin-bottom:15px}
 #header #lang .li{list-style:none; width:auto; float:left; line-height:16px; margin-left:15px}
 #header #lang .li a{display:block; color:#777; font-size:90%; padding-left:26px}

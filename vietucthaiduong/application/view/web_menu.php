@@ -18,5 +18,6 @@
 		echo $view;
 		?>
     </ul>
+    <div class="clear1"></div>
 </div>
 </div>
