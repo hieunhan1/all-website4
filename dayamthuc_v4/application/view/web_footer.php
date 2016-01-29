@@ -39,8 +39,8 @@
         </table>
         <div id="tagsAll">
 			<?php
-            $data = $c->_model->_listTagsKeyword($lang);
-			foreach($data as $row) echo '<a href="'.$row['url'].'" title="'.$row['title'].'">'.$row['name'].'</a>';
+            //$data = $c->_model->_listTagsKeyword($lang);
+			//foreach($data as $row) echo '<a href="'.$row['url'].'" title="'.$row['title'].'">'.$row['name'].'</a>';
             ?>
         </div>
         
