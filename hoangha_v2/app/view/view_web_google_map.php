@@ -31,6 +31,5 @@ map = new google.maps.Map(document.getElementById("map_google"), myOptions);
 		title:"<?php echo $name; ?>"
 	});
 }
-
 initialize();
 </script>

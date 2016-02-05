@@ -26,7 +26,7 @@
 	echo $include; flush();
 	
 	include_once('view_web_footer.php');
-	include_once('../public/event/noel_2016/index.php');
+	include_once('../public/event/tet-2015/index.php');
 	?>
 </div>
 <script type="text/javascript" src="js/jquery.corner.js"></script>
