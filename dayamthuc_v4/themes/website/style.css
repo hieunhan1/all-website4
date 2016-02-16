@@ -84,8 +84,8 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #menuTop li ul a:hover {color:#FF0}
 
 /*header*/
-#header{height:55px; padding:10px 0; position:relative; z-index:15; background-color:#6f0808}
-#header #logo{width:auto; height:55px; float:left}
+#header1{height:55px; padding:10px 0; position:relative; z-index:15; background-color:#6f0808}
+#header1 #logo{width:auto; height:55px; float:left}
 
 /*slider*/
 #slider{}
