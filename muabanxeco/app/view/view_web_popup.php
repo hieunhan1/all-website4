@@ -63,7 +63,7 @@
 			var id = $("#id_pp").html();
 			var message = check_text_length("textarea[name=message_pp","#message_pp","<?php echo CONS_ERROR_MESSAGE;?>",10);
 			var address = $("input[name=address_pp]").val();
-			if( $("input[name=email_pp]").val()!='' ) var email = check_email("input[name=email_pp]","#email_pp","<?php echo CONS_ERROR_EMAIL;?>"); else $("#email_pp").html('');
+			var email = check_email("input[name=email_pp]","#email_pp","<?php echo CONS_ERROR_EMAIL;?>");
 			var phone = check_phone("input[name=phone_pp]","#phone_pp","<?php echo CONS_ERROR_PHONE;?>");
 			var name = check_text_length("input[name=name_pp]","#name_pp","<?php echo CONS_ERROR_NAME;?>",2);
 			if(name==false || email==false || phone==false || message==false) return false;

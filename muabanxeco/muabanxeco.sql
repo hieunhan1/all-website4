@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2015 at 08:45 AM
+-- Generation Time: Mar 12, 2016 at 04:57 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -52,7 +52,7 @@ INSERT INTO `web_article` (`id`, `name`, `name_alias`, `url`, `img_avatar`, `img
 (2, 'Hồng Cường mừng sinh nhật lần 03', 'hong-cuong-mung-sinh-nhat-lan-03', 'chuong-trinh-khuyen-mai/hong-cuong-mung-sinh-nhat-lan-03.html', 'hong-cuong-mung-sinh-nhat-lan-03.jpg', NULL, 'Hững tiếng cười nói xôn xao, những cái bắt tay thật chặt của bằng hữu lâu ngày gặp lại', 'hồng cường mừng sinh nhật lần 03,hong cuong mung sinh nhat lan 03', '<p>6h sáng, không khí tại CLB xe cổ Hồng Cường rộn ràng hơn bao giờ hết. Những tiếng cười nói xôn xao, những cái bắt tay thật chặt của bằng hữu lâu ngày gặp lại, tiếng xe máy nổ giòn &nbsp;như pháo,... tất cả tạo nên một không khí lễ hội thực sự, khiến cho người đi đường ai cũng phải chú ý. Bởi vì hôm nay là kỷ niệm lần thứ 3 sinh nhật CLB xe cổ Hồng Cường, một ngày hội lớn cho những ai yêu xe cổ.</p>\r\n\r\n<p style="text-align: center;"><img alt="" src="http://www.hongcuongclub.com/public/images/articles/sn1.jpg" style="width: 600px; height: 400px;" /><br />\r\n<em style="line-height: 1.6em;">Mới sáng sớm nhưng khách đã tập trung rất đông ở cổng Nhà hàng Hồng Cường</em></p>\r\n\r\n<p>Hàng trăm chiếc xe cổ dựng trước cổng CLB để chờ lấy số thứ tự, ai ai cũng háo hức mang chiếc xế cổ mà mình cưng chiều nhất, không chỉ đơn giản để “ khoe”, mà còn là món quà tinh thần dành tặng cho sinh nhật Hồng Cường Club.</p>\r\n\r\n<p style="text-align: center;"><img alt="" src="http://www.hongcuongclub.com/public/images/articles/sn5.jpg" style="width: 600px; height: 400px;" />&nbsp; &nbsp;<br />\r\n<em style="line-height: 1.6em;">Dòng xe đông đúc tới sự sinh nhật đông vui như trẩy hội.</em></p>\r\n\r\n<p>Chương trình lần này thu hút được rất nhiều CLB xe cổ trong cả nước tới tham gia. &nbsp;Có người còn mang chiếc xe cổ vượt cả ngàn km từ ngoài Bắc vào tham dự, thậm chí có khách từ nước ngoài nghe tin cũng đáp máy bay về. Bởi vì sinh nhật lần này, ngoài những chương trình&nbsp; khoe xe cổ và Game show thú vị còn có một chương trình đặc biệt được khách tham dự trông đợi nhất: Chiêm ngưỡng những chiếc xe cổ độc đáo nhất, đẹp nhất trong BST của Hồng Cường, lần đầu tiên ra mắt những người yêu xe cổ.</p>\r\n', 1, 1427537220, 'vi', 1, ',5,23,'),
 (3, 'Sinh Nhật 01 năm tuổi SH Club', 'sinh-nhat-01-nam-tuoi-sh-club', 'thong-tin-cap-nhat/sinh-nhat-01-nam-tuoi-sh-club.html', 'sinh-nhat-01-nam-tuoi-sh-club.jpg', NULL, 'Đã một năm rồi gắn bó và chia sẻ, cùng nhau vượt qua những vui bùn, trăn trở và phát triển.', 'hồng cường mừng sinh nhật lần 03,hong cuong mung sinh nhat lan 03', '<p>Đã một năm rồi gắn bó và chia sẻ, cùng nhau vượt qua những vui bùn, trăn trở và phát triển. Đến ngày hôm nay SSC đã chính thức lớn mạnh, với một website có uy tín, một page hội với hơn 2,400 thành viên và một tập thể anh em đoàn kết và vững mạnh. Buổi tiệc big off mừng sinh nhật thành công đã khép lại, một trang nhật kí cho một năm đã trôi qua, nhưng đối với SSC mà nói nó chỉ là một bước mở đầu cho sự phát triển mạnh hơn nữa về sự gắn kết và chia sẽ đam mê.</p>\r\n\r\n<p style="text-align: center;"><img alt="" src="http://www.hongcuongclub.com/public/images/articles/SH02.jpg" style="width: 600px; height: 399px;" /></p>\r\n\r\n<p><strong>HONGCUONGCLUB&nbsp;chúc CLB Sài Gòn SH Club thêm 1 tuổi mới, ngày càng gắn kết và phát triển.</strong></p>\r\n', 1, 1427537280, 'vi', 1, ',5,24,'),
 (4, 'Dàn xe cổ hiếm trưng bày ở Sài Gòn', 'dan-xe-co-hiem-trung-bay-o-sai-gon', 'thong-tin-cap-nhat/dan-xe-co-hiem-trung-bay-o-sai-gon.html', 'dan-xe-co-hiem-trung-bay-o-sai-gon.JPG', NULL, 'Trong khuôn khổ "Ngày hội siêu xe lần 2" đang diễn ra tại TP.HCM, bộ sưu tập xe cổ Hồng Cường đã thu hút nhiều sự chú ý của những người tham dự với những mẫu xe quý và hiếm.', 'dàn xe cổ hiếm trưng bày ở sài gòn,dan xe co hiem trung bay o sai gon', '<p>Trong khuôn khổ "Ngày hội siêu xe lần 2" đang diễn ra tại TP.HCM, bộ sưu tập xe cổ Hồng Cường đã thu hút nhiều sự chú ý của những người tham dự với những mẫu xe quý và hiếm.</p>\r\n\r\n<p style="text-align: center;"><img alt="" src="http://www.hongcuongclub.com/public/images/articles/dan-xe-co-hiem-trung-bay-o-sai-gon.JPG" style="width: 600px; height: 337px;" /></p>\r\n\r\n<p>Tại "Ngày hội siêu xe lần 2", bộ sưu tập gần 30 mẫu xe cổ của Hồng Cường Club là một trong những điểm sáng của sự kiện này. Đa số những chiếc xe được trưng bày là những mẫu quý hiếm, vừa lạ vừa quen thuộc với người Việt Nam. Theo đại diện của Hồng Cường, bộ sưu tập này sẽ xác lập kỉ lục Việt Nam trong năm nay.</p>\r\n\r\n<p>Đây là mẫu Lambretta TV 175 của Ý, được sản xuất từ năm 1959, sử dụng động cơ 2 kì 175 cc. Xe đã được phục chế lại màu sơn và một vài chi tiết nhỏ.</p>\r\n\r\n<p>Những chiếc xe cup "huyền thoại" một thời của thế hệ trước giờ vẫn có thể hoạt động tốt.</p>\r\n\r\n<p>Đây là mẫu Honda CL 90, sản xuất năm 1967 - 1969 tại Nhật Bản.&nbsp;</p>\r\n\r\n<p>Chiếc Berlin Roller SR 50 sản xuất tại Đức vào năm 1959 là mẫu xe "đinh" của bộ sưu tập này. Chiếc xe này vẫn giữ được các chi tiết và đường nét nguyên bản sau nhiều thập kỉ.</p>\r\n\r\n<p>Cùng với chiếc&nbsp;Berlin Roller SR 50, chiếc Lambretta LD 150 sản xuất từ năm 1955 đến 1958 cũng là mẫu xe nguyên bản được đánh giá cao.&nbsp;</p>\r\n\r\n<p>Chiếc Vespa ACMA này được Piaggio sản xuất sau chiến tranh thế giới thứ 2.</p>\r\n\r\n<p>Một chiếc Honda Super Cub khá quen thuộc với người Việt Nam.</p>\r\n', 1, 1427537280, 'vi', 1, ',5,24,'),
-(6, 'Bộ sưu tập xe cổ của Anh Tuấn', 'bo-suu-tap-xe-co-cua-anh-tuan', 'gioi-thieu/bo-suu-tap-xe-co-cua-anh-tuan.html', '', NULL, 'Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người', 'bộ sưu tập xe cổ của anh tuấn,bo suu tap xe co cua anh tuan', '<p>Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người dù là thanh niên trẻ hay các ông cụ lão.</p>\r\n', 1, 1430797020, 'vi', 1, ',2,'),
+(6, 'Bộ sưu tập xe cổ của Anh Tuấn', 'bo-suu-tap-xe-co-cua-anh-tuan', 'gioi-thieu/bo-suu-tap-xe-co-cua-anh-tuan.html', '', '', 'Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người', 'bộ sưu tập xe cổ của anh tuấn,bo suu tap xe co cua anh tuan', '<p>Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người dù là thanh niên trẻ hay các ông cụ lão.</p>\r\n', 1, 1430797020, 'vi', 1, ',2,'),
 (7, 'Hồng Cường nơi hội tụ đam mê xe cổ', 'hong-cuong-noi-hoi-tu-dam-me-xe-co', 'gioi-thieu/hong-cuong-noi-hoi-tu-dam-me-xe-co.html', '', NULL, 'Không giống như nhiều “đại gia” khác thể hiện độ giàu có của mình bằng bộ sưu tập các loại ô tô đắt tiền', 'hồng cường nơi hội tụ đam mê xe cổ,hong cuong noi hoi tu dam me xe co', '<p>Không giống như nhiều “đại gia” khác thể hiện độ giàu có của mình bằng bộ sưu tập các loại ô tô đắt tiền, Nguyễn Hiển Tuấn chọn cho mình một lối đi riêng, khiến nhiều đại gia có “máu mặt” khác cũng phải ghen tị.</p>\r\n', 0, 1430883660, 'vi', 1, ',2,');
 
 -- --------------------------------------------------------
@@ -150,7 +150,7 @@ INSERT INTO `web_contact` (`id`, `name`, `email`, `phone`, `address`, `message`,
 (5, 'Nhan Hieu Tran', 'forexsignalpro.net@gmail.com', '0988388003', '', '11111111111111111111', 1431403234, 'vi', 0, 7),
 (9, 'Nhan Hieu Tran', '', '0988388003', '', '11111111111111111111111', 1431403912, 'vi', 0, 7),
 (10, 'Nhan Hieu Tran', 'hieunhan112@gmail.com', '0988388003', '', '11111111111111111111111', 1431403945, 'vi', 0, 7),
-(11, 'Nhan Hieu Tran', '', '0988388003', '', '333333333333333333333333', 1431403958, 'vi', 0, 7);
+(11, 'Nhan Hieu Tran', '', '0988388003', '', '333333333333333333333333', 1431403958, 'vi', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -1010,7 +1010,22 @@ CREATE TABLE IF NOT EXISTS `web_logs` (
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_restore` bigint(10) DEFAULT NULL,
   `user_restore` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `web_logs`
+--
+
+INSERT INTO `web_logs` (`id`, `name`, `action`, `table`, `datetime`, `username`, `content`, `lang`, `status`, `date_restore`, `user_restore`) VALUES
+(1, 'Mua bán', 'update', 'web_menu', 1434534187, 'hongcuong', '`id`,`name`,`name_alias`,`url`,`img_avatar`,`img_arr`,`title`,`description`,`tags`,`parent`,`order`,`other`,`lang`,`status`,`type_id`,`position_id`fields%%%values3%%%Mua bán%%%mua-ban%%%mua-ban/%%%%%%%%%Mua bán xe cổ Hồng Cường%%%Mua bán xe cổ Hồng Cường%%%mua bán xe cổ,mua ban xe co%%%0%%%3%%%0%%%vi%%%1%%%3%%%,2,3,', 'vi', 0, NULL, NULL),
+(2, 'Bộ sưu tập xe cổ của Anh Tuấn', 'update', 'web_article', 1434534197, 'hongcuong', '`id`,`name`,`name_alias`,`url`,`img_avatar`,`img_arr`,`description`,`tags`,`content`,`other`,`datetime`,`lang`,`status`,`menu_id`fields%%%values6%%%Bộ sưu tập xe cổ của Anh Tuấn%%%bo-suu-tap-xe-co-cua-anh-tuan%%%gioi-thieu/bo-suu-tap-xe-co-cua-anh-tuan.html%%%%%%%%%Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người%%%bộ sưu tập xe cổ của anh tuấn,bo suu tap xe co cua anh tuan%%%<p>Thú chơi xe cổ đã trở thành một iữa những dòng xe hiện đại trên phố, chiếc xe cổ vẫn luôn thu hút mọi ánh nhìn tò mò và ngưỡng mộ của mọi người dù là thanh niên trẻ hay các ông cụ lão.</p>\r\n%%%1%%%1430797020%%%vi%%%1%%%,2,', 'vi', 1, 1434614526, 'admin'),
+(3, 'Nhan Hieu Tran', 'status', 'web_contact', 1434614366, 'admin', '1', 'vi', 0, NULL, NULL),
+(4, 'Logo Hồng Cường', 'status', 'web_slider_banner', 1457679739, 'admin', '0', 'vi', 0, NULL, NULL),
+(5, 'Triển lãm xe cổ lần thứ 5 của Hồng Cường', 'status', 'web_slider_banner', 1457679741, 'admin', '0', 'vi', 0, NULL, NULL),
+(6, 'Hồng Cường đạt kỷ lục Guinness', 'status', 'web_slider_banner', 1457679743, 'admin', '0', 'vi', 0, NULL, NULL),
+(7, 'Logo Hồng Cường', 'status', 'web_slider_banner', 1457679745, 'admin', '0', 'vi', 0, NULL, NULL),
+(8, 'Kỷ niệm 10 năm thành lập Hồng Cường', 'status', 'web_slider_banner', 1457679747, 'admin', '0', 'vi', 0, NULL, NULL),
+(9, 'Bệnh viện xe cổ Hồng Cường', 'status', 'web_slider_banner', 1457679749, 'admin', '0', 'vi', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1357,12 +1372,12 @@ CREATE TABLE IF NOT EXISTS `web_slider_banner` (
 --
 
 INSERT INTO `web_slider_banner` (`id`, `name`, `img_avatar`, `img_arr`, `url`, `order`, `lang`, `status`, `position_id`, `menu_id`) VALUES
-(1, 'Bệnh viện xe cổ Hồng Cường', 'benh-vien-xe-co.jpg', '', 'javascript:;', 3, 'vi', 1, 5, NULL),
-(2, 'Kỷ niệm 10 năm thành lập Hồng Cường', 'ky-niem-10-nam-thanh-lap.jpg', '', 'javascript:;', 2, 'vi', 1, 5, NULL),
-(4, 'Hồng Cường đạt kỷ lục Guinness', 'ky-luc-guinness.jpg', '', 'javascript:;', 2, 'vi', 1, 4, NULL),
-(6, 'Triển lãm xe cổ lần thứ 5 của Hồng Cường', 'trien-lam-xe-co.jpg', '', 'javascript:;', 3, 'vi', 1, 4, NULL),
-(7, 'Logo Hồng Cường', 'logo-hc-135.png', '', 'javascript:;', 1, 'vi', 1, 5, NULL),
-(8, 'Logo Hồng Cường', 'logo-hc-135.png', '', 'javascript:;', 1, 'vi', 1, 4, NULL);
+(1, 'Bệnh viện xe cổ Hồng Cường', 'benh-vien-xe-co.jpg', '', 'javascript:;', 3, 'vi', 0, 5, NULL),
+(2, 'Kỷ niệm 10 năm thành lập Hồng Cường', 'ky-niem-10-nam-thanh-lap.jpg', '', 'javascript:;', 2, 'vi', 0, 5, NULL),
+(4, 'Hồng Cường đạt kỷ lục Guinness', 'ky-luc-guinness.jpg', '', 'javascript:;', 2, 'vi', 0, 4, NULL),
+(6, 'Triển lãm xe cổ lần thứ 5 của Hồng Cường', 'trien-lam-xe-co.jpg', '', 'javascript:;', 3, 'vi', 0, 4, NULL),
+(7, 'Logo Hồng Cường', 'logo-hc-135.png', '', 'javascript:;', 1, 'vi', 0, 5, NULL),
+(8, 'Logo Hồng Cường', 'logo-hc-135.png', '', 'javascript:;', 1, 'vi', 0, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -1673,7 +1688,7 @@ MODIFY `id` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `web_logs`
 --
 ALTER TABLE `web_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `web_menu`
 --

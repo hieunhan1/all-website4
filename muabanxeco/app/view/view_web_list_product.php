@@ -15,7 +15,7 @@ if($totalrows>1){
 		$i++;
 		if($i%3 != 1) $style=' margin'; else $style='';
 		echo '<div class="box-item'.$style.'">
-			<div class="img"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></a></div>
+			<div class="img effect"><a href="'.$row['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row['img_avatar'].'" alt="'.$row['name'].'" /></a></div>
 			<a href="'.$row['url'].'" title="'.$row['name'].'"><h3>'.$row['name'].'</h3></a>
 			<div class="buy bogoc_5px" id="'.$row['id'].'" name="'.$row['name'].'">Liên hệ</div>
 		</div>';

@@ -37,7 +37,7 @@ $data_menu = $this->_model->_list_menu_home_page($this->_lang, $type);
 			$i++;
 			if($i%4 != 1) $style=' margin'; else $style='';
 			$str .= '<div class="box-item'.$style.'">
-				<div class="img"><a href="'.$row_xe['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row_xe['img_avatar'].'" alt="'.$row_xe['name'].'" /></a></div>
+				<div class="img effect"><a href="'.$row_xe['url'].'"><img src="'.CONS_IMAGES_PRODUCTS_THUMBS.$row_xe['img_avatar'].'" alt="'.$row_xe['name'].'" /></a></div>
 				<a href="'.$row_xe['url'].'" title="'.$row_xe['name'].'"><h3>'.$row_xe['name'].'</h3></a>
 				<div class="buy bogoc_5px" id="'.$row_xe['id'].'" name="'.$row_xe['name'].'">Liên hệ</div>
 			</div>';
