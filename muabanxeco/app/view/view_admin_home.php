@@ -1,1 +1,0 @@
-<?php echo $menu_admin_right; ?>
