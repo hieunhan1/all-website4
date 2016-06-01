@@ -17,9 +17,10 @@ if(isset($_GET['txtTracing'])){
 	
 	foreach($html->find('Table') as $element){
 		$date = $element->find('CreatedDate', 0)->plaintext;
-		$date = strtotime($date);
+		$date = new DateTime($date);
+		$date = $date->format('d-m-Y H:i');
 		$remark = $element->find('Remark', 0)->plaintext;
-		$str.='<tr> <td valign="top">'.date('d-m-Y H:i', $date).'</td> <td>'.$remark.'</td> </tr>';
+		$str.='<tr> <td valign="top">'.$date.'</td> <td>'.$remark.'</td> </tr>';
 	}
 }else $code='';
 

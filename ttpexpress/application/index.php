@@ -3,7 +3,7 @@ session_start();
 ob_start();
 //session_destroy();
 //error_reporting(E_ALL ^ E_NOTICE);
-date_default_timezone_set('Asia/Ho_Chi_Minh');
+//date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 include_once('config/config.php');
 
@@ -22,8 +22,8 @@ function tachUrl($url, &$arrUrl){
 }
 
 $url = $_SERVER['REQUEST_URI'];
-//$url = preg_replace('/\//', '', $url, 1);
-$url = str_replace(CONS_BASE_DIR, '', $url); /*Upload host tat dong nay*/
+$url = preg_replace('/\//', '', $url, 1);
+//$url = str_replace(CONS_BASE_DIR, '', $url); /*Upload host tat dong nay*/
 $control = tachUrl($url, $arrUrl);
 
 $fileController = "controllers/{$control}.php";
