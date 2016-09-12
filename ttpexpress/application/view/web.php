@@ -42,5 +42,7 @@
 <?php include_once('web_footer.php');?>
 <script type="text/javascript" src="js/js_checks_field.js"></script>
 <script type="text/javascript" src="js/js_web.js"></script>
+
+<script data-cfasync="false" type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",48998]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>
 </body>
 </html>
