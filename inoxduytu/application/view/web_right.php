@@ -1,6 +1,6 @@
 <div id="right">
 	<?php
-	$position=5; $limit=3; $select='`url`, `img`, `code`, `price`, `price_cost`';
+	$position=5; $limit=2; $select='`url`, `img`, `code`, `price`, `price_cost`';
     $dataR = $c->_model->_listMenuPosition($lang, $position);
 	foreach($dataR as $rowR){
 		echo '<div class="boxRight"><h3 class="h3Right">'.$rowR['name'].'</h3>';
