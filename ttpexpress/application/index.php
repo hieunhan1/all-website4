@@ -22,8 +22,7 @@ function tachUrl($url, &$arrUrl){
 }
 
 $url = $_SERVER['REQUEST_URI'];
-$url = preg_replace('/\//', '', $url, 1);
-//$url = str_replace(CONS_BASE_DIR, '', $url); /*Upload host tat dong nay*/
+$url = str_replace(CONS_BASE_DIR, '', $url); /*Upload host tat dong nay*/
 $control = tachUrl($url, $arrUrl);
 
 $fileController = "controllers/{$control}.php";

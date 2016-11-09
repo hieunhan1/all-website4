@@ -84,7 +84,8 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #footer .info{line-height:25px}
 #footer .info a{color:#FF0}
 #footer #social{clear:both; text-align:center}
-#footer #social img{height:25px; margin-right:3px; border:solid 1px #CCC}
+#footer #social img{height:25px; margin-right:5px; border:solid 1px #CCC; position:relative; top:8px;}
+#footer #social a{color:#FFF; margin-left: 15px;}
 #run_top{width:60px; height:60px; line-height:60px; color:#FFF; text-align:center; font-size:140%; font-weight:bold; position:absolute; margin:-45px 0 0 460px; background-color:#0066b3; border-radius:30px;}
 #run_top:hover{box-shadow:0 0 10px #FFF; cursor:pointer}
 #tagsALl{clear:both; font-size:90%; line-height:22px; margin-top:20px}
@@ -127,10 +128,14 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #tracing .txt{width:95%; color:#999; font-style:italic; margin-bottom:15px; padding:5px; border:solid 1px #444; border-radius:3px; background-color:#373737}
 #tracing .btn{width:100%; padding:10px 0; color:#FFF; font-size:120%; font-weight:bold; text-align:center; letter-spacing:-1px; background-color:#c84400; border-radius:3px; border:none; border-top:solid 1px #ff7124; cursor:pointer}
 
-#news{margin-bottom:30px; padding:27px 30px; border:solid 1px #CCC; border-radius:5px}
-#news .title{color:#333; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:160%; letter-spacing:-1px; word-spacing:2px; text-transform:uppercase; margin-bottom:20px; padding-bottom:20px; border-bottom:solid 1px #CCC}
-#news .box{line-height:20px; font-weight:bold; font-size:90%; margin-bottom:20px}
-#news .box .link{color:#c84400}
+.title-right{color:#333; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:160%; letter-spacing:-1px; word-spacing:2px; text-transform:uppercase; margin-bottom:20px; padding-bottom:20px; border-bottom:solid 1px #CCC}
+.box-right{margin-bottom:30px; padding:27px 30px; border:solid 1px #CCC; border-radius:5px}
+.box-right .box{line-height:20px; font-weight:bold; font-size:90%; margin-bottom:20px}
+.box-right .box .link{color:#c84400}
+
+.box-support{line-height: 170%; font-size:110%; margin-bottom: 15px;}
+.box-support .skype{position:relative; top:5px}
+.box-support .email{color:#666;}
 /*end right*/
 
 /*contact*/
@@ -153,11 +158,14 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 
 /*sale*/
 #sale{clear:both}
-#sale .box{width:33%; float:left; margin-bottom:20px}
-#sale .title{color:#e25e10; font-weight:bold; text-transform:uppercase; font-size:110%; padding:5px 0}
-#sale .item{width:280px; float:left; line-height:22px; margin:15px}
-#sale .liSale{ line-height:25px; margin-left:20px; padding-left:20px; background:url(img/icon-service.png) no-repeat; background-position:0px -42px; cursor:pointer}
+#sale .title{color:#c84400; font-size: 180%; font-weight:100; margin-bottom:20px;}
+/*#sale .box{width:33%; float:left; margin-bottom:20px}
+#sale .title{color:#e25e10; font-weight:bold; text-transform:uppercase; font-size:110%; padding:5px 0}*/
+#sale .item{width:33%; height:80px; float:left; line-height:22px; box-sizing:border-box;}
+/*#sale .liSale{ line-height:25px; margin-left:20px; padding-left:20px; background:url(img/icon-service.png) no-repeat; background-position:0px -42px; cursor:pointer}*/
+#sale .item a{color:#666;}
 #sale .liSale:hover, #sale .active{font-weight:bold; background-position:0px 8px}
+#sale .skype {position: relative; top: 4px;}
 
 /*menu*/
 #menu{width:auto; float:right}

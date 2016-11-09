@@ -12,15 +12,17 @@ if(isset($_GET['txtTracing'])){
 		)
 	);*/
 	//$context = stream_context_create($request);
-	$url = "http://ptt1142.somee.com/HHEWebService.asmx/GetPostMailListAll?code=".$code;
+	$url = "http://hoanghasgn.ddns.net/TTPExpress.asmx/GetPostMailListAll?code=".$code;
 	$html = file_get_html($url);
 	
-	foreach($html->find('Table') as $element){
-		$date = $element->find('CreatedDate', 0)->plaintext;
-		$date = new DateTime($date);
-		$date = $date->format('d-m-Y H:i');
-		$remark = $element->find('Remark', 0)->plaintext;
-		$str.='<tr> <td valign="top">'.$date.'</td> <td>'.$remark.'</td> </tr>';
+	if( $html->find('Table') ) {
+		foreach($html->find('Table') as $element){
+			$date = $element->find('CreatedDate', 0)->plaintext;
+			$date = new DateTime($date);
+			$date = $date->format('d-m-Y H:i');
+			$remark = $element->find('Remark', 0)->plaintext;
+			$str.='<tr> <td valign="top">'.$date.'</td> <td>'.$remark.'</td> </tr>';
+		}
 	}
 }else $code='';
 

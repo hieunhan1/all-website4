@@ -43,6 +43,6 @@
 <script type="text/javascript" src="js/js_checks_field.js"></script>
 <script type="text/javascript" src="js/js_web.js"></script>
 
-<script data-cfasync="false" type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",48998]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>
+<script lang="javascript">(function() {var pname = ( (document.title !='')? document.title : document.querySelector('h1').innerHTML );var ga = document.createElement('script'); ga.type = 'text/javascript';ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=dc159bcb59db19e3e02e441d852ba61f&data=eyJzc29faWQiOjQxODUwMDcsImhhc2giOiJhODhlZTE3ODAxZDc4YTVlZjRlN2UxNTQxODBhOTI2ZCJ9&pname='+pname;var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
 </body>
 </html>

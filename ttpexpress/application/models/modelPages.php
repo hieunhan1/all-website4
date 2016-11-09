@@ -136,8 +136,8 @@ class modelPages extends modelDB{
 	}
 	
 	/*other*/
-	public function _listSale($id){
-		$sql = "SELECT * FROM `web_sale` WHERE `status`=1 AND `menu_id` LIKE '%,{$id},%' ORDER BY `order`";
+	public function _listSale(){
+		$sql = "SELECT * FROM `web_sale` WHERE `status`=1 ORDER BY `order`";
 		if(!$result = $this->db->query($sql)) die($this->db->error);
 		$data = array();
 		while($row = $result->fetch_assoc()) $data[] = $row;

@@ -17,7 +17,7 @@
 					$parent=0; $position=6;
 					$data = $c->_model->_listMenu($lang, $parent, $position);
 					foreach($data as $row){
-						echo '<a href="'.$row['url'].'" title="'.$row['title'].'" target="_blank"><img src="'.$urlImg[11]['url_img'].$row['img'].'" alt="'.$row['name'].'" /></a>';
+						echo '<a href="'.$row['url'].'" title="'.$row['title'].'" target="_blank"><img src="'.$urlImg[11]['url_img'].$row['img'].'" alt="'.$row['name'].'" />'.$row['name'].'</a>';
 					}
 					?>
                     </div>&nbsp;

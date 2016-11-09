@@ -49,6 +49,13 @@ echo '<form name="form_action" method="post" action="">
     $data = $cF->inputText($name, $value, 'input_medium', $properties);
 	echo $cF->displayTable('Email', $data);
 	
+	$name = 'skype';
+	$properties = array();
+	$properties[] = array('propertie'=>'maxlength', 'value'=>'60');
+	if(!isset($_POST[$name])) $value=$rowDetail[$name]; else $value=$_POST[$name];
+    $data = $cF->inputText($name, $value, 'input_medium', $properties);
+	echo $cF->displayTable('Skype', $data);
+	
 	$name = 'order';
 	$properties = array();
 	$properties[] = array('propertie'=>'maxlength', 'value'=>'2');

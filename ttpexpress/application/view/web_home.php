@@ -16,6 +16,7 @@
         </div>';
     }
     ?>
+    <p class="clear1"></p>
 </div>
 
 <div id="homeType2">
@@ -31,6 +32,7 @@
 	}
 	?>
     <div class="seeall"><a href="javascript:;" title="" class="allIcon">See all</a></div>
+    <p class="clear1"></p>
 </div>
 
 <?php include_once('web_right.php');?>

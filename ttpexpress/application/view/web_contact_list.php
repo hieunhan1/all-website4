@@ -8,19 +8,34 @@
     </div>
     
     <div id="sale">
-    <?php
-    $data = $c->_model->_listParentMenu($currentMenu['id']);
-	foreach($data as $row){
-		echo '<div class="box"><div class="title">'.$row['name'].'</div>';
-		$data2 = $c->_model->_listParentMenu($row['id']);
-		foreach($data2 as $row2) echo '<div class="liSale" id="'.$row2['id'].'" name="'.$row2['name'].'">'.$row2['name'].' <em style="font-size:85%">(click view)</em></div>';
-		echo '</div>';
-	}
-	?>
-    <div class="clear1"></div>
-    <div id="ajaxSale"></div>
-    
-    <div class="clear20"></div></div>
+        <?php
+        $data = $c->_model->_listSale();
+		if( count($data)>0 ) {
+			$str = '';
+			foreach($data as $row){
+				$skype = '';
+				if( $row['skype']!='' ) {
+					$skype = '<a href="skype:'.$row['skype'].'?chat" class="skype"><img alt="" src="http://www.skypeassets.com/i/scom/images/skype-buttons/chatbutton_16px.png" /></a>';
+				}
+				
+				$email = '';
+				if( $row['email']!='' ) {
+					$email = 'Email: <a href="mailto:'.$row['email'].'">'.$row['email'].'</a>';
+				}
+				
+				$str .= '<li class="item"><b>'.$row['name'].'</b> '.$skype.'<br />
+                    Handphone: <a href="tel:'.$row['phone'].'">'.$row['phone'].'</a><br />
+                    '.$email.'
+                </li>';
+			}
+			
+			echo '<div id="ajaxSale">
+				<ol>'.$str.'</ol>
+				<div class="clear20"></div>
+			</div>';
+		}
+		?>
+    </div>
     
     <div id="contact">
         <div class="loading content"><img src="themes/website/img/loader.gif" /></div>
@@ -95,7 +110,7 @@ $(document).ready(function(e) {
 		});
 	});
 	
-	$(".liSale").click(function(){
+	/*$(".liSale").click(function(){
 		var id = $(this).attr('id');
 		var name = $(this).attr('name');
 		$(".liSale").removeClass("active");
@@ -111,6 +126,6 @@ $(document).ready(function(e) {
 				return true;
 			}
 		});
-	});
+	});*/
 });
 </script>
