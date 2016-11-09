@@ -175,15 +175,16 @@ class model_web extends db{
 		include_once('class.phpmailer.php');
 		$mail = new PHPMailer();
 		$mail->IsSMTP(); // Gọi đến class xử lý SMTP
-		$mail->Host       = 'localhost'; // tên SMTP server
-		$mail->SMTPDebug  = 2; // enables SMTP debug information (for testing): 1 = errors and messages, 2 = messages only
-		$mail->SMTPAuth   = true; // Sử dụng đăng nhập vào account
-		//$mail->Host       = "localhost"; // Thiết lập thông tin của SMPT
-		$mail->Port       = 25; // Thiết lập cổng gửi email của máy
+		$mail->Host       = CONS_SEND_MAIL_SERVER; // tên SMTP server
 		$mail->Username   = CONS_SEND_MAIL_ACCOUNT; // SMTP account username
 		$mail->Password   = CONS_SEND_MAIL_PASSWORD; // SMTP account password
+		$mail->Port       = 465; // Thiết lập cổng gửi email của máy
+		$mail->SMTPSecure = 'ssl';
+		$mail->SMTPDebug  = 2;
+		$mail->SMTPAuth   = true;
 		$mail->IsHTML(true);
-		$mail->SetFrom(CONS_SEND_MAIL_ACCOUNT,$title); //Thiet lap thong tin nguoi gui va email nguoi gui
+		
+		$mail->SetFrom(CONS_SEND_MAIL_FROM, CONS_SEND_MAIL_FROM_NAME);
 		foreach($add_address as $row) $mail->AddAddress($row['email'],$row['name']); //Thiết lập thông tin người nhận
 		if($add_cc!='') foreach($add_cc as $row) $mail->AddCC($row['email'],$row['name']);
 		if($add_bcc!='') foreach($add_bcc as $row) $mail->AddBCC($row['email'],$row['name']);

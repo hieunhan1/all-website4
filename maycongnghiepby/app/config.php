@@ -40,10 +40,13 @@ define('CONS_ADMIN_PER_PAGE', 30);
 
 /*OTHER*/
 define('CONS_AJAX_NAME', 'ajax');
-define('CONS_SEND_MAIL_ACCOUNT', 'no-reply@heoxinhshop.com');
-define('CONS_SEND_MAIL_PASSWORD', 'no-reply#123*');
-define('CONS_RECEIVE_MAIL_ACCOUNT', 'dotrang1310@gmail.com');
-define('CONS_RECEIVE_MAIL_NAME', 'Admin');
+define('CONS_SEND_MAIL_SERVER', 'smtp.gmail.com');
+define('CONS_SEND_MAIL_ACCOUNT', 'noreplyweb.iac@gmail.com');
+define('CONS_SEND_MAIL_PASSWORD', 'noreplyweb.iac#123*');
+define('CONS_SEND_MAIL_FROM', 'noreplyweb.iac@gmail.com');
+define('CONS_SEND_MAIL_FROM_NAME', 'Mikko Mart');
+define('CONS_RECEIVE_MAIL_ACCOUNT', 'hieunhan112@gmail.com');
+define('CONS_RECEIVE_MAIL_NAME', 'No name');
 
 /*ERROR*/
 define('CONS_400','/400');
