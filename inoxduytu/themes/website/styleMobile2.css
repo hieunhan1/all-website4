@@ -1,6 +1,6 @@
 @charset "utf-8";
 *{margin:0px}
-body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; z-index:0; background:url(img/bg.gif) repeat-x; background-position:0px 100px}
+body{color:#666; font-size:13px; font-family:Arial, Helvetica, sans-serif; z-index:0;}
 img{border:0px;}
 a{color:#004274; text-decoration:none}
 a:hover{color:#C80000; text-decoration:underline}
@@ -27,7 +27,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .viewpost h2, .viewpost h3, .viewpost h4, .viewpost h5, .viewpost h6 {font-size:100%; margin:15px 0}
 .viewpost p, .viewpost div {margin:15px 0}
 .viewpost li{padding:0; margin:5px 0}
-.viewpost img{max-width:100% !important; max-height:100% !important}
+.viewpost img{max-width:100% !important; height:auto !important}
 
 #otherPost{clear:both; margin-bottom:20px}
 #otherPost .titlePost{color:#888; font-weight:bold; font-size:180%; padding:10px 0 0px 20px}
@@ -145,6 +145,8 @@ header #hotline span{color:#999; font-size:80%; font-weight:100; font-style:ital
 .productBox .img img{max-width:100%}
 .productBox .price{color:#C00; font-weight:bold; font-size:90%; text-align:right; margin:0 5px}
 .productBox .price span{color:#999; font-weight:100; font-size:90%; text-decoration:line-through; margin-right:5px}
+
+.boxHome .productHome:nth-child(5){display: none}
 
 #imgProduct{max-width:100%}
 #imgProduct img{max-width:100%}
