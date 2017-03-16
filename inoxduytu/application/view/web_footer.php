@@ -17,8 +17,15 @@
 			}
 			?>
         </div>
-        <div id="copyright"><?php echo $config['copyright'];?></div>
+        <div id="copyright" style="text-align: right;">
+			<p><?php echo $config['copyright'];?></p>
+            <p class="clear10"></p>
+            <p class="dmca">
+                <a href="http://www.dmca.com/Protection/Status.aspx?ID=24f1a2ba-ab11-4ae5-b563-b114d4f34470" title="DMCA.com Protection Status" class="dmca-badge" target="_blank"> <img src="//images.dmca.com/Badges/dmca_protected_6_120.png?ID=24f1a2ba-ab11-4ae5-b563-b114d4f34470" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+            </p>
+        </div>
         <div class="clear1"></div>
+        
         <div id="tagsALl">
 			<?php
             $data = $c->_model->_listTagsKeyword($lang);
