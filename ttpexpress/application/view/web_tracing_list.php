@@ -12,7 +12,7 @@ if(isset($_GET['txtTracing'])){
 		)
 	);*/
 	//$context = stream_context_create($request);
-	$url = "http://hoanghasgn.ddns.net/TTPExpress.asmx/GetPostMailListAll?code=".$code;
+	$url = "http://52.221.10.51/TTPExpress.asmx/GetPostMailListAll?code=".$code;
 	$html = file_get_html($url);
 	
 	if( $html->find('Table') ) {
