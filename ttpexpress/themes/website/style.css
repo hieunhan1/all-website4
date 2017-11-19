@@ -191,6 +191,12 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #nav li li li:hover ul,
 #nav li li li li:hover ul {display:block}
 
+/*gw-menu-mobile*/
+#gw-menu-mobile,
+#gw-menu-mobile-btn {
+	display: none;
+}
+
 /* popup */
 #backgroundPopup{display: none; position: fixed; _position: absolute; /*IE 6*/ height: 100%; width: 100%; top: 0; left: 0; background: #FFF; order: 1px solid #CECECE; z-index:1100}
 #popupContact{display: none; position: fixed; _position: absolute; /*IE 6*/ z-index:1200}

@@ -15,8 +15,8 @@
 <link type="icon/x-icon" href="themes/website/img/favicon.ico" rel="shortcut icon" />
 <!--Insert CSS-->
 <link rel="stylesheet" type="text/css" href="themes/website/styleMobile.css" media="screen and (min-width:210px) and (max-width:480px)" />
-<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:800px)" />
-<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:800px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/styleTablet.css" media="screen and (min-width:480px) and (max-width:768px)" />
+<link rel="stylesheet" type="text/css" href="themes/website/style.css" media="screen and (min-width:768px)" />
 <!--[if lt IE 9]>
 <link rel="stylesheet" type="text/css" href="themes/website/style.css" />
 <![endif]-->
@@ -44,5 +44,9 @@
 <script type="text/javascript" src="js/js_web.js"></script>
 
 <script lang="javascript">(function() {var pname = ( (document.title !='')? document.title : document.querySelector('h1').innerHTML );var ga = document.createElement('script'); ga.type = 'text/javascript';ga.src = '//live.vnpgroup.net/js/web_client_box.php?hash=dc159bcb59db19e3e02e441d852ba61f&data=eyJzc29faWQiOjQxODUwMDcsImhhc2giOiJhODhlZTE3ODAxZDc4YTVlZjRlN2UxNTQxODBhOTI2ZCJ9&pname='+pname;var s = document.getElementsByTagName('script');s[0].parentNode.insertBefore(ga, s[0]);})();</script>
+
+<div class="zalo-chat-widget" data-oaid="3410751298218565836" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+
+<script src="https://sp.zalo.me/plugins/sdk.js"></script>
 </body>
 </html>

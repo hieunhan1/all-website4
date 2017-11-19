@@ -98,7 +98,7 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 .seeall a{color:#333; letter-spacing:-1px; word-spacing:5px; font-size:90%; text-transform:uppercase; font-weight:bold; padding-right:20px; background-position:55px -227px}
 
 #homeType1{max-width: 600px; clear:both; margin:auto;}
-#homeType1 .box{width:240px; height:325px; float:left; margin:10px; padding:0 15px; border:solid 1px #CCC; border-radius:5px}
+#homeType1 .box{width:48%; height:325px; float:left; margin:10px 1%; padding:0 15px; box-sizing:border-box; border:solid 1px #CCC; border-radius:5px}
 #homeType1 .margin{}
 #homeType1 .box .title{font-size:160%; line-height:120%; color:#c84400; text-transform:uppercase; letter-spacing:-2px; margin-bottom:22px; padding:30px 0 22px 0; border-bottom:solid 1px #CCC}
 #homeType1 .box .title span{display:block; font-size:70%; font-weight:100; color:#333; letter-spacing:-1px}
@@ -167,27 +167,97 @@ input, textarea, select{color:#666; font-size:13px; font-family:Arial, Helvetica
 #sale .skype {position: relative; top: 4px;}
 
 /*menu*/
-#menu{width:250px; float:right; margin-top:10px}
+#menu{display:none; width:250px; float:right; margin-top:10px}
 #menuHome{background:url(img/home.png) no-repeat; background-position:10px 0px}
-#menuActive{background-color:#FFB76F}
-#menuActive a{color:#333 !important}
-#nav, #nav ul {list-style:none; position:relative; z-index:10; margin:0; padding:0}
-#nav a:link, #nav a:active, #nav a:visited {display:block; background-color:none; text-decoration:none}
-#nav li a {color:#777; line-height:25px; font-weight:bold; font-size:115%; text-transform:uppercase; letter-spacing:-1px; padding:0 12px}
-#nav a:hover {color:#FFF; background-color:#e25e10}
-#nav li {display:block}
-#nav ul {width:200px}
-#nav li ul a {width:180px; float:left; line-height:20px; color:#666; font-size:100%; text-transform:none; font-weight:normal; padding-left:30px}
-#nav li ul a:hover {color:#FF0; border-bottom:solid 1px #0088ec; background-color:#0088ec}
-#nav ul ul {top:auto}
-#nav li ul ul {left:200px}
-#nav li:hover ul ul,
-#nav li:hover ul ul ul,
-#nav li:hover ul ul ul ul {display:block}
-#nav li:hover ul,
-#nav li li:hover ul,
-#nav li li li:hover ul,
-#nav li li li li:hover ul {display:block}
+
+/*gw-menu-mobile*/
+#gw-menu-mobile-btn {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	float: right;
+	color: #FFF;
+	font-size: 110%;
+	text-align: center;
+	cursor: pointer;
+	border: solid 3px #0066b3;
+	background: url(img/bars.png) no-repeat center #0066b3;
+	background-size: contain;
+	position: relative;
+	top: 30px;
+	right: 10px;
+}
+#gw-menu-mobile-btn:hover {
+	border-color: #d15b47;
+	background-color: #d15b47;
+}
+
+#gw-menu-mobile-nav .fa {
+	width: 20px;
+	text-align: center;
+}
+
+#gw-menu-mobile {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 30;
+	top: 0;
+	left: 0;
+}
+#gw-menu-mobile-bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 31;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+}
+#gw-menu-mobile .gw-menu-mobile-close {
+	cursor: pointer;
+}
+
+#gw-menu-mobile-nav {
+	list-style: none;
+	margin: 0;
+	padding: 5%;
+	width: 70%;
+	max-width: 350px;
+	height: 100%;
+	box-sizing: border-box;
+	overflow: auto;
+	position: fixed;
+	z-index: 32;
+	top: 0;
+	left: 0;
+	background-color: rgba(255,255,255,0.92);
+}
+#gw-menu-mobile-nav li {
+	line-height: 160%;
+}
+#gw-menu-mobile-nav li a {
+	display: block;
+	color: #333;
+	text-decoration: none;
+	font-size: 110%;
+	padding: 10px 0;
+}
+#gw-menu-mobile-nav ul {
+	list-style: none;
+	margin: 0 0 0 10%;
+	padding: 0;
+}
+#gw-menu-mobile-nav ul li a {
+	font-size: 100%;
+}
+#gw-menu-mobile-nav ul li a:before {
+	font-family: "FontAwesome";
+	content: "\f101";
+	margin-right: 7px;
+}
+/*END menu-mobile*/
 
 /* popup */
 #backgroundPopup{display: none; position: fixed; _position: absolute; /*IE 6*/ height: 100%; width: 100%; top: 0; left: 0; background: #FFF; order: 1px solid #CECECE; z-index:1100}

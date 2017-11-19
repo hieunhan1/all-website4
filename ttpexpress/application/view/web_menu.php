@@ -1,5 +1,5 @@
 <div id="menu">
-    <ul id="nav">
+    <ul id="nav" class="gw-menu-mobile-item">
     	<?php
 		$i=0; $view=''; $parent=0; $position=2;
 		$data = $c->_model->_listMenu($lang, $parent, $position);
