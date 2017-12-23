@@ -3,10 +3,8 @@
     	<div id="run_top">TOP</div>
         <div class="clear1"></div>
         <div class="info-footer">
-        	<div class="js-infocompany">
-                <h2><?php echo $config['sitename'];?></h2><div class="copyCompany"><a href="javascript:;" class="js-copybtn">Copy company information</a></div>
-                <p><?php echo CONS_CONTACT_ADDRESS.': '.$config['address'].' &nbsp;-&nbsp; MST: '.$config['mst'];?></p>
-            </div>
+            <h2><?php echo $config['sitename'];?></h2><div class="copyCompany"><a href="javascript:;" class="js-copybtn">Copy company information</a></div>
+            <p><?php echo CONS_CONTACT_ADDRESS.': '.$config['address'].' &nbsp;-&nbsp; MST: '.$config['mst'];?></p>
         </div>
 
         <div id="copyright" class="info-footer">
@@ -23,55 +21,23 @@
         </div>
     </div>
 </div>
+<div id="data-copy" class="js-infocompany" style="display:none">
+<?php
+echo $config['sitename']."\n";
+echo CONS_CONTACT_ADDRESS.': '.$config['address'].' - MST: '.$config['mst']."\n";
+echo CONS_CONTACT_PHONE.': '.$config['tel'].' - Hotline: '.$config['hotline']."\n";
+echo 'Fax: '.$config['fax'].' - '.'Email: '.$config['email'];
+?>
+</div>
 <script type="text/javascript">
 $(document).ready(function(e) {
-	var copyEmailBtn = document.querySelector('.js-copybtn');
-	copyEmailBtn.addEventListener('click', function(event) {
-		// Select the email link anchor text
-		var emailLink = document.querySelector('.js-infocompany');
-		var range = document.createRange();
-		range.selectNode(emailLink);
-		window.getSelection().addRange(range);
-		
-		try {
-			// Now that we've selected the anchor text, execute the copy command
-			var successful = document.execCommand('copy');
-			var msg = successful ? 'successful' : 'unsuccessful';
-			console.log('Copy email command was ' + msg);
-		} catch(err) {
-			console.log('Oops, unable to copy');
-		}
-		
-		// Remove the selections - NOTE: Should use
-		// removeRange(range) when it is supported
-		window.getSelection().removeAllRanges();
-		alert('Sao chép thông tin công ty vào bộ nhớ thành công!');
-	});
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(e) {
-	var copyEmailBtn = document.querySelector('.copyCompanyHeader');
-	copyEmailBtn.addEventListener('click', function(event) {
-		// Select the email link anchor text
-		var emailLink = document.querySelector('.js-infocompany');
-		var range = document.createRange();
-		range.selectNode(emailLink);
-		window.getSelection().addRange(range);
-		
-		try {
-			// Now that we've selected the anchor text, execute the copy command
-			var successful = document.execCommand('copy');
-			var msg = successful ? 'successful' : 'unsuccessful';
-			console.log('Copy email command was ' + msg);
-		} catch(err) {
-			console.log('Oops, unable to copy');
-		}
-		
-		// Remove the selections - NOTE: Should use
-		// removeRange(range) when it is supported
-		window.getSelection().removeAllRanges();
+	$('.js-copybtn').click(function(){
+		var value = $('#data-copy').html();
+		var $temp = $('<textarea name="gw-copy-data"></textarea>');
+		$('body').append($temp);
+		$temp.val(value).select();
+		document.execCommand('copy');
+		$temp.remove();
 		alert('Sao chép thông tin công ty vào bộ nhớ thành công!');
 	});
 });

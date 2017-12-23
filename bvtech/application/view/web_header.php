@@ -14,7 +14,7 @@
             else echo '<a href="/" class="allIcon">Tiếng Việt</a>';
             ?>
         </div>
-        <div class="copyCompany copyCompanyHeader"><a href="javascript:;">Copy information</a></div>
+        <div class="copyCompany copyCompanyHeader js-copybtn"><a href="javascript:;">Copy information</a></div>
     </div>
     
     <?php include_once('web_partner.php');?>
